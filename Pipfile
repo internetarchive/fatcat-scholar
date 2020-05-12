@@ -1,0 +1,43 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[packages]
+aiofiles = "*"
+babel = "*"
+bs4 = "*"
+elasticsearch = ">=6.0.0,<7.0.0"
+elasticsearch-dsl = ">=6.0.0,<7.0.0"
+fastapi = "*"
+fatcat-openapi-client = "*"
+ftfy = "*"
+internetarchive = "*"
+jinja2 = "*"
+lxml = "*"
+minio = "*"
+pycountry = "*"
+pylatexenc = "*"
+python-stdnum = "*"
+requests = ">=2"
+sentry-sdk = { version = ">=0.14.0", extras = [] }
+toml = "*"
+uvicorn = "*"
+
+# Maybe?
+#citeproc-py = ">=0.4"
+#citeproc-py-styles = ">=0.1"
+#langdetect = "*"
+
+[dev-packages]
+ipython = "*"
+mypy = "*"
+pytest = "*"
+pytest-cov = "*"
+
+# must lock black to an exact version because it is still "beta"
+# see: https://github.com/psf/black/issues/517
+black = "==19.10b0"
+
+[requires]
+python_version = "3.7"
