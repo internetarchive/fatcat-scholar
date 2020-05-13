@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" style="position: relative; min-height: 100%; height: auto;">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="origin-when-cross-origin">
+  <script>
+  {# TODO: audit this license statement #}
+  /*
+  @licstart  The following is the entire license notice for the JavaScript code in this page.
+
+  Copyright (C) 2020 Internet Archive
+
+  The JavaScript code in this page is free software: you can
+  redistribute it and/or modify it under the terms of the GNU Affero
+  General Public License as published by the Free Software
+  Foundation, either version 3 of the License, or (at your option)
+  any later version.  The code is distributed WITHOUT ANY WARRANTY;
+  without even the implied warranty of MERCHANTABILITY or FITNESS
+  FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+  As additional permission under GNU AGPL version 3 section 7, you
+  may distribute non-source (e.g., minimized or compacted) forms of
+  that code without the copy of the GNU AGPL normally required by
+  section 4, provided you include this license notice and a URL
+  through which recipients can access the Corresponding Source.
+
+  @licend  The above is the entire license notice for the JavaScript code in this page.
+  */
+  </script>
+  <style>
+    {# bnewbold: fix light grey bars in header #}
+    .ui.inverted.menu .item:before { background: none; }
+
+    @media only screen and (max-width: 479px) {
+      .mobile-hide{ display: none !important; }
+    }
+    {# for fulltext search result highlighting #}
+    .search_highlights em {
+      background-color: #FFFFBB; {# yellow #}
+    }
+
+    footer p a {
+      color: rgba(255, 255, 255, 0.5);
+    }
+    footer p a:hover {
+      color: rgba(255, 255, 255, 1.0);
+      opacity: 1.0;
+    }
+  </style>
+  <title>{%- block title -%}scholar.archive.org{%- endblock %}</title>
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.1/dist/semantic.min.css"
+    crossorigin="anonymous">
+  <link rel="icon" 
+    type="image/x-icon" 
+    href="{{ url_for('static', path='/ia-favicon.ico') }}">
+  {% block extra_head %}{% endblock %}
+</head>
+
+<body>
+<header class="ui inverted menu" style="margin: 0;">
+  <div class="ui container">
+    {% if True %}
+      <div class="ui left corner pink small label">
+        <div data-tooltip="[DEV] environment (data not preserved)" data-position="bottom left">
+          <i class="ui cogs icon"></i>
+        </div>
+      </div>
+    {% endif %}
+    <a href="https://archive.org/" class="header item">
+      <img class="logo" src="{{ url_for('static', path='/ia-logo.svg') }}" style="width: 20px;">
+      <img class="mobile-hide" src="{{ url_for('static', path='/ia-wordmark.svg') }}" style="margin-left: 10px; width: 180px;">
+    </a>
+
+    <div class="right menu">
+      <div class="ui simple dropdown item">
+      <!-- language/translate SVG icon -->
+      <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSIxNzkyIiB2aWV3Qm94PSIwIDAgMTc5MiAxNzkyIiB3aWR0aD0iMTc5MiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNNzgyIDEwNzhxLTEgMy0xMi41LS41dC0zMS41LTExLjVsLTIwLTlxLTQ0LTIwLTg3LTQ5LTctNS00MS0zMS41dC0zOC0yOC41cS02NyAxMDMtMTM0IDE4MS04MSA5NS0xMDUgMTEwLTQgMi0xOS41IDR0LTE4LjUgMHE2LTQgODItOTIgMjEtMjQgODUuNS0xMTV0NzguNS0xMThxMTctMzAgNTEtOTguNXQzNi03Ny41cS04LTEtMTEwIDMzLTggMi0yNy41IDcuNXQtMzQuNSA5LjUtMTcgNXEtMiAyLTIgMTAuNXQtMSA5LjVxLTUgMTAtMzEgMTUtMjMgNy00NyAwLTE4LTQtMjgtMjEtNC02LTUtMjMgNi0yIDI0LjUtNXQyOS41LTZxNTgtMTYgMTA1LTMyIDEwMC0zNSAxMDItMzUgMTAtMiA0My0xOS41dDQ0LTIxLjVxOS0zIDIxLjUtOHQxNC41LTUuNSA2IC41cTIgMTItMSAzMyAwIDItMTIuNSAyN3QtMjYuNSA1My41LTE3IDMzLjVxLTI1IDUwLTc3IDEzMWw2NCAyOHExMiA2IDc0LjUgMzJ0NjcuNSAyOHE0IDEgMTAuNSAyNS41dDQuNSAzMC41em0tMjA1LTQ4NnEzIDE1LTQgMjgtMTIgMjMtNTAgMzgtMzAgMTItNjAgMTItMjYtMy00OS0yNi0xNC0xNS0xOC00MWwxLTNxMyAzIDE5LjUgNXQyNi41IDAgNTgtMTZxMzYtMTIgNTUtMTQgMTcgMCAyMSAxN3ptNjk4IDEyOWw2MyAyMjctMTM5LTQyem0tMTEwOCA4MDBsNjk0LTIzMnYtMTAzMmwtNjk0IDIzM3YxMDMxem0xMjQxLTMxN2wxMDIgMzEtMTgxLTY1Ny0xMDAtMzEtMjE2IDUzNiAxMDIgMzEgNDUtMTEwIDIxMSA2NXptLTUwMy05NjJsNTczIDE4NHYtMzgwem0zMTEgMTMyM2wxNTggMTMtNTQgMTYwLTQwLTY2cS0xMzAgODMtMjc2IDEwOC01OCAxMi05MSAxMmgtODRxLTc5IDAtMTk5LjUtMzl0LTE4My41LTg1cS04LTctOC0xNiAwLTggNS0xMy41dDEzLTUuNXE0IDAgMTggNy41dDMwLjUgMTYuNSAyMC41IDExcTczIDM3IDE1OS41IDYxLjV0MTU3LjUgMjQuNXE5NSAwIDE2Ny0xNC41dDE1Ny01MC41cTE1LTcgMzAuNS0xNS41dDM0LTE5IDI4LjUtMTYuNXptNDQ4LTEwNzl2MTA3OWwtNzc0LTI0NnEtMTQgNi0zNzUgMTI3LjV0LTM2OCAxMjEuNXEtMTMgMC0xOC0xMyAwLTEtMS0zdi0xMDc4cTMtOSA0LTEwIDUtNiAyMC0xMSAxMDYtMzUgMTQ5LTUwdi0zODRsNTU4IDE5OHEyIDAgMTYwLjUtNTV0MzE2LTEwOC41IDE2MS41LTUzLjVxMjAgMCAyMCAyMXY0MTh6Ii8+PC9zdmc+"
+      alt="select language" style="height: 1.5em; filter: invert(100%);">
+      <i class="dropdown icon" style="margin-left: 0.2em;"></i>
+        <div class="menu">
+            {# TODO: as a dynamic array #}
+            {# TODO: do url_for() here, with current endpoint (from request?) #}
+            <a class="item" href="/">English</a>
+            <a class="item" href="/de/">Deutsch</a>
+            <a class="item" href="/zh/">中文</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+{% block fullmain %}
+<div class="ui vertical stripe segment" style="background-color: #dedede;">
+  <div class="ui container" style="padding: 1em; padding-bottom: 0.0em;">
+    <div class="ui equal height grid">
+      <div class="ui four wide column">
+        <div style="display: flex; justify-content: center; align-items: center; height:100%; width: 100%;">
+          <a href="{{ lang_prefix }}/">
+            <span style="font-size: 1.5rem; font-weight: bold;">[scholar.archive.org]</span>
+            {# hack to align vertically with search box #}
+            <br>&nbsp;
+          </a>
+        </div>
+      </div>
+      <div class="ui twelve wide column">
+        <form class="" id="fulltext_query" action="{{ lang_prefix }}/search") }}" method="get" role="search" aria-label="papers" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
+          <meta itemprop="target" content="https://{{ settings.FATCAT_DOMAIN }}/fulltext/search?q={q}"/>
+          <div class="ui form">
+            <div class="ui action input large fluid">
+              <input type="text" placeholder="{{ _("by title, authors, identifiers...") }}" name="q" aria-label="search metadata" required itemprop="query-input" style="border-radius: 0; border: 1px #999 solid;">
+              <button class="ui green button" style="border-radius: 0; background-color: #44a25a; font-size: 1.2rem;">{{ _("Search") }}</button>
+            </div>
+          </div>
+          <div style="float: right; padding-top: 0.5em;">
+            <a href="#">User Guide</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="ui main container">
+{% block fullbody %}
+  <div class="ui container text">
+    {% block body %}Nothing to see here.{% endblock %}
+  </div>
+{% endblock %}
+</main>
+{% endblock %}
+
+{#
+<footer class="ui inverted vertical footer segment" style="margin-top: 2em; padding-top: 1em; padding-bottom:2em; position: absolute; bottom: 0px; width: 100%;">
+  <div class="ui center aligned container">
+    <div class="ui horizontal inverted small link list">
+      <a class="item" href="/">fatcat!</a>
+      <a class="item" href="/about">About</a>
+      <a class="item" href="https://guide.{{ settings.FATCAT_DOMAIN }}/sources.html">Sources</a>
+      <a class="item" href="{% if settings.FATCAT_DOMAIN == "fatcat.wiki" %}https://stats.uptimerobot.com/GM9YNSrB0{% elif settings.FATCAT_DOMAIN =="qa.fatcat.wiki" %}https://stats.uptimerobot.com/WQ8wAUREA{% else %}#{% endif %}">Status</a>
+      <a class="item" href="https://guide.{{ settings.FATCAT_DOMAIN }}/bulk_exports.html">Bulk Exports</a>
+      <a class="item" href="https://github.com/internetarchive/fatcat-scholar/">Code</a>
+      <a class="item" href="https://github.com/internetarchive/fatcat-scholar/commit/{{ settings.GIT_REVISION }}"><code>{{ settings.GIT_REVISION }}</code></a>
+      {% if settings.FATCAT_DOMAIN.startswith('qa.') %}
+        <a class="item"><b style="color: orange;">[QA]</b></a>
+      {% elif settings.FATCAT_DOMAIN.startswith('dev.') %}
+        <a class="item"><b style="color: magenta;">[DEV]</b></a>
+      {% endif %}
+    </div>
+  </div>
+</footer>
+#}
+
+<div style="height: 24em;">
+</div>
+<footer class="ui inverted vertical footer segment" style="padding: 5em 0em; position: absolute; bottom: 0px; width: 100%;">
+  <div class="ui container">
+    <div class="ui stackable inverted divided equal height grid">
+      <div class="nine wide column">
+        <div class="ui grid">
+          <div class="three wide column" style="padding-top: 4em;">
+            <img class="logo" src="{{ url_for('static', path='/ia-logo.svg') }}" style="width: 4em; opacity: 0.5;">
+          </div>
+          <div class="twelve wide column">
+            <h3>Internet Archive</h3>
+            <p style="color: rgba(255, 255, 255, 0.5);">We are a 501(c)(3) non-profit, building a digital library of Internet sites and other cultural artifacts in digital form. Other projects include the <a href="https://web.archive.org">Wayback Machine</a>, <a href="https://archive.org">archive.org</a> <a href="https://openlibrary.org">openlibrary.org</a> and <a href="https://archive-it.org">archive-it.org</a>
+            <div class="ui horizontal inverted link list">
+              <a class="item" href="https://archive.org/about/">About Us</a>
+              <a class="item" href="https://archive.org/about/contact.php">Contact Us</a>
+              <a class="item" href="https://archive.org/about/terms.php">Policies</a>
+              <a class="item" href="https://archive.org/donate">Donate</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="three wide column">
+        <h4 class="ui inverted header">scholar.archive.org</h4>
+        <div class="ui inverted link list">
+          <a href="#" class="item">How It Works</a>
+          <a href="#" class="item">Content Sources</a>
+          <a href="#" class="item">Text and Data Mining</a>
+          <a href="#" class="item">Discussion Forum</a>
+          <a href="#" class="item">Statistics</a>
+          <a href="#" class="item">Help</a>
+        </div>
+      </div>
+      <div class="three wide column">
+        <h4 class="ui inverted header">Open Infrastructure</h4>
+        <div class="ui inverted link list">
+          <a href="https://fatcat.wiki" class="item">Editable Catalog (Fatcat)</a>
+          <a href="https://guide.fatcat.wiki" class="item">Contribute</a>
+          <a href="/api/redoc" class="item">Search API</a>
+          <a href="https://status.fatcat.wiki" class="item">Service Status</a>
+          <a href="https://github.com/internetarchive/fatcat-scholar" class="item">Source Code</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous">
+</script>
+<script
+  src="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.2/dist/semantic.min.js"
+  crossorigin="anonymous">
+</script>
+{% block postscript %}{% endblock %}
+</body>
+</html>

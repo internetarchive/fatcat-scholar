@@ -1,0 +1,203 @@
+
+{% macro fulltext_search_result_row(paper) -%}
+{% set lang_code = "en" %}
+<div class="ui grid">
+<div class="thirteen wide column">
+  {# ### TITLE ROW #}
+  <h4 style="margin-bottom: 0px; font-size: 1.2em;">
+
+    {# "best URL" calculation #}
+    {% if paper.pmcid %}
+    <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/{{ paper.pmcid }}/"
+    {% elif paper.pmid %}
+    <a href="https://pubmed.ncbi.nlm.nih.gov/{{ paper.pmid }}/"
+    {% elif paper.arxiv_id %}
+    <a href="https://arxiv.org/abs/{{ paper.arxiv_id }}/"
+    {% elif paper.doi %}
+    <a href="https://doi.org/{{ paper.doi }}"
+    {% else %}
+    <a href="https://fatcat.wiki/release/{{ paper.fatcat_ident }}"
+    {% endif %}
+    style="color: #2224c7;">
+      {% if lang_code != 'en' and lang_code == paper.lang and paper.original_title %}
+        {# show original title first instead of title if UI is in that language #}
+        {{ paper.original_title[:512] }}
+        {% if paper.original_title|length > 512 %}...{% endif %}
+      {% elif paper.title %}
+        {{ paper.title[:512] }}
+        {% if paper.title|length > 512 %}...{% endif %}
+      {% else %}
+        [blank]
+      {% endif %}
+    </a>
+
+    {# release type suffix #}
+    {% if paper.release_type in ("article-journal", "paper-conference") %}
+      {# pass #}
+    {% elif paper.release_type in ("book", "chapter", "dataset") %}
+      <b style="text-transform: uppercase;">[{{ _(paper.release_type) }}]</b>
+    {% elif not paper.release_type %}
+      <b style="text-transform: uppercase; color: red;">[media?]</b>
+    {% else %}
+      <b style="text-transform: uppercase;">[{{ _(paper.release_type) }}]</b>
+    {% endif %}
+
+    {# show inverse of title/original_title above #}
+    {% if lang_code != 'en' and lang_code == paper.lang and paper.title and paper.title != paper.original_title %}
+      <br>
+      <i style="font-weight: normal;">
+        {{ paper.title[:512] }} {% if paper.title|length > 512 %}...{% endif %}
+      </i>
+    {% elif paper.original_title and paper.title != paper.original_title %}
+      <br>
+      <i style="font-weight: normal;">
+        {{ paper.original_title[:512] }} {% if paper.original_title|length > 512 %}...{% endif %}
+      </i>
+    {% endif %}
+
+  </h4>
+
+  {# ### AUTHOR ROW #}
+  {% if paper.contrib_names %}
+    <div style="margin-top: 0.1em; margin-bottom: 0.2em; font-size: 1.1em;">
+    <b>
+    {{ ", ".join(paper.contrib_names[:12]) }}
+    {% if paper.contrib_names|length > 12 %}<i>(+{{ paper.contrib_names|length - 12 }} others)</i>{% endif %}
+    </b>
+    </div>
+  {% endif %}
+
+
+  {# ### JOURNAL ROW #}
+  {% if paper.release_year %}
+    {{ paper.release_year }}
+  {% endif %}
+  {% if paper.release_year and paper.container_name %}
+    |
+  {% endif %}
+  {% if paper.container_name %}
+    {% if paper.container_id %}
+      <a href="https://fatcat.wiki/container/{{ paper.container_id }}" style="color: black;">{{ paper.container_name }}</a>
+    {% else %}
+      {{ paper.container_name }}
+    {% endif %}
+    {% if paper.container_is_oa %}<i class="icon unlock orange small"></i>{% endif %}
+  {% endif %}
+  {% if paper.withdrawn_status %}
+    <b style="color: red;"><code>[{{ paper.withdrawn_status }}]</code></b>
+  {% endif %}
+  {% if paper.release_stage == "accepted" %}
+    <b style="color: brown;"><code>[{{ paper.release_stage }}]</code></b>
+  {% elif paper.release_stage and paper.release_stage != "published" %}
+    <b style="color: red;"><code>[{{ paper.release_stage }}]</code></b>
+  {% elif not paper.release_stage %}
+    <b style="color: red;"><code>[unpublished?]</code></b>
+  {% endif %}
+
+  {# ### ABSTRACT / QUERY HIGHLIGHT #}
+  {% if paper._highlights %}
+    <div style="padding-top: 1em; padding-bottom: 0.5em;" class="search_highlights">
+    {% for highlight in paper._highlights %}
+      {{ highlight|safe }} ...
+    {% endfor %}
+    </div>
+  {% elif paper.abstract %}
+    <div style="padding-top: 1em; padding-bottom: 0.5em;">
+      {% if paper.abstract[0]|length > 500 %}
+        {{ paper.abstract[0][:500] }}...
+      {% else %}
+        {{ paper.abstract[0][:500] }}...
+      {% endif %}
+    </div>
+  {% else %}
+    <br>
+  {% endif %}
+
+  {# ### IDENTIFIERS #}
+  {% if paper.doi %}
+    <a href="https://doi.org/{{paper.doi }}" style="color: green;">doi:{{ paper.doi }}</a> &nbsp;
+  {% endif %}
+  {% if paper.pmid %}
+    <a href="https://www.ncbi.nlm.nih.gov/pubmed/{{paper.pmid }}" style="color: green;">pmid:{{ paper.pmid }}</a> &nbsp;
+  {% endif %}
+  {% if paper.pmcid %}
+    <a href="https://pubmed.ncbi.nlm.nih.gov/{{paper.pmcid }}/" style="color: green;">pmcid:{{ paper.pmcid }}</a> &nbsp;
+  {% endif %}
+  {% if paper.arxiv_id %}
+    <a href="https://arxiv.org/abs/{{paper.arxiv_id }}" style="color: green;">arXiv:{{ paper.arxiv_id }}</a> &nbsp;
+  {% endif %}
+  {% if paper.fatcat_ident %}
+    <a href="https://fatcat.wiki/release/{{paper.fatcat_ident}}" style="color: green;">fatcat:{{ paper.fatcat_ident}}</a> &nbsp;
+  {% endif %}
+
+  {# ### SOURCE TAGS #}
+  <div style="margin-top: 0.2em;">
+  {% if paper.cord19_uid or 'cord19' in paper.source_tags %}
+    <a href="https://pages.semanticscholar.org/coronavirus-research">
+      <span class="ui label small">CORD-19</span>
+    </a>
+  {% endif %}
+  {% if 'fatcat' in paper.source_tags %}
+    <a href="https://fatcat.wiki">
+      <span class="ui label small">fatcat</span>
+    </a>
+  {% endif %}
+  {% if 'who' in paper.source_tags %}
+    <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/global-research-on-novel-coronavirus-2019-ncov">
+      <span class="ui blue label small">WHO</span>
+    </a>
+  {% endif %}
+  {% if 'wanfang' in paper.source_tags %}
+    <a href="http://subject.med.wanfangdata.com.cn/Channel/7">
+      <span class="ui olive label small">Wanfang</span>
+    </a>
+  {% endif %}
+  {% if 'cnki' in paper.source_tags %}
+    <a href="http://en.gzbd.cnki.net/GZBT/brief/Default.aspx">
+      <span class="ui brown label small">CNKI</span>
+    </a>
+  {% endif %}
+  {# olive, brown, grey, pink, red, etc #}
+  </div>
+
+</div>
+<div class="three wide left aligned column" style="padding-top: 3em; padding-right: 0em;">
+  {% if paper.fulltext.thumbnail_url %}
+      {# <img src="{{ settings.COVID19_FULLTEXT_HOST }}{{ paper.fulltext.thumbnail_url }}" style="border: 1px solid grey; max-height: 12em; max-width: 100%;"> #}
+
+      <div class="ui card">
+        <a class="image"
+            {% if paper.fulltext.ia_pdf_url %}
+            href="{{ paper.fulltext.ia_pdf_url }}"
+            {% else %}
+            href="{{ settings.COVID19_FULLTEXT_HOST }}{{ paper.fulltext.pdf_url }}"
+            {% endif %}>
+          <img src="{{ settings.COVID19_FULLTEXT_HOST }}{{ paper.fulltext.thumbnail_url }}">
+        </a>
+        {#
+        <div class="content">
+          <div class="meta">
+            <span>PDF</span>
+          </div>
+        </div>
+        #}
+      </div>
+
+    </a>
+    <br>
+  {% else %}
+    {# No Fulltext #}
+  {% endif %}
+{# should we include these little links?
+    <code style="font-size: 0.9rem; padding-left: 0.5em;">
+    {% if paper.fulltext.pdf_url %}
+      <a href="{{ settings.COVID19_FULLTEXT_HOST }}{{ paper.fulltext.pdf_url }}">mirror</a>
+    {% endif %}
+    {% if paper.fulltext.grobid_xml_url %}
+      <a href="{{ settings.COVID19_FULLTEXT_HOST }}{{ paper.fulltext.grobid_xml_url }}">xml</a>
+    {% endif %}
+    </code>
+#}
+</div>
+</div>
+{% endmacro %}

@@ -1,0 +1,7 @@
+
+[default]
+FATCAT_DOMAIN = "fatcat.wiki"
+I18N_LANG_DEFAULT = "en"
+ELASTICSEARCH_BACKEND = "https://search.fatcat.wiki"
+ELASTICSEARCH_FULLTEXT_INDEX = "covid19_fatcat_fulltext"
+COVID19_FULLTEXT_HOST = "https://covid19.fatcat.wiki"

@@ -1,1 +1,73 @@
-<h1>Search template will go here</h2>
+{% import "search_macros.html" as search_macros %}
+{% extends "base.html" %}
+
+{% block fullbody %}
+<div class="ui equal height divided grid" style="margin-top: 1em;">
+  <div class="ui two wide column">
+
+    {% if found %}
+    <div class="ui tiny statistic" style="width: 100%; text-align: center;">
+      <div class="value">
+        {{ "{:,}".format(found.count_found) }}
+      </div>
+      <div class="label">
+        Hits
+      </div>
+    </div>
+    {% else %}
+      Maybe some filters, facets, counts over here?
+    {% endif %}
+
+    <div style="text-align: right;">
+      <br>
+      <span style="color: rgba(0,0,0,0.4);">Release Date</span>
+      <div class="ui link list" style="margin-top: 0.3em;">
+        <a class="active item"><b>All Time</b></a>
+        <a class="item" style="color: rgba(0,0,0);">Past Week</a>
+        <a class="item" style="color: rgba(0,0,0);">Past Year</a>
+        <a class="item" style="color: rgba(0,0,0);">Since 2000</a>
+        <a class="item" style="color: rgba(0,0,0);">Before 1925</a>
+      </div>
+
+      <br>
+      <span style="color: rgba(0,0,0,0.4);">Resource Type</span>
+      <div class="ui link list" style="margin-top: 0.3em;">
+        <a class="active item"><b>Papers</b></a>
+        <a class="item" style="color: rgba(0,0,0);">Reports</a>
+        <a class="item" style="color: rgba(0,0,0);">Datasets</a>
+        <a class="item" style="color: rgba(0,0,0);">Everything</a>
+      </div>
+
+      <br>
+      <span style="color: rgba(0,0,0,0.4);">Availability</span>
+      <div class="ui link list" style="margin-top: 0.3em;">
+        <a class="active item"><b>Everything</b></a>
+        <a class="item" style="color: rgba(0,0,0);">Open Access</a>
+        <a class="item" style="color: rgba(0,0,0);">Lending</a>
+        <a class="item" style="color: rgba(0,0,0);">Paywall</a>
+      </div>
+
+      <br>
+      <span style="color: rgba(0,0,0,0.4);">Sort Order</span>
+      <div class="ui link list" style="margin-top: 0.3em;">
+        <a class="active item"><b>Relevancy</b></a>
+        <a class="item" style="color: rgba(0,0,0);">Recent First</a>
+        <a class="item" style="color: rgba(0,0,0);">Oldest First</a>
+      </div>
+    </div>
+    
+  </div>
+  <div class="ui thirteen wide column">
+    {% if found %}
+      {% if found.results %}
+        {% for paper in found.results %}
+          {{ search_macros.fulltext_search_result_row(paper) }}
+        {% endfor %}
+      {% endif %}
+    {% else %}
+    Some other message here when there is no search? Like a bunch of examples?
+    Or does that ever happen... we can just run query on "*".
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

@@ -1,12 +1,92 @@
-<html>
-<head>
-  <title>hello</title>
-</head>
-<body>
-<h1>The Start</h1>
+{% extends "base.html" %}
 
-<p>{% trans %}This is a longer paragraph, all of which should be translated.{% endtrans %}
+{% block fullmain %}
 
-<p>and {{ _("this is a quick") }} thing to translate.
-</body>
-</html>
+<div class="ui vertical stripe segment" style="background-color: #dedede;">
+  <div class="ui container" style="padding: 3em;">
+    <div class="ui centered grid">
+      <div class="ui fourteen wide column">
+        <div style="width: 100%; text-align: center;">
+          <h1>Search Inside Millions of Research Papers</h1>
+          <br>
+          <form class="" id="fulltext_query" action="{{ lang_prefix }}/search") }}" method="get" role="search" aria-label="papers" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
+            <meta itemprop="target" content="https://{{ settings.FATCAT_DOMAIN }}/fulltext/search?q={q}"/>
+            <div class="ui form">
+              <div class="ui action input big fluid">
+                <input type="text" placeholder="{{ _("by title, authors, identifiers...") }}" name="q" aria-label="search metadata" required itemprop="query-input" style="border-radius: 0; border: 1px #999 solid;">
+                <button class="ui green button" style="border-radius: 0; background-color: #44a25a; font-size: 1.2rem;">{{ _("Search") }}</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <br>
+        <br>
+        <p style="font-size: 1.1rem;">This fulltext search index includes over 25 million research articles and other documents preserved in the Internet Archive.
+        <p style="font-size: 1.1rem;">The collection spans from digitized copies of eighteenth century journals though the latest Open Access conference proceedings and pre-prints crawled from the World Wide Web.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ui container" style="padding: 1em; margin-top: 2em;">
+  <div class="ui four cards">
+
+      <div class="ui card">
+        <a class="image" href="https://web.archive.org/web/20171006225602/https://burnstrauma.biomedcentral.com/track/pdf/10.1186/s41038-017-0090-z?site=burnstrauma.biomedcentral.com">
+          <img src="https://covid19.fatcat.wiki/fulltext_web//thumbnail/c9/c9e87f843b3cf7dc47881fa3d3ccb4693d7d9521.png">
+        </a>
+        <div class="content">
+          <a class="header" style="font-size: 1.1em;">Children are not little adults: blood transfusion in children with burn injury</a>
+          Tina L. Palmieri
+          <div class="meta">
+            <span>2017</span>
+            <span>Burns &amp; Trauma</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ui card">
+        <a class="image" href="https://web.archive.org/web/20200328205104/http://europepmc.org/backend/ptpmcrender.fcgi?accid=PMC5180799&blobtype=pdf">
+          <img src="https://covid19.fatcat.wiki/fulltext_web//thumbnail/1e/1e13eaf1d0fe6682b7759d40c49f9bf35b6eef68.png">
+        </a>
+        <div class="content">
+          <a class="header" style="font-size: 1.1em;">Epidemic Influenza in and around the City of Calcutta</a>
+          Koilas Chandra Bose
+          <div class="meta">
+            <span>1920</span>
+            <span>The Indian Medical Gazette</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ui card mobile-hide">
+        <a class="image" href="https://web.archive.org/web/2017/http://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0032486&type=printable">
+          <img src="https://covid19.fatcat.wiki/fulltext_web//thumbnail/6e/6ea1978890ab099e90e61ddf078b6d983e60b07f.png">
+        </a>
+        <div class="content">
+          <a class="header" style="font-size: 1.1em;">Repertoire of Intensive Care Unit Pneumonia Microbiota</a>
+          Sabri Bousbia, et al
+          <div class="meta">
+            <span>2012</span>
+            <span>PLoS ONE</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ui card mobile-hide">
+        <a class="image" href="https://web.archive.org/web/2017/http://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0010071&type=printable">
+          <img src="https://covid19.fatcat.wiki/fulltext_web//thumbnail/60/60cd26dae93a4048b5aceb66c68bec325392fdf0.png">
+        </a>
+        <div class="content">
+          <a class="header" style="font-size: 1.1em;">BioTorrents: A File Sharing Service for Scientific Data</a>
+          Morgan Langille, et al
+          <div class="meta">
+            <span>2012</span>
+            <span>PLoS ONE</span>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+{% endblock %}

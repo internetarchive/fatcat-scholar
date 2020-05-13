@@ -9,13 +9,17 @@ from enum import Enum
 import babel.support
 from fastapi import FastAPI, APIRouter, Request, Depends, Header
 from fastapi.staticfiles import StaticFiles
-from fatcat_scholar.hacks import Jinja2Templates
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
+from dynaconf import settings
 
-I18N_LANG_DEFAULT = "en"
+from fatcat_scholar.hacks import Jinja2Templates
+from fatcat_scholar.search import do_fulltext_search
+
+print(settings.as_dict())
+
 I18N_LANG_TRANSLATIONS = ["de", "zh"]
-I18N_LANG_OPTIONS = I18N_LANG_TRANSLATIONS + [I18N_LANG_DEFAULT,]
+I18N_LANG_OPTIONS = I18N_LANG_TRANSLATIONS + [settings.I18N_LANG_DEFAULT,]
 
 class SearchParams(BaseModel):
     q: str = ""
@@ -31,7 +35,7 @@ class LangPrefix:
 
     def __init__(self, request: Request):
         self.prefix : str = ""
-        self.code : str = I18N_LANG_DEFAULT
+        self.code : str = settings.I18N_LANG_DEFAULT
         for lang_option in I18N_LANG_OPTIONS:
             if request.url.path.startswith(f"/{lang_option}/"):
                 self.prefix = f"/{lang_option}"
@@ -101,6 +105,7 @@ def load_i18n_templates():
             locale_ngettext(translations),
             newstyle=True,
         )
+        templates.env.globals['settings'] = settings
         d[lang_opt] = templates
     return d
 
@@ -112,11 +117,19 @@ async def web_home(request: Request, lang: LangPrefix = Depends(LangPrefix), con
         return await home()
     return i18n_templates[lang.code].TemplateResponse("home.html", {"request": request, "locale": lang.code, "lang_prefix": lang.prefix})
 
+@web.get("/about", include_in_schema=False)
+async def web_about(request: Request, lang: LangPrefix = Depends(LangPrefix)):
+    return i18n_templates[lang.code].TemplateResponse("about.html", {"request": request, "locale": lang.code, "lang_prefix": lang.prefix})
+
 @web.get("/search", include_in_schema=False)
 async def web_search(request: Request, query: SearchParams = Depends(SearchParams), lang: LangPrefix = Depends(LangPrefix), content: ContentNegotiation = Depends(ContentNegotiation)):
     if content.mimetype == "application/json":
         return await search(query)
-    return i18n_templates[lang.code].TemplateResponse("search.html", {"request": request})
+    found = None
+    if query.q:
+        found = do_fulltext_search(query.q)
+    return i18n_templates[lang.code].TemplateResponse("search.html", {"request": request, "locale": lang.code, "lang_prefix": lang.prefix, "found": found})
+
 
 app = FastAPI(
     title="Fatcat Scholar",
