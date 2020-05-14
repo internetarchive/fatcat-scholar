@@ -37,7 +37,10 @@
     }
     {# for fulltext search result highlighting #}
     .search_highlights em {
-      background-color: #FFFFBB; {# yellow #}
+      {# yellow #}
+      {# background-color: #FFFFBB; #}
+      font-style: normal;
+      font-weight: bold;
     }
 
     footer p a {
@@ -46,6 +49,14 @@
     footer p a:hover {
       color: rgba(255, 255, 255, 1.0);
       opacity: 1.0;
+    }
+
+    .ui.label.small {
+      border-radius: 0;
+    }
+
+    .ui.card a:hover {
+      opacity: 0.75;
     }
   </style>
   <title>{%- block title -%}scholar.archive.org{%- endblock %}</title>

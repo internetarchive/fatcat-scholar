@@ -4,7 +4,7 @@
 <div class="ui grid">
 <div class="thirteen wide column">
   {# ### TITLE ROW #}
-  <h4 style="margin-bottom: 0px; font-size: 1.2em;">
+  <div style="margin-bottom: 0.1em; font-size: 1.2em; font-weight: bold;">
 
     {# "best URL" calculation #}
     {% if paper.pmcid %}
@@ -32,38 +32,38 @@
     </a>
 
     {# release type suffix #}
+    <span style="font-weight: normal; text-transform: uppercase; font-weight: bold;">
     {% if paper.release_type in ("article-journal", "paper-conference") %}
       {# pass #}
     {% elif paper.release_type in ("book", "chapter", "dataset") %}
-      <b style="text-transform: uppercase;">[{{ _(paper.release_type) }}]</b>
+      [{{ _(paper.release_type) }}]
     {% elif not paper.release_type %}
-      <b style="text-transform: uppercase; color: red;">[media?]</b>
+      <span style="color: red;">[media?]</span>
     {% else %}
-      <b style="text-transform: uppercase;">[{{ _(paper.release_type) }}]</b>
+      [{{ _(paper.release_type) }}]
     {% endif %}
+    </span>
 
     {# show inverse of title/original_title above #}
     {% if lang_code != 'en' and lang_code == paper.lang and paper.title and paper.title != paper.original_title %}
       <br>
-      <i style="font-weight: normal;">
+      <i style="font-weight: bold;">
         {{ paper.title[:512] }} {% if paper.title|length > 512 %}...{% endif %}
       </i>
     {% elif paper.original_title and paper.title != paper.original_title %}
       <br>
-      <i style="font-weight: normal;">
+      <i style="font-weight: bold;">
         {{ paper.original_title[:512] }} {% if paper.original_title|length > 512 %}...{% endif %}
       </i>
     {% endif %}
 
-  </h4>
+  </div>
 
   {# ### AUTHOR ROW #}
   {% if paper.contrib_names %}
     <div style="margin-top: 0.1em; margin-bottom: 0.2em; font-size: 1.1em;">
-    <b>
     {{ ", ".join(paper.contrib_names[:12]) }}
     {% if paper.contrib_names|length > 12 %}<i>(+{{ paper.contrib_names|length - 12 }} others)</i>{% endif %}
-    </b>
     </div>
   {% endif %}
 
@@ -73,14 +73,16 @@
     {{ paper.release_year }}
   {% endif %}
   {% if paper.release_year and paper.container_name %}
-    |
+    
   {% endif %}
   {% if paper.container_name %}
+    <i>
     {% if paper.container_id %}
       <a href="https://fatcat.wiki/container/{{ paper.container_id }}" style="color: black;">{{ paper.container_name }}</a>
     {% else %}
       {{ paper.container_name }}
     {% endif %}
+    </i>
     {% if paper.container_is_oa %}<i class="icon unlock orange small"></i>{% endif %}
   {% endif %}
   {% if paper.withdrawn_status %}
@@ -98,7 +100,7 @@
   {% if paper._highlights %}
     <div style="padding-top: 1em; padding-bottom: 0.5em;" class="search_highlights">
     {% for highlight in paper._highlights %}
-      {{ highlight|safe }} ...
+      {{ highlight|safe }} &nbsp;...&nbsp;
     {% endfor %}
     </div>
   {% elif paper.abstract %}
@@ -165,7 +167,7 @@
   {% if paper.fulltext.thumbnail_url %}
       {# <img src="{{ settings.COVID19_FULLTEXT_HOST }}{{ paper.fulltext.thumbnail_url }}" style="border: 1px solid grey; max-height: 12em; max-width: 100%;"> #}
 
-      <div class="ui card">
+      <div class="ui card" style="margin-bottom: 0.4em;">
         <a class="image"
             {% if paper.fulltext.ia_pdf_url %}
             href="{{ paper.fulltext.ia_pdf_url }}"
@@ -174,13 +176,15 @@
             {% endif %}>
           <img src="{{ settings.COVID19_FULLTEXT_HOST }}{{ paper.fulltext.thumbnail_url }}">
         </a>
-        {#
-        <div class="content">
-          <div class="meta">
-            <span>PDF</span>
-          </div>
+        {# 
+        <div class="content" style="padding: 0.5em;">
         </div>
         #}
+      </div>
+      <div style="width: 100%; padding-left: 0.5em; padding-right: 0.5em; opacity: 0.5; text-align: center;">
+        {# TODO: could have other hover info, like mimetype icon and file size? #}
+        <i class="file pdf outline icon" style="float: right;"></i>
+        <span>web.archive.org</span>
       </div>
 
     </a>
