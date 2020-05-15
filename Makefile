@@ -20,3 +20,11 @@ dev: ## Run web service locally, with reloading
 .PHONY: run
 run: ## Run web service under gunicorn
 	pipenv run gunicorn fatcat_scholar.web:app -w 4 -k uvicorn.workers.UvicornWorker
+
+.PHONY: reset-index-dev
+reset-index-dev: ## Delete/Create DEV elasticsearch fulltext index locally
+	http delete :9200/dev_scholar_fulltext_v01 && true
+	http put ":9200/qa_scholar_fulltext_v01?include_type_name=false" < schema/scholar_fulltext.v01.json
+	http delete :9200/dev_scholar_fulltext && true
+	http put :9200/dev_scholar_fulltext_v01/_alias/dev_scholar_fulltext
+
