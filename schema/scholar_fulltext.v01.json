@@ -1,0 +1,216 @@
+{
+"settings": {
+    "index": {
+        "analysis": {
+            "analyzer": {
+                "default": {
+                    "type": "custom",
+                    "tokenizer": "standard",
+                    "filter": [ "lowercase", "asciifolding" ]
+                },
+                "textIcu": {
+                    "type": "custom",
+                    "tokenizer": "icu_tokenizer",
+                    "char_filter": [ "icu_normalizer" ],
+                    "filter": [ "icu_folding" ]
+                },
+                "textIcuSearch": {
+                    "type": "custom",
+                    "tokenizer": "icu_tokenizer",
+                    "char_filter": [ "icu_normalizer" ],
+                    "filter": [ "icu_folding" ]
+                }
+            },
+            "normalizer": {
+                "default": {
+                    "type": "custom",
+                    "char_filter": [],
+                    "filter": ["lowercase"]
+                },
+                "caseSensitive": {
+                    "type": "custom",
+                    "char_filter": [],
+                    "filter": []
+                }
+            }
+        }
+    }
+},
+"mappings": {
+  "_doc": {
+    "dynamic": false,
+    "_source": {
+      "excludes": [
+        "abstracts.body",
+        "fulltext.body",
+        "fulltext.acknowledgment",
+        "fulltext.annex",
+        "biblio_all",
+        "everything"
+      ]
+    },
+    "properties": {
+
+        "key":          { "type": "keyword", "normalizer": "default", "doc_values": false },
+        "doc_type":     { "type": "keyword", "normalizer": "default" },
+        "doc_index_ts": { "type": "timestamp" },
+        "work_ident":   { "type": "keyword", "normalizer": "default", "doc_values": false },
+        "tags":         { "type": "keyword", "normalizer": "default" },
+
+        "biblio": {
+          "type": "object",
+          "dynamic": false,
+          "properties": {
+            "release_ident":  { "type": "keyword", "normalizer": "default", "doc_values": false },
+            "title":          { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch", "copy_to": ["biblio_all", "everything"] },
+            "subtitle":       { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch", "copy_to": ["biblio_all", "everything"] },
+            "original_title": { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch", "copy_to": ["biblio_all", "everything"] },
+            "release_date":   { "type": "date" },
+            "release_year":   { "type": "integer", "copy_to": ["biblio_all", "everything"] },
+            "release_type":   { "type": "keyword", "normalizer": "default", "copy_to": ["biblio_all", "everything"] },
+            "release_stage":  { "type": "keyword", "normalizer": "default" },
+            "withdrawn_status": { "type": "keyword", "normalizer": "default", "copy_to": ["biblio_all", "everything"] },
+            "lang_code":       { "type": "keyword", "normalizer": "default" },
+            "country_code":   { "type": "keyword", "normalizer": "default" },
+            "volume":         { "type": "keyword", "normalizer": "default", "copy_to": ["biblio_all", "everything"] },
+            "volume_int":     { "type": "integer" },
+            "issue":          { "type": "keyword", "normalizer": "default", "copy_to": ["biblio_all", "everything"] },
+            "issue_int":      { "type": "integer" },
+            "pages":          { "type": "keyword", "normalizer": "default", "copy_to": ["biblio_all", "everything"] },
+            "first_page":     { "type": "keyword", "normalizer": "default" },
+            "first_page_int": { "type": "integer" },
+            "number":         { "type": "keyword", "normalizer": "default", "copy_to": ["biblio_all", "everything"] },
+            "doi":            { "type": "keyword", "normalizer": "default" },
+            "doi_prefix":     { "type": "keyword", "normalizer": "default" },
+            "doi_registrar":  { "type": "keyword", "normalizer": "default" },
+            "pmid":           { "type": "keyword", "normalizer": "default", "doc_values": false },
+            "pmcid":          { "type": "keyword", "normalizer": "default", "doc_values": false },
+            "isbn13":         { "type": "keyword", "normalizer": "default", "doc_values": false },
+            "wikidata_qid":   { "type": "keyword", "normalizer": "default", "doc_values": false },
+            "arxiv_id":       { "type": "keyword", "normalizer": "default", "doc_values": false },
+            "jstor_id":       { "type": "keyword", "normalizer": "default", "doc_values": false },
+            "mag_id":         { "type": "keyword", "normalizer": "default", "doc_values": false },
+            "s2_id":          { "type": "keyword", "normalizer": "default", "doc_values": false },
+            "license_slug":   { "type": "keyword", "normalizer": "default" },
+            "publisher":            { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch" },
+            "publisher_type":       { "type": "keyword", "normalizer": "default" },
+            "container_name":       { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch", "copy_to": ["biblio_all", "everything"] },
+            "container_original_name":       { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch", "copy_to": ["biblio_all", "everything"] },
+            "container_ident":      { "type": "keyword", "normalizer": "default" },
+            "container_issnl":      { "type": "keyword", "normalizer": "default" },
+            "issns":                { "type": "keyword", "normalizer": "default" },
+            "container_type":       { "type": "keyword", "normalizer": "default" },
+            "contrib_count":        { "type": "integer" },
+            "contrib_names":        { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch", "copy_to": ["biblio_all", "everything"] },
+            "affiliations":         { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch" }
+          }
+        },
+
+        "fulltext": {
+          "type": "object",
+          "dynamic": false,
+          "properties": {
+            "lang_code":        { "type": "keyword", "normalizer": "default" },
+            "body":             { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch", "copy_to": "everything", "store": true },
+            "acknowledgement":  { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch", "copy_to": "everything", "store": true },
+            "annex":            { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch", "copy_to": "everything", "store": true },
+            "release_ident":    { "type": "keyword", "normalizer": "default", "doc_values": false },
+            "file_ident":       { "type": "keyword", "normalizer": "default", "doc_values": false },
+            "file_sha1":        { "type": "keyword", "normalizer": "default", "doc_values": false },
+            "file_mimetype":    { "type": "keyword", "normalizer": "default" },
+            "thumbnail_url":    { "type": "keyword", "normalizer": "default", "doc_values": false },
+            "access_url":       { "type": "keyword", "normalizer": "default", "doc_values": false },
+            "access_type":      { "type": "keyword", "normalizer": "default" }
+          }
+        },
+
+        "ia_sim": {
+          "type": "object",
+          "dynamic": false,
+          "properties": {
+            "ia_item":          { "type": "keyword", "normalizer": "default" },
+            "ia_collection":    { "type": "keyword", "normalizer": "default" },
+            "first_page":       { "type": "keyword", "normalizer": "default" },
+            "pub_id":           { "type": "keyword", "normalizer": "default" }
+          }
+        },
+
+        "abstracts": {
+          "type": "nested",
+          "dynamic": false,
+          "properties": {
+            "body":         { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch", "copy_to": "everything", "store": true },
+            "lang_code":    { "type": "keyword", "normalizer": "default" }
+          }
+        },
+
+        "releases": {
+          "type": "nested",
+          "dynamic": false,
+          "properties": {
+
+            "ident":  { "type": "keyword", "normalizer": "default", "doc_values": false },
+            "revision":  { "type": "keyword", "normalizer": "default", "doc_values": false },
+            "title":          { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch", "copy_to": ["biblio_all", "everything"] },
+            "release_date":   { "type": "date" },
+            "release_year":   { "type": "integer", "copy_to": ["biblio_all", "everything"] },
+            "release_type":   { "type": "keyword", "normalizer": "default", "copy_to": ["biblio_all", "everything"] },
+            "release_stage":  { "type": "keyword", "normalizer": "default" },
+            "withdrawn_status": { "type": "keyword", "normalizer": "default", "copy_to": ["biblio_all", "everything"] },
+
+            "doi":            { "type": "keyword", "normalizer": "default" },
+            "doi_prefix":     { "type": "keyword", "normalizer": "default" },
+            "doi_registrar":  { "type": "keyword", "normalizer": "default" },
+            "pmid":           { "type": "keyword", "normalizer": "default", "doc_values": false },
+            "pmcid":          { "type": "keyword", "normalizer": "default", "doc_values": false },
+            "isbn13":         { "type": "keyword", "normalizer": "default", "doc_values": false },
+            "wikidata_qid":   { "type": "keyword", "normalizer": "default", "doc_values": false },
+            "arxiv_id":       { "type": "keyword", "normalizer": "default", "doc_values": false },
+            "jstor_id":       { "type": "keyword", "normalizer": "default", "doc_values": false },
+            "mag_id":         { "type": "keyword", "normalizer": "default", "doc_values": false },
+            "s2_id":          { "type": "keyword", "normalizer": "default", "doc_values": false },
+
+            "license_slug":   { "type": "keyword", "normalizer": "default" },
+            "container_name":       { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch", "copy_to": ["biblio_all", "everything"] },
+            "container_ident":      { "type": "keyword", "normalizer": "default" },
+            "container_issnl":      { "type": "keyword", "normalizer": "default" },
+            "container_type":       { "type": "keyword", "normalizer": "default" }
+          }
+        },
+
+        "access": {
+          "type": "nested",
+          "dynamic": false,
+          "properties": {
+            "access_type":      { "type": "keyword", "normalizer": "default" },
+            "access_url":       { "type": "keyword", "normalizer": "default", "doc_values": false },
+
+            "mimetype":         { "type": "keyword", "normalizer": "default" },
+            "file_ident":       { "type": "keyword", "normalizer": "default", "doc_values": false },
+            "release_ident":    { "type": "keyword", "normalizer": "default", "doc_values": false }
+          }
+        },
+
+        "everything":     { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch" },
+        "biblio_all":     { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch" },
+
+        "body":           { "type": "alias", "path": "fulltext.body" },
+        "abstract":       { "type": "alias", "path": "abstracts.body" },
+        "acknowledgement":{ "type": "alias", "path": "fulltext.acknowledgement" },
+
+        "tag":            { "type": "alias", "path": "tags" },
+        "affiliation":    { "type": "alias", "path": "biblio.affiliations" },
+        "author":         { "type": "alias", "path": "biblio.contrib_names" },
+        "journal":        { "type": "alias", "path": "biblio.container_name" },
+        "date":           { "type": "alias", "path": "biblio.release_date" },
+        "year":           { "type": "alias", "path": "biblio.release_year" },
+        "issn":           { "type": "alias", "path": "biblio.issns" },
+        "lang":           { "type": "alias", "path": "biblio.lang_code" },
+        "stage":          { "type": "alias", "path": "biblio.release_stage" },
+        "type":           { "type": "alias", "path": "biblio.release_type" },
+        "country":        { "type": "alias", "path": "biblio.country_code" }
+
+    }
+  }
+}
+}
