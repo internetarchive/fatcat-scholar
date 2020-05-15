@@ -11,7 +11,7 @@ help: ## Print info about all commands
 .PHONY: test
 test: ## Run all tests and lints
 	pipenv run pytest
-	pipenv run mypy *.py chocula/*.py chocula/*/*.py --ignore-missing-imports
+	pipenv run mypy fatcat_scholar/*.py tests/ --ignore-missing-imports
 
 .PHONY: dev
 dev: ## Run web service locally, with reloading
