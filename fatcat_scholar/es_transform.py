@@ -5,12 +5,14 @@ get serialization for free with those. This is useful for things like
 auto-conversion of datetime objects.
 """
 
+import ftfy
 import typing
 import datetime
 from enum import Enum
 from typing import Optional, List
+from xml.etree import cElementTree as ET
 from pydantic import BaseModel
-from fatcat_openapi_client import ReleaseEntity
+from fatcat_openapi_client import ReleaseEntity, ReleaseContrib
 
 
 class DocType(str, Enum):
@@ -143,11 +145,6 @@ class ScholarDoc(BaseModel):
     releases: List[ScholarRelease]
     access: List[ScholarAccess]
 
-# TODO:
-# es_biblio_from_release
-# es_release_from_release
-# es_abstracts_from_release
-
 def doi_split_prefix(doi: str) -> str:
     return doi.split('/')[0]
 
@@ -160,7 +157,123 @@ def release_doi_registrar(release: ReleaseEntity) -> Optional[str]:
     # TODO: should we default to Crossref?
     return None
 
-#def es_biblio_from_release(release: Release) -> ScholarBiblio:
+def scrub_text(raw: str, mimetype: str = None) -> str:
+    """
+    This function takes a mimetype-hinted string and tries to reduce it to a
+    simple token-and-punctuation scheme with any and all markup removed. Eg,
+    HTML tags, JATS XML tags, LaTeX, whatever.
+
+    The output should be clean and "HTML safe" (though should still be escaped
+    in HTML to get entity encoding correct).
+
+    TODO: barely implemented yet
+    """
+    if "<jats" in raw or (mimetype and "application/xml" in mimetype):
+        root = ET.fromstring(raw)
+        raw = " ".join(list(root.itertext())) or ""
+    raw = ftfy.fix_text(raw)
+    assert raw, "Empty abstract"
+    return raw
+
+def contrib_name(contrib: ReleaseContrib) -> str:
+    # TODO: support more cultural normals for name presentation
+    if contrib.given_name and contrib.family_name:
+        return f"{contrib.given_name} {contrib.family_name}"
+    elif contrib.raw_name:
+        return contrib.raw_name
+    elif contrib.family_name:
+        return contrib.family_name
+    else:
+        return contrib.given_name
+
+def contrib_affiliation(contrib: ReleaseContrib) -> Optional[str]:
+    return None
+
+def es_abstracts_from_release(release: ReleaseEntity) -> List[ScholarAbstract]:
+
+    d = dict()
+    for abst in release.abstracts:
+        if not abst.lang in d:
+            d[abst.lang] = ScholarAbstract(lang_code=abst.lang, body=scrub_text(abst.content))
+    return list(d.values())
+
+def es_biblio_from_release(release: ReleaseEntity) -> ScholarBiblio:
+
+    if release.container:
+        publisher = release.publisher
+        container_name = release.container.name
+        container_original_name = release.container.extra and release.container.extra.get('original_name')
+        container_ident = release.container.ident
+        container_type = release.container.container_type
+        container_issnl = release.container.issnl
+        issns = [container_issnl,]
+        if release.extra.get('issne'):
+            issns.append(release.extra['issne'])
+        if release.extra.get('issnp'):
+            issns.append(release.extra['issnp'])
+        issns = list(set(issns))
+    else:
+        publisher = release.extra.get('publisher')
+        container_name = release.extra.get('container_name')
+        container_original_name = None
+        container_ident = None
+        container_type = None
+        container_issnl = None
+        issns = []
+
+    first_page: Optional[str] = None
+    if release.pages:
+        first_page = release.pages.split('-')[0]
+    first_page_int: Optional[int] = None
+    if first_page and first_page.isdigit():
+        first_page_int = int(first_page)
+
+    ret = ScholarBiblio(
+        release_ident=release.ident,
+        title=release.title,
+        subtitle=release.subtitle,
+        original_title=release.original_title,
+        release_date=release.release_date,
+        release_year=release.release_year,
+        release_type=release.release_type,
+        release_stage=release.release_stage,
+        withdrawn_status=release.withdrawn_status,
+        lang_code=release.language,
+        country_code=release.extra and release.extra.get('country'),
+        volume=release.volume,
+        volume_int=None,
+        issue=release.issue,
+        issue_int=None,
+        pages=release.pages,
+        first_page=first_page,
+        first_page_int=None,
+        number=release.number,
+
+        doi=release.ext_ids.doi,
+        doi_prefix=release.ext_ids.doi and doi_split_prefix(release.ext_ids.doi),
+        doi_registrar=release_doi_registrar(release),
+        pmid=release.ext_ids.pmid,
+        pmcid=release.ext_ids.pmcid,
+        isbn13=release.ext_ids.isbn13,
+        wikidata_qid=release.ext_ids.wikidata_qid,
+        arxiv_id=release.ext_ids.arxiv,
+        jstor_id=release.ext_ids.jstor,
+        mag_id=release.ext_ids.mag,
+
+        license_slug=release.license_slug,
+        publisher=publisher,
+        container_name=container_name,
+        container_original_name=container_original_name,
+        container_ident=container_ident,
+        container_type=container_type,
+        container_issnl=container_issnl,
+        issns=issns,
+
+        contrib_names=[contrib_name(c) for c in release.contribs if c.index],
+        contrib_count = len([c for c in release.contribs if c.index]),
+        affiliations=list(filter(lambda x: bool(x), [contrib_affiliation(c) for c in release.contribs if c.index])),
+    )
+    return ret
 
 def es_release_from_release(release: ReleaseEntity) -> ScholarRelease:
 
