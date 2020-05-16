@@ -1,0 +1,18 @@
+
+# This image comes with:
+# - ubuntu:xenial (what IA infrastructure runs circa spring 2020)
+# - python3 dev setup
+# - pipenv
+image: "bnewbold/fatcat-test-base:latest"
+
+before_script:
+  - pipenv --version
+
+variables:
+  LC_ALL: "C.UTF-8"
+  LANG: "C.UTF-8"
+
+test_python:
+  script:
+    - pipenv install --dev --deploy
+    - make test
