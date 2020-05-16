@@ -1,19 +1,21 @@
 
 ## Top-Level
 
-- type: _doc
-- key: keyword
-- key_type: keyword (work or page)
-- `work_id`
-- biblio: obj
-- fulltext: obj
-- sim: obj
-- abstracts: nested
+- type: `_doc` (aka, no type, `include_type_name=false`)
+- key: keyword (same as `_id`)
+- `doc_type`: keyword (work or page)
+- `doc_index_ts`: timestamp when document indexed
+- `work_id`: fatcat work ident (optional)
+
+- `biblio`: obj
+- `fulltext`: obj
+- `ia_sim`: obj
+- `abstracts`: nested
     body
     lang
-- releases: nested (TBD)
-- access
-- tags: array of keywords
+- `releases`: nested (TBD)
+- `access`
+- `tags`: array of keywords
 
 TODO:
 - summary fields to index "everything" into?
@@ -50,10 +52,13 @@ NEW:
 - `container_name` (etc)
 - `container_id`
 - `container_issnl`
-- `container_issn` (array)
+- `container_wikidata_qid`
+- `issns` (array)
 - `contrib_names`
 - `affiliations`
 - `creator_ids`
+
+TODO: should all external identifiers go under `releases` instead of `biblio`? Or some duplicated?
 
 ## Fulltext
 
@@ -80,6 +85,12 @@ Only index one abstract per language.
 
 Enough details to construct a link or do a lookup or whatever. Note that might
 be doing CDL status lookups on SERP pages.
+
+- `issue_item`: str
+- `pub_collection`: str
+- `sim_pubid`: str
+- `first_page`: str
+
 
 Also pass-through archive.org metadata here (collection-level and item-level)
 

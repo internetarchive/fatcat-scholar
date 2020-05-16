@@ -65,6 +65,7 @@ class ScholarBiblio(BaseModel):
     container_original_name: Optional[str]
     container_ident: Optional[str]
     container_issnl: Optional[str]
+    container_wikidata_qid: Optional[str]
     issns: List[str]
     container_type: Optional[str]
     contrib_count: Optional[int]
@@ -112,10 +113,10 @@ class ScholarRelease(BaseModel):
     container_type: Optional[str]
 
 class ScholarSim(BaseModel):
-    ia_item: str
-    ia_collection: str
+    issue_item: str
+    pub_collection: str
+    sim_pubid: str
     first_page: Optional[str]
-    pub_id: str
 
 class ScholarAbstract(BaseModel):
     body: str

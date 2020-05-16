@@ -98,6 +98,7 @@
             "container_original_name":       { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch", "copy_to": ["biblio_all", "everything"] },
             "container_ident":      { "type": "keyword", "normalizer": "default" },
             "container_issnl":      { "type": "keyword", "normalizer": "default" },
+            "container_wikidata_qid": { "type": "keyword", "normalizer": "default" },
             "issns":                { "type": "keyword", "normalizer": "default" },
             "container_type":       { "type": "keyword", "normalizer": "default" },
             "contrib_count":        { "type": "integer" },
@@ -128,10 +129,10 @@
           "type": "object",
           "dynamic": false,
           "properties": {
-            "ia_item":          { "type": "keyword", "normalizer": "default" },
-            "ia_collection":    { "type": "keyword", "normalizer": "default" },
-            "first_page":       { "type": "keyword", "normalizer": "default" },
-            "pub_id":           { "type": "keyword", "normalizer": "default" }
+            "issue_item":       { "type": "keyword", "normalizer": "default" },
+            "pub_collection":   { "type": "keyword", "normalizer": "default" },
+            "sim_pubid":        { "type": "keyword", "normalizer": "default" },
+            "first_page":       { "type": "keyword", "normalizer": "default" }
           }
         },
 
