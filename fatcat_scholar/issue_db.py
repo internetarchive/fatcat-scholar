@@ -29,7 +29,8 @@ class SimPubRow:
 class SimIssueRow:
     """
     TODO:
-    - distinguish between release count that can do full link with pages, or just in this year/volume/issue?
+    - distinguish between release count that can do full link with pages, or
+      just in this year/volume/issue?
     """
     issue_item: str
     sim_pubid: str
@@ -61,35 +62,30 @@ def es_issue_count(es_client: Any, container_id: str, year: int, volume: str, is
         .filter("term", container_id=container_id)\
         .filter("term", year=year)\
         .filter("term", volume=volume)\
-        .filter("term", issue=issue)
+        .filter("term", issue=issue)\
+        .extra(request_cache=True)
 
     return search.count()
 
 def es_container_aggs(es_client: Any, container_id: str) -> List[Dict[str, Any]]:
     """
+    What is being returned is a list of dicts, each with year, volume, count
+    keys.
     """
-    query = {
-        "size": 0,
-        "query": {
-            "term": { "container_id": ident }
-        },
-        "aggs": { "container_stats": { "filters": { "filters": {
-                  "in_web": { "term": { "in_web": "true" } },
-                  "in_kbart": { "term": { "in_kbart": "true" } },
-                  "is_preserved": { "term": { "is_preserved": "true" } },
-        }}}}
-    }
-    params=dict(request_cache="true")
-    buckets = resp['aggregations']['container_stats']['buckets']
-    stats = {
-        'ident': ident,
-        'issnl': issnl,
-        'total': resp['hits']['total'],
-        'in_web': buckets['in_web']['doc_count'],
-        'in_kbart': buckets['in_kbart']['doc_count'],
-        'is_preserved': buckets['is_preserved']['doc_count'],
-    }
-    return stats
+    search = Search(using=es_client, index="fatcat_release")
+    search = search\
+        .filter("term", container_id=container_id)
+    search.aggs\
+        .bucket('years', 'terms', field="year")\
+        .bucket('volumes', 'terms', field="volume")
+    search = search[:0]
+    res = search.execute()
+    ret = []
+    for year in res.aggregations.years.buckets:
+        for volume in year.volumes.buckets:
+            ret.append(dict(count=volume.doc_count, year=year.key, volume=volume.key))
+            #print(ret[-1])
+    return ret
 
 class IssueDB():
 
@@ -125,7 +121,7 @@ class IssueDB():
     def insert_release_counts(self, counts: ReleaseCountsRow, cur: Any = None) -> None:
         if not cur:
             cur = self.db.cursor()
-        cur.execute("INSERT OR REPLACE INTO release_counts VALUES (?,?,?,?,?,?,?,?,?)",
+        cur.execute("INSERT OR REPLACE INTO release_counts VALUES (?,?,?,?,?)",
             counts.tuple())
 
     def pubid2container(self, sim_pubid: str) -> Optional[str]:
@@ -151,7 +147,7 @@ class IssueDB():
             obj = json.loads(line)
             meta = obj['metadata']
             assert "periodicals" in meta['collection']
-            container: Optional[ContainerEntity] = None
+            container: Optional[fatcat_openapi_client.ContainerEntity] = None
             if meta.get('issn'):
                 try:
                     container = api.lookup_container(issnl=meta['issn'])
@@ -196,7 +192,7 @@ class IssueDB():
             sim_pubid=meta['sim_pubid']
 
             year: Optional[int] = None
-            if meta.get('date'):
+            if meta.get('date') and meta['date'][:4].isdigit():
                 year = int(meta['date'][:4])
             volume = meta.get('volume')
             issue = meta.get('issue')
@@ -230,6 +226,23 @@ class IssueDB():
         cur.close()
         self.db.commit()
 
+    def load_counts(self, es_client: Any):
+        all_pub_containers = list(self.db.execute('SELECT sim_pubid, container_ident FROM sim_pub WHERE container_ident IS NOT NULL;'))
+        cur: Any = self.db.cursor()
+        for (sim_pubid, container_ident) in all_pub_containers:
+            aggs = es_container_aggs(es_client, container_ident)
+            for agg in aggs:
+                row = ReleaseCountsRow(
+                    sim_pubid=sim_pubid,
+                    year_in_sim=False, # TODO
+                    release_count=agg['count'],
+                    year=agg['year'],
+                    volume=agg['volume'],
+                )
+                self.insert_release_counts(row, cur)
+        cur.close()
+        self.db.commit()
+
 
 def main():
     """
@@ -244,7 +257,7 @@ def main():
 
     parser.add_argument("--db-file",
         help="sqlite3 database file to open",
-        default='issue_db.sqlite',
+        default='data/issue_db.sqlite',
         type=str)
 
     sub = subparsers.add_parser('init_db',
@@ -265,6 +278,10 @@ def main():
         help="item-level metadata, as JSON-lines",
         nargs='?', default=sys.stdin, type=argparse.FileType('r'))
 
+    sub = subparsers.add_parser('load_counts',
+        help="update volume-level stats from elasticsearch endpoint")
+    sub.set_defaults(func='load_counts')
+
     args = parser.parse_args()
     if not args.__dict__.get("func"):
         print("tell me what to do! (try --help)")
@@ -278,6 +295,8 @@ def main():
         idb.load_pubs(args.json_file, api)
     elif args.func == 'load_issues':
         idb.load_issues(args.json_file, es_client)
+    elif args.func == 'load_counts':
+        idb.load_counts(es_client)
     else:
         func = getattr(idb, args.func)
         func()
