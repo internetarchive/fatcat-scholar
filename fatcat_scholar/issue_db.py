@@ -44,6 +44,19 @@ class SimIssueRow:
     def tuple(self):
         return (self.issue_item, self.sim_pubid, self.year, self.volume, self.issue, self.first_page, self.last_page, self.release_count)
 
+    @classmethod
+    def from_tuple(self, row: Any):
+        return SimIssueRow(
+            issue_item=row[0],
+            sim_pubid=row[1],
+            year=row[2],
+            volume=row[3],
+            issue=row[4],
+            first_page=row[5],
+            last_page=row[6],
+            release_count=row[7],
+        )
+
 @dataclass
 class ReleaseCountsRow:
     sim_pubid: str
@@ -95,6 +108,7 @@ class IssueDB():
         """
         self.db = sqlite3.connect(db_file, isolation_level='EXCLUSIVE')
         self._pubid2container_map: Dict[str, Optional[str]] = dict()
+        self._container2pubid_map: Dict[str, Optional[str]] = dict()
 
     def init_db(self):
         self.db.executescript("""
@@ -134,6 +148,23 @@ class IssueDB():
         else:
             self._pubid2container_map[sim_pubid] = None
             return None
+
+    def container2pubid(self, container_ident: str) -> Optional[str]:
+        if container_ident in self._container2pubid_map:
+            return self._container2pubid_map[container_ident]
+        row = list(self.db.execute("SELECT sim_pubid FROM sim_pub WHERE container_ident = ?;", [container_ident]))
+        if row:
+            self._container2pubid_map[container_ident] = row[0][0]
+            return row[0][0]
+        else:
+            self._pubid2container_map[container_ident] = None
+            return None
+
+    def lookup_issue(self, sim_pubid: str, volume: str, issue: str) -> Optional[SimIssueRow]:
+        row = list(self.db.execute("SELECT * FROM sim_issue WHERE sim_pubid = ? AND volume = ? AND issue = ?;", [sim_pubid, volume, issue]))
+        if not row:
+            return None
+        return SimIssueRow.from_tuple(row[0])
 
     def load_pubs(self, json_lines: Sequence[str], api: Any):
         """
