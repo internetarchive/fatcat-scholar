@@ -98,7 +98,7 @@ class WorkPipeline():
         if not fe.urls:
             return None
         grobid_meta = self.sandcrawler_db_client.get_grobid(fe.sha1)
-        if grobid_meta['status'] != 'success':
+        if not grobid_meta or grobid_meta['status'] != 'success':
             return None
         #print(grobid_meta)
         grobid_xml = self.sandcrawler_s3_client.get_blob(
@@ -290,7 +290,7 @@ def main():
     """
     Run this command like:
 
-        python -m fatcat_scholar.release_pipeline
+        python -m fatcat_scholar.work_pipeline
     """
 
     parser = argparse.ArgumentParser(
