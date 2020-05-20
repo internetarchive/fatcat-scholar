@@ -13,8 +13,7 @@ from fatcat_scholar.api_entities import *
 from fatcat_scholar.djvu import djvu_extract_leaf_texts
 from fatcat_scholar.sandcrawler import SandcrawlerPostgrestClient, SandcrawlerMinioClient
 from fatcat_scholar.issue_db import IssueDB, SimIssueRow
-from fatcat_scholar.es_transform import es_biblio_from_release, es_release_from_release, DocType
-from fatcat_scholar.work_pipeline import IntermediateBundle
+from fatcat_scholar.schema import es_biblio_from_release, es_release_from_release, DocType, IntermediateBundle
 
 
 def truncate_pub_meta(full: Dict[str, Any]) -> Dict[str, Any]:
@@ -52,8 +51,9 @@ class SimPipeline():
         issue_item 
         pages: str
         page_texts: list
-            page_number
             raw_text
+            page_num
+            leaf_num
         release_ident: Optional[str]
         pub_item_metadata
         issue_item_metadata
@@ -107,6 +107,10 @@ class SimPipeline():
         self.issue_db.db.row_factory = sqlite3.Row
         cur = self.issue_db.db.cursor()
         for row in cur.execute('SELECT * FROM sim_issue LEFT JOIN sim_pub ON sim_issue.sim_pubid = sim_pub.sim_pubid WHERE sim_issue.release_count < 3'):
+            # filter out "contents" and "index" items
+            # TODO: more filters; also redundant with IssueDB code?
+            if row['issue_item'].endswith('_contents') or row['issue_item'].endswith('_index'):
+                continue
             full_issue = self.fetch_sim_issue(row)
             if not full_issue:
                 continue
@@ -120,7 +124,7 @@ class SimPipeline():
                     sim_fulltext=dict(
                         issue_item=full_issue['issue_item'],
                         pages=str(leaf['page_num']),
-                        page_texts=[leaf['raw_text']],
+                        page_texts=[leaf],
                         release_ident=None,
                         pub_item_metadata=full_issue['pub_item_metadata'],
                         issue_item_metadata=full_issue['issue_item_metadata'],

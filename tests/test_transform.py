@@ -2,7 +2,7 @@
 import pytest
 from fatcat_openapi_client import ReleaseEntity
 
-from fatcat_scholar.es_transform import *
+from fatcat_scholar.schema import *
 from fatcat_scholar.api_entities import *
 
 def test_es_release_from_release():

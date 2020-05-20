@@ -12,7 +12,7 @@ from fatcat_scholar.api_entities import *
 from fatcat_scholar.djvu import djvu_extract_leaf_texts
 from fatcat_scholar.sandcrawler import SandcrawlerPostgrestClient, SandcrawlerMinioClient
 from fatcat_scholar.issue_db import IssueDB, SimIssueRow
-from fatcat_scholar.es_transform import es_biblio_from_release, es_release_from_release, DocType
+from fatcat_scholar.schema import es_biblio_from_release, es_release_from_release, DocType, IntermediateBundle
 
 
 def parse_pages(raw: str) -> Tuple[Optional[int], Optional[int]]:
@@ -42,21 +42,6 @@ def test_parse_pages():
     assert parse_pages("1") == (1, 1)
     # TODO: should we be doing strings instead of ints?
     assert parse_pages("iiv") == (None, None)
-
-
-class IntermediateBundle(BaseModel):
-    doc_type: DocType
-    releases: List[ReleaseEntity]
-    biblio_release_ident: Optional[str]
-    grobid_fulltext: Optional[Any]
-    pdftotext_fulltext: Optional[Any]
-    sim_fulltext: Optional[Any]
-
-    class Config:
-        arbitrary_types_allowed = True
-        json_encoders = {
-            ReleaseEntity: lambda re: entity_to_dict(re),
-        }
 
 
 def fulltext_pref_list(releases: List[ReleaseEntity]) -> List[str]:

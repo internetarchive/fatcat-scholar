@@ -6,23 +6,40 @@ auto-conversion of datetime objects.
 """
 
 import ftfy
-import typing
 import datetime
 from enum import Enum
-from typing import Optional, List
+from typing import Optional, List, Any
 from xml.etree import cElementTree as ET
 from pydantic import BaseModel
+
 from fatcat_openapi_client import ReleaseEntity, ReleaseContrib
+from fatcat_scholar.api_entities import entity_to_dict
 
 
 class DocType(str, Enum):
     work = "work"
     sim_page = "sim_page"
 
+class IntermediateBundle(BaseModel):
+    doc_type: DocType
+    releases: List[ReleaseEntity]
+    biblio_release_ident: Optional[str]
+    grobid_fulltext: Optional[Any]
+    pdftotext_fulltext: Optional[Any]
+    sim_fulltext: Optional[Any]
+
+    class Config:
+        arbitrary_types_allowed = True
+        json_encoders = {
+            ReleaseEntity: lambda re: entity_to_dict(re),
+        }
+
+
 class AccessType(str, Enum):
     ia_sim = "ia_sim"
     ia_file = "ia_file"
     wayback = "wayback"
+    web = "web"
     repository = "repository"
     paywall = "paywall"
     loginwall = "loginwall"
@@ -30,7 +47,7 @@ class AccessType(str, Enum):
 
 class ScholarBiblio(BaseModel):
     release_ident: Optional[str]
-    title: str
+    title: Optional[str]
     subtitle: Optional[str]
     original_title: Optional[str]
     release_date: Optional[datetime.date]
@@ -127,7 +144,7 @@ class ScholarAbstract(BaseModel):
 class ScholarAccess(BaseModel):
     access_type: AccessType
     access_url: str
-    mimetype: str
+    mimetype: Optional[str]
     file_ident: Optional[str]
     release_ident: Optional[str]
 
@@ -139,8 +156,8 @@ class ScholarDoc(BaseModel):
     tags: List[str] = []
 
     biblio: ScholarBiblio
-    fulltext: ScholarFulltext
-    ia_sim: ScholarSim
+    fulltext: Optional[ScholarFulltext]
+    ia_sim: Optional[ScholarSim]
     abstracts: List[ScholarAbstract]
     releases: List[ScholarRelease]
     access: List[ScholarAccess]
@@ -187,6 +204,7 @@ def contrib_name(contrib: ReleaseContrib) -> str:
         return contrib.given_name
 
 def contrib_affiliation(contrib: ReleaseContrib) -> Optional[str]:
+    # TODO
     return None
 
 def es_abstracts_from_release(release: ReleaseEntity) -> List[ScholarAbstract]:
