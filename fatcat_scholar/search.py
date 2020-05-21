@@ -114,13 +114,13 @@ def do_fulltext_search(q, limit=25, offset=0, filter_time=None, filter_type=None
         lenient=True,
         fields=[
             "everything",
-            "abstract",
+            "abstracts_all",
             "fulltext.body",
             "fulltext.annex",
         ],
     )
     search = search.highlight(
-        "abstract",
+        "abstracts_all",
         "fulltext.body",
         "fulltext.annex",
         number_of_fragments=3,

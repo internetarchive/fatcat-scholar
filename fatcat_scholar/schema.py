@@ -186,20 +186,23 @@ def scrub_text(raw: str, mimetype: str = None) -> str:
     TODO: barely implemented yet
     """
     if "<jats" in raw or (mimetype and "application/xml" in mimetype):
-        root = ET.fromstring(raw)
-        raw = " ".join(list(root.itertext())) or ""
+        try:
+            root = ET.fromstring(raw)
+            raw = " ".join(list(root.itertext())) or ""
+        except:
+            pass
     raw = ftfy.fix_text(raw)
     assert raw, "Empty abstract"
     return raw
 
 def contrib_name(contrib: ReleaseContrib) -> str:
     # TODO: support more cultural normals for name presentation
-    if contrib.given_name and contrib.family_name:
-        return f"{contrib.given_name} {contrib.family_name}"
+    if contrib.given_name and contrib.surname:
+        return f"{contrib.given_name} {contrib.surname}"
     elif contrib.raw_name:
         return contrib.raw_name
-    elif contrib.family_name:
-        return contrib.family_name
+    elif contrib.surname:
+        return contrib.surname
     else:
         return contrib.given_name
 
@@ -287,7 +290,8 @@ def es_biblio_from_release(release: ReleaseEntity) -> ScholarBiblio:
         container_issnl=container_issnl,
         issns=issns,
 
-        contrib_names=[contrib_name(c) for c in release.contribs if c.index],
+        # TODO; these filters sort of meh. refactor to be above?
+        contrib_names=list(filter(lambda x: bool(x), [contrib_name(c) for c in release.contribs if c.index])),
         contrib_count = len([c for c in release.contribs if c.index]),
         affiliations=list(filter(lambda x: bool(x), [contrib_affiliation(c) for c in release.contribs if c.index])),
     )

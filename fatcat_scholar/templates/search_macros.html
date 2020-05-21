@@ -105,7 +105,7 @@
       {% if paper.abstracts[0].body|length > 500 %}
         {{ paper.abstracts[0].body[:500] }}...
       {% else %}
-        {{ paper.abstracts[0].body[:500] }}...
+        {{ paper.abstracts[0].body }}
       {% endif %}
     </div>
   {% else %}

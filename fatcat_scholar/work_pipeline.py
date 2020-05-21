@@ -2,6 +2,7 @@
 import os
 import io
 import sys
+import minio
 import argparse
 from pydantic import BaseModel, validator
 from typing import List, Dict, Tuple, Optional, Any, Sequence
@@ -88,14 +89,17 @@ class WorkPipeline():
         if not grobid_meta or grobid_meta['status'] != 'success':
             return None
         #print(grobid_meta)
-        grobid_xml = self.sandcrawler_s3_client.get_blob(
-            folder="grobid",
-            sha1hex=fe.sha1,
-            extension=".tei.xml",
-            prefix="",
-            bucket="sandcrawler",
-        )
-        #print(grobid_xml)
+        try:
+            grobid_xml = self.sandcrawler_s3_client.get_blob(
+                folder="grobid",
+                sha1hex=fe.sha1,
+                extension=".tei.xml",
+                prefix="",
+                bucket="sandcrawler",
+            )
+            #print(grobid_xml)
+        except minio.error.NoSuchKey:
+            return None
         return dict(
             tei_xml=grobid_xml,
             release_ident=release_ident,
@@ -338,6 +342,7 @@ def main():
             access_key=os.environ.get('MINIO_ACCESS_KEY'),
             secret_key=os.environ.get('MINIO_SECRET_KEY'),
         ),
+        fulltext_cache_dir=args.fulltext_cache_dir,
     )
 
     if args.func == 'run_releases':

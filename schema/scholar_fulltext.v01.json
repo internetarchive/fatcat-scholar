@@ -41,7 +41,7 @@
     "dynamic": false,
     "_source": {
       "excludes": [
-        "abstracts.body",
+        "abstracts_all",
         "fulltext.body",
         "fulltext.acknowledgment",
         "fulltext.annex",
@@ -140,7 +140,7 @@
           "type": "nested",
           "dynamic": false,
           "properties": {
-            "body":         { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch", "copy_to": ["everything", "abstracts_all"], "store": true },
+            "body":         { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch", "copy_to": ["everything", "abstracts_all"] },
             "lang_code":    { "type": "keyword", "normalizer": "default" }
           }
         },

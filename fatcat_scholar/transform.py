@@ -159,6 +159,8 @@ def _add_file_release_meta(fulltext: ScholarFulltext, re: ReleaseEntity, fe: Fil
 
 def es_fulltext_from_grobid(tei_xml: str, re: ReleaseEntity, fe: FileEntity) -> Optional[ScholarFulltext]:
     obj = teixml2json(tei_xml)
+    if not obj.get('body'):
+        return None
     ret = ScholarFulltext(
         lang_code=obj.get('lang'),
         body=obj.get('body'),
@@ -209,10 +211,8 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
         raise NotImplementedError(f"doc_type: {heavy.doc_type}")
 
     if heavy.grobid_fulltext:
-        
         fulltext_release = [r for r in heavy.releases if r.ident == heavy.grobid_fulltext['release_ident']][0]
         fulltext_file = [f for f in fulltext_release.files if f.ident == heavy.grobid_fulltext['file_ident']][0]
-
         fulltext = es_fulltext_from_grobid(heavy.grobid_fulltext['tei_xml'], fulltext_release, fulltext_file)
 
         # hack to pull through thumbnail from local pdftotext
@@ -221,9 +221,8 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
             fulltext.thumbnail_url = f"https://covid19.fatcat.wiki/fulltext_web/thumbnail/{fulltext.file_sha1[:2]}/{fulltext.file_sha1}.png"
 
     if not fulltext and heavy.pdftotext_fulltext:
-
-        fulltext_release = [r for r in heavy.releases if r.ident == heavy.grobid_fulltext['release_ident']][0]
-        fulltext_file = [f for f in fulltext_release.files if f.ident == heavy.grobid_fulltext['file_ident']][0]
+        fulltext_release = [r for r in heavy.releases if r.ident == heavy.pdftotext_fulltext['release_ident']][0]
+        fulltext_file = [f for f in fulltext_release.files if f.ident == heavy.pdftotext_fulltext['file_ident']][0]
         fulltext = es_fulltext_from_pdftotext(heavy.pdftotext_fulltext, fulltext_release, fulltext_file)
 
     # TODO: additional access list
