@@ -53,7 +53,7 @@
 
         "key":          { "type": "keyword", "normalizer": "default", "doc_values": false },
         "doc_type":     { "type": "keyword", "normalizer": "default" },
-        "doc_index_ts": { "type": "timestamp" },
+        "doc_index_ts": { "type": "date" },
         "work_ident":   { "type": "keyword", "normalizer": "default", "doc_values": false },
         "tags":         { "type": "keyword", "normalizer": "default" },
 
@@ -140,7 +140,7 @@
           "type": "nested",
           "dynamic": false,
           "properties": {
-            "body":         { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch", "copy_to": "everything", "store": true },
+            "body":         { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch", "copy_to": ["everything", "abstracts_all"], "store": true },
             "lang_code":    { "type": "keyword", "normalizer": "default" }
           }
         },
@@ -194,9 +194,10 @@
 
         "everything":     { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch" },
         "biblio_all":     { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch" },
+        "abstracts_all":  { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch" },
 
         "body":           { "type": "alias", "path": "fulltext.body" },
-        "abstract":       { "type": "alias", "path": "abstracts.body" },
+        "abstract":       { "type": "alias", "path": "abstracts_all" },
         "acknowledgement":{ "type": "alias", "path": "fulltext.acknowledgement" },
 
         "tag":            { "type": "alias", "path": "tags" },
