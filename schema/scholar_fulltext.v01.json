@@ -196,11 +196,29 @@
         "biblio_all":     { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch" },
         "abstracts_all":  { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch" },
 
+        "doctype":        { "type": "alias", "path": "doc_type" },
+
         "body":           { "type": "alias", "path": "fulltext.body" },
         "abstract":       { "type": "alias", "path": "abstracts_all" },
         "acknowledgement":{ "type": "alias", "path": "fulltext.acknowledgement" },
 
-        "tag":            { "type": "alias", "path": "tags" },
+        "doi":            { "type": "alias", "path": "releases.doi" },
+        "doi_prefix":     { "type": "alias", "path": "releases.doi_prefix" },
+        "doi_registrar":  { "type": "alias", "path": "releases.doi_registrar" },
+        "pmid":           { "type": "alias", "path": "releases.pmid" },
+        "pmcid":          { "type": "alias", "path": "releases.pmcid" },
+        "isbn13":         { "type": "alias", "path": "releases.isbn13" },
+        "wikidata_qid":   { "type": "alias", "path": "releases.wikidata_qid" },
+        "arxiv_id":       { "type": "alias", "path": "releases.arxiv_id" },
+        "jstor_id":       { "type": "alias", "path": "releases.jstor_id" },
+
+        "title":          { "type": "alias", "path": "biblio.title" },
+        "subtitle":       { "type": "alias", "path": "biblio.subtitle" },
+        "original_title": { "type": "alias", "path": "biblio.original_title" },
+        "withdrawn_status":{"type": "alias", "path": "biblio.withdrawn_status" },
+        "volume":         { "type": "alias", "path": "biblio.volume" },
+        "issue":          { "type": "alias", "path": "biblio.issue" },
+
         "affiliation":    { "type": "alias", "path": "biblio.affiliations" },
         "author":         { "type": "alias", "path": "biblio.contrib_names" },
         "journal":        { "type": "alias", "path": "biblio.container_name" },
