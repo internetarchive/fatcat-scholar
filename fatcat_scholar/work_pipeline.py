@@ -125,6 +125,8 @@ class WorkPipeline():
                 )
             except FileNotFoundError:
                 pass
+            except except UnicodeDecodeError:
+                pass
         return None
 
     def lookup_sim(self, release: ReleaseEntity) -> Optional[SimIssueRow]:
