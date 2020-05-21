@@ -79,11 +79,11 @@ def do_fulltext_search(q, limit=25, offset=0, filter_time=None, filter_type=None
 
     # type filters
     if filter_type == "papers":
-        search = search.filter("terms", release_type=[ "article-journal", "paper-conference", "chapter", ])
+        search = search.filter("terms", type=[ "article-journal", "paper-conference", "chapter", ])
     elif filter_type == "reports":
-        search = search.filter("terms", release_type=[ "report", "standard", ])
+        search = search.filter("terms", type=[ "report", "standard", ])
     elif filter_type == "datasets":
-        search = search.filter("terms", release_type=[ "dataset", "software", ])
+        search = search.filter("terms", type=[ "dataset", "software", ])
     elif filter_type == "everything" or filter_type == None:
         pass
     else:
@@ -93,13 +93,13 @@ def do_fulltext_search(q, limit=25, offset=0, filter_time=None, filter_type=None
     # time filters
     if filter_time == "past_week":
         week_ago_date = str(datetime.date.today() - datetime.timedelta(days=7))
-        search = search.filter("range", release_date=dict(gte=week_ago_date))
+        search = search.filter("range", date=dict(gte=week_ago_date))
     elif filter_time == "this_year":
-        search = search.filter("term", release_year=datetime.date.today().year)
+        search = search.filter("term", year=datetime.date.today().year)
     elif filter_time == "since_2000":
-        search = search.filter("range", release_year=dict(gte=2000))
+        search = search.filter("range", year=dict(gte=2000))
     elif filter_time == "before_1925":
-        search = search.filter("range", release_year=dict(lte=1924))
+        search = search.filter("range", year=dict(lt=1925))
     elif filter_time == "all_time" or filter_time == None:
         pass
     else:
@@ -128,12 +128,6 @@ def do_fulltext_search(q, limit=25, offset=0, filter_time=None, filter_type=None
     )
 
     resp = generic_search_execute(search, offset=offset)
-
-    for h in resp['results']:
-        # Ensure 'contrib_names' is a list, not a single string
-        if type(h['contrib_names']) is not list:
-            h['contrib_names'] = [h['contrib_names'], ]
-        h['contrib_names'] = [name.encode('utf8', 'ignore').decode('utf8') for name in h['contrib_names']]
 
     resp["query"] = { "q": q }
     return resp

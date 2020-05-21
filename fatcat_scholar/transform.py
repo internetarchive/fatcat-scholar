@@ -202,7 +202,7 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
         primary_release = [r for r in heavy.releases if r.ident == heavy.biblio_release_ident][0]
         biblio = es_biblio_from_release(primary_release)
 
-        # TODO: abstracts from releases also? abstracts_dict?
+        # TODO: abstracts from releases also; abstracts_dict; abstracts from GROBID parse
         abstracts = es_abstracts_from_release(primary_release)
     else:
         raise NotImplementedError(f"doc_type: {heavy.doc_type}")
@@ -215,8 +215,9 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
         fulltext = es_fulltext_from_grobid(heavy.grobid_fulltext['tei_xml'], fulltext_release, fulltext_file)
 
         # hack to pull through thumbnail from local pdftotext
-        if fulltext and not fulltext.thumbnail_url and heavy.pdftotext_fulltext:
-            fulltext.thumbnail_url = f"https://covid19.fatcat.wiki/sha1/{fulltext_file.sha1}" # XXX
+        if fulltext and fulltext.file_sha1 and not fulltext.thumbnail_url and heavy.pdftotext_fulltext:
+            # https://covid19.fatcat.wiki/fulltext_web/thumbnail/c9/c9e87f843b3cf7dc47881fa3d3ccb4693d7d9521.png
+            fulltext.thumbnail_url = f"https://covid19.fatcat.wiki/fulltext_web/thumbnail/{fulltext.file_sha1[:2]}/{fulltext.file_sha1}.png"
 
     if not fulltext and heavy.pdftotext_fulltext:
 
