@@ -41,7 +41,6 @@
     "dynamic": false,
     "_source": {
       "excludes": [
-        "abstracts_all",
         "fulltext.body",
         "fulltext.acknowledgment",
         "fulltext.annex",
@@ -137,10 +136,10 @@
         },
 
         "abstracts": {
-          "type": "nested",
+          "type": "object",
           "dynamic": false,
           "properties": {
-            "body":         { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch", "copy_to": ["everything", "abstracts_all"] },
+            "body":         { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch", "copy_to": ["everything"] },
             "lang_code":    { "type": "keyword", "normalizer": "default" }
           }
         },
@@ -194,12 +193,11 @@
 
         "everything":     { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch" },
         "biblio_all":     { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch" },
-        "abstracts_all":  { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch" },
 
         "doctype":        { "type": "alias", "path": "doc_type" },
 
         "body":           { "type": "alias", "path": "fulltext.body" },
-        "abstract":       { "type": "alias", "path": "abstracts_all" },
+        "abstract":       { "type": "alias", "path": "abstracts.body" },
         "acknowledgement":{ "type": "alias", "path": "fulltext.acknowledgement" },
 
         "doi":            { "type": "alias", "path": "releases.doi" },
