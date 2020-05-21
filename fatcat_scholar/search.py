@@ -31,12 +31,12 @@ def generic_search_execute(search, limit=25, offset=0, deep_page_limit=2000):
         print("elasticsearch 400: " + str(e.info))
         #flash("Search query failed to parse; you might need to use quotes.<p><code>{}: {}</code>".format(e.error, e.info['error']['root_cause'][0]['reason']))
         # XXX: abort(e.status_code)
-        raise Exception()
+        raise e
     except elasticsearch.exceptions.TransportError as e:
         # all other errors
         print("elasticsearch non-200 status code: {}".format(e.info))
         # XXX: abort(e.status_code)
-        raise Exception()
+        raise e
 
     # convert from objects to python dicts
     results = []
@@ -123,8 +123,8 @@ def do_fulltext_search(q, limit=25, offset=0, filter_time=None, filter_type=None
         "abstracts_all",
         "fulltext.body",
         "fulltext.annex",
-        number_of_fragments=3,
-        fragment_size=150,
+        number_of_fragments=2,
+        fragment_size=250,
     )
 
     resp = generic_search_execute(search, offset=offset)
