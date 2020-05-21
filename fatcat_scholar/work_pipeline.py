@@ -67,11 +67,12 @@ def fulltext_pref_list(releases: List[ReleaseEntity]) -> List[str]:
 
 class WorkPipeline():
 
-    def __init__(self, issue_db: IssueDB, sandcrawler_db_client: SandcrawlerPostgrestClient, sandcrawler_s3_client: SandcrawlerMinioClient):
+    def __init__(self, issue_db: IssueDB, sandcrawler_db_client: SandcrawlerPostgrestClient, sandcrawler_s3_client: SandcrawlerMinioClient, fulltext_cache_dir=None):
         self.issue_db: IssueDB = issue_db
         self.ia_client = internetarchive.get_session()
         self.sandcrawler_db_client = sandcrawler_db_client
         self.sandcrawler_s3_client = sandcrawler_s3_client
+        self.fulltext_cache_dir = fulltext_cache_dir
 
     def fetch_file_grobid(self, fe: FileEntity, release_ident: str) -> Optional[Any]:
         """
@@ -107,6 +108,19 @@ class WorkPipeline():
         release_ident: Optional[str]
         file_ident: Optional[str]
         """
+        # HACK: look for local pdftotext output
+        if self.fulltext_cache_dir:
+            local_txt_path = f"{self.fulltext_cache_dir}/pdftotext/{fe.sha1[:2]}/{fe.sha1}.txt"
+            try:
+                with open(local_txt_path, 'r') as txt_file:
+                    raw_text = txt_file.read()
+                return dict(
+                    raw_text=raw_text,
+                    release_ident=release_ident,
+                    file_ident=fe.ident,
+                )
+            except FileNotFoundError:
+                pass
         return None
 
     def lookup_sim(self, release: ReleaseEntity) -> Optional[SimIssueRow]:
@@ -307,6 +321,9 @@ def main():
     sub.add_argument("json_file",
         help="release entities, as JSON-lines",
         nargs='?', default=sys.stdin, type=argparse.FileType('r'))
+    sub.add_argument("--fulltext-cache-dir",
+        help="path of local directory with pdftotext fulltext (and thumbnails)",
+        default=None, type=str)
 
     args = parser.parse_args()
     if not args.__dict__.get("func"):

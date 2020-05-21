@@ -1,4 +1,5 @@
 data/
+fulltext_web/
 
 *.o
 *.a
