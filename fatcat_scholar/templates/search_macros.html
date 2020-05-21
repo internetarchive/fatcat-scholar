@@ -17,7 +17,7 @@
       {% elif paper.biblio.doi %}
       <a href="https://doi.org/{{ paper.biblio.doi }}"
       {% else %}
-      <a href="https://fatcat.wiki/release/{{ paper.biblio.fatcat_ident }}"
+      <a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}"
       {% endif %}
       style="color: #2224c7;">
         {% if paper.biblio.title %}
@@ -120,13 +120,13 @@
     <a href="https://www.ncbi.nlm.nih.gov/pubmed/{{paper.biblio.pmid }}" style="color: green;">pmid:{{ paper.biblio.pmid }}</a> &nbsp;
   {% endif %}
   {% if paper.biblio.pmcid %}
-    <a href="https://pubmed.ncbi.nlm.nih.gov/{{paper.biblio.pmcid }}/" style="color: green;">pmcid:{{ paper.pmcid }}</a> &nbsp;
+    <a href="https://pubmed.ncbi.nlm.nih.gov/{{paper.biblio.pmcid }}/" style="color: green;">pmcid:{{ paper.biblio.pmcid }}</a> &nbsp;
   {% endif %}
   {% if paper.biblio.arxiv_id %}
     <a href="https://arxiv.org/abs/{{paper.biblio.arxiv_id }}" style="color: green;">arXiv:{{ paper.biblio.arxiv_id }}</a> &nbsp;
   {% endif %}
-  {% if paper.biblio.fatcat_ident %}
-    <a href="https://fatcat.wiki/release/{{paper.biblio.fatcat_ident}}" style="color: green;">fatcat:{{ paper.biblio.fatcat_ident}}</a> &nbsp;
+  {% if paper.biblio.release_ident %}
+    <a href="https://fatcat.wiki/release/{{paper.biblio.release_ident}}" style="color: green;">fatcat:{{ paper.biblio.release_ident}}</a> &nbsp;
   {% endif %}
 
   {# ### SOURCE TAGS #}
