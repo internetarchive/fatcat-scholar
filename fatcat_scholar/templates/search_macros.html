@@ -6,93 +6,90 @@
   {# ### TITLE ROW #}
   <div style="margin-bottom: 0.1em; font-size: 1.2em; font-weight: bold;">
 
-    {# "best URL" calculation #}
-    {% if paper.pmcid %}
-    <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/{{ paper.pmcid }}/"
-    {% elif paper.pmid %}
-    <a href="https://pubmed.ncbi.nlm.nih.gov/{{ paper.pmid }}/"
-    {% elif paper.arxiv_id %}
-    <a href="https://arxiv.org/abs/{{ paper.arxiv_id }}/"
-    {% elif paper.doi %}
-    <a href="https://doi.org/{{ paper.doi }}"
-    {% else %}
-    <a href="https://fatcat.wiki/release/{{ paper.fatcat_ident }}"
-    {% endif %}
-    style="color: #2224c7;">
-      {% if lang_code != 'en' and lang_code == paper.lang and paper.original_title %}
-        {# show original title first instead of title if UI is in that language #}
-        {{ paper.original_title[:512] }}
-        {% if paper.original_title|length > 512 %}...{% endif %}
-      {% elif paper.title %}
-        {{ paper.title[:512] }}
-        {% if paper.title|length > 512 %}...{% endif %}
+    {% if paper.doc_type == "work" %}
+      {# "best URL" calculation #}
+      {% if paper.biblio.pmcid %}
+      <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/{{ paper.biblio.pmcid }}/"
+      {% elif paper.biblio.pmid %}
+      <a href="https://pubmed.ncbi.nlm.nih.gov/{{ paper.biblio.pmid }}/"
+      {% elif paper.biblio.arxiv_id %}
+      <a href="https://arxiv.org/abs/{{ paper.biblio.arxiv_id }}/"
+      {% elif paper.biblio.doi %}
+      <a href="https://doi.org/{{ paper.biblio.doi }}"
       {% else %}
-        [blank]
+      <a href="https://fatcat.wiki/release/{{ paper.biblio.fatcat_ident }}"
       {% endif %}
-    </a>
+      style="color: #2224c7;">
+        {% if paper.biblio.title %}
+          {{ paper.biblio.title[:512] }}
+          {% if paper.biblio.title|length > 512 %}...{% endif %}
+        {% else %}
+          [blank]
+        {% endif %}
+      </a>
+      {# release type suffix #}
+      <span style="font-weight: normal; text-transform: uppercase; font-weight: bold;">
+      {% if paper.biblio.release_type in ("article-journal", "paper-conference") or paper.doc_type == "sim_page" %}
+        {# pass #}
+      {% elif paper.biblio.release_type in ("book", "chapter", "dataset") %}
+        [{{ _(paper.biblio.release_type) }}]
+      {% elif not paper.biblio.release_type %}
+        <span style="color: red;">[media?]</span>
+      {% else %}
+        [{{ _(paper.biblio.release_type) }}]
+      {% endif %}
+      </span>
 
-    {# release type suffix #}
-    <span style="font-weight: normal; text-transform: uppercase; font-weight: bold;">
-    {% if paper.release_type in ("article-journal", "paper-conference") %}
-      {# pass #}
-    {% elif paper.release_type in ("book", "chapter", "dataset") %}
-      [{{ _(paper.release_type) }}]
-    {% elif not paper.release_type %}
-      <span style="color: red;">[media?]</span>
-    {% else %}
-      [{{ _(paper.release_type) }}]
-    {% endif %}
-    </span>
+      {# show inverse of title/original_title above #}
+      {% if paper.biblio.original_title and paper.biblio.title != paper.biblio.original_title %}
+        <br>
+        <i style="font-weight: bold;">
+          {{ paper.biblio.original_title[:512] }} {% if paper.biblio.original_title|length > 512 %}...{% endif %}
+        </i>
+      {% endif %}
 
-    {# show inverse of title/original_title above #}
-    {% if lang_code != 'en' and lang_code == paper.lang and paper.title and paper.title != paper.original_title %}
-      <br>
-      <i style="font-weight: bold;">
-        {{ paper.title[:512] }} {% if paper.title|length > 512 %}...{% endif %}
-      </i>
-    {% elif paper.original_title and paper.title != paper.original_title %}
-      <br>
-      <i style="font-weight: bold;">
-        {{ paper.original_title[:512] }} {% if paper.original_title|length > 512 %}...{% endif %}
-      </i>
+    {% elif paper.doc_type == "sim_page" %}
+      <a href="https://archive.org/details/{{ paper.ia_sim.issue_item }}/page/{{ paper.ia_sim.first_page }}" style="color: #2224c7;">Page {{ paper.ia_sim.first_page }}</a> of <a href="https://archive.org/details/{{ paper.ia_sim.issue_item }}" style="color: #2224c7;">{{ paper.biblio.container_name }}</a> (<a href="https://archive.org/details/{{ paper.ia_sim.issue_item }}" style="color: #2224c7;">Vol. {{ paper.biblio.volume }}, Issue {{ paper.biblio.issue }}</a>)
     {% endif %}
 
   </div>
 
   {# ### AUTHOR ROW #}
-  {% if paper.contrib_names %}
+  {% if paper.biblio.contrib_names %}
     <div style="margin-top: 0.1em; margin-bottom: 0.2em; font-size: 1.1em;">
-    {{ ", ".join(paper.contrib_names[:12]) }}
-    {% if paper.contrib_names|length > 12 %}<i>(+{{ paper.contrib_names|length - 12 }} others)</i>{% endif %}
+    {{ ", ".join(paper.biblio.contrib_names[:12]) }}
+    {% if paper.biblio.contrib_names|length > 12 %}<i>(+{{ paper.biblio.contrib_names|length - 12 }} others)</i>{% endif %}
     </div>
   {% endif %}
 
 
   {# ### JOURNAL ROW #}
-  {% if paper.release_year %}
-    {{ paper.release_year }}
+  {% if paper.biblio.release_year %}
+    {{ paper.biblio.release_year }}
   {% endif %}
-  {% if paper.release_year and paper.container_name %}
+  {% if paper.biblio.release_year and paper.biblio.container_name %}
     
   {% endif %}
-  {% if paper.container_name %}
+  {% if paper.biblio.container_name %}
     <i>
-    {% if paper.container_id %}
-      <a href="https://fatcat.wiki/container/{{ paper.container_id }}" style="color: black;">{{ paper.container_name }}</a>
+    {% if paper.biblio.container_id %}
+      <a href="https://fatcat.wiki/container/{{ paper.biblio.container_id }}" style="color: black;">{{ paper.biblio.container_name }}</a>
+    {% elif paper.doc_type == "sim_page" %}
+      <a href="https://archive.org/details/{{ paper.ia_sim.pub_collection }}" style="color: black;">{{ paper.biblio.container_name }}</a>
     {% else %}
-      {{ paper.container_name }}
+      {{ paper.biblio.container_name }}
     {% endif %}
     </i>
     {% if paper.container_is_oa %}<i class="icon unlock orange small"></i>{% endif %}
   {% endif %}
-  {% if paper.withdrawn_status %}
-    <b style="color: red;"><code>[{{ paper.withdrawn_status }}]</code></b>
+  {% if paper.biblio.withdrawn_status %}
+    <b style="color: red;"><code>[{{ paper.biblio.withdrawn_status }}]</code></b>
   {% endif %}
-  {% if paper.release_stage == "accepted" %}
-    <b style="color: brown;"><code>[{{ paper.release_stage }}]</code></b>
-  {% elif paper.release_stage and paper.release_stage != "published" %}
-    <b style="color: red;"><code>[{{ paper.release_stage }}]</code></b>
-  {% elif not paper.release_stage %}
+  {% if paper.biblio.release_stage == "accepted" %}
+    <b style="color: brown;"><code>[{{ paper.biblio.release_stage }}]</code></b>
+  {% elif paper.biblio.release_stage and paper.biblio.release_stage != "published" %}
+    <b style="color: red;"><code>[{{ paper.biblio.release_stage }}]</code></b>
+  {% elif not paper.biblio.release_stage %}
     <b style="color: red;"><code>[unpublished?]</code></b>
   {% endif %}
 
@@ -103,12 +100,12 @@
       {{ highlight|safe }} &nbsp;...&nbsp;
     {% endfor %}
     </div>
-  {% elif paper.abstract %}
+  {% elif paper.abstracts %}
     <div style="padding-top: 1em; padding-bottom: 0.5em;">
-      {% if paper.abstract[0]|length > 500 %}
-        {{ paper.abstract[0][:500] }}...
+      {% if paper.abstracts[0].body|length > 500 %}
+        {{ paper.abstracts[0].body[:500] }}...
       {% else %}
-        {{ paper.abstract[0][:500] }}...
+        {{ paper.abstracts[0].body[:500] }}...
       {% endif %}
     </div>
   {% else %}
@@ -116,92 +113,61 @@
   {% endif %}
 
   {# ### IDENTIFIERS #}
-  {% if paper.doi %}
-    <a href="https://doi.org/{{paper.doi }}" style="color: green;">doi:{{ paper.doi }}</a> &nbsp;
+  {% if paper.biblio.doi %}
+    <a href="https://doi.org/{{paper.biblio.doi }}" style="color: green;">doi:{{ paper.biblio.doi }}</a> &nbsp;
   {% endif %}
-  {% if paper.pmid %}
-    <a href="https://www.ncbi.nlm.nih.gov/pubmed/{{paper.pmid }}" style="color: green;">pmid:{{ paper.pmid }}</a> &nbsp;
+  {% if paper.biblio.pmid %}
+    <a href="https://www.ncbi.nlm.nih.gov/pubmed/{{paper.biblio.pmid }}" style="color: green;">pmid:{{ paper.biblio.pmid }}</a> &nbsp;
   {% endif %}
-  {% if paper.pmcid %}
-    <a href="https://pubmed.ncbi.nlm.nih.gov/{{paper.pmcid }}/" style="color: green;">pmcid:{{ paper.pmcid }}</a> &nbsp;
+  {% if paper.biblio.pmcid %}
+    <a href="https://pubmed.ncbi.nlm.nih.gov/{{paper.biblio.pmcid }}/" style="color: green;">pmcid:{{ paper.pmcid }}</a> &nbsp;
   {% endif %}
-  {% if paper.arxiv_id %}
-    <a href="https://arxiv.org/abs/{{paper.arxiv_id }}" style="color: green;">arXiv:{{ paper.arxiv_id }}</a> &nbsp;
+  {% if paper.biblio.arxiv_id %}
+    <a href="https://arxiv.org/abs/{{paper.biblio.arxiv_id }}" style="color: green;">arXiv:{{ paper.biblio.arxiv_id }}</a> &nbsp;
   {% endif %}
-  {% if paper.fatcat_ident %}
-    <a href="https://fatcat.wiki/release/{{paper.fatcat_ident}}" style="color: green;">fatcat:{{ paper.fatcat_ident}}</a> &nbsp;
+  {% if paper.biblio.fatcat_ident %}
+    <a href="https://fatcat.wiki/release/{{paper.biblio.fatcat_ident}}" style="color: green;">fatcat:{{ paper.biblio.fatcat_ident}}</a> &nbsp;
   {% endif %}
 
   {# ### SOURCE TAGS #}
   <div style="margin-top: 0.2em;">
-  {% if paper.cord19_uid or 'cord19' in paper.source_tags %}
-    <a href="https://pages.semanticscholar.org/coronavirus-research">
-      <span class="ui label small">CORD-19</span>
-    </a>
-  {% endif %}
-  {% if 'fatcat' in paper.source_tags %}
-    <a href="https://fatcat.wiki">
-      <span class="ui label small">fatcat</span>
-    </a>
-  {% endif %}
-  {% if 'who' in paper.source_tags %}
-    <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/global-research-on-novel-coronavirus-2019-ncov">
-      <span class="ui blue label small">WHO</span>
-    </a>
-  {% endif %}
-  {% if 'wanfang' in paper.source_tags %}
-    <a href="http://subject.med.wanfangdata.com.cn/Channel/7">
-      <span class="ui olive label small">Wanfang</span>
-    </a>
-  {% endif %}
-  {% if 'cnki' in paper.source_tags %}
-    <a href="http://en.gzbd.cnki.net/GZBT/brief/Default.aspx">
-      <span class="ui brown label small">CNKI</span>
-    </a>
-  {% endif %}
+  {% for tag in paper.tags %}
+    <span class="ui label small">{{ tag }}</span>
+  {% endfor %}
   {# olive, brown, grey, pink, red, etc #}
   </div>
 
 </div>
-<div class="three wide left aligned column" style="padding-top: 3em; padding-right: 0em;">
-  {% if paper.fulltext.thumbnail_url %}
+<div class="three wide left aligned column" style="padding-top: 0em; padding-right: 0em;">
+  {% if paper.fulltext.access_url %}
       {# <img src="{{ settings.COVID19_FULLTEXT_HOST }}{{ paper.fulltext.thumbnail_url }}" style="border: 1px solid grey; max-height: 12em; max-width: 100%;"> #}
-
+    {% if paper.fulltext.thumbnail_url %}
       <div class="ui card" style="margin-bottom: 0.4em;">
-        <a class="image"
-            {% if paper.fulltext.ia_pdf_url %}
-            href="{{ paper.fulltext.ia_pdf_url }}"
-            {% else %}
-            href="{{ settings.COVID19_FULLTEXT_HOST }}{{ paper.fulltext.pdf_url }}"
-            {% endif %}>
-          <img src="{{ settings.COVID19_FULLTEXT_HOST }}{{ paper.fulltext.thumbnail_url }}">
+        <a class="image" href="{{ paper.fulltext.access_url}}">
+          <img src="{{ paper.fulltext.thumbnail_url }}">
         </a>
-        {# 
-        <div class="content" style="padding: 0.5em;">
-        </div>
-        #}
       </div>
+    {% endif %}
+    <a href="{{ paper.fulltext.access_url}}">
       <div style="width: 100%; padding-left: 0.5em; padding-right: 0.5em; opacity: 0.5; text-align: center;">
         {# TODO: could have other hover info, like mimetype icon and file size? #}
-        <i class="file pdf outline icon" style="float: right;"></i>
-        <span>web.archive.org</span>
+        <span>
+        {% if paper.fulltext.access_type == "wayback" %}
+          web.archive.org
+        {% elif paper.fulltext.access_type in ["ia_sim", "ia_file"] %}
+          archive.org
+        {% endif %}
+        {% if paper.fulltext.file_mimetype == "application/pdf" %}
+          <i class="file pdf outline icon"></i>
+        {% elif paper.fulltext.access_type == "ia_sim" %}
+          <i class="film icon"></i>
+        {% endif %}
+        </span>
       </div>
-
     </a>
-    <br>
   {% else %}
     {# No Fulltext #}
   {% endif %}
-{# should we include these little links?
-    <code style="font-size: 0.9rem; padding-left: 0.5em;">
-    {% if paper.fulltext.pdf_url %}
-      <a href="{{ settings.COVID19_FULLTEXT_HOST }}{{ paper.fulltext.pdf_url }}">mirror</a>
-    {% endif %}
-    {% if paper.fulltext.grobid_xml_url %}
-      <a href="{{ settings.COVID19_FULLTEXT_HOST }}{{ paper.fulltext.grobid_xml_url }}">xml</a>
-    {% endif %}
-    </code>
-#}
 </div>
 </div>
 {% endmacro %}
