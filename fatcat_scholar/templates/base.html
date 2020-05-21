@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="referrer" content="origin-when-cross-origin">
   <script>
-  {# TODO: audit this license statement #}
   /*
+  TODO: audit this license statement
+
   @licstart  The following is the entire license notice for the JavaScript code in this page.
 
   Copyright (C) 2020 Internet Archive
@@ -68,7 +69,10 @@
       display: inline-block;
     }
   </style>
-  <title>{%- block title -%}scholar.archive.org{%- endblock %}</title>
+  <title>
+    {%- if settings.SCHOLAR_ENV != "prod" -%}[{{ settings.SCHOLAR_ENV|upper }}] {% endif -%}
+    {%- block title -%}scholar.archive.org{%- endblock %}
+  </title>
   <link rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.1/dist/semantic.min.css"
     crossorigin="anonymous">
@@ -81,9 +85,9 @@
 <body>
 <header class="ui inverted menu" style="margin: 0;">
   <div class="ui container">
-    {% if True %}
-      <div class="ui left corner pink small label">
-        <div data-tooltip="[DEV] environment (data not preserved)" data-position="bottom left">
+    {% if settings.SCHOLAR_ENV != "prod" %}
+      <div class="ui left corner {% if settings.SCHOLAR_ENV == "qa" %}orange{% else %}pink{% endif %} small label">
+        <div data-tooltip="[{{ settings.SCHOLAR_ENV|upper }}] instance" data-position="bottom left">
           <i class="ui cogs icon"></i>
         </div>
       </div>
@@ -126,7 +130,7 @@
       </div>
       <div class="ui twelve wide column">
         <form class="" id="search_form" action="{{ lang_prefix }}/search") }}" method="get" role="search" aria-label="papers" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
-          <meta itemprop="target" content="https://{{ settings.FATCAT_DOMAIN }}/fulltext/search?q={q}"/>
+          <meta itemprop="target" content="https://{{ settings.SCHOLAR_DOMAIN }}/fulltext/search?q={q}"/>
           <div class="ui form">
             <div class="ui action input large fluid">
               <input type="search" placeholder="{{ _("by title, authors, identifiers...") }}" name="q" aria-label="search metadata" required itemprop="query-input" style="border-radius: 0; border: 1px #999 solid;" {% if query and query.q %}value="{{ query.q }}"{% endif %}>
@@ -149,27 +153,6 @@
 {% endblock %}
 </main>
 {% endblock %}
-
-{#
-<footer class="ui inverted vertical footer segment" style="margin-top: 2em; padding-top: 1em; padding-bottom:2em; position: absolute; bottom: 0px; width: 100%;">
-  <div class="ui center aligned container">
-    <div class="ui horizontal inverted small link list">
-      <a class="item" href="/">fatcat!</a>
-      <a class="item" href="/about">About</a>
-      <a class="item" href="https://guide.{{ settings.FATCAT_DOMAIN }}/sources.html">Sources</a>
-      <a class="item" href="{% if settings.FATCAT_DOMAIN == "fatcat.wiki" %}https://stats.uptimerobot.com/GM9YNSrB0{% elif settings.FATCAT_DOMAIN =="qa.fatcat.wiki" %}https://stats.uptimerobot.com/WQ8wAUREA{% else %}#{% endif %}">Status</a>
-      <a class="item" href="https://guide.{{ settings.FATCAT_DOMAIN }}/bulk_exports.html">Bulk Exports</a>
-      <a class="item" href="https://github.com/internetarchive/fatcat-scholar/">Code</a>
-      <a class="item" href="https://github.com/internetarchive/fatcat-scholar/commit/{{ settings.GIT_REVISION }}"><code>{{ settings.GIT_REVISION }}</code></a>
-      {% if settings.FATCAT_DOMAIN.startswith('qa.') %}
-        <a class="item"><b style="color: orange;">[QA]</b></a>
-      {% elif settings.FATCAT_DOMAIN.startswith('dev.') %}
-        <a class="item"><b style="color: magenta;">[DEV]</b></a>
-      {% endif %}
-    </div>
-  </div>
-</footer>
-#}
 
 <div style="height: 24em;">
 </div>

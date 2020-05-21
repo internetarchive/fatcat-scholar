@@ -1,19 +1,23 @@
 
 [default]
-FATCAT_DOMAIN = "fatcat.wiki"
+SCHOLAR_ENV = "default"
+SCHOLAR_DOMAIN = "fatcat.wiki"
 I18N_LANG_DEFAULT = "en"
 ELASTICSEARCH_BACKEND = "https://search.fatcat.wiki"
 ELASTICSEARCH_FULLTEXT_INDEX = "scholar_fulltext"
 COVID19_FULLTEXT_HOST = "https://covid19.fatcat.wiki"
 
 [dev]
+SCHOLAR_ENV = "dev"
 ELASTICSEARCH_FULLTEXT_INDEX = "dev_scholar_fulltext"
 ELASTICSEARCH_BACKEND = "http://localhost:9200"
 
 [qa]
+SCHOLAR_ENV = "qa"
 ELASTICSEARCH_FULLTEXT_INDEX = "qa_scholar_fulltext"
 ELASTICSEARCH_BACKEND = "http://localhost:9200"
 
 [prod]
+SCHOLAR_ENV = "prod"
 ELASTICSEARCH_FULLTEXT_INDEX = "scholar_fulltext"
 ELASTICSEARCH_BACKEND = "https://search.fatcat.wiki"
