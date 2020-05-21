@@ -166,7 +166,9 @@ class WorkPipeline():
 
         leaf_index = dict()
         leaf_list = []
-        assert 'page_numbers' in issue_meta
+        if not 'page_numbers' in issue_meta:
+            # TODO: warn
+            return None
         for entry in issue_meta['page_numbers'].get('pages', []):
             page_num = entry['pageNumber']
             leaf_index[entry['leafNum']] = page_num
