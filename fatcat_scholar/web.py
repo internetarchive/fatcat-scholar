@@ -105,6 +105,10 @@ def load_i18n_templates():
             locale_ngettext(translations),
             newstyle=True,
         )
+        # remove a lot of whitespace in HTML output with these configs
+        templates.env.trim_blocks = True
+        templates.env.istrip_blocks = True
+        # pass-through application settings to be available in templates
         templates.env.globals['settings'] = settings
         d[lang_opt] = templates
     return d
