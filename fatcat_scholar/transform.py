@@ -184,11 +184,12 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
     tags: List[str] = []
     work_ident: Optional[str] = None
     abstracts: List[ScholarAbstract] = []
-    fulltext: Optional[ScholarFulltext]
+    fulltext: Optional[ScholarFulltext] = None
 
     ia_sim: Optional[ScholarSim] = None
     if heavy.sim_fulltext is not None:
         ia_sim = es_sim_from_sim(heavy.sim_fulltext)
+        fulltext = es_fulltext_from_sim(heavy.sim_fulltext)
 
     if heavy.doc_type == DocType.sim_page:
         assert ia_sim is not None

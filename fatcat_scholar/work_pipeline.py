@@ -11,8 +11,9 @@ import internetarchive
 from fatcat_scholar.api_entities import *
 from fatcat_scholar.djvu import djvu_extract_leaf_texts
 from fatcat_scholar.sandcrawler import SandcrawlerPostgrestClient, SandcrawlerMinioClient
-from fatcat_scholar.issue_db import IssueDB, SimIssueRow
+from fatcat_scholar.issue_db import IssueDB, SimIssueRow, SimPubRow
 from fatcat_scholar.schema import es_biblio_from_release, es_release_from_release, DocType, IntermediateBundle
+from fatcat_scholar.sim_pipeline import truncate_pub_meta, truncate_issue_meta
 
 
 def parse_pages(raw: str) -> Tuple[Optional[int], Optional[int]]:
@@ -124,12 +125,13 @@ class WorkPipeline():
 
         return self.issue_db.lookup_issue(sim_pubid=sim_pubid, volume=release.volume, issue=release.issue)
 
-    def fetch_sim(self, issue_db_row: SimIssueRow, pages: str, release_ident: str) -> Optional[Any]:
+    def fetch_sim(self, issue_db_row: SimIssueRow, issue_db_pub_row: SimPubRow, pages: str, release_ident: str) -> Optional[Any]:
         """
         issue_item 
         pages: str
         page_texts: list
-            page_number
+            page_num
+            leaf_num
             raw_text
         release_ident: Optional[str]
         pub_item_metadata
@@ -142,13 +144,14 @@ class WorkPipeline():
 
         # fetch full metadata from API
         issue_meta = self.ia_client.get_metadata(issue_db_row.issue_item)
-        # XXX: pub_meta = self.ia_client.get_metadata(issue_db_row.pub_collection)
-        pub_meta = None
+        pub_meta = self.ia_client.get_metadata(issue_db_pub_row.pub_collection)
 
+        leaf_index = dict()
         leaf_list = []
         assert 'page_numbers' in issue_meta
         for entry in issue_meta['page_numbers'].get('pages', []):
             page_num = entry['pageNumber']
+            leaf_index[entry['leafNum']] = page_num
             if not (page_num and page_num.isdigit()):
                 continue
             page_num = int(page_num)
@@ -172,16 +175,16 @@ class WorkPipeline():
 
         leaf_dict = djvu_extract_leaf_texts(djvu_xml, only_leaves=leaf_list)
 
-        for leaf, raw_text in leaf_dict.items():
-            page_texts.append(dict(page_number=leaf, raw_text=raw_text))
+        for leaf_num, raw_text in leaf_dict.items():
+            page_texts.append(dict(page_num=leaf_index.get(leaf_num), leaf_num=leaf_num, raw_text=raw_text))
 
         return dict(
             issue_item=issue_db_row.issue_item,
             pages=pages,
             page_texts=page_texts,
             release_ident=release_ident,
-            pub_item_metadata=pub_meta,
-            issue_item_metadata=issue_item.metadata,
+            pub_item_metadata=truncate_pub_meta(pub_meta),
+            issue_item_metadata=truncate_issue_meta(issue_meta),
         )
 
     def process_release_list(self, releases: List[ReleaseEntity]) -> IntermediateBundle:
@@ -226,8 +229,11 @@ class WorkPipeline():
             #print(f"release_{release.ident}: sim_issue={sim_issue}", file=sys.stderr)
             if not sim_issue:
                 continue
+            sim_pub = self.issue_db.lookup_pub(sim_issue.sim_pubid)
+            if not sim_pub:
+                continue
             # XXX: control flow tweak?
-            sim_fulltext = self.fetch_sim(sim_issue, release.pages, release.ident)
+            sim_fulltext = self.fetch_sim(sim_issue, sim_pub, release.pages, release.ident)
             if sim_fulltext:
                 break
 

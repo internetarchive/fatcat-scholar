@@ -25,6 +25,20 @@ class SimPubRow:
     def tuple(self):
         return (self.sim_pubid, self.pub_collection, self.title, self.issn, self.pub_type, self.publisher, self.container_issnl, self.container_ident, self.wikidata_qid)
 
+    @classmethod
+    def from_tuple(cls, row: Any) -> "SimPubRow":
+        return SimPubRow(
+            sim_pubid=row[0],
+            pub_collection=row[1],
+            title=row[2],
+            issn=row[3],
+            pub_type=row[4],
+            publisher=row[5],
+            container_issnl=row[6],
+            container_ident=row[7],
+            wikidata_qid=row[8],
+        )
+
 @dataclass
 class SimIssueRow:
     """
@@ -45,7 +59,7 @@ class SimIssueRow:
         return (self.issue_item, self.sim_pubid, self.year, self.volume, self.issue, self.first_page, self.last_page, self.release_count)
 
     @classmethod
-    def from_tuple(self, row: Any):
+    def from_tuple(cls, row: Any) -> "SimIssueRow":
         return SimIssueRow(
             issue_item=row[0],
             sim_pubid=row[1],
@@ -165,6 +179,12 @@ class IssueDB():
         if not row:
             return None
         return SimIssueRow.from_tuple(row[0])
+
+    def lookup_pub(self, sim_pubid: str) -> Optional[SimPubRow]:
+        row = list(self.db.execute("SELECT * FROM sim_pub WHERE sim_pubid = ?;", [sim_pubid]))
+        if not row:
+            return None
+        return SimPubRow.from_tuple(row[0])
 
     def load_pubs(self, json_lines: Sequence[str], api: Any):
         """
