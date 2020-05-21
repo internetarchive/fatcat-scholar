@@ -146,7 +146,7 @@
         },
 
         "releases": {
-          "type": "nested",
+          "type": "object",
           "dynamic": false,
           "properties": {
 
