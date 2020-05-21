@@ -1,20 +1,40 @@
 {% import "search_macros.html" as search_macros %}
 {% extends "base.html" %}
 
-{% block fullbody %}
-<div class="ui equal height divided grid" style="margin-top: 1em;">
-  <div class="ui two wide column">
+{% block fullmain %}
+<div class="mobile-only" style="margin-top: 1.0em;">
 
+  <details class="search_filters">
+    <summary style="float: right;"><i class="filter icon"></i>Filters</summary>
+    <p>
+    {{ search_macros.query_option(query.time_options, query.filter_time) }}
+    {{ search_macros.query_option(query.type_options, query.filter_type) }}
+    {{ search_macros.query_option(query.availability_options, query.filter_availability) }}
+    {{ search_macros.query_option(query.sort_options, query.sort_order) }}
+    </p>
+  </details>
+
+  {% if hits %}
+    {# <h2>{{ "{:,}".format(hits.count_found) }}</h2> #}
+    <span style="font-size: 1.5em;">{{ "{:,}".format(hits.count_found) }}</span>
+    Hits
+    <span style="color: rgba(0,0,0,0.4);">in {{ "{:0.2}".format(hits.query_time_ms/1000.0) }}sec</span>
+  {% endif %}
+</div>
+
+<div class="ui equal height stackable divided grid" style="margin-top: 1em;">
+
+  <div class="ui mobile-hide two wide column">
     {% if hits %}
-    <div style="width: 100%; text-align: right;">
-      {# <h2>{{ "{:,}".format(hits.count_found) }}</h2> #}
-      <h3 style="font-size: {% if hits.count_found >= 10000000 %}1.0em{% elif hits.count_found >= 1000 %}1.5em{% else %}2.0em{% endif %};">{{ "{:,}".format(hits.count_found) }}</h3>
-      Hits
-    </div>
-    <div style="text-align: right;">
-      <span style="color: rgba(0,0,0,0.4);">in {{ "{:0.2}".format(hits.query_time_ms/1000.0) }}sec</span>
-    </div>
-    <div class="ui clearing divider"></div>
+      <div style="width: 100%; text-align: right;">
+        {# <h2>{{ "{:,}".format(hits.count_found) }}</h2> #}
+        <h3 style="font-size: {% if hits.count_found >= 10000000 %}1.0em{% elif hits.count_found >= 1000 %}1.5em{% else %}2.0em{% endif %};">{{ "{:,}".format(hits.count_found) }}</h3>
+        Hits
+      </div>
+      <div style="text-align: right;">
+        <span style="color: rgba(0,0,0,0.4);">in {{ "{:0.2}".format(hits.query_time_ms/1000.0) }}sec</span>
+      </div>
+      <div class="ui clearing divider"></div>
     {% endif %}
 
     <div style="text-align: right;">
@@ -25,20 +45,39 @@
     </div>
     
   </div>
-  <div class="ui thirteen wide column">
+
+  <div class="ui fourteen wide column">
     {% if search_error %}
       <div class="ui error message">
         <div class="header">Query Error</div>
         <p>{{ search_error }}</p>
       </div>
-    {% elif hits %}
+    {% elif hits and hits.results %}
       {% if hits.results %}
         {% for paper in hits.results %}
           {{ search_macros.fulltext_search_result_row(paper) }}
         {% endfor %}
       {% endif %}
+    {% elif hits %}
+      <div class="ui placeholder segment" style="height: 100%;">
+        <div class="ui icon header">
+          <i class="search icon"></i>
+          We didn't find any documents matching your query
+        </div>
+        <div class="inline">
+          <a href="https://archive.org/search.php?sin=TXT&query={{ query.q|urlencode }}" class="ui button" style="margin: 0.5em;">Try archive.org</a>
+          <a href="https://fatcat.wiki/search&q={{ query.q|urlencode }}" class="ui button" style="margin: 0.5em;">Try fatcat.wiki</a>
+          <a href="https://www.semanticscholar.org/search?q={{ query.q|urlencode }}" class="ui button" style="margin: 0.5em;">Try Semantic Scholar</a>
+          <a href="https://scholar.google.com/scholar?q={{ query.q|urlencode }}" class="ui button" style="margin: 0.5em;">Try Google Scholar</a>
+        </div>
+      </div>
     {% else %}
-    No search submitted? Some message should go here.
+      <div class="ui placeholder segment" style="height: 100%;">
+        <div class="ui icon header">
+          <i class="search icon"></i>
+          Enter a query in the box above to get started
+        </div>
+      </div>
     {% endif %}
   </div>
 </div>

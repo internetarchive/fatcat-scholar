@@ -34,14 +34,25 @@
     .ui.inverted.menu .item:before { background: none; }
 
     @media only screen and (max-width: 479px) {
-      .mobile-hide{ display: none !important; }
+      .mobile-hide { display: none !important; }
     }
+    @media only screen and (min-width: 480px) {
+      .mobile-only { display: none !important; }
+    }
+
     {# for fulltext search result highlighting #}
     .search_highlights em {
       {# yellow #}
       {# background-color: #FFFFBB; #}
       font-style: normal;
       font-weight: bold;
+    }
+
+    .search_filters summary::marker {
+      display: none;
+    }
+    .search_filters summary::-webkit-details-marker {
+      display: none;
     }
 
     footer p a {
@@ -115,16 +126,15 @@
   </div>
 </header>
 
-{% block fullmain %}
+{% block fullbody %}
 <div class="ui vertical stripe segment" style="background-color: #dedede;">
-  <div class="ui container" style="padding: 1em; padding-bottom: 0.0em;">
-    <div class="ui equal height grid">
+  <div class="ui container" style="padding-top: 1em; padding-bottom: 0; padding-left: 0; padding-right: 0;">
+    <div class="ui equal height stackable grid">
       <div class="ui four wide column">
-        <div style="display: flex; justify-content: center; align-items: center; height:100%; width: 100%;">
+        <div style="display: flex; justify-content: center; align-items: center; height: 100%; width: 100%;">
           <a href="{{ lang_prefix }}/">
             <span style="font-size: 1.5rem; font-weight: bold;">[scholar.archive.org]</span>
             {# hack to align vertically with search box #}
-            <br>&nbsp;
           </a>
         </div>
       </div>
@@ -137,34 +147,36 @@
               <button class="ui green button" style="border-radius: 0; background-color: #44a25a; font-size: 1.2rem;">{{ _("Search") }}</button>
             </div>
           </div>
-          <div style="float: right; padding-top: 0.5em;">
-            <a href="#">User Guide</a>
-          </div>
         </form>
+      </div>
+    </div>
+    <div style="display: flex; width: 100%; justify-content: space-between; padding-top: 0.5em;">
+      <div></div>
+      <div>
+        <a href="#" style="order: -1;">User Guide</a>
       </div>
     </div>
   </div>
 </div>
-<main class="ui main container">
-{% block fullbody %}
-  <div class="ui container text">
-    {% block body %}Nothing to see here.{% endblock %}
+<main class="ui main container" style="min-height: 50vh;">
+{% block fullmain %}
+  <div class="ui container text" style="margin-top: 2em;">
+    {% block main %}Nothing to see here.{% endblock %}
   </div>
 {% endblock %}
 </main>
 {% endblock %}
 
-<div style="height: 24em;">
-</div>
-<footer class="ui inverted vertical footer segment" style="padding: 5em 0em; position: absolute; bottom: 0px; width: 100%;">
+<footer class="ui inverted vertical footer segment" style="padding: 4em 0em; margin-top: 3em; width: 100%;">
   <div class="ui container">
-    <div class="ui stackable inverted divided equal height grid">
+    <div class="ui stackable mobile reversed inverted divided equal height grid">
       <div class="nine wide column">
         <div class="ui grid">
-          <div class="three wide column" style="padding-top: 4em;">
-            <img class="logo" src="{{ url_for('static', path='/ia-logo.svg') }}" style="width: 4em; opacity: 0.5;">
+          <div class="three wide two wide computer column" style="padding-top: 4em; padding-right: 0;">
+            <img class="logo" src="{{ url_for('static', path='/ia-logo.svg') }}" style="width: 100%; opacity: 0.5;">
           </div>
-          <div class="twelve wide column">
+          <div class="one wide column computer only"></div>
+          <div class="thirteen wide eleven wide computer column">
             <h3>Internet Archive</h3>
             <p style="color: rgba(255, 255, 255, 0.5);">We are a 501(c)(3) non-profit, building a digital library of Internet sites and other cultural artifacts in digital form. Other projects include the <a href="https://web.archive.org">Wayback Machine</a>, <a href="https://archive.org">archive.org</a> <a href="https://openlibrary.org">openlibrary.org</a> and <a href="https://archive-it.org">archive-it.org</a>
             <div class="ui horizontal inverted link list">
