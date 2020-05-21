@@ -5,68 +5,40 @@
 <div class="ui equal height divided grid" style="margin-top: 1em;">
   <div class="ui two wide column">
 
-    {% if found %}
-    <div class="ui tiny statistic" style="width: 100%; text-align: center;">
-      <div class="value">
-        {{ "{:,}".format(found.count_found) }}
-      </div>
-      <div class="label">
-        Hits
-      </div>
+    {% if hits %}
+    <div style="width: 100%; text-align: right;">
+      {# <h2>{{ "{:,}".format(hits.count_found) }}</h2> #}
+      <h3 style="font-size: {% if hits.count_found >= 10000000 %}1.0em{% elif hits.count_found >= 1000 %}1.5em{% else %}2.0em{% endif %};">{{ "{:,}".format(hits.count_found) }}</h3>
+      Hits
+    </div>
+    <div style="text-align: right;">
+      <span style="color: rgba(0,0,0,0.4);">in {{ "{:0.2}".format(hits.query_time_ms/1000.0) }}sec</span>
     </div>
     <div class="ui clearing divider"></div>
-    {% else %}
-      Maybe some filters, facets, counts over here?
     {% endif %}
 
     <div style="text-align: right;">
-      <span style="color: rgba(0,0,0,0.4);">Release Date</span>
-      <div class="ui link list" style="margin-top: 0.3em;">
-        <a class="active item"><b>All Time</b></a>
-        <a class="item" style="color: rgba(0,0,0);">Past Week</a>
-        <a class="item" style="color: rgba(0,0,0);">Past Year</a>
-        <a class="item" style="color: rgba(0,0,0);">Since 2000</a>
-        <a class="item" style="color: rgba(0,0,0);">Before 1925</a>
-      </div>
-
-      <br>
-      <span style="color: rgba(0,0,0,0.4);">Resource Type</span>
-      <div class="ui link list" style="margin-top: 0.3em;">
-        <a class="active item"><b>Papers</b></a>
-        <a class="item" style="color: rgba(0,0,0);">Reports</a>
-        <a class="item" style="color: rgba(0,0,0);">Datasets</a>
-        <a class="item" style="color: rgba(0,0,0);">Everything</a>
-      </div>
-
-      <br>
-      <span style="color: rgba(0,0,0,0.4);">Availability</span>
-      <div class="ui link list" style="margin-top: 0.3em;">
-        <a class="active item"><b>Everything</b></a>
-        <a class="item" style="color: rgba(0,0,0);">Open Access</a>
-        <a class="item" style="color: rgba(0,0,0);">Lending</a>
-        <a class="item" style="color: rgba(0,0,0);">Paywall</a>
-      </div>
-
-      <br>
-      <span style="color: rgba(0,0,0,0.4);">Sort Order</span>
-      <div class="ui link list" style="margin-top: 0.3em;">
-        <a class="active item"><b>Relevancy</b></a>
-        <a class="item" style="color: rgba(0,0,0);">Recent First</a>
-        <a class="item" style="color: rgba(0,0,0);">Oldest First</a>
-      </div>
+      {{ search_macros.query_option(query.time_options, query.filter_time) }}
+      {{ search_macros.query_option(query.type_options, query.filter_type) }}
+      {{ search_macros.query_option(query.availability_options, query.filter_availability) }}
+      {{ search_macros.query_option(query.sort_options, query.sort_order) }}
     </div>
     
   </div>
   <div class="ui thirteen wide column">
-    {% if found %}
-      {% if found.results %}
-        {% for paper in found.results %}
+    {% if search_error %}
+      <div class="ui error message">
+        <div class="header">Query Error</div>
+        <p>{{ search_error }}</p>
+      </div>
+    {% elif hits %}
+      {% if hits.results %}
+        {% for paper in hits.results %}
           {{ search_macros.fulltext_search_result_row(paper) }}
         {% endfor %}
       {% endif %}
     {% else %}
-    Some other message here when there is no search? Like a bunch of examples?
-    Or does that ever happen... we can just run query on "*".
+    No search submitted? Some message should go here.
     {% endif %}
   </div>
 </div>

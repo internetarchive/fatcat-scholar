@@ -58,6 +58,15 @@
     .ui.card a:hover {
       opacity: 0.75;
     }
+
+    .text-button {
+      border: none;
+      background-color: inherit;
+      padding: 0;
+      font-family: inherit;
+      cursor: pointer;
+      display: inline-block;
+    }
   </style>
   <title>{%- block title -%}scholar.archive.org{%- endblock %}</title>
   <link rel="stylesheet"
@@ -116,11 +125,11 @@
         </div>
       </div>
       <div class="ui twelve wide column">
-        <form class="" id="fulltext_query" action="{{ lang_prefix }}/search") }}" method="get" role="search" aria-label="papers" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
+        <form class="" id="search_form" action="{{ lang_prefix }}/search") }}" method="get" role="search" aria-label="papers" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
           <meta itemprop="target" content="https://{{ settings.FATCAT_DOMAIN }}/fulltext/search?q={q}"/>
           <div class="ui form">
             <div class="ui action input large fluid">
-              <input type="text" placeholder="{{ _("by title, authors, identifiers...") }}" name="q" aria-label="search metadata" required itemprop="query-input" style="border-radius: 0; border: 1px #999 solid;">
+              <input type="search" placeholder="{{ _("by title, authors, identifiers...") }}" name="q" aria-label="search metadata" required itemprop="query-input" style="border-radius: 0; border: 1px #999 solid;" {% if query and query.q %}value="{{ query.q }}"{% endif %}>
               <button class="ui green button" style="border-radius: 0; background-color: #44a25a; font-size: 1.2rem;">{{ _("Search") }}</button>
             </div>
           </div>
