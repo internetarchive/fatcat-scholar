@@ -131,10 +131,14 @@
 
   {# ### SOURCE TAGS #}
   <div style="margin-top: 0.2em;">
+  {# colors to use: olive, brown, grey, pink, red, etc #}
   {% for tag in paper.tags %}
     <span class="ui label small">{{ tag }}</span>
   {% endfor %}
-  {# olive, brown, grey, pink, red, etc #}
+    {# TODO: remove doc for ES 7.x-style lack of type #}
+    <a href="{{ settings.ELASTICSEARCH_BACKEND }}/_doc/{{ settings.ELASTICSEARCH_FULLTEXT_INDEX }}/{{ paper.key }}">
+      <span class="ui label small">indexed</span>
+    </a>
   </div>
 
 </div>
