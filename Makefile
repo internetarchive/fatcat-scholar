@@ -10,21 +10,21 @@ help: ## Print info about all commands
 
 .PHONY: test
 test: ## Run all tests and lints
-	pipenv run pytest
+	ENV_FOR_DYNACONF=test pipenv run pytest
 	pipenv run mypy fatcat_scholar/*.py tests/ --ignore-missing-imports
 
 .PHONY: dev
 dev: ## Run web service locally, with reloading
-	pipenv run uvicorn fatcat_scholar.web:app --reload
+	ENV_FOR_DYNACONF=dev pipenv run uvicorn fatcat_scholar.web:app --reload --port 9819
 
 .PHONY: run
 run: ## Run web service under gunicorn
 	pipenv run gunicorn fatcat_scholar.web:app -w 4 -k uvicorn.workers.UvicornWorker
 
-.PHONY: reset-index-dev
-reset-index-dev: ## Delete/Create DEV elasticsearch fulltext index locally
-	http delete :9200/dev_scholar_fulltext_v01 && true
-	http put ":9200/qa_scholar_fulltext_v01?include_type_name=false" < schema/scholar_fulltext.v01.json
-	http delete :9200/dev_scholar_fulltext && true
-	http put :9200/dev_scholar_fulltext_v01/_alias/dev_scholar_fulltext
+.PHONY: dev-index
+dev-index: ## Delete/Create DEV elasticsearch fulltext index locally
+	http delete ":9200/dev_scholar_fulltext_v01" && true
+	http put ":9200/dev_scholar_fulltext_v01?include_type_name=true" < schema/scholar_fulltext.v01.json
+	http put ":9200/dev_scholar_fulltext_v01/_alias/dev_scholar_fulltext"
+	cat data/sim_intermediate.json data/work_intermediate.json | pipenv run python -m fatcat_scholar.transform run_transform | esbulk -verbose -size 200 -id key -w 4 -index dev_scholar_fulltext_v01 -type _doc
 
