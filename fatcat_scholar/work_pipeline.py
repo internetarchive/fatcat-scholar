@@ -125,7 +125,7 @@ class WorkPipeline():
                 )
             except FileNotFoundError:
                 pass
-            except except UnicodeDecodeError:
+            except UnicodeDecodeError:
                 pass
         return None
 
