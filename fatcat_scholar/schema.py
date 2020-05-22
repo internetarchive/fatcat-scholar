@@ -174,6 +174,17 @@ def release_doi_registrar(release: ReleaseEntity) -> Optional[str]:
     # TODO: should we default to Crossref?
     return None
 
+UNWANTED_ABSTRACT_PREFIXES = [
+    # roughly sort this long to short
+    'Abstract No Abstract ',
+    'Publisher Summary ',
+    'Abstract ',
+    'ABSTRACT ',
+    'Summary ',
+    'Background: ',
+    'Background ',
+]
+
 def scrub_text(raw: str, mimetype: str = None) -> str:
     """
     This function takes a mimetype-hinted string and tries to reduce it to a
@@ -191,6 +202,13 @@ def scrub_text(raw: str, mimetype: str = None) -> str:
         except Exception as e:
             raise e
     raw = ftfy.fix_text(raw)
+
+    # hack to remove abstract prefixes
+    for prefix in UNWANTED_ABSTRACT_PREFIXES:
+        if raw.startswith(prefix):
+            raw = raw[len(prefix):]
+            break
+
     assert raw, "Empty abstract"
     return raw
 
