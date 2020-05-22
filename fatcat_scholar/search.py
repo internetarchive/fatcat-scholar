@@ -121,25 +121,55 @@ def do_fulltext_search(query: FulltextQuery, deep_page_limit: int = 2000) -> Ful
     else:
         raise ValueError(f"Unknown 'filter_time' parameter value: '{query.filter_time}'")
 
-    search = search.query(
+    # we combined several queries to improve scoring.
+
+    # this query use the fancy built-in query string parser
+    basic_fulltext = Q(
         'query_string',
         query=query.q,
         default_operator="AND",
         analyze_wildcard=True,
+        allow_leading_wildcard=False,
         lenient=True,
         fields=[
+            "title^5",
+            "biblio_all^3",
+            "abstracts_all^2",
             "everything",
-            "abstracts_all",
-            "fulltext.body",
-            "fulltext.annex",
         ],
+    )
+    has_fulltext = Q(
+        'terms',
+        access_type=["ia_sim", "ia_file", "wayback"],
+    )
+    poor_metadata = Q(
+        'bool',
+        should=[
+            # if these fields aren't set, metadata is poor. The more that do
+            # not exist, the stronger the signal.
+            Q("bool", must_not=Q("exists", field="title")),
+            Q("bool", must_not=Q("exists", field="year")),
+            Q("bool", must_not=Q("exists", field="type")),
+            Q("bool", must_not=Q("exists", field="stage")),
+        ],
+    )
+
+    search = search.query(
+        "boosting",
+        positive=Q(
+            "bool",
+            must=basic_fulltext,
+            should=[has_fulltext],
+        ),
+        negative=poor_metadata,
+        negative_boost=0.5,
     )
     search = search.highlight(
         "abstracts_all",
         "fulltext.body",
         "fulltext.annex",
         number_of_fragments=2,
-        fragment_size=250,
+        fragment_size=300,
     )
 
     # sort order
