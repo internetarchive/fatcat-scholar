@@ -21,6 +21,14 @@ dev: ## Run web service locally, with reloading
 run: ## Run web service under gunicorn
 	pipenv run gunicorn fatcat_scholar.web:app -w 4 -k uvicorn.workers.UvicornWorker
 
+.PHONY: fetch-works
+fetch-works: ## Fetches some works from any release .json in the data dir
+	cat data/release_*.json | jq . -c | pipenv run python -m fatcat_scholar.work_pipeline run_releases | pv -l > data/work_intermediate.json
+
+.PHONY: fetch-sim
+fetch-sim: ## Fetches some SIM pages
+	pipenv run python -m fatcat_scholar.sim_pipeline run_issue_db --limit 500 | pv -l > data/sim_intermediate.json
+
 .PHONY: dev-index
 dev-index: ## Delete/Create DEV elasticsearch fulltext index locally
 	http delete ":9200/dev_scholar_fulltext_v01" && true
