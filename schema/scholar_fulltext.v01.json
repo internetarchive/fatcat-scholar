@@ -11,25 +11,25 @@
                 "textIcu": {
                     "type": "custom",
                     "tokenizer": "icu_tokenizer",
-                    "char_filter": [ "icu_normalizer" ],
+                    "char_filter": [ "html_strip", "icu_normalizer" ],
                     "filter": [ "icu_folding", "stemmer" ]
                 },
                 "textIcuSearch": {
                     "type": "custom",
                     "tokenizer": "icu_tokenizer",
-                    "char_filter": [ "icu_normalizer" ],
+                    "char_filter": [ "html_strip", "icu_normalizer" ],
                     "filter": [ "icu_folding", "stemmer" ]
                 },
                 "textIcuExact": {
                     "type": "custom",
                     "tokenizer": "icu_tokenizer",
-                    "char_filter": [ "icu_normalizer" ],
+                    "char_filter": [ "html_strip", "icu_normalizer" ],
                     "filter": [ "icu_folding" ]
                 },
                 "textIcuSearchExact": {
                     "type": "custom",
                     "tokenizer": "icu_tokenizer",
-                    "char_filter": [ "icu_normalizer" ],
+                    "char_filter": [ "html_strip", "icu_normalizer" ],
                     "filter": [ "icu_folding" ]
                 }
             },
