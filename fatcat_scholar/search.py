@@ -131,10 +131,12 @@ def do_fulltext_search(query: FulltextQuery, deep_page_limit: int = 2000) -> Ful
         analyze_wildcard=True,
         allow_leading_wildcard=False,
         lenient=True,
+        quote_field_suffix=".exact",
         fields=[
             "title^5",
             "biblio_all^3",
-            "abstracts_all^2",
+            "abstracts.body^2",
+            "fulltext.body",
             "everything",
         ],
     )
@@ -165,7 +167,7 @@ def do_fulltext_search(query: FulltextQuery, deep_page_limit: int = 2000) -> Ful
         negative_boost=0.5,
     )
     search = search.highlight(
-        "abstracts_all",
+        "abstracts.body",
         "fulltext.body",
         "fulltext.annex",
         number_of_fragments=2,

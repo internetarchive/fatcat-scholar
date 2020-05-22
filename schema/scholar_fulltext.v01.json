@@ -12,9 +12,21 @@
                     "type": "custom",
                     "tokenizer": "icu_tokenizer",
                     "char_filter": [ "icu_normalizer" ],
-                    "filter": [ "icu_folding" ]
+                    "filter": [ "icu_folding", "stemmer" ]
                 },
                 "textIcuSearch": {
+                    "type": "custom",
+                    "tokenizer": "icu_tokenizer",
+                    "char_filter": [ "icu_normalizer" ],
+                    "filter": [ "icu_folding", "stemmer" ]
+                },
+                "textIcuExact": {
+                    "type": "custom",
+                    "tokenizer": "icu_tokenizer",
+                    "char_filter": [ "icu_normalizer" ],
+                    "filter": [ "icu_folding" ]
+                },
+                "textIcuSearchExact": {
                     "type": "custom",
                     "tokenizer": "icu_tokenizer",
                     "char_filter": [ "icu_normalizer" ],
@@ -61,7 +73,10 @@
           "dynamic": false,
           "properties": {
             "release_ident":  { "type": "keyword", "normalizer": "default", "doc_values": false },
-            "title":          { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch", "copy_to": ["biblio_all", "everything"] },
+            "title":          {
+                "type": "text","index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch", "copy_to": ["biblio_all", "everything"],
+                "fields": {"exact": { "type": "text", "analyzer": "textIcuExact", "search_analyzer": "textIcuSearchExact" }}
+            },
             "subtitle":       { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch", "copy_to": ["biblio_all", "everything"] },
             "original_title": { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch", "copy_to": ["biblio_all", "everything"] },
             "release_date":   { "type": "date" },
@@ -91,7 +106,7 @@
             "mag_id":         { "type": "keyword", "normalizer": "default", "doc_values": false },
             "s2_id":          { "type": "keyword", "normalizer": "default", "doc_values": false },
             "license_slug":   { "type": "keyword", "normalizer": "default" },
-            "publisher":            { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch" },
+            "publisher":            { "type": "text", "index": true, "analyzer": "textIcuExact", "search_analyzer":"textIcuSearchExact" },
             "publisher_type":       { "type": "keyword", "normalizer": "default" },
             "container_name":       { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch", "copy_to": ["biblio_all", "everything"] },
             "container_original_name":       { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch", "copy_to": ["biblio_all", "everything"] },
@@ -101,8 +116,8 @@
             "issns":                { "type": "keyword", "normalizer": "default" },
             "container_type":       { "type": "keyword", "normalizer": "default" },
             "contrib_count":        { "type": "integer" },
-            "contrib_names":        { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch", "copy_to": ["biblio_all", "everything"] },
-            "affiliations":         { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch" }
+            "contrib_names":        { "type": "text", "index": true, "analyzer": "textIcuExact", "search_analyzer":"textIcuSearchExact", "copy_to": ["biblio_all", "everything"] },
+            "affiliations":         { "type": "text", "index": true, "analyzer": "textIcuExact", "search_analyzer":"textIcuSearchExact" }
           }
         },
 
@@ -192,7 +207,10 @@
         },
 
         "everything":     { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch" },
-        "biblio_all":     { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch" },
+        "biblio_all":     {
+            "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch",
+            "fields": {"exact": { "type": "text", "analyzer": "textIcuExact", "search_analyzer": "textIcuSearchExact" }}
+        },
 
         "doctype":        { "type": "alias", "path": "doc_type" },
 
