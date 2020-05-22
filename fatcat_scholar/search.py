@@ -121,6 +121,17 @@ def do_fulltext_search(query: FulltextQuery, deep_page_limit: int = 2000) -> Ful
     else:
         raise ValueError(f"Unknown 'filter_time' parameter value: '{query.filter_time}'")
 
+    # availability filters
+    if query.filter_availability == "oa":
+        # TODO: real OA filter/flag
+        search = search.filter("exists", field="license_slug")
+    elif query.filter_availability == "fulltext":
+        search = search.filter("terms", access_type=["wayback", "ia_file", "ia_sim"])
+    elif query.filter_availability == "everything" or query.filter_availability == None:
+        pass
+    else:
+        raise ValueError(f"Unknown 'filter_availability' parameter value: '{query.filter_availability}'")
+
     # we combined several queries to improve scoring.
 
     # this query use the fancy built-in query string parser
