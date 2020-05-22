@@ -3,6 +3,7 @@ import os
 import io
 import sys
 import minio
+import requests
 import argparse
 from pydantic import BaseModel, validator
 from typing import List, Dict, Tuple, Optional, Any, Sequence
@@ -255,7 +256,11 @@ class WorkPipeline():
             if not sim_pub:
                 continue
             # XXX: control flow tweak?
-            sim_fulltext = self.fetch_sim(sim_issue, sim_pub, release.pages, release.ident)
+            try:
+                sim_fulltext = self.fetch_sim(sim_issue, sim_pub, release.pages, release.ident)
+            except requests.exceptions.ReadTimeout as e:
+                print(str(e), file=sys.stderr)
+                continue
             if sim_fulltext:
                 break
 

@@ -4,6 +4,7 @@ import io
 import sys
 import sqlite3
 import argparse
+import requests
 from pydantic import BaseModel, validator
 from typing import List, Dict, Tuple, Optional, Any, Sequence
 from fatcat_openapi_client import ReleaseEntity, FileEntity
@@ -113,7 +114,11 @@ class SimPipeline():
             # TODO: more filters; also redundant with IssueDB code?
             if row['issue_item'].endswith('_contents') or row['issue_item'].endswith('_index'):
                 continue
-            full_issue = self.fetch_sim_issue(row)
+            try:
+                full_issue = self.fetch_sim_issue(row)
+            except requests.exceptions.ReadTimeout as e:
+                print(str(e), file=sys.stderr)
+                continue
             if not full_issue:
                 continue
             for leaf in full_issue['page_texts']:
