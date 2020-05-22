@@ -167,7 +167,7 @@
     <div style="display: flex; width: 100%; justify-content: space-between; padding-top: 0.5em;">
       <div></div>
       <div>
-        <a href="#" style="order: -1;">User Guide</a>
+        <a href="#" style="order: -1;">{{ _("User Guide") }}</a>
       </div>
     </div>
   </div>
@@ -192,12 +192,14 @@
           <div class="one wide column computer only"></div>
           <div class="thirteen wide eleven wide computer column">
             <h3>Internet Archive</h3>
-            <p style="color: rgba(255, 255, 255, 0.5);">We are a 501(c)(3) non-profit, building a digital library of Internet sites and other cultural artifacts in digital form. Other projects include the <a href="https://web.archive.org">Wayback Machine</a>, <a href="https://archive.org">archive.org</a> <a href="https://openlibrary.org">openlibrary.org</a> and <a href="https://archive-it.org">archive-it.org</a>
+            <p style="color: rgba(255, 255, 255, 0.5);">
+            {% trans trimmed %}We are a 501(c)(3) non-profit, building a digital library of Internet sites and other cultural artifacts in digital form.{% endtrans %}
+            Other projects include <a href="https://web.archive.org">The Wayback Machine</a>, <a href="https://archive.org">archive.org</a> <a href="https://openlibrary.org">openlibrary.org</a> and <a href="https://archive-it.org">archive-it.org</a>
             <div class="ui horizontal inverted link list">
-              <a class="item" href="https://archive.org/about/">About Us</a>
-              <a class="item" href="https://archive.org/about/contact.php">Contact Us</a>
-              <a class="item" href="https://archive.org/about/terms.php">Policies</a>
-              <a class="item" href="https://archive.org/donate">Donate</a>
+              <a class="item" href="https://archive.org/about/">{{ _("About Us") }}</a>
+              <a class="item" href="https://archive.org/about/contact.php">{{ _("Contact Us") }}</a>
+              <a class="item" href="https://archive.org/about/terms.php">{{ _("Policies") }}</a>
+              <a class="item" href="https://archive.org/donate">{{ _("Donate") }}</a>
             </div>
           </div>
         </div>
@@ -210,7 +212,7 @@
           <a href="#" class="item">Text and Data Mining</a>
           <a href="#" class="item">Discussion Forum</a>
           <a href="#" class="item">Statistics</a>
-          <a href="#" class="item">Help</a>
+          <a href="/help" class="item">{{ _("Help") }}</a>
         </div>
       </div>
       <div class="three wide column">
@@ -219,8 +221,8 @@
           <a href="https://fatcat.wiki" class="item">Editable Catalog (Fatcat)</a>
           <a href="https://guide.fatcat.wiki" class="item">Contribute</a>
           <a href="/api/redoc" class="item">Search API</a>
-          <a href="https://status.fatcat.wiki" class="item">Service Status</a>
-          <a href="https://github.com/internetarchive/fatcat-scholar" class="item">Source Code</a>
+          <a href="https://status.fatcat.wiki" class="item">{{ _("Service Status") }}</a>
+          <a href="https://github.com/internetarchive/fatcat-scholar" class="item">{{ _("Source Code") }}</a>
         </div>
       </div>
     </div>

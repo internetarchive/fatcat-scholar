@@ -33,7 +33,7 @@
       {% elif paper.biblio.release_type in ("book", "chapter", "dataset") %}
         [{{ _(paper.biblio.release_type) }}]
       {% elif not paper.biblio.release_type %}
-        <span style="color: red;">[media?]</span>
+        <span style="color: red;">[{{ _("media?") }}]</span>
       {% else %}
         [{{ _(paper.biblio.release_type) }}]
       {% endif %}
@@ -89,7 +89,7 @@
   {% elif paper.biblio.release_stage and paper.biblio.release_stage != "published" %}
     <b style="color: red;"><code>[{{ paper.biblio.release_stage }}]</code></b>
   {% elif not paper.biblio.release_stage %}
-    <b style="color: red;"><code>[unpublished?]</code></b>
+    <b style="color: red;"><code>[{{ _("unpublished?") }}]</code></b>
   {% endif %}
 
   {# ### ABSTRACT / QUERY HIGHLIGHT #}
@@ -132,7 +132,7 @@
   <div style="margin-top: 0.2em;">
   {# colors to use: olive, brown, grey, pink, red, etc #}
   {% for tag in paper.tags %}
-    <span class="ui label small">{{ tag }}</span>
+    <span class="ui label small">{{ _(tag) }}</span>
   {% endfor %}
     {# TODO: remove doc for ES 7.x-style lack of type #}
     <a href="{{ settings.ELASTICSEARCH_BACKEND }}/_doc/{{ settings.ELASTICSEARCH_FULLTEXT_INDEX }}/{{ paper.key }}">
@@ -176,7 +176,7 @@
 {% endmacro %}
 
 {% macro query_option(options, selected) -%}
-<span style="color: rgba(0,0,0,0.4);">{{ options.label }}</span>
+<span style="color: rgba(0,0,0,0.4);">{{ _(options.label) }}</span>
 <div class="ui link list" style="margin-top: 0.3em;">
   {% if selected %}
     <input form="search_form" type="hidden" name="{{ options.slug }}" value="{{ selected }}">
@@ -188,7 +188,7 @@
       {% else %}
         <span>
       {% endif %}
-      {{ opt.label }}
+      {{ _(opt.label) }}
       </span>
     </button>
     <br>

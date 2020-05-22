@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-05-12 14:16-0700\n"
+"POT-Creation-Date: 2020-05-21 17:53-0700\n"
 "PO-Revision-Date: 2020-05-12 13:45-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh\n"
@@ -16,13 +16,164 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.8.0\n"
 
-#: fatcat_scholar/templates/home.html:8
-msgid "This is a longer paragraph, all of which should be translated."
-msgstr "这是一个较长的段落，所有段落均应翻译"
+#: fatcat_scholar/search.py:29
+msgid "Release Date"
+msgstr "发布日期"
+
+#: fatcat_scholar/search.py:33 fatcat_scholar/search.py:66
+msgid "All Time"
+msgstr "整天"
+
+#: fatcat_scholar/search.py:34
+msgid "Past Week"
+msgstr "上周"
+
+#: fatcat_scholar/search.py:35
+msgid "Past Year"
+msgstr "过去一年"
+
+#: fatcat_scholar/search.py:36
+msgid "Since 2000"
+msgstr "自2000年以来"
+
+#: fatcat_scholar/search.py:37
+msgid "Before 1925"
+msgstr "1925年之前"
+
+#: fatcat_scholar/search.py:41
+msgid "Resource Type"
+msgstr "资源类型"
+
+#: fatcat_scholar/search.py:45
+msgid "Papers"
+msgstr "文件"
+
+#: fatcat_scholar/search.py:46
+msgid "Reports"
+msgstr "报告书"
+
+#: fatcat_scholar/search.py:47
+msgid "Datasets"
+msgstr "数据集"
+
+#: fatcat_scholar/search.py:48 fatcat_scholar/search.py:56
+msgid "Everything"
+msgstr "一切"
+
+#: fatcat_scholar/search.py:52
+msgid "Availability"
+msgstr "可用性"
+
+#: fatcat_scholar/search.py:57
+msgid "Fulltext"
+msgstr "全文"
+
+#: fatcat_scholar/search.py:58
+msgid "Open Access"
+msgstr "开放存取"
+
+#: fatcat_scholar/search.py:62
+msgid "Sort Order"
+msgstr "排序"
+
+#: fatcat_scholar/search.py:67
+msgid "Recent First"
+msgstr "最近第一"
+
+#: fatcat_scholar/search.py:68
+msgid "Oldest First"
+msgstr "最早的优先"
+
+#: fatcat_scholar/templates/base.html:160 fatcat_scholar/templates/home.html:16
+msgid "by title, authors, identifiers..."
+msgstr "按标题，作者，标识符..."
+
+#: fatcat_scholar/templates/base.html:161 fatcat_scholar/templates/home.html:17
+msgid "Search"
+msgstr "搜索"
+
+#: fatcat_scholar/templates/base.html:170
+msgid "User Guide"
+msgstr "用户指南"
+
+#: fatcat_scholar/templates/base.html:196
+msgid ""
+"We are a 501(c)(3) non-profit, building a digital library of Internet "
+"sites and other cultural artifacts in digital form."
+msgstr "我们是501（c）（3）非营利组织，以数字形式建立了互联网站点和其他文化人工制品的数字图书馆"
+
+#: fatcat_scholar/templates/base.html:199
+msgid "About Us"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:200
+msgid "Contact Us"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:201
+msgid "Policies"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:202
+msgid "Donate"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:215
+msgid "Help"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:224
+msgid "Service Status"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:225
+msgid "Source Code"
+msgstr ""
 
 #: fatcat_scholar/templates/home.html:10
-msgid "this is a quick"
-msgstr "这是一个快速"
+msgid "Search Inside Millions of Research Papers"
+msgstr "搜索数以百万计的研究论文"
+
+#: fatcat_scholar/templates/home.html:24
+msgid ""
+"This fulltext search index includes over 25 million research articles and"
+" other documents preserved in the Internet Archive."
+msgstr "全文检索索引包括超过2500万篇研究文章和Internet档案中保存的其他文档"
+
+#: fatcat_scholar/templates/home.html:25
+msgid ""
+"The collection spans from digitized copies of eighteenth century journals"
+" though the latest Open Access conference proceedings and pre-prints "
+"crawled from the World Wide Web."
+msgstr "该馆藏涵盖了18世纪期刊的数字化副本，但最新的Open Access会议记录和预印本却是从万维网上抓取的。"
+
+#: fatcat_scholar/templates/search.html:8
+msgid "Filters"
+msgstr "搜索过滤器"
+
+#: fatcat_scholar/templates/search.html:58
+msgid "Backend Search Engine Error"
+msgstr ""
+
+#: fatcat_scholar/templates/search.html:60
+msgid "Search Query Error"
+msgstr ""
+
+#: fatcat_scholar/templates/search.html:78
+msgid "We didn't find any documents matching your query"
+msgstr "找不到符合您查询条件的文件"
+
+#: fatcat_scholar/templates/search.html:91
+msgid "Enter a query in the box above to get started"
+msgstr ""
+
+#: fatcat_scholar/templates/search_macros.html:36
+msgid "media?"
+msgstr ""
+
+#: fatcat_scholar/templates/search_macros.html:92
+msgid "unpublished?"
+msgstr ""
 

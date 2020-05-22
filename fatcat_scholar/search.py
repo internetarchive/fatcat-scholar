@@ -5,6 +5,7 @@ Helpers to make elasticsearch queries.
 
 import sys
 import json
+from gettext import gettext
 import datetime
 import elasticsearch
 from pydantic import BaseModel
@@ -13,6 +14,8 @@ from dataclasses import dataclass
 from elasticsearch_dsl import Search, Q
 from typing import List, Dict, Tuple, Optional, Any, Sequence
 
+# i18n note: the use of gettext below doesn't actually do the translation here,
+# it just ensures that the strings are caught by babel for translation later
 
 class FulltextQuery(BaseModel):
     q: Optional[str] = None
@@ -23,48 +26,49 @@ class FulltextQuery(BaseModel):
     filter_availability: Optional[str] = None
     sort_order: Optional[str] = None
     time_options: Any = {
-        "label": "Release Date",
+        "label": gettext("Release Date"),
         "slug": "filter_time",
         "default": "all_time",
         "list": [
-            {"label": "All Time", "slug": "all_time"},
-            {"label": "Past Week", "slug": "past_week"},
-            {"label": "Past Year", "slug": "past_year"},
-            {"label": "Since 2000", "slug": "since_2000"},
-            {"label": "Before 1925", "slug": "before_1925"},
+            {"label": gettext("All Time"), "slug": "all_time"},
+            {"label": gettext("Past Week"), "slug": "past_week"},
+            {"label": gettext("Past Year"), "slug": "past_year"},
+            {"label": gettext("Since 2000"), "slug": "since_2000"},
+            {"label": gettext("Before 1925"), "slug": "before_1925"},
         ],
     }
     type_options: Any = {
-        "label": "Resource Type",
+        "label": gettext("Resource Type"),
         "slug": "filter_type",
         "default": "papers",
         "list": [
-            {"label": "Papers", "slug": "papers"},
-            {"label": "Reports", "slug": "reports"},
-            {"label": "Datasets", "slug": "datasets"},
-            {"label": "Everything", "slug": "everything"},
+            {"label": gettext("Papers"), "slug": "papers"},
+            {"label": gettext("Reports"), "slug": "reports"},
+            {"label": gettext("Datasets"), "slug": "datasets"},
+            {"label": gettext("Everything"), "slug": "everything"},
         ],
     }
     availability_options: Any = {
-        "label": "Availability",
+        "label": gettext("Availability"),
         "slug": "filter_availability",
         "default": "everything",
         "list": [
-            {"label": "Everything", "slug": "everything"},
-            {"label": "Fulltext", "slug": "fulltext"},
-            {"label": "Open Access", "slug": "oa"},
+            {"label": gettext("Everything"), "slug": "everything"},
+            {"label": gettext("Fulltext"), "slug": "fulltext"},
+            {"label": gettext("Open Access"), "slug": "oa"},
         ],
     }
     sort_options: Any = {
-        "label": "Sort Order",
+        "label": gettext("Sort Order"),
         "slug": "sort_order",
         "default": "relevancy",
         "list": [
-            {"label": "All Time", "slug": "relevancy"},
-            {"label": "Recent First", "slug": "time_desc"},
-            {"label": "Oldest First", "slug": "time_asc"},
+            {"label": gettext("All Time"), "slug": "relevancy"},
+            {"label": gettext("Recent First"), "slug": "time_desc"},
+            {"label": gettext("Oldest First"), "slug": "time_asc"},
         ],
     }
+
 
 class FulltextHits(BaseModel):
     count_returned: int

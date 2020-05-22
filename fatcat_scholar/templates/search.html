@@ -5,7 +5,7 @@
 <div class="tablet-only" style="margin-top: 1.0em;">
 
   <details class="search_filters">
-    <summary style="float: right;"><i class="filter icon"></i>Filters</summary>
+    <summary style="float: right;"><i class="filter icon"></i>{{ _("Filters") }}</summary>
     <p>
     {{ search_macros.query_option(query.time_options, query.filter_time) }}
     {{ search_macros.query_option(query.type_options, query.filter_type) }}
@@ -55,9 +55,9 @@
         <div class="content">
           <div class="header">
             {% if search_error.type == "backend" %}
-              Backend Search Engine Error
+              {% trans %}Backend Search Engine Error{% endtrans %}
             {% elif search_error.type == "query" %}
-              Query Error
+              {% trans %}Search Query Error{% endtrans %}
             {% endif %}
           </div>
           <p>Computer said: <code>{{ search_error.message }}</code>
@@ -75,7 +75,7 @@
       <div class="ui placeholder segment" style="height: 100%;">
         <div class="ui icon header">
           <i class="search icon"></i>
-          We didn't find any documents matching your query
+          {% trans %}We didn't find any documents matching your query{% endtrans %}
         </div>
         <div class="inline">
           <a href="https://archive.org/search.php?sin=TXT&query={{ query.q|urlencode }}" class="ui button" style="margin: 0.5em;">Try archive.org</a>
@@ -88,7 +88,7 @@
       <div class="ui placeholder segment" style="height: 100%;">
         <div class="ui icon header">
           <i class="search icon"></i>
-          Enter a query in the box above to get started
+          {% trans %}Enter a query in the box above to get started{% endtrans %}
         </div>
       </div>
     {% endif %}
