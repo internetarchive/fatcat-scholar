@@ -197,10 +197,10 @@ def scrub_text(raw: str, mimetype: str = None) -> str:
 
 def contrib_name(contrib: ReleaseContrib) -> str:
     # TODO: support more cultural normals for name presentation
-    if contrib.given_name and contrib.surname:
-        return f"{contrib.given_name} {contrib.surname}"
-    elif contrib.raw_name:
+    if contrib.raw_name:
         return contrib.raw_name
+    elif contrib.given_name and contrib.surname:
+        return f"{contrib.given_name} {contrib.surname}"
     elif contrib.surname:
         return contrib.surname
     else:
@@ -291,7 +291,7 @@ def es_biblio_from_release(release: ReleaseEntity) -> ScholarBiblio:
         issns=issns,
 
         # TODO; these filters sort of meh. refactor to be above?
-        contrib_names=list(filter(lambda x: bool(x), [contrib_name(c) for c in release.contribs if c.index])),
+        contrib_names=list(filter(lambda x: bool(x), [contrib_name(c) for c in release.contribs])),
         contrib_count = len([c for c in release.contribs if c.index]),
         affiliations=list(filter(lambda x: bool(x), [contrib_affiliation(c) for c in release.contribs if c.index])),
     )
