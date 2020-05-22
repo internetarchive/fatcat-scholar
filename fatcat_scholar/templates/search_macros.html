@@ -135,7 +135,7 @@
     <span class="ui label small">{{ _(tag) }}</span>
   {% endfor %}
     {# TODO: remove doc for ES 7.x-style lack of type #}
-    <a href="{{ settings.ELASTICSEARCH_BACKEND }}/_doc/{{ settings.ELASTICSEARCH_FULLTEXT_INDEX }}/{{ paper.key }}">
+    <a href="{{ settings.ELASTICSEARCH_BACKEND }}/{{ settings.ELASTICSEARCH_FULLTEXT_INDEX }}/_doc/{{ paper.key }}">
       <span class="ui label small">indexed</span>
     </a>
   </div>
