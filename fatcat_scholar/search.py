@@ -86,7 +86,7 @@ def do_fulltext_search(query: FulltextQuery, deep_page_limit: int = 2000) -> Ful
     search = Search(using=es_client, index=settings.ELASTICSEARCH_FULLTEXT_INDEX)
 
     # Convert raw DOIs to DOI queries
-    if len(query.q.split()) == 1 and query.q.startswith("10.") and query.q.count("/") >= 1:
+    if query.q and len(query.q.split()) == 1 and query.q.startswith("10.") and query.q.count("/") >= 1:
         search = search.filter("terms", doi=query.q)
         query.q = "*"
 
