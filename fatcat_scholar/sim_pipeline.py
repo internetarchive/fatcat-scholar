@@ -116,6 +116,9 @@ class SimPipeline():
                 continue
             try:
                 full_issue = self.fetch_sim_issue(row)
+            except requests.exceptions.ConnectionError as e:
+                print(str(e), file=sys.stderr)
+                continue
             except requests.exceptions.ReadTimeout as e:
                 print(str(e), file=sys.stderr)
                 continue

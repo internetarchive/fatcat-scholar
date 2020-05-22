@@ -258,6 +258,9 @@ class WorkPipeline():
             # XXX: control flow tweak?
             try:
                 sim_fulltext = self.fetch_sim(sim_issue, sim_pub, release.pages, release.ident)
+            except requests.exceptions.ConnectionError as e:
+                print(str(e), file=sys.stderr)
+                continue
             except requests.exceptions.ReadTimeout as e:
                 print(str(e), file=sys.stderr)
                 continue
