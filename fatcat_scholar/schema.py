@@ -8,9 +8,9 @@ auto-conversion of datetime objects.
 import ftfy
 import datetime
 from enum import Enum
-from typing import Optional, List, Any
-from xml.etree import cElementTree as ET
 from pydantic import BaseModel
+from bs4 import BeautifulSoup
+from typing import Optional, List, Any
 
 from fatcat_openapi_client import ReleaseEntity, ReleaseContrib
 from fatcat_scholar.api_entities import entity_to_dict
@@ -185,12 +185,11 @@ def scrub_text(raw: str, mimetype: str = None) -> str:
 
     TODO: barely implemented yet
     """
-    if "<jats" in raw or (mimetype and "application/xml" in mimetype):
+    if "<jats" in raw or "/>" in raw or (mimetype and "application/xml" in mimetype):
         try:
-            root = ET.fromstring(raw)
-            raw = " ".join(list(root.itertext())) or ""
-        except:
-            pass
+            raw = BeautifulSoup(raw, "lxml").get_text()
+        except Exception as e:
+            raise e
     raw = ftfy.fix_text(raw)
     assert raw, "Empty abstract"
     return raw
