@@ -30,14 +30,28 @@
   */
   </script>
   <style>
+
+
     {# bnewbold: fix light grey bars in header #}
     .ui.inverted.menu .item:before { background: none; }
 
-    @media only screen and (max-width: 479px) {
+    @media only screen and (max-width: 767px) {
       .mobile-hide { display: none !important; }
     }
-    @media only screen and (min-width: 480px) {
+    @media only screen and (min-width: 768px) {
       .mobile-only { display: none !important; }
+    }
+    @media only screen and (max-width: 991px) {
+      .tablet-hide { display: none !important; }
+    }
+    @media only screen and (min-width: 992px) {
+      .tablet-only { display: none !important; }
+    }
+    @media only screen and (min-width: 1200px) {
+      .ui.container {
+        font-size: 16px;
+        line-height: 20px;
+      }
     }
 
     {# for fulltext search result highlighting #}

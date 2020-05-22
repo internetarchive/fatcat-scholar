@@ -132,16 +132,16 @@ async def web_search(request: Request, query: FulltextQuery = Depends(FulltextQu
     if content.mimetype == "application/json":
         return await search(query)
     hits : Optional[FulltextHits] = None
-    search_error: Optional[str] = None
+    search_error: Optional[dict] = None
     status_code: int = 200
     if query.q is not None:
         try:
             hits = do_fulltext_search(query)
         except ValueError as e:
-            search_error = str(e)
+            search_error = dict(type="query", message=str(e))
             status_code = 400
         except IOError as e:
-            search_error = str(e)
+            search_error = dict(type="backend", message=str(e))
             status_code = 500
     return i18n_templates[lang.code].TemplateResponse(
         "search.html",

@@ -162,7 +162,10 @@ def do_fulltext_search(query: FulltextQuery, deep_page_limit: int = 2000) -> Ful
     except elasticsearch.exceptions.RequestError as e:
         # this is a "user" error
         print("elasticsearch 400: " + str(e.info), file=sys.stderr)
-        raise ValueError(str(e.info))
+        if e.info.get('error', {}).get('root_cause', {}):
+            raise ValueError(str(e.info['error']['root_cause'][0].get('reason')))
+        else:
+            raise ValueError(str(e.info))
     except elasticsearch.exceptions.TransportError as e:
         # all other errors
         print("elasticsearch non-200 status code: {}".format(e.info), file=sys.stderr)

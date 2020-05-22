@@ -2,7 +2,7 @@
 {% extends "base.html" %}
 
 {% block fullmain %}
-<div class="mobile-only" style="margin-top: 1.0em;">
+<div class="tablet-only" style="margin-top: 1.0em;">
 
   <details class="search_filters">
     <summary style="float: right;"><i class="filter icon"></i>Filters</summary>
@@ -19,12 +19,14 @@
     <span style="font-size: 1.5em;">{{ "{:,}".format(hits.count_found) }}</span>
     Hits
     <span style="color: rgba(0,0,0,0.4);">in {{ "{:0.2}".format(hits.query_time_ms/1000.0) }}sec</span>
+  {% else %}
+    &nbsp;
   {% endif %}
 </div>
 
 <div class="ui equal height stackable divided grid" style="margin-top: 1em;">
 
-  <div class="ui mobile-hide two wide column">
+  <div class="ui tablet-hide two wide column">
     {% if hits %}
       <div style="width: 100%; text-align: right;">
         {# <h2>{{ "{:,}".format(hits.count_found) }}</h2> #}
@@ -48,9 +50,20 @@
 
   <div class="ui fourteen wide column">
     {% if search_error %}
-      <div class="ui error message">
-        <div class="header">Query Error</div>
-        <p>{{ search_error }}</p>
+      <div class="ui icon error message">
+        <i class="ban icon"></i>
+        <div class="content">
+          <div class="header">
+            {% if search_error.type == "backend" %}
+              Backend Search Engine Error
+            {% elif search_error.type == "query" %}
+              Query Error
+            {% endif %}
+          </div>
+          <p>Computer said: <code>{{ search_error.message }}</code>
+          <p>Query parsing is currently very naive. Sometimes you can fix this
+          problem by adding quotes around terms or entire phrases.
+        </div>
       </div>
     {% elif hits and hits.results %}
       {% if hits.results %}
