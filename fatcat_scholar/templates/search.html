@@ -78,10 +78,10 @@
           {% trans %}We didn't find any documents matching your query{% endtrans %}
         </div>
         <div class="inline">
-          <a href="https://archive.org/search.php?sin=TXT&query={{ query.q|urlencode }}" class="ui button" style="margin: 0.5em;">Try archive.org</a>
-          <a href="https://fatcat.wiki/search&q={{ query.q|urlencode }}" class="ui button" style="margin: 0.5em;">Try fatcat.wiki</a>
-          <a href="https://www.semanticscholar.org/search?q={{ query.q|urlencode }}" class="ui button" style="margin: 0.5em;">Try Semantic Scholar</a>
-          <a href="https://scholar.google.com/scholar?q={{ query.q|urlencode }}" class="ui button" style="margin: 0.5em;">Try Google Scholar</a>
+          <a href="https://archive.org/search.php?sin=TXT&query={{ query.q|urlencode }}" target="_blank" class="ui button" style="margin: 0.5em;">Try archive.org</a>
+          <a href="https://fatcat.wiki/search&q={{ query.q|urlencode }}" target="_blank" class="ui button" style="margin: 0.5em;">Try fatcat.wiki</a>
+          <a href="https://www.semanticscholar.org/search?q={{ query.q|urlencode }}" target="_blank" class="ui button" style="margin: 0.5em;">Try Semantic Scholar</a>
+          <a href="https://scholar.google.com/scholar?q={{ query.q|urlencode }}" target="_blank" class="ui button" style="margin: 0.5em;">Try Google Scholar</a>
         </div>
       </div>
     {% else %}

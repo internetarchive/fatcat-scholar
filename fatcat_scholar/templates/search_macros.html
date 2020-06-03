@@ -18,7 +18,7 @@
       {% else %}
       <a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}"
       {% endif %}
-      style="color: #2224c7;">
+      style="color: #2224c7;" target="_blank">
         {% if paper.biblio.title %}
           {{ paper.biblio.title[:512] }}
           {% if paper.biblio.title|length > 512 %}...{% endif %}
@@ -48,7 +48,7 @@
       {% endif %}
 
     {% elif paper.doc_type == "sim_page" %}
-      <a href="https://archive.org/details/{{ paper.ia_sim.issue_item }}/page/{{ paper.ia_sim.first_page }}" style="color: #2224c7;">Page {{ paper.ia_sim.first_page }}</a> of <a href="https://archive.org/details/{{ paper.ia_sim.issue_item }}" style="color: #2224c7;">{{ paper.biblio.container_name }}</a> (<a href="https://archive.org/details/{{ paper.ia_sim.issue_item }}" style="color: #2224c7;">Vol. {{ paper.biblio.volume }}, Issue {{ paper.biblio.issue }}</a>)
+      <a target="_blank" href="https://archive.org/details/{{ paper.ia_sim.issue_item }}/page/{{ paper.ia_sim.first_page }}" style="color: #2224c7;">Page {{ paper.ia_sim.first_page }}</a> of <a target="_blank" href="https://archive.org/details/{{ paper.ia_sim.issue_item }}" style="color: #2224c7;">{{ paper.biblio.container_name }}</a> (<a target="_blank" href="https://archive.org/details/{{ paper.ia_sim.issue_item }}" style="color: #2224c7;">Vol. {{ paper.biblio.volume }}, Issue {{ paper.biblio.issue }}</a>)
     {% endif %}
 
   </div>
@@ -72,9 +72,9 @@
   {% if paper.biblio.container_name %}
     <i>
     {% if paper.biblio.container_id %}
-      <a href="https://fatcat.wiki/container/{{ paper.biblio.container_id }}" style="color: black;">{{ paper.biblio.container_name }}</a>
+      <a target="_blank" href="https://fatcat.wiki/container/{{ paper.biblio.container_id }}" style="color: black;">{{ paper.biblio.container_name }}</a>
     {% elif paper.doc_type == "sim_page" %}
-      <a href="https://archive.org/details/{{ paper.ia_sim.pub_collection }}" style="color: black;">{{ paper.biblio.container_name }}</a>
+      <a target="_blank" href="https://archive.org/details/{{ paper.ia_sim.pub_collection }}" style="color: black;">{{ paper.biblio.container_name }}</a>
     {% else %}
       {{ paper.biblio.container_name }}
     {% endif %}
@@ -113,19 +113,19 @@
 
   {# ### IDENTIFIERS #}
   {% if paper.biblio.doi %}
-    <a href="https://doi.org/{{paper.biblio.doi }}" style="color: green;">doi:{{ paper.biblio.doi }}</a> &nbsp;
+    <a target="_blank" href="https://doi.org/{{paper.biblio.doi }}" style="color: green;">doi:{{ paper.biblio.doi }}</a> &nbsp;
   {% endif %}
   {% if paper.biblio.pmid %}
-    <a href="https://www.ncbi.nlm.nih.gov/pubmed/{{paper.biblio.pmid }}" style="color: green;">pmid:{{ paper.biblio.pmid }}</a> &nbsp;
+    <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/{{paper.biblio.pmid }}" style="color: green;">pmid:{{ paper.biblio.pmid }}</a> &nbsp;
   {% endif %}
   {% if paper.biblio.pmcid %}
-    <a href="https://pubmed.ncbi.nlm.nih.gov/{{paper.biblio.pmcid }}/" style="color: green;">pmcid:{{ paper.biblio.pmcid }}</a> &nbsp;
+    <a target="_blank" href="https://pubmed.ncbi.nlm.nih.gov/{{paper.biblio.pmcid }}/" style="color: green;">pmcid:{{ paper.biblio.pmcid }}</a> &nbsp;
   {% endif %}
   {% if paper.biblio.arxiv_id %}
-    <a href="https://arxiv.org/abs/{{paper.biblio.arxiv_id }}" style="color: green;">arXiv:{{ paper.biblio.arxiv_id }}</a> &nbsp;
+    <a target="_blank" href="https://arxiv.org/abs/{{paper.biblio.arxiv_id }}" style="color: green;">arXiv:{{ paper.biblio.arxiv_id }}</a> &nbsp;
   {% endif %}
   {% if paper.biblio.release_ident %}
-    <a href="https://fatcat.wiki/release/{{paper.biblio.release_ident}}" style="color: green;">fatcat:{{ paper.biblio.release_ident}}</a> &nbsp;
+    <a target="_blank" href="https://fatcat.wiki/release/{{paper.biblio.release_ident}}" style="color: green;">fatcat:{{ paper.biblio.release_ident}}</a> &nbsp;
   {% endif %}
 
   {# ### SOURCE TAGS #}
@@ -135,7 +135,7 @@
     <span class="ui label small">{{ _(tag) }}</span>
   {% endfor %}
     {# TODO: remove doc for ES 7.x-style lack of type #}
-    <a href="{{ settings.ELASTICSEARCH_BACKEND }}/{{ settings.ELASTICSEARCH_FULLTEXT_INDEX }}/_doc/{{ paper.key }}">
+    <a target="_blank" href="{{ settings.ELASTICSEARCH_BACKEND }}/{{ settings.ELASTICSEARCH_FULLTEXT_INDEX }}/_doc/{{ paper.key }}">
       <span class="ui label small">indexed</span>
     </a>
   </div>
@@ -146,12 +146,12 @@
       {# <img src="{{ settings.COVID19_FULLTEXT_HOST }}{{ paper.fulltext.thumbnail_url }}" style="border: 1px solid grey; max-height: 12em; max-width: 100%;"> #}
     {% if paper.fulltext.thumbnail_url %}
       <div class="ui card" style="margin-bottom: 0.2em;">
-        <a class="image" href="{{ paper.fulltext.access_url}}">
+        <a class="image" target="_blank" href="{{ paper.fulltext.access_url}}">
           <img src="{{ paper.fulltext.thumbnail_url }}">
         </a>
       </div>
     {% endif %}
-    <a href="{{ paper.fulltext.access_url}}">
+    <a target="_blank" href="{{ paper.fulltext.access_url}}">
       <div style="width: 100%; opacity: 0.65; text-align: center;">
         {# TODO: could have other hover info, like mimetype icon and file size? #}
         <span>
