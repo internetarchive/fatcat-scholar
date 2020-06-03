@@ -128,16 +128,22 @@
     <a target="_blank" href="https://fatcat.wiki/release/{{paper.biblio.release_ident}}" style="color: green;">fatcat:{{ paper.biblio.release_ident}}</a> &nbsp;
   {% endif %}
 
-  {# ### SOURCE TAGS #}
+  {# ### TAGS #}
   <div style="margin-top: 0.2em;">
   {# colors to use: olive, brown, grey, pink, red, etc #}
+  {# TODO: remove doc for ES 7.x-style lack of type #}
+  {# TODO: only show 'json' link if from cluster? #}
+  <a target="_blank" href="{{ settings.ELASTICSEARCH_BACKEND }}/{{ settings.ELASTICSEARCH_FULLTEXT_INDEX }}/_doc/{{ paper.key }}">
+    <span class="ui label small">json</span>
+  </a>
+  {% if paper.biblio.release_ident %}
+    <a target="_blank" href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}">
+      <span class="ui label small">metadata</span>
+    </a>
+  {% endif %}
   {% for tag in paper.tags %}
     <span class="ui label small">{{ _(tag) }}</span>
   {% endfor %}
-    {# TODO: remove doc for ES 7.x-style lack of type #}
-    <a target="_blank" href="{{ settings.ELASTICSEARCH_BACKEND }}/{{ settings.ELASTICSEARCH_FULLTEXT_INDEX }}/_doc/{{ paper.key }}">
-      <span class="ui label small">indexed</span>
-    </a>
   </div>
 
 </div>
