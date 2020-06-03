@@ -153,7 +153,7 @@
         </div>
       </div>
       <div class="ui twelve wide column">
-        <form class="" id="search_form" action="{{ lang_prefix }}/search") }}" method="get" role="search" aria-label="papers" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
+        <form class="" id="search_form" action="{{ lang_prefix }}/search" method="get" role="search" aria-label="papers" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
           <meta itemprop="target" content="https://{{ settings.SCHOLAR_DOMAIN }}/fulltext/search?q={q}"/>
           <div class="ui form">
             <div class="ui action input large fluid">
@@ -167,7 +167,7 @@
     <div style="display: flex; width: 100%; justify-content: space-between; padding-top: 0.5em;">
       <div></div>
       <div>
-        <a href="#" style="order: -1;">{{ _("User Guide") }}</a>
+        <a href="{{ lang_prefix }}/help" style="order: -1;">{{ _("User Guide") }}</a>
       </div>
     </div>
   </div>
@@ -207,20 +207,20 @@
       <div class="three wide column">
         <h4 class="ui inverted header">scholar.archive.org</h4>
         <div class="ui inverted link list">
-          <a href="#" class="item">How It Works</a>
-          <a href="#" class="item">Content Sources</a>
-          <a href="#" class="item">Text and Data Mining</a>
-          <a href="#" class="item">Discussion Forum</a>
-          <a href="#" class="item">Statistics</a>
+          <a href="{{ lang_prefix }}/about#howitworks" class="item">{{ _("How It Works") }}</a>
+          <a href="{{ lang_prefix }}/about#sources" class="item">{{ _("Content Sources") }}</a>
+          <a href="{{ lang_prefix }}/about#tdm" class="item">{{ _("Text and Data Mining") }}</a>
+          <a href="#" class="item">{{ _("Discussion Forum") }}</a>
+          <a href="#" class="item">{{ _("Statistics") }}</a>
           <a href="/help" class="item">{{ _("Help") }}</a>
         </div>
       </div>
       <div class="three wide column">
         <h4 class="ui inverted header">Open Infrastructure</h4>
         <div class="ui inverted link list">
-          <a target="_blank" href="https://fatcat.wiki" class="item">Editable Catalog (Fatcat)</a>
-          <a target="_blank" href="https://guide.fatcat.wiki" class="item">Contribute</a>
-          <a target="_blank" href="/api/redoc" class="item">Search API</a>
+          <a target="_blank" href="https://fatcat.wiki" class="item">{{ _("Editable Catalog (Fatcat)") }}</a>
+          <a target="_blank" href="https://guide.fatcat.wiki" class="item">{{ _("Contribute") }}</a>
+          <a target="_blank" href="/api/redoc" class="item">{{ _("Search API") }}</a>
           <a target="_blank" href="https://status.fatcat.wiki" class="item">{{ _("Service Status") }}</a>
           <a target="_blank" href="https://github.com/internetarchive/fatcat-scholar" class="item">{{ _("Source Code") }}</a>
         </div>

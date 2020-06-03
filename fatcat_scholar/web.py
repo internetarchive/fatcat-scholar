@@ -126,6 +126,11 @@ async def web_about(request: Request, lang: LangPrefix = Depends(LangPrefix)):
     return i18n_templates[lang.code].TemplateResponse("about.html", {"request": request, "locale": lang.code, "lang_prefix": lang.prefix})
 
 
+@web.get("/help", include_in_schema=False)
+async def web_help(request: Request, lang: LangPrefix = Depends(LangPrefix)):
+    return i18n_templates[lang.code].TemplateResponse("help.html", {"request": request, "locale": lang.code, "lang_prefix": lang.prefix})
+
+
 @web.get("/search", include_in_schema=False)
 async def web_search(request: Request, query: FulltextQuery = Depends(FulltextQuery), lang: LangPrefix = Depends(LangPrefix), content: ContentNegotiation = Depends(ContentNegotiation)):
 

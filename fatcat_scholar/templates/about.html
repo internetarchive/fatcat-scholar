@@ -1,7 +1,61 @@
 {% extends "base.html" %}
 
 {% block main %}
-<h1>Some About Content</h1>
+<h1>About Scholarly Search</h1>
+<p><i>See also: <a href="{{ lang_prefix }}/help">User Guide</a> which lists
+some bugs and known issues</i>
 
-<p>Lorem ipsum
+<a name="howitworks"></a>
+<h3>How It Works</h3>
+
+<p>Content in this search index comes from preservation copies at the Internet
+Archive in one of three forms:
+
+<ul>
+  <li><b>public web content</b> in the Wayback Machine web archives
+  (web.archive.org), either identified from historic collecting, crawled
+  specifically to ensure long-term access to scholarly materials, or crawled at
+  the direction of our Archive-It partners
+  <li><b>digitized print material</b> from paper and microform collections
+  purchased and scanned by Internet Archive or our partners
+  <li><b>general materials</b> on the archive.org collections, including
+  content from partner organizations, uploads from the general public, and
+  mirrors of other projects
+</ul>
+
+<p>This <a href="https://www.youtube.com/watch?v=PARqfbYIdXQ">2019 FORCE11
+conference presentation</a> gives an overview of the technical infrastructure
+and goals of the project overall.
+
+<a name="sources"></a>
+<h3>Content Sources</h3>
+
+<p>Metadata comes from <a href="https://fatcat.wiki">fatcat.wiki</a>, an open
+user-editable catalog of scholarly work. It should be possible to track and
+attribute the provenance of content and metadata in all cases; please contact
+us if you have questions or concenrs.
+
+<a name="tdm"></a>
+<h3>Text and Data Mining</h3>
+
+<p>We intend to provide researcher access to the full corpus for text and data
+mining purposes. Derived datasets may also be posted publicly for analysis, for
+example a citation graph or N-gram frequencies by year. If you are interested
+or would like to see specific datasets made available, please contact us.
+
+<p>Currently snapshots of the full fatcat metadata corpus and upstream metadata
+sources are uploaded periodically to the
+<a href="https://archive.org/details/ia_biblio_metadata">Bulk Bibliographic
+Metadata</a> collection on archive.org.
+Read more in <a href="https://guide.fatcat.wiki/bulk_exports.html">the Fatcat Guide</a>.
+
+<a name="contact"></a>
+<h3>Contact Information</h3>
+
+<p>The organizational contact information for The Internet Archive is listed at
+<a href="https://archive.org/about/contact.php">https://archive.org/about/contact.php</a>.
+Queries about this search service and the fatcat catalog can be directed to
+<a href="mailto:webservices@archive.org">webservices@archive.org</a>.
+
+
 {% endblock %}

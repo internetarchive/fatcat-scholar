@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% macro example_search_box(query) -%}
+<form class="" id="" action="{{ lang_prefix }}/search" method="get" role="search" aria-label="papers" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
+    <meta itemprop="target" content="https://{{ settings.SCHOLAR_DOMAIN }}/fulltext/search?q={q}"/>
+    <div class="ui form">
+    <div class="ui action input large fluid">
+        <input type="search" value="{{ query }}" name="q" aria-label="search metadata" required itemprop="query-input" style="border-radius: 0; border: 1px #999 solid;">
+        <button class="ui green button" style="border-radius: 0; background-color: grey; font-size: 1.2rem;">{{ _("Try It") }}</button>
+    </div>
+    </div>
+</form>
+<br>
+{% endmacro %}
+
+{% block main %}
+<h1>Scholar Search User Guide</h1>
+<p><i>See also: <a href="{{ lang_prefix }}/about">About Scholarly Search</a></i>
+
+<p>In addition to the basic filtering and sorting options, this search
+interface also allows the use of Lucene query syntax in the search box. You can
+restrict term queries on multiple metadata fields using colon statements like
+<code>journal:Science</code>, set filters like <code>lang:de</code>, and
+apply range queries like <code>year:&gt;1989 year:&lt;2000</code>.
+
+
+<h3>Example Queries</h3>
+
+<p>Search for digitized pages about a topic from specific years:
+
+{{ example_search_box('"egyptian pyramid" access_type:ia_sim year:<2000') }}
+
+<p>Search for papers in Chinese matching a term:
+
+{{ example_search_box('lang:zh 临床表现多样') }}
+
+<p>Conference papers with an author name query:
+
+{{ example_search_box('type:paper-conference author:"natasha noy"') }}
+
+<h3>Details</h3>
+
+<p>A partial list of metadata fields is:
+
+<ul>
+  <li>title
+  <li>author
+  <li>journal
+  <li>year
+  <li>issue
+  <li>volume
+  <li>doi
+  <li>type (eg, "article-journal", "dataset", "book")
+  <li>stage (eg, "published", "submitted", "accepted", "draft")
+  <li>lang (value is a 2-character lower-case ISO lanuage code)
+  <li>country (value is a 2-character lower-case ISO country code)
+  <li>access_type (eg, "wayback", "ia_file", "ia_sim")
+  <li>tag
+</ul>
+
+<p>You can restrict to records where the field exists with an asterisk like
+<code>doi:*</code>, and negate any term like
+<code>!type:article-journal</code>.
+
+<p>In-depth documentation of the query syntax is available <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-query-notes">from the open source project</a>. The complete current search document schema can be fetched (in JSON format) <a href="https://search.fatcat.wiki/qa_scholar_fulltext/_mapping">from the search index itself</a>.
+
+
+<h3>Known Issues</h3>
+
+<p>This project is currently a <i>prototype</i>, with only a limited amount of
+content indexed.
+
+<p>Some known bugs and issues:
+
+<ul>
+  <li>web.archive.org PDF links sometimes return "not found" errors. This is impacting up to 1% of recent papers. In almost all cases there is a preserved copy of the file that should be available.
+  <li>Poor metadata quality for conference proceedings. Many are labeled "unpublished" and are not associated with 
+  <li>Duplicate versions of same work. Eg, different versions of the same paper or dataset. We are working on basic entity-deduplication in the fatcat catalog.
+  <li>Mis-matching of file content or version with work metadata. For example, sometimes pre-prints or author manuscripts are incorrectly associated with version-of-record metadata, or vica-versa.
+</ul>
+{% endblock %}
