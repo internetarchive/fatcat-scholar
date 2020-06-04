@@ -47,7 +47,7 @@
       {% elif paper.biblio.release_type in ("book", "chapter", "dataset") %}
         [{{ _(paper.biblio.release_type) }}]
       {% elif not paper.biblio.release_type %}
-        <span style="color: red;">[{{ _("media?") }}]</span>
+        [{{ _("unknown") }}]
       {% else %}
         [{{ _(paper.biblio.release_type) }}]
       {% endif %}
