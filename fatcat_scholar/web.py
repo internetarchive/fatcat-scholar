@@ -19,7 +19,9 @@ from fatcat_scholar.search import do_fulltext_search, FulltextQuery, FulltextHit
 print(f"dynaconf settings: {settings.as_dict()}", file=sys.stderr)
 
 I18N_LANG_TRANSLATIONS = ["de", "zh"]
-I18N_LANG_OPTIONS = I18N_LANG_TRANSLATIONS + [settings.I18N_LANG_DEFAULT,]
+I18N_LANG_OPTIONS = I18N_LANG_TRANSLATIONS + [
+    settings.I18N_LANG_DEFAULT,
+]
 
 
 class LangPrefix:
@@ -32,13 +34,14 @@ class LangPrefix:
     """
 
     def __init__(self, request: Request):
-        self.prefix : str = ""
-        self.code : str = settings.I18N_LANG_DEFAULT
+        self.prefix: str = ""
+        self.code: str = settings.I18N_LANG_DEFAULT
         for lang_option in I18N_LANG_OPTIONS:
             if request.url.path.startswith(f"/{lang_option}/"):
                 self.prefix = f"/{lang_option}"
                 self.code = lang_option
                 break
+
 
 class ContentNegotiation:
     """
@@ -49,30 +52,39 @@ class ContentNegotiation:
 
     def __init__(self, request: Request):
         self.mimetype = "text/html"
-        if request.headers.get('accept', '').startswith('application/json'):
+        if request.headers.get("accept", "").startswith("application/json"):
             self.mimetype = "application/json"
 
+
 api = APIRouter()
+
 
 @api.get("/", operation_id="get_home")
 async def home():
     return {"endpoints": {"/": "this", "/search": "fulltext search"}}
 
+
 @api.get("/search", operation_id="get_search")
 async def search(query: FulltextQuery = Depends(FulltextQuery)):
     return {"message": "search results would go here, I guess"}
 
+
 web = APIRouter()
+
 
 def locale_gettext(translations):
     def gt(s):
         return translations.ugettext(s)
+
     return gt
+
 
 def locale_ngettext(translations):
     def ngt(s, n):
         return translations.ungettext(s)
+
     return ngt
+
 
 def load_i18n_templates():
     """
@@ -90,53 +102,68 @@ def load_i18n_templates():
     d = dict()
     for lang_opt in I18N_LANG_OPTIONS:
         translations = babel.support.Translations.load(
-            dirname="fatcat_scholar/translations",
-            locales=[lang_opt],
+            dirname="fatcat_scholar/translations", locales=[lang_opt],
         )
         templates = Jinja2Templates(
-            directory="fatcat_scholar/templates",
-            extensions=["jinja2.ext.i18n"],
+            directory="fatcat_scholar/templates", extensions=["jinja2.ext.i18n"],
         )
         templates.env.install_gettext_translations(translations, newstyle=True)
         templates.env.install_gettext_callables(
-            locale_gettext(translations),
-            locale_ngettext(translations),
-            newstyle=True,
+            locale_gettext(translations), locale_ngettext(translations), newstyle=True,
         )
         # remove a lot of whitespace in HTML output with these configs
         templates.env.trim_blocks = True
         templates.env.istrip_blocks = True
         # pass-through application settings to be available in templates
-        templates.env.globals['settings'] = settings
+        templates.env.globals["settings"] = settings
         d[lang_opt] = templates
     return d
+
 
 i18n_templates = load_i18n_templates()
 
 
 @web.get("/", include_in_schema=False)
-async def web_home(request: Request, lang: LangPrefix = Depends(LangPrefix), content: ContentNegotiation = Depends(ContentNegotiation)):
+async def web_home(
+    request: Request,
+    lang: LangPrefix = Depends(LangPrefix),
+    content: ContentNegotiation = Depends(ContentNegotiation),
+):
     if content.mimetype == "application/json":
         return await home()
-    return i18n_templates[lang.code].TemplateResponse("home.html", {"request": request, "locale": lang.code, "lang_prefix": lang.prefix})
+    return i18n_templates[lang.code].TemplateResponse(
+        "home.html",
+        {"request": request, "locale": lang.code, "lang_prefix": lang.prefix},
+    )
 
 
 @web.get("/about", include_in_schema=False)
 async def web_about(request: Request, lang: LangPrefix = Depends(LangPrefix)):
-    return i18n_templates[lang.code].TemplateResponse("about.html", {"request": request, "locale": lang.code, "lang_prefix": lang.prefix})
+    return i18n_templates[lang.code].TemplateResponse(
+        "about.html",
+        {"request": request, "locale": lang.code, "lang_prefix": lang.prefix},
+    )
 
 
 @web.get("/help", include_in_schema=False)
 async def web_help(request: Request, lang: LangPrefix = Depends(LangPrefix)):
-    return i18n_templates[lang.code].TemplateResponse("help.html", {"request": request, "locale": lang.code, "lang_prefix": lang.prefix})
+    return i18n_templates[lang.code].TemplateResponse(
+        "help.html",
+        {"request": request, "locale": lang.code, "lang_prefix": lang.prefix},
+    )
 
 
 @web.get("/search", include_in_schema=False)
-async def web_search(request: Request, query: FulltextQuery = Depends(FulltextQuery), lang: LangPrefix = Depends(LangPrefix), content: ContentNegotiation = Depends(ContentNegotiation)):
+async def web_search(
+    request: Request,
+    query: FulltextQuery = Depends(FulltextQuery),
+    lang: LangPrefix = Depends(LangPrefix),
+    content: ContentNegotiation = Depends(ContentNegotiation),
+):
 
     if content.mimetype == "application/json":
         return await search(query)
-    hits : Optional[FulltextHits] = None
+    hits: Optional[FulltextHits] = None
     search_error: Optional[dict] = None
     status_code: int = 200
     if query.q is not None:
@@ -182,4 +209,3 @@ for lang_option in I18N_LANG_OPTIONS:
 app.include_router(api)
 
 app.mount("/static", StaticFiles(directory="fatcat_scholar/static"), name="static")
-

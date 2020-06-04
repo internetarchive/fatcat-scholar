@@ -1,9 +1,11 @@
-
 from io import StringIO
 from typing import List, Dict, Tuple, Optional, Any, Sequence
 import xml.etree.ElementTree as ET
 
-def djvu_extract_leaf_texts(blob: StringIO, only_leaves: Optional[List[int]] = None) -> Dict[int, str]:
+
+def djvu_extract_leaf_texts(
+    blob: StringIO, only_leaves: Optional[List[int]] = None
+) -> Dict[int, str]:
     """
     Takes an in-memory djvu XML string (note: not an actual djvu file, just the
     IA XML file type), and iterates throug
@@ -21,12 +23,12 @@ def djvu_extract_leaf_texts(blob: StringIO, only_leaves: Optional[List[int]] = N
             continue
 
         # <OBJECT data="file://localhost//tmp/derive/ERIC_ED441501//ERIC_ED441501.djvu" height="6545" type="image/x.djvu" usemap="ERIC_ED441501_0002.djvu" width="5048">
-        usemap = element.get('usemap')
+        usemap = element.get("usemap")
         if not usemap:
             continue
         leaf_num = None
         try:
-            leaf_num = int(usemap.replace('.djvu', '').split('_')[-1])
+            leaf_num = int(usemap.replace(".djvu", "").split("_")[-1])
         except:
             continue
         if only_leaves is not None and leaf_num is not None:
@@ -42,7 +44,7 @@ def djvu_extract_leaf_texts(blob: StringIO, only_leaves: Optional[List[int]] = N
             if p_text:
                 paragraph_texts.append(p_text)
         page_text = "\n".join(paragraph_texts)
-        #print(f"### {leaf_num}\n{page_text}\n")
+        # print(f"### {leaf_num}\n{page_text}\n")
         if page_text:
             leaf_text[leaf_num] = page_text
         element.clear()

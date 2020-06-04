@@ -1,9 +1,9 @@
-
 import typing
 import jinja2
 
 from starlette.background import BackgroundTask
 from starlette.templating import _TemplateResponse
+
 
 class Jinja2Templates:
     """
@@ -15,7 +15,9 @@ class Jinja2Templates:
         assert jinja2 is not None, "jinja2 must be installed to use Jinja2Templates"
         self.env = self.get_env(directory, extensions)
 
-    def get_env(self, directory: str, extensions: typing.List[str] = []) -> "jinja2.Environment":
+    def get_env(
+        self, directory: str, extensions: typing.List[str] = []
+    ) -> "jinja2.Environment":
         @jinja2.contextfunction
         def url_for(context: dict, name: str, **path_params: typing.Any) -> str:
             request = context["request"]

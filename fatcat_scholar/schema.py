@@ -1,4 +1,3 @@
-
 """
 Originally wrote these as dataclasses using pydantic.dataclasses, but we don't
 get serialization for free with those. This is useful for things like
@@ -21,6 +20,7 @@ from fatcat_scholar.api_entities import entity_to_dict
 class DocType(str, Enum):
     work = "work"
     sim_page = "sim_page"
+
 
 class IntermediateBundle(BaseModel):
     doc_type: DocType
@@ -47,6 +47,7 @@ class AccessType(str, Enum):
     loginwall = "loginwall"
     shadow = "shadow"
 
+
 class ScholarBiblio(BaseModel):
     release_ident: Optional[str]
     title: Optional[str]
@@ -60,12 +61,12 @@ class ScholarBiblio(BaseModel):
     lang_code: Optional[str]
     country_code: Optional[str]
     volume: Optional[str]
-    volume_int: Optional[str]   # TODO: needed?
+    volume_int: Optional[str]  # TODO: needed?
     issue: Optional[str]
-    issue_int: Optional[str]    # TODO: needed?
+    issue_int: Optional[str]  # TODO: needed?
     pages: Optional[str]
     first_page: Optional[str]
-    first_page_int: Optional[str] # TODO: needed?
+    first_page_int: Optional[str]  # TODO: needed?
     number: Optional[str]
 
     doi: Optional[str]
@@ -93,6 +94,7 @@ class ScholarBiblio(BaseModel):
     contrib_names: List[str]
     affiliations: List[str]
 
+
 class ScholarFulltext(BaseModel):
     lang_code: Optional[str]
     body: str
@@ -105,6 +107,7 @@ class ScholarFulltext(BaseModel):
     thumbnail_url: Optional[str]
     access_url: Optional[str]
     access_type: Optional[AccessType]
+
 
 class ScholarRelease(BaseModel):
     ident: Optional[str]
@@ -133,15 +136,18 @@ class ScholarRelease(BaseModel):
     container_issnl: Optional[str]
     container_type: Optional[str]
 
+
 class ScholarSim(BaseModel):
     issue_item: str
     pub_collection: str
     sim_pubid: str
     first_page: Optional[str]
 
+
 class ScholarAbstract(BaseModel):
     body: str
     lang_code: Optional[str]
+
 
 class ScholarAccess(BaseModel):
     access_type: AccessType
@@ -150,9 +156,10 @@ class ScholarAccess(BaseModel):
     file_ident: Optional[str]
     release_ident: Optional[str]
 
+
 class ScholarDoc(BaseModel):
     key: str
-    doc_type: str # enum: work or page
+    doc_type: str  # enum: work or page
     doc_index_ts: datetime.datetime
     work_ident: Optional[str]
     tags: List[str] = []
@@ -164,28 +171,32 @@ class ScholarDoc(BaseModel):
     releases: List[ScholarRelease]
     access: List[ScholarAccess]
 
+
 def doi_split_prefix(doi: str) -> str:
-    return doi.split('/')[0]
+    return doi.split("/")[0]
+
 
 def release_doi_registrar(release: ReleaseEntity) -> Optional[str]:
     if not release.ext_ids.doi or not release.extra:
         return None
-    for registrar in ('crossref', 'datacite', 'jalc'):
+    for registrar in ("crossref", "datacite", "jalc"):
         if registrar in release.extra:
             return registrar
     # TODO: should we default to Crossref?
     return None
 
+
 UNWANTED_ABSTRACT_PREFIXES = [
     # roughly sort this long to short
-    'Abstract No Abstract ',
-    'Publisher Summary ',
-    'Abstract ',
-    'ABSTRACT ',
-    'Summary ',
-    'Background: ',
-    'Background ',
+    "Abstract No Abstract ",
+    "Publisher Summary ",
+    "Abstract ",
+    "ABSTRACT ",
+    "Summary ",
+    "Background: ",
+    "Background ",
 ]
+
 
 def scrub_text(raw: str, mimetype: str = None) -> str:
     """
@@ -201,24 +212,25 @@ def scrub_text(raw: str, mimetype: str = None) -> str:
     text = ftfy.fix_text(raw)
 
     # remove HTML
-    text = BeautifulSoup(text, 'html.parser').get_text()
+    text = BeautifulSoup(text, "html.parser").get_text()
 
     # TODO: for performance, compile these as globals?
     # Three regexes below adapted from Blendle cleaner.py
     # https://github.com/blendle/research-summarization/blob/master/enrichers/cleaner.py#L29
-    text = re.sub(r'…', '...', text)
-    text = re.sub(r'[`‘’‛⸂⸃⸌⸍⸜⸝]', "'", text)
-    text = re.sub(r'[„“]|(\'\')|(,,)', '"', text)
-    text = re.sub(r'\s+', ' ', text).strip()
+    text = re.sub(r"…", "...", text)
+    text = re.sub(r"[`‘’‛⸂⸃⸌⸍⸜⸝]", "'", text)
+    text = re.sub(r"[„“]|(\'\')|(,,)", '"', text)
+    text = re.sub(r"\s+", " ", text).strip()
 
     # hack to remove abstract prefixes
     for prefix in UNWANTED_ABSTRACT_PREFIXES:
         if text.startswith(prefix):
-            text = text[len(prefix):]
+            text = text[len(prefix) :]
             break
 
     assert text, "Empty abstract"
     return text
+
 
 def contrib_name(contrib: ReleaseContrib) -> str:
     # TODO: support more cultural normals for name presentation
@@ -231,36 +243,45 @@ def contrib_name(contrib: ReleaseContrib) -> str:
     else:
         return contrib.given_name
 
+
 def contrib_affiliation(contrib: ReleaseContrib) -> Optional[str]:
     # TODO
     return None
+
 
 def es_abstracts_from_release(release: ReleaseEntity) -> List[ScholarAbstract]:
 
     d = dict()
     for abst in release.abstracts:
         if not abst.lang in d:
-            d[abst.lang] = ScholarAbstract(lang_code=abst.lang, body=scrub_text(abst.content))
+            d[abst.lang] = ScholarAbstract(
+                lang_code=abst.lang, body=scrub_text(abst.content)
+            )
     return list(d.values())
+
 
 def es_biblio_from_release(release: ReleaseEntity) -> ScholarBiblio:
 
     if release.container:
         publisher = release.publisher
         container_name = release.container.name
-        container_original_name = release.container.extra and release.container.extra.get('original_name')
+        container_original_name = (
+            release.container.extra and release.container.extra.get("original_name")
+        )
         container_ident = release.container.ident
         container_type = release.container.container_type
         container_issnl = release.container.issnl
-        issns = [container_issnl,]
-        if release.extra.get('issne'):
-            issns.append(release.extra['issne'])
-        if release.extra.get('issnp'):
-            issns.append(release.extra['issnp'])
+        issns = [
+            container_issnl,
+        ]
+        if release.extra.get("issne"):
+            issns.append(release.extra["issne"])
+        if release.extra.get("issnp"):
+            issns.append(release.extra["issnp"])
         issns = list(set(issns))
     else:
-        publisher = release.extra.get('publisher')
-        container_name = release.extra.get('container_name')
+        publisher = release.extra.get("publisher")
+        container_name = release.extra.get("container_name")
         container_original_name = None
         container_ident = None
         container_type = None
@@ -269,7 +290,7 @@ def es_biblio_from_release(release: ReleaseEntity) -> ScholarBiblio:
 
     first_page: Optional[str] = None
     if release.pages:
-        first_page = release.pages.split('-')[0]
+        first_page = release.pages.split("-")[0]
     first_page_int: Optional[int] = None
     if first_page and first_page.isdigit():
         first_page_int = int(first_page)
@@ -285,7 +306,7 @@ def es_biblio_from_release(release: ReleaseEntity) -> ScholarBiblio:
         release_stage=release.release_stage,
         withdrawn_status=release.withdrawn_status,
         lang_code=release.language,
-        country_code=release.extra and release.extra.get('country'),
+        country_code=release.extra and release.extra.get("country"),
         volume=release.volume,
         volume_int=None,
         issue=release.issue,
@@ -294,7 +315,6 @@ def es_biblio_from_release(release: ReleaseEntity) -> ScholarBiblio:
         first_page=first_page,
         first_page_int=None,
         number=release.number,
-
         doi=release.ext_ids.doi,
         doi_prefix=release.ext_ids.doi and doi_split_prefix(release.ext_ids.doi),
         doi_registrar=release_doi_registrar(release),
@@ -305,7 +325,6 @@ def es_biblio_from_release(release: ReleaseEntity) -> ScholarBiblio:
         arxiv_id=release.ext_ids.arxiv,
         jstor_id=release.ext_ids.jstor,
         mag_id=release.ext_ids.mag,
-
         license_slug=release.license_slug,
         publisher=publisher,
         container_name=container_name,
@@ -314,13 +333,20 @@ def es_biblio_from_release(release: ReleaseEntity) -> ScholarBiblio:
         container_type=container_type,
         container_issnl=container_issnl,
         issns=issns,
-
         # TODO; these filters sort of meh. refactor to be above?
-        contrib_names=list(filter(lambda x: bool(x), [contrib_name(c) for c in release.contribs])),
-        contrib_count = len([c for c in release.contribs if c.index]),
-        affiliations=list(filter(lambda x: bool(x), [contrib_affiliation(c) for c in release.contribs if c.index])),
+        contrib_names=list(
+            filter(lambda x: bool(x), [contrib_name(c) for c in release.contribs])
+        ),
+        contrib_count=len([c for c in release.contribs if c.index]),
+        affiliations=list(
+            filter(
+                lambda x: bool(x),
+                [contrib_affiliation(c) for c in release.contribs if c.index],
+            )
+        ),
     )
     return ret
+
 
 def es_release_from_release(release: ReleaseEntity) -> ScholarRelease:
 
@@ -330,7 +356,7 @@ def es_release_from_release(release: ReleaseEntity) -> ScholarRelease:
         container_issnl = release.container.issnl
         container_type = release.container.container_type
     else:
-        container_name = release.extra.get('container_name')
+        container_name = release.extra.get("container_name")
         container_ident = None
         container_issnl = None
         container_type = None
