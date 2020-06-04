@@ -82,8 +82,8 @@
   {% endif %}
   {% if paper.biblio.container_name %}
     <i>
-    {% if paper.biblio.container_id %}
-      <a target="_blank" href="https://fatcat.wiki/container/{{ paper.biblio.container_id }}" style="color: black;">{{ paper.biblio.container_name }}</a>
+    {% if paper.biblio.container_ident %}
+      <a target="_blank" href="https://fatcat.wiki/container/{{ paper.biblio.container_ident }}" style="color: black;">{{ paper.biblio.container_name }}</a>
     {% elif paper.doc_type == "sim_page" %}
       <a target="_blank" href="https://archive.org/details/{{ paper.ia_sim.pub_collection }}" style="color: black;">{{ paper.biblio.container_name }}</a>
     {% else %}
