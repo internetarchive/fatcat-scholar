@@ -214,6 +214,7 @@
         },
 
         "doctype":        { "type": "alias", "path": "doc_type" },
+        "tag":            { "type": "alias", "path": "tags" },
 
         "body":           { "type": "alias", "path": "fulltext.body" },
         "abstract":       { "type": "alias", "path": "abstracts.body" },
