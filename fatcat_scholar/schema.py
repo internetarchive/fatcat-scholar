@@ -11,8 +11,10 @@ from typing import Optional, List, Any
 
 import ftfy
 from bs4 import BeautifulSoup
+
 # pytype: disable=import-error
 from pydantic import BaseModel
+
 # pytype: enable=import-error
 
 from fatcat_openapi_client import ReleaseEntity, ReleaseContrib
