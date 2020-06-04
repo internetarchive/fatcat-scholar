@@ -187,6 +187,7 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
     work_ident: Optional[str] = None
     abstracts: List[ScholarAbstract] = []
     fulltext: Optional[ScholarFulltext] = None
+    primary_release: Optional[ReleaseEntity] = None
 
     ia_sim: Optional[ScholarSim] = None
     if heavy.sim_fulltext is not None:
@@ -255,7 +256,7 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
             if container.extra.get('road'):
                 tags.append('road')
                 tags.append('oa')
-            if container.extra('szczepanski'):
+            if container.extra.get('szczepanski'):
                 tags.append('szczepanski')
                 tags.append('oa')
             if container.extra.get('ia', {}).get('longtail_oa'):
