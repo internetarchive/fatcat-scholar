@@ -253,7 +253,7 @@ def es_abstracts_from_release(release: ReleaseEntity) -> List[ScholarAbstract]:
 
     d = dict()
     for abst in release.abstracts:
-        if not abst.lang in d:
+        if abst.lang not in d:
             d[abst.lang] = ScholarAbstract(
                 lang_code=abst.lang, body=scrub_text(abst.content)
             )

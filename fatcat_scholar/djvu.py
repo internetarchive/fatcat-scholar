@@ -1,5 +1,5 @@
 from io import StringIO
-from typing import List, Dict, Tuple, Optional, Any, Sequence
+from typing import List, Dict, Optional
 import xml.etree.ElementTree as ET
 
 

@@ -108,7 +108,7 @@ def biblio_info(elem):
     if ref["publisher"] == "":
         ref["publisher"] = None
     date = elem.find('.//{%s}date[@type="published"]' % ns)
-    ref["date"] = (date != None) and date.attrib.get("when")
+    ref["date"] = (date is not None) and date.attrib.get("when")
     ref["volume"] = elem.findtext('.//{%s}biblScope[@unit="volume"]' % ns)
     ref["issue"] = elem.findtext('.//{%s}biblScope[@unit="issue"]' % ns)
     el = elem.find(".//{%s}ptr[@target]" % ns)
@@ -148,7 +148,7 @@ def teixml2json(content, encumbered=True):
     )
     info["journal"] = journal_info(header)
     date = header.find('.//{%s}date[@type="published"]' % ns)
-    info["date"] = (date != None) and date.attrib.get("when")
+    info["date"] = (date is not None) and date.attrib.get("when")
     info["fatcat_release"] = header.findtext('.//{%s}idno[@type="fatcat"]' % ns)
     info["doi"] = header.findtext('.//{%s}idno[@type="DOI"]' % ns)
     if info["doi"]:

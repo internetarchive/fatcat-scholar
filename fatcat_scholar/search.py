@@ -3,15 +3,13 @@ Helpers to make elasticsearch queries.
 """
 
 import sys
-import json
 from gettext import gettext
 import datetime
 import elasticsearch
 from pydantic import BaseModel
 from dynaconf import settings
-from dataclasses import dataclass
 from elasticsearch_dsl import Search, Q
-from typing import List, Dict, Tuple, Optional, Any, Sequence
+from typing import List, Optional, Any
 
 # i18n note: the use of gettext below doesn't actually do the translation here,
 # it just ensures that the strings are caught by babel for translation later
@@ -106,7 +104,7 @@ def do_fulltext_search(
         search = search.filter("terms", type=["report", "standard",])
     elif query.filter_type == "datasets":
         search = search.filter("terms", type=["dataset", "software",])
-    elif query.filter_type == "everything" or query.filter_type == None:
+    elif query.filter_type == "everything" or query.filter_type is None:
         pass
     else:
         raise ValueError(
@@ -129,7 +127,7 @@ def do_fulltext_search(
         search = search.filter("range", year=dict(gte=2000))
     elif query.filter_time == "before_1925":
         search = search.filter("range", year=dict(lt=1925))
-    elif query.filter_time == "all_time" or query.filter_time == None:
+    elif query.filter_time == "all_time" or query.filter_time is None:
         pass
     else:
         raise ValueError(
@@ -141,7 +139,7 @@ def do_fulltext_search(
         search = search.filter("term", tag="oa")
     elif query.filter_availability == "everything":
         pass
-    elif query.filter_availability == "fulltext" or query.filter_availability == None:
+    elif query.filter_availability == "fulltext" or query.filter_availability is None:
         search = search.filter("terms", access_type=["wayback", "ia_file", "ia_sim"])
     else:
         raise ValueError(
@@ -199,7 +197,7 @@ def do_fulltext_search(
         search = search.sort("year", "date")
     elif query.sort_order == "time_desc":
         search = search.sort("-year", "-date")
-    elif query.sort_order == "relevancy" or query.sort_order == None:
+    elif query.sort_order == "relevancy" or query.sort_order is None:
         pass
     else:
         raise ValueError(f"Unknown 'sort_order' parameter value: '{query.sort_order}'")
@@ -211,7 +209,7 @@ def do_fulltext_search(
         # Avoid deep paging problem.
         offset = deep_page_limit
 
-    search = search[offset : offset + limit]
+    search = search[offset:(offset+limit)]
 
     try:
         resp = search.execute()

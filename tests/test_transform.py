@@ -1,4 +1,3 @@
-import pytest
 from fatcat_openapi_client import ReleaseEntity
 
 from fatcat_scholar.schema import *

@@ -3,10 +3,10 @@ import json
 import sqlite3
 import argparse
 from dataclasses import dataclass
-from typing import List, Dict, Tuple, Optional, Any, Sequence
+from typing import List, Dict, Optional, Any, Sequence
 import fatcat_openapi_client
 import elasticsearch
-from elasticsearch_dsl import Search, Q
+from elasticsearch_dsl import Search
 
 
 @dataclass

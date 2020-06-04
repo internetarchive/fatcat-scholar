@@ -1,19 +1,10 @@
-import os
-import io
 import sys
 import argparse
-from pydantic import BaseModel, validator
-from typing import List, Dict, Tuple, Optional, Any, Sequence
+from typing import List, Dict, Optional, Any
+
 from fatcat_openapi_client import ReleaseEntity, FileEntity
-import internetarchive
 
 from fatcat_scholar.api_entities import *
-from fatcat_scholar.djvu import djvu_extract_leaf_texts
-from fatcat_scholar.sandcrawler import (
-    SandcrawlerPostgrestClient,
-    SandcrawlerMinioClient,
-)
-from fatcat_scholar.issue_db import IssueDB, SimIssueRow
 from fatcat_scholar.schema import *
 from fatcat_scholar.grobid2json import teixml2json
 

@@ -1,5 +1,3 @@
-import pytest
-
 from fatcat_scholar.schema import *
 
 

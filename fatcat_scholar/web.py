@@ -5,13 +5,11 @@ So far there are few endpoints, so we just put them all here!
 """
 
 import sys
-from enum import Enum
 import babel.support
-from fastapi import FastAPI, APIRouter, Request, Depends, Header
+from fastapi import FastAPI, APIRouter, Request, Depends
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import HTMLResponse
 from dynaconf import settings
-from typing import List, Dict, Tuple, Optional, Any, Sequence
+from typing import Optional
 
 from fatcat_scholar.hacks import Jinja2Templates
 from fatcat_scholar.search import do_fulltext_search, FulltextQuery, FulltextHits

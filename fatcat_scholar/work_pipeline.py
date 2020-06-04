@@ -4,7 +4,6 @@ import sys
 import minio
 import requests
 import argparse
-from pydantic import BaseModel, validator
 from typing import List, Dict, Tuple, Optional, Any, Sequence
 from fatcat_openapi_client import ReleaseEntity, FileEntity
 import internetarchive
@@ -17,8 +16,6 @@ from fatcat_scholar.sandcrawler import (
 )
 from fatcat_scholar.issue_db import IssueDB, SimIssueRow, SimPubRow
 from fatcat_scholar.schema import (
-    es_biblio_from_release,
-    es_release_from_release,
     DocType,
     IntermediateBundle,
 )
@@ -171,7 +168,7 @@ class WorkPipeline:
         release_ident: str,
     ) -> Optional[Any]:
         """
-        issue_item 
+        issue_item
         pages: str
         page_texts: list
             page_num
@@ -214,7 +211,7 @@ class WorkPipeline:
         # override 'close()' method so we can still read out contents
         djvu_bytes = io.BytesIO()
         djvu_bytes.close = lambda: None  # type: ignore
-        assert issue_item_djvu.download(fileobj=djvu_bytes) == True
+        assert issue_item_djvu.download(fileobj=djvu_bytes)
         djvu_bytes.seek(0)
         djvu_xml = io.StringIO(djvu_bytes.read().decode("UTF-8"))
         del djvu_bytes

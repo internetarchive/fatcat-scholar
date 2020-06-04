@@ -1,24 +1,15 @@
-import os
 import io
 import sys
 import sqlite3
 import argparse
+from typing import List, Dict, Optional, Any
+
 import requests
-from pydantic import BaseModel, validator
-from typing import List, Dict, Tuple, Optional, Any, Sequence
-from fatcat_openapi_client import ReleaseEntity, FileEntity
 import internetarchive
 
-from fatcat_scholar.api_entities import *
 from fatcat_scholar.djvu import djvu_extract_leaf_texts
-from fatcat_scholar.sandcrawler import (
-    SandcrawlerPostgrestClient,
-    SandcrawlerMinioClient,
-)
-from fatcat_scholar.issue_db import IssueDB, SimIssueRow
+from fatcat_scholar.issue_db import IssueDB
 from fatcat_scholar.schema import (
-    es_biblio_from_release,
-    es_release_from_release,
     DocType,
     IntermediateBundle,
 )
@@ -57,7 +48,7 @@ class SimPipeline:
 
     def fetch_sim_issue(self, issue_db_row: Any) -> Optional[Any]:
         """
-        issue_item 
+        issue_item
         pages: str
         page_texts: list
             raw_text
