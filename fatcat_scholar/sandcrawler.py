@@ -41,7 +41,7 @@ class SandcrawlerMinioClient(object):
         )
         self.default_bucket = default_bucket
 
-    def _blob_path(self, folder, sha1hex, extension, prefix):
+    def _blob_path(self, folder: str, sha1hex: str, extension: str, prefix: str) -> str:
         if not extension:
             extension = ""
         if not prefix:
@@ -52,7 +52,7 @@ class SandcrawlerMinioClient(object):
         )
         return obj_path
 
-    def get_blob(self, folder, sha1hex, extension="", prefix="", bucket=None):
+    def get_blob(self, folder: str, sha1hex: str, extension: str ="", prefix: str ="", bucket: Optional[str] = None) -> bytes:
         """
         sha1hex is sha1 of the blob itself
 
