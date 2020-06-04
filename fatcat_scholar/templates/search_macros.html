@@ -4,8 +4,15 @@
     <span class="ui label basic orange small" title="Open Access"><i class="ui icon unlock"></i>OA</span>
   {% elif tag == "scielo" %}
     <span class="ui label basic purple small" title="Hosted on SciELO platform">SciELO</span>
+  {% elif tag == "ojs" %}
+    <span class="ui label basic purple small" title="Hosted with Open Journal Systems">OJS</span>
+  {% elif tag == "wordpress" %}
+    <span class="ui label basic purple small" title="Hosted with Wordpress">Wordpress</span>
   {% elif tag == "road" %}
-    <span class="ui label basic orange small" title="ISSN Registry of Open Access Journals">ROAD</span>
+    {# skip for now; no curration? #}
+    {# <span class="ui label basic orange small" title="ISSN Registry of Open Access Journals">ROAD</span> #}
+  {% elif tag == "szczepanski" %}
+    {# pass #}
   {% elif tag == "doaj" %}
     <span class="ui label basic orange small" title="Directory of Open Access Journals">DOAJ</span>
   {% else %}
