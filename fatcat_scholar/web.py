@@ -70,14 +70,14 @@ async def search(query: FulltextQuery = Depends(FulltextQuery)) -> Any:
 web = APIRouter()
 
 
-def locale_gettext(translations: List[Any]) -> Any:
+def locale_gettext(translations: Any) -> Any:
     def gt(s):
         return translations.ugettext(s)
 
     return gt
 
 
-def locale_ngettext(translations: List[Any]) -> Any:
+def locale_ngettext(translations: Any) -> Any:
     def ngt(s, n):
         return translations.ungettext(s)
 

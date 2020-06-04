@@ -10,8 +10,10 @@ from enum import Enum
 from typing import Optional, List, Any
 
 import ftfy
-from pydantic import BaseModel
 from bs4 import BeautifulSoup
+# pytype: disable=import-error
+from pydantic import BaseModel
+# pytype: enable=import-error
 
 from fatcat_openapi_client import ReleaseEntity, ReleaseContrib
 from fatcat_scholar.api_entities import entity_to_dict

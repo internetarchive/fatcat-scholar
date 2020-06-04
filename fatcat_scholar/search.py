@@ -3,13 +3,16 @@ Helpers to make elasticsearch queries.
 """
 
 import sys
-from gettext import gettext
 import datetime
+from gettext import gettext
+from typing import List, Optional, Any
+
 import elasticsearch
-from pydantic import BaseModel
 from dynaconf import settings
 from elasticsearch_dsl import Search, Q
-from typing import List, Optional, Any
+# pytype: disable=import-error
+from pydantic import BaseModel
+# pytype: enable=import-error
 
 # i18n note: the use of gettext below doesn't actually do the translation here,
 # it just ensures that the strings are caught by babel for translation later

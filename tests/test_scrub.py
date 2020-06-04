@@ -1,4 +1,4 @@
-from fatcat_scholar.schema import *
+from fatcat_scholar.schema import scrub_text
 
 
 def test_scrub() -> None:
