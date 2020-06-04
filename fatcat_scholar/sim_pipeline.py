@@ -85,7 +85,7 @@ class SimPipeline:
         # override 'close()' method so we can still read out contents
         djvu_bytes = io.BytesIO()
         djvu_bytes.close = lambda: None  # type: ignore
-        assert issue_item_djvu.download(fileobj=djvu_bytes) == True
+        assert issue_item_djvu.download(fileobj=djvu_bytes)
         djvu_bytes.seek(0)
         djvu_xml = io.StringIO(djvu_bytes.read().decode("UTF-8"))
         del djvu_bytes

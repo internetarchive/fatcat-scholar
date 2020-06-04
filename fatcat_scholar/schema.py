@@ -313,7 +313,7 @@ def es_biblio_from_release(release: ReleaseEntity) -> ScholarBiblio:
         issue_int=None,
         pages=release.pages,
         first_page=first_page,
-        first_page_int=None,
+        first_page_int=first_page_int,
         number=release.number,
         doi=release.ext_ids.doi,
         doi_prefix=release.ext_ids.doi and doi_split_prefix(release.ext_ids.doi),

@@ -29,7 +29,7 @@ def djvu_extract_leaf_texts(
         leaf_num = None
         try:
             leaf_num = int(usemap.replace(".djvu", "").split("_")[-1])
-        except:
+        except Exception:
             continue
         if only_leaves is not None and leaf_num is not None:
             if leaf_num not in only_leaves:
