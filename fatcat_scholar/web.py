@@ -9,7 +9,7 @@ import babel.support
 from fastapi import FastAPI, APIRouter, Request, Depends
 from fastapi.staticfiles import StaticFiles
 from dynaconf import settings
-from typing import Optional
+from typing import Optional, List, Any
 
 from fatcat_scholar.hacks import Jinja2Templates
 from fatcat_scholar.search import do_fulltext_search, FulltextQuery, FulltextHits
@@ -58,26 +58,26 @@ api = APIRouter()
 
 
 @api.get("/", operation_id="get_home")
-async def home():
+async def home() -> Any:
     return {"endpoints": {"/": "this", "/search": "fulltext search"}}
 
 
 @api.get("/search", operation_id="get_search")
-async def search(query: FulltextQuery = Depends(FulltextQuery)):
+async def search(query: FulltextQuery = Depends(FulltextQuery)) -> Any:
     return {"message": "search results would go here, I guess"}
 
 
 web = APIRouter()
 
 
-def locale_gettext(translations):
+def locale_gettext(translations: List[Any]) -> Any:
     def gt(s):
         return translations.ugettext(s)
 
     return gt
 
 
-def locale_ngettext(translations):
+def locale_ngettext(translations: List[Any]) -> Any:
     def ngt(s, n):
         return translations.ungettext(s)
 
@@ -144,7 +144,7 @@ async def web_about(request: Request, lang: LangPrefix = Depends(LangPrefix)):
 
 
 @web.get("/help", include_in_schema=False)
-async def web_help(request: Request, lang: LangPrefix = Depends(LangPrefix)):
+async def web_help(request: Request, lang: LangPrefix = Depends(LangPrefix)) -> Any:
     return i18n_templates[lang.code].TemplateResponse(
         "help.html",
         {"request": request, "locale": lang.code, "lang_prefix": lang.prefix},
@@ -157,7 +157,7 @@ async def web_search(
     query: FulltextQuery = Depends(FulltextQuery),
     lang: LangPrefix = Depends(LangPrefix),
     content: ContentNegotiation = Depends(ContentNegotiation),
-):
+) -> Any:
 
     if content.mimetype == "application/json":
         return await search(query)

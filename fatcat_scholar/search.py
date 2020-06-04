@@ -209,7 +209,7 @@ def do_fulltext_search(
         # Avoid deep paging problem.
         offset = deep_page_limit
 
-    search = search[offset:(offset+limit)]
+    search = search[offset : (offset + limit)]
 
     try:
         resp = search.execute()

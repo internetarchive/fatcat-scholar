@@ -4,7 +4,7 @@ from fatcat_scholar.schema import *
 from fatcat_scholar.api_entities import *
 
 
-def test_es_release_from_release():
+def test_es_release_from_release() -> None:
 
     with open("tests/files/release_hsmo6p4smrganpb3fndaj2lon4.json", "r") as f:
         release = entity_from_json(f.read(), ReleaseEntity)
@@ -17,7 +17,7 @@ def test_es_release_from_release():
     assert obj.doi_prefix == "10.7717"
 
 
-def test_es_biblio_from_release():
+def test_es_biblio_from_release() -> None:
 
     with open("tests/files/release_hsmo6p4smrganpb3fndaj2lon4.json", "r") as f:
         release = entity_from_json(f.read(), ReleaseEntity)

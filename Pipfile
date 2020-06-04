@@ -37,6 +37,7 @@ ipython = "*"
 mypy = "*"
 pytype = "*"
 flake8 = "*"
+flake8-annotations = "*"
 pytest = "*"
 pytest-cov = "*"
 

@@ -1,6 +1,6 @@
 import sys
 import argparse
-from typing import List, Dict, Optional, Any
+from typing import List, Dict, Optional, Any, Sequence
 
 from fatcat_openapi_client import ReleaseEntity, FileEntity
 
@@ -329,7 +329,7 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
     )
 
 
-def run_transform(infile):
+def run_transform(infile: Sequence) -> None:
     for line in infile:
         obj = json.loads(line)
 
@@ -350,7 +350,7 @@ def run_transform(infile):
         print(es_doc.json())
 
 
-def main():
+def main() -> None:
     """
     Run this command like:
 

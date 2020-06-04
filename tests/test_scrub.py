@@ -1,7 +1,7 @@
 from fatcat_scholar.schema import *
 
 
-def test_scrub():
+def test_scrub() -> None:
     vectors = [
         (
             "“Please clean this piece… of text</b>„",
