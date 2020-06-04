@@ -35,6 +35,8 @@ dynaconf = "*"
 [dev-packages]
 ipython = "*"
 mypy = "*"
+pytype = "*"
+flake8 = "*"
 pytest = "*"
 pytest-cov = "*"
 
