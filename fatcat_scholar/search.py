@@ -123,8 +123,7 @@ def do_fulltext_search(query: FulltextQuery, deep_page_limit: int = 2000) -> Ful
 
     # availability filters
     if query.filter_availability == "oa":
-        # TODO: real OA filter/flag
-        search = search.filter("term", tag="OA")
+        search = search.filter("term", tag="oa")
     elif query.filter_availability == "everything":
         pass
     elif query.filter_availability == "fulltext" or query.filter_availability == None:

@@ -243,6 +243,47 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
 
     # TODO: additional abstracts
 
+    # tags
+    if biblio.license_slug and biblio.license_slug.lower().startswith("cc-"):
+        tags.append('oa')
+    if primary_release and primary_release.container:
+        container = primary_release.container
+        if container.extra:
+            if container.extra.get('doaj'):
+                tags.append('doaj')
+                tags.append('oa')
+            if container.extra.get('road'):
+                tags.append('road')
+                tags.append('oa')
+            if container.extra('szczepanski'):
+                tags.append('szczepanski')
+                tags.append('oa')
+            if container.extra.get('ia', {}).get('longtail_oa'):
+                tags.append('longtail')
+                tags.append('oa')
+            if container.extra.get('sherpa_romeo', {}).get('color') == 'white':
+                tags.append('oa')
+            if container.extra.get('default_license', '').lower().startswith('cc-'):
+                tags.append('oa')
+            if container.extra.get('platform'):
+                # scielo, ojs, wordpress, etc
+                tags.append(container.extra['platform'].lower())
+    if biblio.doi_prefix == '10.2307':
+        tags.append('jstor')
+
+    # biorxiv/medrxiv hacks
+    if not biblio.container_name and biblio.release_stage != "published":
+        for _, acc in access_dict.items():
+            if "://www.medrxiv.org/" in acc.access_url:
+                biblio.container_name = 'medRxiv'
+                if biblio.release_stage == None:
+                    biblio.release_stage = "submitted"
+            elif "://www.biorxiv.org/" in acc.access_url:
+                biblio.container_name = 'bioRxiv'
+                if biblio.release_stage == None:
+                    biblio.release_stage = "submitted"
+    tags = list(set(tags))
+
     return ScholarDoc(
         key=key,
         doc_type=heavy.doc_type.value,
