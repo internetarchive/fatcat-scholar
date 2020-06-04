@@ -4,6 +4,12 @@
 {% block fullmain %}
 <div class="tablet-only" style="margin-top: 1.0em;">
 
+  <!-- these hidden query fields should be *before* any form/button that could override them -->
+  {{ search_macros.query_hidden(query.time_options, query.filter_time) }}
+  {{ search_macros.query_hidden(query.type_options, query.filter_type) }}
+  {{ search_macros.query_hidden(query.availability_options, query.filter_availability) }}
+  {{ search_macros.query_hidden(query.sort_options, query.sort_order) }}
+
   <details class="search_filters">
     <summary style="float: right;"><i class="filter icon"></i>{{ _("Filters") }}</summary>
     <p>
@@ -106,5 +112,6 @@
       </div>
     {% endif %}
   </div>
+
 </div>
 {% endblock %}

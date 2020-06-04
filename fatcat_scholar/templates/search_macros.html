@@ -198,9 +198,6 @@
 {% macro query_option(options, selected) -%}
 <span style="color: rgba(0,0,0,0.4);">{{ _(options.label) }}</span>
 <div class="ui link list" style="margin-top: 0.3em;">
-  {% if selected %}
-    <input form="search_form" type="hidden" name="{{ options.slug }}" value="{{ selected }}">
-  {% endif %}
   {% for opt in options.list %}
     <button class="text-button" form="search_form" type="submit" name="{{ options.slug }}" value="{{ opt.slug }}">
       {% if selected == opt.slug or (not selected and opt.slug == options.default) %}
@@ -216,4 +213,10 @@
   {% endfor %}
 </div>
 <br>
+{% endmacro %}
+
+{% macro query_hidden(options, selected) -%}
+{% if selected %}
+  <input form="search_form" type="hidden" name="{{ options.slug }}" value="{{ selected }}">
+{% endif %}
 {% endmacro %}
