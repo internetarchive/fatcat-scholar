@@ -181,6 +181,20 @@
 </div>
 {% endmacro %}
 
+{% macro search_pagination(hits, top) %}
+{% if hits.offset > 0 %}
+  <button class="text-button" form="search_form" type="submit" name="offset" value="{{ hits.offset - hits.limit }}" style="margin-right: 2em;">
+    <a>&#xab; Previous</a>
+  </button>
+{% else %}
+  <span style="color:gray">&#xab; Previous</span>
+{% endif %}
+<i>Showing results {{ hits.offset }} &mdash; {{ hits.offset + hits.limit }} out of {{ "{:,}".format(hits.count_found) }} results</i>
+<button class="text-button" form="search_form" type="submit" name="offset" value="{{ hits.offset + hits.limit }}" style="margin-left: 2em;">
+  <a>Next &#xbb;</a>
+</button>
+{% endmacro %}
+
 {% macro query_option(options, selected) -%}
 <span style="color: rgba(0,0,0,0.4);">{{ _(options.label) }}</span>
 <div class="ui link list" style="margin-top: 0.3em;">

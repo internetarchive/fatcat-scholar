@@ -67,9 +67,22 @@
       </div>
     {% elif hits and hits.results %}
       {% if hits.results %}
+        {% if hits.offset != 0 %}
+          <div style="text-align: center; margin-bottom: 2em;">
+            {{ search_macros.search_pagination(hits) }}
+          </div>
+        {% endif %}
+
+        {# search results (rendered via macro) #}
         {% for paper in hits.results %}
           {{ search_macros.fulltext_search_result_row(paper) }}
         {% endfor %}
+
+        {% if hits.count_found > hits.limit %}
+          <div style="text-align: center; margin-top: 2em;">
+            {{ search_macros.search_pagination(hits) }}
+          </div>
+        {% endif %}
       {% endif %}
     {% elif hits %}
       <div class="ui placeholder segment" style="height: 100%;">
