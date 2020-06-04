@@ -6,12 +6,29 @@ SHELL = /bin/bash
 help: ## Print info about all commands
 	@echo "Commands:"
 	@echo
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "    \033[01;32m%-20s\033[0m %s\n", $$1, $$2}'
+	@grep -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "    \033[01;32m%-20s\033[0m %s\n", $$1, $$2}'
+
+.PHONY: deps
+deps: ## Install dependencies using pipenv
+	pipenv install --dev
+
+.PHONY: lint
+lint: ## Run lints (eg, flake8, mypy)
+	pipenv run flake8 fatcat_scholar/ tests/ --exit-zero
+	pipenv run mypy fatcat_scholar/ tests/ --ignore-missing-imports
+	#pipenv run pytype fatcat_scholar/
+
+.PHONY: fmt
+fmt: ## Run code formating on all source code
+	pipenv run black fatcat_scholar/ tests/
 
 .PHONY: test
-test: ## Run all tests and lints
+test: lint ## Run all tests and lints
 	ENV_FOR_DYNACONF=test pipenv run pytest
-	pipenv run mypy fatcat_scholar/*.py tests/ --ignore-missing-imports
+
+.PHONY: coverage
+coverage: lint ## Run all tests with coverage
+	ENV_FOR_DYNACONF=test pipenv run pytest --cov
 
 .PHONY: dev
 dev: ## Run web service locally, with reloading
@@ -37,7 +54,7 @@ dev-index: ## Delete/Create DEV elasticsearch fulltext index locally
 	cat data/sim_intermediate.json data/work_intermediate.json | pipenv run python -m fatcat_scholar.transform run_transform | esbulk -verbose -size 200 -id key -w 4 -index dev_scholar_fulltext_v01 -type _doc
 
 .PHONY: update-i18n
-update-i18n: ## Re-extract and compile translation files
+update-i18n:  ## Re-extract and compile translation files
 	pipenv run pybabel extract -F extra/i18n/babel.cfg -o extra/i18n/web_interface.pot fatcat_scholar/
 	pipenv run pybabel update -i extra/i18n/web_interface.pot -d fatcat_scholar/translations
 	pipenv run pybabel compile -d fatcat_scholar/translations
