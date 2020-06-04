@@ -5,12 +5,14 @@ get serialization for free with those. This is useful for things like
 auto-conversion of datetime objects.
 """
 
-import ftfy
+import re
 import datetime
 from enum import Enum
+from typing import Optional, List, Any
+
+import ftfy
 from pydantic import BaseModel
 from bs4 import BeautifulSoup
-from typing import Optional, List, Any
 
 from fatcat_openapi_client import ReleaseEntity, ReleaseContrib
 from fatcat_scholar.api_entities import entity_to_dict
@@ -194,23 +196,29 @@ def scrub_text(raw: str, mimetype: str = None) -> str:
     The output should be clean and "HTML safe" (though should still be escaped
     in HTML to get entity encoding correct).
 
-    TODO: barely implemented yet
+    TODO: not using mimetype hint for latex yet
     """
-    if "<jats" in raw or "/>" in raw or (mimetype and "application/xml" in mimetype):
-        try:
-            raw = BeautifulSoup(raw, "lxml").get_text()
-        except Exception as e:
-            raise e
-    raw = ftfy.fix_text(raw)
+    text = ftfy.fix_text(raw)
+
+    # remove HTML
+    text = BeautifulSoup(text, 'html.parser').get_text()
+
+    # TODO: for performance, compile these as globals?
+    # Three regexes below adapted from Blendle cleaner.py
+    # https://github.com/blendle/research-summarization/blob/master/enrichers/cleaner.py#L29
+    text = re.sub(r'…', '...', text)
+    text = re.sub(r'[`‘’‛⸂⸃⸌⸍⸜⸝]', "'", text)
+    text = re.sub(r'[„“]|(\'\')|(,,)', '"', text)
+    text = re.sub(r'\s+', ' ', text).strip()
 
     # hack to remove abstract prefixes
     for prefix in UNWANTED_ABSTRACT_PREFIXES:
-        if raw.startswith(prefix):
-            raw = raw[len(prefix):]
+        if text.startswith(prefix):
+            text = text[len(prefix):]
             break
 
-    assert raw, "Empty abstract"
-    return raw
+    assert text, "Empty abstract"
+    return text
 
 def contrib_name(contrib: ReleaseContrib) -> str:
     # TODO: support more cultural normals for name presentation
