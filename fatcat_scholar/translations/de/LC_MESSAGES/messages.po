@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-06-03 19:40-0700\n"
+"POT-Creation-Date: 2020-06-04 14:45-0700\n"
 "PO-Revision-Date: 2020-05-12 13:45-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: de\n"
@@ -18,81 +18,81 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.8.0\n"
 
-#: fatcat_scholar/search.py:29
+#: fatcat_scholar/search.py:33
 msgid "Release Date"
 msgstr "Veröffentlichungsdatum"
 
-#: fatcat_scholar/search.py:33 fatcat_scholar/search.py:66
+#: fatcat_scholar/search.py:37 fatcat_scholar/search.py:70
 msgid "All Time"
 msgstr "alle Zeit"
 
-#: fatcat_scholar/search.py:34
+#: fatcat_scholar/search.py:38
 msgid "Past Week"
 msgstr "letzte Woche"
 
-#: fatcat_scholar/search.py:35
+#: fatcat_scholar/search.py:39
 msgid "Past Year"
 msgstr "vergangenes Jahr"
 
-#: fatcat_scholar/search.py:36
+#: fatcat_scholar/search.py:40
 msgid "Since 2000"
 msgstr "Seit 2000"
 
-#: fatcat_scholar/search.py:37
+#: fatcat_scholar/search.py:41
 msgid "Before 1925"
 msgstr "Vor 1925"
 
-#: fatcat_scholar/search.py:41
+#: fatcat_scholar/search.py:45
 msgid "Resource Type"
 msgstr "Ressourcentyp"
 
-#: fatcat_scholar/search.py:45
+#: fatcat_scholar/search.py:49
 msgid "Papers"
 msgstr "Papiere"
 
-#: fatcat_scholar/search.py:46
+#: fatcat_scholar/search.py:50
 msgid "Reports"
 msgstr "Berichte"
 
-#: fatcat_scholar/search.py:47
+#: fatcat_scholar/search.py:51
 msgid "Datasets"
 msgstr "Datensätze"
 
-#: fatcat_scholar/search.py:48
+#: fatcat_scholar/search.py:52
 msgid "Everything"
 msgstr "Alles"
 
-#: fatcat_scholar/search.py:52
+#: fatcat_scholar/search.py:56
 msgid "Availability"
 msgstr "Verfügbarkeit"
 
-#: fatcat_scholar/search.py:56
+#: fatcat_scholar/search.py:60
 msgid "Fulltext"
 msgstr "Voller Text"
 
-#: fatcat_scholar/search.py:57
+#: fatcat_scholar/search.py:61
 msgid "Metadata"
 msgstr ""
 
-#: fatcat_scholar/search.py:58
+#: fatcat_scholar/search.py:62
 msgid "Open Access"
 msgstr "Offener Zugang"
 
-#: fatcat_scholar/search.py:62
+#: fatcat_scholar/search.py:66
 msgid "Sort Order"
 msgstr "Sortierreihenfolge"
 
-#: fatcat_scholar/search.py:67
+#: fatcat_scholar/search.py:71
 msgid "Recent First"
 msgstr "Neueste zuerst"
 
-#: fatcat_scholar/search.py:68
+#: fatcat_scholar/search.py:72
 msgid "Oldest First"
 msgstr "Die ältesten zu erst"
 
 #: fatcat_scholar/templates/base.html:160
-msgid "by title, authors, identifiers..."
-msgstr "by title, authors, identifiers..."
+msgid "by title, authors, keywords..."
+msgstr ""
 
 #: fatcat_scholar/templates/base.html:161 fatcat_scholar/templates/home.html:17
 msgid "Search"
@@ -180,7 +180,7 @@ msgid "Search Inside Millions of Research Papers"
 msgstr "Suche in Millionen von Forschungsarbeiten"
 
 #: fatcat_scholar/templates/home.html:16
-msgid "by title, keywords, DOI..."
+msgid "by title, author, keywords..."
 msgstr ""
 
 #: fatcat_scholar/templates/home.html:24
@@ -203,27 +203,27 @@ msgstr ""
 msgid "Filters"
 msgstr "Suchfilter"
 
-#: fatcat_scholar/templates/search.html:64
+#: fatcat_scholar/templates/search.html:62
 msgid "Backend Search Engine Error"
 msgstr ""
 
-#: fatcat_scholar/templates/search.html:66
+#: fatcat_scholar/templates/search.html:64
 msgid "Search Query Error"
 msgstr ""
 
-#: fatcat_scholar/templates/search.html:97
+#: fatcat_scholar/templates/search.html:95
 msgid "We didn't find any documents matching your query"
 msgstr "Wir haben keine Dokumente gefunden, die Ihrer Anfrage entsprechen"
 
-#: fatcat_scholar/templates/search.html:110
+#: fatcat_scholar/templates/search.html:108
 msgid "Enter a query in the box above to get started"
 msgstr ""
 
-#: fatcat_scholar/templates/search_macros.html:36
-msgid "media?"
+#: fatcat_scholar/templates/search_macros.html:57
+msgid "unknown"
 msgstr ""
 
-#: fatcat_scholar/templates/search_macros.html:92
+#: fatcat_scholar/templates/search_macros.html:110
 msgid "unpublished?"
 msgstr ""
 
@@ -237,4 +237,13 @@ msgstr ""
 #~ "Millionen Forschungsartikel und andere "
 #~ "Dokumente, die im Internetarchiv aufbewahrt"
 #~ " werden."
+
+#~ msgid "by title, authors, identifiers..."
+#~ msgstr "by title, authors, identifiers..."
+
+#~ msgid "by title, keywords, DOI..."
+#~ msgstr ""
+
+#~ msgid "media?"
+#~ msgstr ""
 

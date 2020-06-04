@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-06-03 22:42-0700\n"
+"POT-Creation-Date: 2020-06-04 14:45-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,80 +17,80 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.8.0\n"
 
-#: fatcat_scholar/search.py:29
+#: fatcat_scholar/search.py:33
 msgid "Release Date"
 msgstr ""
 
-#: fatcat_scholar/search.py:33 fatcat_scholar/search.py:66
+#: fatcat_scholar/search.py:37 fatcat_scholar/search.py:70
 msgid "All Time"
 msgstr ""
 
-#: fatcat_scholar/search.py:34
+#: fatcat_scholar/search.py:38
 msgid "Past Week"
 msgstr ""
 
-#: fatcat_scholar/search.py:35
+#: fatcat_scholar/search.py:39
 msgid "Past Year"
 msgstr ""
 
-#: fatcat_scholar/search.py:36
+#: fatcat_scholar/search.py:40
 msgid "Since 2000"
 msgstr ""
 
-#: fatcat_scholar/search.py:37
+#: fatcat_scholar/search.py:41
 msgid "Before 1925"
 msgstr ""
 
-#: fatcat_scholar/search.py:41
+#: fatcat_scholar/search.py:45
 msgid "Resource Type"
 msgstr ""
 
-#: fatcat_scholar/search.py:45
+#: fatcat_scholar/search.py:49
 msgid "Papers"
 msgstr ""
 
-#: fatcat_scholar/search.py:46
+#: fatcat_scholar/search.py:50
 msgid "Reports"
 msgstr ""
 
-#: fatcat_scholar/search.py:47
+#: fatcat_scholar/search.py:51
 msgid "Datasets"
 msgstr ""
 
-#: fatcat_scholar/search.py:48
+#: fatcat_scholar/search.py:52
 msgid "Everything"
 msgstr ""
 
-#: fatcat_scholar/search.py:52
+#: fatcat_scholar/search.py:56
 msgid "Availability"
 msgstr ""
 
-#: fatcat_scholar/search.py:56
+#: fatcat_scholar/search.py:60
 msgid "Fulltext"
 msgstr ""
 
-#: fatcat_scholar/search.py:57
+#: fatcat_scholar/search.py:61
 msgid "Metadata"
 msgstr ""
 
-#: fatcat_scholar/search.py:58
+#: fatcat_scholar/search.py:62
 msgid "Open Access"
 msgstr ""
 
-#: fatcat_scholar/search.py:62
+#: fatcat_scholar/search.py:66
 msgid "Sort Order"
 msgstr ""
 
-#: fatcat_scholar/search.py:67
+#: fatcat_scholar/search.py:71
 msgid "Recent First"
 msgstr ""
 
-#: fatcat_scholar/search.py:68
+#: fatcat_scholar/search.py:72
 msgid "Oldest First"
 msgstr ""
 
 #: fatcat_scholar/templates/base.html:160
-msgid "by title, authors, identifiers..."
+msgid "by title, authors, keywords..."
 msgstr ""
 
 #: fatcat_scholar/templates/base.html:161 fatcat_scholar/templates/home.html:17
@@ -176,7 +176,7 @@ msgid "Search Inside Millions of Research Papers"
 msgstr ""
 
 #: fatcat_scholar/templates/home.html:16
-msgid "by title, keywords, DOI..."
+msgid "by title, author, keywords..."
 msgstr ""
 
 #: fatcat_scholar/templates/home.html:24
@@ -196,27 +196,27 @@ msgstr ""
 msgid "Filters"
 msgstr ""
 
-#: fatcat_scholar/templates/search.html:64
+#: fatcat_scholar/templates/search.html:62
 msgid "Backend Search Engine Error"
 msgstr ""
 
-#: fatcat_scholar/templates/search.html:66
+#: fatcat_scholar/templates/search.html:64
 msgid "Search Query Error"
 msgstr ""
 
-#: fatcat_scholar/templates/search.html:97
+#: fatcat_scholar/templates/search.html:95
 msgid "We didn't find any documents matching your query"
 msgstr ""
 
-#: fatcat_scholar/templates/search.html:110
+#: fatcat_scholar/templates/search.html:108
 msgid "Enter a query in the box above to get started"
 msgstr ""
 
-#: fatcat_scholar/templates/search_macros.html:36
-msgid "media?"
+#: fatcat_scholar/templates/search_macros.html:57
+msgid "unknown"
 msgstr ""
 
-#: fatcat_scholar/templates/search_macros.html:92
+#: fatcat_scholar/templates/search_macros.html:110
 msgid "unpublished?"
 msgstr ""
 
