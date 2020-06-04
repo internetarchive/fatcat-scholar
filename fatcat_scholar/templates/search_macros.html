@@ -1,4 +1,18 @@
 
+{% macro tag_label(tag) -%}
+  {% if tag == "oa" %}
+    <span class="ui label basic orange small" title="Open Access"><i class="ui icon unlock"></i>OA</span>
+  {% elif tag == "scielo" %}
+    <span class="ui label basic purple small" title="Hosted on SciELO platform">SciELO</span>
+  {% elif tag == "road" %}
+    <span class="ui label basic orange small" title="ISSN Registry of Open Access Journals">ROAD</span>
+  {% elif tag == "doaj" %}
+    <span class="ui label basic orange small" title="Directory of Open Access Journals">DOAJ</span>
+  {% else %}
+    <span class="ui label small">{{ _(tag) }}</span>
+  {% endif %}
+{% endmacro %}
+
 {% macro fulltext_search_result_row(paper) -%}
 <div class="ui grid">
 <div class="thirteen wide column">
@@ -65,9 +79,6 @@
   {# ### JOURNAL ROW #}
   {% if paper.biblio.release_year %}
     {{ paper.biblio.release_year }}
-  {% endif %}
-  {% if paper.biblio.release_year and paper.biblio.container_name %}
-
   {% endif %}
   {% if paper.biblio.container_name %}
     <i>
@@ -143,7 +154,7 @@
     {% endif %}
 
     {% for tag in paper.tags %}
-      <span class="ui label small">{{ _(tag) }}</span>
+      {{ tag_label(tag) }}
     {% endfor %}
   </div>
 
