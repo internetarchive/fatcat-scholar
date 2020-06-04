@@ -3,9 +3,10 @@
 
 - type: `_doc` (aka, no type, `include_type_name=false`)
 - key: keyword (same as `_id`)
+- `collapse_key`: work ident, or SIM issue item (for collapsing/grouping search hits)
 - `doc_type`: keyword (work or page)
 - `doc_index_ts`: timestamp when document indexed
-- `work_id`: fatcat work ident (optional)
+- `work_ident`: fatcat work ident (optional)
 
 - `biblio`: obj
 - `fulltext`: obj

@@ -165,6 +165,7 @@ class ScholarDoc(BaseModel):
     key: str
     doc_type: str  # enum: work or page
     doc_index_ts: datetime.datetime
+    collapse_key: str
     work_ident: Optional[str]
     tags: List[str] = []
 

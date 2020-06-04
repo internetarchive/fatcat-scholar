@@ -63,6 +63,7 @@
     "properties": {
 
         "key":          { "type": "keyword", "normalizer": "default", "doc_values": false },
+        "collapse_key": { "type": "keyword", "normalizer": "default" },
         "doc_type":     { "type": "keyword", "normalizer": "default" },
         "doc_index_ts": { "type": "date" },
         "work_ident":   { "type": "keyword", "normalizer": "default", "doc_values": false },

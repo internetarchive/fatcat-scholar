@@ -67,7 +67,7 @@
     {{ paper.biblio.release_year }}
   {% endif %}
   {% if paper.biblio.release_year and paper.biblio.container_name %}
-    
+
   {% endif %}
   {% if paper.biblio.container_name %}
     <i>
@@ -130,21 +130,32 @@
 
   {# ### TAGS #}
   <div style="margin-top: 0.2em;">
-  {# colors to use: olive, brown, grey, pink, red, etc #}
-  {# TODO: remove doc for ES 7.x-style lack of type #}
-  {# TODO: only show 'json' link if from cluster? #}
-  <a target="_blank" href="{{ settings.ELASTICSEARCH_BACKEND }}/{{ settings.ELASTICSEARCH_FULLTEXT_INDEX }}/_doc/{{ paper.key }}">
-    <span class="ui label small">json</span>
-  </a>
-  {% if paper.biblio.release_ident %}
-    <a target="_blank" href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}">
-      <span class="ui label small">metadata</span>
+    {# colors to use: olive, brown, grey, pink, red, etc #}
+    {# TODO: remove doc for ES 7.x-style lack of type #}
+    {# TODO: only show 'json' link if from cluster? #}
+    <a target="_blank" href="{{ settings.ELASTICSEARCH_BACKEND }}/{{ settings.ELASTICSEARCH_FULLTEXT_INDEX }}/_doc/{{ paper.key }}">
+      <span class="ui label small">json</span>
     </a>
-  {% endif %}
-  {% for tag in paper.tags %}
-    <span class="ui label small">{{ _(tag) }}</span>
-  {% endfor %}
+    {% if paper.biblio.release_ident %}
+      <a target="_blank" href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}">
+        <span class="ui label small">metadata</span>
+      </a>
+    {% endif %}
+
+    {% for tag in paper.tags %}
+      <span class="ui label small">{{ _(tag) }}</span>
+    {% endfor %}
   </div>
+
+  {# ### COLLAPSED HITS  #}
+  {% if paper._collapsed_count > 0 %}
+    <div style="padding-top: 0.5em;">
+      <button class="ui compact basic blue button" form="search_form" type="submit" name="collapse_pages" value="false">
+          <i class="ui icon zoom-in"></i>
+          Show {{ paper._collapsed_count }} additional hits from this issue
+      </button>
+    </div>
+  {% endif %}
 
 </div>
 <div class="three wide left aligned column" style="padding-top: 0.5em; padding-right: 0.5em;">

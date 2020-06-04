@@ -28,6 +28,7 @@ class FulltextQuery(BaseModel):
     filter_type: Optional[str] = None
     filter_availability: Optional[str] = None
     sort_order: Optional[str] = None
+    collapse_pages: bool = True
     time_options: Any = {
         "label": gettext("Release Date"),
         "slug": "filter_time",
@@ -196,6 +197,13 @@ def do_fulltext_search(
         number_of_fragments=2,
         fragment_size=300,
     )
+    if query.collapse_pages:
+        search = search.extra(
+            collapse={
+                "field": "collapse_key",
+                "inner_hits": {"name": "more_pages", "size": 0,},
+            }
+        )
 
     # sort order
     if query.sort_order == "time_asc":
@@ -234,12 +242,19 @@ def do_fulltext_search(
     results = []
     for h in resp:
         r = h._d_
-        # print(json.dumps(h.meta._d_, indent=2))
+        # print(h.meta._d_)
         r["_highlights"] = []
         if "highlight" in dir(h.meta):
             highlights = h.meta.highlight._d_
             for k in highlights:
                 r["_highlights"] += highlights[k]
+        r["_collapsed"] = []
+        r["_collapsed_count"] = 0
+        if "inner_hits" in dir(h.meta):
+            r["_collapsed_count"] = h.meta.inner_hits.more_pages.hits.total - 1
+            for k in h.meta.inner_hits.more_pages:
+                if k["key"] != r["key"]:
+                    r["_collapsed"].append(k)
         results.append(r)
 
     for h in results:
@@ -250,9 +265,16 @@ def do_fulltext_search(
             if type(h[key]) is str:
                 h[key] = h[key].encode("utf8", "ignore").decode("utf8")
 
+    count_found: int = int(resp.hits.total)
+    count_returned = len(results)
+
+    # if we grouped to less than a page of hits, update returned count
+    if query.collapse_pages and offset == 0 and (count_returned < limit):
+        count_found = count_returned
+
     return FulltextHits(
-        count_returned=len(results),
-        count_found=int(resp.hits.total),
+        count_returned=count_returned,
+        count_found=count_found,
         offset=offset,
         limit=limit,
         deep_page_limit=deep_page_limit,

@@ -187,6 +187,7 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
 
     tags: List[str] = []
     work_ident: Optional[str] = None
+    sim_issue: Optional[str] = None
     abstracts: List[ScholarAbstract] = []
     fulltext: Optional[ScholarFulltext] = None
     primary_release: Optional[ReleaseEntity] = None
@@ -199,6 +200,7 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
     if heavy.doc_type == DocType.sim_page:
         assert ia_sim is not None
         key = f"page_{ia_sim.issue_item}_{ia_sim.first_page}"
+        sim_issue = ia_sim.issue_item
         biblio = es_biblio_from_sim(heavy.sim_fulltext)
         fulltext = es_fulltext_from_sim(heavy.sim_fulltext)
     elif heavy.doc_type == DocType.work:
@@ -316,6 +318,7 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
 
     return ScholarDoc(
         key=key,
+        collapse_key=sim_issue or work_ident,
         doc_type=heavy.doc_type.value,
         doc_index_ts=datetime.datetime.utcnow(),
         work_ident=work_ident,

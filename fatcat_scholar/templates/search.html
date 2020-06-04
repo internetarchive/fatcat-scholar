@@ -21,7 +21,6 @@
   </details>
 
   {% if hits %}
-    {# <h2>{{ "{:,}".format(hits.count_found) }}</h2> #}
     <span style="font-size: 1.5em;">{{ "{:,}".format(hits.count_found) }}</span>
     Hits
     <span style="color: rgba(0,0,0,0.4);">in {{ "{:0.2}".format(hits.query_time_ms/1000.0) }}sec</span>
@@ -35,7 +34,6 @@
   <div class="ui tablet-hide two wide column">
     {% if hits %}
       <div style="width: 100%; text-align: right;">
-        {# <h2>{{ "{:,}".format(hits.count_found) }}</h2> #}
         <h3 style="font-size: {% if hits.count_found >= 10000000 %}1.0em{% elif hits.count_found >= 1000 %}1.5em{% else %}2.0em{% endif %};">{{ "{:,}".format(hits.count_found) }}</h3>
         Hits
       </div>
