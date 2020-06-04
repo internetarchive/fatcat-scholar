@@ -142,7 +142,7 @@ def do_fulltext_search(
 
     # availability filters
     if query.filter_availability == "oa":
-        search = search.filter("term", tag="oa")
+        search = search.filter("term", tags="oa")
     elif query.filter_availability == "everything":
         pass
     elif query.filter_availability == "fulltext" or query.filter_availability is None:
