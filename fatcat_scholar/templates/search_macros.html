@@ -142,11 +142,6 @@
     <a target="_blank" href="{{ settings.ELASTICSEARCH_BACKEND }}/{{ settings.ELASTICSEARCH_FULLTEXT_INDEX }}/_doc/{{ paper.key }}">
       <span class="ui label small">json</span>
     </a>
-    {% if paper.biblio.release_ident %}
-      <a target="_blank" href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}">
-        <span class="ui label small">metadata</span>
-      </a>
-    {% endif %}
 
     {% for tag in paper.tags %}
       {{ tag_label(tag) }}
