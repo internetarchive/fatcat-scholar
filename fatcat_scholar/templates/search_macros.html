@@ -85,28 +85,30 @@
       {{ paper.biblio.container_name }}
     {% endif %}
     </i>
-    {% if paper.container_is_oa %}<i class="icon unlock orange small"></i>{% endif %}
+    &nbsp;
   {% endif %}
-  {% if paper.biblio.withdrawn_status %}
-    <b style="color: red;"><code>[{{ paper.biblio.withdrawn_status }}]</code></b>
-  {% endif %}
-  {% if paper.biblio.release_stage == "accepted" %}
-    <b style="color: brown;"><code>[{{ paper.biblio.release_stage }}]</code></b>
+
+  {% if paper.biblio.release_stage == "submitted" %}
+    <b style="color: brown; text-transform: uppercase;">pre-print</b>
   {% elif paper.biblio.release_stage and paper.biblio.release_stage != "published" %}
-    <b style="color: red;"><code>[{{ paper.biblio.release_stage }}]</code></b>
+    <b style="color: brown; text-transform: uppercase;">{{ paper.biblio.release_stage }} version</b>
   {% elif not paper.biblio.release_stage %}
-    <b style="color: red;"><code>[{{ _("unpublished?") }}]</code></b>
+    <b style="color: brown; text-transform: uppercase;">unpublished</b>
+  {% endif %}
+
+  {% if paper.biblio.withdrawn_status %}
+    <b style="color: red; text-transform: uppercase;">{{ paper.biblio.withdrawn_status }}</b>
   {% endif %}
 
   {# ### ABSTRACT / QUERY HIGHLIGHT #}
   {% if paper._highlights %}
-    <div style="padding-top: 1em; padding-bottom: 0.5em;" class="search_highlights">
+    <div style="padding-top: 0.5em; padding-bottom: 0.5em;" class="search_highlights">
     {% for highlight in paper._highlights %}
       {{ highlight|safe }} &nbsp;...&nbsp;
     {% endfor %}
     </div>
   {% elif paper.abstracts %}
-    <div style="padding-top: 1em; padding-bottom: 0.5em;">
+    <div style="padding-top: 0.5em; padding-bottom: 0.5em;">
       {% if paper.abstracts[0].body|length > 500 %}
         {{ paper.abstracts[0].body[:500] }}...
       {% else %}
