@@ -314,6 +314,9 @@ def es_biblio_from_release(release: ReleaseEntity) -> ScholarBiblio:
     first_page_int: Optional[int] = None
     if first_page and first_page.isdigit():
         first_page_int = int(first_page)
+        # catch metadata errors which result in ES indexing errors
+        if abs(first_page_int) > 1000000:
+            first_page_int = None
 
     ret = ScholarBiblio(
         release_ident=release.ident,
