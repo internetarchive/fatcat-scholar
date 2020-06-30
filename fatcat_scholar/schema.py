@@ -71,7 +71,7 @@ class ScholarBiblio(BaseModel):
     issue_int: Optional[str]  # TODO: needed?
     pages: Optional[str]
     first_page: Optional[str]
-    first_page_int: Optional[str]  # TODO: needed?
+    first_page_int: Optional[int]  # TODO: needed?
     number: Optional[str]
 
     doi: Optional[str]
@@ -204,7 +204,7 @@ UNWANTED_ABSTRACT_PREFIXES = [
 ]
 
 
-def scrub_text(raw: str, mimetype: str = None) -> str:
+def scrub_text(raw: str, mimetype: str = None) -> Optional[str]:
     """
     This function takes a mimetype-hinted string and tries to reduce it to a
     simple token-and-punctuation scheme with any and all markup removed. Eg,
@@ -234,7 +234,8 @@ def scrub_text(raw: str, mimetype: str = None) -> str:
             text = text[len(prefix) :]
             break
 
-    assert text, "Empty abstract"
+    if not text:
+        return None
     return text
 
 
@@ -258,9 +259,10 @@ def contrib_affiliation(contrib: ReleaseContrib) -> Optional[str]:
 def es_abstracts_from_grobid(tei_dict: dict) -> List[ScholarAbstract]:
 
     if tei_dict.get("abstract"):
-        return [ScholarAbstract(lang_code=tei_dict.get("lang"), body=scrub_text(tei_dict["abstract"]))]
-    else:
-        return []
+        body = scrub_text(tei_dict["abstract"])
+        if body:
+            return [ScholarAbstract(lang_code=tei_dict.get("lang"), body=body)]
+    return []
 
 
 def es_abstracts_from_release(release: ReleaseEntity) -> List[ScholarAbstract]:
@@ -268,9 +270,11 @@ def es_abstracts_from_release(release: ReleaseEntity) -> List[ScholarAbstract]:
     d = dict()
     for abst in release.abstracts:
         if abst.lang not in d:
-            d[abst.lang] = ScholarAbstract(
-                lang_code=abst.lang, body=scrub_text(abst.content)
-            )
+            body = scrub_text(abst.content)
+            if body:
+                d[abst.lang] = ScholarAbstract(
+                    lang_code=abst.lang, body=scrub_text(abst.content)
+                )
     return list(d.values())
 
 
