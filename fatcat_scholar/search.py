@@ -102,7 +102,7 @@ def do_fulltext_search(
         query.q = "*"
 
     # type filters
-    if query.filter_type == "papers":
+    if query.filter_type == "papers" or query.filter_type is None:
         search = search.filter(
             "terms", type=["article-journal", "paper-conference", "chapter",]
         )
@@ -110,7 +110,7 @@ def do_fulltext_search(
         search = search.filter("terms", type=["report", "standard",])
     elif query.filter_type == "datasets":
         search = search.filter("terms", type=["dataset", "software",])
-    elif query.filter_type == "everything" or query.filter_type is None:
+    elif query.filter_type == "everything":
         pass
     else:
         raise ValueError(
