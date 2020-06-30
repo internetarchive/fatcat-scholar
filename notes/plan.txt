@@ -1,91 +1,26 @@
 
-x write proposals
-    => overview
-    => document-per-work schema
-    => URL structure
-    => fatcat indexing pipeline
-    => microfilm indexing pipeline
-x fastapi skeleton
-    => pipenv
-    => jinja2 templates
-x sketch out elasticsearch schema
-x issue db
-x release w/ or w/o sim pipeline
-    => start with work_ident
-    => fetch releases
-    => discover/match to ia_sim item (stub)
-x sim w/o release pipeline
-    => check if there are fatcat releases for issue
-    => otherwise iterate over entire issue generating pages
-x example corpus: fatcat papers w/ GROBID TEI-XML
-    => start with covid19 corpus/pipeline
-x example corpus: sim microfilm
-x check release w/ sim pipeline
-x release index pdftotext hack
-    => test on laptop
-- indexing pipeline skeleton
-    x  postgrest access
-    x  intermediate "heavy" schema
+- indexing pipeline
     => kafka topics and schemas
-    => minio/seaweedfs access
 - estimate fraction of SIM content with releases in fatcat ("backwards" fraction)
 
 bugs:
-x xml.etree.ElementTree.ParseError: unbound prefix: line 1, column 0
 . only some thumbnails showing?
     => maybe because found GROBID "before" pdftotext?
 . assert 'page_numbers' in issue_meta
-. UnicodeDecodeError: 'utf-8' codec can't decode byte 0xed in position 984: invalid continuation byte
-    => while reading pdftotext
-x contribs not coming through
-x are abstracts being searched?
-x "indexed" links broken
-x abstract JATS not getting striped
-x default type filter as "papers", not "everything"
 - container_original_name (?)
-- still leaking HTML through abstracts
-    => let's do proper highlight escapes
-    => still happening after ES filter (!)
 
 refactors:
-x abstracts in ES schema; maybe don't really need abstract alias, do in query schema?
-    => just make "object" for now
 - fetch_sim_issue / fetch_sim
-- pass through thumbnail URL
 - first_page in sim_fulltext object
 - container metadata in sim pipeline, and pass through for indexing
 
 - UI tweaks
-    .  "hits" spilling over out of side bar
-    .  fatcat_ident links
-    .  pmcid display
-    .  for debugging, a link to search doc (like a tag?)
-    .  need many more schema aliases for biblio fields (eg, title); doctype for doc_type
-    .  fewer but longer highlights
-    .  jinja2 less whitespace (some config flag?)
-    .  query in the search bar (after a search)
-    .  filters actually working
-    .  mobile CSS fixes
-    .  larger font size
-    .  search error page
-    .  i18n and zh examples
-    => change "indexed" tag to an icon (or "json"), and fix QA links
-    => mobile thumbnail could use top thumbnail margin? or all actually?
     => w3c validate
 
 - experiment: existing archive.org fulltext search, my style UI/UX
     => merging server-side is tricky... could do async and show a JS popup?
 
 - small ideas
-    x  search ranking:
-        - title boost
-        - biblio
-        - stage boost
-        - have-fulltext boost
-            https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-rank-feature-query.html
-            https://www.elastic.co/guide/en/elasticsearch/reference/7.7/query-dsl-boosting-query.html
-            https://www.elastic.co/guide/en/elasticsearch/reference/7.7/query-dsl-bool-query.html
-            https://www.elastic.co/guide/en/elasticsearch/reference/7.7/query-dsl-function-score-query.html
     => query boost for language match
     => query helper to inject more works
     => 404 and 5xx handlers (web)
@@ -100,6 +35,6 @@ x abstracts in ES schema; maybe don't really need abstract alias, do in query sc
     => robots.txt?
 
 - later projects/proposals
-    => pass query through to in-book reading
     => query parser
+    => pass query through to in-book reading
     => re-OCR web PDFs with poor/missing OCR
