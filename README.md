@@ -54,10 +54,10 @@ Fetch "heavy" fulltext documents (JSON) for full SIM database:
 
 Re-use existing COVID-19 database to index releases:
 
-    cat /srv/fatcat_covid19/metadata/fatcat_hits.2020-04-27.enrich.json \
+    cat /srv/fatcat_covid19/metadata/2020-06-24/fatcat_hits.enrich.json \
         | jq -c .fatcat_release \
         | rg -v "^null" \
-        | parallel -j8 --linebuffer --round-robin --pipe python -m fatcat_scholar.work_pipeline run_releases --fulltext-cache-dir /srv/fatcat_covid19/fulltext_web \
+        | parallel -j8 --linebuffer --round-robin --pipe python -m fatcat_scholar.work_pipeline run_releases \
         | pv -l \
         | gzip > data/work_intermediate.json.gz
 
