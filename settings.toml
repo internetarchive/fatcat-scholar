@@ -5,7 +5,7 @@ SCHOLAR_DOMAIN = "fatcat.wiki"
 I18N_LANG_DEFAULT = "en"
 ELASTICSEARCH_BACKEND = "https://search.fatcat.wiki"
 ELASTICSEARCH_FULLTEXT_INDEX = "scholar_fulltext"
-COVID19_FULLTEXT_HOST = "https://covid19.fatcat.wiki"
+THUMBNAIL_URL_PREFIX = "https://blobs.fatcat.wiki/thumbnail/pdf/"
 
 [dev]
 SCHOLAR_ENV = "dev"

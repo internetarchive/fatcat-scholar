@@ -2,6 +2,7 @@ import sys
 import argparse
 from typing import List, Dict, Optional, Any, Sequence
 
+from dynaconf import settings
 from fatcat_openapi_client import ReleaseEntity, FileEntity
 
 from fatcat_scholar.api_entities import *
@@ -152,7 +153,7 @@ def _add_file_release_meta(
     fulltext.access_type = best_url_type
     if pdf_meta is not None and pdf_meta.get("has_page0_thumbnail"):
         # eg: https://blobs.fatcat.wiki/thumbnail/pdf/32/29/322909fe57cef73b10a166996a4528d337026d16.180px.jpg
-        fulltext.thumbnail_url = f"https://blobs.fatcat.wiki/thumbnail/pdf/{ fe.sha1[0:2] }/{ fe.sha1[2:4] }/{ fe.sha1 }.180px.jpg"
+        fulltext.thumbnail_url = f"{ settings.THUMBNAIL_URL_PREFIX }{ fe.sha1[0:2] }/{ fe.sha1[2:4] }/{ fe.sha1 }.180px.jpg"
     return fulltext
 
 
