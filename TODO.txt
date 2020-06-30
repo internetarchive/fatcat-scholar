@@ -1,39 +1,17 @@
 
 content/pipeline:
-x helper to index based on a search query
+- plan for getting release dumps sorted by work ident
 - parallelize SIM indexing
 
-UI/UX fixes:
-x all links in new tabs
-x "keyword" in front-page box; replace identifier with examples
-x default to "availability: fulltext"
-x update front-page thumb selection (-1 PLOS)
-x brief user guide
-x "indexed" -> "json" (tag)
-x fatcat tag with link; "metadata"?
-x OA facet broken; needs tagging?
-x vertical alignment of thumbnails
-x pagination
-x filter HTML form weirdness
-    => split off "hidden" form fields
-x textpipe to escape HTML better
-    => regression test
-x group pages within issues
-x container links broken?
-x tag/tags
-x color+link OA tags. or click to filter?
-- better labeling pre-prints
-
 cleanups:
-x make fmt -> black
-x flake8
-x mypy require annotations?
+- better typing/annotation of work pipeline
+- test coverage
+- use settings.toml for defaults of CLI args
 
 ponder:
-x single paragraph on front page
-x "This fulltext search index includes over 25 million research articles and other scholarly documents preserved in the Internet Archive."
+- robots.txt
 - some space-holder for missing thumbnails
-- smaller author font size
+- smaller author font size (?)
 - "search inside" phrasing
 
 data quality:
