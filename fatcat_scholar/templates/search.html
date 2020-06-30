@@ -95,6 +95,24 @@
           {% trans %}We didn't find any documents matching your query{% endtrans %}
         </div>
         <div class="inline">
+          {% if query.filter_type != "everything" %}
+            <button class="ui primary button" form="search_form" type="submit" name="filter_type" value="everything">
+              {% trans %}Try All Resource Types{% endtrans %}
+            </button>
+          {% endif %}
+          {% if query.filter_time and query.filter_time != "all_time" %}
+            <button class="ui primary button" form="search_form" type="submit" name="filter_time" value="all_time">
+              {% trans %}Try All Time{% endtrans %}
+            </button>
+          {% endif %}
+          {% if query.filter_availability != "everything" %}
+            <button class="ui primary button" form="search_form" type="submit" name="filter_availability" value="everything">
+              {% trans %}Try Metadata Records{% endtrans %}
+            </button>
+          {% endif %}
+          <a href="{{ lang_prefix }}/search" class="ui primary button" style="margin: 0.5em;">{{ _("Start Over") }}</a>
+        </div>
+        <div class="inline">
           <a href="https://archive.org/search.php?sin=TXT&query={{ query.q|urlencode }}" target="_blank" class="ui button" style="margin: 0.5em;">Try archive.org</a>
           <a href="https://fatcat.wiki/search&q={{ query.q|urlencode }}" target="_blank" class="ui button" style="margin: 0.5em;">Try fatcat.wiki</a>
           <a href="https://www.semanticscholar.org/search?q={{ query.q|urlencode }}" target="_blank" class="ui button" style="margin: 0.5em;">Try Semantic Scholar</a>
