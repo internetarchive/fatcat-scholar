@@ -3,7 +3,7 @@ import json
 import sqlite3
 import argparse
 from dataclasses import dataclass
-from typing import List, Dict, Optional, Any, Sequence
+from typing import List, Dict, Optional, Any, Sequence, Tuple
 import fatcat_openapi_client
 import elasticsearch
 from elasticsearch_dsl import Search
@@ -22,7 +22,7 @@ class SimPubRow:
     container_ident: Optional[str]
     wikidata_qid: Optional[str]
 
-    def tuple(self):
+    def tuple(self) -> Tuple:
         return (
             self.sim_pubid,
             self.pub_collection,
@@ -67,7 +67,7 @@ class SimIssueRow:
     last_page: Optional[int]
     release_count: Optional[int]
 
-    def tuple(self):
+    def tuple(self) -> Tuple:
         return (
             self.issue_item,
             self.sim_pubid,
@@ -101,7 +101,7 @@ class ReleaseCountsRow:
     year: Optional[int]
     volume: Optional[str]
 
-    def tuple(self):
+    def tuple(self) -> Tuple:
         return (
             self.sim_pubid,
             self.year,
@@ -147,7 +147,7 @@ def es_container_aggs(es_client: Any, container_id: str) -> List[Dict[str, Any]]
 
 
 class IssueDB:
-    def __init__(self, db_file):
+    def __init__(self, db_file: str):
         """
         To create a temporary database, pass ":memory:" as db_file
         """
@@ -155,7 +155,7 @@ class IssueDB:
         self._pubid2container_map: Dict[str, Optional[str]] = dict()
         self._container2pubid_map: Dict[str, Optional[str]] = dict()
 
-    def init_db(self):
+    def init_db(self) -> None:
         self.db.executescript(
             """
             PRAGMA main.page_size = 4096;
@@ -240,7 +240,7 @@ class IssueDB:
             return None
         return SimPubRow.from_tuple(row[0])
 
-    def load_pubs(self, json_lines: Sequence[str], api: Any):
+    def load_pubs(self, json_lines: Sequence[str], api: Any) -> None:
         """
         Reads a file (or some other iterator) of JSON lines, parses them into a
         dict, then inserts rows.
@@ -274,7 +274,7 @@ class IssueDB:
         cur.close()
         self.db.commit()
 
-    def load_issues(self, json_lines: Sequence[str], es_client: Any):
+    def load_issues(self, json_lines: Sequence[str], es_client: Any) -> None:
         """
         Reads a file (or some other iterator) of JSON lines, parses them into a
         dict, then inserts rows.
@@ -337,7 +337,7 @@ class IssueDB:
         cur.close()
         self.db.commit()
 
-    def load_counts(self, es_client: Any):
+    def load_counts(self, es_client: Any) -> None:
         all_pub_containers = list(
             self.db.execute(
                 "SELECT sim_pubid, container_ident FROM sim_pub WHERE container_ident IS NOT NULL;"
@@ -359,7 +359,7 @@ class IssueDB:
         self.db.commit()
 
 
-def main():
+def main() -> None:
     """
     Run this command like:
 

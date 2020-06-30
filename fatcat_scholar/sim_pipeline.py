@@ -110,7 +110,7 @@ class SimPipeline:
             issue_item_metadata=truncate_issue_meta(issue_meta),
         )
 
-    def run_issue_db(self, limit: int = None):
+    def run_issue_db(self, limit: int = None) -> None:
         count = 0
         self.issue_db.db.row_factory = sqlite3.Row
         cur = self.issue_db.db.cursor()
@@ -157,7 +157,7 @@ class SimPipeline:
                 break
 
 
-def main():
+def main() -> None:
     """
     Run this command like:
 

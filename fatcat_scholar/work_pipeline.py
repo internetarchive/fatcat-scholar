@@ -1,12 +1,14 @@
 import os
 import io
 import sys
-import minio
-import requests
 import argparse
 from typing import List, Dict, Tuple, Optional, Any, Sequence
-from fatcat_openapi_client import ReleaseEntity, FileEntity
+
+import minio
+import requests
 import internetarchive
+from dynaconf import settings
+from fatcat_openapi_client import ReleaseEntity, FileEntity
 
 from fatcat_scholar.api_entities import *
 from fatcat_scholar.djvu import djvu_extract_leaf_texts
@@ -41,7 +43,7 @@ def parse_pages(raw: str) -> Tuple[Optional[int], Optional[int]]:
     return (first, last)
 
 
-def test_parse_pages():
+def test_parse_pages() -> None:
     assert parse_pages("479-89") == (479, 489)
     assert parse_pages("466-7") == (466, 467)
     assert parse_pages("466-501") == (466, 501)
@@ -331,7 +333,7 @@ class WorkPipeline:
             sim_fulltext=sim_fulltext,
         )
 
-    def run_releases(self, release_stream: Sequence[str]):
+    def run_releases(self, release_stream: Sequence[str]) -> None:
         """
         Iterates over the stream of releases, which are expected to be grouped
         (sorted) by work_ident.
@@ -365,7 +367,7 @@ class WorkPipeline:
             print(ib.json())
 
 
-def main():
+def main() -> None:
     """
     Run this command like:
 

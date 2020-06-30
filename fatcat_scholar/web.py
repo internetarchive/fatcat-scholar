@@ -9,7 +9,7 @@ import babel.support
 from fastapi import FastAPI, APIRouter, Request, Depends
 from fastapi.staticfiles import StaticFiles
 from dynaconf import settings
-from typing import Optional, List, Any
+from typing import Optional, Any
 
 from fatcat_scholar.hacks import Jinja2Templates
 from fatcat_scholar.search import do_fulltext_search, FulltextQuery, FulltextHits
@@ -71,20 +71,20 @@ web = APIRouter()
 
 
 def locale_gettext(translations: Any) -> Any:
-    def gt(s):
+    def gt(s):  # noqa: ANN001,ANN201
         return translations.ugettext(s)
 
     return gt
 
 
 def locale_ngettext(translations: Any) -> Any:
-    def ngt(s, n):
+    def ngt(s, n):  # noqa: ANN001,ANN201
         return translations.ungettext(s)
 
     return ngt
 
 
-def load_i18n_templates():
+def load_i18n_templates() -> Any:
     """
     This is a hack to work around lack of per-request translation
     (babel/gettext) locale switching in FastAPI and Starlette. Flask (and
@@ -111,7 +111,7 @@ def load_i18n_templates():
         )
         # remove a lot of whitespace in HTML output with these configs
         templates.env.trim_blocks = True
-        templates.env.istrip_blocks = True
+        templates.env.lstrip_blocks = True
         # pass-through application settings to be available in templates
         templates.env.globals["settings"] = settings
         d[lang_opt] = templates
@@ -126,7 +126,7 @@ async def web_home(
     request: Request,
     lang: LangPrefix = Depends(LangPrefix),
     content: ContentNegotiation = Depends(ContentNegotiation),
-):
+) -> Any:
     if content.mimetype == "application/json":
         return await home()
     return i18n_templates[lang.code].TemplateResponse(
@@ -136,7 +136,7 @@ async def web_home(
 
 
 @web.get("/about", include_in_schema=False)
-async def web_about(request: Request, lang: LangPrefix = Depends(LangPrefix)):
+async def web_about(request: Request, lang: LangPrefix = Depends(LangPrefix)) -> Any:
     return i18n_templates[lang.code].TemplateResponse(
         "about.html",
         {"request": request, "locale": lang.code, "lang_prefix": lang.prefix},
