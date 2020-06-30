@@ -27,19 +27,7 @@
   <div style="margin-bottom: 0.1em; font-size: 1.2em; font-weight: bold;">
 
     {% if paper.doc_type == "work" %}
-      {# "best URL" calculation #}
-      {% if paper.biblio.pmcid %}
-      <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/{{ paper.biblio.pmcid }}/"
-      {% elif paper.biblio.pmid %}
-      <a href="https://pubmed.ncbi.nlm.nih.gov/{{ paper.biblio.pmid }}/"
-      {% elif paper.biblio.arxiv_id %}
-      <a href="https://arxiv.org/abs/{{ paper.biblio.arxiv_id }}/"
-      {% elif paper.biblio.doi %}
-      <a href="https://doi.org/{{ paper.biblio.doi }}"
-      {% else %}
-      <a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}"
-      {% endif %}
-      style="color: #2224c7;" target="_blank">
+      <a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}" style="color: #2224c7;" target="_blank">
         {% if paper.biblio.title %}
           {{ paper.biblio.title[:512] }}
           {% if paper.biblio.title|length > 512 %}...{% endif %}
