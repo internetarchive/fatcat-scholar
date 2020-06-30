@@ -6,6 +6,8 @@ I18N_LANG_DEFAULT = "en"
 ELASTICSEARCH_BACKEND = "https://search.fatcat.wiki"
 ELASTICSEARCH_FULLTEXT_INDEX = "scholar_fulltext"
 THUMBNAIL_URL_PREFIX = "https://blobs.fatcat.wiki/thumbnail/pdf/"
+SANDCRAWLER_DB_API = "http://aitio.us.archive.org:3030"
+SANDCRAWLER_S3_API = "wbgrp-svc169.us.archive.org:8333"
 
 [dev]
 SCHOLAR_ENV = "dev"

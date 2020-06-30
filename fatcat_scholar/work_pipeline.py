@@ -82,13 +82,11 @@ class WorkPipeline:
         issue_db: IssueDB,
         sandcrawler_db_client: SandcrawlerPostgrestClient,
         sandcrawler_s3_client: SandcrawlerMinioClient,
-        fulltext_cache_dir=None,
     ):
         self.issue_db: IssueDB = issue_db
         self.ia_client = internetarchive.get_session()
         self.sandcrawler_db_client = sandcrawler_db_client
         self.sandcrawler_s3_client = sandcrawler_s3_client
-        self.fulltext_cache_dir = fulltext_cache_dir
 
     def fetch_file_grobid(self, fe: FileEntity, release_ident: str) -> Optional[Any]:
         """
@@ -388,13 +386,13 @@ def main():
     parser.add_argument(
         "--sandcrawler-db-api",
         help="Sandcrawler Postgrest API endpoint",
-        default="http://aitio.us.archive.org:3030",
+        default=settings.SANDCRAWLER_DB_API,
         type=str,
     )
     parser.add_argument(
         "--sandcrawler-s3-api",
         help="Sandcrawler S3 (minio/seaweedfs) API endpoint",
-        default="aitio.us.archive.org:9000",
+        default=settings.SANDCRAWLER_S3_API,
         type=str,
     )
 
@@ -408,12 +406,6 @@ def main():
         nargs="?",
         default=sys.stdin,
         type=argparse.FileType("r"),
-    )
-    sub.add_argument(
-        "--fulltext-cache-dir",
-        help="path of local directory with pdftotext fulltext (and thumbnails)",
-        default=None,
-        type=str,
     )
 
     args = parser.parse_args()
@@ -431,7 +423,6 @@ def main():
             access_key=os.environ.get("MINIO_ACCESS_KEY"),
             secret_key=os.environ.get("MINIO_SECRET_KEY"),
         ),
-        fulltext_cache_dir=args.fulltext_cache_dir,
     )
 
     if args.func == "run_releases":
