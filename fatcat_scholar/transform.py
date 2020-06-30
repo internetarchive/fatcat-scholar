@@ -104,10 +104,12 @@ def es_biblio_from_sim(sim: Dict[str, Any]) -> ScholarBiblio:
         # original_title=release.original_title,
         release_date=release_date,
         release_year=release_year,
-        release_type=SIM_RELEASE_TYPE_MAP.get(issue_meta.get("pub_type")) or SIM_RELEASE_TYPE_MAP.get(pub_meta.get("pub_type")),
+        release_type=SIM_RELEASE_TYPE_MAP.get(issue_meta.get("pub_type"))
+        or SIM_RELEASE_TYPE_MAP.get(pub_meta.get("pub_type")),
         release_stage="published",  # as a default
         # withdrawn_status=release.withdrawn_status,
-        lang_code=SIM_LANG_MAP.get(issue_meta.get("language")) or SIM_LANG_MAP.get(pub_meta.get("language")),
+        lang_code=SIM_LANG_MAP.get(issue_meta.get("language"))
+        or SIM_LANG_MAP.get(pub_meta.get("language")),
         country_code=SIM_COUNTRY_MAP.get(pub_meta.get("country")),
         volume=volume,
         volume_int=volume_int,
@@ -133,7 +135,10 @@ def es_biblio_from_sim(sim: Dict[str, Any]) -> ScholarBiblio:
 
 
 def _add_file_release_meta(
-    fulltext: ScholarFulltext, pdf_meta: Optional[dict], re: ReleaseEntity, fe: FileEntity
+    fulltext: ScholarFulltext,
+    pdf_meta: Optional[dict],
+    re: ReleaseEntity,
+    fe: FileEntity,
 ) -> ScholarFulltext:
     best_url = None
     best_url_type = None
@@ -181,10 +186,7 @@ def es_fulltext_from_pdftotext(
 ) -> Optional[ScholarFulltext]:
 
     ret = ScholarFulltext(
-        lang_code=re.language,
-        body=raw_text,
-        acknowledgement=None,
-        annex=None,
+        lang_code=re.language, body=raw_text, acknowledgement=None, annex=None,
     )
     return _add_file_release_meta(ret, pdf_meta, re, fe)
 
@@ -257,7 +259,10 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
             if f.ident == heavy.pdftotext_fulltext["file_ident"]
         ][0]
         fulltext = es_fulltext_from_pdftotext(
-            heavy.pdftotext_fulltext["raw_text"], heavy.pdf_meta, fulltext_release, fulltext_file
+            heavy.pdftotext_fulltext["raw_text"],
+            heavy.pdf_meta,
+            fulltext_release,
+            fulltext_file,
         )
 
     # TODO: additional access list

@@ -119,7 +119,9 @@ class WorkPipeline:
             tei_xml=grobid_xml, release_ident=release_ident, file_ident=fe.ident,
         )
 
-    def fetch_pdf_meta(self, fe: FileEntity, release_ident: str) -> Optional[Dict[str, Any]]:
+    def fetch_pdf_meta(
+        self, fe: FileEntity, release_ident: str
+    ) -> Optional[Dict[str, Any]]:
         """
         Fetches pdftext metadata from sandcrawler-db via postgrest HTTP
         interface.

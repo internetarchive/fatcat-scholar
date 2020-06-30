@@ -207,7 +207,7 @@ def do_fulltext_search(
         number_of_fragments=2,
         fragment_size=300,
         # TODO: this will fix highlight encoding, but requires ES 7.x
-        #encoder="html",
+        # encoder="html",
     )
 
     # sort order
@@ -270,8 +270,8 @@ def do_fulltext_search(
             if type(h[key]) is str:
                 h[key] = h[key].encode("utf8", "ignore").decode("utf8")
         # ensure collapse_key is a single value, not an array
-        if type(h['collapse_key']) == list:
-            h['collapse_key'] = h['collapse_key'][0]
+        if type(h["collapse_key"]) == list:
+            h["collapse_key"] = h["collapse_key"][0]
 
     count_found: int = int(resp.hits.total)
     count_returned = len(results)

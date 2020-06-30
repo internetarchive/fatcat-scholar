@@ -17,7 +17,9 @@ class SandcrawlerPostgrestClient:
             return None
 
     def get_pdf_meta(self, sha1: str) -> Optional[Dict[str, Any]]:
-        resp = requests.get(self.api_url + "/pdf_meta", params=dict(sha1hex="eq." + sha1))
+        resp = requests.get(
+            self.api_url + "/pdf_meta", params=dict(sha1hex="eq." + sha1)
+        )
         resp.raise_for_status()
         resp_json = resp.json()
         if resp_json:
