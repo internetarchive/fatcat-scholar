@@ -67,7 +67,7 @@ class FulltextQuery(BaseModel):
         "slug": "sort_order",
         "default": "relevancy",
         "list": [
-            {"label": gettext("All Time"), "slug": "relevancy"},
+            {"label": gettext("Relevancy"), "slug": "relevancy"},
             {"label": gettext("Recent First"), "slug": "time_desc"},
             {"label": gettext("Oldest First"), "slug": "time_asc"},
         ],
