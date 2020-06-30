@@ -28,7 +28,7 @@ class FulltextQuery(BaseModel):
     filter_type: Optional[str] = None
     filter_availability: Optional[str] = None
     sort_order: Optional[str] = None
-    collapse_pages: bool = True
+    collapse_key: Optional[str] = None
     time_options: Any = {
         "label": gettext("Release Date"),
         "slug": "filter_time",
@@ -152,6 +152,16 @@ def do_fulltext_search(
             f"Unknown 'filter_availability' parameter value: '{query.filter_availability}'"
         )
 
+    if query.collapse_key:
+        search = search.filter("term", collapse_key=query.collapse_key)
+    else:
+        search = search.extra(
+            collapse={
+                "field": "collapse_key",
+                "inner_hits": {"name": "more_pages", "size": 0,},
+            }
+        )
+
     # we combined several queries to improve scoring.
 
     # this query use the fancy built-in query string parser
@@ -197,13 +207,6 @@ def do_fulltext_search(
         number_of_fragments=2,
         fragment_size=300,
     )
-    if query.collapse_pages:
-        search = search.extra(
-            collapse={
-                "field": "collapse_key",
-                "inner_hits": {"name": "more_pages", "size": 0,},
-            }
-        )
 
     # sort order
     if query.sort_order == "time_asc":
@@ -264,12 +267,15 @@ def do_fulltext_search(
         for key in h:
             if type(h[key]) is str:
                 h[key] = h[key].encode("utf8", "ignore").decode("utf8")
+        # ensure collapse_key is a single value, not an array
+        if type(h['collapse_key']) == list:
+            h['collapse_key'] = h['collapse_key'][0]
 
     count_found: int = int(resp.hits.total)
     count_returned = len(results)
 
     # if we grouped to less than a page of hits, update returned count
-    if query.collapse_pages and offset == 0 and (count_returned < limit):
+    if (not query.collapse_key) and offset == 0 and (count_returned < limit):
         count_found = count_returned
 
     return FulltextHits(

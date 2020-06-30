@@ -156,7 +156,7 @@
   {# ### COLLAPSED HITS  #}
   {% if paper._collapsed_count > 0 %}
     <div style="padding-top: 0.5em;">
-      <button class="ui compact basic blue button" form="search_form" type="submit" name="collapse_pages" value="false">
+      <button class="ui compact basic blue button" form="search_form" type="submit" name="collapse_key" value="{{ paper.collapse_key }}">
           <i class="ui icon zoom-in"></i>
           Show {{ paper._collapsed_count }} additional hits from this issue
       </button>
