@@ -106,11 +106,11 @@ class WorkPipeline:
         # print(grobid_meta)
         try:
             grobid_xml = self.sandcrawler_s3_client.get_blob(
+                bucket="sandcrawler",
+                prefix="",
                 folder="grobid",
                 sha1hex=fe.sha1,
                 extension=".tei.xml",
-                prefix="",
-                bucket="sandcrawler",
             )
             # print(grobid_xml)
         except minio.error.NoSuchKey:
@@ -119,28 +119,50 @@ class WorkPipeline:
             tei_xml=grobid_xml, release_ident=release_ident, file_ident=fe.ident,
         )
 
+    def fetch_pdf_meta(self, fe: FileEntity, release_ident: str) -> Optional[Dict[str, Any]]:
+        """
+        Fetches pdftext metadata from sandcrawler-db via postgrest HTTP
+        interface.
+
+        Returns a JSON object on success, or None if not found.
+
+        raw_text: str
+        release_ident: Optional[str]
+        file_ident: Optional[str]
+        """
+        if not fe.sha1:
+            return None
+        pdf_meta = self.sandcrawler_db_client.get_pdf_meta(fe.sha1)
+        if not pdf_meta or pdf_meta["status"] != "success":
+            return None
+        return dict(
+            pdf_meta=pdf_meta, release_ident=release_ident, file_ident=fe.ident,
+        )
+
     def fetch_file_pdftotext(self, fe: FileEntity, release_ident: str) -> Optional[Any]:
         """
         raw_text: str
         release_ident: Optional[str]
         file_ident: Optional[str]
         """
-        # HACK: look for local pdftotext output
-        if self.fulltext_cache_dir:
-            local_txt_path = (
-                f"{self.fulltext_cache_dir}/pdftotext/{fe.sha1[:2]}/{fe.sha1}.txt"
+        if not fe.sha1:
+            return None
+        if not fe.urls:
+            return None
+        try:
+            raw_text = self.sandcrawler_s3_client.get_blob(
+                bucket="sandcrawler",
+                prefix="",
+                folder="text",
+                sha1hex=fe.sha1,
+                extension=".txt",
             )
-            try:
-                with open(local_txt_path, "r") as txt_file:
-                    raw_text = txt_file.read()
-                return dict(
-                    raw_text=raw_text, release_ident=release_ident, file_ident=fe.ident,
-                )
-            except FileNotFoundError:
-                pass
-            except UnicodeDecodeError:
-                pass
-        return None
+            # print(raw_text)
+        except minio.error.NoSuchKey:
+            return None
+        return dict(
+            raw_text=raw_text, release_ident=release_ident, file_ident=fe.ident,
+        )
 
     def lookup_sim(self, release: ReleaseEntity) -> Optional[SimIssueRow]:
         """
@@ -250,6 +272,7 @@ class WorkPipeline:
 
         # find best accessible fatcat file
         grobid_fulltext: Optional[Any] = None
+        pdf_meta: Optional[Any] = None
         pdftotext_fulltext: Optional[Any] = None
         for ident in pref_idents:
             release = release_dict[ident]
@@ -259,7 +282,10 @@ class WorkPipeline:
                 if not fe.sha1 or fe.mimetype not in (None, "application/pdf"):
                     continue
                 grobid_fulltext = self.fetch_file_grobid(fe, ident)
-                pdftotext_fulltext = self.fetch_file_pdftotext(fe, ident)
+                pdf_meta = self.fetch_pdf_meta(fe, ident)
+                pdftotext_fulltext = None
+                if pdf_meta:
+                    pdftotext_fulltext = self.fetch_file_pdftotext(fe, ident)
                 if grobid_fulltext or pdftotext_fulltext:
                     break
             if grobid_fulltext or pdftotext_fulltext:
@@ -301,6 +327,7 @@ class WorkPipeline:
             biblio_release_ident=pref_idents[0],
             grobid_fulltext=grobid_fulltext,
             pdftotext_fulltext=pdftotext_fulltext,
+            pdf_meta=pdf_meta,
             sim_fulltext=sim_fulltext,
         )
 

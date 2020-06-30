@@ -127,7 +127,7 @@ def es_biblio_from_sim(sim: Dict[str, Any]) -> ScholarBiblio:
 
 
 def _add_file_release_meta(
-    fulltext: ScholarFulltext, re: ReleaseEntity, fe: FileEntity
+    fulltext: ScholarFulltext, pdf_meta: Optional[dict], re: ReleaseEntity, fe: FileEntity
 ) -> ScholarFulltext:
     best_url = None
     best_url_type = None
@@ -150,11 +150,14 @@ def _add_file_release_meta(
     fulltext.file_mimetype = fe.mimetype
     fulltext.access_url = best_url
     fulltext.access_type = best_url_type
+    if pdf_meta is not None and pdf_meta.get("has_page0_thumbnail"):
+        # eg: https://blobs.fatcat.wiki/thumbnail/pdf/32/29/322909fe57cef73b10a166996a4528d337026d16.180px.jpg
+        fulltext.thumbnail_url = f"https://blobs.fatcat.wiki/thumbnail/pdf/{ fe.sha1[0:2] }/{ fe.sha1[2:4] }/{ fe.sha1 }.180px.jpg"
     return fulltext
 
 
 def es_fulltext_from_grobid(
-    tei_xml: str, re: ReleaseEntity, fe: FileEntity
+    tei_xml: str, pdf_meta: Optional[dict], re: ReleaseEntity, fe: FileEntity
 ) -> Optional[ScholarFulltext]:
     obj = teixml2json(tei_xml)
     if not obj.get("body"):
@@ -164,23 +167,21 @@ def es_fulltext_from_grobid(
         body=obj.get("body"),
         acknowledgement=obj.get("acknowledgement"),
         annex=obj.get("annex"),
-        thumbnail_url=None,  # TODO: sandcrawler thumbnails
     )
-    return _add_file_release_meta(ret, re, fe)
+    return _add_file_release_meta(ret, pdf_meta, re, fe)
 
 
 def es_fulltext_from_pdftotext(
-    pdftotext: Any, re: ReleaseEntity, fe: FileEntity
+    raw_text: str, pdf_meta: Optional[dict], re: ReleaseEntity, fe: FileEntity
 ) -> Optional[ScholarFulltext]:
 
     ret = ScholarFulltext(
         lang_code=re.language,
-        body=pdftotext["raw_text"],
+        body=raw_text,
         acknowledgement=None,
         annex=None,
-        thumbnail_url=None,  # TODO: sandcrawler thumbnails
     )
-    return _add_file_release_meta(ret, re, fe)
+    return _add_file_release_meta(ret, pdf_meta, re, fe)
 
 
 def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
@@ -199,10 +200,11 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
 
     if heavy.doc_type == DocType.sim_page:
         assert ia_sim is not None
+        assert heavy.sim_fulltext is not None
         key = f"page_{ia_sim.issue_item}_{ia_sim.first_page}"
         sim_issue = ia_sim.issue_item
         biblio = es_biblio_from_sim(heavy.sim_fulltext)
-        fulltext = es_fulltext_from_sim(heavy.sim_fulltext)
+        # fulltext extracted from heavy.sim_fulltext above
     elif heavy.doc_type == DocType.work:
         work_ident = heavy.releases[0].work_id
         key = f"work_{work_ident}"
@@ -229,18 +231,8 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
             if f.ident == heavy.grobid_fulltext["file_ident"]
         ][0]
         fulltext = es_fulltext_from_grobid(
-            heavy.grobid_fulltext["tei_xml"], fulltext_release, fulltext_file
+            heavy.grobid_fulltext["tei_xml"], heavy.pdf_meta, fulltext_release, fulltext_file
         )
-
-        # hack to pull through thumbnail from local pdftotext
-        if (
-            fulltext
-            and fulltext.file_sha1
-            and not fulltext.thumbnail_url
-            and heavy.pdftotext_fulltext
-        ):
-            # https://covid19.fatcat.wiki/fulltext_web/thumbnail/c9/c9e87f843b3cf7dc47881fa3d3ccb4693d7d9521.png
-            fulltext.thumbnail_url = f"https://covid19.fatcat.wiki/fulltext_web/thumbnail/{fulltext.file_sha1[:2]}/{fulltext.file_sha1}.png"
 
     if not fulltext and heavy.pdftotext_fulltext:
         fulltext_release = [
@@ -254,7 +246,7 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
             if f.ident == heavy.pdftotext_fulltext["file_ident"]
         ][0]
         fulltext = es_fulltext_from_pdftotext(
-            heavy.pdftotext_fulltext, fulltext_release, fulltext_file
+            heavy.pdftotext_fulltext["raw_text"], heavy.pdf_meta, fulltext_release, fulltext_file
         )
 
     # TODO: additional access list

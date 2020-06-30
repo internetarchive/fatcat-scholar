@@ -7,7 +7,7 @@ auto-conversion of datetime objects.
 import re
 import datetime
 from enum import Enum
-from typing import Optional, List, Any
+from typing import Optional, List, Any, Dict
 
 import ftfy
 from bs4 import BeautifulSoup
@@ -30,9 +30,10 @@ class IntermediateBundle(BaseModel):
     doc_type: DocType
     releases: List[ReleaseEntity]
     biblio_release_ident: Optional[str]
-    grobid_fulltext: Optional[Any]
-    pdftotext_fulltext: Optional[Any]
-    sim_fulltext: Optional[Any]
+    grobid_fulltext: Optional[Dict[str, Any]]
+    pdftotext_fulltext: Optional[Dict[str, Any]]
+    pdf_meta: Optional[Dict[str, Any]]
+    sim_fulltext: Optional[Dict[str, Any]]
 
     class Config:
         arbitrary_types_allowed = True
