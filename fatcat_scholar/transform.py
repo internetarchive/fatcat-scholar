@@ -151,7 +151,7 @@ def _add_file_release_meta(
     fulltext.file_mimetype = fe.mimetype
     fulltext.access_url = best_url
     fulltext.access_type = best_url_type
-    if pdf_meta is not None and pdf_meta.get("has_page0_thumbnail"):
+    if pdf_meta is not None and pdf_meta["pdf_meta"].get("has_page0_thumbnail"):
         # eg: https://blobs.fatcat.wiki/thumbnail/pdf/32/29/322909fe57cef73b10a166996a4528d337026d16.180px.jpg
         fulltext.thumbnail_url = f"{ settings.THUMBNAIL_URL_PREFIX }{ fe.sha1[0:2] }/{ fe.sha1[2:4] }/{ fe.sha1 }.180px.jpg"
     return fulltext
@@ -338,6 +338,7 @@ def run_transform(infile: Sequence) -> None:
             biblio_release_ident=obj.get("biblio_release_ident"),
             grobid_fulltext=obj.get("grobid_fulltext"),
             pdftotext_fulltext=obj.get("pdftotext_fulltext"),
+            pdf_meta=obj.get("pdf_meta"),
             sim_fulltext=obj.get("sim_fulltext"),
         )
         es_doc = transform_heavy(heavy)
