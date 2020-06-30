@@ -255,6 +255,14 @@ def contrib_affiliation(contrib: ReleaseContrib) -> Optional[str]:
     return None
 
 
+def es_abstracts_from_grobid(tei_dict: dict) -> List[ScholarAbstract]:
+
+    if tei_dict.get("abstract"):
+        return [ScholarAbstract(lang_code=tei_dict.get("lang"), body=scrub_text(tei_dict["abstract"]))]
+    else:
+        return []
+
+
 def es_abstracts_from_release(release: ReleaseEntity) -> List[ScholarAbstract]:
 
     d = dict()

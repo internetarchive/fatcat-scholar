@@ -163,16 +163,15 @@ def _add_file_release_meta(
 
 
 def es_fulltext_from_grobid(
-    tei_xml: str, pdf_meta: Optional[dict], re: ReleaseEntity, fe: FileEntity
+    tei_dict: dict, pdf_meta: Optional[dict], re: ReleaseEntity, fe: FileEntity
 ) -> Optional[ScholarFulltext]:
-    obj = teixml2json(tei_xml)
-    if not obj.get("body"):
+    if not tei_dict.get("body"):
         return None
     ret = ScholarFulltext(
-        lang_code=obj.get("lang"),
-        body=obj.get("body"),
-        acknowledgement=obj.get("acknowledgement"),
-        annex=obj.get("annex"),
+        lang_code=tei_dict.get("lang"),
+        body=tei_dict.get("body"),
+        acknowledgement=tei_dict.get("acknowledgement"),
+        annex=tei_dict.get("annex"),
     )
     return _add_file_release_meta(ret, pdf_meta, re, fe)
 
@@ -219,9 +218,12 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
             r for r in heavy.releases if r.ident == heavy.biblio_release_ident
         ][0]
         biblio = es_biblio_from_release(primary_release)
-
-        # TODO: abstracts from releases also; abstracts_dict; abstracts from GROBID parse
         abstracts = es_abstracts_from_release(primary_release)
+
+        # if no abstract from primary_release, try all the other releases
+        for release in heavy.releases:
+            if not abstracts:
+                abstracts = es_abstracts_from_release(release)
     else:
         raise NotImplementedError(f"doc_type: {heavy.doc_type}")
 
@@ -236,9 +238,12 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
             for f in fulltext_release.files
             if f.ident == heavy.grobid_fulltext["file_ident"]
         ][0]
+        tei_dict = teixml2json(heavy.grobid_fulltext["tei_xml"])
         fulltext = es_fulltext_from_grobid(
-            heavy.grobid_fulltext["tei_xml"], heavy.pdf_meta, fulltext_release, fulltext_file
+            tei_dict, heavy.pdf_meta, fulltext_release, fulltext_file
         )
+        if not abstracts:
+            abstracts = es_abstracts_from_grobid(tei_dict)
 
     if not fulltext and heavy.pdftotext_fulltext:
         fulltext_release = [
