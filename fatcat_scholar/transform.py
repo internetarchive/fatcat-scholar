@@ -44,13 +44,18 @@ def es_sim_from_sim(sim: Dict[str, Any]) -> ScholarSim:
 
 SIM_RELEASE_TYPE_MAP = {
     "Scholarly Journals": "article-journal",
+    "Trade Journals": "article-magazine",
     # TODO:
 }
 SIM_LANG_MAP = {
     "English": "en",
+    "Spanish": "es",
+    "German": "de",
     # TODO:
 }
 SIM_COUNTRY_MAP = {
+    "United States": "us",
+    "Germany": "de",
     "Netherlands": "nl",
     # TODO:
 }
@@ -99,10 +104,10 @@ def es_biblio_from_sim(sim: Dict[str, Any]) -> ScholarBiblio:
         # original_title=release.original_title,
         release_date=release_date,
         release_year=release_year,
-        release_type=SIM_RELEASE_TYPE_MAP.get(pub_meta.get("pub_type")),
+        release_type=SIM_RELEASE_TYPE_MAP.get(issue_meta.get("pub_type")) or SIM_RELEASE_TYPE_MAP.get(pub_meta.get("pub_type")),
         release_stage="published",  # as a default
         # withdrawn_status=release.withdrawn_status,
-        lang_code=SIM_LANG_MAP.get(pub_meta.get("language")),
+        lang_code=SIM_LANG_MAP.get(issue_meta.get("language")) or SIM_LANG_MAP.get(pub_meta.get("language")),
         country_code=SIM_COUNTRY_MAP.get(pub_meta.get("country")),
         volume=volume,
         volume_int=volume_int,
@@ -114,12 +119,12 @@ def es_biblio_from_sim(sim: Dict[str, Any]) -> ScholarBiblio:
         # number=None,
         # no external identifiers
         # license_slug=release.license_slug,
-        publisher=issue_meta.get("publisher"),
+        publisher=issue_meta.get("publisher") or pub_meta.get("publisher"),
         container_name=container_name,
-        container_original_name=None,  # TODO pass-through
-        container_ident=None,  # TODO: pass-through
+        container_original_name=None,
+        container_ident=None,
         container_type=None,  # TODO
-        container_issnl=None,  # TODO: pass-through
+        container_issnl=None,
         issns=issns,
         # no contrib/affiliation info
         contrib_names=[],
