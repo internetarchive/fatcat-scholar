@@ -286,6 +286,8 @@ def es_biblio_from_release(release: ReleaseEntity) -> ScholarBiblio:
         container_original_name = (
             release.container.extra and release.container.extra.get("original_name")
         )
+        if not container_original_name or not isinstance(container_original_name, str):
+            container_original_name = None
         container_ident = release.container.ident
         container_type = release.container.container_type
         container_issnl = release.container.issnl
