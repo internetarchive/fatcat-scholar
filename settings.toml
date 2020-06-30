@@ -15,7 +15,7 @@ ELASTICSEARCH_BACKEND = "http://localhost:9200"
 [qa]
 SCHOLAR_ENV = "qa"
 ELASTICSEARCH_FULLTEXT_INDEX = "qa_scholar_fulltext"
-ELASTICSEARCH_BACKEND = "http://localhost:9200"
+ELASTICSEARCH_BACKEND = "https://search.fatcat.wiki"
 
 [prod]
 SCHOLAR_ENV = "prod"
