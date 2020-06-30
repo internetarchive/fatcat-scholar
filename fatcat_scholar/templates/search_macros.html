@@ -215,11 +215,15 @@
     <a>&#xab; Previous</a>
   </button>
 {% else %}
-  <span style="color:gray">&#xab; Previous</span>
+  <span style="color:gray; margin-right: 2em;">&#xab; Previous</span>
 {% endif %}
 <i>Showing results {{ hits.offset }} &mdash; {{ hits.offset + hits.limit }} out of {{ "{:,}".format(hits.count_found) }} results</i>
+{% if hits.offset + hits.limit < hits.count_found %}
 <button class="text-button" form="search_form" type="submit" name="offset" value="{{ hits.offset + hits.limit }}" style="margin-left: 2em;">
   <a>Next &#xbb;</a>
+{% else %}
+  <span style="color:gray; margin-left: 2em;">Next &#xbb;</span>
+{% endif %}
 </button>
 {% endmacro %}
 
