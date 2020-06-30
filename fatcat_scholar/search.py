@@ -206,6 +206,8 @@ def do_fulltext_search(
         "fulltext.annex",
         number_of_fragments=2,
         fragment_size=300,
+        # TODO: this will fix highlight encoding, but requires ES 7.x
+        #encoder="html",
     )
 
     # sort order
