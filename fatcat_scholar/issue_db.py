@@ -250,6 +250,8 @@ class IssueDB:
             if not line:
                 continue
             obj = json.loads(line)
+            if not "metadata" in obj:
+                continue
             meta = obj["metadata"]
             assert "periodicals" in meta["collection"]
             container: Optional[fatcat_openapi_client.ContainerEntity] = None
