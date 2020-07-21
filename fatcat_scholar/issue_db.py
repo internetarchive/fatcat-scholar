@@ -286,6 +286,8 @@ class IssueDB:
             if not line:
                 continue
             obj = json.loads(line)
+            if not "metadata" in obj:
+                continue
             meta = obj["metadata"]
             assert "periodicals" in meta["collection"]
             # pub_collection = [c for c in meta['collection'] if c.startswith("pub_")][0]
