@@ -1,4 +1,8 @@
 
+- add gzip to intermediate files pipeline
+- "counts" target to summarize (to console)
+- calculate/fetch shadow as well (?)
+
 content/pipeline:
 - plan for getting release dumps sorted by work ident
 - parallelize SIM indexing
