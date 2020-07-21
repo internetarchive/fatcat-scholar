@@ -195,7 +195,7 @@
         },
 
         "access": {
-          "type": "nested",
+          "type": "object",
           "dynamic": false,
           "properties": {
             "access_type":      { "type": "keyword", "normalizer": "default" },
