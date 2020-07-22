@@ -1,5 +1,6 @@
 import sys
 import argparse
+import datetime
 from typing import List, Dict, Optional, Any, Sequence
 
 from dynaconf import settings
@@ -95,7 +96,11 @@ def es_biblio_from_sim(sim: Dict[str, Any]) -> ScholarBiblio:
 
     release_date = None
     if len(date) == len("2000-01-01"):
-        release_date = date
+        try:
+            datetime.date.fromisoformat(date)
+            release_date = date
+        except ValueError:
+            pass
 
     return ScholarBiblio(
         # release_ident=release.ident,
