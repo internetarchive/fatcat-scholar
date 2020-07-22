@@ -175,7 +175,7 @@
       </div>
     {% endif %}
     <a target="_blank" href="{{ paper.fulltext.access_url}}">
-      <div style="width: 100%; opacity: 0.65; text-align: center;">
+      <div style="width: 100%; opacity: 0.65; text-align: center; overflow: hidden;">
         {# TODO: could have other hover info, like mimetype icon and file size? #}
         <span>
         {% if paper.fulltext.access_type == "wayback" %}
