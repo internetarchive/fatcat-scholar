@@ -203,6 +203,7 @@ def do_fulltext_search(
     search = search.highlight(
         "abstracts.body",
         "fulltext.body",
+        "fulltext.acknowledgment",
         "fulltext.annex",
         number_of_fragments=2,
         fragment_size=300,
