@@ -3,12 +3,11 @@
 {% block fullbody %}
 
 <div class="ui vertical stripe segment" style="background-color: #dedede;">
-  <div class="ui container" style="padding-top: 3em; padding-bottom: 3em;">
+  <div class="ui container" style="padding-top: 2em; padding-bottom: 3em;">
     <div class="ui centered grid">
       <div class="ui sixteen wide mobile twelve wide computer column">
         <div style="width: 100%; text-align: center;">
-          <h1>{% trans %}Search Millions of Research Papers{% endtrans %}</h1>
-          <br>
+          <img src="/static/scholar-vaporwave-logo.png" style="max-width: 100%; margin-bottom: 1.5em;">
           <form class="" id="fulltext_query" action="{{ lang_prefix }}/search") }}" method="get" role="search" aria-label="papers" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
             <meta itemprop="target" content="https://{{ settings.SCHOLAR_DOMAIN }}/fulltext/search?q={q}"/>
             <div class="ui form">
@@ -21,6 +20,7 @@
         </div>
         <br>
         <br>
+        <b>{% trans %}Search Millions of Research Papers{% endtrans %}</b>
         <p style="font-size: 1.1rem;">{% trans %}This fulltext search index includes over 25 million research articles and other scholarly documents preserved in the Internet Archive.{% endtrans %} {% trans %}The collection spans from digitized copies of eighteenth century journals though the latest Open Access conference proceedings and pre-prints crawled from the World Wide Web.{% endtrans %}
       </div>
     </div>

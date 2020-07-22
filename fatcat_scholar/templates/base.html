@@ -147,11 +147,10 @@
 <div class="ui vertical stripe segment" style="background-color: #dedede;">
   <div class="ui container" style="padding-top: 1em; padding-bottom: 0; padding-left: 0; padding-right: 0;">
     <div class="ui equal height stackable grid">
-      <div class="ui four wide column">
+      <div class="ui four wide column" style="padding-bottom: 0;">
         <div style="display: flex; justify-content: center; align-items: center; height: 100%; width: 100%;">
           <a href="{{ lang_prefix }}/">
-            <span style="font-size: 1.5rem; font-weight: bold;" title="this is a placeholder until we get a logo or fancy font">[scholar.archive.org]</span>
-            {# hack to align vertically with search box #}
+            <img src="/static/scholar-vaporwave-logo-small.png" style="width: 200px; margin-top: -1.5em;">
           </a>
         </div>
       </div>
@@ -165,12 +164,12 @@
             </div>
           </div>
         </form>
-      </div>
-    </div>
-    <div style="display: flex; width: 100%; justify-content: space-between; padding-top: 0.5em;">
-      <div></div>
-      <div>
-        <a href="{{ lang_prefix }}/help" style="order: -1;">{{ _("User Guide") }}</a>
+        <div style="display: flex; width: 100%; justify-content: space-between; padding-top: 0.5em;">
+          <div></div>
+          <div>
+            <a href="{{ lang_prefix }}/help" style="order: -1;">{{ _("User Guide") }}</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
