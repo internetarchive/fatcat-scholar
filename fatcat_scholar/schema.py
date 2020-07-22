@@ -227,6 +227,7 @@ def scrub_text(raw: str, mimetype: str = None) -> Optional[str]:
     text = re.sub(r"[`‘’‛⸂⸃⸌⸍⸜⸝]", "'", text)
     text = re.sub(r"[„“]|(\'\')|(,,)", '"', text)
     text = re.sub(r"\s+", " ", text).strip()
+    text = text.replace("<em>", "").replace("</em>", "")
 
     # hack to remove abstract prefixes
     for prefix in UNWANTED_ABSTRACT_PREFIXES:
