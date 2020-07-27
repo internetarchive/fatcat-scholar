@@ -364,7 +364,7 @@ def run_transform(infile: Sequence) -> None:
         es_doc = transform_heavy(heavy)
         if not es_doc:
             continue
-        print(es_doc.json())
+        print(es_doc.json(exclude_none=True, sort_keys=True))
 
 
 def main() -> None:

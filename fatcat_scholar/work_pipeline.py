@@ -355,7 +355,7 @@ class WorkPipeline:
                 continue
             if batch:
                 ib = self.process_release_list(batch)
-                print(ib.json())
+                print(ib.json(exclude_none=True))
                 batch_work_id = None
             batch = [
                 release,
@@ -364,7 +364,7 @@ class WorkPipeline:
 
         if batch:
             ib = self.process_release_list(batch)
-            print(ib.json())
+            print(ib.json(exclude_none=True, sort_keys=True))
 
 
 def main() -> None:

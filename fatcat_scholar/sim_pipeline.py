@@ -149,7 +149,7 @@ class SimPipeline:
                         issue_item_metadata=full_issue["issue_item_metadata"],
                     ),
                 )
-                print(bundle.json())
+                print(bundle.json(exclude_none=True, sort_keys=True))
                 count += 1
                 if limit is not None and count >= limit:
                     break
