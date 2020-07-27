@@ -283,10 +283,12 @@ class WorkPipeline:
             for fe in release.files:
                 if not fe.sha1 or fe.mimetype not in (None, "application/pdf"):
                     continue
+                if not fe.urls:
+                    continue
                 grobid_fulltext = self.fetch_file_grobid(fe, ident)
                 pdf_meta = self.fetch_pdf_meta(fe, ident)
                 pdftotext_fulltext = None
-                if pdf_meta:
+                if pdf_meta and not grobid_fulltext:
                     pdftotext_fulltext = self.fetch_file_pdftotext(fe, ident)
                 if grobid_fulltext or pdftotext_fulltext:
                     break
