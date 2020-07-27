@@ -83,6 +83,9 @@ processing times:
 - ensure transform output is sorted by key
     => <https://www.elastic.co/guide/en/elasticsearch/reference/current/tune-for-disk-usage.html#_put_fields_in_the_same_order_in_documents>
 - ensure number of cores is large
+- return fewer results (15 vs. 25)
+    => less highlighting
+    => fewer thumbnails to catch
 
 ## Work Grouping
 

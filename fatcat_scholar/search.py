@@ -223,7 +223,7 @@ def do_fulltext_search(
         raise ValueError(f"Unknown 'sort_order' parameter value: '{query.sort_order}'")
 
     # Sanity checks
-    limit = min((int(query.limit or 25), 100))
+    limit = min((int(query.limit or 15), 100))
     offset = max((int(query.offset or 0), 0))
     if offset > deep_page_limit:
         # Avoid deep paging problem.
