@@ -119,8 +119,10 @@ def do_fulltext_search(
 
     # time filters
     if query.filter_time == "past_week":
-        week_ago_date = str(datetime.date.today() - datetime.timedelta(days=7))
-        search = search.filter("range", date=dict(gte=week_ago_date))
+        date_today = datetime.date.today()
+        week_ago_date = str(date_today - datetime.timedelta(days=7))
+        tomorrow_date = str(date_today + datetime.timedelta(days=1))
+        search = search.filter("range", date=dict(gte=week_ago_date, lte=tomorrow_date))
     elif query.filter_time == "past_year":
         # (date in the past year) or (year is this year)
         # the later to catch papers which don't have release_date defined
