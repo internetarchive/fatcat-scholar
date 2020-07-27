@@ -201,6 +201,9 @@ UNWANTED_ABSTRACT_PREFIXES = [
     "Summary ",
     "Background: ",
     "Background ",
+    "N/a.",
+    "No abstract.",
+    "Introduction: ",
 ]
 
 
