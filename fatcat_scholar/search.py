@@ -192,6 +192,7 @@ def do_fulltext_search(
             Q("bool", must_not=Q("exists", field="year")),
             Q("bool", must_not=Q("exists", field="type")),
             Q("bool", must_not=Q("exists", field="stage")),
+            Q("bool", must_not=Q("exists", field="biblio.container_ident")),
         ],
     )
 
