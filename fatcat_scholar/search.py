@@ -179,6 +179,7 @@ def do_fulltext_search(
             "title^5",
             "biblio_all^3",
             "abstracts.body^2",
+            "fulltext.body",
             "everything",
         ],
     )
