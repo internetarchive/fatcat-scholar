@@ -295,17 +295,17 @@ def es_biblio_from_release(release: ReleaseEntity) -> ScholarBiblio:
         container_ident = release.container.ident
         container_type = release.container.container_type
         container_issnl = release.container.issnl
-        issns = [
-            container_issnl,
-        ]
-        if release.extra.get("issne"):
-            issns.append(release.extra["issne"])
-        if release.extra.get("issnp"):
-            issns.append(release.extra["issnp"])
+        issns = []
+        if container_issnl:
+            issns.append(container_issnl)
+        if release.container.extra and release.container.extra.get("issne"):
+            issns.append(release.container.extra["issne"])
+        if release.container.extra and release.container.extra.get("issnp"):
+            issns.append(release.container.extra["issnp"])
         issns = list(set(issns))
     else:
-        publisher = release.extra.get("publisher")
-        container_name = release.extra.get("container_name")
+        publisher = release.extra and release.extra.get("publisher")
+        container_name = release.extra and release.extra.get("container_name")
         container_original_name = None
         container_ident = None
         container_type = None
@@ -383,7 +383,7 @@ def es_release_from_release(release: ReleaseEntity) -> ScholarRelease:
         container_issnl = release.container.issnl
         container_type = release.container.container_type
     else:
-        container_name = release.extra.get("container_name")
+        container_name = release.extra and release.extra.get("container_name")
         container_ident = None
         container_issnl = None
         container_type = None
