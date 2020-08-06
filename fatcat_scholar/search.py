@@ -231,6 +231,7 @@ def do_fulltext_search(
         # Avoid deep paging problem.
         offset = deep_page_limit
 
+    search = search.params(track_total_hits=True)
     search = search[offset : (offset + limit)]
 
     try:
@@ -260,7 +261,10 @@ def do_fulltext_search(
         r["_collapsed"] = []
         r["_collapsed_count"] = 0
         if "inner_hits" in dir(h.meta):
-            r["_collapsed_count"] = h.meta.inner_hits.more_pages.hits.total - 1
+            if isinstance(h.meta.inner_hits.more_pages.hits.total, int):
+                r["_collapsed_count"] = h.meta.inner_hits.more_pages.hits.total - 1
+            else:
+                r["_collapsed_count"] = h.meta.inner_hits.more_pages.hits.total['value'] - 1
             for k in h.meta.inner_hits.more_pages:
                 if k["key"] != r["key"]:
                     r["_collapsed"].append(k)
@@ -277,7 +281,11 @@ def do_fulltext_search(
         if type(h["collapse_key"]) == list:
             h["collapse_key"] = h["collapse_key"][0]
 
-    count_found: int = int(resp.hits.total)
+    count_found: int = 0
+    if isinstance(resp.hits.total, int):
+        count_found = int(resp.hits.total)
+    else:
+        count_found = int(resp.hits.total['value'])
     count_returned = len(results)
 
     # if we grouped to less than a page of hits, update returned count
