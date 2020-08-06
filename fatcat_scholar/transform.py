@@ -69,8 +69,12 @@ def es_biblio_from_sim(sim: Dict[str, Any]) -> ScholarBiblio:
 
     first_page = None
     if sim["page_texts"]:
-        first_page = sim["page_texts"][0]["page_num"]
+        first_page = sim["page_texts"][0]["page_num"] or None
+    first_page_int = clean_small_int(first_page)
+
     container_name = sim["pub_item_metadata"]["metadata"]["title"]
+
+    # can't remember what this hack is for...
     last_word = container_name.split()[-1]
     if len(last_word) == 9 and last_word[4] == "-":
         container_name = container_name[:-10]
@@ -81,13 +85,9 @@ def es_biblio_from_sim(sim: Dict[str, Any]) -> ScholarBiblio:
         issns.append(raw_issn)
 
     volume = issue_meta.get("volume")
-    volume_int = None
-    if volume and volume.isdigit():
-        volume_int = int(volume)
+    volume_int = clean_small_int(volume)
     issue = issue_meta.get("issue")
-    issue_int = None
-    if issue and issue.isdigit():
-        issue_int = int(issue)
+    issue_int = clean_small_int(issue)
 
     date = issue_meta.get("date")
     release_year = None
@@ -101,6 +101,9 @@ def es_biblio_from_sim(sim: Dict[str, Any]) -> ScholarBiblio:
             release_date = date
         except ValueError:
             pass
+
+    if release_year and abs(release_year) > 2050:
+        release_year = None
 
     return ScholarBiblio(
         # release_ident=release.ident,
@@ -122,16 +125,16 @@ def es_biblio_from_sim(sim: Dict[str, Any]) -> ScholarBiblio:
         issue_int=issue_int,
         pages=sim.get("pages"),
         first_page=first_page,
-        first_page_int=None,
+        first_page_int=first_page_int,
         # number=None,
         # no external identifiers
         # license_slug=release.license_slug,
         publisher=issue_meta.get("publisher") or pub_meta.get("publisher"),
         container_name=container_name,
         container_original_name=None,
-        container_ident=None,
+        container_ident=None,  # TODO
         container_type=None,  # TODO
-        container_issnl=None,
+        container_issnl=None,  # TODO
         issns=issns,
         # no contrib/affiliation info
         contrib_names=[],

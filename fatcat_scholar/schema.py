@@ -178,6 +178,25 @@ class ScholarDoc(BaseModel):
     access: List[ScholarAccess]
 
 
+def clean_small_int(raw: Optional[str]) -> Optional[int]:
+    if not raw or not raw.isdigit():
+        return None
+    val = int(raw)
+    if abs(val) > 50000:
+        return None
+    return val
+
+
+def test_clean_small_int() -> None:
+    assert clean_small_int("") == None
+    assert clean_small_int(None) == None
+    assert clean_small_int("asdf") == None
+    assert clean_small_int("iiv") == None
+    assert clean_small_int("123") == 123
+    assert clean_small_int("1200003") == None
+    assert clean_small_int("-123") == None
+
+
 def doi_split_prefix(doi: str) -> str:
     return doi.split("/")[0]
 
@@ -320,12 +339,6 @@ def es_biblio_from_release(release: ReleaseEntity) -> ScholarBiblio:
     first_page: Optional[str] = None
     if release.pages:
         first_page = release.pages.split("-")[0]
-    first_page_int: Optional[int] = None
-    if first_page and first_page.isdigit():
-        first_page_int = int(first_page)
-        # catch metadata errors which result in ES indexing errors
-        if abs(first_page_int) > 1000000:
-            first_page_int = None
 
     ret = ScholarBiblio(
         release_ident=release.ident,
@@ -340,12 +353,12 @@ def es_biblio_from_release(release: ReleaseEntity) -> ScholarBiblio:
         lang_code=release.language,
         country_code=release.extra and release.extra.get("country"),
         volume=release.volume,
-        volume_int=None,
+        volume_int=clean_small_int(release.volume),
         issue=release.issue,
-        issue_int=None,
+        issue_int=clean_small_int(release.issue),
         pages=release.pages,
         first_page=first_page,
-        first_page_int=first_page_int,
+        first_page_int=clean_small_int(first_page),
         number=release.number,
         doi=release.ext_ids.doi,
         doi_prefix=release.ext_ids.doi and doi_split_prefix(release.ext_ids.doi),
