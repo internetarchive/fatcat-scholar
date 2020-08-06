@@ -176,6 +176,7 @@ def do_fulltext_search(
         lenient=True,
         quote_field_suffix=".exact",
         fields=[
+            "title^5",
             "biblio_all^3",
             "everything",
         ],
