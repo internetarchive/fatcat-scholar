@@ -66,9 +66,9 @@ class ScholarBiblio(BaseModel):
     lang_code: Optional[str]
     country_code: Optional[str]
     volume: Optional[str]
-    volume_int: Optional[str]  # TODO: needed?
+    volume_int: Optional[int]  # TODO: needed?
     issue: Optional[str]
-    issue_int: Optional[str]  # TODO: needed?
+    issue_int: Optional[int]  # TODO: needed?
     pages: Optional[str]
     first_page: Optional[str]
     first_page_int: Optional[int]  # TODO: needed?
