@@ -78,11 +78,11 @@
           "properties": {
             "release_ident":  { "type": "keyword", "normalizer": "default", "doc_values": false },
             "title":          {
-                "type": "text","index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch", "copy_to": ["biblio_all", "everything"],
+                "type": "text","index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch", "copy_to": ["title_all", "biblio_all", "everything"],
                 "fields": {"exact": { "type": "text", "analyzer": "textIcuExact", "search_analyzer": "textIcuSearchExact" }}
             },
-            "subtitle":       { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch", "copy_to": ["biblio_all", "everything"] },
-            "original_title": { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch", "copy_to": ["biblio_all", "everything"] },
+            "subtitle":       { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch", "copy_to": ["title_all", "biblio_all", "everything"] },
+            "original_title": { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch", "copy_to": ["title_all", "biblio_all", "everything"] },
             "release_date":   { "type": "date" },
             "release_year":   { "type": "integer", "copy_to": ["biblio_all", "everything"] },
             "release_type":   { "type": "keyword", "normalizer": "default", "copy_to": ["biblio_all", "everything"] },
@@ -234,7 +234,7 @@
         "arxiv_id":       { "type": "alias", "path": "releases.arxiv_id" },
         "jstor_id":       { "type": "alias", "path": "releases.jstor_id" },
 
-        "title":          { "type": "alias", "path": "biblio.title" },
+        "title":          { "type": "alias", "path": "title_all" },
         "subtitle":       { "type": "alias", "path": "biblio.subtitle" },
         "original_title": { "type": "alias", "path": "biblio.original_title" },
         "withdrawn_status":{"type": "alias", "path": "biblio.withdrawn_status" },
