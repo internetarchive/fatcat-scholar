@@ -58,8 +58,9 @@ class FulltextQuery(BaseModel):
         "default": "fulltext",
         "list": [
             {"label": gettext("Fulltext"), "slug": "fulltext"},
-            {"label": gettext("Metadata"), "slug": "everything"},
+            {"label": gettext("Microfilm"), "slug": "microfilm"},
             {"label": gettext("Open Access"), "slug": "oa"},
+            {"label": gettext("Metadata"), "slug": "everything"},
         ],
     }
     sort_options: Any = {
@@ -151,7 +152,9 @@ def do_fulltext_search(
     elif query.filter_availability == "everything":
         pass
     elif query.filter_availability == "fulltext" or query.filter_availability is None:
-        search = search.filter("terms", access_type=["wayback", "ia_file", "ia_sim"])
+        search = search.filter("terms", **{"access.access_type": ["wayback", "ia_file", "ia_sim"]})
+    elif query.filter_availability == "microfilm":
+        search = search.filter("term", **{"access.access_type": "ia_sim"})
     else:
         raise ValueError(
             f"Unknown 'filter_availability' parameter value: '{query.filter_availability}'"
@@ -184,7 +187,7 @@ def do_fulltext_search(
             "everything",
         ],
     )
-    has_fulltext = Q("terms", access_type=["ia_sim", "ia_file", "wayback"],)
+    has_fulltext = Q("terms", **{"access_type": ["ia_sim", "ia_file", "wayback"]})
     poor_metadata = Q(
         "bool",
         should=[
