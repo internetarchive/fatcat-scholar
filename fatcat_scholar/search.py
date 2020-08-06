@@ -126,13 +126,16 @@ def do_fulltext_search(
     elif query.filter_time == "past_year":
         # (date in the past year) or (year is this year)
         # the later to catch papers which don't have release_date defined
-        year_ago_date = str(datetime.date.today() - datetime.timedelta(days=365))
-        this_year = datetime.date.today().year
+        date_today = datetime.date.today()
+        this_year = date_today.year
+        tomorrow_date = str(date_today + datetime.timedelta(days=1))
+        year_ago_date = str(date_today - datetime.timedelta(days=365))
         search = search.filter(
-            Q("range", date=dict(gte=year_ago_date)) | Q("term", year=this_year)
+            Q("range", date=dict(gte=year_ago_date, lte=tomorrow_date)) | Q("term", year=this_year)
         )
     elif query.filter_time == "since_2000":
-        search = search.filter("range", year=dict(gte=2000))
+        this_year = datetime.date.today().year
+        search = search.filter("range", year=dict(gte=2000, lte=this_year))
     elif query.filter_time == "before_1925":
         search = search.filter("range", year=dict(lt=1925))
     elif query.filter_time == "all_time" or query.filter_time is None:
