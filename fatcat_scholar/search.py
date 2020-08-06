@@ -190,7 +190,6 @@ def do_fulltext_search(
         should=[
             # if these fields aren't set, metadata is poor. The more that do
             # not exist, the stronger the signal.
-            Q("bool", must_not=Q("exists", field="title")),
             Q("bool", must_not=Q("exists", field="year")),
             Q("bool", must_not=Q("exists", field="type")),
             Q("bool", must_not=Q("exists", field="stage")),
