@@ -219,7 +219,7 @@
 
         "abstract":       { "type": "alias", "path": "abstracts.body" },
         "acknowledgement":{ "type": "alias", "path": "fulltext.acknowledgement" },
-        "access_type":    { "type": "alias", "path": "fulltext.access_type" },
+        "access_type":    { "type": "alias", "path": "access.access_type" },
 
         "doi":            { "type": "alias", "path": "releases.doi" },
         "doi_prefix":     { "type": "alias", "path": "releases.doi_prefix" },
