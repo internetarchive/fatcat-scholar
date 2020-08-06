@@ -210,11 +210,9 @@
           }
         },
 
-        "everything":     { "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch" },
-        "biblio_all":     {
-            "type": "text", "index": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch",
-            "fields": {"exact": { "type": "text", "analyzer": "textIcuExact", "search_analyzer": "textIcuSearchExact" }}
-        },
+        "everything":     { "type": "text", "index": true, "index_phrases": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch" },
+        "biblio_all":     { "type": "text", "index": true, "index_phrases": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch" },
+        "title_all":      { "type": "text", "index": true, "index_phrases": true, "analyzer": "textIcu", "search_analyzer":"textIcuSearch" },
 
         "doctype":        { "type": "alias", "path": "doc_type" },
         "tag":            { "type": "alias", "path": "tags" },
