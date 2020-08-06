@@ -216,7 +216,7 @@ def do_fulltext_search(
     search = search.highlight(
         "abstracts.body",
         "fulltext.body",
-        "fulltext.acknowledgment",
+        "fulltext.acknowledgement",
         "fulltext.annex",
         highlight_query=basic_fulltext.to_dict(),
         require_field_match=False,
