@@ -216,6 +216,9 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
     if heavy.doc_type == DocType.sim_page:
         assert ia_sim is not None
         assert heavy.sim_fulltext is not None
+        if not ia_sim.first_page or not ia_sim.issue_item:
+            # can't create a valid key if we don't have these fields, so shouldn't index
+            return None
         key = f"page_{ia_sim.issue_item}_{ia_sim.first_page}"
         sim_issue = ia_sim.issue_item
         biblio = es_biblio_from_sim(heavy.sim_fulltext)
