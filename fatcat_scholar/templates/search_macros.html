@@ -166,7 +166,7 @@
 
 </div>
 <div class="three wide left aligned column" style="padding-top: 0.5em; padding-right: 0.5em;">
-  {% if paper.fulltext.access_url %}
+  {% if paper.fulltext and fulltext.access_url %}
     {% if paper.fulltext.thumbnail_url %}
       <div class="ui serp card" style="margin-bottom: 0.2em;">
         <a class="image" target="_blank" href="{{ paper.fulltext.access_url}}">
