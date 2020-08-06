@@ -176,10 +176,7 @@ def do_fulltext_search(
         lenient=True,
         quote_field_suffix=".exact",
         fields=[
-            "title^5",
             "biblio_all^3",
-            "abstracts.body^2",
-            "fulltext.body",
             "everything",
         ],
     )
@@ -208,6 +205,7 @@ def do_fulltext_search(
         "fulltext.body",
         "fulltext.acknowledgment",
         "fulltext.annex",
+        require_field_match=False,
         number_of_fragments=2,
         fragment_size=300,
         # TODO: this will fix highlight encoding, but requires ES 7.x
