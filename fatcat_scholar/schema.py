@@ -239,6 +239,10 @@ def scrub_text(raw: str, mimetype: str = None) -> Optional[str]:
             text = text[len(prefix) :]
             break
 
+    # single word? not "text". eg, random URLs
+    if len(text.split()) <= 1:
+        return None
+
     if not text:
         return None
     return text

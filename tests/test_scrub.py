@@ -7,7 +7,7 @@ def test_scrub() -> None:
             "“Please clean this piece… of text</b>„",
             '"Please clean this piece... of text"',
         ),
-        ("<jats:p>blah", "blah"),
+        ("<jats:p>blah thing", "blah thing"),
     ]
 
     for raw, fixed in vectors:
