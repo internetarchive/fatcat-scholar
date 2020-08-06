@@ -89,7 +89,9 @@ def do_fulltext_search(
     query: FulltextQuery, deep_page_limit: int = 2000
 ) -> FulltextHits:
 
-    es_client = elasticsearch.Elasticsearch(settings.ELASTICSEARCH_BACKEND, timeout=25.0)
+    es_client = elasticsearch.Elasticsearch(
+        settings.ELASTICSEARCH_BACKEND, timeout=25.0
+    )
     search = Search(using=es_client, index=settings.ELASTICSEARCH_FULLTEXT_INDEX)
 
     # Convert raw DOIs to DOI queries
@@ -132,7 +134,8 @@ def do_fulltext_search(
         tomorrow_date = str(date_today + datetime.timedelta(days=1))
         year_ago_date = str(date_today - datetime.timedelta(days=365))
         search = search.filter(
-            Q("range", date=dict(gte=year_ago_date, lte=tomorrow_date)) | Q("term", year=this_year)
+            Q("range", date=dict(gte=year_ago_date, lte=tomorrow_date))
+            | Q("term", year=this_year)
         )
     elif query.filter_time == "since_2000":
         this_year = datetime.date.today().year
@@ -152,7 +155,9 @@ def do_fulltext_search(
     elif query.filter_availability == "everything":
         pass
     elif query.filter_availability == "fulltext" or query.filter_availability is None:
-        search = search.filter("terms", **{"access.access_type": ["wayback", "ia_file", "ia_sim"]})
+        search = search.filter(
+            "terms", **{"access.access_type": ["wayback", "ia_file", "ia_sim"]}
+        )
     elif query.filter_availability == "microfilm":
         search = search.filter("term", **{"access.access_type": "ia_sim"})
     else:
@@ -181,11 +186,7 @@ def do_fulltext_search(
         allow_leading_wildcard=False,
         lenient=True,
         quote_field_suffix=".exact",
-        fields=[
-            "title^4",
-            "biblio_all^3",
-            "everything",
-        ],
+        fields=["title^4", "biblio_all^3", "everything",],
     )
     has_fulltext = Q("terms", **{"access_type": ["ia_sim", "ia_file", "wayback"]})
     poor_metadata = Q(
@@ -210,10 +211,7 @@ def do_fulltext_search(
         search = search.sort("_doc")
     else:
         search = search.query(
-            "boosting",
-            positive=base_query,
-            negative=poor_metadata,
-            negative_boost=0.5,
+            "boosting", positive=base_query, negative=poor_metadata, negative_boost=0.5,
         )
 
     search = search.highlight(
@@ -279,7 +277,9 @@ def do_fulltext_search(
             if isinstance(h.meta.inner_hits.more_pages.hits.total, int):
                 r["_collapsed_count"] = h.meta.inner_hits.more_pages.hits.total - 1
             else:
-                r["_collapsed_count"] = h.meta.inner_hits.more_pages.hits.total['value'] - 1
+                r["_collapsed_count"] = (
+                    h.meta.inner_hits.more_pages.hits.total["value"] - 1
+                )
             for k in h.meta.inner_hits.more_pages:
                 if k["key"] != r["key"]:
                     r["_collapsed"].append(k)
@@ -300,7 +300,7 @@ def do_fulltext_search(
     if isinstance(resp.hits.total, int):
         count_found = int(resp.hits.total)
     else:
-        count_found = int(resp.hits.total['value'])
+        count_found = int(resp.hits.total["value"])
     count_returned = len(results)
 
     # if we grouped to less than a page of hits, update returned count
