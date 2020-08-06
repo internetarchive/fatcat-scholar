@@ -197,12 +197,22 @@ def do_fulltext_search(
         ],
     )
 
-    search = search.query(
-        "boosting",
-        positive=Q("bool", must=basic_fulltext, should=[has_fulltext],),
-        negative=poor_metadata,
-        negative_boost=0.5,
-    )
+    if query.filter_availability == "fulltext" or query.filter_availability is None:
+        base_query = basic_fulltext
+    else:
+        base_query = Q("bool", must=basic_fulltext, should=[has_fulltext])
+
+    if query.q == "*":
+        search = search.query("match_all")
+        search = search.sort("_doc")
+    else:
+        search = search.query(
+            "boosting",
+            positive=base_query,
+            negative=poor_metadata,
+            negative_boost=0.5,
+        )
+
     search = search.highlight(
         "abstracts.body",
         "fulltext.body",
