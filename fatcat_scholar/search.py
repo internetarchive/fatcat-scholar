@@ -179,7 +179,7 @@ def do_fulltext_search(
         lenient=True,
         quote_field_suffix=".exact",
         fields=[
-            "title^5",
+            "title^4",
             "biblio_all^3",
             "everything",
         ],
@@ -218,6 +218,7 @@ def do_fulltext_search(
         "fulltext.body",
         "fulltext.acknowledgment",
         "fulltext.annex",
+        highlight_query=basic_fulltext.to_dict(),
         require_field_match=False,
         number_of_fragments=2,
         fragment_size=300,
