@@ -2,6 +2,8 @@
 {% macro tag_label(tag) -%}
   {% if tag == "oa" %}
     <span class="ui label basic orange small" title="Open Access">OA</span>
+  {% elif tag == "jstor" %}
+    <span class="ui label basic purple small" title="Preserved in JSTOR">JSTOR</span>
   {% elif tag == "scielo" %}
     <span class="ui label basic purple small" title="Hosted on SciELO platform">SciELO</span>
   {% elif tag == "ojs" %}
@@ -151,7 +153,7 @@
       <span class="ui label small" title="search document JSON debug link">json</span>
     </a>
 
-    {% for tag in paper.tags %}
+    {% for tag in paper.tags|sort %}
       {{ tag_label(tag) }}
     {% endfor %}
     {% if paper.biblio.lang_code and paper.biblio.lang_code != (locale or 'en') %}
