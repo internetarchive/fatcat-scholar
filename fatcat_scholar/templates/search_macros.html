@@ -144,8 +144,8 @@
     <a target="_blank" href="https://fatcat.wiki/release/{{paper.biblio.release_ident}}" style="color: green;">fatcat:{{ paper.biblio.release_ident}}</a> &nbsp;
   {% endif %}
 
-  {# ### TAGS #}
   <div style="margin-top: 0.2em;">
+  {# ### TAGS #}
     {# colors to use: olive, brown, grey, pink, red, etc #}
     {# TODO: remove doc for ES 7.x-style lack of type #}
     {# TODO: only show 'json' link if from cluster? #}
@@ -161,17 +161,16 @@
     {% if paper.biblio.lang_code and paper.biblio.lang_code != (locale or 'en') %}
       {{ tag_label("lang:" + paper.biblio.lang_code) }}
     {% endif %}
-  </div>
 
   {# ### COLLAPSED HITS  #}
   {% if paper._collapsed_count > 0 %}
-    <div style="padding-top: 0.5em;">
-      <button class="ui compact basic blue button" form="search_form" type="submit" name="collapse_key" value="{{ paper.collapse_key }}">
-          <i class="ui icon zoom-in"></i>
-          Show {{ paper._collapsed_count }} additional hits from this issue
-      </button>
-    </div>
+    <button class="ui basic label blue small button" form="search_form" type="submit" name="collapse_key" value="{{ paper.collapse_key }}">
+      <i class="ui icon zoom-in"></i>
+      Show {{ paper._collapsed_count }} additional hits from this issue
+    </button>
   {% endif %}
+
+  </div>
 
 </div>
 <div class="three wide left aligned column" style="padding-top: 0.5em; padding-right: 0.5em;">
