@@ -14,7 +14,7 @@ from typing import Optional, Any
 from fatcat_scholar.hacks import Jinja2Templates
 from fatcat_scholar.search import do_fulltext_search, FulltextQuery, FulltextHits
 
-print(f"dynaconf settings: {settings.as_dict()}", file=sys.stderr)
+# print(f"dynaconf settings: {settings.as_dict()}", file=sys.stderr)
 
 I18N_LANG_TRANSLATIONS = ["de", "zh"]
 I18N_LANG_OPTIONS = I18N_LANG_TRANSLATIONS + [
@@ -177,9 +177,13 @@ async def web_search(
 
     headers = dict()
     if hits and hits.query_wall_time_ms:
-        headers["Server-Timing"] = f'es_wall;desc="Search API Request";dur={hits.query_wall_time_ms}'
+        headers[
+            "Server-Timing"
+        ] = f'es_wall;desc="Search API Request";dur={hits.query_wall_time_ms}'
         if hits.query_time_ms:
-            headers["Server-Timing"] += f', es;desc="Search Internal Time";dur={hits.query_time_ms}'
+            headers[
+                "Server-Timing"
+            ] += f', es;desc="Search Internal Time";dur={hits.query_time_ms}'
     return i18n_templates[lang.code].TemplateResponse(
         "search.html",
         {
