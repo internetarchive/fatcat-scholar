@@ -87,7 +87,7 @@
 
         {# search results (rendered via macro) #}
         {% for paper in hits.results %}
-          {{ search_macros.fulltext_search_result_row(paper) }}
+          {{ search_macros.fulltext_search_result_row(paper, locale=locale) }}
         {% endfor %}
 
         {% if hits.count_found > hits.limit %}

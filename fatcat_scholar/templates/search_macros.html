@@ -15,12 +15,14 @@
     <span class="ui label basic orange small" title="Szcezepanski OA Journal List">Szczepanski</span>
   {% elif tag == "doaj" %}
     <span class="ui label basic orange small" title="Directory of Open Access Journals">DOAJ</span>
+  {% elif tag.startswith("lang:") %}
+    <span class="ui label basic black small" title="ISO Language Code">{{ tag }}</span>
   {% else %}
     <span class="ui label small">{{ _(tag) }}</span>
   {% endif %}
 {% endmacro %}
 
-{% macro fulltext_search_result_row(paper) -%}
+{% macro fulltext_search_result_row(paper, locale=None) -%}
 <div class="ui grid">
 <div class="thirteen wide column">
   {# ### TITLE ROW #}
@@ -152,6 +154,9 @@
     {% for tag in paper.tags %}
       {{ tag_label(tag) }}
     {% endfor %}
+    {% if paper.biblio.lang_code and paper.biblio.lang_code != (locale or 'en') %}
+      {{ tag_label("lang:" + paper.biblio.lang_code) }}
+    {% endif %}
   </div>
 
   {# ### COLLAPSED HITS  #}
