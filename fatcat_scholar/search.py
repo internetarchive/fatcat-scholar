@@ -87,13 +87,14 @@ class FulltextHits(BaseModel):
     results: List[Any]
 
 
+# global sync client connection
+es_client = elasticsearch.Elasticsearch(settings.ELASTICSEARCH_BACKEND, timeout=25.0)
+
+
 def do_fulltext_search(
     query: FulltextQuery, deep_page_limit: int = 2000
 ) -> FulltextHits:
 
-    es_client = elasticsearch.Elasticsearch(
-        settings.ELASTICSEARCH_BACKEND, timeout=25.0
-    )
     search = Search(using=es_client, index=settings.ELASTICSEARCH_FULLTEXT_INDEX)
 
     # Convert raw DOIs to DOI queries
