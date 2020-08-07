@@ -24,7 +24,7 @@
   {% endif %}
 {% endmacro %}
 
-{% macro fulltext_search_result_row(paper, locale=None) -%}
+{% macro fulltext_search_result_row(paper, locale=None, debug_mode=False) -%}
 <div class="ui grid">
 <div class="thirteen wide column serp-hit-box">
   {# ### TITLE ROW #}
@@ -149,9 +149,11 @@
     {# colors to use: olive, brown, grey, pink, red, etc #}
     {# TODO: remove doc for ES 7.x-style lack of type #}
     {# TODO: only show 'json' link if from cluster? #}
-    <a target="_blank" href="{{ settings.ELASTICSEARCH_BACKEND }}/{{ settings.ELASTICSEARCH_FULLTEXT_INDEX }}/_doc/{{ paper.key }}">
-      <span class="ui label small" title="search document JSON debug link">json</span>
-    </a>
+    {% if debug_mode %}
+      <a target="_blank" href="{{ settings.ELASTICSEARCH_BACKEND }}/{{ settings.ELASTICSEARCH_FULLTEXT_INDEX }}/_doc/{{ paper.key }}">
+        <span class="ui label small" title="search document JSON debug link">json</span>
+      </a>
+    {% endif %}
 
     {% for tag in paper.tags|sort %}
       {{ tag_label(tag) }}

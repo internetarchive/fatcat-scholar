@@ -17,6 +17,9 @@
   {{ search_macros.query_hidden(query.type_options, query.filter_type) }}
   {{ search_macros.query_hidden(query.availability_options, query.filter_availability) }}
   {{ search_macros.query_hidden(query.sort_options, query.sort_order) }}
+  {% if query.debug %}
+    <input form="search_form" type="hidden" name="debug" value="1">
+  {% endif %}
 
   <details class="search_filters">
     <summary style="float: right;"><i class="filter icon"></i>{{ _("Filters") }}</summary>
@@ -87,7 +90,7 @@
 
         {# search results (rendered via macro) #}
         {% for paper in hits.results %}
-          {{ search_macros.fulltext_search_result_row(paper, locale=locale) }}
+          {{ search_macros.fulltext_search_result_row(paper, locale=locale, debug_mode=query.debug) }}
         {% endfor %}
 
         {% if hits.count_found > hits.limit %}

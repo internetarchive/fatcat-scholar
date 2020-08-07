@@ -29,6 +29,7 @@ class FulltextQuery(BaseModel):
     filter_availability: Optional[str] = None
     sort_order: Optional[str] = None
     collapse_key: Optional[str] = None
+    debug: Optional[bool] = False
     time_options: Any = {
         "label": gettext("Release Date"),
         "slug": "filter_time",
