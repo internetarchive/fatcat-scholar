@@ -163,6 +163,88 @@
       {{ tag_label("lang:" + paper.biblio.lang_code) }}
     {% endif %}
 
+  {# ### VERSIONS #}
+  {% if (paper.access and paper.access|length > 1) or (paper.releases and paper.releases|length > 1) %}
+    <div class="ui basic label blue small simple dropdown item">
+      <i class="ui icon add"></i>
+      Multiple Versions
+
+      <div class="menu" style="font-weight: normal;">
+        <table class="ui celled table">
+          <thead>
+            <tr>
+              <th>Publication Stage</th>
+              <th>Date</th>
+              <th>Fulltext</th>
+              <th>Metadata</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for release in paper.releases %}
+            <tr>
+              <td>
+                <span style="font-weight: normal; text-transform: uppercase; font-weight: bold; color: brown;">
+                  {{ release.release_stage or "unknown" }}
+                </span>
+              </td>
+              <td>
+                {% if release.release_date %}
+                  {{ release.release_date }}
+                {% elif release.release_year %}
+                  {{ release.release_year }}
+                {% endif %}
+              </td>
+              <td>
+                {% for access in paper.access %}
+                  {% if access.release_ident == release.ident %}
+                    <a href="{{ access.access_url }}">
+                      <span class="ui blue label">
+                        {% if access.mimetype == "application/pdf" %}
+                          <i class="file pdf outline icon"></i>
+                        {% endif %}
+                        {{ access.access_type }}
+                      </span>
+                    </a>
+                  {% endif %}
+                {% endfor %}
+              </td>
+              <td>
+                <a href="https://fatcat.wiki/release/{{ release.ident }}">
+                  <span class="ui green label">
+                    <i class="share square icon"></i>
+                    fatcat
+                  </span>
+                </a>
+              </td>
+            </tr>
+          {% endfor %}
+          {% for access in paper.access %}
+            {% if not access.release_ident and access.access_type == "ia_sim" %}
+              <tr>
+                <td>
+                  <span style="font-weight: normal; text-transform: uppercase; font-weight: bold; color: brown;">
+                    published
+                  </span>
+                </td>
+                <td></td>
+                <td>
+                  <a href="{{ access.access_url }}">
+                    <span class="ui blue label">
+                      <i class="film icon"></i>
+                      microfilm
+                    </span>
+                  </a>
+                </td>
+                <td></td>
+              </tr>
+            {% endif %}
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  {% endif %}
+
   {# ### COLLAPSED HITS  #}
   {% if paper._collapsed_count > 0 %}
     <button class="ui basic label blue small button" form="search_form" type="submit" name="collapse_key" value="{{ paper.collapse_key }}">
