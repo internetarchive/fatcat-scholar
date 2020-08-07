@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="referrer" content="origin-when-cross-origin">
+  {# no Javascript currently
   <script>
   /*
   TODO: audit this license statement
@@ -29,6 +30,7 @@
   @licend  The above is the entire license notice for the JavaScript code in this page.
   */
   </script>
+  #}
   <style>
 
 
@@ -234,6 +236,7 @@
   </div>
 </footer>
 
+{# don't actually need Javascript! at least so far
 <script
   src="https://code.jquery.com/jquery-3.1.1.min.js"
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
@@ -243,6 +246,7 @@
   src="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.2/dist/semantic.min.js"
   crossorigin="anonymous">
 </script>
+#}
 {% block postscript %}{% endblock %}
 </body>
 </html>
