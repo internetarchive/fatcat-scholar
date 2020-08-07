@@ -180,9 +180,15 @@
           <img src="{{ paper.fulltext.thumbnail_url }}">
         </a>
       </div>
+    {% else %}
+      <div class="ui serp card" style="margin-bottom: 0.2em; box-shadow: none;">
+        <a class="image" target="_blank" href="{{ paper.fulltext.access_url}}" style="background: none;">
+          <img src="/static/document-icon.svg" style="opacity: 0.6;">
+        </a>
+      </div>
     {% endif %}
     <a target="_blank" href="{{ paper.fulltext.access_url}}">
-      <div style="width: 100%; opacity: 0.65; text-align: center; overflow: hidden;">
+      <div class="fulltext-link" style="width: 100%; opacity: 1.0; text-align: center; overflow: hidden;">
         {# TODO: could have other hover info, like mimetype icon and file size? #}
         <span>
         {% if paper.fulltext.access_type == "wayback" %}
@@ -191,9 +197,9 @@
           archive.org
         {% endif %}
         {% if paper.fulltext.file_mimetype == "application/pdf" %}
-          <i class="file pdf outline icon"></i>
+          <i class="file pdf outline icon" style="margin-right: 0;"></i>
         {% elif paper.fulltext.access_type == "ia_sim" %}
-          <i class="film icon"></i>
+          <i class="film icon" style="margin-right: 0;"></i>
         {% endif %}
         </span>
       </div>
