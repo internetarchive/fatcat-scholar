@@ -83,6 +83,7 @@ class FulltextHits(BaseModel):
     limit: int
     deep_page_limit: int
     query_time_ms: int
+    query_wall_time_ms: int
     results: List[Any]
 
 
@@ -248,6 +249,7 @@ def do_fulltext_search(
     search = search.params(track_total_hits=True)
     search = search[offset : (offset + limit)]
 
+    query_start = datetime.datetime.now()
     try:
         resp = search.execute()
     except elasticsearch.exceptions.RequestError as e:
@@ -261,6 +263,7 @@ def do_fulltext_search(
         # all other errors
         print("elasticsearch non-200 status code: {}".format(e.info), file=sys.stderr)
         raise IOError(str(e.info))
+    query_delta = datetime.datetime.now() - query_start
 
     # convert from objects to python dicts
     results = []
@@ -315,5 +318,6 @@ def do_fulltext_search(
         limit=limit,
         deep_page_limit=deep_page_limit,
         query_time_ms=int(resp.took),
+        query_wall_time_ms=int(query_delta.total_seconds() * 1000),
         results=results,
     )

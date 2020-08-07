@@ -6,7 +6,7 @@ So far there are few endpoints, so we just put them all here!
 
 import sys
 import babel.support
-from fastapi import FastAPI, APIRouter, Request, Depends
+from fastapi import FastAPI, APIRouter, Request, Depends, Response
 from fastapi.staticfiles import StaticFiles
 from dynaconf import settings
 from typing import Optional, Any
@@ -154,6 +154,7 @@ async def web_help(request: Request, lang: LangPrefix = Depends(LangPrefix)) -> 
 @web.get("/search", include_in_schema=False)
 async def web_search(
     request: Request,
+    response: Response,
     query: FulltextQuery = Depends(FulltextQuery),
     lang: LangPrefix = Depends(LangPrefix),
     content: ContentNegotiation = Depends(ContentNegotiation),
@@ -173,6 +174,12 @@ async def web_search(
         except IOError as e:
             search_error = dict(type="backend", message=str(e))
             status_code = 500
+
+    headers = dict()
+    if hits and hits.query_wall_time_ms:
+        headers["Server-Timing"] = f'es_wall;desc="Search API Request";dur={hits.query_wall_time_ms}'
+        if hits.query_time_ms:
+            headers["Server-Timing"] += f', es;desc="Search Internal Time";dur={hits.query_time_ms}'
     return i18n_templates[lang.code].TemplateResponse(
         "search.html",
         {
@@ -183,6 +190,7 @@ async def web_search(
             "search_error": search_error,
             "query": query,
         },
+        headers=headers,
         status_code=status_code,
     )
 
