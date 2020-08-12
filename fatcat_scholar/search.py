@@ -152,6 +152,9 @@ def do_fulltext_search(
             f"Unknown 'filter_time' parameter value: '{query.filter_time}'"
         )
 
+    rescore_hits = True
+    collapse_by_key = False
+
     # availability filters
     if query.filter_availability == "oa":
         search = search.filter("term", tags="oa")
@@ -163,6 +166,8 @@ def do_fulltext_search(
         )
     elif query.filter_availability == "microfilm":
         search = search.filter("term", **{"access.access_type": "ia_sim"})
+        rescore_hits = False
+        collapse_by_key = True
     else:
         raise ValueError(
             f"Unknown 'filter_availability' parameter value: '{query.filter_availability}'"
@@ -170,7 +175,7 @@ def do_fulltext_search(
 
     if query.collapse_key:
         search = search.filter("term", collapse_key=query.collapse_key)
-    else:
+    elif collapse_by_key:
         search = search.extra(
             collapse={
                 "field": "collapse_key",
@@ -210,9 +215,32 @@ def do_fulltext_search(
         base_query = Q("bool", must=basic_fulltext, should=[has_fulltext])
 
     if query.q == "*":
+        # special case "match all": no scoring necessary, just going for the counts
         search = search.query("match_all")
         search = search.sort("_doc")
+    elif query.sort_order in ("relevancy", None):
+        # if sorting by time, scoring/boosting doesn't matter
+        search = search.query(basic_fulltext)
+    elif rescore_hits:
+        # for most searches, do want to score/boost, but should do so with
+        # rescore for speed on large result sets
+        search = search.query(basic_fulltext)
+        search = search.extra(
+            rescore={
+                "window_size": 100,
+                "query": {
+                    "rescore_query": Q(
+                        "boosting",
+                        positive=Q("bool", must=basic_fulltext, should=[has_fulltext],),
+                        negative=poor_metadata,
+                        negative_boost=0.5,
+                    ).to_dict(),
+                },
+            }
+        )
     else:
+        # for cases like microfilm search (with collapse), where ES does not
+        # allow rescore, do query-time scoring/boosting
         search = search.query(
             "boosting", positive=base_query, negative=poor_metadata, negative_boost=0.5,
         )
