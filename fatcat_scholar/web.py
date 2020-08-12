@@ -4,7 +4,6 @@ This contains the FastAPI web application and RESTful API.
 So far there are few endpoints, so we just put them all here!
 """
 
-import sys
 import babel.support
 from fastapi import FastAPI, APIRouter, Request, Depends, Response
 from fastapi.staticfiles import StaticFiles
