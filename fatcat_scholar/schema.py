@@ -182,7 +182,7 @@ def clean_small_int(raw: Optional[str]) -> Optional[int]:
     if not raw or not raw.isdigit():
         return None
     val = int(raw)
-    if abs(val) > 50000:
+    if abs(val) > 30000:
         return None
     return val
 
@@ -195,6 +195,7 @@ def test_clean_small_int() -> None:
     assert clean_small_int("123") == 123
     assert clean_small_int("1200003") == None
     assert clean_small_int("-123") == None
+    assert clean_small_int("48844") == None
 
 
 def doi_split_prefix(doi: str) -> str:
