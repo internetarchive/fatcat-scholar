@@ -199,6 +199,97 @@ def es_fulltext_from_pdftotext(
     return _add_file_release_meta(ret, pdf_meta, re, fe)
 
 
+def biblio_metadata_hacks(biblio: ScholarBiblio) -> ScholarBiblio:  # noqa: C901
+    """
+    This function does platform/publisher specific metadata hacks.
+
+    Really these should be updated in the fatcat catalog directly, but in the
+    short term want to work around some large-ish transforms for our prototype
+    index.
+
+    This function is long, but simple in structure, so not likely to refactor
+    into smaller functions.
+    """
+
+    # valid year
+    if biblio.release_year and biblio.release_year > 2025:
+        biblio.release_year = None
+        biblio.release_date = None
+
+    # figshare
+    if biblio.doi_prefix in ("10.6084", "10.25384"):
+        if not biblio.container_name:
+            biblio.container_name = "figshare.com"
+
+    # zenodo
+    if biblio.doi_prefix == "10.5281":
+        if not biblio.container_name:
+            biblio.container_name = "zenodo.com"
+
+    # biorxiv/medrxiv
+    # NOTE: there is a further hack that determines which of biorxiv/medrxiv
+    # based on access URL
+    if biblio.doi_prefix == "10.1101":
+        if not biblio.container_name:
+            biblio.container_name = "biorxiv/medrxiv"
+        if not biblio.release_stage:
+            biblio.release_stage = "submitted"
+        if biblio.release_type == "post":
+            biblio.release_type = "article"
+
+    # arxiv
+    if biblio.arxiv_id and not (biblio.doi or biblio.pmid):
+        if not biblio.container_name:
+            biblio.container_name = "arxiv.org"
+        if biblio.release_type in (None, "report", "post"):
+            biblio.release_type = "article"
+
+    # IEEE
+    if biblio.doi_prefix == "10.1109":
+        if (
+            not biblio.release_stage
+            and biblio.container_name
+            and (
+                "IEEE" in biblio.container_name
+                or "Conference" in biblio.container_name
+                or "Proceedings" in biblio.container_name
+                or biblio.release_type == "paper-conference"
+            )
+        ):
+            biblio.release_stage = "published"
+
+    # ACM
+    if biblio.doi_prefix == "10.1145":
+        if (
+            not biblio.release_stage
+            and biblio.container_name
+            and (
+                "ACM" in biblio.container_name
+                or "Conference" in biblio.container_name
+                or "Proceedings" in biblio.container_name
+            )
+        ):
+            biblio.release_stage = "published"
+
+    # IOP, ACM, IEEE, AIP, World Scientific (large conference publishers)
+    if biblio.doi_prefix in ("10.1145", "10.1109", "10.1117", "10.1063", "10.1142"):
+        if not biblio.release_stage and biblio.release_type == "paper-conference":
+            biblio.release_stage = "published"
+
+    # F1000
+    if biblio.doi_prefix == "10.3510":
+        if biblio.title and biblio.title.startswith("Faculty of 1000 evaluation for"):
+            biblio.release_type = "peer_review"
+            biblio.release_stage = "published"
+
+    # protocols.io
+    if biblio.doi_prefix == "10.17504":
+        if not biblio.release_stage:
+            biblio.release_stage = "published"
+
+    return biblio
+
+
 def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
 
     tags: List[str] = []
@@ -231,6 +322,7 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
             r for r in heavy.releases if r.ident == heavy.biblio_release_ident
         ][0]
         biblio = es_biblio_from_release(primary_release)
+        biblio = biblio_metadata_hacks(biblio)
         abstracts = es_abstracts_from_release(primary_release)
 
         # if no abstract from primary_release, try all the other releases
@@ -321,9 +413,14 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
                 tags.append(container.extra["platform"].lower())
     if biblio.doi_prefix == "10.2307":
         tags.append("jstor")
+    tags = list(set(tags))
 
     # biorxiv/medrxiv hacks
-    if not biblio.container_name and biblio.release_stage != "published":
+    if (
+        biblio.doi_prefix == "10.1101"
+        and biblio.container_name in (None, "biorxiv/medrxiv")
+        and biblio.release_stage != "published"
+    ):
         for _, acc in access_dict.items():
             if "://www.medrxiv.org/" in acc.access_url:
                 biblio.container_name = "medRxiv"
@@ -333,7 +430,6 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
                 biblio.container_name = "bioRxiv"
                 if biblio.release_stage == None:
                     biblio.release_stage = "submitted"
-    tags = list(set(tags))
 
     return ScholarDoc(
         key=key,
