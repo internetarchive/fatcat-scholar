@@ -460,3 +460,100 @@ Performance seems to have diverged between the two instances, not sure why.
 Maybe some query terms just randomly are faster on one instance or the other?
 Eg, "wood"
 
+## 2020-08-07 Test Phrase Indexing
+
+Indexing 1 million papers twice, with old and new schema, to check impact of
+phrase indexing, in ES 7.x.
+
+    release_export.2019-07-07.5mil_fulltext.json.gz
+
+    git checkout 0c7a2ace5d7c5b357dd4afa708a07e3fa85849fd
+    http put ":9200/qa_scholar_fulltext_0c7a2ace?include_type_name=true" < schema/scholar_fulltext.v01.json
+    ssh aitio.us.archive.org cat /grande/snapshots/fatcat_scholar_work_fulltext.20200723_two.json.gz \
+        | gunzip \
+        | head -n1000000 \
+        | sudo -u fatcat parallel -j8 --linebuffer --round-robin --pipe pipenv run python -m fatcat_scholar.transform run_transform \
+        | esbulk -verbose -size 100 -id key -w 4 -index qa_scholar_fulltext_0c7a2ace -type _doc
+
+    # master branch, phrase indexing
+    git checkout 2c681e32756538c84b292cc95b623ee9758846a6
+    http put ":9200/qa_scholar_fulltext_2c681e327?include_type_name=true" < schema/scholar_fulltext.v01.json
+    ssh aitio.us.archive.org cat /grande/snapshots/fatcat_scholar_work_fulltext.20200723_two.json.gz \
+        | gunzip \
+        | head -n1000000 \
+        | sudo -u fatcat parallel -j8 --linebuffer --round-robin --pipe pipenv run python -m fatcat_scholar.transform run_transform \
+        | esbulk -verbose -size 100 -id key -w 4 -index qa_scholar_fulltext_2c681e327 -type _doc
+
+    http get :9200/_cat/indices
+    [...]
+    green open qa_scholar_fulltext_0c7a2ace    BQ9tH5OZT0evFCXiIJMdUQ 12 0   1000000      0   6.7gb   6.7gb
+    green open qa_scholar_fulltext_2c681e327   PgRMn5v-ReWzGlCTiP7b6g 12 0   1000000      0   9.5gb   9.5gb
+    [...]
+
+So phrase indexing is...42% larger index on disk, even with other changes to
+reduce size. We will probably approach 2 TByte total index size.
+
+    "to be or not to be"
+    => qa_scholar_fulltext_0c7a2ace: 65 Hits in 0.2sec (after repetitions)
+    => qa_scholar_fulltext_2c681e327: 65 Hits in 0.065sec
+
+    to be or not to be
+    => qa_scholar_fulltext_0c7a2ace: 87,586 Hits in 0.16sec
+    => qa_scholar_fulltext_2c681e327: 87,590 Hits in 0.16sec
+
+    "Besides all beneficial properties studied for various LAB, a special attention need to be pay on the possible cytotoxicity levels of the expressed bacteriocins"
+    => qa_scholar_fulltext_0c7a2ace: 1 Hits in 0.076sec
+    => qa_scholar_fulltext_2c681e327: 1 Hits in 0.055sec
+
+    "insect swarm"
+    => qa_scholar_fulltext_0c7a2ace: 4 Hits in 0.032sec
+    => qa_scholar_fulltext_2c681e327: 4 Hits in 0.024sec
+
+    "how to"
+    => qa_scholar_fulltext_0c7a2ace: 15,761 Hits in 0.11sec
+    => qa_scholar_fulltext_2c681e327: 15,763 Hits in 0.054sec
+
+Sort of splitting hairs at this scale, but does seem like phrase indexing helps
+with some queries. Seems worth at least trying with large/full index.
+
+## 2020-08-07 Iterated Release Batch
+
+Sharded indexing:
+
+    zcat /fast/download/release_export_expanded.2020-08-05.json.gz | split --lines 25000000 - release_export_expanded.split_ -d --additional-suffix .json
+
+    export TMPDIR=/sandcrawler-db/tmp
+    for SHARD in {00..06}; do
+        cat /bigger/scholar/release_export_expanded.split_$SHARD.json \
+            | parallel -j8 --line-buffer --compress --round-robin --pipe python -m fatcat_scholar.work_pipeline run_releases \
+            | pv -l \
+            | pigz > /grande/snapshots/fatcat_scholar_work_fulltext.split_$SHARD.json.gz
+    done
+
+Record counts:
+
+    24.7M 15:09:08 [ 452 /s]
+    24.7M 16:11:22 [ 423 /s]
+    24.7M 16:38:19 [ 412 /s]
+    24.7M 17:29:46 [ 392 /s]
+    24.7M 14:55:53 [ 459 /s]
+    24.7M 15:02:49 [ 456 /s]
+    2M 1:10:36 [ 472 /s]
+
+Have made transform code changes, now at git rev 7603dd0ade23e22197acd1fd1d35962c314cf797.
+
+Transform and index, on svc097 machine:
+
+    ssh aitio.us.archive.org cat /grande/snapshots/fatcat_scholar_work_fulltext.split_*.json.gz \
+    | gunzip \
+    | head -n2000000 \
+    | sudo -u fatcat parallel -j8 --linebuffer --round-robin --pipe pipenv run python -m fatcat_scholar.transform run_transform \
+    | esbulk -verbose -size 100 -id key -w 4 -index scholar_fulltext_v01 -type _doc
+
+Derp, got a batch-size error. Let's try even smaller for the full batch:
+
+    ssh aitio.us.archive.org cat /grande/snapshots/fatcat_scholar_work_fulltext.split_*.json.gz \
+    | gunzip \
+    | sudo -u fatcat parallel -j8 --linebuffer --round-robin --pipe pipenv run python -m fatcat_scholar.transform run_transform \
+    | esbulk -verbose -size 50 -id key -w 4 -index scholar_fulltext_v01 -type _doc
+
