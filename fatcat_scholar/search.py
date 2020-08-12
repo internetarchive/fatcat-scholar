@@ -217,12 +217,19 @@ def do_fulltext_search(
             "boosting", positive=base_query, negative=poor_metadata, negative_boost=0.5,
         )
 
+    # simplified version of basic_fulltext query, for highlighting
+    highlight_query= Q(
+        "query_string",
+        query=query.q,
+        default_operator="AND",
+        lenient=True,
+    )
     search = search.highlight(
         "abstracts.body",
         "fulltext.body",
         "fulltext.acknowledgement",
         "fulltext.annex",
-        highlight_query=basic_fulltext.to_dict(),
+        highlight_query=highlight_query.to_dict(),
         require_field_match=False,
         number_of_fragments=2,
         fragment_size=300,
