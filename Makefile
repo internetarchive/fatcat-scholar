@@ -34,6 +34,10 @@ coverage: lint ## Run all tests with coverage
 dev: ## Run web service locally, with reloading
 	ENV_FOR_DYNACONF=dev pipenv run uvicorn fatcat_scholar.web:app --reload --port 9819
 
+.PHONY: dev-prod
+dev-prod: ## Run web service locally, with reloading, but point search queries to prod search index
+	ENV_FOR_DYNACONF=prod pipenv run uvicorn fatcat_scholar.web:app --reload --port 9819
+
 .PHONY: run
 run: ## Run web service under gunicorn
 	pipenv run gunicorn fatcat_scholar.web:app -w 4 -k uvicorn.workers.UvicornWorker
