@@ -219,12 +219,12 @@ def biblio_metadata_hacks(biblio: ScholarBiblio) -> ScholarBiblio:  # noqa: C901
     # figshare
     if biblio.doi_prefix in ("10.6084", "10.25384"):
         if not biblio.container_name:
-            biblio.container_name = "figshare.com"
+            biblio.container_name = "Figshare"
 
     # zenodo
     if biblio.doi_prefix == "10.5281":
         if not biblio.container_name:
-            biblio.container_name = "zenodo.com"
+            biblio.container_name = "Zenodo"
 
     # biorxiv/medrxiv
     # NOTE: there is a further hack that determines which of biorxiv/medrxiv
@@ -240,7 +240,7 @@ def biblio_metadata_hacks(biblio: ScholarBiblio) -> ScholarBiblio:  # noqa: C901
     # arxiv
     if biblio.arxiv_id and not (biblio.doi or biblio.pmid):
         if not biblio.container_name:
-            biblio.container_name = "arxiv.org"
+            biblio.container_name = "arXiv"
         if biblio.release_type in (None, "report", "post"):
             biblio.release_type = "article"
 
