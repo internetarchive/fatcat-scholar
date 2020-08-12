@@ -26,6 +26,10 @@ def test_clean_str() -> None:
         ("", None),
         ("&NA", None),
         (None, None),
+        (
+            "CO<SUB>2</SUB>レーザー光線及びYAGレーザー光線の気管線毛に対する影響について",
+            "CO2レーザー光線及びYAGレーザー光線の気管線毛に対する影響について",
+        ),
     ]
 
     for raw, fixed in vectors:
