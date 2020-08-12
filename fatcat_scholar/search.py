@@ -110,7 +110,7 @@ def do_fulltext_search(
     # type filters
     if query.filter_type == "papers" or query.filter_type is None:
         search = search.filter(
-            "terms", type=["article-journal", "paper-conference", "chapter",]
+            "terms", type=["article-journal", "paper-conference", "chapter", "article"]
         )
     elif query.filter_type == "reports":
         search = search.filter("terms", type=["report", "standard",])
