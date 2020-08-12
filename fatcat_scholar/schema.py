@@ -224,7 +224,47 @@ UNWANTED_ABSTRACT_PREFIXES = [
     "No abstract.",
     "Introduction: ",
     "ACKNOWLEDGEMENTS ",
+    "a b s t r a c t ",
 ]
+
+UNWANTED_SHORT_STRINGS = [
+    "&na",
+    "n/a",
+]
+
+
+def clean_str(raw: Optional[str], strip_trailing_period: bool = False) -> Optional[str]:
+    """
+    Takes a str and "cleans" it. Intended to be usable with short strings
+    (names, titles) in any language. See scrub_text(), which extends this
+    function for paragraph length and longer text fields.
+    """
+    if not raw:
+        return None
+
+    text = ftfy.fix_text(raw)
+
+    # remove HTML
+    text = BeautifulSoup(text, "html.parser").get_text()
+
+    # TODO: for performance, compile these as globals?
+    # replaces whitespace with single space
+    text = re.sub(r"\s+", " ", text).strip()
+
+    # TODO: shouldn't HTML be parsing these out?
+    text = text.replace("<em>", "").replace("</em>", "")
+
+    text = text.strip()
+
+    if strip_trailing_period and text.endswith("."):
+        text = text[:-1]
+
+    if text.lower() in UNWANTED_SHORT_STRINGS:
+        return None
+
+    if not text:
+        return None
+    return text
 
 
 def scrub_text(raw: str, mimetype: str = None) -> Optional[str]:
@@ -233,15 +273,17 @@ def scrub_text(raw: str, mimetype: str = None) -> Optional[str]:
     simple token-and-punctuation scheme with any and all markup removed. Eg,
     HTML tags, JATS XML tags, LaTeX, whatever.
 
+    Like clean_str(), but more aggressive about some punctuation, and intended
+    for text fields (like abstracts), not just short strings.
+
     The output should be clean and "HTML safe" (though should still be escaped
     in HTML to get entity encoding correct).
 
     TODO: not using mimetype hint for latex yet
     """
-    text = ftfy.fix_text(raw)
-
-    # remove HTML
-    text = BeautifulSoup(text, "html.parser").get_text()
+    text = clean_str(raw)
+    if not text:
+        return None
 
     # TODO: for performance, compile these as globals?
     # Three regexes below adapted from Blendle cleaner.py
@@ -249,8 +291,6 @@ def scrub_text(raw: str, mimetype: str = None) -> Optional[str]:
     text = re.sub(r"…", "...", text)
     text = re.sub(r"[`‘’‛⸂⸃⸌⸍⸜⸝]", "'", text)
     text = re.sub(r"[„“]|(\'\')|(,,)", '"', text)
-    text = re.sub(r"\s+", " ", text).strip()
-    text = text.replace("<em>", "").replace("</em>", "")
 
     # hack to remove abstract prefixes
     for prefix in UNWANTED_ABSTRACT_PREFIXES:
@@ -342,9 +382,9 @@ def es_biblio_from_release(release: ReleaseEntity) -> ScholarBiblio:
 
     ret = ScholarBiblio(
         release_ident=release.ident,
-        title=release.title,
-        subtitle=release.subtitle,
-        original_title=release.original_title,
+        title=clean_str(release.title, strip_trailing_period=True),
+        subtitle=clean_str(release.subtitle, strip_trailing_period=True),
+        original_title=clean_str(release.original_title, strip_trailing_period=True),
         release_date=release.release_date,
         release_year=release.release_year,
         release_type=release.release_type,
@@ -372,7 +412,7 @@ def es_biblio_from_release(release: ReleaseEntity) -> ScholarBiblio:
         mag_id=release.ext_ids.mag,
         license_slug=release.license_slug,
         publisher=publisher,
-        container_name=container_name,
+        container_name=clean_str(container_name),
         container_original_name=container_original_name,
         container_ident=container_ident,
         container_type=container_type,
@@ -380,13 +420,20 @@ def es_biblio_from_release(release: ReleaseEntity) -> ScholarBiblio:
         issns=issns,
         # TODO; these filters sort of meh. refactor to be above?
         contrib_names=list(
-            filter(lambda x: bool(x), [contrib_name(c) for c in release.contribs])
+            filter(
+                lambda x: bool(x),
+                [clean_str(contrib_name(c)) for c in release.contribs],
+            )
         ),
         contrib_count=len([c for c in release.contribs if c.index]),
         affiliations=list(
             filter(
                 lambda x: bool(x),
-                [contrib_affiliation(c) for c in release.contribs if c.index],
+                [
+                    clean_str(contrib_affiliation(c))
+                    for c in release.contribs
+                    if c.index
+                ],
             )
         ),
     )
