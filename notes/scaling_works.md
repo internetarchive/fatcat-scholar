@@ -550,10 +550,61 @@ Transform and index, on svc097 machine:
     | sudo -u fatcat parallel -j8 --linebuffer --round-robin --pipe pipenv run python -m fatcat_scholar.transform run_transform \
     | esbulk -verbose -size 100 -id key -w 4 -index scholar_fulltext_v01 -type _doc
 
-Derp, got a batch-size error. Let's try even smaller for the full batch:
+Derp, got a batch-size error. But maybe was just a single huge doc? Added a
+hack to try and skip transform of very large docs to start. In the future
+should truncate specific fields (probably fulltext).
+
+Ahah, actual error was:
+
+    2020/08/12 23:19:15   {"mapper_parsing_exception" "failed to parse field [biblio.issue_int] of type [short] in document with id 'work_aezuqrgnnfcezkkeoyonr6ll54'. Preview of field's value: '48844'" "" "" ""}
+
+Full indexing:
 
     ssh aitio.us.archive.org cat /grande/snapshots/fatcat_scholar_work_fulltext.split_*.json.gz \
     | gunzip \
     | sudo -u fatcat parallel -j8 --linebuffer --round-robin --pipe pipenv run python -m fatcat_scholar.transform run_transform \
-    | esbulk -verbose -size 50 -id key -w 4 -index scholar_fulltext_v01 -type _doc
+    | pv -l \
+    | esbulk -verbose -size 100 -id key -w 4 -index scholar_fulltext_v01 -type _doc \
+    2> /tmp/error.txt 1> /tmp/output.txt
 
+Started: 2020-08-12 14:24
+
+    6.71M 2:46:56 [ 590 /s]
+
+Yikes, is this going to take 60 hours to index? CPU and disk seem to be
+basically maxed out, so don't think tweaking batch size or parallelism would
+help much.
+
+NOTE: tail -n +700000
+NOTE: could filter line size: awk 'length($0) < 16384'
+
+Had some hardware (?) issue and had to restart.
+
+    ssh aitio.us.archive.org cat /grande/snapshots/fatcat_scholar_work_fulltext.split_{00..06}.json.gz \
+    | gunzip \
+    | sudo -u fatcat parallel -j8 --linebuffer --round-robin --pipe pipenv run python -m fatcat_scholar.transform run_transform \
+    | pv -l \
+    | esbulk -verbose -size 100 -id key -w 4 -index scholar_fulltext_v01 -type _doc \
+    2> /tmp/error.txt 1> /tmp/output.txt
+
+    => 150M 69:00:35 [ 604 /s]
+
+    => green open scholar_fulltext_v01            2KrkdhuhRDa6SdNC36XR0A 12 0 150232272    130   1.3tb   1.3tb
+    => Filesystem      Size  Used Avail Use% Mounted on
+    => /dev/vda1       3.5T  1.4T  2.0T  42% /
+
+    ssh aitio.us.archive.org cat /bigger/scholar_old/sim_intermediate.2020-07-23.json.gz \
+    | gunzip \
+    | sudo -u fatcat parallel -j8 --linebuffer --round-robin --pipe pipenv run python -m fatcat_scholar.transform run_transform \
+    | esbulk -verbose -size 100 -id key -w 4 -index scholar_fulltext_v01 -type _doc \
+    2> /tmp/error.txt 1> /tmp/output.txt
+
+    => 2020/08/16 21:51:14 1895778 docs in 2h22m55.61416094s at 221.066 docs/s with 4 workers
+
+    => green open scholar_fulltext_v01            2KrkdhuhRDa6SdNC36XR0A 12 0 152090351  26071   1.3tb   1.3tb
+    => Filesystem      Size  Used Avail Use% Mounted on
+    => /dev/vda1       3.5T  1.4T  2.0T  42% /
+
+Stop elasticsearch, `sync`, restart, to ensure index is fully flushed to disk.
+
+Some warm-up queries: "*", "blood", "to be or not to be"
