@@ -4,7 +4,7 @@ import datetime
 from typing import List, Dict, Optional, Any, Sequence
 
 from dynaconf import settings
-from fatcat_openapi_client import ReleaseEntity, FileEntity
+from fatcat_openapi_client import ReleaseEntity, FileEntity, ReleaseRef
 
 from fatcat_scholar.api_entities import *
 from fatcat_scholar.schema import *
@@ -447,6 +447,110 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
     )
 
 
+def refs_from_grobid(release: ReleaseEntity, tei_dict: dict) -> Sequence[RefStructured]:
+    output = []
+    for ref in tei_dict.get("citations") or []:
+        ref_date = ref.get("date") or None
+        ref_year: Optional[int] = None
+        if ref_date and len(ref_date) > 4 and ref_date[:4].isdigit():
+            ref_year = int(ref_date[:4])
+        output.append(
+            RefStructured(
+                biblio=RefBiblio(
+                    title=ref.get("title"),
+                    # subtitle
+                    contrib_raw_names=ref.get("authors") or [],
+                    year=ref_year,
+                    container_name=ref.get("journal"),
+                    volume=ref.get("volume"),
+                    issue=ref.get("issue"),
+                    # pages: Optional[str]
+                    # doi: Optional[str]
+                    # pmid: Optional[str]
+                    # pmcid: Optional[str]
+                    # arxiv_id: Optional[str]
+                    # isbn13: Optional[str]
+                    url=ref.get("url"),
+                ),
+                release_ident=release.ident,
+                work_ident=release.work_id,
+                index=ref.get("index"),
+                key=ref.get("id"),
+                locator=None,
+                # target_release_id
+                ref_source="grobid",
+            )
+        )
+    return output
+
+
+def refs_from_release_refs(release: ReleaseEntity) -> Sequence[RefStructured]:
+    output = []
+    for ref in release.refs:
+        ref_source = "fatcat"
+        if release.extra and release.extra.get("pubmed"):
+            ref_source = "pubmed"
+        elif release.extra and release.extra.get("crossref"):
+            ref_source = "crossref"
+        elif release.extra and release.extra.get("datacite"):
+            ref_source = "datacite"
+        extra = ref.extra or dict()
+        output.append(
+            RefStructured(
+                biblio=RefBiblio(
+                    title=ref.title,
+                    subtitle=extra.get("subtitle"),
+                    contrib_raw_names=extra.get("authors") or [],
+                    year=ref.year,
+                    container_name=ref.container_name,
+                    volume=extra.get("volume"),
+                    issue=extra.get("issue"),
+                    pages=extra.get("pages"),
+                    doi=extra.get("doi"),
+                    pmid=extra.get("pmid"),
+                    pmcid=extra.get("pmcid"),
+                    arxiv_id=extra.get("arxiv_id"),
+                    isbn13=extra.get("isbn13"),
+                    url=extra.get("url"),
+                ),
+                release_ident=release.ident,
+                work_ident=release.work_id,
+                index=ref.index,
+                key=ref.key,
+                locator=ref.locator,
+                target_release_id=ref.target_release_id,
+                ref_source=ref_source,
+            )
+        )
+    return output
+
+
+def refs_from_heavy(heavy: IntermediateBundle) -> Sequence[RefStructured]:
+
+    if heavy.doc_type != DocType.work:
+        return []
+
+    # first, identify source of refs: fatcat release metadata or GROBID
+    assert heavy.biblio_release_ident
+    primary_release = [
+        r for r in heavy.releases if r.ident == heavy.biblio_release_ident
+    ][0]
+
+    if primary_release.refs:
+        # TODO: what about other releases?
+        return refs_from_release_refs(primary_release)
+    elif heavy.grobid_fulltext:
+        fulltext_release = [
+            r
+            for r in heavy.releases
+            if r.ident == heavy.grobid_fulltext["release_ident"]
+        ][0]
+        tei_dict = teixml2json(heavy.grobid_fulltext["tei_xml"])
+        return refs_from_grobid(fulltext_release, tei_dict)
+    else:
+        return []
+
+
 def run_transform(infile: Sequence) -> None:
     for line in infile:
         obj = json.loads(line)
@@ -469,6 +573,27 @@ def run_transform(infile: Sequence) -> None:
         print(es_doc.json(exclude_none=True, sort_keys=True))
 
 
+def run_refs(infile: Sequence) -> None:
+    for line in infile:
+        obj = json.loads(line)
+
+        heavy = IntermediateBundle(
+            doc_type=DocType(obj["doc_type"]),
+            releases=[
+                entity_from_json(json.dumps(re), ReleaseEntity)
+                for re in obj["releases"]
+            ],
+            biblio_release_ident=obj.get("biblio_release_ident"),
+            grobid_fulltext=obj.get("grobid_fulltext"),
+            pdftotext_fulltext=obj.get("pdftotext_fulltext"),
+            pdf_meta=obj.get("pdf_meta"),
+            sim_fulltext=obj.get("sim_fulltext"),
+        )
+        refs = refs_from_heavy(heavy)
+        for ref in refs:
+            print(ref.json(exclude_none=True, sort_keys=True))
+
+
 def main() -> None:
     """
     Run this command like:
@@ -482,9 +607,22 @@ def main() -> None:
     subparsers = parser.add_subparsers()
 
     sub = subparsers.add_parser(
-        "run_transform", help="iterates through 'heavy' intermediate"
+        "run_transform",
+        help="takes 'heavy' intermediate, outputs scholar_fulltext ES documents",
     )
     sub.set_defaults(func="run_transform")
+    sub.add_argument(
+        "json_file",
+        help="intermediate globs as JSON-lines",
+        nargs="?",
+        default=sys.stdin,
+        type=argparse.FileType("r"),
+    )
+
+    sub = subparsers.add_parser(
+        "run_refs", help="extracts references from 'heavy' intermediate"
+    )
+    sub.set_defaults(func="run_refs")
     sub.add_argument(
         "json_file",
         help="intermediate globs as JSON-lines",
@@ -500,6 +638,8 @@ def main() -> None:
 
     if args.func == "run_transform":
         run_transform(infile=args.json_file)
+    elif args.func == "run_refs":
+        run_refs(infile=args.json_file)
     else:
         raise NotImplementedError(args.func)
 

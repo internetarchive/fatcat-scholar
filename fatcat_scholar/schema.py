@@ -178,6 +178,42 @@ class ScholarDoc(BaseModel):
     access: List[ScholarAccess]
 
 
+class RefBiblio(BaseModel):
+    title: Optional[str]
+    subtitle: Optional[str]
+    contrib_raw_names: List[str]
+    year: Optional[int]
+    container_name: Optional[str]
+    volume: Optional[str]
+    issue: Optional[str]
+    pages: Optional[str]
+    doi: Optional[str]
+    pmid: Optional[str]
+    pmcid: Optional[str]
+    arxiv_id: Optional[str]
+    isbn13: Optional[str]
+    url: Optional[str]
+
+
+class RefStructured(BaseModel):
+    biblio: RefBiblio
+    release_ident: Optional[str]
+    work_ident: Optional[str]
+    index: Optional[int]
+    key: Optional[str]
+    locator: Optional[str]
+    target_release_id: Optional[str]
+    ref_source: Optional[str]  # grobid, crossref, pubmed, wikipedia, etc
+
+
+class RefTarget(BaseModel):
+    biblio: RefBiblio
+    release_ident: Optional[str]
+    work_ident: Optional[str]
+    release_stage: Optional[str]
+    release_type: Optional[str]
+
+
 def clean_small_int(raw: Optional[str]) -> Optional[int]:
     if not raw or not raw.isdigit():
         return None

@@ -97,6 +97,12 @@ def journal_info(elem: ET.Element) -> Dict[str, Any]:
 
 
 def biblio_info(elem: ET.Element) -> Dict[str, Any]:
+    """
+    TODO for references:
+    - pages
+    - locator
+    - doi, pmid, pmcid, arxiv_id, isbn
+    """
     ref: Dict[str, Any] = dict()
     ref["id"] = elem.attrib.get("{http://www.w3.org/XML/1998/namespace}id")
     # Title stuff is messy in references...
