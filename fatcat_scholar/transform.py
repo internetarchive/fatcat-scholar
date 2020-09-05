@@ -454,12 +454,14 @@ def refs_from_grobid(release: ReleaseEntity, tei_dict: dict) -> Sequence[RefStru
         ref_year: Optional[int] = None
         if ref_date and len(ref_date) > 4 and ref_date[:4].isdigit():
             ref_year = int(ref_date[:4])
+        authors = ref.get("authors") or []
+        authors = [a for a in authors if type(a) == str]
         output.append(
             RefStructured(
                 biblio=RefBiblio(
                     title=ref.get("title"),
                     # subtitle
-                    contrib_raw_names=ref.get("authors") or [],
+                    contrib_raw_names=authors,
                     year=ref_year,
                     container_name=ref.get("journal"),
                     volume=ref.get("volume"),
@@ -495,12 +497,14 @@ def refs_from_release_refs(release: ReleaseEntity) -> Sequence[RefStructured]:
         elif release.extra and release.extra.get("datacite"):
             ref_source = "datacite"
         extra = ref.extra or dict()
+        authors = extra.get("authors") or []
+        authors = [a for a in authors if type(a) == str]
         output.append(
             RefStructured(
                 biblio=RefBiblio(
                     title=ref.title,
                     subtitle=extra.get("subtitle"),
-                    contrib_raw_names=extra.get("authors") or [],
+                    contrib_raw_names=authors,
                     year=ref.year,
                     container_name=ref.container_name,
                     volume=extra.get("volume"),
