@@ -452,10 +452,17 @@ def refs_from_grobid(release: ReleaseEntity, tei_dict: dict) -> Sequence[RefStru
     for ref in tei_dict.get("citations") or []:
         ref_date = ref.get("date") or None
         ref_year: Optional[int] = None
-        if ref_date and len(ref_date) > 4 and ref_date[:4].isdigit():
+        if ref_date and len(ref_date) >= 4 and ref_date[:4].isdigit():
             ref_year = int(ref_date[:4])
-        authors = ref.get("authors") or []
-        authors = [a for a in authors if type(a) == str]
+        ref_authors = ref.get("authors") or []
+        authors: List[str] = []
+        for a in ref_authors:
+            if isinstance(a, str):
+                authors.append(a)
+            elif isinstance(a, dict):
+                if a.get("name"):
+                    assert isinstance(a["name"], str)
+                    authors.append(a["name"])
         output.append(
             RefStructured(
                 biblio=RefBiblio(

@@ -123,7 +123,7 @@ def biblio_info(elem: ET.Element) -> Dict[str, Any]:
     ref["arxiv_id"] = elem.findtext('.//{%s}idno[@type="arXiv"]' % ns)
     ref["pmcid"] = elem.findtext('.//{%s}idno[@type="PMCID"]' % ns)
     ref["pmid"] = elem.findtext('.//{%s}idno[@type="PMID"]' % ns)
-    el = elem.find(".//{%s}biblScope[@page]" % ns)
+    el = elem.find('.//{%s}biblScope[@unit="page"]' % ns)
     if el is not None:
         if el.attrib.get("from") and el.attrib.get("to"):
             ref["pages"] = "{}-{}".format(el.attrib["from"], el.attrib["to"])
