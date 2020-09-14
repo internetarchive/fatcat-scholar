@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 /srv/grobid/grobid-0.5.5-fatcat-g3969c872/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<encodingDesc>
+			<appInfo>
+				<application version="0.5.5-fatcat
+" ident="GROBID" when="2020-03-15T07:31+0000">
+					<ref target="https://github.com/kermitt2/grobid">GROBID - A machine learning software for extracting information from scholarly documents</ref>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Changes of patients&apos; satisfaction with the health care services in Lithuanian Health Promoting Hospitals network</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+				<date type="published" when="2003">2003</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Irena</forename><surname>Misevičienė</surname></persName>
+						</author>
+						<author>
+							<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Žemyna</forename><surname>Milašauskienė</surname></persName>
+						</author>
+						<author>
+							<affiliation key="aff0">
+								<orgName type="department" key="dep1">Institute for Biomedical Research</orgName>
+								<orgName type="department" key="dep2">Institute for Biomedical Research</orgName>
+								<orgName type="institution">Kaunas University of Medicine</orgName>
+								<address>
+									<country key="LT">Lithuania</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff1">
+								<orgName type="institution">Kaunas University of Medicine</orgName>
+								<address>
+									<addrLine>Eiveni ų 4</addrLine>
+									<postCode>3007</postCode>
+									<settlement>Kaunas</settlement>
+									<country key="LT">Lithuania</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Changes of patients&apos; satisfaction with the health care services in Lithuanian Health Promoting Hospitals network</title>
+					</analytic>
+					<monogr>
+						<title level="j" type="main">MEDICINA</title>
+						<imprint>
+							<biblScope unit="volume">39</biblScope>
+							<date type="published" when="2003">2003</date>
+						</imprint>
+					</monogr>
+					<note>604 Correspondence to Ž. Milašauskienė,</note>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<profileDesc>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Key words: health care, quality of health care services, patient satisfaction, physical environment, behavior of nurses and physicians. Summary. The aim of this study is to evaluate the changes of patients' satisfaction with health care services in Lithuanian Health Promoting Hospitals network. In a survey, which was carried out by Lithuanian Health Promoting Hospitals network, 1271 patients took part in 2000 and 1467 patients in 2002. The patient's satisfaction with health care services was evaluated using a uniform anonymous questionnaire. The patients were asked to evaluate hospital environment (neatness, cleanliness, and food quality), the quality of health personnel work (attentiveness, care, risk factors, and tests used for diagnosis and treatment) rating from 1 (very bad) to 6 (excellent). It was ascertained that, during the period between both surveys, the number of patients who evaluated the sanitary conditions in the ward as excellent and very good, increased from 49.2% to 59.9%, p&lt;0.05. According to the data received from both surveys, the hospital food quality was rated more critically than the hospital environment. The number of patients, who noted that the food quality was satisfactory, decreased from 29.8% to 22.0%, p&lt;0.05 within the period analyzed. However the number of patients who had a positive opinion of the health care personnel's attentiveness and help while explaining the causes and consequences of various illnesses increased. Patients' assessment of the physician work remained the same. The majority of the patients (95.1% in 2000 and 94.9% in 2002)  appreciated the overall performance of the physicians, and rated it very good and excellent. The analysis of patients' satisfaction is a simple study of a constituent part of the health care service quality assessment and an objective prerequisite for the improvement of the quality of the health care services.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Changes of patients' satisfaction with the health care services in Lithuanian Health Promoting Hospitals network</head><p>The increasing competition and the wish to hold out in the market conditions encourages the health care institutions to change their approach to the users of health care services and to search for new methods of creating an organized system that would be able to quickly adapt to the needs of a patient <ref type="bibr" target="#b0">(1)</ref><ref type="bibr" target="#b1">(2)</ref><ref type="bibr" target="#b2">(3)</ref><ref type="bibr" target="#b3">(4)</ref>. The research done in Western European countries has shown that an effective and fast response to the patients' complaints ensures that most of them will come back to the same health care institution if needed <ref type="bibr" target="#b4">(5,</ref><ref type="bibr" target="#b5">6)</ref>. Patient satisfaction with health care services can be rated either according to the number of received complaints or by carrying out various patients' satisfaction surveys <ref type="bibr" target="#b5">(6)</ref>. Although reducing the incidence of complaints is a good indicator of the quality of health care institution activity, it would be misleading to rely on this indicator alone. Only a small part of dissatisfied patients are moved to make a formal complaint. The majority of dissatisfied patients tend to avoid using the same health care institution again <ref type="bibr" target="#b4">(5,</ref><ref type="bibr" target="#b5">6)</ref>. Usually each dissatisfied patient tries to inform other clients about the unsatisfactory services provided by health care institution and they will tend to choose another service if they can. Although currently Lithuanian health care institutions perform the monitoring in pursue of gathering information on patients' expectations and their needs (7), still they do it not systematically, using nonstandardized uniform questionnaires. That is why the gathered data usually serves only for internal auditing. The results of the surveys cannot be compared with the results from the other Lithuanian health care institutions. In 2000 Lithuanian Health Promoting Hospitals (HPH) network, started the evaluation of patients' satisfaction with the quality of the services provided by these hospitals <ref type="bibr" target="#b7">(8)</ref>. Using uniform questionnaire the patients treated in the Lithuanian HPH network hospitals, were examined in 2000 and 2002.</p><p>The aim of this study is to evaluate the changes of patients' satisfaction with health care services in Lithuanian HPH network.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Material and methods</head><p>Eight Lithuanian HPH network hospitals (Kaunas University of Medicine, Kaunas Clinical Infectious, Kaunas 3 rd Clinical, Vilkaviškis, Kretinga, Prienai hospitals, Palanga Rehabilitation Hospital and Tauragė District Hospital) took part in the survey carried out in 2000 and 2002. Hospitals, according to the number of beds, were divided into small ones (&gt;100-300 beds), medium ones (300-700 beds) and big ones (&gt;1000 beds). The sample size in each hospital was calculated according to the number of beds; following specialized statistical tables (5% error allowed) used for sociological research, while calculating representative samples. The studies in 2000 and 2002 were fulfilled in accordance with the same methodology. The patients of each hospital filled in the questionnaire in a day. Different departments of hospitals were chosen for the research. The questionnaire was distributed to patients who were treated in different departments of hospitals (internal diseases, cardiology, neurology, endocrinology, surgery, obstetrics, gynecology and pediatrics), except the intensive therapy and psychiatry departments. The nursing administrators distributed the questionnaires in all departments of the hospitals and collected them after the patients had filled them in. The questionnaires were not distributed to the patients who were hospitalized on that day. Out of 1300 questionnaires, 1271 were filled in and returned in 2000 (the response rate -97.8%). Out of 1500 questionnaires, 1419 were filled in and returned in 2002 (the response rate -94.6%). Patients, who had examinations or surgical operations on that day, did not participate in the survey. Only a minor part of the patients refused to fill in the form (0.9% and 1.3% in 2000 and 2002 respectively).</p><p>The patients were introduced with standard questionnaires comprised of 36 questions. The first part of the questionnaire consisted of general questions (age, occupation, time of treatment in this hospital, duration of stay in hospital, hospitalized urgently or by plan). The second part of the questionnaire was related to physical environment of hospital (neatness, cleanliness, and food quality) and the third part was evaluation of the health personnel's work quality (attentiveness, care, informing about health care services, causes of the disease, and tests used for diagnosis and treatment).</p><p>Considering the fact that hospitals make efforts to create better conditions for patients during their hospitalization, a few additional questions were included in the second part of the questionnaire given in 2002. The extra questions were as follows: was the patient able to make phone calls, take shower or bath; were the established visiting hours acceptable; were there enough visual aids to help orientated oneself in the hospital; were there any problems with the non-medical staff during the patients' hospitalization.</p><p>The patients were asked to choose one of the six best-suited answers to evaluate work and activities of health personnel: very bad, bad, satisfactory, good, very good, and excellent. The received data was codified. The estimation very bad was codified as 1, bad -2, satisfactory -3, good -4, very good -5, and excellent -6. While performing the analysis of the data, the estimations very bad, bad, and satisfactory were summed up and considered as negative evaluation of the work and activities of health personnel, while the estimations good, very good, and excellent were summed up and considered as positive evaluation.</p><p>While performing a statistical analysis of the data, the means of sample indications (x) and standard deviation (sd) were calculated. A Student test (t) was used for comparing the means; a chi square criterion was used for comparing non-parametrical values. The analysis of the data was performed using a statistical SPSS program.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Results and discussion</head><p>The distribution of patients according to sex and age did not differ between the first and second surveys. More women than men took part in both questionings. In the first survey participated 65.1% (n=827) of women and 34.9% (n=444) of men, in the second -61.3% (n=764) of women and 38.7% (n=501) of men p&lt;0.05.</p><p>According to the data of the first survey, more than a half of the patients (62.5% of men and 57.1% of women) were hospitalized urgently and the rest of the patients were hospitalized by plan. The data of the second survey showed that more patients (p&lt;0.05) were hospitalized urgently in comparison with the first survey (71.9% of men and 70.5% of women).</p><p>The hospitalization process is one of the most important factors determining patients' satisfaction with health organizations and their services. The analysis of the data has shown that the answers of men and women to the question "how much time did they spend in the reception" did not differ. Two thirds (66.4% and 75.3%) of the participants spent less than 30 minutes in the hospital reception office, however 8.9% of the first survey participants and 6.8% of the second survey participants spent more than one hour in the reception waiting for hospitalization. The majority of the patients of both surveys (89.9% and 83.5% respectively) pointed out that the reception personnel introduced to them the rules within the hospital. Physical environment, for example, cleanliness of the air in the ward and the wards itself, silence, food quality, are very important factors determining patients' mood and the rate of healing. Due to this fact, it was very important to discover how patients evaluated their surroundings <ref type="bibr" target="#b8">(9,</ref><ref type="bibr" target="#b9">10)</ref>. The patients were asked to indicate, whether it was comfortable for them to take a shower or bath and to make phone calls. More than two thirds of the patients were satisfied with the existing possibility to make phone calls and to take a shower or bath (75.5% and 76.8% respectively). The majority (94.2%) of the participants of the survey pointed out that their relatives and them were very satisfied with the visiting hours. Only every tenth (12.2%) patient noted that the hospital didn't have enough visual aids to help orientate in the hospital. One tenth (9.3%) of the respondents mentioned that they had problems with the non-medical staff (lift operators, cloakroom attendants, etc.).</p><p>The number of patients, who evaluated the cleanliness of the ward as excellent and very good, increased during the analyzed period. In the first survey every second patient (49.2%) estimated the neatness in the ward excellent and very good; 44.1% evaluated it as good; 6.1% of the patients indicated that the neatness in the ward was satisfactory and 0.6% said it was bad; while in the second survey the number of patients who evaluated the cleanliness of the ward as excellent and very good increased to 59.9%; the number of patients who chose the answer good decreased to 36.4%, and satisfactory decreased to 2.7% <ref type="figure" target="#fig_1">(Fig. 1)</ref>.</p><p>The data of both surveys showed that patients evaluate food quality more critically than hospital physical environment. Comparing the food quality ratings we have ascertained that the number of patients who rated the food quality as good did not change: every second patient rated the food quality as good <ref type="figure" target="#fig_2">(Fig. 2)</ref>.</p><p>The number of those who rated food quality as   satisfactory decreased from 29.8% to 22.0% in the second survey, p &lt; 0.05. The number of those who rated food quality as very good, on the contrary, increased from 12.7% to 18.1%, p&lt;0.05 <ref type="figure" target="#fig_2">(Fig. 2)</ref>.</p><p>Every hospitalized person hopes to get immediate and necessary help. That is why, while evaluating the promptness of health personnel, we asked the patients to note, how fast the nurse provided them necessary help. Every tenth patient in the first (11.5%) and in the second (12.0%) surveys noted that they were attended in an instant. While comparing the data of both surveys, we established that the number of patients, who received help very quickly, increased from 33.7% to 40.7%, p&lt;0.05. The number of patients, who chose a negative estimation (i.e. very late, not fast, or not fast enough) decreased in 2002 <ref type="figure">(Fig. 3)</ref>.</p><p>In order to create a better psychological environment in the health care institution, it is very important to know, how patients assess communication skills of the health care personnel and attention paid to them. Every third patient in first survey said that nurse communication and attentiveness were good (32.9%), very good (39.6%) and excellent (17.5%). The number of those who chose the answer excellent increased to 25% and the part of those who said that it was satisfactory decreased four times, from 8.3% to 2.1% respectively, during the second survey <ref type="figure">(Fig. 4)</ref>.</p><p>While informing people about healthy lifestyle, causes of diseases, it is possible to change their attitudes and even behavior in respect of their health <ref type="bibr" target="#b10">(11)</ref>. Physicians play an important role while encouraging people to lead healthier lifestyles. Due to this we compared the opinions of the patients on the activeness of the nurses while explaining the causes and consequences of diseases, the ways of healthy nutrition and taking medicines. The analysis of the data of both surveys showed that the activeness of the nurses during the analyzed period did change. The number of patients, who claimed that the nurses said nothing of the causes of their diseases, decreased from 9.6% to 5.6%, p&lt;0.05. The activeness of nurses while explaining the rules of hospital behavior has become better. According to the data of the first survey, more than two thirds (73.3%) of the patients pointed out, that the nurses always, very often, and often explained the ways of taking medicines, suggest the best nutrition and other. During the second survey the number of such nurses increased even more: from 73.3% to 88.8%, p&lt;0.05.</p><p>The research done in the Western European countries emphasizes that communicating with the patient, providing information on the disease and its treatment, teaching of healthy lifestyle has a big influence on the patient's satisfaction with the health care services <ref type="bibr" target="#b10">(11)</ref><ref type="bibr" target="#b11">(12)</ref><ref type="bibr" target="#b12">(13)</ref>. The results received from researches and educational programs proved that educating patients improves the outcomes of the illness, it shortens the length of hospitalization, reduces need for further hospitalizations, and it also allows to use health services more effectively <ref type="bibr" target="#b13">(14)</ref>. Due to all that the efficiency of health care services increases.</p><p>The majority of the patients stated, that the physicians had completely explained the causes of their diseases, respectively 88.3% and 88. <ref type="bibr">1 5 in 2000 and 2002</ref>. Also the majority of the patients pointed out, that the physicians had told them about their treatment and future procedures, and possible adverse reactions. The majority (87.0%) of the participants of the second survey responded that the physicians paid enough attention to them during their daily visitations. Almost all (95.9% of the first and 94.9% of the second survey) of the respondents rated the physicians' attentiveness good, very good, and excellent.</p><p>Summarizing the results of both surveys, we concluded that the majority of the respondents were satisfied with the hospitalization order in the Lithuanian HPH network hospitals and with the timely and quickly rendered assistance. The number of patients, who rated the cleanliness and order in the ward very good and excellent, increased during the analyzed period. The patients evaluate the food quality in the hospitals more critically, but it is noteworthy that according to the data gathered in the second survey, the number of patients who rated food quality very good increased. The patients started evaluate the nurse's educational activity and behavior more positively. Also the number of patients, who rated the nurses' communicating skills and work as excellent, increased. Patient satisfaction with the physicians' work and attentiveness did not change during the analyzed period. The majority of the respondents rated the physicians' activity as good, very good, and excellent. Due to the fact, that the improvement of the quality of health services is based on a premise that every job and effort can always be improved, there is a reason to hope that having examined the factors that influence patients' evaluations, in the future, there will be a possibility to raise patients' satisfaction with health care services.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Conclusions</head><p>1.Following the data of both surveys, the majority of the patients who were treated in the Health Promoting Hospitals in Lithuania assessed the physical environment of the hospital positively. The number of patients, who evaluated the cleanliness of the ward positively, increased; the number of those, who assessed the hospital food quality negatively, decreased.</p><p>2.The opinion of patients on the nurses' communication skills, attentiveness and educational activity improved.</p><p>3.The patients' evaluation of the physician's attentiveness while explaining the causes and treatment of the disease did not change. The majority of the patients, hospitalized in the Lithuanian HPH network hospitals, evaluated the physician's work positively.</p><p>4.The approved system of patient's satisfaction monitoring in Lithuanian HPH network is very simple and it is a useful tool for the management of the quality of health care in the hospital.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Fig. 1 .</head><label>1</label><figDesc>The evaluation of the cleanliness in the ward in 2000 and 2002 * -p&lt;0.05, comparing between 2000 and 2002.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Fig. 2 .</head><label>2</label><figDesc>The evaluation of the food quality in 2000 and 2002 Irena Misevičienė, Žemyna Milašauskienė MEDICINA (2003) 39 tomas, Nr.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Fig. 3 .Fig. 4 .</head><label>34</label><figDesc>The evaluation of the promptness of help in 2000 and 2002 * -p&lt;0.05, comparing between 2000 and 2002. The evaluation of the attitude and communication of nurses in 2000 and 2002 * -p&lt;0.05, comparing between 2000 and 2002.</figDesc></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot">MEDICINA (2003) 39 tomas, Nr. 6</note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Acknowledgement.</head><p>We thank the chiefs of the Lithuanian HPH network hospitals for organizing the patient's satisfaction survey and for their active participation.</p></div>
+			</div>
+
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">National survey of hospital patients</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">S</forename><surname>Bruster</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">B</forename><surname>Jarmen</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">N</forename><surname>Bosanquet</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">D</forename><surname>Weston</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">R</forename><surname>Erens</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">T</forename><forename type="middle">L</forename><surname>Delbanco</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">BMJ</title>
+		<imprint>
+			<biblScope unit="volume">10</biblScope>
+			<biblScope unit="page" from="1542" to="1548" />
+			<date type="published" when="1994" />
+		</imprint>
+	</monogr>
+	<note type="raw_reference">Bruster S, Jarmen B, Bosanquet N, Weston D, Erens R, Delbanco TL. National survey of hospital patients. BMJ 1994; 10:1542-6.</note>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Innovation in patient-centred education</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">B</forename><surname>Eller</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">M</forename><surname>Gerties</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">S</forename><surname>Edgman-Levitan</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">J</forename><surname>Daley</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">T</forename><forename type="middle">L</forename><surname>Delbaro</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Through the patient&apos;s eyes</title>
+		<meeting><address><addrLine>San Francisco</addrLine></address></meeting>
+		<imprint>
+			<publisher>Jossen-Bass Publisher</publisher>
+			<date type="published" when="1993" />
+			<biblScope unit="page" from="96" to="118" />
+		</imprint>
+	</monogr>
+	<note>1st ed</note>
+	<note type="raw_reference">Eller B. Innovation in patient-centred education. In: Gerties M, edgman-Levitan S, Daley J, Delbaro TL, editors. Through the patient&apos;s eyes.1st ed. San Francisco: Jossen-Bass Pub- lisher; 1993. p. 96-118.</note>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Increasing understanding of patient needs during and after hospitalisation</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">D</forename><forename type="middle">H</forename><surname>Gustafson</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">N</forename><forename type="middle">K</forename><surname>Arora</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">E</forename><forename type="middle">C</forename><surname>Nelson</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">E</forename><forename type="middle">W</forename><surname>Boberg</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Jt Comn Qual Improv</title>
+		<imprint>
+			<biblScope unit="volume">27</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="81" to="92" />
+			<date type="published" when="2001" />
+		</imprint>
+	</monogr>
+	<note type="raw_reference">Gustafson DH, Arora NK, Nelson EC, Boberg EW. Increas- ing understanding of patient needs during and after hospi- talisation. Jt Comn Qual Improv 2001;27(2):81-92.</note>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<monogr>
+				<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">J</forename><surname>Healy</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">M</forename><surname>Mckee</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">M</forename><surname>Monit ; Gerties</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">S</forename><surname>Edgman-Levitan</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">J</forename><surname>Daley</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">T</forename><forename type="middle">L</forename><surname>Delbaro</surname></persName>
+		</author>
+		<title level="m">Through the patient&apos;s eyes</title>
+		<meeting><address><addrLine>San Francisco</addrLine></address></meeting>
+		<imprint>
+			<publisher>Jossen-Bass Publisher</publisher>
+			<date type="published" when="1993" />
+		</imprint>
+	</monogr>
+	<note>1st ed</note>
+	<note type="raw_reference">Healy J, Mckee M. Monit. In: Gerties M, Edgman-Levitan S, Daley J, Delbaro TL, editors. Through the patient&apos;s eyes.1st ed. San Francisco: Jossen-Bass Publisher; 1993.</note>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Integrated quality development in public healthcare</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">J</forename><surname>Ovretveit</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Norwegian Medical Association</title>
+		<imprint>
+			<biblScope unit="page">128</biblScope>
+			<date type="published" when="1999" />
+		</imprint>
+	</monogr>
+	<note type="raw_reference">Ovretveit J. Integrated quality development in public health- care. Norwegian Medical Association, Oslo, Norway; 1999. p. 128.</note>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Medical participation in and leadership of quality programmes</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">J</forename><surname>Ovretveit</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J of Management in medicine</title>
+		<imprint>
+			<biblScope unit="volume">10</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<biblScope unit="page" from="21" to="30" />
+			<date type="published" when="1996" />
+		</imprint>
+	</monogr>
+	<note type="raw_reference">Ovretveit J. Medical participation in and leadership of quality programmes. J of Management in medicine 1996;10(5):21- 9.</note>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<monogr>
+		<title level="m" type="main">Pacientų poreikių bei nuomonės apie teikiamas sveikatos priežiūros paslaugas vertinimas. (Assessment of patients&apos; needs and opinion on health care services.) Nacionalinės sveikatos tarybos metinis praneš imas</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">E</forename><surname>Žebienė</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">I</forename><surname>Misevičienė</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Z</forename><surname>Milašauskienė</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2001" />
+			<biblScope unit="page" from="87" to="90" />
+		</imprint>
+	</monogr>
+	<note type="raw_reference">Žebienė E, Misevičienė I, Milašauskienė Z. Pacientų poreikių bei nuomonės apie teikiamas sveikatos priežiūros paslaugas vertinimas. (Assessment of patients&apos; needs and opinion on health care services.) Nacionalinės sveikatos tarybos metinis praneš imas 2001; 87-90.</note>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Pacientų pasitenkinimas ligoninės medicinos personalo darbu. (Patients&apos; satisfaction with the work of medical staff of hospital)</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">I</forename><surname>Misevičiene</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Ž</forename><surname>Milašauskienė</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Medicina (Kaunas</title>
+		<imprint>
+			<biblScope unit="volume">38</biblScope>
+			<biblScope unit="issue">5</biblScope>
+			<biblScope unit="page" from="559" to="65" />
+			<date type="published" when="2002" />
+		</imprint>
+	</monogr>
+	<note type="raw_reference">Misevičiene I, Milašauskienė Ž. Pacientų pasitenkinimas ligoninės medicinos personalo darbu. (Patients&apos; satisfaction with the work of medical staff of hospital). Medicina (Kau- nas) 2002;38(5):559-65.</note>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Patient satisfaction: a customer service approach</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">J</forename><surname>Marr</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">M</forename><surname>Greengarten</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Health Manage Forum</title>
+		<imprint>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="52" to="58" />
+			<date type="published" when="1995" />
+		</imprint>
+	</monogr>
+	<note type="raw_reference">Marr J, Greengarten M. Patient satisfaction: a customer service approach. Health Manage Forum 1995;8(3):52-6.</note>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Enchanting physical comfort</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">J</forename><forename type="middle">D</forename><surname>Waller</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">M</forename><surname>Gerties</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">S</forename><surname>Edgman-Levitan</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">J</forename><surname>Daley</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">T</forename><forename type="middle">L</forename><surname>Delbaro</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Through the patient&apos;s eyes</title>
+		<meeting><address><addrLine>San Francisco</addrLine></address></meeting>
+		<imprint>
+			<publisher>Jossen-Bass Publisher</publisher>
+			<date type="published" when="1993" />
+			<biblScope unit="page" from="119" to="153" />
+		</imprint>
+	</monogr>
+	<note>1st ed.</note>
+	<note type="raw_reference">Waller JD. Enchanting physical comfort. In: Gerties M, Edgman-Levitan S, Daley J, Delbaro TL editors. Through the patient&apos;s eyes. 1st ed. San Francisco: Jossen-Bass Pub- lisher; 1993. p. 119-153.</note>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Evidence on patient-doctor communication</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">M</forename><surname>Steward</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">J</forename><forename type="middle">B</forename><surname>Brown</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">H</forename><surname>Boon</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">J</forename><surname>Galajda</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">L</forename><surname>Meredith</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">M</forename><surname>Sangster</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Cancer Prev Control</title>
+		<imprint>
+			<biblScope unit="volume">3</biblScope>
+			<biblScope unit="page" from="25" to="30" />
+			<date type="published" when="1999" />
+		</imprint>
+	</monogr>
+	<note type="raw_reference">Steward M, Brown JB, Boon H, Galajda J, Meredith L, Sangster M. Evidence on patient-doctor communication. Cancer Prev Control 1999; 3:25-30.</note>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">On the relationship between customer participation and satisfaction: two frameworks</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">D</forename><forename type="middle">L</forename><surname>Kellogg</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">W</forename><forename type="middle">E</forename><surname>Youngdahl</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">D</forename><forename type="middle">E</forename><surname>Bowen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">International J of service Industry Management</title>
+		<imprint>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="page" from="206" to="225" />
+			<date type="published" when="1997" />
+		</imprint>
+	</monogr>
+	<note type="raw_reference">Kellogg DL, Youngdahl WE, Bowen DE. On the relation- ship between customer participation and satisfaction: two frameworks. International J of service Industry Management 1997;8:206-19.</note>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Using patient feedback for quality improvement</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">K</forename><surname>Tasa</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">R</forename><surname>Baker</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">M</forename><surname>Murray</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Quality Management in Health Care</title>
+		<imprint>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="page" from="206" to="225" />
+			<date type="published" when="1996" />
+		</imprint>
+	</monogr>
+	<note type="raw_reference">Tasa K, Baker R, Murray M. Using patient feedback for qua- lity improvement. Quality Management in Health Care 1996;8:206-19.</note>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Patient satisfaction and experience with health services and quality of care</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">T</forename><forename type="middle">R</forename><surname>Zastowny</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">W</forename><forename type="middle">C</forename><surname>Stratman</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">E</forename><forename type="middle">H</forename><surname>Adams</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">M</forename><forename type="middle">L</forename><surname>Fox</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Quality Management in Health Care</title>
+		<imprint>
+			<biblScope unit="volume">3</biblScope>
+			<biblScope unit="page" from="50" to="61" />
+			<date type="published" when="1995" />
+		</imprint>
+	</monogr>
+	<note type="raw_reference">Zastowny TR, Stratman WC, Adams EH, Fox ML. Patient satisfaction and experience with health services and quality of care. Quality Management in Health Care 1995;3:50-61.</note>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Pacientų buvo prašoma įvertinti ligoninės fizinę aplinką (tvarką, švarą, maisto kokybę), slaugytojų ir gydytojų darbo kokybę (rūpestingumą, d ė mesingumą, informavimą apie paslaugas, ligos priežastis, naudojamus gydymo ir diagnostikos metodus) nuo 1 (labai blogai) iki 6 (puikiai) balų. Nustatyta, kad per analizuojamą laikotarpį pacientų, teigiamai įvertinusių tvarką, švarą palatoje, padaugėjo nuo 49,2 iki 59,9 proc., p&lt;0,05. Pirminės ir pakartotinės apklausos duomenimis, ligoninėje gaunamo maisto kokybę ligoniai vertino kritiškiau palyginti su ligoninės fizine aplinka. Per analizuojamą laikotarpį pacientų, patenkinamai įvertinusių maisto kokybę sumažėjo nuo 29,8 iki 22,0 proc., p&lt;0,05. Pagerėjo pacientų atsiliepimai apie slaugytojų bendravimą, d ė mesingumą bei aktyvumą aiškinant apie ligos priežastis ir pasekmes, apie tai, kaip elgtis ligoninėje. Pacientų vertinimai apie gydytojų veiklą nekito. Gydytojų dėmesingumą, bendravimą ir aktyvumą aiškinant ligos priežastis dauguma (95,1 ir 94,9 proc.) įvertino labai gerai ir puikiai</title>
+	</analytic>
+	<monogr>
+		<title level="m">Santrauka. Darbo tikslas. Išanalizuoti ir įvertinti pacientų, gydomų Lietuvos sveikatą stiprinančių ligoninių tinklo ligoninėse, pasitenkinimo teikiamomis paslaugomis pokyčius. 2000 m. Lietuvos sveikatą stiprinančių ligoninių tinklo ligoninėse atliktoje apklausoje dalyvavo 1271 pacientas</title>
+		<imprint>
+			<date type="published" when="2002" />
+		</imprint>
+	</monogr>
+	<note>Pacientų pasitenkinimas teikiamomis paslaugomis buvo vertinamas naudojant standartizuotą anoniminę anketą. Pacientų pasitenkinimo tyrimas -tai nesudėtingas teikiamų paslaugų kokybės sudėtinės dalies tyrimas bei objektyvi prielaida paslaugų kokybei gerinti</note>
+	<note type="raw_reference">Santrauka. Darbo tikslas. Išanalizuoti ir įvertinti pacientų, gydomų Lietuvos sveikatą stiprinančių ligoninių tinklo ligoninėse, pasitenkinimo teikiamomis paslaugomis pokyčius. 2000 m. Lietuvos sveikatą stiprinančių ligoninių tinklo ligoninėse atliktoje apklausoje dalyvavo 1271 pacientas, 2002 m. -1467. Pacientų pasitenkinimas teikiamomis paslaugomis buvo vertinamas naudojant standartizuotą anoniminę anketą. Pacientų buvo prašoma įvertinti ligoninės fizinę aplinką (tvarką, švarą, maisto kokybę), slaugytojų ir gydytojų darbo kokybę (rūpestingumą, d ė mesingumą, informavimą apie paslaugas, ligos priežastis, naudojamus gydymo ir diagnostikos metodus) nuo 1 (labai blogai) iki 6 (puikiai) balų. Nustatyta, kad per analizuojamą laikotarpį pacientų, teigiamai įvertinusių tvarką, švarą palatoje, padaugėjo nuo 49,2 iki 59,9 proc., p&lt;0,05. Pirminės ir pakartotinės apklausos duomenimis, ligoninėje gaunamo maisto kokybę ligoniai vertino kritiškiau palyginti su ligoninės fizine aplinka. Per analizuojamą laikotarpį pacientų, patenkinamai įvertinusių maisto kokybę sumažėjo nuo 29,8 iki 22,0 proc., p&lt;0,05. Pagerėjo pacientų atsiliepimai apie slaugytojų bendravimą, d ė mesingumą bei aktyvumą aiškinant apie ligos priežastis ir pasekmes, apie tai, kaip elgtis ligoninėje. Pacientų vertinimai apie gydytojų veiklą nekito. Gydytojų dėmesingumą, bendravimą ir aktyvumą aiškinant ligos priežastis dauguma (95,1 ir 94,9 proc.) įvertino labai gerai ir puikiai. Pacientų pasitenkinimo tyrimas -tai nesudėtingas teikiamų paslaugų kokybės sudėtinės dalies tyrimas bei objektyvi prielaida paslaugų kokybei gerinti.</note>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>
+
