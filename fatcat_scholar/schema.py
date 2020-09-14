@@ -248,6 +248,34 @@ def release_doi_registrar(release: ReleaseEntity) -> Optional[str]:
     return None
 
 
+def clean_url_conservative(url: Optional[str]) -> Optional[str]:
+    """
+    Takes a string which is expected to be a URL, and does some light cleanups.
+    If the string looks messy, passes it through anyways for downstream
+    processing.
+
+    TODO: attempt URL decoding
+    """
+    if not url:
+        return None
+    if url.startswith("<"):
+        url = url[1:]
+    if ">" in url:
+        url = url.split(">")[0]
+    return url
+
+
+def test_clean_url_conservative() -> None:
+    assert clean_url_conservative("") == None
+    assert clean_url_conservative(None) == None
+    assert clean_url_conservative("<http://en.wikipedia.org/wiki/Rumpelstiltskin>") == \
+        "http://en.wikipedia.org/wiki/Rumpelstiltskin"
+    assert clean_url_conservative("<http://en.wikipedia.org/wiki/Baiji>.Acessoem") == \
+        "http://en.wikipedia.org/wiki/Baiji"
+    assert clean_url_conservative("Available:en.m.wikipedia.org/wiki/Jigawa_State") == \
+        "Available:en.m.wikipedia.org/wiki/Jigawa_State"
+
+
 UNWANTED_ABSTRACT_PREFIXES = [
     # roughly sort this long to short
     "Abstract No Abstract ",
