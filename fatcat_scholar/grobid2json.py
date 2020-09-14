@@ -121,6 +121,8 @@ def biblio_info(elem: ET.Element) -> Dict[str, Any]:
     ref["issue"] = elem.findtext('.//{%s}biblScope[@unit="issue"]' % ns)
     ref["doi"] = elem.findtext('.//{%s}idno[@type="DOI"]' % ns)
     ref["arxiv_id"] = elem.findtext('.//{%s}idno[@type="arXiv"]' % ns)
+    if ref["arxiv_id"] and ref["arxiv_id"].startswith("arXiv:"):
+        ref["arxiv_id"] = ref["arxiv_id"][6:]
     ref["pmcid"] = elem.findtext('.//{%s}idno[@type="PMCID"]' % ns)
     ref["pmid"] = elem.findtext('.//{%s}idno[@type="PMID"]' % ns)
     el = elem.find('.//{%s}biblScope[@unit="page"]' % ns)
