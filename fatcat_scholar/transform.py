@@ -4,7 +4,7 @@ import datetime
 from typing import List, Dict, Optional, Any, Sequence
 
 from dynaconf import settings
-from fatcat_openapi_client import ReleaseEntity, FileEntity, ReleaseRef
+from fatcat_openapi_client import ReleaseEntity, FileEntity
 
 from fatcat_scholar.api_entities import *
 from fatcat_scholar.schema import *
@@ -459,23 +459,26 @@ def refs_from_grobid(release: ReleaseEntity, tei_dict: dict) -> Sequence[RefStru
         output.append(
             RefStructured(
                 biblio=RefBiblio(
+                    unstructured=ref.get("unstructured"),
                     title=ref.get("title"),
                     # subtitle
-                    contrib_raw_names=authors,
+                    contrib_raw_names=authors or None,
                     year=ref_year,
                     container_name=ref.get("journal"),
+                    publisher=ref.get("publisher"),
                     volume=ref.get("volume"),
                     issue=ref.get("issue"),
-                    # pages: Optional[str]
-                    # doi: Optional[str]
-                    # pmid: Optional[str]
-                    # pmcid: Optional[str]
-                    # arxiv_id: Optional[str]
+                    pages=ref.get("pages"),
+                    doi=ref.get("doi"),
+                    pmid=ref.get("pmid"),
+                    pmcid=ref.get("pmcid"),
+                    arxiv_id=ref.get("arxiv_id"),
                     # isbn13: Optional[str]
-                    url=ref.get("url"),
+                    url=clean_url_conservative(ref.get("url")),
                 ),
                 release_ident=release.ident,
                 work_ident=release.work_id,
+                release_year=release.year,
                 index=ref.get("index"),
                 key=ref.get("id"),
                 locator=None,
@@ -502,11 +505,13 @@ def refs_from_release_refs(release: ReleaseEntity) -> Sequence[RefStructured]:
         output.append(
             RefStructured(
                 biblio=RefBiblio(
+                    unstructured=extra.get("unstructured"),
                     title=ref.title,
                     subtitle=extra.get("subtitle"),
-                    contrib_raw_names=authors,
+                    contrib_raw_names=authors or None,
                     year=ref.year,
                     container_name=ref.container_name,
+                    publisher=extra.get("publisher"),
                     volume=extra.get("volume"),
                     issue=extra.get("issue"),
                     pages=extra.get("pages"),
@@ -515,10 +520,11 @@ def refs_from_release_refs(release: ReleaseEntity) -> Sequence[RefStructured]:
                     pmcid=extra.get("pmcid"),
                     arxiv_id=extra.get("arxiv_id"),
                     isbn13=extra.get("isbn13"),
-                    url=extra.get("url"),
+                    url=clean_url_conservative(extra.get("url")),
                 ),
                 release_ident=release.ident,
                 work_ident=release.work_id,
+                release_year=release.year,
                 index=ref.index,
                 key=ref.key,
                 locator=ref.locator,

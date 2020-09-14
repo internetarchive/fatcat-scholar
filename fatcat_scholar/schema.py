@@ -179,11 +179,13 @@ class ScholarDoc(BaseModel):
 
 
 class RefBiblio(BaseModel):
+    unstructured: Optional[str]
     title: Optional[str]
     subtitle: Optional[str]
-    contrib_raw_names: List[str]
+    contrib_raw_names: Optional[List[str]]
     year: Optional[int]
     container_name: Optional[str]
+    publisher: Optional[str]
     volume: Optional[str]
     issue: Optional[str]
     pages: Optional[str]
@@ -199,6 +201,7 @@ class RefStructured(BaseModel):
     biblio: RefBiblio
     release_ident: Optional[str]
     work_ident: Optional[str]
+    release_year: Optional[int]
     index: Optional[int]
     key: Optional[str]
     locator: Optional[str]
