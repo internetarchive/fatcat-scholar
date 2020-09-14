@@ -97,14 +97,9 @@ def journal_info(elem: ET.Element) -> Dict[str, Any]:
 
 
 def biblio_info(elem: ET.Element) -> Dict[str, Any]:
-    """
-    TODO for references:
-    - pages
-    - locator
-    - doi, pmid, pmcid, arxiv_id, isbn
-    """
     ref: Dict[str, Any] = dict()
     ref["id"] = elem.attrib.get("{http://www.w3.org/XML/1998/namespace}id")
+    ref["unstructured"] = elem.findtext('.//{%s}note[@type="raw_reference"]' % ns)
     # Title stuff is messy in references...
     ref["title"] = elem.findtext(".//{%s}analytic/{%s}title" % (ns, ns))
     other_title = elem.findtext(".//{%s}monogr/{%s}title" % (ns, ns))
@@ -116,18 +111,34 @@ def biblio_info(elem: ET.Element) -> Dict[str, Any]:
             ref["title"] = other_title
     ref["authors"] = all_authors(elem)
     ref["publisher"] = elem.findtext(".//{%s}publicationStmt/{%s}publisher" % (ns, ns))
+    if not ref["publisher"]:
+        ref["publisher"] = elem.findtext(".//{%s}imprint/{%s}publisher" % (ns, ns))
     if ref["publisher"] == "":
         ref["publisher"] = None
     date = elem.find('.//{%s}date[@type="published"]' % ns)
     ref["date"] = (date is not None) and date.attrib.get("when")
     ref["volume"] = elem.findtext('.//{%s}biblScope[@unit="volume"]' % ns)
     ref["issue"] = elem.findtext('.//{%s}biblScope[@unit="issue"]' % ns)
+    ref["doi"] = elem.findtext('.//{%s}idno[@type="DOI"]' % ns)
+    ref["arxiv_id"] = elem.findtext('.//{%s}idno[@type="arXiv"]' % ns)
+    ref["pmcid"] = elem.findtext('.//{%s}idno[@type="PMCID"]' % ns)
+    ref["pmid"] = elem.findtext('.//{%s}idno[@type="PMID"]' % ns)
+    el = elem.find(".//{%s}biblScope[@page]" % ns)
+    if el is not None:
+        if el.attrib.get("from") and el.attrib.get("to"):
+            ref["pages"] = "{}-{}".format(el.attrib["from"], el.attrib["to"])
+        else:
+            ref["pages"] = el.text
     el = elem.find(".//{%s}ptr[@target]" % ns)
     if el is not None:
         ref["url"] = el.attrib["target"]
         # Hand correction
         if ref["url"].endswith(".Lastaccessed"):
             ref["url"] = ref["url"].replace(".Lastaccessed", "")
+        if ref["url"].startswith("<"):
+            ref["url"] = ref["url"][1:]
+        if ">" in ref["url"]:
+            ref["url"] = ref["url"].split(">")[0]
     else:
         ref["url"] = None
     return ref
