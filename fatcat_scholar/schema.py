@@ -271,12 +271,18 @@ def clean_url_conservative(url: Optional[str]) -> Optional[str]:
 def test_clean_url_conservative() -> None:
     assert clean_url_conservative("") == None
     assert clean_url_conservative(None) == None
-    assert clean_url_conservative("<http://en.wikipedia.org/wiki/Rumpelstiltskin>") == \
-        "http://en.wikipedia.org/wiki/Rumpelstiltskin"
-    assert clean_url_conservative("<http://en.wikipedia.org/wiki/Baiji>.Acessoem") == \
-        "http://en.wikipedia.org/wiki/Baiji"
-    assert clean_url_conservative("Available:en.m.wikipedia.org/wiki/Jigawa_State") == \
-        "Available:en.m.wikipedia.org/wiki/Jigawa_State"
+    assert (
+        clean_url_conservative("<http://en.wikipedia.org/wiki/Rumpelstiltskin>")
+        == "http://en.wikipedia.org/wiki/Rumpelstiltskin"
+    )
+    assert (
+        clean_url_conservative("<http://en.wikipedia.org/wiki/Baiji>.Acessoem")
+        == "http://en.wikipedia.org/wiki/Baiji"
+    )
+    assert (
+        clean_url_conservative("Available:en.m.wikipedia.org/wiki/Jigawa_State")
+        == "Available:en.m.wikipedia.org/wiki/Jigawa_State"
+    )
 
 
 UNWANTED_ABSTRACT_PREFIXES = [
