@@ -536,6 +536,10 @@ def refs_from_release_refs(release: ReleaseEntity) -> Sequence[RefStructured]:
 
 
 def refs_from_heavy(heavy: IntermediateBundle) -> Sequence[RefStructured]:
+    """
+    Current behavior is to return *both* fatcat refs and GROBID refs if
+    available.
+    """
 
     if heavy.doc_type != DocType.work:
         return []
@@ -546,19 +550,22 @@ def refs_from_heavy(heavy: IntermediateBundle) -> Sequence[RefStructured]:
         r for r in heavy.releases if r.ident == heavy.biblio_release_ident
     ][0]
 
+    refs: List[RefStructured] = []
+
     if primary_release.refs:
         # TODO: what about other releases?
-        return refs_from_release_refs(primary_release)
-    elif heavy.grobid_fulltext:
+        refs.extend(refs_from_release_refs(primary_release))
+
+    if heavy.grobid_fulltext:
         fulltext_release = [
             r
             for r in heavy.releases
             if r.ident == heavy.grobid_fulltext["release_ident"]
         ][0]
         tei_dict = teixml2json(heavy.grobid_fulltext["tei_xml"])
-        return refs_from_grobid(fulltext_release, tei_dict)
-    else:
-        return []
+        refs.extend(refs_from_grobid(fulltext_release, tei_dict))
+
+    return refs
 
 
 def run_transform(infile: Sequence) -> None:
