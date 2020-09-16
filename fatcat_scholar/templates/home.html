@@ -3,7 +3,7 @@
 {% block fullbody %}
 
 <div class="ui vertical stripe segment" style="background-color: #dedede;">
-  <div class="ui container" style="padding-top: 2em; padding-bottom: 3em;">
+  <div class="ui container" style="padding-top: 2em; padding-bottom: 3em; font-size: 1.2em;">
     <div class="ui centered grid">
       <div class="ui sixteen wide mobile twelve wide computer column">
         <div style="width: 100%; text-align: center;">
@@ -21,11 +21,25 @@
         <br>
         <br>
         <b>{% trans %}Search Millions of Research Papers{% endtrans %}</b>
-        <p style="font-size: 1.1rem;">{% trans %}This fulltext search index includes over 25 million research articles and other scholarly documents preserved in the Internet Archive.{% endtrans %} {% trans %}The collection spans from digitized copies of eighteenth century journals though the latest Open Access conference proceedings and pre-prints crawled from the World Wide Web.{% endtrans %}
+        <p style="margin-top: 0.5em;">{% trans %}This fulltext search index includes over 25 million research articles and other scholarly documents preserved in the Internet Archive.{% endtrans %} {% trans %}The collection spans from digitized copies of eighteenth century journals though the latest Open Access conference proceedings and pre-prints crawled from the World Wide Web.{% endtrans %}
       </div>
     </div>
   </div>
 </div>
+
+<!-- alpha banner -->
+<div class="ui vertical stripe segment" style="background-color: #fbbd08a6;">
+  <div class="ui container" style="">
+    <div class="ui centered grid">
+      <div class="ui sixteen wide mobile twelve wide computer column" style="text-align: center; font-weight: bold;">
+        <a name="alphanotice"></a>
+        {% trans %}This service is in "alpha". It has several bugs, experiences
+        downtime, and has not been officially announced.{% endtrans %}
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end alpha banner -->
 
 <div class="ui container" style="padding: 1em; margin-top: 2em;">
   <div class="ui four doubling cards">
