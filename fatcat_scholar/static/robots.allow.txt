@@ -1,0 +1,5 @@
+# Allow most queries, but please don't crawl search results (or at least do so very politely, eg no parallel requests)
+
+User-Agent: *
+Disallow: /search
+Allow: /

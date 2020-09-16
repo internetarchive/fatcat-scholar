@@ -1,0 +1,4 @@
+# By default (eg, in QA/development) set robots to disallow all
+
+User-Agent: *
+Disallow: /

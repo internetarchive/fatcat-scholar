@@ -7,6 +7,7 @@ So far there are few endpoints, so we just put them all here!
 import babel.support
 from fastapi import FastAPI, APIRouter, Request, Depends, Response
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import PlainTextResponse
 from dynaconf import settings
 from typing import Optional, Any
 
@@ -218,3 +219,15 @@ for lang_option in I18N_LANG_OPTIONS:
 app.include_router(api)
 
 app.mount("/static", StaticFiles(directory="fatcat_scholar/static"), name="static")
+
+ROBOTS_ALLOW = open("fatcat_scholar/static/robots.allow.txt", "r").read()
+ROBOTS_DISALLOW = open("fatcat_scholar/static/robots.disallow.txt", "r").read()
+
+
+@app.get("/robots.txt", include_in_schema=False)
+async def robots_txt(response_class=PlainTextResponse) -> Any:
+    print(ROBOTS_ALLOW)
+    if settings.SCHOLAR_ENV == "prod":
+        return PlainTextResponse(ROBOTS_ALLOW)
+    else:
+        return PlainTextResponse(ROBOTS_DISALLOW)
