@@ -225,7 +225,7 @@ ROBOTS_DISALLOW = open("fatcat_scholar/static/robots.disallow.txt", "r").read()
 
 
 @app.get("/robots.txt", include_in_schema=False)
-async def robots_txt(response_class=PlainTextResponse) -> Any:
+async def robots_txt(response_class: Any = PlainTextResponse) -> Any:
     print(ROBOTS_ALLOW)
     if settings.SCHOLAR_ENV == "prod":
         return PlainTextResponse(ROBOTS_ALLOW)
