@@ -16,6 +16,8 @@ from pydantic import BaseModel
 
 # pytype: enable=import-error
 
+from fatcat_scholar.identifiers import *
+
 # i18n note: the use of gettext below doesn't actually do the translation here,
 # it just ensures that the strings are caught by babel for translation later
 
@@ -97,15 +99,20 @@ def do_fulltext_search(
 
     search = Search(using=es_client, index=settings.ELASTICSEARCH_FULLTEXT_INDEX)
 
-    # Convert raw DOIs to DOI queries
-    if (
-        query.q
-        and len(query.q.split()) == 1
-        and query.q.startswith("10.")
-        and query.q.count("/") >= 1
-    ):
-        search = search.filter("terms", doi=query.q)
-        query.q = "*"
+    # Try handling raw identifier queries
+    if query.q and len(query.q.strip().split()) == 1 and not '"' in query.q:
+        doi = clean_doi(query.q)
+        if doi:
+            query.q = f'doi:"{doi}"'
+            query.filter_type = "everything"
+            query.filter_availability = "everything"
+            query.filter_time = "all_time"
+        pmcid = clean_pmcid(query.q)
+        if pmcid:
+            query.q = f'pmcid:"{pmcid}"'
+            query.filter_type = "everything"
+            query.filter_availability = "everything"
+            query.filter_time = "all_time"
 
     # type filters
     if query.filter_type == "papers" or query.filter_type is None:
