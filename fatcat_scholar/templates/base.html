@@ -114,7 +114,7 @@
     crossorigin="anonymous">
   <link rel="icon" 
     type="image/x-icon" 
-    href="{{ url_for('static', path='/ia-favicon.ico') }}">
+    href="/static/ia-favicon.ico">
   {% block extra_head %}{% endblock %}
 </head>
 
@@ -129,8 +129,8 @@
       </div>
     {% endif %}
     <a href="https://archive.org/" class="header item">
-      <img class="logo" src="{{ url_for('static', path='/ia-logo.svg') }}" style="width: 20px;">
-      <img class="mobile-hide" src="{{ url_for('static', path='/ia-wordmark.svg') }}" style="margin-left: 10px; width: 180px;">
+      <img class="logo" src="/static/ia-logo.svg" style="width: 20px;">
+      <img class="mobile-hide" src="/static/ia-wordmark.svg" style="margin-left: 10px; width: 180px;">
     </a>
     <span style="margin-top: 0.5em;">
       <a class="ui grey label" style="background-color: #fbbd08a6;" href="/#alphanotice"><i>alpha</i></a>
@@ -200,7 +200,7 @@
       <div class="nine wide column">
         <div class="ui grid">
           <div class="three wide two wide computer column" style="padding-top: 4em; padding-right: 0;">
-            <img class="logo" src="{{ url_for('static', path='/ia-logo.svg') }}" style="width: 100%; opacity: 0.5;">
+            <img class="logo" src="/ia-logo.svg" style="width: 100%; opacity: 0.5;">
           </div>
           <div class="one wide column computer only"></div>
           <div class="thirteen wide eleven wide computer column">
