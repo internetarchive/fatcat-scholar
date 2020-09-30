@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2020-09-30 11:58-0700\n"
 "PO-Revision-Date: 2020-10-01 23:38+0000\n"
-"Last-Translator: Martin Czygan <martin.czygan@gmail.com>\n"
+"Last-Translator: bnewbold <bnewbold@robocracy.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/fatcat-scholar/"
 "fatcat-scholar/de/>\n"
 "Language: de\n"
@@ -74,7 +74,7 @@ msgstr "Voller Text"
 
 #: fatcat_scholar/search.py:64
 msgid "Microfilm"
-msgstr ""
+msgstr "Mikrofilm"
 
 #: fatcat_scholar/search.py:65
 msgid "Open Access"
@@ -82,7 +82,7 @@ msgstr "Offener Zugang"
 
 #: fatcat_scholar/search.py:66
 msgid "Metadata"
-msgstr ""
+msgstr "Metadaten"
 
 #: fatcat_scholar/search.py:70
 msgid "Sort Order"
@@ -90,7 +90,7 @@ msgstr "Sortierreihenfolge"
 
 #: fatcat_scholar/search.py:74
 msgid "Relevancy"
-msgstr ""
+msgstr "Relevanz"
 
 #: fatcat_scholar/search.py:75
 msgid "Recent First"
@@ -102,7 +102,7 @@ msgstr "Die ältesten zu erst"
 
 #: fatcat_scholar/templates/base.html:182
 msgid "by title, authors, keywords..."
-msgstr ""
+msgstr "nach titel, autoren, schlüsselwörtern..."
 
 #: fatcat_scholar/templates/base.html:183 fatcat_scholar/templates/home.html:16
 msgid "Search"
@@ -120,11 +120,11 @@ msgstr ""
 
 #: fatcat_scholar/templates/base.html:221
 msgid "About Us"
-msgstr ""
+msgstr "Über uns"
 
 #: fatcat_scholar/templates/base.html:222
 msgid "Contact Us"
-msgstr ""
+msgstr "Kontakt"
 
 #: fatcat_scholar/templates/base.html:223
 msgid "Policies"
@@ -132,11 +132,11 @@ msgstr "Richtlinien"
 
 #: fatcat_scholar/templates/base.html:224
 msgid "Donate"
-msgstr ""
+msgstr "Spenden"
 
 #: fatcat_scholar/templates/base.html:232
 msgid "How It Works"
-msgstr ""
+msgstr "Wie es funktioniert"
 
 #: fatcat_scholar/templates/base.html:233
 msgid "Content Sources"
@@ -202,9 +202,9 @@ msgid ""
 " though the latest Open Access conference proceedings and pre-prints "
 "crawled from the World Wide Web."
 msgstr ""
-"Die Sammlung umfasst digitalisierte Exemplare von Zeitschriften aus dem "
-"18. Jahrhundert, wobei die neuesten Open Access-Konferenzberichte und "
-"Vordrucke aus dem World Wide Web stammen"
+"Die Sammlung umfasst digitalisierte Exemplare von Zeitschriften aus dem 18. "
+"Jahrhundert, wobei die neuesten Open Access-Konferenzberichte und Vordrucke "
+"aus dem World Wide Web stammen."
 
 #: fatcat_scholar/templates/home.html:36
 msgid ""
