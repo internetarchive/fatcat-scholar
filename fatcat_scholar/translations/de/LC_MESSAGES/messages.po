@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2020-09-30 11:58-0700\n"
 "PO-Revision-Date: 2020-10-01 23:38+0000\n"
-"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
+"Last-Translator: Martin Czygan <martin.czygan@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/fatcat-scholar/"
 "fatcat-scholar/de/>\n"
 "Language: de\n"
@@ -128,7 +128,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/base.html:223
 msgid "Policies"
-msgstr ""
+msgstr "Richtlinien"
 
 #: fatcat_scholar/templates/base.html:224
 msgid "Donate"
@@ -140,15 +140,15 @@ msgstr ""
 
 #: fatcat_scholar/templates/base.html:233
 msgid "Content Sources"
-msgstr ""
+msgstr "Datenquellen"
 
 #: fatcat_scholar/templates/base.html:234
 msgid "Text and Data Mining"
-msgstr ""
+msgstr "Text und Data Mining"
 
 #: fatcat_scholar/templates/base.html:235
 msgid "Discussion Forum"
-msgstr ""
+msgstr "Diskussionsforum"
 
 #: fatcat_scholar/templates/base.html:236
 msgid "Statistics"
@@ -156,7 +156,7 @@ msgstr "Statistik"
 
 #: fatcat_scholar/templates/base.html:237
 msgid "Help"
-msgstr ""
+msgstr "Dokumentation"
 
 #: fatcat_scholar/templates/base.html:243
 msgid "Editable Catalog (Fatcat)"
@@ -176,7 +176,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/base.html:247
 msgid "Source Code"
-msgstr ""
+msgstr "Quellcode"
 
 #: fatcat_scholar/templates/help.html:9
 msgid "Try It"
