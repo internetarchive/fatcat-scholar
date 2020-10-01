@@ -8,9 +8,9 @@ import babel.support
 from fastapi import FastAPI, APIRouter, Request, Depends, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import PlainTextResponse
-from dynaconf import settings
 from typing import Optional, Any
 
+from fatcat_scholar.config import settings
 from fatcat_scholar.hacks import Jinja2Templates
 from fatcat_scholar.search import do_fulltext_search, FulltextQuery, FulltextHits
 

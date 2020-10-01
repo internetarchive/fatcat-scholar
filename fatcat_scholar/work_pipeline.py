@@ -7,10 +7,10 @@ from typing import List, Dict, Tuple, Optional, Any, Sequence
 import minio
 import requests
 import internetarchive
-from dynaconf import settings
 from fatcat_openapi_client import ReleaseEntity, FileEntity
 
 from fatcat_scholar.api_entities import *
+from fatcat_scholar.config import settings
 from fatcat_scholar.djvu import djvu_extract_leaf_texts
 from fatcat_scholar.sandcrawler import (
     SandcrawlerPostgrestClient,

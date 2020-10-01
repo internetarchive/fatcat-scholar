@@ -8,7 +8,6 @@ from gettext import gettext
 from typing import List, Optional, Any
 
 import elasticsearch
-from dynaconf import settings
 from elasticsearch_dsl import Search, Q
 
 # pytype: disable=import-error
@@ -16,6 +15,7 @@ from pydantic import BaseModel
 
 # pytype: enable=import-error
 
+from fatcat_scholar.config import settings
 from fatcat_scholar.identifiers import *
 
 # i18n note: the use of gettext below doesn't actually do the translation here,

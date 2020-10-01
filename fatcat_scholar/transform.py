@@ -3,11 +3,11 @@ import argparse
 import datetime
 from typing import List, Dict, Optional, Any, Sequence
 
-from dynaconf import settings
 from fatcat_openapi_client import ReleaseEntity, FileEntity
 
 from fatcat_scholar.api_entities import *
 from fatcat_scholar.schema import *
+from fatcat_scholar.config import settings
 from fatcat_scholar.grobid2json import teixml2json
 
 
