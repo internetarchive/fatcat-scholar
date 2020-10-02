@@ -1,11 +1,9 @@
 
-- add gzip to intermediate files pipeline
-- "counts" target to summarize (to console)
-- calculate/fetch shadow as well (?)
-
 content/pipeline:
-- plan for getting release dumps sorted by work ident
+- continuous update worker from fatcat
+- add gzip to intermediate files pipeline commands
 - parallelize SIM indexing
+- makefile targets for bulk ingest
 
 cleanups:
 - better typing/annotation of work pipeline
@@ -13,10 +11,9 @@ cleanups:
 - use settings.toml for defaults of CLI args
 
 ponder:
-- robots.txt
-- some space-holder for missing thumbnails
 - smaller author font size (?)
 - "search inside" phrasing
+- "counts" target to summarize (to console)
 
 data quality:
 - handle sim_issue items with multiple issues in single item (eg, issue="3-4")
