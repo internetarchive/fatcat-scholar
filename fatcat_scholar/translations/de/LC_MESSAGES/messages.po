@@ -6,16 +6,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2020-09-30 11:58-0700\n"
-"PO-Revision-Date: 2020-05-12 13:45-0700\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2020-10-01 23:38+0000\n"
+"Last-Translator: bnewbold <bnewbold@robocracy.org>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/fatcat-scholar/"
+"fatcat-scholar/de/>\n"
 "Language: de\n"
-"Language-Team: de <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.3-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:36
@@ -72,7 +74,7 @@ msgstr "Voller Text"
 
 #: fatcat_scholar/search.py:64
 msgid "Microfilm"
-msgstr ""
+msgstr "Mikrofilm"
 
 #: fatcat_scholar/search.py:65
 msgid "Open Access"
@@ -80,7 +82,7 @@ msgstr "Offener Zugang"
 
 #: fatcat_scholar/search.py:66
 msgid "Metadata"
-msgstr ""
+msgstr "Metadaten"
 
 #: fatcat_scholar/search.py:70
 msgid "Sort Order"
@@ -88,7 +90,7 @@ msgstr "Sortierreihenfolge"
 
 #: fatcat_scholar/search.py:74
 msgid "Relevancy"
-msgstr ""
+msgstr "Relevanz"
 
 #: fatcat_scholar/search.py:75
 msgid "Recent First"
@@ -100,7 +102,7 @@ msgstr "Die ältesten zu erst"
 
 #: fatcat_scholar/templates/base.html:182
 msgid "by title, authors, keywords..."
-msgstr ""
+msgstr "nach titel, autoren, schlüsselwörtern..."
 
 #: fatcat_scholar/templates/base.html:183 fatcat_scholar/templates/home.html:16
 msgid "Search"
@@ -118,51 +120,51 @@ msgstr ""
 
 #: fatcat_scholar/templates/base.html:221
 msgid "About Us"
-msgstr ""
+msgstr "Über uns"
 
 #: fatcat_scholar/templates/base.html:222
 msgid "Contact Us"
-msgstr ""
+msgstr "Kontakt"
 
 #: fatcat_scholar/templates/base.html:223
 msgid "Policies"
-msgstr ""
+msgstr "Richtlinien"
 
 #: fatcat_scholar/templates/base.html:224
 msgid "Donate"
-msgstr ""
+msgstr "Spenden"
 
 #: fatcat_scholar/templates/base.html:232
 msgid "How It Works"
-msgstr ""
+msgstr "Wie es funktioniert"
 
 #: fatcat_scholar/templates/base.html:233
 msgid "Content Sources"
-msgstr ""
+msgstr "Datenquellen"
 
 #: fatcat_scholar/templates/base.html:234
 msgid "Text and Data Mining"
-msgstr ""
+msgstr "Text und Data Mining"
 
 #: fatcat_scholar/templates/base.html:235
 msgid "Discussion Forum"
-msgstr ""
+msgstr "Diskussionsforum"
 
 #: fatcat_scholar/templates/base.html:236
 msgid "Statistics"
-msgstr ""
+msgstr "Statistik"
 
 #: fatcat_scholar/templates/base.html:237
 msgid "Help"
-msgstr ""
+msgstr "Dokumentation"
 
 #: fatcat_scholar/templates/base.html:243
 msgid "Editable Catalog (Fatcat)"
-msgstr ""
+msgstr "Bearbeitbarer Katalog (Fatcat)"
 
 #: fatcat_scholar/templates/base.html:244
 msgid "Contribute"
-msgstr ""
+msgstr "Mitmachen"
 
 #: fatcat_scholar/templates/base.html:245
 msgid "Search API"
@@ -174,7 +176,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/base.html:247
 msgid "Source Code"
-msgstr ""
+msgstr "Quellcode"
 
 #: fatcat_scholar/templates/help.html:9
 msgid "Try It"
@@ -200,9 +202,9 @@ msgid ""
 " though the latest Open Access conference proceedings and pre-prints "
 "crawled from the World Wide Web."
 msgstr ""
-"Die Sammlung umfasst digitalisierte Exemplare von Zeitschriften aus dem "
-"18. Jahrhundert, wobei die neuesten Open Access-Konferenzberichte und "
-"Vordrucke aus dem World Wide Web stammen"
+"Die Sammlung umfasst digitalisierte Exemplare von Zeitschriften aus dem 18. "
+"Jahrhundert, wobei die neuesten Open Access-Konferenzberichte und Vordrucke "
+"aus dem World Wide Web stammen."
 
 #: fatcat_scholar/templates/home.html:36
 msgid ""
@@ -248,11 +250,11 @@ msgstr ""
 
 #: fatcat_scholar/templates/search_macros.html:49
 msgid "unknown"
-msgstr ""
+msgstr "unbekannt"
 
 #: fatcat_scholar/templates/search_macros.html:65
 msgid "page"
-msgstr ""
+msgstr "Seite"
 
 #~ msgid ""
 #~ "This fulltext search index includes over"
@@ -291,4 +293,3 @@ msgstr ""
 
 #~ msgid "unpublished?"
 #~ msgstr ""
-
