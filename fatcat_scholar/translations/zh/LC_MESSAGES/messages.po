@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-09-30 11:58-0700\n"
+"POT-Creation-Date: 2020-10-01 19:25-0700\n"
 "PO-Revision-Date: 2020-05-12 13:45-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh\n"
@@ -98,58 +98,54 @@ msgstr "最近第一"
 msgid "Oldest First"
 msgstr "最早的优先"
 
-#: fatcat_scholar/templates/base.html:182
+#: fatcat_scholar/templates/base.html:161
+msgid "Contribute to translations"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:184
 msgid "by title, authors, keywords..."
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:183 fatcat_scholar/templates/home.html:16
+#: fatcat_scholar/templates/base.html:185 fatcat_scholar/templates/home.html:16
 msgid "Search"
 msgstr "搜索"
 
-#: fatcat_scholar/templates/base.html:190
+#: fatcat_scholar/templates/base.html:192
 msgid "User Guide"
 msgstr "用户指南"
 
-#: fatcat_scholar/templates/base.html:218
+#: fatcat_scholar/templates/base.html:220
 msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:221
+#: fatcat_scholar/templates/base.html:223
 msgid "About Us"
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:222
+#: fatcat_scholar/templates/base.html:224
 msgid "Contact Us"
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:223
+#: fatcat_scholar/templates/base.html:225
 msgid "Policies"
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:224
+#: fatcat_scholar/templates/base.html:226
 msgid "Donate"
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:232
+#: fatcat_scholar/templates/base.html:234
 msgid "How It Works"
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:233
+#: fatcat_scholar/templates/base.html:235
 msgid "Content Sources"
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:234
-msgid "Text and Data Mining"
-msgstr ""
-
-#: fatcat_scholar/templates/base.html:235
-msgid "Discussion Forum"
-msgstr ""
-
 #: fatcat_scholar/templates/base.html:236
-msgid "Statistics"
+msgid "Text and Data Mining"
 msgstr ""
 
 #: fatcat_scholar/templates/base.html:237
@@ -278,5 +274,11 @@ msgstr ""
 #~ msgstr "搜索数以百万计的研究论文"
 
 #~ msgid "unpublished?"
+#~ msgstr ""
+
+#~ msgid "Discussion Forum"
+#~ msgstr ""
+
+#~ msgid "Statistics"
 #~ msgstr ""
 

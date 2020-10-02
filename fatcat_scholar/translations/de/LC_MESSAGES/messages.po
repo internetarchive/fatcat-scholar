@@ -7,12 +7,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
-"POT-Creation-Date: 2020-09-30 11:58-0700\n"
+"POT-Creation-Date: 2020-10-01 19:25-0700\n"
 "PO-Revision-Date: 2020-10-01 23:38+0000\n"
 "Last-Translator: bnewbold <bnewbold@robocracy.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/fatcat-scholar/"
 "fatcat-scholar/de/>\n"
 "Language: de\n"
+"Language-Team: de <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -100,59 +101,55 @@ msgstr "Neueste zuerst"
 msgid "Oldest First"
 msgstr "Die ältesten zu erst"
 
-#: fatcat_scholar/templates/base.html:182
+#: fatcat_scholar/templates/base.html:161
+msgid "Contribute to translations"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:184
 msgid "by title, authors, keywords..."
 msgstr "nach titel, autoren, schlüsselwörtern..."
 
-#: fatcat_scholar/templates/base.html:183 fatcat_scholar/templates/home.html:16
+#: fatcat_scholar/templates/base.html:185 fatcat_scholar/templates/home.html:16
 msgid "Search"
 msgstr "Suche"
 
-#: fatcat_scholar/templates/base.html:190
+#: fatcat_scholar/templates/base.html:192
 msgid "User Guide"
 msgstr "Benutzerhandbuch"
 
-#: fatcat_scholar/templates/base.html:218
+#: fatcat_scholar/templates/base.html:220
 msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:221
+#: fatcat_scholar/templates/base.html:223
 msgid "About Us"
 msgstr "Über uns"
 
-#: fatcat_scholar/templates/base.html:222
+#: fatcat_scholar/templates/base.html:224
 msgid "Contact Us"
 msgstr "Kontakt"
 
-#: fatcat_scholar/templates/base.html:223
+#: fatcat_scholar/templates/base.html:225
 msgid "Policies"
 msgstr "Richtlinien"
 
-#: fatcat_scholar/templates/base.html:224
+#: fatcat_scholar/templates/base.html:226
 msgid "Donate"
 msgstr "Spenden"
 
-#: fatcat_scholar/templates/base.html:232
+#: fatcat_scholar/templates/base.html:234
 msgid "How It Works"
 msgstr "Wie es funktioniert"
 
-#: fatcat_scholar/templates/base.html:233
+#: fatcat_scholar/templates/base.html:235
 msgid "Content Sources"
 msgstr "Datenquellen"
 
-#: fatcat_scholar/templates/base.html:234
+#: fatcat_scholar/templates/base.html:236
 msgid "Text and Data Mining"
 msgstr "Text und Data Mining"
-
-#: fatcat_scholar/templates/base.html:235
-msgid "Discussion Forum"
-msgstr "Diskussionsforum"
-
-#: fatcat_scholar/templates/base.html:236
-msgid "Statistics"
-msgstr "Statistik"
 
 #: fatcat_scholar/templates/base.html:237
 msgid "Help"
@@ -293,3 +290,10 @@ msgstr "Seite"
 
 #~ msgid "unpublished?"
 #~ msgstr ""
+
+#~ msgid "Discussion Forum"
+#~ msgstr ""
+
+#~ msgid "Statistics"
+#~msgstr "Statistik"
+
