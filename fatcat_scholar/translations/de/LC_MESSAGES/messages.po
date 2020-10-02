@@ -295,5 +295,5 @@ msgstr "Seite"
 #~ msgstr ""
 
 #~ msgid "Statistics"
-#~msgstr "Statistik"
+#~ msgstr "Statistik"
 
