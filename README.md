@@ -82,7 +82,7 @@ Contributors in this project are asked to abide by our
 [Code of Conduct](https://guide.fatcat.wiki/code_of_conduct.html).
 
 The web interface is translated using the Weblate platform, at
-[internetarchive/fatcat-scholar](https://hosted.weblate.org/projects/internetarchive/fatcat-scholar/])
+[internetarchive/fatcat-scholar](https://hosted.weblate.org/projects/internetarchive/fatcat-scholar/)
 
 The software license for this repository is Affero General Public License v3+
 (APGL 3+), as described in the `LICENSE.md` file. We ask that you acknowledge
