@@ -1,0 +1,253 @@
+# Norwegian Bokmål translations for PROJECT.
+# Copyright (C) 2020 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2020-09-30 11:58-0700\n"
+"PO-Revision-Date: 2020-10-01 17:50-0700\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: nb\n"
+"Language-Team: nb <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: fatcat_scholar/search.py:36
+msgid "Release Date"
+msgstr ""
+
+#: fatcat_scholar/search.py:40
+msgid "All Time"
+msgstr ""
+
+#: fatcat_scholar/search.py:41
+msgid "Past Week"
+msgstr ""
+
+#: fatcat_scholar/search.py:42
+msgid "Past Year"
+msgstr ""
+
+#: fatcat_scholar/search.py:43
+msgid "Since 2000"
+msgstr ""
+
+#: fatcat_scholar/search.py:44
+msgid "Before 1925"
+msgstr ""
+
+#: fatcat_scholar/search.py:48
+msgid "Resource Type"
+msgstr ""
+
+#: fatcat_scholar/search.py:52
+msgid "Papers"
+msgstr ""
+
+#: fatcat_scholar/search.py:53
+msgid "Reports"
+msgstr ""
+
+#: fatcat_scholar/search.py:54
+msgid "Datasets"
+msgstr ""
+
+#: fatcat_scholar/search.py:55
+msgid "Everything"
+msgstr ""
+
+#: fatcat_scholar/search.py:59
+msgid "Availability"
+msgstr ""
+
+#: fatcat_scholar/search.py:63
+msgid "Fulltext"
+msgstr ""
+
+#: fatcat_scholar/search.py:64
+msgid "Microfilm"
+msgstr ""
+
+#: fatcat_scholar/search.py:65
+msgid "Open Access"
+msgstr ""
+
+#: fatcat_scholar/search.py:66
+msgid "Metadata"
+msgstr ""
+
+#: fatcat_scholar/search.py:70
+msgid "Sort Order"
+msgstr ""
+
+#: fatcat_scholar/search.py:74
+msgid "Relevancy"
+msgstr ""
+
+#: fatcat_scholar/search.py:75
+msgid "Recent First"
+msgstr ""
+
+#: fatcat_scholar/search.py:76
+msgid "Oldest First"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:182
+msgid "by title, authors, keywords..."
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:183 fatcat_scholar/templates/home.html:16
+msgid "Search"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:190
+msgid "User Guide"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:218
+msgid ""
+"We are a US 501(c)(3) non-profit library, building a global archive of "
+"Internet sites and other cultural artifacts in digital form."
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:221
+msgid "About Us"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:222
+msgid "Contact Us"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:223
+msgid "Policies"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:224
+msgid "Donate"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:232
+msgid "How It Works"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:233
+msgid "Content Sources"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:234
+msgid "Text and Data Mining"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:235
+msgid "Discussion Forum"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:236
+msgid "Statistics"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:237
+msgid "Help"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:243
+msgid "Editable Catalog (Fatcat)"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:244
+msgid "Contribute"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:245
+msgid "Search API"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:246
+msgid "Service Status"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:247
+msgid "Source Code"
+msgstr ""
+
+#: fatcat_scholar/templates/help.html:9
+msgid "Try It"
+msgstr ""
+
+#: fatcat_scholar/templates/home.html:15
+msgid "by title, author, keywords..."
+msgstr ""
+
+#: fatcat_scholar/templates/home.html:23
+msgid "Search Millions of Research Papers"
+msgstr ""
+
+#: fatcat_scholar/templates/home.html:24
+msgid ""
+"This fulltext search index includes over 25 million research articles and"
+" other scholarly documents preserved in the Internet Archive."
+msgstr ""
+
+#: fatcat_scholar/templates/home.html:24
+msgid ""
+"The collection spans from digitized copies of eighteenth century journals"
+" though the latest Open Access conference proceedings and pre-prints "
+"crawled from the World Wide Web."
+msgstr ""
+
+#: fatcat_scholar/templates/home.html:36
+msgid ""
+"This service is in \"alpha\". It has several bugs, experiences\n"
+"        downtime, and has not been officially announced."
+msgstr ""
+
+#: fatcat_scholar/templates/search.html:25
+msgid "Filters"
+msgstr ""
+
+#: fatcat_scholar/templates/search.html:73
+msgid "Backend Search Engine Error"
+msgstr ""
+
+#: fatcat_scholar/templates/search.html:75
+msgid "Search Query Error"
+msgstr ""
+
+#: fatcat_scholar/templates/search.html:106
+msgid "We didn't find any documents matching your query"
+msgstr ""
+
+#: fatcat_scholar/templates/search.html:111
+msgid "Try All Resource Types"
+msgstr ""
+
+#: fatcat_scholar/templates/search.html:116
+msgid "Try All Time"
+msgstr ""
+
+#: fatcat_scholar/templates/search.html:121
+msgid "Try Metadata Records"
+msgstr ""
+
+#: fatcat_scholar/templates/search.html:124
+msgid "Start Over"
+msgstr ""
+
+#: fatcat_scholar/templates/search.html:137
+msgid "Enter a query in the box above to get started"
+msgstr ""
+
+#: fatcat_scholar/templates/search_macros.html:49
+msgid "unknown"
+msgstr ""
+
+#: fatcat_scholar/templates/search_macros.html:65
+msgid "page"
+msgstr ""
+
