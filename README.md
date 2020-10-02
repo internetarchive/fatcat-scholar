@@ -1,74 +1,93 @@
 
-**fatcat-scholar**: fulltext search over [fatcat](https://fatcat.wiki) corpus
-of 25+ million open research papers
+<div align="center">
+<img src="fatcat_scholar/static/scholar-vaporwave-logo.png">
+</div>
 
-## Translations
+`fatcat-scholar` / Internet Archive Scholar
+===========================================
 
-Update the .pot file and translation files:
+This is source code for an experimental ("alpha") fulltext web search interface
+over the 25+ million open research papers in the [fatcat](https://fatcat.wiki)
+catalog. A demonstration (pre-production) interface is available at
+<https://scholar-qa.archive.org>.
 
-    pybabel extract -F extra/i18n/babel.cfg -o extra/i18n/web_interface.pot fatcat_scholar/
-    pybabel update -i extra/i18n/web_interface.pot -d fatcat_scholar/translations
+All of the heavy lifting of harvesting, crawling, and metadata corrections are
+all handled by the fatcat service; this service is just a bare-bones, read-only
+search interface. Unlike the basic fatcat.wiki search, this index allows
+querying the full content of papers when available.
 
-Compile translated messages together:
 
-    pybabel compile -d fatcat_scholar/translations
+## Overview
 
-Create initial .po file for a new language translation (then run the above
-update/compile after doing initial translations):
+This repository is fairly small and contains:
 
-    pybabel init -i extra/i18n/web_interface.pot -d fatcat_scholar/translations -l de
+- `fatcat_scholar/`: Python code for web servce and indexing pipeline
+- `fatcat_scholar/templates/`: HTML template for web interface
+- `tests/`: Python test files
+- `proposals/`: design documentation and change proposals
+- `data/`: empty directory for indexing pipeline
 
-## Production
+A data pipeline converts groups of one or more fatcat "release" entities
+(grouped under a single "work") into a single search index document.
+Elasticsearch is used as the fulltext search engine. A simple web interface
+parses search requests and formats Elasticsearch results with highlights and
+first-page thumbnails.
 
-Use gunicorn plus uvicorn, to get multiple worker processes, each running
-async:
+The current Python web framework is FastAPI, though the number of routes is
+very small and it would be easy to switch to a more conventional framework like
+Flask.
 
-    gunicorn example:app -w 4 -k uvicorn.workers.UvicornWorker
 
-## Prototype Pipeline
+## Getting Started for Developers
 
-Requires staff credentials in environment for `internetarchive` python library.
+You need `pipenv` and Python 3.7 installed. Most tasks are run using a
+Makefile; `make help` will show all options.
 
-TODO: pass these credentials via ansible/dotenv
+Working on the indexing pipeline effectively requires internal access to the
+Internet Archive cluster and services, though some contributions and bugfixes
+are probably possible without staff access.
 
-Generate complete SIM issue database:
+To install dependencies for the first time, then run the tests (to ensure
+everything is working):
 
-    ia search "collection:periodicals collection:sim_microfilm mediatype:collection" --itemlist | rg "^pub_" > data/sim_collections.tsv
-    ia search "collection:periodicals collection:sim_microfilm mediatype:texts" --itemlist | rg "^sim_" > data/sim_items.tsv
+    make dep
+    make test
 
-    cat data/sim_collections.tsv | parallel -j4 ia metadata {} | jq . -c | pv -l > data/sim_collections.json
-    cat data/sim_items.tsv | parallel -j8 ia metadata {} | jq . -c | pv -l > data/sim_items.json
+If developing the web interface, you will almost certainly need an example
+database running locally. A docker-compose file in `extra/docker/` can be used
+to run Elasticsearch 7.x locally. The `make dev-index` command will reset the
+local index with the correct schema mapping, and index any intermediate files
+in the `./data/` directory. We don't have an out-of-the-box solution for non-IA
+staff at this step (yet).
 
-    python -m fatcat_scholar.issue_db init_db
-    cat data/sim_collections.json | pv -l | python -m fatcat_scholar.issue_db load_pubs
-    cat data/sim_items.json | pv -l | python -m fatcat_scholar.issue_db load_issues
-    python -m fatcat_scholar.issue_db load_counts
+After making changes to any user interface strings, the interface translation
+file (".pot") needs to be updated with `make update-i18n`. When these changes
+are merged to master, the Weblate translation system will be updated
+automatically.
 
-Create QA elasticsearch index (localhost):
+This repository uses `black` for code formatting; please run `make fmt` and
+`make lint` for submitting a pull request.
 
-    http put ":9200/qa_scholar_fulltext_v01?include_type_name=true" < schema/scholar_fulltext.v01.json
-    http put ":9200/qa_scholar_fulltext_v01/_alias/qa_scholar_fulltext"
 
-Fetch "heavy" fulltext documents (JSON) for full SIM database:
+## Contributing
 
-    python -m fatcat_scholar.sim_pipeline run_issue_db | pv -l | gzip > data/sim_intermediate.json.gz
+Software, copy-editing, translation, and other contributions to this repository
+are welcome! For content and metadata corrections, or identifying new content
+to include, the best place to start is the in [fatcat
+repository](https://github.com/internetarchive/fatcat). Learn more in the
+[fatcat guide](https://guide.fatcat.wiki). You can chat and ask questions on
+[gitter.im/internetarchive/fatcat](https://gitter.im/internetarchive/fatcat).
 
-Re-use existing COVID-19 database to index releases:
+Contributors in this project are asked to abide by our
+[Code of Conduct](https://guide.fatcat.wiki/code_of_conduct.html).
 
-    cat /srv/fatcat_covid19/metadata/2020-06-24/fatcat_hits.enrich.json \
-        | jq -c .fatcat_release \
-        | rg -v "^null" \
-        | parallel -j8 --linebuffer --round-robin --pipe python -m fatcat_scholar.work_pipeline run_releases \
-        | pv -l \
-        | gzip > data/work_intermediate.json.gz
+The web interface is translated using the Weblate platform, at
+[internetarchive/fatcat-scholar](https://hosted.weblate.org/projects/internetarchive/fatcat-scholar/])
 
-    => 48.3k 0:17:58 [44.8 /s]
+The software license for this repository is Affero General Public License v3+
+(APGL 3+), as described in the `LICENSE.md` file. We ask that you acknowledge
+the license terms when making your first contribution.
 
-Transform and index both into local elasticsearch:
-
-	zcat data/work_intermediate.json.gz data/sim_intermediate.json.gz \
-        | parallel -j8 --linebuffer --round-robin --pipe python -m fatcat_scholar.transform run_transform \
-        | esbulk -verbose -size 100 -id key -w 4 -index qa_scholar_fulltext_v01 -type _doc
-
-    => 132635 docs in 2m18.787824205s at 955.667 docs/s with 4 workers
+For software developers, the "help wanted" tag in Github Issues is a way to
+discover bugs and tasks that external folks could contribute to.
 
