@@ -2,18 +2,17 @@
 # Copyright (C) 2020 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
-#
+# Martin Czygan <martin.czygan@gmail.com>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2020-10-01 19:25-0700\n"
-"PO-Revision-Date: 2020-10-01 23:38+0000\n"
-"Last-Translator: bnewbold <bnewbold@robocracy.org>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/fatcat-scholar/"
+"PO-Revision-Date: 2020-10-03 15:40+0000\n"
+"Last-Translator: Martin Czygan <martin.czygan@gmail.com>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/de/>\n"
 "Language: de\n"
-"Language-Team: de <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -103,7 +102,7 @@ msgstr "Die ältesten zu erst"
 
 #: fatcat_scholar/templates/base.html:161
 msgid "Contribute to translations"
-msgstr ""
+msgstr "Übersetzungen hinzufügen"
 
 #: fatcat_scholar/templates/base.html:184
 msgid "by title, authors, keywords..."
@@ -169,7 +168,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/base.html:246
 msgid "Service Status"
-msgstr ""
+msgstr "Service Status"
 
 #: fatcat_scholar/templates/base.html:247
 msgid "Source Code"
@@ -185,7 +184,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/home.html:23
 msgid "Search Millions of Research Papers"
-msgstr ""
+msgstr "Millionen wissenschaftlicher Publikationen durchsuchen"
 
 #: fatcat_scholar/templates/home.html:24
 msgid ""
@@ -215,11 +214,11 @@ msgstr "Suchfilter"
 
 #: fatcat_scholar/templates/search.html:73
 msgid "Backend Search Engine Error"
-msgstr ""
+msgstr "Backend Search Engine Error"
 
 #: fatcat_scholar/templates/search.html:75
 msgid "Search Query Error"
-msgstr ""
+msgstr "Search Query Error"
 
 #: fatcat_scholar/templates/search.html:106
 msgid "We didn't find any documents matching your query"
@@ -231,7 +230,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/search.html:116
 msgid "Try All Time"
-msgstr ""
+msgstr "Ohne Datumsfilter"
 
 #: fatcat_scholar/templates/search.html:121
 msgid "Try Metadata Records"
@@ -239,7 +238,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/search.html:124
 msgid "Start Over"
-msgstr ""
+msgstr "Neue Suche"
 
 #: fatcat_scholar/templates/search.html:137
 msgid "Enter a query in the box above to get started"
@@ -296,4 +295,3 @@ msgstr "Seite"
 
 #~ msgid "Statistics"
 #~ msgstr "Statistik"
-
