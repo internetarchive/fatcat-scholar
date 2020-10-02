@@ -1,0 +1,156 @@
+
+where should code for this live? fatcat-scholar, sandcrawler, fatcat?
+preferably fatcat repo I guess.
+
+today (2020-09-04), 29.7 million releases have some refs in fatcat, and an
+additional 20 million have fulltext in fatcat (50 million total). there are
+969,541,971 total references, so expecting something on the order of 1.6
+billion references output.
+
+only about 3.75 million references coming from wikipedia (en) with a persistent
+identifier.
+
+first version of tool cruises in single thread at 330 docs/sec, or about 1 mil/hour
+
+    zcat /grande/snapshots/fatcat_scholar_work_fulltext.split_00.json.gz | head -n1000000 | pv -l | python -m fatcat_scholar.transform run_refs > /bigger/scholar/fatcat_scholar_work_fulltext.split_00.1m.refs.json
+    1M 0:53:13 [ 313 /s]
+
+    wc -l /bigger/scholar/fatcat_scholar_work_fulltext.split_00.1m.refs.json
+    => 9,242,758
+
+    cat fatcat_scholar_work_fulltext.split_00.1m.refs.json | jq .release_ident -r | sort -u | wc -l
+    => 282,568
+
+    cat fatcat_scholar_work_fulltext.split_00.1m.refs.json | jq .ref_source -r | sort | uniq -c | sort -nr
+    4760872 crossref
+    2847014 grobid
+     735459 pubmed
+     683909 datacite
+     215504 fatcat (probably GROBID, jstage, etc)
+
+    cat fatcat_scholar_work_fulltext.split_00.1m.refs.json | jq .biblio.url -r | rg -v '^null$' | rg wikipedia.org > wikpedia_urls.tsv
+    cat fatcat_scholar_work_fulltext.split_00.1m.refs.json | jq .biblio.url -r | rg -v '^null$' | rg wikipedia.org | wc -l
+    => 523
+
+    cat fatcat_scholar_work_fulltext.split_00.1m.refs.json | jq .biblio.url -r | rg -v '^null$' | rg archive.org > archive_urls.tsv
+    cat fatcat_scholar_work_fulltext.split_00.1m.refs.json | jq .biblio.url -r | rg -v '^null$' | rg archive.org | wc -l
+    => 122
+
+    cat fatcat_scholar_work_fulltext.split_00.1m.refs.json | jq .biblio.pmid -r | rg -v '^null$' | wc -l
+    => 500036
+
+    cat fatcat_scholar_work_fulltext.split_00.1m.refs.json | jq .biblio.doi -r | rg -v '^null$' | wc -l
+    => 3636175
+
+    cat fatcat_scholar_work_fulltext.split_00.1m.refs.json | jq .biblio.url -r | rg -v '^null$' | rg -v doi.org/ | wc -l
+
+    cat fatcat_scholar_work_fulltext.split_00.1m.refs.json | jq .biblio.url -r | rg -v '^null$' | cut -f3 -d/ | sort | uniq -c | sort -nr | head -n50
+
+      35233 doi.org
+      26263 dx.doi.org
+       1539 www.ncbi.nlm.nih.gov
+       1518
+        843 arxiv.org
+        821 www.who.int
+        670 www.scielo.br
+        642 goo.gl
+        463 ec.europa.eu
+        449 bit.ly
+        434 www.cdc.gov
+        431 www.jstor.org
+        425 www.sciencedirect.com
+        372 www.planalto.gov.br
+        356 en.wikipedia.org
+        331 www.w3.org 
+        308 creativecommons.org
+        306 www.youtube.com
+        295 www.nytimes.com
+        278 ssrn.com   
+    [...]
+
+TODO:
+x year/date of the *citing* document
+x 'unstructured' in biblio
+x contrib_raw names Optional (to save on key storage space)
+x basic URL cleanup
+x GROBID *and* fatcat for all lines (?)
+x more GROBID refs fields (grobid2json)
+    biblStruct
+        analytic
+            x <idno type="arXiv">arXiv:nucl-th/0007068</idno>
+            x <idno type="DOI">10.5354/0719-3769.1979.16458</idno>
+            x <idno type="PMCID">PMC3112331</idno>
+            x <idno type="PMID">16330524</idno>
+            <idno>ISBN 0-674- 21298-3</idno>
+            x <ptr target="http://arXiv.org/abs/nlin.SI/0301011" />
+        imprint
+            x <publisher>Cambridge University Press</publisher>
+            x <biblScope unit="page" from="185" to="196" />
+            x <biblScope unit="page">18346083</biblScope>
+        <note type="report_type">arXiv preprint</note>
+        x <note type="raw_reference">
+- debug pubmed refs
+- title seems to not come through from fatcat
+
+resources:
+- https://git.archive.org/webgroup/fatcat/-/blob/bnewbold-citation-graph-brainstorm/proposals/202008_bulk_citation_graph.md
+- https://docs.citationstyles.org/en/1.0.1/specification.html#appendix-iv-variables
+- https://guide.fatcat.wiki/entity_release.html
+- https://analytics.wikimedia.org/published/datasets/archive/public-datasets/all/mwrefs/mwcites-20180301/
+
+open questions:
+- how many citations? how large is this corpus on-disk?
+    1mil => 2.6gb (uncompressed)
+    150mil => 390gb (uncompressed)
+- what fraction...
+    have an external identifier (quick match)
+    look like junk
+    have a URL
+- how many references to wikipedia? assuming via URL
+- how many references to IA services
+    => archive.org, web.archive.org, archive-it, openlibrary.org, etc
+    => top resources
+
+----------
+
+running larger batch:
+
+    zcat /grande/snapshots/fatcat_scholar_work_fulltext.split_01.json.gz | pv -l | parallel -j8 --linebuffer --round-robin --pipe python -m fatcat_scholar.transform run_refs > /bigger/scholar/fatcat_scholar_work_fulltext.split_01.refs.json
+    => 24.7M 5:33:27 [1.23k/s]
+
+    123G Sep 14 12:56 fatcat_scholar_work_fulltext.split_01.refs.json
+
+    pigz fatcat_scholar_work_fulltext.split_01.refs.json
+
+    du -sh fatcat_scholar_work_fulltext.split_01.refs.json.gz
+    24G     fatcat_scholar_work_fulltext.split_01.refs.json.gz
+
+    zcat fatcat_scholar_work_fulltext.split_01.refs.json.gz | wc -l
+    285,551,233
+
+Expecting a bit below 2 billion references; though actually because of
+duplication.
+
+This really blows up in size, presumably because things like release+work
+idents don't compress well and are duplicated for each reference. JSON overhead
+should almost entirely compress away.
+
+Let's do the rest of these, so we can upload as a corpus (estimate 168 GByte
+compressed).
+
+zcat /grande/snapshots/fatcat_scholar_work_fulltext.split_00.json.gz | pv -l | parallel -j8 --linebuffer --round-robin --pipe python -m fatcat_scholar.transform run_refs | gzip > /bigger/scholar/fatcat_scholar_work_fulltext.split_00.refs.json
+zcat /grande/snapshots/fatcat_scholar_work_fulltext.split_02.json.gz | pv -l | parallel -j8 --linebuffer --round-robin --pipe python -m fatcat_scholar.transform run_refs | gzip > /bigger/scholar/fatcat_scholar_work_fulltext.split_02.refs.json
+zcat /grande/snapshots/fatcat_scholar_work_fulltext.split_03.json.gz | pv -l | parallel -j8 --linebuffer --round-robin --pipe python -m fatcat_scholar.transform run_refs | gzip > /bigger/scholar/fatcat_scholar_work_fulltext.split_03.refs.json
+zcat /grande/snapshots/fatcat_scholar_work_fulltext.split_04.json.gz | pv -l | parallel -j8 --linebuffer --round-robin --pipe python -m fatcat_scholar.transform run_refs | gzip > /bigger/scholar/fatcat_scholar_work_fulltext.split_04.refs.json
+zcat /grande/snapshots/fatcat_scholar_work_fulltext.split_05.json.gz | pv -l | parallel -j8 --linebuffer --round-robin --pipe python -m fatcat_scholar.transform run_refs | gzip > /bigger/scholar/fatcat_scholar_work_fulltext.split_05.refs.json
+zcat /grande/snapshots/fatcat_scholar_work_fulltext.split_06.json.gz | pv -l | parallel -j8 --linebuffer --round-robin --pipe python -m fatcat_scholar.transform run_refs | gzip > /bigger/scholar/fatcat_scholar_work_fulltext.split_06.refs.json
+
+Something went wrong part-way through split_04:
+
+    5.55M 1:12:30 [1.12k/s]
+    [...]
+    json.decoder.JSONDecodeError: Expecting value: line 1 column 853 (char 852)
+
+Disk corruption or something? This parsed fine with a very similar command
+recently. Hrm. Re-ran again and was successful.
+
