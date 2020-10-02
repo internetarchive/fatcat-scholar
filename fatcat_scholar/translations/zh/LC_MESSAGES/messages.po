@@ -2,20 +2,22 @@
 # Copyright (C) 2020 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
-#
+# Bryan Newbold <bnewbold@robocracy.org>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2020-10-01 19:25-0700\n"
-"PO-Revision-Date: 2020-05-12 13:45-0700\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2020-10-03 15:40+0000\n"
+"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
+"internetarchive/fatcat-scholar/zh_Hans/>\n"
 "Language: zh\n"
-"Language-Team: zh <LL@li.org>\n"
-"Plural-Forms: nplurals=1; plural=0\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.3-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:36
@@ -80,7 +82,7 @@ msgstr "开放存取"
 
 #: fatcat_scholar/search.py:66
 msgid "Metadata"
-msgstr ""
+msgstr "元数据"
 
 #: fatcat_scholar/search.py:70
 msgid "Sort Order"
@@ -88,7 +90,7 @@ msgstr "排序"
 
 #: fatcat_scholar/search.py:74
 msgid "Relevancy"
-msgstr ""
+msgstr "关联"
 
 #: fatcat_scholar/search.py:75
 msgid "Recent First"
@@ -100,7 +102,7 @@ msgstr "最早的优先"
 
 #: fatcat_scholar/templates/base.html:161
 msgid "Contribute to translations"
-msgstr ""
+msgstr "贡献翻译"
 
 #: fatcat_scholar/templates/base.html:184
 msgid "by title, authors, keywords..."
@@ -118,27 +120,27 @@ msgstr "用户指南"
 msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
-msgstr ""
+msgstr "我们是501（c）（3）非营利组织，以数字形式建立了互联网站点和其他文化人工制品的数字图书馆"
 
 #: fatcat_scholar/templates/base.html:223
 msgid "About Us"
-msgstr ""
+msgstr "关于我们"
 
 #: fatcat_scholar/templates/base.html:224
 msgid "Contact Us"
-msgstr ""
+msgstr "联系我们"
 
 #: fatcat_scholar/templates/base.html:225
 msgid "Policies"
-msgstr ""
+msgstr "策略"
 
 #: fatcat_scholar/templates/base.html:226
 msgid "Donate"
-msgstr ""
+msgstr "捐赠"
 
 #: fatcat_scholar/templates/base.html:234
 msgid "How It Works"
-msgstr ""
+msgstr "怎么运行的"
 
 #: fatcat_scholar/templates/base.html:235
 msgid "Content Sources"
@@ -150,7 +152,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/base.html:237
 msgid "Help"
-msgstr ""
+msgstr "说明"
 
 #: fatcat_scholar/templates/base.html:243
 msgid "Editable Catalog (Fatcat)"
@@ -158,23 +160,23 @@ msgstr ""
 
 #: fatcat_scholar/templates/base.html:244
 msgid "Contribute"
-msgstr ""
+msgstr "贡献"
 
 #: fatcat_scholar/templates/base.html:245
 msgid "Search API"
-msgstr ""
+msgstr "在 PyPI 上搜索"
 
 #: fatcat_scholar/templates/base.html:246
 msgid "Service Status"
-msgstr ""
+msgstr "服务状态"
 
 #: fatcat_scholar/templates/base.html:247
 msgid "Source Code"
-msgstr ""
+msgstr "源代码"
 
 #: fatcat_scholar/templates/help.html:9
 msgid "Try It"
-msgstr ""
+msgstr "试试看"
 
 #: fatcat_scholar/templates/home.html:15
 msgid "by title, author, keywords..."
@@ -182,7 +184,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/home.html:23
 msgid "Search Millions of Research Papers"
-msgstr ""
+msgstr "搜索数以百万计的研究论文"
 
 #: fatcat_scholar/templates/home.html:24
 msgid ""
@@ -233,7 +235,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/search.html:124
 msgid "Start Over"
-msgstr ""
+msgstr "重来"
 
 #: fatcat_scholar/templates/search.html:137
 msgid "Enter a query in the box above to get started"
@@ -241,11 +243,11 @@ msgstr ""
 
 #: fatcat_scholar/templates/search_macros.html:49
 msgid "unknown"
-msgstr ""
+msgstr "未知的"
 
 #: fatcat_scholar/templates/search_macros.html:65
 msgid "page"
-msgstr ""
+msgstr "分页模式"
 
 #~ msgid ""
 #~ "This fulltext search index includes over"
@@ -281,4 +283,3 @@ msgstr ""
 
 #~ msgid "Statistics"
 #~ msgstr ""
-
