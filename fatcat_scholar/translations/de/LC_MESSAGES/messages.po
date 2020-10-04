@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # Martin Czygan <martin.czygan@gmail.com>, 2020.
+# nautilusx <mail.ka@mailbox.org>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2020-10-01 19:25-0700\n"
-"PO-Revision-Date: 2020-10-03 15:40+0000\n"
-"Last-Translator: Martin Czygan <martin.czygan@gmail.com>\n"
+"PO-Revision-Date: 2020-10-05 19:26+0000\n"
+"Last-Translator: nautilusx <mail.ka@mailbox.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/de/>\n"
 "Language: de\n"
@@ -26,15 +27,15 @@ msgstr "Veröffentlichungsdatum"
 
 #: fatcat_scholar/search.py:40
 msgid "All Time"
-msgstr "alle Zeit"
+msgstr "Alle Zeit"
 
 #: fatcat_scholar/search.py:41
 msgid "Past Week"
-msgstr "letzte Woche"
+msgstr "Letzte Woche"
 
 #: fatcat_scholar/search.py:42
 msgid "Past Year"
-msgstr "vergangenes Jahr"
+msgstr "Vergangenes Jahr"
 
 #: fatcat_scholar/search.py:43
 msgid "Since 2000"
@@ -98,7 +99,7 @@ msgstr "Neueste zuerst"
 
 #: fatcat_scholar/search.py:76
 msgid "Oldest First"
-msgstr "Die ältesten zu erst"
+msgstr "Älteste zuerst"
 
 #: fatcat_scholar/templates/base.html:161
 msgid "Contribute to translations"
@@ -106,7 +107,7 @@ msgstr "Übersetzungen hinzufügen"
 
 #: fatcat_scholar/templates/base.html:184
 msgid "by title, authors, keywords..."
-msgstr "nach titel, autoren, schlüsselwörtern..."
+msgstr "nach Titel, Autoren, Schlüsselwörtern..."
 
 #: fatcat_scholar/templates/base.html:185 fatcat_scholar/templates/home.html:16
 msgid "Search"
@@ -121,6 +122,9 @@ msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
 msgstr ""
+"Wir sind eine gemeinnützige Bibliothek gemäß US 501(c)(3), die ein globales "
+"Archiv von Internetseiten und anderen kulturellen Artefakten in digitaler "
+"Form erstellt."
 
 #: fatcat_scholar/templates/base.html:223
 msgid "About Us"
@@ -152,7 +156,7 @@ msgstr "Text und Data Mining"
 
 #: fatcat_scholar/templates/base.html:237
 msgid "Help"
-msgstr "Dokumentation"
+msgstr "Hilfe"
 
 #: fatcat_scholar/templates/base.html:243
 msgid "Editable Catalog (Fatcat)"
@@ -164,11 +168,11 @@ msgstr "Mitmachen"
 
 #: fatcat_scholar/templates/base.html:245
 msgid "Search API"
-msgstr ""
+msgstr "Such-API"
 
 #: fatcat_scholar/templates/base.html:246
 msgid "Service Status"
-msgstr "Service Status"
+msgstr "Dienststatus"
 
 #: fatcat_scholar/templates/base.html:247
 msgid "Source Code"
@@ -176,11 +180,11 @@ msgstr "Quellcode"
 
 #: fatcat_scholar/templates/help.html:9
 msgid "Try It"
-msgstr ""
+msgstr "Ausprobieren"
 
 #: fatcat_scholar/templates/home.html:15
 msgid "by title, author, keywords..."
-msgstr ""
+msgstr "nach Titel, Autor, Schlüsselwörtern..."
 
 #: fatcat_scholar/templates/home.html:23
 msgid "Search Millions of Research Papers"
@@ -191,6 +195,8 @@ msgid ""
 "This fulltext search index includes over 25 million research articles and"
 " other scholarly documents preserved in the Internet Archive."
 msgstr ""
+"Dieser Volltextsuchindex enthält über 25 Millionen Forschungsartikel und "
+"andere wissenschaftliche Dokumente, die im Internetarchiv aufbewahrt werden."
 
 #: fatcat_scholar/templates/home.html:24
 msgid ""
@@ -207,6 +213,8 @@ msgid ""
 "This service is in \"alpha\". It has several bugs, experiences\n"
 "        downtime, and has not been officially announced."
 msgstr ""
+"Dieser Service ist in \"Alpha\". Er hat mehrere Fehler, Erfahrungen mit\n"
+"        Ausfallzeiten und wurde nicht offiziell bekannt gegeben."
 
 #: fatcat_scholar/templates/search.html:25
 msgid "Filters"
@@ -214,11 +222,11 @@ msgstr "Suchfilter"
 
 #: fatcat_scholar/templates/search.html:73
 msgid "Backend Search Engine Error"
-msgstr "Backend Search Engine Error"
+msgstr "Backend-Suchmaschinenfehler"
 
 #: fatcat_scholar/templates/search.html:75
 msgid "Search Query Error"
-msgstr "Search Query Error"
+msgstr "Suchabfragefehler"
 
 #: fatcat_scholar/templates/search.html:106
 msgid "We didn't find any documents matching your query"
@@ -226,7 +234,7 @@ msgstr "Wir haben keine Dokumente gefunden, die Ihrer Anfrage entsprechen"
 
 #: fatcat_scholar/templates/search.html:111
 msgid "Try All Resource Types"
-msgstr ""
+msgstr "Alle Ressourcentypen verwenden"
 
 #: fatcat_scholar/templates/search.html:116
 msgid "Try All Time"
@@ -234,7 +242,7 @@ msgstr "Ohne Datumsfilter"
 
 #: fatcat_scholar/templates/search.html:121
 msgid "Try Metadata Records"
-msgstr ""
+msgstr "Metadatensätze verwenden"
 
 #: fatcat_scholar/templates/search.html:124
 msgid "Start Over"
@@ -242,7 +250,7 @@ msgstr "Neue Suche"
 
 #: fatcat_scholar/templates/search.html:137
 msgid "Enter a query in the box above to get started"
-msgstr ""
+msgstr "Geben Sie eine Abfrage in das Feld oben ein, um loszulegen"
 
 #: fatcat_scholar/templates/search_macros.html:49
 msgid "unknown"
