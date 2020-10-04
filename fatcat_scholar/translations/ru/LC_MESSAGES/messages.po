@@ -2,118 +2,120 @@
 # Copyright (C) 2020 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
-#
+# Artem <KovalevArtem.ru@gmail.com>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2020-10-01 19:25-0700\n"
-"PO-Revision-Date: 2020-10-01 20:02-0700\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2020-10-05 19:26+0000\n"
+"Last-Translator: Artem <KovalevArtem.ru@gmail.com>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/internetarchive/"
+"fatcat-scholar/ru/>\n"
 "Language: ru\n"
-"Language-Team: ru <LL@li.org>\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.3-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:36
 msgid "Release Date"
-msgstr ""
+msgstr "Дата выпуска"
 
 #: fatcat_scholar/search.py:40
 msgid "All Time"
-msgstr ""
+msgstr "Всё время"
 
 #: fatcat_scholar/search.py:41
 msgid "Past Week"
-msgstr ""
+msgstr "На прошлой неделе"
 
 #: fatcat_scholar/search.py:42
 msgid "Past Year"
-msgstr ""
+msgstr "В прошлом году"
 
 #: fatcat_scholar/search.py:43
 msgid "Since 2000"
-msgstr ""
+msgstr "С 2000 года"
 
 #: fatcat_scholar/search.py:44
 msgid "Before 1925"
-msgstr ""
+msgstr "До 1925 года"
 
 #: fatcat_scholar/search.py:48
 msgid "Resource Type"
-msgstr ""
+msgstr "Тип ресурса"
 
 #: fatcat_scholar/search.py:52
 msgid "Papers"
-msgstr ""
+msgstr "Научные статьи"
 
 #: fatcat_scholar/search.py:53
 msgid "Reports"
-msgstr ""
+msgstr "Отчеты"
 
 #: fatcat_scholar/search.py:54
 msgid "Datasets"
-msgstr ""
+msgstr "Наборы данных"
 
 #: fatcat_scholar/search.py:55
 msgid "Everything"
-msgstr ""
+msgstr "Всё"
 
 #: fatcat_scholar/search.py:59
 msgid "Availability"
-msgstr ""
+msgstr "Доступность"
 
 #: fatcat_scholar/search.py:63
 msgid "Fulltext"
-msgstr ""
+msgstr "Полнотекстовый"
 
 #: fatcat_scholar/search.py:64
 msgid "Microfilm"
-msgstr ""
+msgstr "Микрофильм"
 
 #: fatcat_scholar/search.py:65
 msgid "Open Access"
-msgstr ""
+msgstr "Открытый доступ"
 
 #: fatcat_scholar/search.py:66
 msgid "Metadata"
-msgstr ""
+msgstr "Метаданные"
 
 #: fatcat_scholar/search.py:70
 msgid "Sort Order"
-msgstr ""
+msgstr "Порядок сортировки"
 
 #: fatcat_scholar/search.py:74
 msgid "Relevancy"
-msgstr ""
+msgstr "Актуальность"
 
 #: fatcat_scholar/search.py:75
 msgid "Recent First"
-msgstr ""
+msgstr "Недавние сначала"
 
 #: fatcat_scholar/search.py:76
 msgid "Oldest First"
-msgstr ""
+msgstr "Сначала старые"
 
 #: fatcat_scholar/templates/base.html:161
 msgid "Contribute to translations"
-msgstr ""
+msgstr "Внести свой вклад в переводы"
 
 #: fatcat_scholar/templates/base.html:184
 msgid "by title, authors, keywords..."
-msgstr ""
+msgstr "по названию, авторам, ключевым словам..."
 
 #: fatcat_scholar/templates/base.html:185 fatcat_scholar/templates/home.html:16
 msgid "Search"
-msgstr ""
+msgstr "Поиск"
 
 #: fatcat_scholar/templates/base.html:192
 msgid "User Guide"
-msgstr ""
+msgstr "Руководство пользователя"
 
 #: fatcat_scholar/templates/base.html:220
 msgid ""
@@ -123,67 +125,67 @@ msgstr ""
 
 #: fatcat_scholar/templates/base.html:223
 msgid "About Us"
-msgstr ""
+msgstr "О нас"
 
 #: fatcat_scholar/templates/base.html:224
 msgid "Contact Us"
-msgstr ""
+msgstr "Связаться с нами"
 
 #: fatcat_scholar/templates/base.html:225
 msgid "Policies"
-msgstr ""
+msgstr "Политика"
 
 #: fatcat_scholar/templates/base.html:226
 msgid "Donate"
-msgstr ""
+msgstr "Пожертвовать"
 
 #: fatcat_scholar/templates/base.html:234
 msgid "How It Works"
-msgstr ""
+msgstr "Как это работает"
 
 #: fatcat_scholar/templates/base.html:235
 msgid "Content Sources"
-msgstr ""
+msgstr "Источники контента"
 
 #: fatcat_scholar/templates/base.html:236
 msgid "Text and Data Mining"
-msgstr ""
+msgstr "Интеллектуальный анализ текста и данных"
 
 #: fatcat_scholar/templates/base.html:237
 msgid "Help"
-msgstr ""
+msgstr "Справка"
 
 #: fatcat_scholar/templates/base.html:243
 msgid "Editable Catalog (Fatcat)"
-msgstr ""
+msgstr "Редактируемый каталог (Fatcat)"
 
 #: fatcat_scholar/templates/base.html:244
 msgid "Contribute"
-msgstr ""
+msgstr "Стать участником"
 
 #: fatcat_scholar/templates/base.html:245
 msgid "Search API"
-msgstr ""
+msgstr "API поиска"
 
 #: fatcat_scholar/templates/base.html:246
 msgid "Service Status"
-msgstr ""
+msgstr "Статус сервиса"
 
 #: fatcat_scholar/templates/base.html:247
 msgid "Source Code"
-msgstr ""
+msgstr "Исходный код"
 
 #: fatcat_scholar/templates/help.html:9
 msgid "Try It"
-msgstr ""
+msgstr "Попробовать"
 
 #: fatcat_scholar/templates/home.html:15
 msgid "by title, author, keywords..."
-msgstr ""
+msgstr "по названию, автору, ключевым словам..."
 
 #: fatcat_scholar/templates/home.html:23
 msgid "Search Millions of Research Papers"
-msgstr ""
+msgstr "Ищите миллионы научных статей"
 
 #: fatcat_scholar/templates/home.html:24
 msgid ""
@@ -206,27 +208,27 @@ msgstr ""
 
 #: fatcat_scholar/templates/search.html:25
 msgid "Filters"
-msgstr ""
+msgstr "Фильтры"
 
 #: fatcat_scholar/templates/search.html:73
 msgid "Backend Search Engine Error"
-msgstr ""
+msgstr "Ошибка внутренней поисковой системы"
 
 #: fatcat_scholar/templates/search.html:75
 msgid "Search Query Error"
-msgstr ""
+msgstr "Ошибка поискового запроса"
 
 #: fatcat_scholar/templates/search.html:106
 msgid "We didn't find any documents matching your query"
-msgstr ""
+msgstr "Мы не нашли никаких документов, соответствующих вашему запросу"
 
 #: fatcat_scholar/templates/search.html:111
 msgid "Try All Resource Types"
-msgstr ""
+msgstr "Попробуйте все типы ресурсов"
 
 #: fatcat_scholar/templates/search.html:116
 msgid "Try All Time"
-msgstr ""
+msgstr "Попробуйте всё время"
 
 #: fatcat_scholar/templates/search.html:121
 msgid "Try Metadata Records"
@@ -234,17 +236,16 @@ msgstr ""
 
 #: fatcat_scholar/templates/search.html:124
 msgid "Start Over"
-msgstr ""
+msgstr "Начать сначала"
 
 #: fatcat_scholar/templates/search.html:137
 msgid "Enter a query in the box above to get started"
-msgstr ""
+msgstr "Введите запрос в поле выше, чтобы начать"
 
 #: fatcat_scholar/templates/search_macros.html:49
 msgid "unknown"
-msgstr ""
+msgstr "неизвестно"
 
 #: fatcat_scholar/templates/search_macros.html:65
 msgid "page"
-msgstr ""
-
+msgstr "страница"
