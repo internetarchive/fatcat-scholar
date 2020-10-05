@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2020-10-01 19:25-0700\n"
-"PO-Revision-Date: 2020-10-05 20:35+0000\n"
+"PO-Revision-Date: 2020-10-06 02:45+0000\n"
 "Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
+"internetarchive/fatcat-scholar/zh_Hans/>\n"
 "Language: zh\n"
-"Language-Team: Chinese (Simplified) "
-"<https://hosted.weblate.org/projects/internetarchive/fatcat-"
-"scholar/zh_Hans/>\n"
-"Plural-Forms: nplurals=1; plural=0\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.3-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:36
@@ -74,7 +74,7 @@ msgstr "全文"
 
 #: fatcat_scholar/search.py:64
 msgid "Microfilm"
-msgstr ""
+msgstr "缩微胶卷"
 
 #: fatcat_scholar/search.py:65
 msgid "Open Access"
@@ -152,7 +152,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/base.html:238
 msgid "Text and Data Mining"
-msgstr ""
+msgstr "文本和数据挖掘"
 
 #: fatcat_scholar/templates/base.html:239
 msgid "Help"
@@ -160,7 +160,7 @@ msgstr "说明"
 
 #: fatcat_scholar/templates/base.html:243
 msgid "Open Infrastructure"
-msgstr ""
+msgstr "开放基础架构"
 
 #: fatcat_scholar/templates/base.html:245
 msgid "Editable Catalog (Fatcat)"
@@ -212,6 +212,8 @@ msgid ""
 "This service is in \"alpha\". It has several bugs, experiences\n"
 "        downtime, and has not been officially announced."
 msgstr ""
+"此服务为“ alpha”。它有几个错误，经验\n"
+"        停机时间，尚未正式宣布。"
 
 #: fatcat_scholar/templates/search.html:25
 msgid "Filters"
@@ -223,7 +225,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/search.html:75
 msgid "Search Query Error"
-msgstr ""
+msgstr "搜索查询错误"
 
 #: fatcat_scholar/templates/search.html:79
 msgid ""
@@ -253,7 +255,7 @@ msgstr "重来"
 
 #: fatcat_scholar/templates/search.html:137
 msgid "Enter a query in the box above to get started"
-msgstr ""
+msgstr "在上面的框中输入查询以开始使用"
 
 #: fatcat_scholar/templates/search_macros.html:49
 msgid "unknown"
@@ -266,12 +268,12 @@ msgstr "分页模式"
 #: fatcat_scholar/templates/search_macros.html:300
 #: fatcat_scholar/templates/search_macros.html:303
 msgid "Previous"
-msgstr ""
+msgstr "上一个"
 
 #: fatcat_scholar/templates/search_macros.html:308
 #: fatcat_scholar/templates/search_macros.html:310
 msgid "Next"
-msgstr ""
+msgstr "下一个"
 
 #~ msgid ""
 #~ "This fulltext search index includes over"
@@ -307,4 +309,3 @@ msgstr ""
 
 #~ msgid "Statistics"
 #~ msgstr ""
-
