@@ -215,11 +215,12 @@
             <img class="logo" src="/static/ia-logo.svg" style="width: 100%; opacity: 0.5;">
           </div>
           <div class="one wide column computer only"></div>
-          <div class="thirteen wide eleven wide computer column">
+          <div class="thirteen wide twelve wide computer column">
             <h3>Internet Archive</h3>
             <p style="color: rgba(255, 255, 255, 0.5);">
-            {% trans trimmed %}We are a US 501(c)(3) non-profit library, building a global archive of Internet sites and other cultural artifacts in digital form.{% endtrans %}
-            Other projects include <a target="_blank" href="https://web.archive.org">The Wayback Machine</a>, <a target="_blank" href="https://archive.org">archive.org</a>, <a target="_blank" href="https://openlibrary.org">Open Library</a> and <a target="_blank" href="https://archive-it.org">Archive-It</a>
+            {% trans %}We are a US 501(c)(3) non-profit library, building a global archive of Internet sites and other cultural artifacts in digital form.{% endtrans %}
+
+            {% trans %}Other projects include{% endtrans %} <a target="_blank" href="https://web.archive.org">The Wayback Machine</a>, <a target="_blank" href="https://archive.org">archive.org</a>, <a target="_blank" href="https://openlibrary.org">Open Library</a> and <a target="_blank" href="https://archive-it.org">Archive-It</a>
             <div class="ui horizontal inverted link list">
               <a class="item" target="_blank" href="https://archive.org/about/">{{ _("About Us") }}</a>
               <a class="item" target="_blank" href="https://archive.org/about/contact.php">{{ _("Contact Us") }}</a>
@@ -239,7 +240,7 @@
         </div>
       </div>
       <div class="three wide column">
-        <h4 class="ui inverted header">Open Infrastructure</h4>
+        <h4 class="ui inverted header">{% trans %}Open Infrastructure{% endtrans %}</h4>
         <div class="ui inverted link list">
           <a target="_blank" href="https://fatcat.wiki" class="item">{{ _("Editable Catalog (Fatcat)") }}</a>
           <a target="_blank" href="https://guide.fatcat.wiki" class="item">{{ _("Contribute") }}</a>
