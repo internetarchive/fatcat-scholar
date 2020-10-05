@@ -142,7 +142,7 @@
       <img class="mobile-hide" src="/static/ia-wordmark.svg" style="margin-left: 10px; width: 180px;">
     </a>
     <span style="margin-top: 0.5em;">
-      <a class="ui grey label" style="background-color: #fbbd08a6;" href="/#alphanotice"><i>alpha</i></a>
+      <a class="ui grey label" style="background-color: #fbbd08a6;" href="{{ lang_prefix }}/#alphanotice"><i>alpha</i></a>
     </span>
 
     <div class="right menu">
@@ -154,7 +154,7 @@
         <div class="menu">
             {# TODO: as a dynamic array #}
             {# TODO: do url_for() here, with current endpoint (from request?) #}
-            <a class="item" href="/">English</a>
+            <a class="item" href="/en/">English</a>
             <a class="item" href="/de/">Deutsch</a>
             <a class="item" href="/zh/">中文</a>
             <a class="item" href="/ru/">Русский</a>
@@ -236,7 +236,7 @@
           <a href="{{ lang_prefix }}/about#howitworks" class="item">{{ _("How It Works") }}</a>
           <a href="{{ lang_prefix }}/about#sources" class="item">{{ _("Content Sources") }}</a>
           <a href="{{ lang_prefix }}/about#tdm" class="item">{{ _("Text and Data Mining") }}</a>
-          <a href="/help" class="item">{{ _("Help") }}</a>
+          <a href="{{ lang_prefix }}/help" class="item">{{ _("Help") }}</a>
         </div>
       </div>
       <div class="three wide column">
