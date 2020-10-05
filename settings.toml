@@ -9,6 +9,9 @@ THUMBNAIL_URL_PREFIX = "https://blobs.fatcat.wiki/thumbnail/pdf/"
 SANDCRAWLER_DB_API = "http://aitio.us.archive.org:3030"
 SANDCRAWLER_S3_API = "wbgrp-svc169.us.archive.org:8333"
 
+[test]
+SCHOLAR_ENV = "test"
+
 [dev]
 SCHOLAR_ENV = "dev"
 ELASTICSEARCH_FULLTEXT_INDEX = "dev_scholar_fulltext"
