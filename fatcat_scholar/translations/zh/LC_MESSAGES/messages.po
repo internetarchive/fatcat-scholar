@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
-"POT-Creation-Date: 2020-10-01 19:25-0700\n"
+"POT-Creation-Date: 2020-10-05 13:30-0700\n"
 "PO-Revision-Date: 2020-10-03 15:40+0000\n"
 "Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
-"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
-"internetarchive/fatcat-scholar/zh_Hans/>\n"
 "Language: zh\n"
+"Language-Team: Chinese (Simplified) "
+"<https://hosted.weblate.org/projects/internetarchive/fatcat-"
+"scholar/zh_Hans/>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.3-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:36
@@ -100,77 +100,85 @@ msgstr "最近第一"
 msgid "Oldest First"
 msgstr "最早的优先"
 
-#: fatcat_scholar/templates/base.html:161
+#: fatcat_scholar/templates/base.html:162
 msgid "Contribute to translations"
 msgstr "贡献翻译"
 
-#: fatcat_scholar/templates/base.html:184
+#: fatcat_scholar/templates/base.html:185
 msgid "by title, authors, keywords..."
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:185 fatcat_scholar/templates/home.html:16
+#: fatcat_scholar/templates/base.html:186 fatcat_scholar/templates/home.html:16
 msgid "Search"
 msgstr "搜索"
 
-#: fatcat_scholar/templates/base.html:192
+#: fatcat_scholar/templates/base.html:193
 msgid "User Guide"
 msgstr "用户指南"
 
-#: fatcat_scholar/templates/base.html:220
+#: fatcat_scholar/templates/base.html:221
 msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
 msgstr "我们是501（c）（3）非营利组织，以数字形式建立了互联网站点和其他文化人工制品的数字图书馆"
 
 #: fatcat_scholar/templates/base.html:223
+msgid "Other projects include"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:225
 msgid "About Us"
 msgstr "关于我们"
 
-#: fatcat_scholar/templates/base.html:224
+#: fatcat_scholar/templates/base.html:226
 msgid "Contact Us"
 msgstr "联系我们"
 
-#: fatcat_scholar/templates/base.html:225
+#: fatcat_scholar/templates/base.html:227
 msgid "Policies"
 msgstr "策略"
 
-#: fatcat_scholar/templates/base.html:226
+#: fatcat_scholar/templates/base.html:228
 msgid "Donate"
 msgstr "捐赠"
 
-#: fatcat_scholar/templates/base.html:234
+#: fatcat_scholar/templates/base.html:236
 msgid "How It Works"
 msgstr "怎么运行的"
 
-#: fatcat_scholar/templates/base.html:235
+#: fatcat_scholar/templates/base.html:237
 msgid "Content Sources"
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:236
+#: fatcat_scholar/templates/base.html:238
 msgid "Text and Data Mining"
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:237
+#: fatcat_scholar/templates/base.html:239
 msgid "Help"
 msgstr "说明"
 
 #: fatcat_scholar/templates/base.html:243
+msgid "Open Infrastructure"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:245
 msgid "Editable Catalog (Fatcat)"
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:244
+#: fatcat_scholar/templates/base.html:246
 msgid "Contribute"
 msgstr "贡献"
 
-#: fatcat_scholar/templates/base.html:245
+#: fatcat_scholar/templates/base.html:247
 msgid "Search API"
 msgstr "在 PyPI 上搜索"
 
-#: fatcat_scholar/templates/base.html:246
+#: fatcat_scholar/templates/base.html:248
 msgid "Service Status"
 msgstr "服务状态"
 
-#: fatcat_scholar/templates/base.html:247
+#: fatcat_scholar/templates/base.html:249
 msgid "Source Code"
 msgstr "源代码"
 
@@ -217,6 +225,12 @@ msgstr ""
 msgid "Search Query Error"
 msgstr ""
 
+#: fatcat_scholar/templates/search.html:79
+msgid ""
+"Query parsing is currently very naive. Sometimes you can fix this problem"
+" by adding quotes around terms or entire phrases."
+msgstr ""
+
 #: fatcat_scholar/templates/search.html:106
 msgid "We didn't find any documents matching your query"
 msgstr "找不到符合您查询条件的文件"
@@ -248,6 +262,16 @@ msgstr "未知的"
 #: fatcat_scholar/templates/search_macros.html:65
 msgid "page"
 msgstr "分页模式"
+
+#: fatcat_scholar/templates/search_macros.html:300
+#: fatcat_scholar/templates/search_macros.html:303
+msgid "Previous"
+msgstr ""
+
+#: fatcat_scholar/templates/search_macros.html:308
+#: fatcat_scholar/templates/search_macros.html:310
+msgid "Next"
+msgstr ""
 
 #~ msgid ""
 #~ "This fulltext search index includes over"
@@ -283,3 +307,4 @@ msgstr "分页模式"
 
 #~ msgid "Statistics"
 #~ msgstr ""
+

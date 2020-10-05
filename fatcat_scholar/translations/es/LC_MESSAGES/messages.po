@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-10-01 19:25-0700\n"
+"POT-Creation-Date: 2020-10-05 13:30-0700\n"
 "PO-Revision-Date: 2020-10-01 20:01-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
@@ -98,77 +98,85 @@ msgstr ""
 msgid "Oldest First"
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:161
+#: fatcat_scholar/templates/base.html:162
 msgid "Contribute to translations"
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:184
+#: fatcat_scholar/templates/base.html:185
 msgid "by title, authors, keywords..."
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:185 fatcat_scholar/templates/home.html:16
+#: fatcat_scholar/templates/base.html:186 fatcat_scholar/templates/home.html:16
 msgid "Search"
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:192
+#: fatcat_scholar/templates/base.html:193
 msgid "User Guide"
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:220
+#: fatcat_scholar/templates/base.html:221
 msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
 msgstr ""
 
 #: fatcat_scholar/templates/base.html:223
-msgid "About Us"
-msgstr ""
-
-#: fatcat_scholar/templates/base.html:224
-msgid "Contact Us"
+msgid "Other projects include"
 msgstr ""
 
 #: fatcat_scholar/templates/base.html:225
-msgid "Policies"
+msgid "About Us"
 msgstr ""
 
 #: fatcat_scholar/templates/base.html:226
+msgid "Contact Us"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:227
+msgid "Policies"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:228
 msgid "Donate"
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:234
+#: fatcat_scholar/templates/base.html:236
 msgid "How It Works"
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:235
+#: fatcat_scholar/templates/base.html:237
 msgid "Content Sources"
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:236
+#: fatcat_scholar/templates/base.html:238
 msgid "Text and Data Mining"
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:237
+#: fatcat_scholar/templates/base.html:239
 msgid "Help"
 msgstr ""
 
 #: fatcat_scholar/templates/base.html:243
-msgid "Editable Catalog (Fatcat)"
-msgstr ""
-
-#: fatcat_scholar/templates/base.html:244
-msgid "Contribute"
+msgid "Open Infrastructure"
 msgstr ""
 
 #: fatcat_scholar/templates/base.html:245
-msgid "Search API"
+msgid "Editable Catalog (Fatcat)"
 msgstr ""
 
 #: fatcat_scholar/templates/base.html:246
-msgid "Service Status"
+msgid "Contribute"
 msgstr ""
 
 #: fatcat_scholar/templates/base.html:247
+msgid "Search API"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:248
+msgid "Service Status"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:249
 msgid "Source Code"
 msgstr ""
 
@@ -215,6 +223,12 @@ msgstr ""
 msgid "Search Query Error"
 msgstr ""
 
+#: fatcat_scholar/templates/search.html:79
+msgid ""
+"Query parsing is currently very naive. Sometimes you can fix this problem"
+" by adding quotes around terms or entire phrases."
+msgstr ""
+
 #: fatcat_scholar/templates/search.html:106
 msgid "We didn't find any documents matching your query"
 msgstr ""
@@ -245,5 +259,15 @@ msgstr ""
 
 #: fatcat_scholar/templates/search_macros.html:65
 msgid "page"
+msgstr ""
+
+#: fatcat_scholar/templates/search_macros.html:300
+#: fatcat_scholar/templates/search_macros.html:303
+msgid "Previous"
+msgstr ""
+
+#: fatcat_scholar/templates/search_macros.html:308
+#: fatcat_scholar/templates/search_macros.html:310
+msgid "Next"
 msgstr ""
 

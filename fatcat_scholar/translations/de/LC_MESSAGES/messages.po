@@ -8,17 +8,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
-"POT-Creation-Date: 2020-10-01 19:25-0700\n"
+"POT-Creation-Date: 2020-10-05 13:30-0700\n"
 "PO-Revision-Date: 2020-10-05 19:26+0000\n"
 "Last-Translator: nautilusx <mail.ka@mailbox.org>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/internetarchive/"
-"fatcat-scholar/de/>\n"
 "Language: de\n"
+"Language-Team: German "
+"<https://hosted.weblate.org/projects/internetarchive/fatcat-scholar/de/>"
+"\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.3-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:36
@@ -101,80 +101,88 @@ msgstr "Neueste zuerst"
 msgid "Oldest First"
 msgstr "Älteste zuerst"
 
-#: fatcat_scholar/templates/base.html:161
+#: fatcat_scholar/templates/base.html:162
 msgid "Contribute to translations"
 msgstr "Übersetzungen hinzufügen"
 
-#: fatcat_scholar/templates/base.html:184
+#: fatcat_scholar/templates/base.html:185
 msgid "by title, authors, keywords..."
 msgstr "nach Titel, Autoren, Schlüsselwörtern..."
 
-#: fatcat_scholar/templates/base.html:185 fatcat_scholar/templates/home.html:16
+#: fatcat_scholar/templates/base.html:186 fatcat_scholar/templates/home.html:16
 msgid "Search"
 msgstr "Suche"
 
-#: fatcat_scholar/templates/base.html:192
+#: fatcat_scholar/templates/base.html:193
 msgid "User Guide"
 msgstr "Benutzerhandbuch"
 
-#: fatcat_scholar/templates/base.html:220
+#: fatcat_scholar/templates/base.html:221
 msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
 msgstr ""
-"Wir sind eine gemeinnützige Bibliothek gemäß US 501(c)(3), die ein globales "
-"Archiv von Internetseiten und anderen kulturellen Artefakten in digitaler "
-"Form erstellt."
+"Wir sind eine gemeinnützige Bibliothek gemäß US 501(c)(3), die ein "
+"globales Archiv von Internetseiten und anderen kulturellen Artefakten in "
+"digitaler Form erstellt."
 
 #: fatcat_scholar/templates/base.html:223
+msgid "Other projects include"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:225
 msgid "About Us"
 msgstr "Über uns"
 
-#: fatcat_scholar/templates/base.html:224
+#: fatcat_scholar/templates/base.html:226
 msgid "Contact Us"
 msgstr "Kontakt"
 
-#: fatcat_scholar/templates/base.html:225
+#: fatcat_scholar/templates/base.html:227
 msgid "Policies"
 msgstr "Richtlinien"
 
-#: fatcat_scholar/templates/base.html:226
+#: fatcat_scholar/templates/base.html:228
 msgid "Donate"
 msgstr "Spenden"
 
-#: fatcat_scholar/templates/base.html:234
+#: fatcat_scholar/templates/base.html:236
 msgid "How It Works"
 msgstr "Wie es funktioniert"
 
-#: fatcat_scholar/templates/base.html:235
+#: fatcat_scholar/templates/base.html:237
 msgid "Content Sources"
 msgstr "Datenquellen"
 
-#: fatcat_scholar/templates/base.html:236
+#: fatcat_scholar/templates/base.html:238
 msgid "Text and Data Mining"
 msgstr "Text und Data Mining"
 
-#: fatcat_scholar/templates/base.html:237
+#: fatcat_scholar/templates/base.html:239
 msgid "Help"
 msgstr "Hilfe"
 
 #: fatcat_scholar/templates/base.html:243
+msgid "Open Infrastructure"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:245
 msgid "Editable Catalog (Fatcat)"
 msgstr "Bearbeitbarer Katalog (Fatcat)"
 
-#: fatcat_scholar/templates/base.html:244
+#: fatcat_scholar/templates/base.html:246
 msgid "Contribute"
 msgstr "Mitmachen"
 
-#: fatcat_scholar/templates/base.html:245
+#: fatcat_scholar/templates/base.html:247
 msgid "Search API"
 msgstr "Such-API"
 
-#: fatcat_scholar/templates/base.html:246
+#: fatcat_scholar/templates/base.html:248
 msgid "Service Status"
 msgstr "Dienststatus"
 
-#: fatcat_scholar/templates/base.html:247
+#: fatcat_scholar/templates/base.html:249
 msgid "Source Code"
 msgstr "Quellcode"
 
@@ -196,7 +204,8 @@ msgid ""
 " other scholarly documents preserved in the Internet Archive."
 msgstr ""
 "Dieser Volltextsuchindex enthält über 25 Millionen Forschungsartikel und "
-"andere wissenschaftliche Dokumente, die im Internetarchiv aufbewahrt werden."
+"andere wissenschaftliche Dokumente, die im Internetarchiv aufbewahrt "
+"werden."
 
 #: fatcat_scholar/templates/home.html:24
 msgid ""
@@ -204,9 +213,9 @@ msgid ""
 " though the latest Open Access conference proceedings and pre-prints "
 "crawled from the World Wide Web."
 msgstr ""
-"Die Sammlung umfasst digitalisierte Exemplare von Zeitschriften aus dem 18. "
-"Jahrhundert, wobei die neuesten Open Access-Konferenzberichte und Vordrucke "
-"aus dem World Wide Web stammen."
+"Die Sammlung umfasst digitalisierte Exemplare von Zeitschriften aus dem "
+"18. Jahrhundert, wobei die neuesten Open Access-Konferenzberichte und "
+"Vordrucke aus dem World Wide Web stammen."
 
 #: fatcat_scholar/templates/home.html:36
 msgid ""
@@ -227,6 +236,12 @@ msgstr "Backend-Suchmaschinenfehler"
 #: fatcat_scholar/templates/search.html:75
 msgid "Search Query Error"
 msgstr "Suchabfragefehler"
+
+#: fatcat_scholar/templates/search.html:79
+msgid ""
+"Query parsing is currently very naive. Sometimes you can fix this problem"
+" by adding quotes around terms or entire phrases."
+msgstr ""
 
 #: fatcat_scholar/templates/search.html:106
 msgid "We didn't find any documents matching your query"
@@ -259,6 +274,16 @@ msgstr "unbekannt"
 #: fatcat_scholar/templates/search_macros.html:65
 msgid "page"
 msgstr "Seite"
+
+#: fatcat_scholar/templates/search_macros.html:300
+#: fatcat_scholar/templates/search_macros.html:303
+msgid "Previous"
+msgstr ""
+
+#: fatcat_scholar/templates/search_macros.html:308
+#: fatcat_scholar/templates/search_macros.html:310
+msgid "Next"
+msgstr ""
 
 #~ msgid ""
 #~ "This fulltext search index includes over"
@@ -303,3 +328,4 @@ msgstr "Seite"
 
 #~ msgid "Statistics"
 #~ msgstr "Statistik"
+

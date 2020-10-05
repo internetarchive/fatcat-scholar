@@ -7,18 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
-"POT-Creation-Date: 2020-10-01 19:25-0700\n"
+"POT-Creation-Date: 2020-10-05 13:30-0700\n"
 "PO-Revision-Date: 2020-10-05 19:26+0000\n"
 "Last-Translator: Artem <KovalevArtem.ru@gmail.com>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/internetarchive/"
-"fatcat-scholar/ru/>\n"
 "Language: ru\n"
+"Language-Team: Russian "
+"<https://hosted.weblate.org/projects/internetarchive/fatcat-scholar/ru/>"
+"\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.3-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:36
@@ -101,77 +101,85 @@ msgstr "Недавние сначала"
 msgid "Oldest First"
 msgstr "Сначала старые"
 
-#: fatcat_scholar/templates/base.html:161
+#: fatcat_scholar/templates/base.html:162
 msgid "Contribute to translations"
 msgstr "Внести свой вклад в переводы"
 
-#: fatcat_scholar/templates/base.html:184
+#: fatcat_scholar/templates/base.html:185
 msgid "by title, authors, keywords..."
 msgstr "по названию, авторам, ключевым словам..."
 
-#: fatcat_scholar/templates/base.html:185 fatcat_scholar/templates/home.html:16
+#: fatcat_scholar/templates/base.html:186 fatcat_scholar/templates/home.html:16
 msgid "Search"
 msgstr "Поиск"
 
-#: fatcat_scholar/templates/base.html:192
+#: fatcat_scholar/templates/base.html:193
 msgid "User Guide"
 msgstr "Руководство пользователя"
 
-#: fatcat_scholar/templates/base.html:220
+#: fatcat_scholar/templates/base.html:221
 msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
 msgstr ""
 
 #: fatcat_scholar/templates/base.html:223
+msgid "Other projects include"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:225
 msgid "About Us"
 msgstr "О нас"
 
-#: fatcat_scholar/templates/base.html:224
+#: fatcat_scholar/templates/base.html:226
 msgid "Contact Us"
 msgstr "Связаться с нами"
 
-#: fatcat_scholar/templates/base.html:225
+#: fatcat_scholar/templates/base.html:227
 msgid "Policies"
 msgstr "Политика"
 
-#: fatcat_scholar/templates/base.html:226
+#: fatcat_scholar/templates/base.html:228
 msgid "Donate"
 msgstr "Пожертвовать"
 
-#: fatcat_scholar/templates/base.html:234
+#: fatcat_scholar/templates/base.html:236
 msgid "How It Works"
 msgstr "Как это работает"
 
-#: fatcat_scholar/templates/base.html:235
+#: fatcat_scholar/templates/base.html:237
 msgid "Content Sources"
 msgstr "Источники контента"
 
-#: fatcat_scholar/templates/base.html:236
+#: fatcat_scholar/templates/base.html:238
 msgid "Text and Data Mining"
 msgstr "Интеллектуальный анализ текста и данных"
 
-#: fatcat_scholar/templates/base.html:237
+#: fatcat_scholar/templates/base.html:239
 msgid "Help"
 msgstr "Справка"
 
 #: fatcat_scholar/templates/base.html:243
+msgid "Open Infrastructure"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:245
 msgid "Editable Catalog (Fatcat)"
 msgstr "Редактируемый каталог (Fatcat)"
 
-#: fatcat_scholar/templates/base.html:244
+#: fatcat_scholar/templates/base.html:246
 msgid "Contribute"
 msgstr "Стать участником"
 
-#: fatcat_scholar/templates/base.html:245
+#: fatcat_scholar/templates/base.html:247
 msgid "Search API"
 msgstr "API поиска"
 
-#: fatcat_scholar/templates/base.html:246
+#: fatcat_scholar/templates/base.html:248
 msgid "Service Status"
 msgstr "Статус сервиса"
 
-#: fatcat_scholar/templates/base.html:247
+#: fatcat_scholar/templates/base.html:249
 msgid "Source Code"
 msgstr "Исходный код"
 
@@ -218,6 +226,12 @@ msgstr "Ошибка внутренней поисковой системы"
 msgid "Search Query Error"
 msgstr "Ошибка поискового запроса"
 
+#: fatcat_scholar/templates/search.html:79
+msgid ""
+"Query parsing is currently very naive. Sometimes you can fix this problem"
+" by adding quotes around terms or entire phrases."
+msgstr ""
+
 #: fatcat_scholar/templates/search.html:106
 msgid "We didn't find any documents matching your query"
 msgstr "Мы не нашли никаких документов, соответствующих вашему запросу"
@@ -249,3 +263,14 @@ msgstr "неизвестно"
 #: fatcat_scholar/templates/search_macros.html:65
 msgid "page"
 msgstr "страница"
+
+#: fatcat_scholar/templates/search_macros.html:300
+#: fatcat_scholar/templates/search_macros.html:303
+msgid "Previous"
+msgstr ""
+
+#: fatcat_scholar/templates/search_macros.html:308
+#: fatcat_scholar/templates/search_macros.html:310
+msgid "Next"
+msgstr ""
+
