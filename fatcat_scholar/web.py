@@ -16,7 +16,7 @@ from fatcat_scholar.search import do_fulltext_search, FulltextQuery, FulltextHit
 
 # print(f"dynaconf settings: {settings.as_dict()}", file=sys.stderr)
 
-I18N_LANG_TRANSLATIONS = ["de", "zh"]
+I18N_LANG_TRANSLATIONS = ["de", "zh", "ru"]
 I18N_LANG_OPTIONS = I18N_LANG_TRANSLATIONS + [
     settings.I18N_LANG_DEFAULT,
 ]
