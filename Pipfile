@@ -26,6 +26,7 @@ sentry-sdk = { version = ">=0.14.0", extras = [] }
 toml = "*"
 uvicorn = "*"
 dynaconf = ">=3"
+confluent-kafka = "*"
 
 # Maybe?
 #citeproc-py = ">=0.4"
