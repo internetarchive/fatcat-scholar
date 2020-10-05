@@ -76,8 +76,8 @@
             {% endif %}
           </div>
           <p>Computer said: <code>{{ search_error.message }}</code>
-          <p>Query parsing is currently very naive. Sometimes you can fix this
-          problem by adding quotes around terms or entire phrases.
+          <p>{% trans trimmed %}Query parsing is currently very naive. Sometimes you can fix this
+          problem by adding quotes around terms or entire phrases.{% endtrans %}
         </div>
       </div>
     {% elif hits and hits.results %}
