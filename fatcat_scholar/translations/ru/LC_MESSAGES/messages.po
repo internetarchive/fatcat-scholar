@@ -3,22 +3,23 @@
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # Artem <KovalevArtem.ru@gmail.com>, 2020.
+# Bryan Newbold <bnewbold@robocracy.org>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2020-10-05 13:30-0700\n"
-"PO-Revision-Date: 2020-10-05 19:26+0000\n"
-"Last-Translator: Artem <KovalevArtem.ru@gmail.com>\n"
+"PO-Revision-Date: 2020-10-06 02:45+0000\n"
+"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/internetarchive/"
+"fatcat-scholar/ru/>\n"
 "Language: ru\n"
-"Language-Team: Russian "
-"<https://hosted.weblate.org/projects/internetarchive/fatcat-scholar/ru/>"
-"\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.3-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:36
@@ -213,6 +214,8 @@ msgid ""
 "This service is in \"alpha\". It has several bugs, experiences\n"
 "        downtime, and has not been officially announced."
 msgstr ""
+"Эта услуга находится в «альфе». Есть несколько ошибок, опыта\n"
+"        время простоя, и официально не объявлено."
 
 #: fatcat_scholar/templates/search.html:25
 msgid "Filters"
@@ -267,10 +270,9 @@ msgstr "страница"
 #: fatcat_scholar/templates/search_macros.html:300
 #: fatcat_scholar/templates/search_macros.html:303
 msgid "Previous"
-msgstr ""
+msgstr "Предыдущий"
 
 #: fatcat_scholar/templates/search_macros.html:308
 #: fatcat_scholar/templates/search_macros.html:310
 msgid "Next"
-msgstr ""
-
+msgstr "Следующий"
