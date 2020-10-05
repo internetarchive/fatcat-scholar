@@ -25,7 +25,7 @@ requests = ">=2"
 sentry-sdk = { version = ">=0.14.0", extras = [] }
 toml = "*"
 uvicorn = "*"
-dynaconf = "*"
+dynaconf = ">=3"
 
 # Maybe?
 #citeproc-py = ">=0.4"
