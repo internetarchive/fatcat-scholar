@@ -12,7 +12,11 @@ See also:
 
 ### Added
 
+- added Russian (ru) translation (thanks @artem.ru)
+
 ### Changed
+
+- updated dynaconf dependency to version 3 (thanks @rochabruno)
 
 ### Fixed
 
