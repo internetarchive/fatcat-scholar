@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2020-10-05 13:30-0700\n"
-"PO-Revision-Date: 2020-10-06 02:45+0000\n"
-"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"PO-Revision-Date: 2020-10-09 20:26+0000\n"
+"Last-Translator: Artem <KovalevArtem.ru@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/ru/>\n"
 "Language: ru\n"
@@ -126,7 +126,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/base.html:223
 msgid "Other projects include"
-msgstr ""
+msgstr "Другие проекты включают"
 
 #: fatcat_scholar/templates/base.html:225
 msgid "About Us"
@@ -162,7 +162,7 @@ msgstr "Справка"
 
 #: fatcat_scholar/templates/base.html:243
 msgid "Open Infrastructure"
-msgstr ""
+msgstr "Открытая инфраструктура"
 
 #: fatcat_scholar/templates/base.html:245
 msgid "Editable Catalog (Fatcat)"
