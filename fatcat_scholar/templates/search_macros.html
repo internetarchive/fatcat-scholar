@@ -313,7 +313,7 @@
 {% endmacro %}
 
 {% macro query_option(options, selected) -%}
-<span style="color: rgba(0,0,0,0.4);">{{ _(options.label) }}</span>
+<label for="{{ options.slug }}" style="color: rgba(0,0,0,0.4);">{{ _(options.label) }}</label>
 <div class="ui link list" style="margin-top: 0.3em;">
   {% for opt in options.list %}
     <button class="text-button" form="search_form" type="submit" name="{{ options.slug }}" value="{{ opt.slug }}">

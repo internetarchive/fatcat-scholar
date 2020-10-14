@@ -10,16 +10,17 @@
 {%- endmacro %}
 
 {% block fullmain %}
-<div class="tablet-only" style="margin-top: 1.0em;">
 
-  <!-- these hidden query fields should be *before* any form/button that could override them -->
-  {{ search_macros.query_hidden(query.time_options, query.filter_time) }}
-  {{ search_macros.query_hidden(query.type_options, query.filter_type) }}
-  {{ search_macros.query_hidden(query.availability_options, query.filter_availability) }}
-  {{ search_macros.query_hidden(query.sort_options, query.sort_order) }}
-  {% if query.debug %}
-    <input form="search_form" type="hidden" name="debug" value="1">
-  {% endif %}
+<!-- these hidden query fields should be *before* any form/button that could override them -->
+{{ search_macros.query_hidden(query.time_options, query.filter_time) }}
+{{ search_macros.query_hidden(query.type_options, query.filter_type) }}
+{{ search_macros.query_hidden(query.availability_options, query.filter_availability) }}
+{{ search_macros.query_hidden(query.sort_options, query.sort_order) }}
+{% if query.debug %}
+  <input form="search_form" type="hidden" name="debug" value="1">
+{% endif %}
+
+<div class="tablet-only" style="margin-top: 1.0em;">
 
   <details class="search_filters">
     <summary style="float: right;"><i class="filter icon"></i>{{ _("Filters") }}</summary>
@@ -42,7 +43,7 @@
 
 <div class="ui equal height stackable divided grid" style="margin-top: 1em;">
 
-  <div class="ui tablet-hide two wide column">
+  <nav class="ui tablet-hide two wide column">
     {% if hits %}
       <div style="width: 100%; text-align: right;">
         <h3 style="font-size: {% if hits.count_found >= 10000000 %}1.0em{% elif hits.count_found >= 1000 %}1.5em{% else %}2.0em{% endif %};">{{ "{:,}".format(hits.count_found) }}</h3>
@@ -61,7 +62,7 @@
       {{ search_macros.query_option(query.sort_options, query.sort_order) }}
     </div>
     
-  </div>
+  </nav>
 
   <div class="ui fourteen wide column">
     {% if search_error %}
