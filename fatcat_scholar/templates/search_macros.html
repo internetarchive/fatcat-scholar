@@ -61,7 +61,7 @@
       {% endif %}
 
     {% elif paper.doc_type == "sim_page" %}
-      <a target="_blank" rel="noopener" href="https://archive.org/details/{{ paper.ia_sim.issue_item }}/page/{{ paper.ia_sim.first_page }}" style="color: #2224c7;">Page {{ paper.ia_sim.first_page }} of {{ paper.biblio.container_name }} Vol. {{ paper.biblio.volume }}, Issue {{ paper.biblio.issue }}</a>
+      <a target="_blank" rel="noopener" href="https://archive.org/details/{{ paper.ia_sim.issue_item }}/page/{{ paper.ia_sim.first_page }}" style="color: #2224c7;">{% trans page_num = paper.ia_sim.first_page, journal_name = paper.biblio.container_name, volume = paper.biblio.volume, issue = paper.biblio.issue %}Page {{ page_num }} of {{ journal_name }} Vol. {{ volume }}, Issue {{ issue }}{% endtrans %}</a>
       <span style="font-weight: normal; text-transform: uppercase; font-weight: bold;">[{{ _("page") }}]</span>
     {% endif %}
 
@@ -167,16 +167,16 @@
   {% if (paper.access and paper.access|length > 1) or (paper.releases and paper.releases|length > 1) %}
     <div class="ui basic label blue small simple dropdown item">
       <i class="ui icon add"></i>
-      Multiple Versions
+      {% trans %}Multiple Versions{% endtrans %}
 
       <div class="menu" style="font-weight: normal;">
         <table class="ui celled table">
           <thead>
             <tr>
-              <th>Publication Stage</th>
-              <th>Date</th>
-              <th>Fulltext</th>
-              <th>Metadata</th>
+              <th>{{ _("Publication Stage") }}</th>
+              <th>{{ _("Date") }}</th>
+              <th>{{ _("Fulltext") }}</th>
+              <th>{{ _("Metadata") }}</th>
             </tr>
           </thead>
           <tbody>
@@ -184,7 +184,7 @@
             <tr>
               <td>
                 <span style="font-weight: normal; text-transform: uppercase; font-weight: bold; color: brown;">
-                  {{ release.release_stage or "unknown" }}
+                  {{ release.release_stage or _("unknown") }}
                 </span>
               </td>
               <td>
@@ -223,7 +223,7 @@
               <tr>
                 <td>
                   <span style="font-weight: normal; text-transform: uppercase; font-weight: bold; color: brown;">
-                    published
+                    {{ _("published") }}
                   </span>
                 </td>
                 <td></td>
@@ -231,7 +231,7 @@
                   <a href="{{ access.access_url }}">
                     <span class="ui blue label">
                       <i class="film icon"></i>
-                      microfilm
+                      {{ _("microfilm") }}
                     </span>
                   </a>
                 </td>
@@ -249,7 +249,9 @@
   {% if paper._collapsed_count > 0 %}
     <button class="ui basic label blue small button" form="search_form" type="submit" name="collapse_key" value="{{ paper.collapse_key }}">
       <i class="ui icon zoom-in"></i>
-      Show {{ paper._collapsed_count }} additional hits from this issue
+      {% trans trimmed count=paper._collapsed_count %}
+        Show {{ count }} additional hits from this issue
+      {% endtrans %}
     </button>
   {% endif %}
 
@@ -302,7 +304,11 @@
 {% else %}
   <span style="color:gray; margin-right: 2em;">&#xab; {% trans %}Previous{% endtrans %}</span>
 {% endif %}
-<i>Showing results {{ hits.offset }} &mdash; {{ hits.offset + hits.limit }} out of {{ "{:,}".format(hits.count_found) }} results</i>
+<i>
+  {% trans trimmed start=hits.offset, end=(hits.offset + hits.limit), total="{:,}".format(hits.count_found) %}
+    Showing results {{ start }} &mdash; {{ end }} out of {{ total }} results
+  {% endtrans %}
+</i>
 {% if hits.offset + hits.limit < hits.count_found %}
 <button class="text-button" form="search_form" type="submit" name="offset" value="{{ hits.offset + hits.limit }}" style="margin-left: 2em;">
   <a>{% trans %}Next{% endtrans %} &#xbb;</a>

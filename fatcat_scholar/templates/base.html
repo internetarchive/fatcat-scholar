@@ -220,7 +220,12 @@
             <p style="color: rgba(255, 255, 255, 0.5);">
             {% trans %}We are a US 501(c)(3) non-profit library, building a global archive of Internet sites and other cultural artifacts in digital form.{% endtrans %}
 
-            {% trans %}Other projects include{% endtrans %} <a target="_blank" rel="noopener" href="https://web.archive.org">The Wayback Machine</a>, <a target="_blank" rel="noopener" href="https://archive.org">archive.org</a>, <a target="_blank" rel="noopener" href="https://openlibrary.org">Open Library</a> and <a target="_blank" rel="noopener" href="https://archive-it.org">Archive-It</a>
+            {% trans wayback='<a target="_blank" rel="noopener" href="https://web.archive.org">The Wayback Machine</a>'|safe,
+                archive_org = '<a target="_blank" rel="noopener" href="https://archive.org">archive.org</a>'|safe,
+                openlibrary = '<a target="_blank" rel="noopener" href="https://openlibrary.org">Open Library</a>'|safe,
+                archive_it = '<a target="_blank" rel="noopener" href="https://archive-it.org">Archive-It</a>'|safe %}
+              Other projects include {{ wayback }}, {{ archive_org }}, {{ openlibrary }}, and {{ archive_it }}.
+            {% endtrans %}
             <div class="ui horizontal inverted link list">
               <a class="item" target="_blank" rel="noopener" href="https://archive.org/about/">{{ _("About Us") }}</a>
               <a class="item" target="_blank" rel="noopener" href="https://archive.org/about/contact.php">{{ _("Contact Us") }}</a>
