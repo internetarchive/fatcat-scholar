@@ -260,8 +260,8 @@
   {% if paper.fulltext and paper.fulltext.access_url %}
     {% if paper.fulltext.thumbnail_url %}
       <div class="ui serp card" style="margin-bottom: 0.2em;">
-        <a class="image" target="_blank" rel="noopener" href="{{ paper.fulltext.access_url}}">
-          <img src="{{ paper.fulltext.thumbnail_url }}">
+        <a class="image" target="_blank" rel="noopener" href="{{ paper.fulltext.access_url}}" alt="{{ _('fulltext PDF download') }}">
+          <img src="{{ paper.fulltext.thumbnail_url }}" alt="{{ _('fulltext thumbnail') }}">
         </a>
       </div>
     {% else %}

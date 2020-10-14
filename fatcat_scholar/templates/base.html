@@ -138,8 +138,8 @@
       </div>
     {% endif %}
     <a href="https://archive.org/" class="header item">
-      <img class="logo" src="/static/ia-logo.svg" style="width: 20px;">
-      <img class="mobile-hide" src="/static/ia-wordmark.svg" style="margin-left: 10px; width: 180px;">
+      <img class="logo" src="/static/ia-logo.svg" style="width: 20px;" alt="">
+      <img class="mobile-hide" src="/static/ia-wordmark.svg" style="margin-left: 10px; width: 180px;" alt="Internet Archive">
     </a>
     <span style="margin-top: 0.5em;">
       <a class="ui grey label" style="background-color: #fbbd08a6;" href="{{ lang_prefix }}/#alphanotice"><i>alpha</i></a>
@@ -149,7 +149,7 @@
       <div class="ui simple dropdown item">
       <!-- language/translate SVG icon -->
       <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSIxNzkyIiB2aWV3Qm94PSIwIDAgMTc5MiAxNzkyIiB3aWR0aD0iMTc5MiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNNzgyIDEwNzhxLTEgMy0xMi41LS41dC0zMS41LTExLjVsLTIwLTlxLTQ0LTIwLTg3LTQ5LTctNS00MS0zMS41dC0zOC0yOC41cS02NyAxMDMtMTM0IDE4MS04MSA5NS0xMDUgMTEwLTQgMi0xOS41IDR0LTE4LjUgMHE2LTQgODItOTIgMjEtMjQgODUuNS0xMTV0NzguNS0xMThxMTctMzAgNTEtOTguNXQzNi03Ny41cS04LTEtMTEwIDMzLTggMi0yNy41IDcuNXQtMzQuNSA5LjUtMTcgNXEtMiAyLTIgMTAuNXQtMSA5LjVxLTUgMTAtMzEgMTUtMjMgNy00NyAwLTE4LTQtMjgtMjEtNC02LTUtMjMgNi0yIDI0LjUtNXQyOS41LTZxNTgtMTYgMTA1LTMyIDEwMC0zNSAxMDItMzUgMTAtMiA0My0xOS41dDQ0LTIxLjVxOS0zIDIxLjUtOHQxNC41LTUuNSA2IC41cTIgMTItMSAzMyAwIDItMTIuNSAyN3QtMjYuNSA1My41LTE3IDMzLjVxLTI1IDUwLTc3IDEzMWw2NCAyOHExMiA2IDc0LjUgMzJ0NjcuNSAyOHE0IDEgMTAuNSAyNS41dDQuNSAzMC41em0tMjA1LTQ4NnEzIDE1LTQgMjgtMTIgMjMtNTAgMzgtMzAgMTItNjAgMTItMjYtMy00OS0yNi0xNC0xNS0xOC00MWwxLTNxMyAzIDE5LjUgNXQyNi41IDAgNTgtMTZxMzYtMTIgNTUtMTQgMTcgMCAyMSAxN3ptNjk4IDEyOWw2MyAyMjctMTM5LTQyem0tMTEwOCA4MDBsNjk0LTIzMnYtMTAzMmwtNjk0IDIzM3YxMDMxem0xMjQxLTMxN2wxMDIgMzEtMTgxLTY1Ny0xMDAtMzEtMjE2IDUzNiAxMDIgMzEgNDUtMTEwIDIxMSA2NXptLTUwMy05NjJsNTczIDE4NHYtMzgwem0zMTEgMTMyM2wxNTggMTMtNTQgMTYwLTQwLTY2cS0xMzAgODMtMjc2IDEwOC01OCAxMi05MSAxMmgtODRxLTc5IDAtMTk5LjUtMzl0LTE4My41LTg1cS04LTctOC0xNiAwLTggNS0xMy41dDEzLTUuNXE0IDAgMTggNy41dDMwLjUgMTYuNSAyMC41IDExcTczIDM3IDE1OS41IDYxLjV0MTU3LjUgMjQuNXE5NSAwIDE2Ny0xNC41dDE1Ny01MC41cTE1LTcgMzAuNS0xNS41dDM0LTE5IDI4LjUtMTYuNXptNDQ4LTEwNzl2MTA3OWwtNzc0LTI0NnEtMTQgNi0zNzUgMTI3LjV0LTM2OCAxMjEuNXEtMTMgMC0xOC0xMyAwLTEtMS0zdi0xMDc4cTMtOSA0LTEwIDUtNiAyMC0xMSAxMDYtMzUgMTQ5LTUwdi0zODRsNTU4IDE5OHEyIDAgMTYwLjUtNTV0MzE2LTEwOC41IDE2MS41LTUzLjVxMjAgMCAyMCAyMXY0MTh6Ii8+PC9zdmc+"
-      alt="select language" style="height: 1.5em; filter: invert(100%);">
+      alt="{{ _("select language") }}" style="height: 1.5em; filter: invert(100%);">
       <i class="dropdown icon" style="margin-left: 0.2em;"></i>
         <div class="menu">
             {# TODO: as a dynamic array #}
@@ -173,7 +173,7 @@
       <div class="ui four wide column" style="padding-bottom: 0;">
         <div style="display: flex; justify-content: center; align-items: center; height: 100%; width: 100%;">
           <a href="{{ lang_prefix }}/">
-            <img src="/static/scholar-vaporwave-logo-small.png" style="width: 200px; margin-top: -1.5em;">
+            <img src="/static/scholar-vaporwave-logo-small.png" alt="Internet Archive Scholar" style="width: 200px; margin-top: -1.5em;">
           </a>
         </div>
       </div>
@@ -212,7 +212,7 @@
       <div class="nine wide column">
         <div class="ui grid">
           <div class="tablet-hide two wide column" style="padding-top: 4em; padding-right: 0;">
-            <img class="logo" src="/static/ia-logo.svg" style="width: 100%; opacity: 0.5;">
+            <img class="logo" src="/static/ia-logo.svg" alt="" style="width: 100%; opacity: 0.5;">
           </div>
           <div class="one wide column computer only"></div>
           <div class="thirteen wide twelve wide computer column">
