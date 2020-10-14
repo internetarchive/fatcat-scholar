@@ -61,7 +61,7 @@
       {% endif %}
 
     {% elif paper.doc_type == "sim_page" %}
-      <a target="_blank" rel="noopener" href="https://archive.org/details/{{ paper.ia_sim.issue_item }}/page/{{ paper.ia_sim.first_page }}" style="color: #2224c7;">Page {{ paper.ia_sim.first_page }}</a> <a target="_blank" rel="noopener" href="https://archive.org/details/{{ paper.ia_sim.issue_item }}" style="color: #2224c7;">of {{ paper.biblio.container_name }} Vol. {{ paper.biblio.volume }}, Issue {{ paper.biblio.issue }}</a>
+      <a target="_blank" rel="noopener" href="https://archive.org/details/{{ paper.ia_sim.issue_item }}/page/{{ paper.ia_sim.first_page }}" style="color: #2224c7;">Page {{ paper.ia_sim.first_page }} of {{ paper.biblio.container_name }} Vol. {{ paper.biblio.volume }}, Issue {{ paper.biblio.issue }}</a>
       <span style="font-weight: normal; text-transform: uppercase; font-weight: bold;">[{{ _("page") }}]</span>
     {% endif %}
 
