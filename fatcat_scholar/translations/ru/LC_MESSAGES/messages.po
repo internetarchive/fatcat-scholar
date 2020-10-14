@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2020-10-14 03:37-0700\n"
 "PO-Revision-Date: 2020-10-15 11:26+0000\n"
-"Last-Translator: Artem <KovalevArtem.ru@gmail.com>\n"
+"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/ru/>\n"
 "Language: ru\n"
@@ -155,7 +155,7 @@ msgstr "Пожертвовать"
 
 #: fatcat_scholar/templates/base.html:250
 msgid "Open Infrastructure"
-msgstr ""
+msgstr "Открытая инфраструктура"
 
 #: fatcat_scholar/templates/base.html:252
 msgid "Editable Catalog (Fatcat)"
