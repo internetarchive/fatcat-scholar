@@ -31,8 +31,23 @@
   */
   </script>
   #}
+  <title>
+    {%- if settings.SCHOLAR_ENV != "prod" -%}[{{ settings.SCHOLAR_ENV|upper }}] {% endif -%}
+    {%- block title -%}scholar.archive.org{%- endblock %}
+  </title>
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.1/dist/semantic.min.css"
+    type="text/css"
+    crossorigin="anonymous">
   <style>
-
+    {# bnewbold: accessibility/contrast #}
+    a {
+      color: #28629c;
+    }
+    .ui.basic.blue.label {
+      color: #28629c!important;
+      border-color: #28629c!important;
+    }
 
     {# bnewbold: fix light grey bars in header #}
     .ui.inverted.menu .item:before { background: none; }
@@ -55,13 +70,13 @@
         line-height: 20px;
       }
       .ui.serp.card {
-        max-width: 180px !important;
+        max-width: 180px;
       }
       div.fulltext-link {
-        width: 180px !important;
+        width: 180px;
       }
       div.serp-hit-box {
-        padding-left: 1.1em !important;
+        padding-left: 1.1em;
       }
     }
 
@@ -105,14 +120,6 @@
       display: inline-block;
     }
   </style>
-  <title>
-    {%- if settings.SCHOLAR_ENV != "prod" -%}[{{ settings.SCHOLAR_ENV|upper }}] {% endif -%}
-    {%- block title -%}scholar.archive.org{%- endblock %}
-  </title>
-  <link rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.1/dist/semantic.min.css"
-    type="text/css"
-    crossorigin="anonymous">
   <link rel="preload"
     href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin"
     as="style">
