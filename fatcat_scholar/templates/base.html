@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ locale or 'en' }}" style="position: relative; min-height: 100%; height: auto;">
+<html lang="{{ locale or 'en' }}" style="position: relative; min-height: 100%; height: auto;" {% if locale in ['ar'] %}dir="rtl"{% endif %}>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -128,7 +128,7 @@
 </head>
 
 <body>
-<nav class="ui inverted menu" style="margin: 0;">
+<nav class="ui inverted menu" style="margin: 0;" dir="ltr">
   <div class="ui container">
     {% if settings.SCHOLAR_ENV != "prod" %}
       <div class="ui left corner {% if settings.SCHOLAR_ENV == "qa" %}orange{% else %}pink{% endif %} small label">

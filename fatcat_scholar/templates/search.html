@@ -45,17 +45,17 @@
 
   <nav class="ui tablet-hide two wide column">
     {% if hits %}
-      <div style="width: 100%; text-align: right;">
+      <div style="width: 100%; text-align: end;">
         <h3 style="font-size: {% if hits.count_found >= 10000000 %}1.0em{% elif hits.count_found >= 1000 %}1.5em{% else %}2.0em{% endif %};">{{ "{:,}".format(hits.count_found) }}</h3>
         {{ _("Hits") }}
       </div>
-      <div style="text-align: right;">
+      <div style="text-align: end;">
         <span style="color: rgba(0,0,0,0.4);">in {{ format_query_time(hits.query_time_ms) }}</span>
       </div>
       <div class="ui clearing divider"></div>
     {% endif %}
 
-    <div style="text-align: right; white-space: nowrap; direction: rtl;">
+    <div style="text-align: end; white-space: nowrap;">
       {{ search_macros.query_option(query.time_options, query.filter_time) }}
       {{ search_macros.query_option(query.type_options, query.filter_type) }}
       {{ search_macros.query_option(query.availability_options, query.filter_availability) }}
