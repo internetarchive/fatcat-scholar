@@ -1,4 +1,41 @@
 
+more accessibility:
+- try lynx
+- lynx filters: "no form action defined"
+- lynx filters: duplicated (would be good to de-dupe in general)
+- "missing image" alt tag
+- "hit count" should not be <h3> (see also lynx)
+- fulltext download: <a> alt/title
+- all footer headers should be same header class
+- should SERP page have an <h1>? "Search Results"? hidden?
+- search ARIA pages
+- search filter labels not linked correctly?
+- orange tag labels: low contrast?
+- next/previous grey low-contrast
+
+
+language notes:
+- french would open up canadian partnerships?
+- UN languages (there are 6)
+
+
+- Onion-Location header
+- es 7.x library breaks QA searching
+    => setup small public QA index somewhere public
+- <meta> description
+- canonical links?
+- "clear filters" link/button
+- jinja2: "if xyz is defined" better than "if xyz"
+- "default" translation option (clear prefix, use browser default)
+- detect browser-requested languages for default language
+
+copy editing:
+- "how it works" page
+- "Contribute" -> "How To Participate"
+- web.archive.org not found -> resolved
+- link to "known issues" from alpha warning?
+- /alpha page, include known issues there
+
 content/pipeline:
 - continuous update worker from fatcat
 - add gzip to intermediate files pipeline commands
@@ -6,6 +43,7 @@ content/pipeline:
 - makefile targets for bulk ingest
 
 cleanups:
+- "web assets" (CSS etc) in this repo or on *.archive.org in general
 - better typing/annotation of work pipeline
 - test coverage
 - use settings.toml for defaults of CLI args
