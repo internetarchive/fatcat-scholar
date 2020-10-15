@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
-"POT-Creation-Date: 2020-10-14 03:37-0700\n"
+"POT-Creation-Date: 2020-10-15 10:14-0700\n"
 "PO-Revision-Date: 2020-10-06 02:45+0000\n"
 "Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language: zh\n"
@@ -129,10 +129,8 @@ msgstr "我们是501（c）（3）非营利组织，以数字形式建立了互�
 #: fatcat_scholar/templates/base.html:234
 #, python-format
 msgid ""
-"\n"
-"              Other projects include %(wayback)s, %(archive_org)s, "
-"%(openlibrary)s, and %(archive_it)s.\n"
-"            "
+"Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and"
+" %(archive_it)s."
 msgstr ""
 
 #: fatcat_scholar/templates/base.html:241
@@ -377,5 +375,13 @@ msgstr "下一个"
 #~ msgstr ""
 
 #~ msgid "Other projects include"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "              Other projects include "
+#~ "%(wayback)s, %(archive_org)s, %(openlibrary)s, and"
+#~ " %(archive_it)s.\n"
+#~ "            "
 #~ msgstr ""
 
