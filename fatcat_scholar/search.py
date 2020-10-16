@@ -9,6 +9,7 @@ from typing import List, Optional, Any
 
 import elasticsearch
 from elasticsearch_dsl import Search, Q
+from elasticsearch_dsl.response import Response
 
 # pytype: disable=import-error
 from pydantic import BaseModel
@@ -93,27 +94,49 @@ class FulltextHits(BaseModel):
 es_client = elasticsearch.Elasticsearch(settings.ELASTICSEARCH_BACKEND, timeout=25.0)
 
 
-def do_fulltext_search(
-    query: FulltextQuery, deep_page_limit: int = 2000
-) -> FulltextHits:
+def transform_es_results(resp: Response) -> List[dict]:
+    # convert from ES objects to python dicts
+    results = []
+    for h in resp:
+        r = h._d_
+        # print(h.meta._d_)
+        r["_highlights"] = []
+        if "highlight" in dir(h.meta):
+            highlights = h.meta.highlight._d_
+            for k in highlights:
+                r["_highlights"] += highlights[k]
+        r["_collapsed"] = []
+        r["_collapsed_count"] = 0
+        if "inner_hits" in dir(h.meta):
+            if isinstance(h.meta.inner_hits.more_pages.hits.total, int):
+                r["_collapsed_count"] = h.meta.inner_hits.more_pages.hits.total - 1
+            else:
+                r["_collapsed_count"] = (
+                    h.meta.inner_hits.more_pages.hits.total["value"] - 1
+                )
+            for k in h.meta.inner_hits.more_pages:
+                if k["key"] != r["key"]:
+                    r["_collapsed"].append(k)
+        results.append(r)
 
-    search = Search(using=es_client, index=settings.ELASTICSEARCH_FULLTEXT_INDEX)
+    for h in results:
+        # Handle surrogate strings that elasticsearch returns sometimes,
+        # probably due to mangled data processing in some pipeline.
+        # "Crimes against Unicode"; production workaround
+        for key in h:
+            if type(h[key]) is str:
+                h[key] = h[key].encode("utf8", "ignore").decode("utf8")
+        # ensure collapse_key is a single value, not an array
+        if type(h["collapse_key"]) == list:
+            h["collapse_key"] = h["collapse_key"][0]
 
-    # Try handling raw identifier queries
-    if query.q and len(query.q.strip().split()) == 1 and not '"' in query.q:
-        doi = clean_doi(query.q)
-        if doi:
-            query.q = f'doi:"{doi}"'
-            query.filter_type = "everything"
-            query.filter_availability = "everything"
-            query.filter_time = "all_time"
-        pmcid = clean_pmcid(query.q)
-        if pmcid:
-            query.q = f'pmcid:"{pmcid}"'
-            query.filter_type = "everything"
-            query.filter_availability = "everything"
-            query.filter_time = "all_time"
+    return results
 
+
+def apply_filters(search: Search, query: FulltextQuery) -> Search:
+    """
+    Applies query filters to ES Search object based on query
+    """
     # type filters
     if query.filter_type == "papers" or query.filter_type is None:
         search = search.filter(
@@ -175,6 +198,30 @@ def do_fulltext_search(
             f"Unknown 'filter_availability' parameter value: '{query.filter_availability}'"
         )
 
+    return search
+
+
+def do_fulltext_search(
+    query: FulltextQuery, deep_page_limit: int = 2000
+) -> FulltextHits:
+
+    search = Search(using=es_client, index=settings.ELASTICSEARCH_FULLTEXT_INDEX)
+
+    # Try handling raw identifier queries
+    if query.q and len(query.q.strip().split()) == 1 and not '"' in query.q:
+        doi = clean_doi(query.q)
+        if doi:
+            query.q = f'doi:"{doi}"'
+            query.filter_type = "everything"
+            query.filter_availability = "everything"
+            query.filter_time = "all_time"
+        pmcid = clean_pmcid(query.q)
+        if pmcid:
+            query.q = f'pmcid:"{pmcid}"'
+            query.filter_type = "everything"
+            query.filter_availability = "everything"
+            query.filter_time = "all_time"
+
     if query.collapse_key:
         search = search.filter("term", collapse_key=query.collapse_key)
     else:
@@ -184,6 +231,9 @@ def do_fulltext_search(
                 "inner_hits": {"name": "more_pages", "size": 0,},
             }
         )
+
+    # apply filters from query
+    search = apply_filters(search, query)
 
     # we combined several queries to improve scoring.
 
@@ -277,40 +327,8 @@ def do_fulltext_search(
         raise IOError(str(e.info))
     query_delta = datetime.datetime.now() - query_start
 
-    # convert from objects to python dicts
-    results = []
-    for h in resp:
-        r = h._d_
-        # print(h.meta._d_)
-        r["_highlights"] = []
-        if "highlight" in dir(h.meta):
-            highlights = h.meta.highlight._d_
-            for k in highlights:
-                r["_highlights"] += highlights[k]
-        r["_collapsed"] = []
-        r["_collapsed_count"] = 0
-        if "inner_hits" in dir(h.meta):
-            if isinstance(h.meta.inner_hits.more_pages.hits.total, int):
-                r["_collapsed_count"] = h.meta.inner_hits.more_pages.hits.total - 1
-            else:
-                r["_collapsed_count"] = (
-                    h.meta.inner_hits.more_pages.hits.total["value"] - 1
-                )
-            for k in h.meta.inner_hits.more_pages:
-                if k["key"] != r["key"]:
-                    r["_collapsed"].append(k)
-        results.append(r)
-
-    for h in results:
-        # Handle surrogate strings that elasticsearch returns sometimes,
-        # probably due to mangled data processing in some pipeline.
-        # "Crimes against Unicode"; production workaround
-        for key in h:
-            if type(h[key]) is str:
-                h[key] = h[key].encode("utf8", "ignore").decode("utf8")
-        # ensure collapse_key is a single value, not an array
-        if type(h["collapse_key"]) == list:
-            h["collapse_key"] = h["collapse_key"][0]
+    # convert from API objects to dicts
+    results = transform_es_results(resp)
 
     count_found: int = 0
     if isinstance(resp.hits.total, int):
