@@ -10,16 +10,16 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2020-10-15 10:14-0700\n"
-"PO-Revision-Date: 2020-10-06 02:45+0000\n"
-"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"PO-Revision-Date: 2020-10-17 09:26+0000\n"
+"Last-Translator: nautilusx <mail.ka@mailbox.org>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/internetarchive/"
+"fatcat-scholar/de/>\n"
 "Language: de\n"
-"Language-Team: German "
-"<https://hosted.weblate.org/projects/internetarchive/fatcat-scholar/de/>"
-"\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.3.1-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:36
@@ -104,7 +104,7 @@ msgstr "Älteste zuerst"
 
 #: fatcat_scholar/templates/base.html:162
 msgid "select language"
-msgstr ""
+msgstr "Sprache auswählen"
 
 #: fatcat_scholar/templates/base.html:173
 msgid "Contribute to translations"
@@ -137,6 +137,8 @@ msgid ""
 "Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and"
 " %(archive_it)s."
 msgstr ""
+"Weitere Projekte sind %(wayback)s, %(archive_org)s, %(openlibrary)s und "
+"%(archive_it)s."
 
 #: fatcat_scholar/templates/base.html:241
 msgid "About Us"
@@ -156,7 +158,7 @@ msgstr "Spenden"
 
 #: fatcat_scholar/templates/base.html:250
 msgid "Open Infrastructure"
-msgstr ""
+msgstr "Offene Infrastruktur"
 
 #: fatcat_scholar/templates/base.html:252
 msgid "Editable Catalog (Fatcat)"
@@ -200,7 +202,7 @@ msgstr "Ausprobieren"
 
 #: fatcat_scholar/templates/home.html:10
 msgid "Internet Archive Scholar logo (vaporwave)"
-msgstr ""
+msgstr "Internet Archive Scholar Logo (vaporwave)"
 
 #: fatcat_scholar/templates/home.html:15
 msgid "by title, author, keywords..."
@@ -240,7 +242,7 @@ msgstr ""
 #: fatcat_scholar/templates/home.html:49 fatcat_scholar/templates/home.html:63
 #: fatcat_scholar/templates/home.html:77 fatcat_scholar/templates/home.html:91
 msgid "PDF thumbnail"
-msgstr ""
+msgstr "PDF-Miniaturansicht"
 
 #: fatcat_scholar/templates/search.html:26
 msgid "Filters"
@@ -248,7 +250,7 @@ msgstr "Suchfilter"
 
 #: fatcat_scholar/templates/search.html:50
 msgid "Hits"
-msgstr ""
+msgstr "Treffer"
 
 #: fatcat_scholar/templates/search.html:74
 msgid "Backend Search Engine Error"
@@ -263,6 +265,9 @@ msgid ""
 "Query parsing is currently very naive. Sometimes you can fix this problem"
 " by adding quotes around terms or entire phrases."
 msgstr ""
+"Die Abfrageanalyse ist derzeit sehr naiv. Manchmal können Sie dieses Problem "
+"beheben, indem Sie Anführungszeichen um Begriffe oder ganze Phrasen "
+"hinzufügen."
 
 #: fatcat_scholar/templates/search.html:107
 msgid "We didn't find any documents matching your query"
@@ -297,6 +302,7 @@ msgstr "unbekannt"
 #, python-format
 msgid "Page %(page_num)s of %(journal_name)s Vol. %(volume)s, Issue %(issue)s"
 msgstr ""
+"Seite %(page_num)s von %(journal_name)s Band %(volume)s, Ausgabe %(issue)s"
 
 #: fatcat_scholar/templates/search_macros.html:65
 msgid "page"
@@ -304,36 +310,36 @@ msgstr "Seite"
 
 #: fatcat_scholar/templates/search_macros.html:170
 msgid "Multiple Versions"
-msgstr ""
+msgstr "Mehrere Versionen"
 
 #: fatcat_scholar/templates/search_macros.html:176
 msgid "Publication Stage"
-msgstr ""
+msgstr "Phase der Veröffentlichung"
 
 #: fatcat_scholar/templates/search_macros.html:177
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 #: fatcat_scholar/templates/search_macros.html:226
 msgid "published"
-msgstr ""
+msgstr "veröffentlicht"
 
 #: fatcat_scholar/templates/search_macros.html:234
 msgid "microfilm"
-msgstr ""
+msgstr "Mikrofilm"
 
 #: fatcat_scholar/templates/search_macros.html:252
 #, python-format
 msgid "Show %(count)s additional hits from this issue"
-msgstr ""
+msgstr "Zeige %(count)s weitere Treffer aus dieser Ausgabe"
 
 #: fatcat_scholar/templates/search_macros.html:265
 msgid "fulltext PDF download"
-msgstr ""
+msgstr "PDF-Volltext herunterladen"
 
 #: fatcat_scholar/templates/search_macros.html:266
 msgid "fulltext thumbnail"
-msgstr ""
+msgstr "Volltext-Miniaturansicht"
 
 #: fatcat_scholar/templates/search_macros.html:302
 #: fatcat_scholar/templates/search_macros.html:305
@@ -344,6 +350,7 @@ msgstr "Vorherige"
 #, python-format
 msgid "Showing results %(start)s &mdash; %(end)s out of %(total)s results"
 msgstr ""
+"Anzeigen von Ergebnissen %(start)s &mdash; %(end)s von %(total)s Ergebnissen"
 
 #: fatcat_scholar/templates/search_macros.html:314
 #: fatcat_scholar/templates/search_macros.html:316
@@ -404,4 +411,3 @@ msgstr "Nächste"
 #~ " %(archive_it)s.\n"
 #~ "            "
 #~ msgstr ""
-
