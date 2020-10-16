@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2020-10-15 10:14-0700\n"
-"PO-Revision-Date: 2020-10-06 02:45+0000\n"
+"PO-Revision-Date: 2020-10-16 00:24+0000\n"
 "Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
+"internetarchive/fatcat-scholar/zh_Hans/>\n"
 "Language: zh\n"
-"Language-Team: Chinese (Simplified) "
-"<https://hosted.weblate.org/projects/internetarchive/fatcat-"
-"scholar/zh_Hans/>\n"
-"Plural-Forms: nplurals=1; plural=0\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.3-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:36
@@ -102,7 +102,7 @@ msgstr "最早的优先"
 
 #: fatcat_scholar/templates/base.html:162
 msgid "select language"
-msgstr ""
+msgstr "选择语言"
 
 #: fatcat_scholar/templates/base.html:173
 msgid "Contribute to translations"
@@ -110,7 +110,7 @@ msgstr "贡献翻译"
 
 #: fatcat_scholar/templates/base.html:196
 msgid "by title, authors, keywords..."
-msgstr ""
+msgstr "按标题、作者、关键词... ..."
 
 #: fatcat_scholar/templates/base.html:197 fatcat_scholar/templates/home.html:16
 msgid "Search"
@@ -131,7 +131,7 @@ msgstr "我们是501（c）（3）非营利组织，以数字形式建立了互�
 msgid ""
 "Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and"
 " %(archive_it)s."
-msgstr ""
+msgstr "其他项目包括%(wayback)s、%(archive_org)s、%(openlibrary)s和%(archive_it)s。"
 
 #: fatcat_scholar/templates/base.html:241
 msgid "About Us"
@@ -199,7 +199,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/home.html:15
 msgid "by title, author, keywords..."
-msgstr ""
+msgstr "按标题、作者、关键词... ..."
 
 #: fatcat_scholar/templates/home.html:23
 msgid "Search Millions of Research Papers"
@@ -251,7 +251,7 @@ msgstr "搜索查询错误"
 msgid ""
 "Query parsing is currently very naive. Sometimes you can fix this problem"
 " by adding quotes around terms or entire phrases."
-msgstr ""
+msgstr "查询解析目前是非常幼稚的。有时你可以通过在术语或整个短语周围加引号来解决这个问题。"
 
 #: fatcat_scholar/templates/search.html:107
 msgid "We didn't find any documents matching your query"
@@ -285,7 +285,7 @@ msgstr "未知的"
 #: fatcat_scholar/templates/search_macros.html:64
 #, python-format
 msgid "Page %(page_num)s of %(journal_name)s Vol. %(volume)s, Issue %(issue)s"
-msgstr ""
+msgstr "第%(journal_name)s卷%(volume)s期%(issue)s页%(page_num)s"
 
 #: fatcat_scholar/templates/search_macros.html:65
 msgid "page"
@@ -293,7 +293,7 @@ msgstr "分页模式"
 
 #: fatcat_scholar/templates/search_macros.html:170
 msgid "Multiple Versions"
-msgstr ""
+msgstr "多个版本"
 
 #: fatcat_scholar/templates/search_macros.html:176
 msgid "Publication Stage"
@@ -301,24 +301,24 @@ msgstr ""
 
 #: fatcat_scholar/templates/search_macros.html:177
 msgid "Date"
-msgstr ""
+msgstr "日期"
 
 #: fatcat_scholar/templates/search_macros.html:226
 msgid "published"
-msgstr ""
+msgstr "公布"
 
 #: fatcat_scholar/templates/search_macros.html:234
 msgid "microfilm"
-msgstr ""
+msgstr "缩微胶卷"
 
 #: fatcat_scholar/templates/search_macros.html:252
 #, python-format
 msgid "Show %(count)s additional hits from this issue"
-msgstr ""
+msgstr "显示%(count)s本期的额外点击"
 
 #: fatcat_scholar/templates/search_macros.html:265
 msgid "fulltext PDF download"
-msgstr ""
+msgstr "全文PDF下载"
 
 #: fatcat_scholar/templates/search_macros.html:266
 msgid "fulltext thumbnail"
@@ -384,4 +384,3 @@ msgstr "下一个"
 #~ " %(archive_it)s.\n"
 #~ "            "
 #~ msgstr ""
-
