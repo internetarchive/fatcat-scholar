@@ -44,9 +44,7 @@ def run_query_fatcat(query: str, fulltext_only: bool, json_output: Any) -> None:
     """
     api_session = requests_retry_session()
 
-    es_backend = os.environ.get(
-        "ELASTICSEARCH_BACKEND", default="https://search.fatcat.wiki",
-    )
+    es_backend = os.environ.get("ELASTICSEARCH_BACKEND", "https://search.fatcat.wiki")
     es_index = "fatcat_release"
     es_client = elasticsearch.Elasticsearch(es_backend)
 
