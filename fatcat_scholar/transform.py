@@ -290,6 +290,42 @@ def biblio_metadata_hacks(biblio: ScholarBiblio) -> ScholarBiblio:  # noqa: C901
     return biblio
 
 
+def generate_tags(
+    biblio: ScholarBiblio, primary_release: Optional[ReleaseEntity]
+) -> List[str]:
+
+    tags = []
+
+    # tags
+    if biblio.license_slug and biblio.license_slug.lower().startswith("cc-"):
+        tags.append("oa")
+    if primary_release and primary_release.container:
+        container = primary_release.container
+        if container.extra:
+            if container.extra.get("doaj"):
+                tags.append("doaj")
+                tags.append("oa")
+            if container.extra.get("road"):
+                tags.append("road")
+                tags.append("oa")
+            if container.extra.get("szczepanski"):
+                tags.append("szczepanski")
+                tags.append("oa")
+            if container.extra.get("ia", {}).get("longtail_oa"):
+                tags.append("longtail")
+                tags.append("oa")
+            if container.extra.get("sherpa_romeo", {}).get("color") == "white":
+                tags.append("oa")
+            if container.extra.get("default_license", "").lower().startswith("cc-"):
+                tags.append("oa")
+            if container.extra.get("platform"):
+                # scielo, ojs, wordpress, etc
+                tags.append(container.extra["platform"].lower())
+    if biblio.doi_prefix == "10.2307":
+        tags.append("jstor")
+    return list(set(tags))
+
+
 def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
 
     tags: List[str] = []
@@ -386,34 +422,7 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
 
     # TODO: additional abstracts
 
-    # tags
-    if biblio.license_slug and biblio.license_slug.lower().startswith("cc-"):
-        tags.append("oa")
-    if primary_release and primary_release.container:
-        container = primary_release.container
-        if container.extra:
-            if container.extra.get("doaj"):
-                tags.append("doaj")
-                tags.append("oa")
-            if container.extra.get("road"):
-                tags.append("road")
-                tags.append("oa")
-            if container.extra.get("szczepanski"):
-                tags.append("szczepanski")
-                tags.append("oa")
-            if container.extra.get("ia", {}).get("longtail_oa"):
-                tags.append("longtail")
-                tags.append("oa")
-            if container.extra.get("sherpa_romeo", {}).get("color") == "white":
-                tags.append("oa")
-            if container.extra.get("default_license", "").lower().startswith("cc-"):
-                tags.append("oa")
-            if container.extra.get("platform"):
-                # scielo, ojs, wordpress, etc
-                tags.append(container.extra["platform"].lower())
-    if biblio.doi_prefix == "10.2307":
-        tags.append("jstor")
-    tags = list(set(tags))
+    tags = generate_tags(biblio, primary_release)
 
     # biorxiv/medrxiv hacks
     if (
