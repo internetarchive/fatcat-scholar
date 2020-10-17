@@ -64,16 +64,13 @@ update-i18n:  ## Re-extract and compile translation files
 	pipenv run pybabel update -i extra/i18n/web_interface.pot -d fatcat_scholar/translations
 	pipenv run pybabel compile -d fatcat_scholar/translations
 
-data/$(TODAY):
+data/$(TODAY)/sim_collections.tsv:
 	mkdir -p $@
-
-data/$(TODAY)/sim_collections.tsv: data/$(TODAY)
-	mkdir -p data/$(TODAY)
 	ia search "collection:periodicals collection:sim_microfilm mediatype:collection" --itemlist | rg "^pub_" > $@.wip
 	mv $@.wip $@
 
-data/$(TODAY)/sim_items.tsv: data/$(TODAY)
-	mkdir -p data/$(TODAY)
+data/$(TODAY)/sim_items.tsv:
+	mkdir -p $@
 	ia search "collection:periodicals collection:sim_microfilm mediatype:texts" --itemlist | rg "^sim_" > $@.wip
 	mv $@.wip $@
 
