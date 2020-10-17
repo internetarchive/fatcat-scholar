@@ -3,11 +3,26 @@ Want to receive a continual stream of updates from both fatcat and SIM
 scanning; index the updated content; and push into elasticsearch.
 
 
+## Filtering and Affordances
+
+The `updated` and `fetched` timestamps are not immediately necessary or
+implemented, but they can be used to filter updates. For example, after
+re-loading from a build entity dump, could "roll back" update pipeline to only
+fatcat (work) updates after the changelog index that the bulk dump is stamped
+with.
+
+At least in theory, the `fetched` timestamp could be used to prevent re-updates
+of existing documents in the ES index.
+
+The `doc_index_ts` timestamp in the ES index could be used in a future
+fetch-and-reindex worker to select documents for re-indexing, or to delete
+old/stale documents (eg, after SIM issue re-indexing if there were spurious
+"page" type documents remaining).
+
 ## Message Types
 
 Scholar Update Request JSON
-- `key`: str
-- `type`: str
+- `key`: str - `type`: str
     - `fatcat_work`
     - `sim_issue`
 - `updated`: datetime, UTC, of event resulting in this request
