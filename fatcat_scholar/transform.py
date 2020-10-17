@@ -50,9 +50,12 @@ SIM_RELEASE_TYPE_MAP = {
 }
 SIM_LANG_MAP = {
     "English": "en",
-    "Spanish": "es",
     "German": "de",
-    # TODO:
+    "Italian": "it",
+    "French": "fr",
+    "Afrikaans": "af",
+    "Spanish": "es",
+    # TODO: more
 }
 SIM_COUNTRY_MAP = {
     "United States": "us",
