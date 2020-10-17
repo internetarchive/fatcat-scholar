@@ -1,6 +1,7 @@
 
 SHELL = /bin/bash
 .SHELLFLAGS = -o pipefail -c
+TODAY ?= $(shell date --iso --utc)
 
 .PHONY: help
 help: ## Print info about all commands
@@ -62,3 +63,37 @@ update-i18n:  ## Re-extract and compile translation files
 	pipenv run pybabel extract -F extra/i18n/babel.cfg -o extra/i18n/web_interface.pot fatcat_scholar/
 	pipenv run pybabel update -i extra/i18n/web_interface.pot -d fatcat_scholar/translations
 	pipenv run pybabel compile -d fatcat_scholar/translations
+
+data/$(TODAY):
+	mkdir -p $@
+
+data/$(TODAY)/sim_collections.tsv: data/$(TODAY)
+	mkdir -p data/$(TODAY)
+	ia search "collection:periodicals collection:sim_microfilm mediatype:collection" --itemlist | rg "^pub_" > $@.wip
+	mv $@.wip $@
+
+data/$(TODAY)/sim_items.tsv: data/$(TODAY)
+	mkdir -p data/$(TODAY)
+	ia search "collection:periodicals collection:sim_microfilm mediatype:texts" --itemlist | rg "^sim_" > $@.wip
+	mv $@.wip $@
+
+data/$(TODAY)/sim_collections.json: data/$(TODAY)/sim_collections.tsv
+	cat data/$(TODAY)/sim_collections.tsv | parallel -j4 ia metadata {} | jq . -c | pv -l > $@.wip
+	mv $@.wip $@
+
+data/$(TODAY)/sim_items.json: data/$(TODAY)/sim_items.tsv
+	cat data/$(TODAY)/sim_items.tsv | parallel -j8 ia metadata {} | jq . -c | pv -l > $@.wip
+	mv $@.wip $@
+
+data/$(TODAY)/issue_db.sqlite: data/$(TODAY)/sim_collections.json data/$(TODAY)/sim_items.json
+	pipenv run python -m fatcat_scholar.issue_db --db-file $@.wip init_db
+	cat data/sim_collections.json | pv -l | pipenv run python -m fatcat_scholar.issue_db --db-file $@.wip load_pub
+	cat data/sim_items.json | pv -l | python -m fatcat_scholar.issue_db load_issues
+	python -m fatcat_scholar.issue_db load_counts
+	mv $@.wip $@
+
+data/issue_db.sqlite: data/$(TODAY)/issue_db.sqlite
+	cp data/$(TODAY)/issue_db.sqlite data/issue_db.sqlite
+
+.PHONY: issue-db
+issue-db: data/issue_db.sqlite  ## Build SIM issue database with today's metadata, then move to default location
