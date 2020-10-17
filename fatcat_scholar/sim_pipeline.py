@@ -46,7 +46,7 @@ class SimPipeline:
         self.issue_db: IssueDB = issue_db
         self.ia_client = internetarchive.get_session()
 
-    def fetch_sim_issue(self, issue_db_row: Any) -> Optional[Any]:
+    def fetch_sim_issue(self, issue_item: str, pub_collection: str) -> Optional[Any]:
         """
         issue_item
         pages: str
@@ -59,8 +59,8 @@ class SimPipeline:
         issue_item_metadata
         """
         # fetch full metadata from API
-        issue_meta = self.ia_client.get_metadata(issue_db_row["issue_item"])
-        pub_meta = self.ia_client.get_metadata(issue_db_row["pub_collection"])
+        issue_meta = self.ia_client.get_metadata(issue_item)
+        pub_meta = self.ia_client.get_metadata(pub_collection)
 
         leaf_index = dict()
         leaf_list = []
@@ -79,8 +79,8 @@ class SimPipeline:
             return None
 
         page_texts: List[Dict[str, Any]] = []
-        issue_item = self.ia_client.get_item(issue_db_row["issue_item"])
-        issue_item_djvu = issue_item.get_file(issue_db_row["issue_item"] + "_djvu.xml")
+        issue_item_obj = self.ia_client.get_item(issue_item)
+        issue_item_djvu = issue_item_obj.get_file(issue_item + "_djvu.xml")
 
         # override 'close()' method so we can still read out contents
         djvu_bytes = io.BytesIO()
@@ -102,13 +102,34 @@ class SimPipeline:
             )
 
         return dict(
-            issue_item=issue_db_row["issue_item"],
+            issue_item=issue_item,
             pages=None,
             page_texts=page_texts,
             release_ident=None,
             pub_item_metadata=truncate_pub_meta(pub_meta),
             issue_item_metadata=truncate_issue_meta(issue_meta),
         )
+
+    def full_issue_to_pages(self, full_issue: dict) -> List[IntermediateBundle]:
+        pages = []
+        for leaf in full_issue["page_texts"]:
+            bundle = IntermediateBundle(
+                doc_type=DocType.sim_page,
+                releases=[],
+                biblio_release_ident=None,
+                grobid_fulltext=None,
+                pdftotext_fulltext=None,
+                sim_fulltext=dict(
+                    issue_item=full_issue["issue_item"],
+                    pages=str(leaf["page_num"]),
+                    page_texts=[leaf],
+                    release_ident=None,
+                    pub_item_metadata=full_issue["pub_item_metadata"],
+                    issue_item_metadata=full_issue["issue_item_metadata"],
+                ),
+            )
+            pages.append(bundle)
+        return pages
 
     def run_issue_db(self, limit: int = None) -> None:
         count = 0
@@ -124,7 +145,9 @@ class SimPipeline:
             ):
                 continue
             try:
-                full_issue = self.fetch_sim_issue(row)
+                full_issue = self.fetch_sim_issue(
+                    row["issue_item"], row["pub_collection"]
+                )
             except requests.exceptions.ConnectionError as e:
                 print(str(e), file=sys.stderr)
                 continue
@@ -133,22 +156,8 @@ class SimPipeline:
                 continue
             if not full_issue:
                 continue
-            for leaf in full_issue["page_texts"]:
-                bundle = IntermediateBundle(
-                    doc_type=DocType.sim_page,
-                    releases=[],
-                    biblio_release_ident=None,
-                    grobid_fulltext=None,
-                    pdftotext_fulltext=None,
-                    sim_fulltext=dict(
-                        issue_item=full_issue["issue_item"],
-                        pages=str(leaf["page_num"]),
-                        page_texts=[leaf],
-                        release_ident=None,
-                        pub_item_metadata=full_issue["pub_item_metadata"],
-                        issue_item_metadata=full_issue["issue_item_metadata"],
-                    ),
-                )
+            pages = self.full_issue_to_pages(full_issue)
+            for bundle in pages:
                 print(bundle.json(exclude_none=True, sort_keys=True))
                 count += 1
                 if limit is not None and count >= limit:

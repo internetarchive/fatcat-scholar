@@ -2,27 +2,36 @@
 [default]
 SCHOLAR_ENV = "default"
 SCHOLAR_DOMAIN = "fatcat.wiki"
+SCHOLAR_ISSUEDB_PATH = "data/issue_db.sqlite"
 I18N_LANG_DEFAULT = "en"
 ELASTICSEARCH_BACKEND = "https://search.fatcat.wiki"
 ELASTICSEARCH_FULLTEXT_INDEX = "scholar_fulltext"
 THUMBNAIL_URL_PREFIX = "https://blobs.fatcat.wiki/thumbnail/pdf/"
 SANDCRAWLER_DB_API = "http://aitio.us.archive.org:3030"
 SANDCRAWLER_S3_API = "wbgrp-svc169.us.archive.org:8333"
+KAFKA_BROKERS = []
+FATCAT_API_HOST = "https://api.fatcat.wiki/v0"
+INDEX_WORKER_BATCH_SIZE = 50
 
 [test]
 SCHOLAR_ENV = "test"
+FATCAT_API_HOST = "http://localhost:9411/v0"
 
 [dev]
 SCHOLAR_ENV = "dev"
 ELASTICSEARCH_FULLTEXT_INDEX = "dev_scholar_fulltext"
 ELASTICSEARCH_BACKEND = "http://localhost:9200"
+KAFKA_BROKERS = ["localhost"]
+FATCAT_API_HOST = "http://localhost:9411/v0"
 
 [qa]
 SCHOLAR_ENV = "qa"
 ELASTICSEARCH_FULLTEXT_INDEX = "qa_scholar_fulltext"
 ELASTICSEARCH_BACKEND = "https://search.fatcat.wiki"
+KAFKA_BROKERS = ["wbgrp-svc263.us.archive.org"]
 
 [prod]
 SCHOLAR_ENV = "prod"
 ELASTICSEARCH_FULLTEXT_INDEX = "scholar_fulltext"
 ELASTICSEARCH_BACKEND = "https://search.fatcat.wiki"
+KAFKA_BROKERS = ["wbgrp-svc263.us.archive.org"]

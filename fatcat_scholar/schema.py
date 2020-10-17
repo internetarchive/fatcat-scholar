@@ -34,11 +34,13 @@ class IntermediateBundle(BaseModel):
     pdftotext_fulltext: Optional[Dict[str, Any]]
     pdf_meta: Optional[Dict[str, Any]]
     sim_fulltext: Optional[Dict[str, Any]]
+    fetched: Optional[datetime.datetime]
 
     class Config:
         arbitrary_types_allowed = True
         json_encoders = {
             ReleaseEntity: lambda re: entity_to_dict(re),
+            datetime.datetime: lambda dt: dt.isoformat(),
         }
 
 
