@@ -9,33 +9,6 @@
   {%- elif settings.SCHOLAR_ENV == "qa" -%}
     <meta http-equiv="onion-location" content="https://scholar-qa.archivev3qli37bju4rlh27glh24lljyezwxf4pokmrdbpefjlcrp5id.onion">
   {%- endif %}
-  {# no Javascript currently
-  <script>
-  /*
-  TODO: audit this license statement
-
-  @licstart  The following is the entire license notice for the JavaScript code in this page.
-
-  Copyright (C) 2020 Internet Archive
-
-  The JavaScript code in this page is free software: you can
-  redistribute it and/or modify it under the terms of the GNU Affero
-  General Public License as published by the Free Software
-  Foundation, either version 3 of the License, or (at your option)
-  any later version.  The code is distributed WITHOUT ANY WARRANTY;
-  without even the implied warranty of MERCHANTABILITY or FITNESS
-  FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-  As additional permission under GNU AGPL version 3 section 7, you
-  may distribute non-source (e.g., minimized or compacted) forms of
-  that code without the copy of the GNU AGPL normally required by
-  section 4, provided you include this license notice and a URL
-  through which recipients can access the Corresponding Source.
-
-  @licend  The above is the entire license notice for the JavaScript code in this page.
-  */
-  </script>
-  #}
   <title>
     {%- if settings.SCHOLAR_ENV != "prod" -%}[{{ settings.SCHOLAR_ENV|upper }}] {% endif -%}
     {%- block title -%}scholar.archive.org{%- endblock %}
@@ -306,17 +279,6 @@
   </div>
 </footer>
 
-{# don't actually need Javascript! at least so far
-<script
-  src="https://code.jquery.com/jquery-3.1.1.min.js"
-  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-  crossorigin="anonymous">
-</script>
-<script
-  src="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.2/dist/semantic.min.js"
-  crossorigin="anonymous">
-</script>
-#}
 <script>
 // when search is submitted, have submit button animate
 document.getElementById("search_form").onsubmit = function(){
