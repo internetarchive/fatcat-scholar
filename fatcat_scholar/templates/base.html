@@ -209,7 +209,7 @@
         <div style="display: flex; width: 100%; justify-content: space-between; padding-top: 0.5em;">
           <div></div>
           <div>
-            <a href="{{ lang_prefix }}/help" style="order: -1;">{{ _("User Guide") }}</a>
+            <a rel="help" href="{{ lang_prefix }}/help" style="order: -1;">{{ _("User Guide") }}</a>
           </div>
         </div>
       </div>
@@ -261,7 +261,7 @@
           <a target="_blank" rel="noopener" href="https://guide.fatcat.wiki" class="item">{{ _("Contribute") }}</a>
           <a target="_blank" rel="noopener" href="/api/redoc" class="item">{{ _("Search API") }}</a>
           <a target="_blank" rel="noopener noreferrer" href="https://status.fatcat.wiki" class="item">{{ _("Service Status") }}</a>
-          <a target="_blank" rel="noopener noreferrer" href="https://github.com/internetarchive/fatcat-scholar" class="item">{{ _("Source Code") }}</a>
+          <a target="_blank" rel="external noopener noreferrer" href="https://github.com/internetarchive/fatcat-scholar" class="item">{{ _("Source Code") }}</a>
         </div>
       </nav>
       <nav class="three wide column">
@@ -270,7 +270,7 @@
           <a href="{{ lang_prefix }}/about#howitworks" class="item">{{ _("How It Works") }}</a>
           <a href="{{ lang_prefix }}/about#sources" class="item">{{ _("Content Sources") }}</a>
           <a href="{{ lang_prefix }}/about#tdm" class="item">{{ _("Text and Data Mining") }}</a>
-          <a href="{{ lang_prefix }}/help" class="item">{{ _("Help") }}</a>
+          <a href="{{ lang_prefix }}/help" rel="help" class="item">{{ _("Help") }}</a>
         </div>
       </nav>
     </div>

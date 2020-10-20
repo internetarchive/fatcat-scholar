@@ -130,19 +130,19 @@
 
   {# ### IDENTIFIERS #}
   {% if paper.biblio.doi %}
-    <a target="_blank" rel="noopener noreferrer" href="https://doi.org/{{paper.biblio.doi }}" style="color: green;">doi:{{ paper.biblio.doi }}</a> &nbsp;
+    <a target="_blank" rel="external noopener noreferrer" href="https://doi.org/{{paper.biblio.doi }}" style="color: green;">doi:{{ paper.biblio.doi }}</a> &nbsp;
   {% endif %}
   {% if paper.biblio.pmid %}
-    <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/{{paper.biblio.pmid }}" style="color: green;">pmid:{{ paper.biblio.pmid }}</a> &nbsp;
+    <a target="_blank" rel="external noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/{{paper.biblio.pmid }}" style="color: green;">pmid:{{ paper.biblio.pmid }}</a> &nbsp;
   {% endif %}
   {% if paper.biblio.pmcid %}
-    <a target="_blank" rel="noopener" href="https://pubmed.ncbi.nlm.nih.gov/{{paper.biblio.pmcid }}/" style="color: green;">pmcid:{{ paper.biblio.pmcid }}</a> &nbsp;
+    <a target="_blank" rel="external noopener" href="https://pubmed.ncbi.nlm.nih.gov/{{paper.biblio.pmcid }}/" style="color: green;">pmcid:{{ paper.biblio.pmcid }}</a> &nbsp;
   {% endif %}
   {% if paper.biblio.arxiv_id %}
-    <a target="_blank" rel="noopener" href="https://arxiv.org/abs/{{paper.biblio.arxiv_id }}" style="color: green;">arXiv:{{ paper.biblio.arxiv_id }}</a> &nbsp;
+    <a target="_blank" rel="external noopener" href="https://arxiv.org/abs/{{paper.biblio.arxiv_id }}" style="color: green;">arXiv:{{ paper.biblio.arxiv_id }}</a> &nbsp;
   {% endif %}
   {% if paper.biblio.release_ident %}
-    <a target="_blank" rel="noopener" href="https://fatcat.wiki/release/{{paper.biblio.release_ident}}" style="color: green;">fatcat:{{ paper.biblio.release_ident}}</a> &nbsp;
+    <a target="_blank" rel="external noopener" href="https://fatcat.wiki/release/{{paper.biblio.release_ident}}" style="color: green;">fatcat:{{ paper.biblio.release_ident}}</a> &nbsp;
   {% endif %}
 
   <div style="margin-top: 0.2em;">
