@@ -53,6 +53,10 @@
       color: #28629c!important;
       border-color: #28629c!important;
     }
+    .ui.basic.orange.label {
+      color: #c54e00!important;
+      border-color: #c54e00!important;
+    }
     .ui.card .meta, .ui.cards>.card .meta {
       color: rgba(0,0,0,0.55);
     }
@@ -88,6 +92,31 @@
       }
     }
 
+    .ui.serp.card {
+      margin-bottom: 0.2em;
+      border-radius: 0;
+    }
+    .ui.serp.card img {
+      max-width: 100%;
+    }
+    .hit-count {
+      font-weight: bold;
+      line-height: 1.28571429em;
+    }
+
+    {# fix RTL dividers #}
+    {% if locale in ['ar'] %}
+    .ui.divided.grid:not([class*="vertically divided"])>.column:not(.row), .ui.divided.grid:not([class*="vertically divided"])>.row>.column {
+      box-shadow: 1px 0 0 0 rgba(34,36,38,.15);
+    }
+    nav.ui.divided.grid.column {
+      box-shadow: 0;
+    }
+    .ui.inverted.divided.grid:not([class*="vertically divided"])>.column:not(.row), .ui.inverted.divided.grid:not([class*="vertically divided"])>.row>.column {
+      box-shadow: 1px 0 0 0 rgba(255,255,255,.1);
+    }
+    {% endif %}
+
     {# for fulltext search result highlighting #}
     .search_highlights em {
       {# yellow #}
@@ -115,7 +144,7 @@
       border-radius: 0;
     }
 
-    .ui.card a:hover {
+    a:hover .ui.card {
       opacity: 0.75;
     }
 
@@ -197,7 +226,7 @@
         </div>
       </div>
       <div class="ui twelve wide column">
-        <form class="" id="search_form" action="{{ lang_prefix }}/search" method="get" role="search" aria-label="papers" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
+        <form class="" id="search_form" name="search_form" action="{{ lang_prefix }}/search" method="get" role="search" aria-label="papers" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
           <meta itemprop="target" content="https://{{ settings.SCHOLAR_DOMAIN }}/fulltext/search?q={q}"/>
           <div class="ui form">
             <div class="ui action input large fluid">
@@ -235,7 +264,7 @@
           </div>
           <div class="one wide column computer only"></div>
           <div class="thirteen wide twelve wide computer column">
-            <h3>Internet Archive</h3>
+            <h4 style="font-size: 1.28571429rem;">Internet Archive</h4>
             <p style="color: rgba(255, 255, 255, 0.5);">
             {% trans %}We are a US 501(c)(3) non-profit library, building a global archive of Internet sites and other cultural artifacts in digital form.{% endtrans %}
 

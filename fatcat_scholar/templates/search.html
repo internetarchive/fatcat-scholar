@@ -33,7 +33,7 @@
   </details>
 
   {% if hits %}
-    <span style="font-size: 1.5em;">{{ "{:,}".format(hits.count_found) }}</span>
+    <span class="hit-count" style="font-size: 1.5em;">{{ "{:,}".format(hits.count_found) }}</span>
     Hits
     <span style="color: rgba(0,0,0,0.55);">in {{ format_query_time(hits.query_time_ms) }}</span>
   {% else %}
@@ -46,7 +46,16 @@
   <nav class="ui tablet-hide two wide column">
     {% if hits %}
       <div style="width: 100%; text-align: end;">
-        <h3 style="font-size: {% if hits.count_found >= 10000000 %}1.0em{% elif hits.count_found >= 1000 %}1.5em{% else %}2.0em{% endif %};">{{ "{:,}".format(hits.count_found) }}</h3>
+        {% if hits.count_found >= 10000000 %}
+          {% set count_size = "1.0em" %}
+        {% elif hits.count_found >= 1000 %}
+          {% set count_size = "1.5em" %}
+        {% else %}
+          {% set count_size = "2.0em" %}
+        {% endif %}
+        <span class="hit-count" style="display: block; font-size: {{ count_size }};">
+          {{ "{:,}".format(hits.count_found) }}
+        </span>
         {{ _("Hits") }}
       </div>
       <div style="text-align: end;">
@@ -55,7 +64,7 @@
       <div class="ui clearing divider"></div>
     {% endif %}
 
-    <div style="text-align: end; white-space: nowrap;">
+    <div style="white-space: nowrap; direction: {% if locale in ['ar'] %}ltr{% else %}rtl{% endif %};">
       {{ search_macros.query_option(query.time_options, query.filter_time) }}
       {{ search_macros.query_option(query.type_options, query.filter_type) }}
       {{ search_macros.query_option(query.availability_options, query.filter_availability) }}

@@ -20,7 +20,7 @@
   {% elif tag.startswith("lang:") %}
     <span class="ui label basic black small" title="ISO Language Code">{{ tag }}</span>
   {% else %}
-    <span class="ui label small">{{ _(tag) }}</span>
+    <span class="ui label basic grey small">{{ _(tag) }}</span>
   {% endif %}
 {% endmacro %}
 
@@ -28,7 +28,7 @@
 <div class="ui grid">
 <div class="thirteen wide column serp-hit-box">
   {# ### TITLE ROW #}
-  <div style="margin-bottom: 0.1em; font-size: 1.2em; font-weight: bold;">
+  <h3 style="margin-bottom: 0.1em; font-size: 1.2em; font-weight: bold; line-height: 1.2em;">
 
     {% if paper.doc_type == "work" %}
       <a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}" style="color: #2224c7;" target="_blank" rel="noopener">
@@ -65,11 +65,11 @@
       <span style="font-weight: normal; text-transform: uppercase; font-weight: bold;">[{{ _("page") }}]</span>
     {% endif %}
 
-  </div>
+  </h3>
 
   {# ### AUTHOR ROW #}
   {% if paper.biblio.contrib_names %}
-    <div style="margin-top: 0.1em; margin-bottom: 0.2em; font-size: 1.1em;">
+    <div style="margin-top: 0; margin-bottom: 0.2em; font-size: 1.1em;">
     {{ ", ".join(paper.biblio.contrib_names[:12]) }}
     {% if paper.biblio.contrib_names|length > 12 %}<i>(+{{ paper.biblio.contrib_names|length - 12 }} others)</i>{% endif %}
     </div>
@@ -260,22 +260,25 @@
 </div>
 <div class="three wide left aligned column" style="padding-top: 0.5em; padding-right: 0.5em;">
   {% if paper.fulltext and paper.fulltext.access_url %}
-    {% if paper.fulltext.thumbnail_url %}
-      <div class="ui serp card" style="margin-bottom: 0.2em;">
-        <a class="image" target="_blank" rel="noopener" href="{{ paper.fulltext.access_url}}" alt="{{ _('fulltext PDF download') }}">
-          <img src="{{ paper.fulltext.thumbnail_url }}" alt="{{ _('fulltext thumbnail') }}">
-        </a>
-      </div>
+    {% if paper.fulltext.file_mimetype == "application/pdf" %}
+      {% set access_alt = _('fulltext PDF download') %}
+    {% elif paper.fulltext.access_type == "ia_sim" %}
+      {% set access_alt = _('read fulltext microfilm') %}
     {% else %}
-      <div class="ui serp card" style="margin-bottom: 0.2em; box-shadow: none;">
-        <a class="image" target="_blank" rel="noopener" href="{{ paper.fulltext.access_url}}" style="background: none;">
-          <img src="/static/document-icon.svg" style="opacity: 0.6;">
-        </a>
-      </div>
+      {% set access_alt = _('fulltext access') %}
     {% endif %}
+
+    <a target="_blank" rel="noopener" href="{{ paper.fulltext.access_url}}" title="{{ access_alt }}">
+      {% if paper.fulltext.thumbnail_url %}
+        <div class="ui serp card">
+          <img src="{{ paper.fulltext.thumbnail_url }}" alt="fulltext thumbnail">
+        </div>
+      {% else %}
+        <div class="ui serp card" style="box-shadow: none;">
+          <img src="/static/document-icon.svg" style="opacity: 0.6;" alt="">
+        </div>
+      {% endif %}
     <div class="fulltext-link" style="width: 100%; opacity: 1.0; text-align: center; overflow: hidden;">
-      <a target="_blank" rel="noopener" href="{{ paper.fulltext.access_url}}">
-        <span>
         {% if paper.fulltext.access_type == "wayback" %}
           web.archive.org
         {% elif paper.fulltext.access_type in ["ia_sim", "ia_file"] %}
@@ -286,9 +289,8 @@
         {% elif paper.fulltext.access_type == "ia_sim" %}
           <i class="film icon" style="margin-right: 0;"></i>
         {% endif %}
-        </span>
-      </a>
     </div>
+    </a>
   {% else %}
     {# No Fulltext #}
   {% endif %}
@@ -298,11 +300,11 @@
 
 {% macro search_pagination(hits, top) %}
 {% if hits.offset > 0 %}
-  <button class="text-button" form="search_form" type="submit" name="offset" value="{{ hits.offset - hits.limit }}" style="margin-right: 2em;">
+  <button class="text-button" form="search_form" type="submit" name="offset" value="{{ hits.offset - hits.limit }}" style="margin-right: 2em;" rel="prev">
     <a>&#xab; {% trans %}Previous{% endtrans %}</a>
   </button>
 {% else %}
-  <span style="color:gray; margin-right: 2em;">&#xab; {% trans %}Previous{% endtrans %}</span>
+  <span style="color:rgba(0,0,0,0.55); margin-right: 2em;">&#xab; {% trans %}Previous{% endtrans %}</span>
 {% endif %}
 <i>
   {% trans trimmed start=hits.offset, end=(hits.offset + hits.limit), total="{:,}".format(hits.count_found) %}
@@ -310,10 +312,10 @@
   {% endtrans %}
 </i>
 {% if hits.offset + hits.limit < hits.count_found %}
-<button class="text-button" form="search_form" type="submit" name="offset" value="{{ hits.offset + hits.limit }}" style="margin-left: 2em;">
+<button class="text-button" form="search_form" type="submit" name="offset" value="{{ hits.offset + hits.limit }}" style="margin-left: 2em;" rel="next">
   <a>{% trans %}Next{% endtrans %} &#xbb;</a>
 {% else %}
-  <span style="color:gray; margin-left: 2em;">{% trans %}Next{% endtrans %} &#xbb;</span>
+  <span style="color:rgba(0,0,0,0.55); margin-left: 2em;">{% trans %}Next{% endtrans %} &#xbb;</span>
 {% endif %}
 </button>
 {% endmacro %}
