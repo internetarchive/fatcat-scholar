@@ -124,7 +124,7 @@ def es_issue_count(
         .filter("term", issue=issue)
         .extra(request_cache=True)
     )
-    search = search.params(request_cache='true')
+    search = search.params(request_cache="true")
 
     return search.count()
 
