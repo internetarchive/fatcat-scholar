@@ -46,7 +46,11 @@ def es_sim_from_sim(sim: Dict[str, Any]) -> ScholarSim:
 SIM_RELEASE_TYPE_MAP = {
     "Scholarly Journals": "article-journal",
     "Trade Journals": "article-magazine",
-    # TODO:
+    "Historical Journals": "article",
+    "Magazines": "article-magazine",
+    "Government Documents": "article",
+    "Law Journals": "article",
+    # TODO: more categories?
 }
 SIM_LANG_MAP = {
     "English": "en",
@@ -55,13 +59,37 @@ SIM_LANG_MAP = {
     "French": "fr",
     "Afrikaans": "af",
     "Spanish": "es",
-    # TODO: more
+    "Portuguese": "pt",
+    "Polish": "pl",
+    # TODO: more languages in SIM corpus
 }
 SIM_COUNTRY_MAP = {
     "United States": "us",
     "Germany": "de",
     "Netherlands": "nl",
-    # TODO:
+    "United Kingdom": "",
+    "Canada": "ca",
+    "Switzerland": "ch",
+    "South Africa": "za",
+    "Japan": "jp",
+    "France": "fr",
+    "India": "in",
+    "Chile": "cl",
+    "Brazil": "br",
+    "Australia": "au",
+    "Argentina": "ar",
+    "Uganda": "ug",
+    "Thailand": "th",
+    "Puerto Rico": "pr",
+    "Poland": "pl",
+    "Philippines": "ph",
+    "Mexico": "mx",
+    "Jamaica": "jm",
+    "Italy": "it",
+    "Ireland": "ie",
+    "Finland": "fi",
+    "Bulgaria": "bg",
+    # TODO: more countries in SIM corpus
 }
 
 
