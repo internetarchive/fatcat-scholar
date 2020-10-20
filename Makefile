@@ -65,28 +65,28 @@ update-i18n:  ## Re-extract and compile translation files
 	pipenv run pybabel compile -d fatcat_scholar/translations
 
 data/$(TODAY)/sim_collections.tsv:
-	mkdir -p $@
-	ia search "collection:periodicals collection:sim_microfilm mediatype:collection" --itemlist | rg "^pub_" > $@.wip
+	mkdir -p data/$(TODAY)
+	pipenv run ia search "collection:periodicals collection:sim_microfilm mediatype:collection" --itemlist | rg "^pub_" > $@.wip
 	mv $@.wip $@
 
 data/$(TODAY)/sim_items.tsv:
-	mkdir -p $@
-	ia search "collection:periodicals collection:sim_microfilm mediatype:texts" --itemlist | rg "^sim_" > $@.wip
+	mkdir -p data/$(TODAY)
+	pipenv run ia search "collection:periodicals collection:sim_microfilm mediatype:texts" --itemlist | rg "^sim_" > $@.wip
 	mv $@.wip $@
 
 data/$(TODAY)/sim_collections.json: data/$(TODAY)/sim_collections.tsv
-	cat data/$(TODAY)/sim_collections.tsv | parallel -j4 ia metadata {} | jq . -c | pv -l > $@.wip
+	cat data/$(TODAY)/sim_collections.tsv | pipenv run parallel -j4 ia metadata {} | jq . -c | pv -l > $@.wip
 	mv $@.wip $@
 
 data/$(TODAY)/sim_items.json: data/$(TODAY)/sim_items.tsv
-	cat data/$(TODAY)/sim_items.tsv | parallel -j8 ia metadata {} | jq . -c | pv -l > $@.wip
+	cat data/$(TODAY)/sim_items.tsv | pipenv run parallel -j8 ia metadata {} | jq -c 'del(.histograms, .rotations)' | pv -l > $@.wip
 	mv $@.wip $@
 
 data/$(TODAY)/issue_db.sqlite: data/$(TODAY)/sim_collections.json data/$(TODAY)/sim_items.json
 	pipenv run python -m fatcat_scholar.issue_db --db-file $@.wip init_db
-	cat data/sim_collections.json | pv -l | pipenv run python -m fatcat_scholar.issue_db --db-file $@.wip load_pub
-	cat data/sim_items.json | pv -l | python -m fatcat_scholar.issue_db load_issues
-	python -m fatcat_scholar.issue_db load_counts
+	cat data/$(TODAY)/sim_collections.json | pv -l | pipenv run python -m fatcat_scholar.issue_db --db-file $@.wip load_pubs -
+	cat data/$(TODAY)/sim_items.json | pv -l | pipenv run python -m fatcat_scholar.issue_db --db-file $@.wip load_issues -
+	pipenv run python -m fatcat_scholar.issue_db --db-file $@.wip load_counts
 	mv $@.wip $@
 
 data/issue_db.sqlite: data/$(TODAY)/issue_db.sqlite
