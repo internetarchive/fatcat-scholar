@@ -25,15 +25,15 @@ fmt: ## Run code formating on all source code
 
 .PHONY: test
 test: lint ## Run all tests and lints
-	ENV_FOR_DYNACONF=test pipenv run pytest
+	PIPENV_DONT_LOAD_ENV=1 ENV_FOR_DYNACONF=test pipenv run pytest
 
 .PHONY: coverage
 coverage: lint ## Run all tests with coverage
-	ENV_FOR_DYNACONF=test pipenv run pytest --cov
+	PIPENV_DONT_LOAD_ENV=1 ENV_FOR_DYNACONF=test pipenv run pytest --cov
 
 .PHONY: dev
 dev: ## Run web service locally, with reloading
-	ENV_FOR_DYNACONF=dev pipenv run uvicorn fatcat_scholar.web:app --reload --port 9819
+	ENV_FOR_DYNACONF=development pipenv run uvicorn fatcat_scholar.web:app --reload --port 9819
 
 .PHONY: dev-qa
 dev-qa: ## Run web service locally, with reloading, but point search queries to QA search index
