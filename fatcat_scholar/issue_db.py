@@ -8,6 +8,8 @@ import fatcat_openapi_client
 import elasticsearch
 from elasticsearch_dsl import Search
 
+from fatcat_scholar.config import settings
+
 
 @dataclass
 class SimPubRow:
@@ -122,6 +124,7 @@ def es_issue_count(
         .filter("term", issue=issue)
         .extra(request_cache=True)
     )
+    search = search.params(request_cache='true')
 
     return search.count()
 
@@ -378,7 +381,7 @@ def main() -> None:
     parser.add_argument(
         "--db-file",
         help="sqlite3 database file to open",
-        default="data/issue_db.sqlite",
+        default=settings.SCHOLAR_ISSUEDB_PATH,
         type=str,
     )
 
@@ -421,7 +424,7 @@ def main() -> None:
 
     idb = IssueDB(args.db_file)
     api = fatcat_openapi_client.DefaultApi(fatcat_openapi_client.ApiClient())
-    es_client = elasticsearch.Elasticsearch("https://search.fatcat.wiki")
+    es_client = elasticsearch.Elasticsearch(settings.FATCAT_ELASTICSEARCH_BACKEND)
 
     if args.func == "load_pubs":
         idb.load_pubs(args.json_file, api)
