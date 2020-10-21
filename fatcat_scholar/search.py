@@ -3,6 +3,7 @@ Helpers to make elasticsearch queries.
 """
 
 import sys
+import logging
 import datetime
 from gettext import gettext
 from typing import List, Optional, Any
@@ -316,15 +317,15 @@ def do_fulltext_search(
         resp = search.execute()
     except elasticsearch.exceptions.RequestError as e:
         # this is a "user" error
-        print("elasticsearch 400: " + str(e.info), file=sys.stderr)
+        logging.warn("elasticsearch 400: " + str(e.info))
         if e.info.get("error", {}).get("root_cause", {}):
-            raise ValueError(str(e.info["error"]["root_cause"][0].get("reason")))
+            raise ValueError(str(e.info["error"]["root_cause"][0].get("reason"))) from e
         else:
-            raise ValueError(str(e.info))
+            raise ValueError(str(e.info)) from e
     except elasticsearch.exceptions.TransportError as e:
         # all other errors
-        print("elasticsearch non-200 status code: {}".format(e.info), file=sys.stderr)
-        raise IOError(str(e.info))
+        logging.warn("elasticsearch non-200 status code: {}".format(e.info))
+        raise IOError(str(e.info)) from e
     query_delta = datetime.datetime.now() - query_start
 
     # convert from API objects to dicts
