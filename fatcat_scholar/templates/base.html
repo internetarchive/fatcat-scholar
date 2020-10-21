@@ -191,7 +191,7 @@
       </div>
       <div class="ui twelve wide column">
         <form class="" id="search_form" name="search_form" action="{{ lang_prefix }}/search" method="get" role="search" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
-          <meta itemprop="target" content="https://{{ settings.SCHOLAR_DOMAIN }}/fulltext/search?q={q}"/>
+          <meta itemprop="target" content="/search?q={q}"/>
           <div class="ui form">
             <div class="ui action input large fluid">
               <input type="search" placeholder="{{ _("by title, authors, keywords...") }}" name="q" aria-label="{{ _('search for papers') }}" required itemprop="query-input" style="border-radius: 0; border: 1px #999 solid;" {% if query and query.q %}value="{{ query.q }}"{% endif %}>

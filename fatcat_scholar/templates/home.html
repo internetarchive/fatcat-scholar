@@ -9,7 +9,7 @@
         <div style="width: 100%; text-align: center;">
           <img src="/static/scholar-vaporwave-logo.png" alt="{{ _("Internet Archive Scholar logo (vaporwave)") }}" style="max-width: 100%; margin-bottom: 1.5em;">
           <form class="" id="search_form" action="{{ lang_prefix }}/search") }}" method="get" role="search" aria-label="papers" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
-            <meta itemprop="target" content="https://{{ settings.SCHOLAR_DOMAIN }}/fulltext/search?q={q}"/>
+            <meta itemprop="target" content="/search?q={q}"/>
             <div class="ui form">
               <div class="ui action input big fluid">
                 <input type="text" placeholder="{{ _("by title, author, keywords...") }}" name="q" aria-label="search metadata" required itemprop="query-input" style="border-radius: 0; border: 1px #999 solid;">

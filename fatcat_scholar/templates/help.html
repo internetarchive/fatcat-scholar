@@ -2,7 +2,7 @@
 
 {% macro example_search_box(query) -%}
 <form class="" id="" action="{{ lang_prefix }}/search" method="get" role="search" aria-label="papers" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
-    <meta itemprop="target" content="https://{{ settings.SCHOLAR_DOMAIN }}/fulltext/search?q={q}"/>
+    <meta itemprop="target" content="/search?q={q}"/>
     <div class="ui form">
     <div class="ui action input large fluid">
         <input type="search" value="{{ query }}" name="q" aria-label="search metadata" required itemprop="query-input" style="border-radius: 0; border: 1px #999 solid;">
