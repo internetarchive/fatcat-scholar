@@ -9,17 +9,17 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2020-10-15 10:14-0700\n"
-"PO-Revision-Date: 2020-10-15 11:26+0000\n"
-"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"PO-Revision-Date: 2020-10-22 23:26+0000\n"
+"Last-Translator: Artem <KovalevArtem.ru@gmail.com>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/internetarchive/"
+"fatcat-scholar/ru/>\n"
 "Language: ru\n"
-"Language-Team: Russian "
-"<https://hosted.weblate.org/projects/internetarchive/fatcat-scholar/ru/>"
-"\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.3.1\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:36
@@ -104,7 +104,7 @@ msgstr "Сначала старые"
 
 #: fatcat_scholar/templates/base.html:162
 msgid "select language"
-msgstr ""
+msgstr "выберите язык"
 
 #: fatcat_scholar/templates/base.html:173
 msgid "Contribute to translations"
@@ -295,23 +295,23 @@ msgstr "страница"
 
 #: fatcat_scholar/templates/search_macros.html:170
 msgid "Multiple Versions"
-msgstr ""
+msgstr "Несколько версий"
 
 #: fatcat_scholar/templates/search_macros.html:176
 msgid "Publication Stage"
-msgstr ""
+msgstr "Стадия публикации"
 
 #: fatcat_scholar/templates/search_macros.html:177
 msgid "Date"
-msgstr ""
+msgstr "Дата"
 
 #: fatcat_scholar/templates/search_macros.html:226
 msgid "published"
-msgstr ""
+msgstr "опубликовано"
 
 #: fatcat_scholar/templates/search_macros.html:234
 msgid "microfilm"
-msgstr ""
+msgstr "микрофильм"
 
 #: fatcat_scholar/templates/search_macros.html:252
 #, python-format
@@ -351,4 +351,3 @@ msgstr "Следующий"
 #~ " %(archive_it)s.\n"
 #~ "            "
 #~ msgstr ""
-
