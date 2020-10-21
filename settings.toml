@@ -1,7 +1,6 @@
 
 [default]
 SCHOLAR_ENV = "default"
-SCHOLAR_DOMAIN = "fatcat.wiki"
 SCHOLAR_ISSUEDB_PATH = "data/issue_db.sqlite"
 I18N_LANG_DEFAULT = "en"
 FATCAT_ELASTICSEARCH_BACKEND = "https://search.fatcat.wiki"
@@ -13,6 +12,7 @@ SANDCRAWLER_S3_API = "wbgrp-svc169.us.archive.org:8333"
 KAFKA_BROKERS = []
 FATCAT_API_HOST = "https://api.fatcat.wiki/v0"
 INDEX_WORKER_BATCH_SIZE = 50
+SENTRY_DSN = ""
 
 [test]
 SCHOLAR_ENV = "test"

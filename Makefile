@@ -37,7 +37,7 @@ dev: ## Run web service locally, with reloading
 
 .PHONY: dev-qa
 dev-qa: ## Run web service locally, with reloading, but point search queries to QA search index
-	ENV_FOR_DYNACONF=qa pipenv run uvicorn fatcat_scholar.web:app --reload --port 9819
+	ENV_FOR_DYNACONF=qa DYNACONF_SCHOLAR_ENV=dev pipenv run uvicorn fatcat_scholar.web:app --reload --port 9819
 
 .PHONY: run
 run: ## Run web service under gunicorn

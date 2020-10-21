@@ -4,22 +4,38 @@ This contains the FastAPI web application and RESTful API.
 So far there are few endpoints, so we just put them all here!
 """
 
+import sys
+import logging
+from typing import Optional, Any
+
 import babel.support
 from fastapi import FastAPI, APIRouter, Request, Depends, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import PlainTextResponse
-from typing import Optional, Any
+import sentry_sdk
+from sentry_sdk.integrations.asgi import SentryAsgiMiddleware
 
-from fatcat_scholar.config import settings
+from fatcat_scholar.config import settings, GIT_REVISION
 from fatcat_scholar.hacks import Jinja2Templates
 from fatcat_scholar.search import do_fulltext_search, FulltextQuery, FulltextHits
 
-# print(f"dynaconf settings: {settings.as_dict()}", file=sys.stderr)
+
+logger = logging.getLogger()
 
 I18N_LANG_TRANSLATIONS = ["de", "zh", "ru", "ar", "fr", "es", "nb"]
 I18N_LANG_OPTIONS = I18N_LANG_TRANSLATIONS + [
     settings.I18N_LANG_DEFAULT,
 ]
+
+# note the middleware also installed at the end of this file
+if settings.SENTRY_DSN:
+    logger.info("Sentry integration enabled")
+    sentry_sdk.init(
+        dsn=settings.SENTRY_DSN,
+        environment=settings.SCHOLAR_ENV,
+        max_breadcrumbs=10,
+        release=GIT_REVISION,
+    )
 
 
 class LangPrefix:
@@ -39,6 +55,7 @@ class LangPrefix:
                 self.prefix = f"/{lang_option}"
                 self.code = lang_option
                 break
+        sentry_sdk.set_tag("locale", self.code)
 
 
 class ContentNegotiation:
@@ -169,9 +186,12 @@ async def web_search(
         try:
             hits = do_fulltext_search(query)
         except ValueError as e:
+            sentry_sdk.set_level("warning")
+            sentry_sdk.capture_exception(e)
             search_error = dict(type="query", message=str(e))
             status_code = 400
         except IOError as e:
+            sentry_sdk.capture_exception(e)
             search_error = dict(type="backend", message=str(e))
             status_code = 500
 
@@ -231,3 +251,6 @@ async def robots_txt(response_class: Any = PlainTextResponse) -> Any:
         return PlainTextResponse(ROBOTS_ALLOW)
     else:
         return PlainTextResponse(ROBOTS_DISALLOW)
+
+# add sentry middleware
+app = SentryAsgiMiddleware(app)
