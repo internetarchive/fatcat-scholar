@@ -43,3 +43,5 @@ ELASTICSEARCH_FULLTEXT_INDEX = "scholar_fulltext_v01"
 ELASTICSEARCH_BACKEND = "http://localhost:9200"
 KAFKA_BROKERS = ["wbgrp-svc263.us.archive.org"]
 ENABLE_GOATCOUNTER = 1
+GOATCOUNTER_ENDPOINT = "/goatcounter/count"
+GOATCOUNTER_SCRIPT_URL = "/goatcounter/count.js"
