@@ -22,7 +22,8 @@ old/stale documents (eg, after SIM issue re-indexing if there were spurious
 ## Message Types
 
 Scholar Update Request JSON
-- `key`: str - `type`: str
+- `key`: str
+- `type`: str
     - `fatcat_work`
     - `sim_issue`
 - `updated`: datetime, UTC, of event resulting in this request
