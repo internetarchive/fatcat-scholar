@@ -4,10 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="referrer" content="origin-when-cross-origin">
-  {% if settings.SCHOLAR_ENV == "prod" -%}
-    <meta http-equiv="onion-location" content="https://scholar.archivev3qli37bju4rlh27glh24lljyezwxf4pokmrdbpefjlcrp5id.onion">
-  {%- elif settings.SCHOLAR_ENV == "qa" -%}
-    <meta http-equiv="onion-location" content="https://scholar-qa.archivev3qli37bju4rlh27glh24lljyezwxf4pokmrdbpefjlcrp5id.onion">
+  {% if settings.ONION_DOMAIN %}
+    <meta http-equiv="onion-location" content="//{{ settings.ONION_DOMAIN }}">
   {%- endif %}
   <title>
     {%- if settings.SCHOLAR_ENV != "prod" -%}[{{ settings.SCHOLAR_ENV|upper }}] {% endif -%}
