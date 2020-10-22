@@ -9,7 +9,7 @@
   {%- endif %}
   <title>
     {%- if settings.SCHOLAR_ENV != "prod" -%}[{{ settings.SCHOLAR_ENV|upper }}] {% endif -%}
-    {%- block title -%}scholar.archive.org{%- endblock %}
+    {%- block title -%}{% trans %}Internet Archive Scholar{% endtrans %}{%- endblock %}
   </title>
   <link rel="stylesheet"
     href="/static/scholar-semantic-ui.v2.4.2.min.css"

@@ -14,6 +14,10 @@
 <link rel="canonical" href="{{ lang_prefix }}/search">
 {% endblock %}
 
+{% block title %}
+{% if query and query.q %}{{ query.q }} - {% endif %}{{ super() }}
+{% endblock %}
+
 {% block fullmain %}
 
 <!-- these hidden query fields should be *before* any form/button that could override them -->

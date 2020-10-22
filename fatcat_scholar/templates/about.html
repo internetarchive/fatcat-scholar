@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block title %}
+{% trans website_name = super() %}About {{ website_name }}{% endtrans %}
+{% endblock %}
+
 {% block main %}
 <h1>About Scholarly Search</h1>
 <p><i>See also: <a href="{{ lang_prefix }}/help">User Guide</a> which lists
