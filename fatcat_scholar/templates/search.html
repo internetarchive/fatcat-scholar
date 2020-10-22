@@ -9,6 +9,11 @@
   {% endif %}
 {%- endmacro %}
 
+{% block extra_head %}
+{# among other things, this prevents query parameters from ending up in goatcounter #}
+<link rel="canonical" href="{{ lang_prefix }}/search">
+{% endblock %}
+
 {% block fullmain %}
 
 <!-- these hidden query fields should be *before* any form/button that could override them -->

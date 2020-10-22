@@ -31,7 +31,7 @@
   <h3 style="margin-bottom: 0.1em; font-size: 1.2em; font-weight: bold; line-height: 1.2em;">
 
     {% if paper.doc_type == "work" %}
-      <a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}" style="color: #2224c7;" target="_blank" rel="noopener">
+      <a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}" style="color: #2224c7;" target="_blank" rel="noopener" title="{{ _('access fatcat landing page') }}" {% if settings.ENABLE_GOATCOUNTER %}data-goatcounter-click="serp-title-fatcat-work"{% endif %}>
         {% if paper.biblio.title %}
           {{ paper.biblio.title[:512] }}
           {% if paper.biblio.title|length > 512 %}...{% endif %}
@@ -61,7 +61,9 @@
       {% endif %}
 
     {% elif paper.doc_type == "sim_page" %}
-      <a target="_blank" rel="noopener" href="https://archive.org/details/{{ paper.ia_sim.issue_item }}/page/{{ paper.ia_sim.first_page }}" style="color: #2224c7;">{% trans page_num = paper.ia_sim.first_page, journal_name = paper.biblio.container_name, volume = paper.biblio.volume, issue = paper.biblio.issue %}Page {{ page_num }} of {{ journal_name }} Vol. {{ volume }}, Issue {{ issue }}{% endtrans %}</a>
+      <a target="_blank" rel="noopener" href="https://archive.org/details/{{ paper.ia_sim.issue_item }}/page/{{ paper.ia_sim.first_page }}" style="color: #2224c7;" title="{{ _('access microfilm on archive.org') }}" {% if settings.ENABLE_GOATCOUNTER %}data-goatcounter-click="serp-title-sim-page"{% endif %}>
+        {% trans page_num = paper.ia_sim.first_page, journal_name = paper.biblio.container_name, volume = paper.biblio.volume, issue = paper.biblio.issue %}Page {{ page_num }} of {{ journal_name }} Vol. {{ volume }}, Issue {{ issue }}{% endtrans %}
+      </a>
       <span style="font-weight: normal; text-transform: uppercase; font-weight: bold;">[{{ _("page") }}]</span>
     {% endif %}
 
@@ -268,7 +270,7 @@
       {% set access_alt = _('fulltext access') %}
     {% endif %}
 
-    <a target="_blank" rel="noopener" href="{{ paper.fulltext.access_url}}" title="{{ access_alt }}">
+    <a target="_blank" rel="noopener" href="{{ paper.fulltext.access_url}}" title="{{ access_alt }}" {% if settings.ENABLE_GOATCOUNTER %}data-goatcounter-click="serp-fulltext"{% endif %}>
       {% if paper.fulltext.thumbnail_url %}
         <div class="ui serp card">
           <img src="{{ paper.fulltext.thumbnail_url }}" alt="fulltext thumbnail">

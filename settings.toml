@@ -14,6 +14,9 @@ KAFKA_BROKERS = []
 FATCAT_API_HOST = "https://api.fatcat.wiki/v0"
 INDEX_WORKER_BATCH_SIZE = 50
 SENTRY_DSN = ""
+ENABLE_GOATCOUNTER = 0
+GOATCOUNTER_ENDPOINT = "https://goatcounter.scholar.fatcat.wiki/count"
+GOATCOUNTER_SCRIPT_URL = "https://goatcounter.scholar.fatcat.wiki/count.js"
 
 [test]
 SCHOLAR_ENV = "test"
@@ -38,3 +41,4 @@ FATCAT_ELASTICSEARCH_BACKEND = "https://search.qa.fatcat.wiki"
 ELASTICSEARCH_FULLTEXT_INDEX = "scholar_fulltext_v01"
 ELASTICSEARCH_BACKEND = "http://localhost:9200"
 KAFKA_BROKERS = ["wbgrp-svc263.us.archive.org"]
+ENABLE_GOATCOUNTER = 1

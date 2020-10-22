@@ -276,6 +276,10 @@ document.getElementById("search_form").onsubmit = function(){
   document.getElementById("search_submit_button").classList.add("loading");
 };
 </script>
+{% if settings.ENABLE_GOATCOUNTER -%}
+  {# for local testing: <script>window.goatcounter = {allow_local: true};</script> #}
+  <script data-goatcounter="{{ settings.GOATCOUNTER_ENDPOINT }}" async src="{{ settings.GOATCOUNTER_SCRIPT_URL }}"></script>
+{%- endif %}
 {% block postscript %}{% endblock %}
 </body>
 </html>
