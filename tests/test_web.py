@@ -1,0 +1,59 @@
+import pytest
+from typing import Any
+from fastapi.testclient import TestClient
+
+from fatcat_scholar.web import app
+
+
+@pytest.fixture
+def client() -> TestClient:
+    return TestClient(app)
+
+
+def test_main_view(client: Any) -> None:
+    resp = client.get("/")
+    assert resp.status_code == 200
+    assert b"Internet Archive Scholar" in resp.content
+
+    resp = client.get("/ar/")
+    assert resp.status_code == 200
+    assert "معلومات عن" in resp.content.decode("utf-8")
+
+    resp = client.get("/", headers={"Accept-Language": "ar"})
+    assert resp.status_code == 200
+    assert "معلومات عن" in resp.content.decode("utf-8")
+
+
+def test_basic_api(client: Any) -> None:
+    """
+    Simple check of GET routes with application/json support
+    """
+    headers = {"Accept": "application/json"}
+    resp = client.get("/", headers=headers)
+    assert resp.status_code == 200
+    assert resp.json()
+
+    resp = client.get("/search", headers=headers)
+    assert resp.status_code == 200
+    assert resp.json()
+
+
+def test_basic_routes(client: Any) -> None:
+    """
+    Simple check of GET routes in the web app
+    """
+
+    resp = client.get("/robots.txt")
+    assert resp.status_code == 200
+
+    resp = client.get("/static/ia-logo.svg")
+    assert resp.status_code == 200
+
+    LANG_PREFIX_LIST = ["", "/ar"]
+    PATH_LIST = ["/", "/about", "/help", "/search"]
+
+    for lang in LANG_PREFIX_LIST:
+        for path in PATH_LIST:
+            resp = client.get(lang + path)
+            assert resp.status_code == 200
+            assert b"</body>" in resp.content
