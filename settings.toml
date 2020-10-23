@@ -22,6 +22,7 @@ ONION_DOMAIN = "scholar-qa.archivev3qli37bju4rlh27glh24lljyezwxf4pokmrdbpefjlcrp
 [test]
 SCHOLAR_ENV = "test"
 FATCAT_API_HOST = "http://localhost:9411/v0"
+SCHOLAR_ISSUEDB_PATH = ":memory:"
 
 [development]
 SCHOLAR_ENV = "dev"

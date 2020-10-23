@@ -57,6 +57,10 @@ def clean_doi(raw: Optional[str]) -> Optional[str]:
 
 
 def test_clean_doi() -> None:
+    assert clean_doi(None) == None
+    assert clean_doi("") == None
+    assert clean_doi("asdf") == None
+    assert clean_doi("10.123") == None
     assert clean_doi("10.1234/asdf ") == "10.1234/asdf"
     assert clean_doi("10.1037//0002-9432.72.1.50") == "10.1037/0002-9432.72.1.50"
     assert clean_doi("10.1037/0002-9432.72.1.50") == "10.1037/0002-9432.72.1.50"
@@ -86,5 +90,6 @@ def clean_pmcid(raw: Optional[str]) -> Optional[str]:
 def test_clean_pmcid() -> None:
     assert clean_pmcid("10.1234/asdf ") == None
     assert clean_pmcid("") == None
+    assert clean_pmcid("1 2") == None
     assert clean_pmcid(None) == None
     assert clean_pmcid("PMC123") == "PMC123"
