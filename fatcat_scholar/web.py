@@ -13,6 +13,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import PlainTextResponse
 import sentry_sdk
 from sentry_sdk.integrations.asgi import SentryAsgiMiddleware
+from starlette_prometheus import metrics, PrometheusMiddleware
 
 from fatcat_scholar.config import settings, GIT_REVISION
 from fatcat_scholar.hacks import Jinja2Templates, parse_accept_lang
@@ -25,16 +26,6 @@ I18N_LANG_TRANSLATIONS = ["de", "zh", "ru", "ar", "fr", "es", "nb"]
 I18N_LANG_OPTIONS = I18N_LANG_TRANSLATIONS + [
     settings.I18N_LANG_DEFAULT,
 ]
-
-# note the middleware also installed at the end of this file
-if settings.SENTRY_DSN:
-    logger.info("Sentry integration enabled")
-    sentry_sdk.init(
-        dsn=settings.SENTRY_DSN,
-        environment=settings.SCHOLAR_ENV,
-        max_breadcrumbs=10,
-        release=GIT_REVISION,
-    )
 
 
 class LangPrefix:
@@ -261,5 +252,19 @@ async def robots_txt(response_class: Any = PlainTextResponse) -> Any:
     else:
         return PlainTextResponse(ROBOTS_DISALLOW)
 
-# add sentry middleware
-app = SentryAsgiMiddleware(app)
+
+# configure middleware
+
+if settings.SENTRY_DSN:
+    logger.info("Sentry integration enabled")
+    sentry_sdk.init(
+        dsn=settings.SENTRY_DSN,
+        environment=settings.SCHOLAR_ENV,
+        max_breadcrumbs=10,
+        release=GIT_REVISION,
+    )
+    app.add_middleware(SentryAsgiMiddleware)
+
+if settings.ENABLE_PROMETHEUS:
+    app.add_middleware(PrometheusMiddleware)
+    app.add_route("/prometheus/", metrics)
