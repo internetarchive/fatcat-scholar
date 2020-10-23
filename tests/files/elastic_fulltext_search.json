@@ -1,0 +1,1673 @@
+{
+  "took" : 252,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 12,
+    "successful" : 12,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 841,
+      "relation" : "eq"
+    },
+    "max_score" : null,
+    "hits" : [
+      {
+        "_index" : "scholar_fulltext_v01",
+        "_type" : "_doc",
+        "_id" : "work_2x5qvct2dnhrbctqa2q2uyut6a",
+        "_score" : 128.72282,
+        "_source" : {
+          "collapse_key" : "2x5qvct2dnhrbctqa2q2uyut6a",
+          "work_ident" : "2x5qvct2dnhrbctqa2q2uyut6a",
+          "access" : [
+            {
+              "access_type" : "wayback",
+              "access_url" : "https://web.archive.org/web/20200206164725/https://www.federalreserve.gov/econresdata/feds/2015/files/2015118pap.pdf",
+              "file_ident" : "2ya6svbh7be6jcy5w7tuwqod4u",
+              "mimetype" : "application/pdf",
+              "release_ident" : "vtfxc3mibrcpxnv6q5xmr46o5a"
+            }
+          ],
+          "abstracts" : [
+            {
+              "body" : "The U.S. federal government enacted fuel efficiency standards for medium and heavy trucks for the first time in September 2011. Rationales for using this policy tool typically depend upon frictions existing in the marketplace or consumers being myopic, such that vehicle purchasers undervalue the future fuel savings from increased fuel efficiency. We measure by how much long-haul truck owners undervalue future fuel savings by employing recent advances to the classic hedonic approach to estimate the distribution of willingness-to-pay for fuel efficiency. We find significant heterogeneity in truck owners' willingness to pay for fuel efficiency, with the elasticity of fuel efficiency to price ranging from 0.51 at the 10th percentile to 1.33 at the 90th percentile, and an average of 0.91. Combining these results with estimates of future fuel savings from increases in fuel efficiency, we find that long-haul truck owners' willingness-to-pay for a 1 percent increase in fuel efficiency is, on average, just 29.5 percent of the expected future fuel savings. These results suggest that introducing fuel efficiency standards for heavy trucks might be an effective policy tool to raise medium and heavy trucks' fuel economy."
+            }
+          ],
+          "biblio" : {
+            "affiliations" : [ ],
+            "container_ident" : "57xsxj4wvrgofg57esefycoeuu",
+            "container_issnl" : "1936-2854",
+            "container_name" : "Finance and Economics Discussion Series",
+            "contrib_count" : 3,
+            "contrib_names" : [
+              "Jacob Adenbaum",
+              "Adam Copeland",
+              "John J. Stevens"
+            ],
+            "doi" : "10.17016/feds.2015.118",
+            "doi_prefix" : "10.17016",
+            "doi_registrar" : "crossref",
+            "first_page" : "1",
+            "first_page_int" : 1,
+            "issns" : [
+              "1936-2854"
+            ],
+            "issue" : "118",
+            "issue_int" : 118,
+            "pages" : "1-42",
+            "publisher" : "Board of Governors of the Federal Reserve System",
+            "release_ident" : "vtfxc3mibrcpxnv6q5xmr46o5a",
+            "release_stage" : "published",
+            "release_type" : "article-journal",
+            "release_year" : 2015,
+            "title" : "Do long-haul truckers undervalue future fuel savings?",
+            "volume" : "2015",
+            "volume_int" : 2015
+          },
+          "fulltext" : {
+            "file_mimetype" : "application/pdf",
+            "access_type" : "wayback",
+            "file_sha1" : "f81f84e23c9ba5d364c70f01fa26e645d29c0427",
+            "file_ident" : "2ya6svbh7be6jcy5w7tuwqod4u",
+            "access_url" : "https://web.archive.org/web/20200206164725/https://www.federalreserve.gov/econresdata/feds/2015/files/2015118pap.pdf",
+            "release_ident" : "vtfxc3mibrcpxnv6q5xmr46o5a"
+          },
+          "doc_type" : "work",
+          "doc_index_ts" : "2020-08-16T07:01:10.483107",
+          "key" : "work_2x5qvct2dnhrbctqa2q2uyut6a",
+          "releases" : [
+            {
+              "container_ident" : "57xsxj4wvrgofg57esefycoeuu",
+              "container_issnl" : "1936-2854",
+              "container_name" : "Finance and Economics Discussion Series",
+              "doi" : "10.17016/feds.2015.118",
+              "doi_prefix" : "10.17016",
+              "doi_registrar" : "crossref",
+              "ident" : "vtfxc3mibrcpxnv6q5xmr46o5a",
+              "release_stage" : "published",
+              "release_type" : "article-journal",
+              "release_year" : 2015,
+              "revision" : "00193f29-047a-4d00-9037-d7a2f93c3a71",
+              "title" : "Do long-haul truckers undervalue future fuel savings?"
+            }
+          ],
+          "tags" : [ ]
+        },
+        "fields" : {
+          "collapse_key" : [
+            "2x5qvct2dnhrbctqa2q2uyut6a"
+          ]
+        },
+        "highlight" : {
+          "abstracts.body" : [
+            "We measure by how much <em>long</em>-<em>haul</em> truck owners undervalue future fuel savings by employing recent advances to the classic hedonic approach to estimate the distribution of willingness-to-pay for fuel efficiency.",
+            "Combining these results with estimates of future fuel savings from increases in fuel efficiency, we find that <em>long</em>-<em>haul</em> truck owners' willingness-to-pay for a 1 percent increase in fuel efficiency is, on average, just 29.5 percent of the expected future fuel savings."
+          ],
+          "fulltext.body" : [
+            "In repeating our work on the 1997 data sets, we find that <em>long</em>-<em>haul</em> <em>truckers</em> substantially undervalue future fuel savings, confirming the benchmark 1992 results.",
+            "to B3  illustrate the kernel-smoothed distribution of <em>long</em>-<em>haul</em> <em>truckers</em> willingness-topay for lifetime miles, engine size, and empty weight, respectively."
+          ]
+        },
+        "inner_hits" : {
+          "more_pages" : {
+            "hits" : {
+              "total" : {
+                "value" : 1,
+                "relation" : "eq"
+              },
+              "max_score" : null,
+              "hits" : [ ]
+            }
+          }
+        }
+      },
+      {
+        "_index" : "scholar_fulltext_v01",
+        "_type" : "_doc",
+        "_id" : "work_efqoeschhreutkgaimunyvtmkm",
+        "_score" : 56.40246,
+        "_source" : {
+          "collapse_key" : "efqoeschhreutkgaimunyvtmkm",
+          "work_ident" : "efqoeschhreutkgaimunyvtmkm",
+          "access" : [
+            {
+              "access_type" : "wayback",
+              "access_url" : "https://web.archive.org/web/20200709102108/https://sti.bmj.com/content/sextrans/95/Suppl_1/A177.1.full.pdf",
+              "file_ident" : "lpio6stybnaz5otlewmtbxqs7e",
+              "mimetype" : "application/pdf",
+              "release_ident" : "vq3mzegernhjfg4uuse2hw3kby"
+            }
+          ],
+          "abstracts" : [ ],
+          "biblio" : {
+            "affiliations" : [ ],
+            "container_name" : "Poster Presentations",
+            "contrib_count" : 4,
+            "contrib_names" : [
+              "Paul Okojie",
+              "Kingsley Okafor",
+              "Omoyemen Bello",
+              "Esohe Ogboghodo",
+              "Abimbola Adesanya"
+            ],
+            "doi" : "10.1136/sextrans-2019-sti.447",
+            "doi_prefix" : "10.1136",
+            "doi_registrar" : "crossref",
+            "issns" : [ ],
+            "release_ident" : "vq3mzegernhjfg4uuse2hw3kby",
+            "release_type" : "paper-conference",
+            "release_year" : 2019,
+            "title" : "P339 Factors of risky sexual behavior among long-haul truckers in a southern nigerian town"
+          },
+          "fulltext" : {
+            "file_mimetype" : "application/pdf",
+            "access_type" : "wayback",
+            "file_sha1" : "e1f3a9fbc4b9ae473b571dc4e896f572b6151df2",
+            "file_ident" : "lpio6stybnaz5otlewmtbxqs7e",
+            "access_url" : "https://web.archive.org/web/20200709102108/https://sti.bmj.com/content/sextrans/95/Suppl_1/A177.1.full.pdf",
+            "release_ident" : "vq3mzegernhjfg4uuse2hw3kby"
+          },
+          "doc_type" : "work",
+          "doc_index_ts" : "2020-08-14T06:10:23.306915",
+          "key" : "work_efqoeschhreutkgaimunyvtmkm",
+          "releases" : [
+            {
+              "container_name" : "Poster Presentations",
+              "doi" : "10.1136/sextrans-2019-sti.447",
+              "doi_prefix" : "10.1136",
+              "doi_registrar" : "crossref",
+              "ident" : "vq3mzegernhjfg4uuse2hw3kby",
+              "release_type" : "paper-conference",
+              "release_year" : 2019,
+              "revision" : "4159484c-1dd7-48b6-9569-ad9351d374d0",
+              "title" : "P339 Factors of risky sexual behavior among long-haul truckers in a southern nigerian town"
+            }
+          ],
+          "tags" : [ ]
+        },
+        "fields" : {
+          "collapse_key" : [
+            "efqoeschhreutkgaimunyvtmkm"
+          ]
+        },
+        "highlight" : {
+          "fulltext.body" : [
+            "P339 \n FACTORS OF RISKY SEXUAL BEHAVIOR AMONG <em>LONG</em>-<em>HAUL</em> <em>TRUCKERS</em> IN A SOUTHERN NIGERIAN TOWN Background <em>Long</em>-<em>haul</em> drivers play a role in the spread of sexually transmitted infections (STI) globally. Truck drivers engage in frequent travel away from home.",
+            "The study aimed to identify factors associated with commercial sexual exposure among <em>long</em>-<em>haul</em> <em>truckers</em> in a southern Nigerian town. Methods A sample of 300 <em>long</em>-<em>haul</em> <em>truckers</em> from a highway park in Ahor, southern Nigeria was recruited in a cross-sectional study."
+          ]
+        },
+        "inner_hits" : {
+          "more_pages" : {
+            "hits" : {
+              "total" : {
+                "value" : 1,
+                "relation" : "eq"
+              },
+              "max_score" : null,
+              "hits" : [ ]
+            }
+          }
+        }
+      },
+      {
+        "_index" : "scholar_fulltext_v01",
+        "_type" : "_doc",
+        "_id" : "work_3qwu7wq4hvduvdk3vasisgsnjm",
+        "_score" : 37.46808,
+        "_source" : {
+          "collapse_key" : "3qwu7wq4hvduvdk3vasisgsnjm",
+          "work_ident" : "3qwu7wq4hvduvdk3vasisgsnjm",
+          "access" : [
+            {
+              "access_type" : "wayback",
+              "access_url" : "https://web.archive.org/web/20200209152746/http://europepmc.org/backend/ptpmcrender.fcgi?accid=PMC6037566&blobtype=pdf",
+              "file_ident" : "2jb5cfxvibhq7hwgeh2l7eo7sm",
+              "mimetype" : "application/pdf",
+              "release_ident" : "4nhp5wiiancb3k2vnfofccs5we"
+            }
+          ],
+          "abstracts" : [
+            {
+              "body" : "Objective-To assess the general and sexual health of long-haul truck drivers in the United States. Methods-Drivers were recruited from company sites and truck stops in North Carolina, Tennessee, and Mississippi. A sample of 266 drivers was assessed for life-style activities; body mass index and blood pressure were measured, and biologic samples were taken for cholesterol, diabetes, and STI/HIV testing. Results-The drivers in this study had higher levels of cholesterol and higher rates of smoking, obesity, and diabetes than the U.S average. STI/HIV infection rates were lower than the U.S. average. Results Study Population A total of 65.5% of the truckers who were approached at the six sites agreed to participate in the study. These volunteers were recruited from trucking companies (62.2%) or truck stops Bachmann et al."
+            }
+          ],
+          "biblio" : {
+            "affiliations" : [ ],
+            "container_ident" : "32vxelmdpbaqvid4cobjuofkie",
+            "container_issnl" : "1076-2752",
+            "container_name" : "Journal of Occupational and Environmental Medicine",
+            "container_type" : "journal",
+            "contrib_count" : 5,
+            "contrib_names" : [
+              "Laura H. Bachmann",
+              "Bronwen Lichtenstein",
+              "Janet S. St. Lawrence",
+              "Margaret Murray",
+              "Gregory B. Russell",
+              "Edward W. Hook"
+            ],
+            "doi" : "10.1097/jom.0000000000001319",
+            "doi_prefix" : "10.1097",
+            "doi_registrar" : "crossref",
+            "first_page" : "e349",
+            "issns" : [
+              "1076-2752",
+              "1536-5948"
+            ],
+            "lang_code" : "en",
+            "pages" : "e349-e355",
+            "pmcid" : "PMC6037566",
+            "pmid" : "29538273",
+            "publisher" : "Ovid Technologies (Wolters Kluwer Health)",
+            "release_ident" : "4nhp5wiiancb3k2vnfofccs5we",
+            "release_stage" : "published",
+            "release_type" : "article-journal",
+            "release_year" : 2018,
+            "title" : "Health Risks of American Long-Distance Truckers",
+            "volume" : "60",
+            "volume_int" : 60,
+            "wikidata_qid" : "Q51740301"
+          },
+          "fulltext" : {
+            "file_mimetype" : "application/pdf",
+            "access_type" : "wayback",
+            "acknowledgement" : "Acknowledgments Funding Source: R34MH073411",
+            "file_sha1" : "0ca21175891495c8e91e2980d53a26bc1bef5b9b",
+            "file_ident" : "2jb5cfxvibhq7hwgeh2l7eo7sm",
+            "access_url" : "https://web.archive.org/web/20200209152746/http://europepmc.org/backend/ptpmcrender.fcgi?accid=PMC6037566&blobtype=pdf",
+            "release_ident" : "4nhp5wiiancb3k2vnfofccs5we",
+            "thumbnail_url" : "https://blobs.fatcat.wiki/thumbnail/pdf/0c/a2/0ca21175891495c8e91e2980d53a26bc1bef5b9b.180px.jpg"
+          },
+          "doc_type" : "work",
+          "doc_index_ts" : "2020-08-16T08:30:16.741738",
+          "key" : "work_3qwu7wq4hvduvdk3vasisgsnjm",
+          "releases" : [
+            {
+              "container_ident" : "32vxelmdpbaqvid4cobjuofkie",
+              "container_issnl" : "1076-2752",
+              "container_name" : "Journal of Occupational and Environmental Medicine",
+              "container_type" : "journal",
+              "doi" : "10.1097/jom.0000000000001319",
+              "doi_prefix" : "10.1097",
+              "doi_registrar" : "crossref",
+              "ident" : "4nhp5wiiancb3k2vnfofccs5we",
+              "pmcid" : "PMC6037566",
+              "pmid" : "29538273",
+              "release_stage" : "published",
+              "release_type" : "article-journal",
+              "release_year" : 2018,
+              "revision" : "b6df06f6-2a12-497c-a588-847730a059a5",
+              "title" : "Health Risks of American Long-Distance Truckers",
+              "wikidata_qid" : "Q51740301"
+            }
+          ],
+          "tags" : [ ]
+        },
+        "fields" : {
+          "collapse_key" : [
+            "3qwu7wq4hvduvdk3vasisgsnjm"
+          ]
+        },
+        "highlight" : {
+          "abstracts.body" : [
+            "Objective-To assess the general and sexual health of <em>long</em>-<em>haul</em> truck drivers in the United States. Methods-Drivers were recruited from company sites and truck stops in North Carolina, Tennessee, and Mississippi.",
+            "Results Study Population A total of 65.5% of the <em>truckers</em> who were approached at the six sites agreed to participate in the study. These volunteers were recruited from trucking companies (62.2%) or truck stops Bachmann et al."
+          ],
+          "fulltext.body" : [
+            "The eligibility criteria were: <em>long</em>-<em>haul</em> <em>truckers</em> (defined as a driver, full or part-time, who drove a truck across state lines [interstate]), and who were English speakers aged 21 or greater.",
+            "Strengths and Limitations This study used a multi-site convenience sample that was recruited from truck stops and trucking companies and provided data on the general and health risks of <em>long</em>-<em>haul</em> <em>truckers</em>."
+          ]
+        },
+        "inner_hits" : {
+          "more_pages" : {
+            "hits" : {
+              "total" : {
+                "value" : 1,
+                "relation" : "eq"
+              },
+              "max_score" : null,
+              "hits" : [ ]
+            }
+          }
+        }
+      },
+      {
+        "_index" : "scholar_fulltext_v01",
+        "_type" : "_doc",
+        "_id" : "work_iox3try3wffvfethog42up5w6y",
+        "_score" : 37.45475,
+        "_source" : {
+          "collapse_key" : "iox3try3wffvfethog42up5w6y",
+          "work_ident" : "iox3try3wffvfethog42up5w6y",
+          "access" : [
+            {
+              "access_type" : "wayback",
+              "access_url" : "https://web.archive.org/web/20191116232349/http://europepmc.org/backend/ptpmcrender.fcgi?accid=PMC4497878&blobtype=pdf",
+              "file_ident" : "3wgjyjxogfcp3muqtkcyofetpi",
+              "mimetype" : "application/pdf",
+              "release_ident" : "ttaagx7bcbaptpfpf37snntbfy"
+            }
+          ],
+          "abstracts" : [
+            {
+              "body" : "This article illustrates how urban inner-city trucking milieux may influence STI/BBI/HIV acquisition and transmission risks for U.S. long-haul truckers, as well as their social and risk relationships. Using mixed methods, we collected ethnoepidemiological and biological data from long-haul truck drivers and their risk contacts in inner-city trucking milieux in Atlanta, Georgia, United States. Key findings indicate that within the risk-endemic environment of distressed innercity areas, diverse trucking risk milieux can amplify STI/BBI/HIV risk for multiplex networks of truckers. Inner-city neighborhood location, short geographic distance among risk contacts, and trucker concurrency can potentially exacerbate transmission via bridging higher-risk individuals with lower-risk populations at disparate geographic and epidemiological locations."
+            }
+          ],
+          "biblio" : {
+            "affiliations" : [ ],
+            "container_ident" : "mv5bv7hbwvb3hn4irvdknwsqj4",
+            "container_issnl" : "1353-8292",
+            "container_name" : "Health and Place",
+            "contrib_count" : 3,
+            "contrib_names" : [
+              "Yorghos Apostolopoulos",
+              "Sevil Sönmez",
+              "Michael Kenneth Lemke",
+              "Richard B. Rothenberg"
+            ],
+            "doi" : "10.1016/j.healthplace.2015.03.008",
+            "doi_prefix" : "10.1016",
+            "doi_registrar" : "crossref",
+            "first_page" : "9",
+            "first_page_int" : 9,
+            "issns" : [
+              "1873-2054",
+              "1353-8292"
+            ],
+            "lang_code" : "en",
+            "pages" : "9-18",
+            "pmcid" : "PMC4497878",
+            "pmid" : "25863181",
+            "publisher" : "Elsevier BV",
+            "release_ident" : "ttaagx7bcbaptpfpf37snntbfy",
+            "release_stage" : "published",
+            "release_type" : "article-journal",
+            "release_year" : 2015,
+            "title" : "Mapping U.S. long-haul truck drivers' multiplex networks and risk topography in inner-city neighborhoods",
+            "volume" : "34",
+            "volume_int" : 34,
+            "wikidata_qid" : "Q35836571"
+          },
+          "fulltext" : {
+            "file_mimetype" : "application/pdf",
+            "access_type" : "wayback",
+            "acknowledgement" : "Acknowledgments Research for this paper was funded by the National Institutes of Health (R01-HD042972).",
+            "file_sha1" : "cac169bbb74bbce5a14c846ecf46357b814ce1d8",
+            "file_ident" : "3wgjyjxogfcp3muqtkcyofetpi",
+            "access_url" : "https://web.archive.org/web/20191116232349/http://europepmc.org/backend/ptpmcrender.fcgi?accid=PMC4497878&blobtype=pdf",
+            "release_ident" : "ttaagx7bcbaptpfpf37snntbfy"
+          },
+          "doc_type" : "work",
+          "doc_index_ts" : "2020-08-14T15:50:45.831749",
+          "key" : "work_iox3try3wffvfethog42up5w6y",
+          "releases" : [
+            {
+              "container_ident" : "mv5bv7hbwvb3hn4irvdknwsqj4",
+              "container_issnl" : "1353-8292",
+              "container_name" : "Health and Place",
+              "doi" : "10.1016/j.healthplace.2015.03.008",
+              "doi_prefix" : "10.1016",
+              "doi_registrar" : "crossref",
+              "ident" : "ttaagx7bcbaptpfpf37snntbfy",
+              "pmcid" : "PMC4497878",
+              "pmid" : "25863181",
+              "release_stage" : "published",
+              "release_type" : "article-journal",
+              "release_year" : 2015,
+              "revision" : "b628a020-690d-493d-8172-1b8a05ebbb04",
+              "title" : "Mapping U.S. long-haul truck drivers' multiplex networks and risk topography in inner-city neighborhoods",
+              "wikidata_qid" : "Q35836571"
+            }
+          ],
+          "tags" : [ ]
+        },
+        "fields" : {
+          "collapse_key" : [
+            "iox3try3wffvfethog42up5w6y"
+          ]
+        },
+        "highlight" : {
+          "abstracts.body" : [
+            "This article illustrates how urban inner-city trucking milieux may influence STI/BBI/HIV acquisition and transmission risks for U.S. <em>long</em>-<em>haul</em> <em>truckers</em>, as well as their social and risk relationships.",
+            "Using mixed methods, we collected ethnoepidemiological and biological data from <em>long</em>-<em>haul</em> truck drivers and their risk contacts in inner-city trucking milieux in Atlanta, Georgia, United States."
+          ],
+          "fulltext.body" : [
+            "., adult entertainment) off-road establishments catering to <em>truckers</em> have also been associated with drug and STI/HIV risk among <em>long</em>-<em>haul</em> <em>truckers</em>  (Apostolopoulos and Sonmez, 2007) .",
+            "as members of <em>long</em>-<em>haul</em> <em>truckers</em>' multiplex networks  (Apostolopoulos and Sonmez, 2006) ."
+          ]
+        },
+        "inner_hits" : {
+          "more_pages" : {
+            "hits" : {
+              "total" : {
+                "value" : 1,
+                "relation" : "eq"
+              },
+              "max_score" : null,
+              "hits" : [ ]
+            }
+          }
+        }
+      },
+      {
+        "_index" : "scholar_fulltext_v01",
+        "_type" : "_doc",
+        "_id" : "work_dyov254aovahjedqdgf3aino2e",
+        "_score" : 37.25089,
+        "_source" : {
+          "collapse_key" : "dyov254aovahjedqdgf3aino2e",
+          "work_ident" : "dyov254aovahjedqdgf3aino2e",
+          "access" : [
+            {
+              "access_type" : "wayback",
+              "access_url" : "https://web.archive.org/web/20200324191619/https://works.bepress.com/mona_shattell/7/download/",
+              "file_ident" : "6j7worx7efe7xaenkcvw5cjf3e",
+              "mimetype" : "application/pdf",
+              "release_ident" : "6wpceydumff2ra63v2galitzk4"
+            }
+          ],
+          "abstracts" : [
+            {
+              "body" : "Trucking has been classified as one of the highest-risk occupations in the United States. Occupational stress is even greater for long-haul truckers who are away from home, family, friends, and other support networks for several days or weeks at a time. Occupational stressors and the mental health of truckers was studied using data collected as part of a large multisite ethnoepidemiological study of trucker networks. Findings from the current study show that truckers face many occupational stressors including constant time pressures, social isolation, disrespectful treatment from others, driving hazards such as weather changes, traffic, and road conditions, and violence or fear of violence. Facing such stressors may be a factor in the prevalence of risky behaviors including drug use and paying for sex. Therefore, mental health promotion and treatment for truckers is an important area of concern and must be examined within the broader context of the transportation environment."
+            }
+          ],
+          "biblio" : {
+            "affiliations" : [ ],
+            "container_ident" : "jnqxtapanngidjlcs4qqaoq2yi",
+            "container_issnl" : "0161-2840",
+            "container_name" : "Issues in Mental Health Nursing",
+            "contrib_count" : 3,
+            "contrib_names" : [
+              "Mona Shattell",
+              "Yorghos Apostolopoulos",
+              "Sevil Sönmez",
+              "Mary Griffin"
+            ],
+            "doi" : "10.3109/01612840.2010.488783",
+            "doi_prefix" : "10.3109",
+            "doi_registrar" : "crossref",
+            "first_page" : "561",
+            "first_page_int" : 561,
+            "issns" : [
+              "1096-4673",
+              "0161-2840"
+            ],
+            "lang_code" : "en",
+            "pages" : "561-568",
+            "pmid" : "20701418",
+            "publisher" : "Informa UK Limited",
+            "release_ident" : "6wpceydumff2ra63v2galitzk4",
+            "release_stage" : "published",
+            "release_type" : "article-journal",
+            "release_year" : 2010,
+            "title" : "Occupational Stressors and the Mental Health of Truckers",
+            "volume" : "31",
+            "volume_int" : 31,
+            "wikidata_qid" : "Q49089297"
+          },
+          "fulltext" : {
+            "file_mimetype" : "application/pdf",
+            "access_type" : "wayback",
+            "file_sha1" : "cdce86e9583609f4f4ba28859447c204e5022f7b",
+            "file_ident" : "6j7worx7efe7xaenkcvw5cjf3e",
+            "access_url" : "https://web.archive.org/web/20200324191619/https://works.bepress.com/mona_shattell/7/download/",
+            "release_ident" : "6wpceydumff2ra63v2galitzk4"
+          },
+          "doc_type" : "work",
+          "doc_index_ts" : "2020-08-14T05:08:44.013477",
+          "key" : "work_dyov254aovahjedqdgf3aino2e",
+          "releases" : [
+            {
+              "container_ident" : "jnqxtapanngidjlcs4qqaoq2yi",
+              "container_issnl" : "0161-2840",
+              "container_name" : "Issues in Mental Health Nursing",
+              "doi" : "10.3109/01612840.2010.488783",
+              "doi_prefix" : "10.3109",
+              "doi_registrar" : "crossref",
+              "ident" : "6wpceydumff2ra63v2galitzk4",
+              "pmid" : "20701418",
+              "release_stage" : "published",
+              "release_type" : "article-journal",
+              "release_year" : 2010,
+              "revision" : "3d86da2f-dd06-4c74-9ecd-e27d6485f5b9",
+              "title" : "Occupational Stressors and the Mental Health of Truckers",
+              "wikidata_qid" : "Q49089297"
+            }
+          ],
+          "tags" : [ ]
+        },
+        "fields" : {
+          "collapse_key" : [
+            "dyov254aovahjedqdgf3aino2e"
+          ]
+        },
+        "highlight" : {
+          "abstracts.body" : [
+            "Occupational stress is even greater for <em>long</em>-<em>haul</em> <em>truckers</em> who are away from home, family, friends, and other support networks for several days or weeks at a time.",
+            "Occupational stressors and the mental health of <em>truckers</em> was studied using data collected as part of a large multisite ethnoepidemiological study of <em>trucker</em> networks."
+          ],
+          "fulltext.body" : [
+            "<em>Long</em>-<em>haul</em> <em>truckers</em> frequently experience loneliness, isolation, and boredom. One driver described the interpersonal and relational costs of working as a <em>long</em>-<em>haul</em> <em>trucker</em>: I'm always alone, man. I'm always alone.",
+            "In addition, telehealth technology has the potential to connect <em>truckers</em> with remote mental health clinics while health care clinics located at truck stops could increase access to care for <em>long</em>-<em>haul</em> <em>truckers</em>."
+          ]
+        },
+        "inner_hits" : {
+          "more_pages" : {
+            "hits" : {
+              "total" : {
+                "value" : 1,
+                "relation" : "eq"
+              },
+              "max_score" : null,
+              "hits" : [ ]
+            }
+          }
+        }
+      },
+      {
+        "_index" : "scholar_fulltext_v01",
+        "_type" : "_doc",
+        "_id" : "work_lmobci36t5aelogzjsazuwxpie",
+        "_score" : 35.989197,
+        "_source" : {
+          "collapse_key" : "lmobci36t5aelogzjsazuwxpie",
+          "work_ident" : "lmobci36t5aelogzjsazuwxpie",
+          "access" : [
+            {
+              "access_type" : "wayback",
+              "access_url" : "https://web.archive.org/web/20200507064436/http://libres.uncg.edu/ir/asu/f/Hege_Adam_2015_Surveying%20impact%20work%20hours.pdf",
+              "file_ident" : "fml7wtxoyfautnht7zsm6puk2q",
+              "mimetype" : "application/pdf",
+              "release_ident" : "6qeaxnqrpnerdj4fdwrztxw5yq"
+            }
+          ],
+          "abstracts" : [
+            {
+              "body": "Given the long hours on the road involving multiple and interacting work stressors (i.e., delivery pressures, irregular shifts, ergonomic hazards), commercial drivers face a plethora of health and safety risks. Researchers goal was to determine whether and to what extent long-haul trucker work schedules influence sleep duration and quality. Methods: Survey and biometric data collected from male long-haul truck drivers at a major truckstop in central North Carolina over a six month period. Results: Daily hours worked"
+            }
+          ],
+          "biblio" : {
+            "affiliations" : [ ],
+            "container_ident" : "2lahlebbdfdkpeqxkvvqnwcrm4",
+            "container_issnl" : "2093-7911",
+            "container_name" : "Safety and Health at Work",
+            "contrib_count" : 5,
+            "contrib_names" : [
+              "Adam Hege",
+              "Michael Perko",
+              "Amber Johnson",
+              "Chong Ho Yu",
+              "Sevil Sönmez",
+              "Yorghos Apostolopoulos"
+            ],
+            "doi" : "10.1016/j.shaw.2015.02.001",
+            "doi_prefix" : "10.1016",
+            "doi_registrar" : "crossref",
+            "first_page" : "104",
+            "first_page_int" : 104,
+            "issns" : [
+              "2093-7997",
+              "2093-7911"
+            ],
+            "lang_code" : "en",
+            "license_slug" : "CC-BY-NC-ND",
+            "pages" : "104-113",
+            "pmcid" : "PMC4476188",
+            "pmid" : "26106509",
+            "publisher" : "Elsevier BV",
+            "release_ident" : "6qeaxnqrpnerdj4fdwrztxw5yq",
+            "release_stage" : "published",
+            "release_type" : "article-journal",
+            "release_year" : 2015,
+            "title" : "Surveying the Impact of Work Hours and Schedules on Commercial Motor Vehicle Driver Sleep",
+            "wikidata_qid" : "Q28396868"
+          },
+          "fulltext" : {
+            "file_mimetype" : "application/pdf",
+            "access_type" : "wayback",
+            "file_sha1" : "ec48090885a06bd33db5f8d6e8c731a9b27e1fe2",
+            "file_ident" : "fml7wtxoyfautnht7zsm6puk2q",
+            "access_url" : "https://web.archive.org/web/20200507064436/http://libres.uncg.edu/ir/asu/f/Hege_Adam_2015_Surveying%20impact%20work%20hours.pdf",
+            "release_ident" : "6qeaxnqrpnerdj4fdwrztxw5yq"
+          },
+          "doc_type" : "work",
+          "doc_index_ts" : "2020-08-14T22:26:36.429750",
+          "key" : "work_lmobci36t5aelogzjsazuwxpie",
+          "releases" : [
+            {
+              "container_ident" : "2lahlebbdfdkpeqxkvvqnwcrm4",
+              "container_issnl" : "2093-7911",
+              "container_name" : "Safety and Health at Work",
+              "doi" : "10.1016/j.shaw.2015.02.001",
+              "doi_prefix" : "10.1016",
+              "doi_registrar" : "crossref",
+              "ident" : "6qeaxnqrpnerdj4fdwrztxw5yq",
+              "license_slug" : "CC-BY-NC-ND",
+              "pmcid" : "PMC4476188",
+              "pmid" : "26106509",
+              "release_stage" : "published",
+              "release_type" : "article-journal",
+              "release_year" : 2015,
+              "revision" : "37c40d21-a9d1-42ca-8062-d4c6ae77aa96",
+              "title" : "Surveying the Impact of Work Hours and Schedules on Commercial Motor Vehicle Driver Sleep",
+              "wikidata_qid" : "Q28396868"
+            }
+          ],
+          "tags" : [
+            "doaj",
+            "szczepanski",
+            "oa",
+            "road"
+          ]
+        },
+        "fields" : {
+          "collapse_key" : [
+            "lmobci36t5aelogzjsazuwxpie"
+          ]
+        },
+        "highlight" : {
+          "abstracts.body" : [
+            "Researchers goal was to determine whether and to what extent <em>long</em>-<em>haul</em> <em>trucker</em> work schedules influence sleep duration and quality. Methods: Survey and biometric data collected from male <em>long</em>-<em>haul</em> truck drivers at a major truckstop in central North Carolina over a six month period.",
+            "Researchers goal was to determine whether and to what extent <em>long</em>-<em>haul</em> <em>trucker</em> work schedules influence sleep duration and quality. Methods: Survey and biometric data collected from male <em>long</em>-<em>haul</em> truck drivers at a major truckstop in central North Carolina over a six month period."
+          ],
+          "fulltext.body" : [
+            "Following necessary revisions, a paper-andpencil draft of the instrument was pilot tested with a sample of six <em>long</em>-<em>haul</em> <em>truckers</em> in the Piedmont Triad area in central North Carolina.",
+            "Future studies of workrelated factors in relation to the sleep of <em>long</em>-<em>haul</em> <em>truckers</em> should seek to utilize larger and more representative samples."
+          ]
+        },
+        "inner_hits" : {
+          "more_pages" : {
+            "hits" : {
+              "total" : {
+                "value" : 1,
+                "relation" : "eq"
+              },
+              "max_score" : null,
+              "hits" : [ ]
+            }
+          }
+        }
+      },
+      {
+        "_index" : "scholar_fulltext_v01",
+        "_type" : "_doc",
+        "_id" : "work_jerukgjhmveufddseghzokmp34",
+        "_score" : 35.504475,
+        "_source" : {
+          "collapse_key" : "jerukgjhmveufddseghzokmp34",
+          "work_ident" : "jerukgjhmveufddseghzokmp34",
+          "access" : [
+            {
+              "access_type" : "wayback",
+              "access_url" : "https://web.archive.org/web/20170706131456/https://works.bepress.com/mona_shattell/84/download/",
+              "file_ident" : "3rnnxwxx7bh6hgptfs2vdplory",
+              "mimetype" : "application/pdf",
+              "release_ident" : "x6f5okrhyrfw5dhhhocvryy4tq"
+            }
+          ],
+          "abstracts" : [
+            {
+              "body" : "While trucking in industrialized nations is linked with driver health afflictions, the role of trucking in U.S. truckers' health remains largely unknown. This paper sheds light on links between the trucking work environment and drivers' physical health. Using a cross-sectional design, 316 truckers were enrolled in the Healthy Trucker Survey. Questions included work history, physical and mental health, and healthcare access. PASW 18 was used to examine patterns among factors. 316 truckers participated. Respondents were mainly full-time, long-haul drivers with over 5 years of experience, and who spent over 17 days on the road per month. While almost 75% described their health as good, 83.4% were overweight/obese, 57.9% had sleeping disturbances, 56.3% fatigue, 42.3% musculoskeletal disorders, and about 40% cardiovascular disease concerns. About 33% had no health insurance, 70% had no regular healthcare visits, 24.4% could not afford insurance, and 42.1% took over-the-counter drugs when sick, while 20.1% waited to reach home for medical care. Exercise facilities were unavailable in over 70% of trucking worksites and 70% of drivers did not exercise regularly. The trucking occupation places drivers at high risk for poor health outcomes. Prospective studies are needed to delve into how continued exposure to trucking influences the progression of disease burden.",
+              "lang_code" : "en"
+            }
+          ],
+          "biblio" : {
+            "affiliations" : [ ],
+            "container_ident" : "chpqbhkvcvefrnnt2lijoxnrhq",
+            "container_issnl" : "1051-9815",
+            "container_name" : "Work : A journal of Prevention, Assesment and rehabilitation",
+            "container_type" : "journal",
+            "contrib_count" : 4,
+            "contrib_names" : [
+              "Yorghos Apostolopoulos",
+              "Sevil Sönmez",
+              "Mona M Shattell",
+              "Clifford Gonzales",
+              "Caitlin Fehrenbacher"
+            ],
+            "doi" : "10.3233/wor-121553",
+            "doi_prefix" : "10.3233",
+            "first_page" : "113",
+            "first_page_int" : 113,
+            "issns" : [
+              "1051-9815",
+              "1875-9270"
+            ],
+            "issue" : "1",
+            "issue_int" : 1,
+            "lang_code" : "en",
+            "pages" : "113-23",
+            "pmid" : "23324711",
+            "release_date" : "2013-01-01",
+            "release_ident" : "x6f5okrhyrfw5dhhhocvryy4tq",
+            "release_stage" : "published",
+            "release_type" : "article-journal",
+            "release_year" : 2013,
+            "title" : "Health survey of U.S. long-haul truck drivers: work environment, physical health, and healthcare access",
+            "volume" : "46",
+            "volume_int" : 46
+          },
+          "fulltext" : {
+            "file_mimetype" : "application/pdf",
+            "access_type" : "wayback",
+            "acknowledgement" : "Acknowledgments We wish to express our appreciation to the all those truck drivers who took the time to participate in the study and to the managers and supervisors at trucking work settings who gave us permission to collect data at their facilities. We are also very appreciative of the University of North Carolina Greensboro's internal funding that made this study possible.",
+            "file_sha1" : "408c07555c9924fa74034975a4fe4f7f52780c9e",
+            "file_ident" : "3rnnxwxx7bh6hgptfs2vdplory",
+            "access_url" : "https://web.archive.org/web/20170706131456/https://works.bepress.com/mona_shattell/84/download/",
+            "release_ident" : "x6f5okrhyrfw5dhhhocvryy4tq",
+            "thumbnail_url" : "https://blobs.fatcat.wiki/thumbnail/pdf/40/8c/408c07555c9924fa74034975a4fe4f7f52780c9e.180px.jpg"
+          },
+          "doc_type" : "work",
+          "doc_index_ts" : "2020-08-14T17:25:45.424800",
+          "key" : "work_jerukgjhmveufddseghzokmp34",
+          "releases" : [
+            {
+              "container_ident" : "chpqbhkvcvefrnnt2lijoxnrhq",
+              "container_issnl" : "1051-9815",
+              "container_name" : "Work : A journal of Prevention, Assesment and rehabilitation",
+              "container_type" : "journal",
+              "doi" : "10.3233/wor-121553",
+              "doi_prefix" : "10.3233",
+              "ident" : "x6f5okrhyrfw5dhhhocvryy4tq",
+              "pmid" : "23324711",
+              "release_date" : "2013-01-01",
+              "release_stage" : "published",
+              "release_type" : "article-journal",
+              "release_year" : 2013,
+              "revision" : "c73adf98-9c2b-4a05-9bed-7c68316c5639",
+              "title" : "Health survey of U.S. long-haul truck drivers: work environment, physical health, and healthcare access"
+            }
+          ],
+          "tags" : [ ]
+        },
+        "fields" : {
+          "collapse_key" : [
+            "jerukgjhmveufddseghzokmp34"
+          ]
+        },
+        "highlight" : {
+          "abstracts.body" : [
+            "Using a cross-sectional design, 316 <em>truckers</em> were enrolled in the Healthy <em>Trucker</em> Survey. Questions included work history, physical and mental health, and healthcare access. PASW 18 was used to examine patterns among factors. 316 <em>truckers</em> participated.",
+            "Respondents were mainly full-time, <em>long</em>-<em>haul</em> drivers with over 5 years of experience, and who spent over 17 days on the road per month."
+          ],
+          "fulltext.body" : [
+            "Introduction <em>Long</em>-<em>haul</em> truck driving in industrialized nations has been recognized as a highly detrimental occupation for for <em>truckers</em> and the public at large  [3] .",
+            "It should be noted that U.S. <em>long</em>-<em>haul</em> <em>truckers</em> work in a highly stressogenic environment due to a series of interlinked factors."
+          ]
+        },
+        "inner_hits" : {
+          "more_pages" : {
+            "hits" : {
+              "total" : {
+                "value" : 1,
+                "relation" : "eq"
+              },
+              "max_score" : null,
+              "hits" : [ ]
+            }
+          }
+        }
+      },
+      {
+        "_index" : "scholar_fulltext_v01",
+        "_type" : "_doc",
+        "_id" : "work_xmmnydlspffwbd4wvo2btfnxjq",
+        "_score" : 35.233917,
+        "_source" : {
+          "collapse_key" : "xmmnydlspffwbd4wvo2btfnxjq",
+          "work_ident" : "xmmnydlspffwbd4wvo2btfnxjq",
+          "access" : [
+            {
+              "access_type" : "wayback",
+              "access_url" : "https://web.archive.org/web/2017/http://libres.uncg.edu/ir/uncg/f/S_Somnez_Trucking_2012.pdf",
+              "file_ident" : "uij2nlxlqfbzzeyp2o5bgzkuiu",
+              "mimetype" : "application/pdf",
+              "release_ident" : "4pqnfqihsrg3vmbgb6v55ijrty"
+            }
+          ],
+          "abstracts" : [ ],
+          "biblio" : {
+            "affiliations" : [ ],
+            "container_ident" : "jnqxtapanngidjlcs4qqaoq2yi",
+            "container_issnl" : "0161-2840",
+            "container_name" : "Issues in Mental Health Nursing",
+            "contrib_count" : 4,
+            "contrib_names" : [
+              "Mona Shattell",
+              "Yorghos Apostolopoulos",
+              "Chad Collins",
+              "Sevil Sönmez",
+              "Caitlin Fehrenbacher"
+            ],
+            "doi" : "10.3109/01612840.2012.665156",
+            "doi_prefix" : "10.3109",
+            "doi_registrar" : "crossref",
+            "first_page" : "436",
+            "first_page_int" : 436,
+            "issns" : [
+              "0161-2840",
+              "1096-4673"
+            ],
+            "lang_code" : "en",
+            "pages" : "436-444",
+            "pmid" : "22757596",
+            "publisher" : "Informa UK Limited",
+            "release_date" : "2012-06-29",
+            "release_ident" : "4pqnfqihsrg3vmbgb6v55ijrty",
+            "release_stage" : "published",
+            "release_type" : "article-journal",
+            "release_year" : 2012,
+            "title" : "Trucking Organization and Mental Health Disorders of Truck Drivers",
+            "volume" : "33",
+            "volume_int" : 33,
+            "wikidata_qid" : "Q47424405"
+          },
+          "fulltext" : {
+            "file_mimetype" : "application/pdf",
+            "access_type" : "wayback",
+            "file_sha1" : "76ec4f0f49787ba5b6076146c7b3539239879745",
+            "file_ident" : "uij2nlxlqfbzzeyp2o5bgzkuiu",
+            "access_url" : "https://web.archive.org/web/2017/http://libres.uncg.edu/ir/uncg/f/S_Somnez_Trucking_2012.pdf",
+            "release_ident" : "4pqnfqihsrg3vmbgb6v55ijrty",
+            "thumbnail_url" : "https://blobs.fatcat.wiki/thumbnail/pdf/76/ec/76ec4f0f49787ba5b6076146c7b3539239879745.180px.jpg"
+          },
+          "doc_type" : "work",
+          "doc_index_ts" : "2020-08-16T00:25:16.009684",
+          "key" : "work_xmmnydlspffwbd4wvo2btfnxjq",
+          "releases" : [
+            {
+              "container_ident" : "jnqxtapanngidjlcs4qqaoq2yi",
+              "container_issnl" : "0161-2840",
+              "container_name" : "Issues in Mental Health Nursing",
+              "doi" : "10.3109/01612840.2012.665156",
+              "doi_prefix" : "10.3109",
+              "doi_registrar" : "crossref",
+              "ident" : "4pqnfqihsrg3vmbgb6v55ijrty",
+              "pmid" : "22757596",
+              "release_date" : "2012-06-29",
+              "release_stage" : "published",
+              "release_type" : "article-journal",
+              "release_year" : 2012,
+              "revision" : "8fc41070-6429-41c4-b768-cf6ae3ccf821",
+              "title" : "Trucking Organization and Mental Health Disorders of Truck Drivers",
+              "wikidata_qid" : "Q47424405"
+            }
+          ],
+          "tags" : [ ]
+        },
+        "fields" : {
+          "collapse_key" : [
+            "xmmnydlspffwbd4wvo2btfnxjq"
+          ]
+        },
+        "highlight" : {
+          "fulltext.body" : [
+            "Our study sample was limited to male <em>truckers</em> driving through the southeastern US, who were primarily <em>long</em>-<em>haul</em> <em>truckers</em>. Therefore, our findings cannot be generalized to short-<em>haul</em> or local drivers or to female drivers.",
+            "Online support for <em>truckers</em> and telehealth assessment and treatment efforts by advanced practice nurses have the potential to help close the gap in health care access that is common for <em>long</em>-<em>haul</em> <em>truckers</em>. Declaration of interest: The authors report no conflicts of interest."
+          ]
+        },
+        "inner_hits" : {
+          "more_pages" : {
+            "hits" : {
+              "total" : {
+                "value" : 1,
+                "relation" : "eq"
+              },
+              "max_score" : null,
+              "hits" : [ ]
+            }
+          }
+        }
+      },
+      {
+        "_index" : "scholar_fulltext_v01",
+        "_type" : "_doc",
+        "_id" : "page_sim_family-relations_2005-07_54_3_411",
+        "_score" : 34.34352,
+        "_source" : {
+          "ia_sim" : {
+            "first_page" : "411",
+            "issue_item" : "sim_family-relations_2005-07_54_3",
+            "pub_collection" : "pub_family-relations",
+            "sim_pubid" : "3492"
+          },
+          "collapse_key" : "sim_family-relations_2005-07_54_3",
+          "access" : [
+            {
+              "access_type" : "ia_sim",
+              "access_url" : "https://archive.org/details/sim_family-relations_2005-07_54_3/page/411"
+            }
+          ],
+          "abstracts" : [ ],
+          "biblio" : {
+            "affiliations" : [ ],
+            "container_name" : "Family Relations",
+            "contrib_names" : [ ],
+            "country_code" : "us",
+            "first_page" : "411",
+            "first_page_int" : 411,
+            "issns" : [
+              "0197-6664"
+            ],
+            "issue" : "3",
+            "issue_int" : 3,
+            "lang_code" : "en",
+            "pages" : "411",
+            "publisher" : "National Council on Family Relations",
+            "release_stage" : "published",
+            "release_type" : "article-journal",
+            "release_year" : 2005,
+            "volume" : "54",
+            "volume_int" : 54
+          },
+          "fulltext" : {
+            "access_type" : "ia_sim",
+            "access_url" : "https://archive.org/details/sim_family-relations_2005-07_54_3/page/411",
+            "thumbnail_url" : "https://archive.org/serve/sim_family-relations_2005-07_54_3/__ia_thumb.jpg"
+          },
+          "doc_type" : "sim_page",
+          "doc_index_ts" : "2020-08-16T19:39:54.602890",
+          "key" : "page_sim_family-relations_2005-07_54_3_411",
+          "releases" : [ ],
+          "tags" : [ ]
+        },
+        "fields" : {
+          "collapse_key" : [
+            "sim_family-relations_2005-07_54_3"
+          ]
+        },
+        "highlight" : {
+          "fulltext.body" : [
+            "From our findings about how families of commercial fishermen and <em>long</em>-<em>haul</em> <em>truckers</em> manage their time and their paid and unpaid work, we applied their challenges and strategies to other families experiencing difficulties related to time and work involvement.",
+            "The pur¬ pose of our study is to examine how marital partners view breadwinning and emotional connection in\ntheir families when men travel for work, as commer¬ cial fishermen and <em>long</em>-<em>haul</em> <em>truckers</em>."
+          ]
+        },
+        "inner_hits" : {
+          "more_pages" : {
+            "hits" : {
+              "total" : {
+                "value" : 4,
+                "relation" : "eq"
+              },
+              "max_score" : null,
+              "hits" : [ ]
+            }
+          }
+        }
+      },
+      {
+        "_index" : "scholar_fulltext_v01",
+        "_type" : "_doc",
+        "_id" : "work_kdpwrotco5dvrlvmq2d2olheyi",
+        "_score" : 33.880524,
+        "_source" : {
+          "collapse_key" : "kdpwrotco5dvrlvmq2d2olheyi",
+          "work_ident" : "kdpwrotco5dvrlvmq2d2olheyi",
+          "access" : [
+            {
+              "access_type" : "wayback",
+              "access_url" : "https://web.archive.org/web/20200209021901/https://journals.library.ualberta.ca/cjs/index.php/CJS/article/download/28288/20838",
+              "file_ident" : "xudgacsi2fbd3amqg3x3zjleze",
+              "mimetype" : "application/pdf",
+              "release_ident" : "c4jddcuu2zdgtns7h2fhv7pm44"
+            }
+          ],
+          "abstracts" : [
+            {
+              "body" : "This article explores arenas of contention in which long haul truckers' workplace mobilities are enmeshed. I critically analyze the grounded implications of Hours of Service (HoS) regulations, a primary regulatory mechanism for addressing the dangers posed by truck driver fatigue. I argue that HoS regulations enforce a neoliberal individualization of responsibility that fails to account for industry power dynamics or truckers' lived experiences of labour mobility. These dynamics add to concerns about the potential exploitation of migrant truck drivers, including through the Temporary Foreign Worker Program. Inasmuch as they fail to address the classed, gendered and racialized dynamics of trucking mobilities, HoS regulations are implicated in perpetuating hierarchies of power in the industry. As such, they are inadequate and – in contextually specific ways – counterproductive to promoting employment equity or overall public safety. These issues are particularly evident in the contentious politics of blame concerning heavy truck-involved collisions."
+            }
+          ],
+          "biblio" : {
+            "affiliations" : [ ],
+            "container_ident" : "fqfucrnhwzbsbli5cz3eaz2wju",
+            "container_issnl" : "0318-6431",
+            "container_name" : "Canadian journal of sociology",
+            "container_type" : "journal",
+            "contrib_count" : 0,
+            "contrib_names" : [
+              "Amie McLean"
+            ],
+            "doi" : "10.29173/cjs28288",
+            "doi_prefix" : "10.29173",
+            "doi_registrar" : "crossref",
+            "first_page" : "277",
+            "first_page_int" : 277,
+            "issns" : [
+              "1710-1123",
+              "0318-6431"
+            ],
+            "pages" : "277-298",
+            "publisher" : "University of Alberta Libraries",
+            "release_date" : "2016-09-30",
+            "release_ident" : "c4jddcuu2zdgtns7h2fhv7pm44",
+            "release_stage" : "published",
+            "release_type" : "article-journal",
+            "release_year" : 2016,
+            "title" : "Battling Blind Spots: Hours of Service Regulations and Contentious Mobilities in the BC-Based Long Haul Trucking Industry",
+            "volume" : "41",
+            "volume_int" : 41
+          },
+          "fulltext" : {
+            "file_mimetype" : "application/pdf",
+            "access_type" : "wayback",
+            "file_sha1" : "9bbfd3ce54356d7c704b9d17b03d15958d901a13",
+            "file_ident" : "xudgacsi2fbd3amqg3x3zjleze",
+            "access_url" : "https://web.archive.org/web/20200209021901/https://journals.library.ualberta.ca/cjs/index.php/CJS/article/download/28288/20838",
+            "release_ident" : "c4jddcuu2zdgtns7h2fhv7pm44"
+          },
+          "doc_type" : "work",
+          "doc_index_ts" : "2020-08-14T19:35:24.850620",
+          "key" : "work_kdpwrotco5dvrlvmq2d2olheyi",
+          "releases" : [
+            {
+              "container_ident" : "fqfucrnhwzbsbli5cz3eaz2wju",
+              "container_issnl" : "0318-6431",
+              "container_name" : "Canadian journal of sociology",
+              "container_type" : "journal",
+              "doi" : "10.29173/cjs28288",
+              "doi_prefix" : "10.29173",
+              "doi_registrar" : "crossref",
+              "ident" : "c4jddcuu2zdgtns7h2fhv7pm44",
+              "release_date" : "2016-09-30",
+              "release_stage" : "published",
+              "release_type" : "article-journal",
+              "release_year" : 2016,
+              "revision" : "98b85b14-0e58-4512-8a4e-1de9920a7097",
+              "title" : "Battling Blind Spots: Hours of Service Regulations and Contentious Mobilities in the BC-Based Long Haul Trucking Industry"
+            }
+          ],
+          "tags" : [
+            "road",
+            "oa",
+            "szczepanski"
+          ]
+        },
+        "fields" : {
+          "collapse_key" : [
+            "kdpwrotco5dvrlvmq2d2olheyi"
+          ]
+        },
+        "highlight" : {
+          "abstracts.body" : [
+            "This article explores arenas of contention in which <em>long</em> <em>haul</em> <em>truckers</em>' workplace mobilities are enmeshed. I critically analyze the grounded implications of Hours of Service (HoS) regulations, a primary regulatory mechanism for addressing the dangers posed by truck driver fatigue.",
+            "I argue that HoS regulations enforce a neoliberal individualization of responsibility that fails to account for industry power dynamics or <em>truckers</em>' lived experiences of labour mobility."
+          ],
+          "fulltext.body" : [
+            "In this article, I consider the grounded implications of Hours of Service (HoS) regulations for the contentious mobilities of <em>long</em> <em>haul</em> <em>truckers</em>. 1 HoS regulations are a complex set of rules governing the on-and off-duty scheduling of commercial vehicle drivers.",
+            "Belman and Monaco (2001)  argue that deregulation and de-unionization depressed real wages and increased wage inequality among <em>truckers</em> in the United States. In Canada, only about one-quarter of all <em>truckers</em> --short-and <em>long</em>-<em>haul</em> --are unionized."
+          ],
+          "fulltext.annex" : [
+            "Her mother was a <em>trucker</em> and heavy equipment operator. She has published on Indigenous post-secondary education in Canada and racial mobility politics in trucking. \n E-mail: amie_mclean@sfu.ca"
+          ]
+        },
+        "inner_hits" : {
+          "more_pages" : {
+            "hits" : {
+              "total" : {
+                "value" : 1,
+                "relation" : "eq"
+              },
+              "max_score" : null,
+              "hits" : [ ]
+            }
+          }
+        }
+      },
+      {
+        "_index" : "scholar_fulltext_v01",
+        "_type" : "_doc",
+        "_id" : "work_ctb4cmpadrgbtbwssmi4mtkodu",
+        "_score" : 33.27829,
+        "_source" : {
+          "collapse_key" : "ctb4cmpadrgbtbwssmi4mtkodu",
+          "work_ident" : "ctb4cmpadrgbtbwssmi4mtkodu",
+          "access" : [
+            {
+              "access_type" : "wayback",
+              "access_url" : "https://web.archive.org/web/20200305134354/http://libres.uncg.edu/ir/asu/f/Hege_Adam_2016_Work_Organization_of_Long_Haul_Truck.pdf",
+              "file_ident" : "hxvfarerv5hvtkremhmnmyjxzm",
+              "mimetype" : "application/pdf",
+              "release_ident" : "xxq6sx7mibhkrerhnputzwiyxm"
+            }
+          ],
+          "abstracts" : [
+            {
+              "body" : "Objective: The aim of this study was to examine relationships between work organization features of work hours, work schedules, and job stress with body mass indexes (BMIs) of long-haul truck drivers. Methods: Face-to-face survey data were collected first, followed by collection of anthropometric measures including height and weight (n ¼ 260). Logistic regression (backward stepwise model) was used to identify significant predictors of BMI and to analyze odds ratios. Results: Mean BMI was 33.40 kg/m2, with 64.2% obese (BMI > 30 kg/m2) and 18.4% extreme/morbidly obese (BMI > 40 kg/m2). Working more than 11 daily hours was associated with statistically significant increased odds for being extreme obese. Conclusion: Findings suggest that longer work hours (>11 hours daily) have a major influence on odds for obesity among this population. The results align with recent NIOSH calls for integrated approaches to worker health. The only two variables that we examined odds ratios for were the two statistically significant predictor variables."
+            }
+          ],
+          "biblio" : {
+            "affiliations" : [ ],
+            "container_ident" : "32vxelmdpbaqvid4cobjuofkie",
+            "container_issnl" : "1076-2752",
+            "container_name" : "Journal of Occupational and Environmental Medicine",
+            "container_type" : "journal",
+            "contrib_count" : 4,
+            "contrib_names" : [
+              "Adam Hege",
+              "Yorghos Apostolopoulos",
+              "Mike Perko",
+              "Sevil Sönmez",
+              "Robert Strack"
+            ],
+            "doi" : "10.1097/jom.0000000000000734",
+            "doi_prefix" : "10.1097",
+            "doi_registrar" : "crossref",
+            "first_page" : "712",
+            "first_page_int" : 712,
+            "issns" : [
+              "1536-5948",
+              "1076-2752"
+            ],
+            "lang_code" : "en",
+            "pages" : "712-717",
+            "pmid" : "27206124",
+            "publisher" : "Ovid Technologies (Wolters Kluwer Health)",
+            "release_ident" : "xxq6sx7mibhkrerhnputzwiyxm",
+            "release_stage" : "published",
+            "release_type" : "article-journal",
+            "release_year" : 2016,
+            "title" : "The Work Organization of Long-Haul Truck Drivers and the Association With Body Mass Index",
+            "volume" : "58",
+            "volume_int" : 58,
+            "wikidata_qid" : "Q39749403"
+          },
+          "fulltext" : {
+            "file_mimetype" : "application/pdf",
+            "access_type" : "wayback",
+            "acknowledgement" : "ACKNOWLEDGMENTS We would like to thank Mr. Tom Liutkus, Vice President of Marketing and Public Relations for Travel Centers of America (TA) and Mr. Jerald Brisson, General Manager of the Whitsett, NC TA truckstop and his staff for their instrumental support for our project and data collection efforts. We also thank the long-haul truck drivers who participated in this study and extend our thanks to our graduate students Kiki Hatzudis (Public Health Education) and Doug Oberlin (Kinesiology) for their invaluable assistance in various phases of data collection.",
+            "file_sha1" : "86b8b58e88a6c4197528b16606c46eb6d134cf90",
+            "file_ident" : "hxvfarerv5hvtkremhmnmyjxzm",
+            "access_url" : "https://web.archive.org/web/20200305134354/http://libres.uncg.edu/ir/asu/f/Hege_Adam_2016_Work_Organization_of_Long_Haul_Truck.pdf",
+            "release_ident" : "xxq6sx7mibhkrerhnputzwiyxm"
+          },
+          "doc_type" : "work",
+          "doc_index_ts" : "2020-08-14T02:23:32.573062",
+          "key" : "work_ctb4cmpadrgbtbwssmi4mtkodu",
+          "releases" : [
+            {
+              "container_ident" : "32vxelmdpbaqvid4cobjuofkie",
+              "container_issnl" : "1076-2752",
+              "container_name" : "Journal of Occupational and Environmental Medicine",
+              "container_type" : "journal",
+              "doi" : "10.1097/jom.0000000000000734",
+              "doi_prefix" : "10.1097",
+              "doi_registrar" : "crossref",
+              "ident" : "xxq6sx7mibhkrerhnputzwiyxm",
+              "pmid" : "27206124",
+              "release_stage" : "published",
+              "release_type" : "article-journal",
+              "release_year" : 2016,
+              "revision" : "1f3ce380-16bc-4fc3-810c-681ead7b9e08",
+              "title" : "The Work Organization of Long-Haul Truck Drivers and the Association With Body Mass Index",
+              "wikidata_qid" : "Q39749403"
+            }
+          ],
+          "tags" : [ ]
+        },
+        "fields" : {
+          "collapse_key" : [
+            "ctb4cmpadrgbtbwssmi4mtkodu"
+          ]
+        },
+        "highlight" : {
+          "abstracts.body" : [
+            "Objective: The aim of this study was to examine relationships between work organization features of work hours, work schedules, and job stress with body mass indexes (BMIs) of <em>long</em>-<em>haul</em> truck drivers."
+          ],
+          "fulltext.acknowledgement" : [
+            "We also thank the <em>long</em>-<em>haul</em> truck drivers who participated in this study and extend our thanks to our graduate students Kiki Hatzudis (Public Health Education) and Doug Oberlin (Kinesiology) for their invaluable assistance in various phases of data collection."
+          ],
+          "fulltext.body" : [
+            "To be enrolled, drivers were required to be <em>long</em>-<em>haul</em> <em>truckers</em> planning to spend the night at the truck stop where data collection took place. From approximately 360 drivers approached for potential inclusion, 260 met the criteria and were included.",
+            "DISCUSSION Findings from this study suggest that working <em>long</em> hours may be the most critical work organization feature to <em>long</em>-<em>haul</em> <em>truckers</em>."
+          ]
+        },
+        "inner_hits" : {
+          "more_pages" : {
+            "hits" : {
+              "total" : {
+                "value" : 1,
+                "relation" : "eq"
+              },
+              "max_score" : null,
+              "hits" : [ ]
+            }
+          }
+        }
+      },
+      {
+        "_index" : "scholar_fulltext_v01",
+        "_type" : "_doc",
+        "_id" : "work_jmqdlrcu2vehrd5rziwmmqtrza",
+        "_score" : 32.54007,
+        "_source" : {
+          "collapse_key" : "jmqdlrcu2vehrd5rziwmmqtrza",
+          "work_ident" : "jmqdlrcu2vehrd5rziwmmqtrza",
+          "access" : [
+            {
+              "access_type" : "wayback",
+              "access_url" : "https://web.archive.org/web/20180730054125/https://watermark.silverchair.com/kqv080.pdf?token=AQECAHi208BE49Ooan9kkhW_Ercy7Dm3ZL_9Cf3qfKAc485ysgAAAaYwggGiBgkqhkiG9w0BBwagggGTMIIBjwIBADCCAYgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMez4awuHvm5kCzXfnAgEQgIIBWYD2O7a9qmnMK1hno95pqmMv9PppXpVFbxA-M-0zV_TFu5hBq7Fy3bOxWomRf66dgQCoNSTk-nfIXwh_6JgaMP8zYlHCHmH2VXxSIGCLXF0IX46I6OVenwMQ_oS_XdzQZD6trCQNi1nDoISApxRWjzQ5G9Xgxad7l-l6BWZmKkGS_6u7Bq6RgRYNR2humYPwPQem7bVIHQRV1oCaFftms6XnIsaBiri-aKLmth7e6D_BlxU_HPMMA9AjhPMYuxIxTEwSbxSs4n1lcQKtyyPTn_blsstkc4sYhtsqilkNhgMfzTfTVLFJGe7h601WAPkMt4Q23b7lFRMjOoKX7a5dprKYk72578SMVlP9UGUbjT3HxBEfNO9-5slqtVgGcxxP-7fiKkrVdqZMbs-HROxKl7NtkvioeSomdJSmlcZbGmqc7jrq7e_nC_ve6CojU_6-WoZ6aw0j8jiBCA",
+              "file_ident" : "xsfchaozpzbuhixisjsnnd2sce",
+              "mimetype" : "application/pdf",
+              "release_ident" : "isjthfy7hvakvi44wyqrzhhehi"
+            }
+          ],
+          "abstracts" : [
+            {
+              "body" : "Work and sleep patterns for commercial motor vehicle (CMV) drivers often include long working hours, shift work and diminished sleep duration and quality, which have been linked to overweight, obesity and other problems. Aims To explore possible connections between work, sleep and obesity among CMV drivers. Methods Survey and anthropometric data were collected from male long-haul CMV drivers in central North Carolina, USA, over a period of 6 months. Drivers' body mass index (BMI) was used as a measure of total body obesity and sagittal abdominal diameter (SAD) as a measure of central adiposity. Results Among the 260 study subjects, mean BMI was 33.1 (64% were obese or morbidly obese) and mean SAD was 32.3 cm, classifying 89% of drivers as being at high or very high cardiometabolic risk. About 83% of drivers worked an irregular daily schedule, 64% worked irregular total daily hours, 32% worked irregular days of the week and 46% reported getting <7 h of sleep during work nights. Significant predictors of BMI included the number of hours worked daily (P < 0.05) and the age (P < 0.01) of the driver, while age was also a significant predictor for SAD (P < 0.05). Significant predictors of sleep quality included the extent of shift work (P < 0.05) and sleep duration (P < 0.001). Conclusions Work and sleep configurations appear to affect the weight status of CMV drivers. Shift work and sleep duration are both associated with the weight status of CMV drivers, and both appear to function as indicators of their sleep quality."
+            }
+          ],
+          "biblio" : {
+            "affiliations" : [ ],
+            "container_ident" : "dnrmpahxv5dxhnjyn72kddj42m",
+            "container_issnl" : "0962-7480",
+            "container_name" : "Occupational Medicine",
+            "contrib_count" : 4,
+            "contrib_names" : [
+              "M. K. Lemke",
+              "A. Hege",
+              "M. Perko",
+              "S. Sönmez",
+              "Y. Apostolopoulos"
+            ],
+            "doi" : "10.1093/occmed/kqv080",
+            "doi_prefix" : "10.1093",
+            "doi_registrar" : "crossref",
+            "first_page" : "kqv080",
+            "issns" : [
+              "1471-8405",
+              "0962-7480"
+            ],
+            "lang_code" : "en",
+            "pages" : "kqv080",
+            "pmid" : "26116265",
+            "publisher" : "Oxford University Press (OUP)",
+            "release_date" : "2015-06-25",
+            "release_ident" : "isjthfy7hvakvi44wyqrzhhehi",
+            "release_stage" : "published",
+            "release_type" : "article-journal",
+            "release_year" : 2015,
+            "title" : "Work patterns, sleeping hours and excess weight in commercial drivers",
+            "wikidata_qid" : "Q40791929"
+          },
+          "fulltext" : {
+            "file_mimetype" : "application/pdf",
+            "access_type" : "wayback",
+            "acknowledgement" : "Acknowledgements We would like to thank Mr Tom Liutkus, Vice President of Marketing and Public Relations for Travel Centers of America (TA), Mr Jerald Brisson, General Manager of the Whitsett, NC TA truck stop and his staff for their support, the long-haul truck drivers who participated in this study and our graduate students Kiki Hatzudis (Public Health Education) and Doug Oberlin (Kinesiology) for their invaluable assistance.",
+            "file_sha1" : "950629f0c04bec4c3fa5d4c942ed18f32f5744ee",
+            "file_ident" : "xsfchaozpzbuhixisjsnnd2sce",
+            "access_url" : "https://web.archive.org/web/20180730054125/https://watermark.silverchair.com/kqv080.pdf?token=AQECAHi208BE49Ooan9kkhW_Ercy7Dm3ZL_9Cf3qfKAc485ysgAAAaYwggGiBgkqhkiG9w0BBwagggGTMIIBjwIBADCCAYgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMez4awuHvm5kCzXfnAgEQgIIBWYD2O7a9qmnMK1hno95pqmMv9PppXpVFbxA-M-0zV_TFu5hBq7Fy3bOxWomRf66dgQCoNSTk-nfIXwh_6JgaMP8zYlHCHmH2VXxSIGCLXF0IX46I6OVenwMQ_oS_XdzQZD6trCQNi1nDoISApxRWjzQ5G9Xgxad7l-l6BWZmKkGS_6u7Bq6RgRYNR2humYPwPQem7bVIHQRV1oCaFftms6XnIsaBiri-aKLmth7e6D_BlxU_HPMMA9AjhPMYuxIxTEwSbxSs4n1lcQKtyyPTn_blsstkc4sYhtsqilkNhgMfzTfTVLFJGe7h601WAPkMt4Q23b7lFRMjOoKX7a5dprKYk72578SMVlP9UGUbjT3HxBEfNO9-5slqtVgGcxxP-7fiKkrVdqZMbs-HROxKl7NtkvioeSomdJSmlcZbGmqc7jrq7e_nC_ve6CojU_6-WoZ6aw0j8jiBCA",
+            "release_ident" : "isjthfy7hvakvi44wyqrzhhehi",
+            "thumbnail_url" : "https://blobs.fatcat.wiki/thumbnail/pdf/95/06/950629f0c04bec4c3fa5d4c942ed18f32f5744ee.180px.jpg"
+          },
+          "doc_type" : "work",
+          "doc_index_ts" : "2020-08-14T17:59:03.585538",
+          "key" : "work_jmqdlrcu2vehrd5rziwmmqtrza",
+          "releases" : [
+            {
+              "container_ident" : "dnrmpahxv5dxhnjyn72kddj42m",
+              "container_issnl" : "0962-7480",
+              "container_name" : "Occupational Medicine",
+              "doi" : "10.1093/occmed/kqv080",
+              "doi_prefix" : "10.1093",
+              "doi_registrar" : "crossref",
+              "ident" : "isjthfy7hvakvi44wyqrzhhehi",
+              "pmid" : "26116265",
+              "release_date" : "2015-06-25",
+              "release_stage" : "published",
+              "release_type" : "article-journal",
+              "release_year" : 2015,
+              "revision" : "cab01175-ddf0-4c89-a8a2-be8f597a0cc7",
+              "title" : "Work patterns, sleeping hours and excess weight in commercial drivers",
+              "wikidata_qid" : "Q40791929"
+            }
+          ],
+          "tags" : [ ]
+        },
+        "fields" : {
+          "collapse_key" : [
+            "jmqdlrcu2vehrd5rziwmmqtrza"
+          ]
+        },
+        "highlight" : {
+          "abstracts.body" : [
+            "Work and sleep patterns for commercial motor vehicle (CMV) drivers often include <em>long</em> working hours, shift work and diminished sleep duration and quality, which have been linked to overweight, obesity and other problems.",
+            "Methods Survey and anthropometric data were collected from male <em>long</em>-<em>haul</em> CMV drivers in central North Carolina, USA, over a period of 6 months. Drivers' body mass index (BMI) was used as a measure of total body obesity and sagittal abdominal diameter (SAD) as a measure of central adiposity."
+          ],
+          "fulltext.acknowledgement" : [
+            "Acknowledgements We would like to thank Mr Tom Liutkus, Vice President of Marketing and Public Relations for Travel Centers of America (TA), Mr Jerald Brisson, General Manager of the Whitsett, NC TA truck stop and his staff for their support, the <em>long</em>-<em>haul</em> truck drivers who participated in this study"
+          ],
+          "fulltext.body" : [
+            "Methods We undertook a non-experimental descriptive crosssectional survey to collect data from <em>long</em>-<em>haul</em> <em>truckers</em> at a major truck stop located on I-40 in central North Carolina from October 2012 until March 2013.",
+            "Furthermore, due to driver selection and retention biases, as well as extensive use of relevant medication and drivers' selfreported estimates of their sleep, these findings may under-represent the true scale of the health-related challenges of <em>long</em>-<em>haul</em> <em>truckers</em>."
+          ]
+        },
+        "inner_hits" : {
+          "more_pages" : {
+            "hits" : {
+              "total" : {
+                "value" : 1,
+                "relation" : "eq"
+              },
+              "max_score" : null,
+              "hits" : [ ]
+            }
+          }
+        }
+      },
+      {
+        "_index" : "scholar_fulltext_v01",
+        "_type" : "_doc",
+        "_id" : "work_m6putqvgbbeqlcndohner2pvie",
+        "_score" : 31.15921,
+        "_source" : {
+          "collapse_key" : "m6putqvgbbeqlcndohner2pvie",
+          "work_ident" : "m6putqvgbbeqlcndohner2pvie",
+          "access" : [
+            {
+              "access_type" : "wayback",
+              "access_url" : "https://web.archive.org/web/20170924173339/http://uknowledge.uky.edu:80/cgi/viewcontent.cgi?article=1029&context=cph_etds",
+              "file_ident" : "lk5yqnwu5fbmxoczsg3lxjgp44",
+              "mimetype" : "application/pdf",
+              "release_ident" : "ugeenwjyvnflbb5t55n75pk7le"
+            }
+          ],
+          "abstracts" : [ ],
+          "biblio" : {
+            "affiliations" : [ ],
+            "container_ident" : "ei5bysir7nb57cfqbceycwgwwy",
+            "container_issnl" : "1745-7300",
+            "container_name" : "International Journal of Injury Control and Safety Promotion",
+            "container_type" : "journal",
+            "contrib_count" : 2,
+            "contrib_names" : [
+              "Mark D. Chandler",
+              "Terry L. Bunn",
+              "Svetla Slavova"
+            ],
+            "doi" : "10.1080/17457300.2016.1170041",
+            "doi_prefix" : "10.1080",
+            "doi_registrar" : "crossref",
+            "first_page" : "120",
+            "first_page_int" : 120,
+            "issns" : [
+              "1745-7319",
+              "1745-7300"
+            ],
+            "lang_code" : "en",
+            "pages" : "120-130",
+            "pmid" : "27142559",
+            "publisher" : "Informa UK Limited",
+            "release_date" : "2016-05-04",
+            "release_ident" : "ugeenwjyvnflbb5t55n75pk7le",
+            "release_stage" : "published",
+            "release_type" : "article-journal",
+            "release_year" : 2016,
+            "title" : "Narrative and quantitative analyses of workers' compensation-covered injuries in short-haul vs. long-haul trucking",
+            "volume" : "24",
+            "volume_int" : 24,
+            "wikidata_qid" : "Q53107899"
+          },
+          "fulltext" : {
+            "file_mimetype" : "application/pdf",
+            "access_type" : "wayback",
+            "acknowledgement" : "Acknowledgements The author would like to thank the Kentucky Labor Cabinet's Department of Worker's Claims for supplying access to the 2012 workers' compensation FROI data for this study. This work was supported by grant/cooperative agreement number 2460OH008483-10 from NIOSH. Its contents are solely the responsibility of the authors and do not necessarily represent the official views of NIOSH.",
+            "file_sha1" : "fff53ed10be2403424ea3dbb92ee4ba6b87a3700",
+            "file_ident" : "lk5yqnwu5fbmxoczsg3lxjgp44",
+            "access_url" : "https://web.archive.org/web/20170924173339/http://uknowledge.uky.edu:80/cgi/viewcontent.cgi?article=1029&context=cph_etds",
+            "release_ident" : "ugeenwjyvnflbb5t55n75pk7le"
+          },
+          "doc_type" : "work",
+          "doc_index_ts" : "2020-08-15T02:02:58.900993",
+          "key" : "work_m6putqvgbbeqlcndohner2pvie",
+          "releases" : [
+            {
+              "container_ident" : "ei5bysir7nb57cfqbceycwgwwy",
+              "container_issnl" : "1745-7300",
+              "container_name" : "International Journal of Injury Control and Safety Promotion",
+              "container_type" : "journal",
+              "doi" : "10.1080/17457300.2016.1170041",
+              "doi_prefix" : "10.1080",
+              "doi_registrar" : "crossref",
+              "ident" : "ugeenwjyvnflbb5t55n75pk7le",
+              "pmid" : "27142559",
+              "release_date" : "2016-05-04",
+              "release_stage" : "published",
+              "release_type" : "article-journal",
+              "release_year" : 2016,
+              "revision" : "8155aaf0-3646-4f19-8787-87910bc1ae43",
+              "title" : "Narrative and quantitative analyses of workers' compensation-covered injuries in short-haul vs. long-haul trucking",
+              "wikidata_qid" : "Q53107899"
+            }
+          ],
+          "tags" : [ ]
+        },
+        "fields" : {
+          "collapse_key" : [
+            "m6putqvgbbeqlcndohner2pvie"
+          ]
+        },
+        "highlight" : {
+          "fulltext.body" : [
+            "One cross-sectional survey study found that of 316 US <em>long</em>-<em>haul</em> <em>truckers</em>, 70% had no regular healthcare visits and 42.3% had musculoskeletal disorders along with other health conditions related to their job.",
+            "Many <em>long</em>-<em>haul</em> truck transportation injuries involved trailer tarping and handling the trailer door. <em>Long</em>-<em>haul</em> <em>truckers</em> frequently manually adjust tarps on their loads, which often results in falls from the top and strains due to carrying the heavy tarps while climbing on top of the load."
+          ],
+          "fulltext.annex" : [
+            "Top Injury Scenario Activities For All Occupations In Short-<em>Haul</em> Trucking, 2012.",
+            "truck and misstepped between truck and dock plate\"  \"He was pulling on a pallet of freight when he felt pain in his lower back\"  \"He was unloading freight from a trailer and strained his back\"  \"Back pain-He said he was picking up an oil line and felt something pull in back\"  \"He was pulling 8 foot <em>long</em>"
+          ]
+        },
+        "inner_hits" : {
+          "more_pages" : {
+            "hits" : {
+              "total" : {
+                "value" : 1,
+                "relation" : "eq"
+              },
+              "max_score" : null,
+              "hits" : [ ]
+            }
+          }
+        }
+      },
+      {
+        "_index" : "scholar_fulltext_v01",
+        "_type" : "_doc",
+        "_id" : "work_kax6tprh4ra5lnf2ii2w45pvuu",
+        "_score" : 31.14281,
+        "_source" : {
+          "collapse_key" : "kax6tprh4ra5lnf2ii2w45pvuu",
+          "work_ident" : "kax6tprh4ra5lnf2ii2w45pvuu",
+          "access" : [
+            {
+              "access_type" : "wayback",
+              "access_url" : "https://web.archive.org/web/20190427222736/http://libres.uncg.edu/ir/uncg/f/L_Wideman_Obesity_2016.pdf",
+              "file_ident" : "5pczs5cw2rhy7pthljmj5lkqm4",
+              "mimetype" : "application/pdf",
+              "release_ident" : "4xnwn2dnb5crreehqbm7fnqfp4"
+            }
+          ],
+          "abstracts" : [
+            {
+              "body" : "Obesity rates in long-haul truck drivers have been shown to be significantly higher than the general population. We hypothesized that commercial drivers with the highest levels of general obesity and abdominal adiposity would have higher concentrations of high sensitivity C-reactive protein (CRP), a marker of inflammation. Methods Survey and anthropometric data were collected from 262 commercial drivers. Weight, circumference measures, and blood analysis for CRP (N = 115) were conducted and compared to National Health and Nutrition Examination Survey (NHANES) data. CRP values were nonnormally distributed and logarithmically transformed for statistical analyses. Results BMI, waist circumference, sagittal abdominal diameter, and CRP were significantly higher than in the general population. Anthropometric indices that included height (BMI, waist-to-height ratio, and sagittal diameter-to-height ratio), were most predictive of CRP values. Conclusions Abdominal obesity is prevalent in commercial vehicle drivers and is an important indicator of the presence of inflammation in this population. Keywords: commercial vehicle drivers | obesity | abdominal obesity | cardiovascular disease | inflammation| sagittal diameter | high sensitivity C-reactive protein Article:"
+            }
+          ],
+          "biblio" : {
+            "affiliations" : [ ],
+            "container_ident" : "rbafdkpskfgqjgnqtjn2odcxu4",
+            "container_issnl" : "0271-3586",
+            "container_name" : "American Journal of Industrial Medicine",
+            "container_type" : "journal",
+            "contrib_count" : 5,
+            "contrib_names" : [
+              "Laurie Wideman",
+              "Douglas J. Oberlin",
+              "Sevil Sönmez",
+              "Jeffrey Labban",
+              "Michael Kenneth Lemke",
+              "Yorghos Apostolopoulos"
+            ],
+            "doi" : "10.1002/ajim.22584",
+            "doi_prefix" : "10.1002",
+            "doi_registrar" : "crossref",
+            "first_page" : "665",
+            "first_page_int" : 665,
+            "issns" : [
+              "1097-0274",
+              "0271-3586"
+            ],
+            "lang_code" : "en",
+            "pages" : "665-675",
+            "pmid" : "27400443",
+            "publisher" : "Wiley",
+            "release_date" : "2016-07-11",
+            "release_ident" : "4xnwn2dnb5crreehqbm7fnqfp4",
+            "release_stage" : "published",
+            "release_type" : "article-journal",
+            "release_year" : 2016,
+            "title" : "Obesity indices are predictive of elevated C-reactive protein in long-haul truck drivers",
+            "volume" : "59",
+            "volume_int" : 59,
+            "wikidata_qid" : "Q39613879"
+          },
+          "fulltext" : {
+            "file_mimetype" : "application/pdf",
+            "access_type" : "wayback",
+            "file_sha1" : "e5e722b2bbf5a0ff326bd29dde70b841cacd0851",
+            "file_ident" : "5pczs5cw2rhy7pthljmj5lkqm4",
+            "access_url" : "https://web.archive.org/web/20190427222736/http://libres.uncg.edu/ir/uncg/f/L_Wideman_Obesity_2016.pdf",
+            "release_ident" : "4xnwn2dnb5crreehqbm7fnqfp4"
+          },
+          "doc_type" : "work",
+          "doc_index_ts" : "2020-08-14T19:23:05.460867",
+          "key" : "work_kax6tprh4ra5lnf2ii2w45pvuu",
+          "releases" : [
+            {
+              "container_ident" : "rbafdkpskfgqjgnqtjn2odcxu4",
+              "container_issnl" : "0271-3586",
+              "container_name" : "American Journal of Industrial Medicine",
+              "container_type" : "journal",
+              "doi" : "10.1002/ajim.22584",
+              "doi_prefix" : "10.1002",
+              "doi_registrar" : "crossref",
+              "ident" : "4xnwn2dnb5crreehqbm7fnqfp4",
+              "pmid" : "27400443",
+              "release_date" : "2016-07-11",
+              "release_stage" : "published",
+              "release_type" : "article-journal",
+              "release_year" : 2016,
+              "revision" : "7199747f-71e0-400a-b7be-527dbb5c0834",
+              "title" : "Obesity indices are predictive of elevated C-reactive protein in long-haul truck drivers",
+              "wikidata_qid" : "Q39613879"
+            }
+          ],
+          "tags" : [ ]
+        },
+        "fields" : {
+          "collapse_key" : [
+            "kax6tprh4ra5lnf2ii2w45pvuu"
+          ]
+        },
+        "highlight" : {
+          "abstracts.body" : [
+            "Obesity rates in <em>long</em>-<em>haul</em> truck drivers have been shown to be significantly higher than the general population."
+          ],
+          "fulltext.body" : [
+            "Those drivers who were <em>long</em>-<em>haul</em> <em>truckers</em>, who were planning to spend the night at the truck stop and leaving between 0400 and 0800 hr the following morning were enrolled in the study.",
+            "We also thank the <em>long</em>-<em>haul</em> <em>truckers</em> who participated in this study and extend our thanks to our graduate students Kiki Hatzudis and Doug Oberlin for their invaluable assistance in various phases of data collection."
+          ]
+        },
+        "inner_hits" : {
+          "more_pages" : {
+            "hits" : {
+              "total" : {
+                "value" : 1,
+                "relation" : "eq"
+              },
+              "max_score" : null,
+              "hits" : [ ]
+            }
+          }
+        }
+      },
+      {
+        "_index" : "scholar_fulltext_v01",
+        "_type" : "_doc",
+        "_id" : "page_sim_american-chiropractic-association-the-aca-journal_1998-04_35_4_35",
+        "_score" : 31.075876,
+        "_source" : {
+          "ia_sim" : {
+            "first_page" : "35",
+            "issue_item" : "sim_american-chiropractic-association-the-aca-journal_1998-04_35_4",
+            "pub_collection" : "pub_american-chiropractic-association-the-aca-journal",
+            "sim_pubid" : "10579"
+          },
+          "collapse_key" : "sim_american-chiropractic-association-the-aca-journal_1998-04_35_4",
+          "access" : [
+            {
+              "access_type" : "ia_sim",
+              "access_url" : "https://archive.org/details/sim_american-chiropractic-association-the-aca-journal_1998-04_35_4/page/35"
+            }
+          ],
+          "abstracts" : [ ],
+          "biblio" : {
+            "affiliations" : [ ],
+            "container_name" : "American Chiropractic Association. The ACA Journal of Chiropractic",
+            "contrib_names" : [ ],
+            "country_code" : "us",
+            "first_page" : "35",
+            "first_page_int" : 35,
+            "issns" : [
+              "0044-7609"
+            ],
+            "issue" : "4",
+            "issue_int" : 4,
+            "lang_code" : "en",
+            "pages" : "35",
+            "publisher" : "The Journal of the American Chiropractic",
+            "release_stage" : "published",
+            "release_type" : "article-journal",
+            "release_year" : 1998,
+            "volume" : "35",
+            "volume_int" : 35
+          },
+          "fulltext" : {
+            "access_type" : "ia_sim",
+            "access_url" : "https://archive.org/details/sim_american-chiropractic-association-the-aca-journal_1998-04_35_4/page/35",
+            "thumbnail_url" : "https://archive.org/serve/sim_american-chiropractic-association-the-aca-journal_1998-04_35_4/__ia_thumb.jpg"
+          },
+          "doc_type" : "sim_page",
+          "doc_index_ts" : "2020-08-16T19:28:31.818950",
+          "key" : "page_sim_american-chiropractic-association-the-aca-journal_1998-04_35_4_35",
+          "releases" : [ ],
+          "tags" : [ ]
+        },
+        "fields" : {
+          "collapse_key" : [
+            "sim_american-chiropractic-association-the-aca-journal_1998-04_35_4"
+          ]
+        },
+        "highlight" : {
+          "fulltext.body" : [
+            "Thus was born a new venture for providing care to <em>long</em>-<em>haul</em> truck drivers.",
+            "Because a regular exercise routine with equipment like this can make <em>truckers</em> feel much healthier and more productive, the effects of <em>long</em> hours on the road I won’t take such a terrible toll on their bodies."
+          ]
+        },
+        "inner_hits" : {
+          "more_pages" : {
+            "hits" : {
+              "total" : {
+                "value" : 1,
+                "relation" : "eq"
+              },
+              "max_score" : null,
+              "hits" : [ ]
+            }
+          }
+        }
+      }
+    ]
+  }
+}
