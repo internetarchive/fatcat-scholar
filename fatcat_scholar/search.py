@@ -2,7 +2,6 @@
 Helpers to make elasticsearch queries.
 """
 
-import sys
 import logging
 import datetime
 from gettext import gettext

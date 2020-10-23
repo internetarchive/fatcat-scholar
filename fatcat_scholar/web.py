@@ -4,7 +4,6 @@ This contains the FastAPI web application and RESTful API.
 So far there are few endpoints, so we just put them all here!
 """
 
-import sys
 import logging
 from typing import Optional, Any
 
