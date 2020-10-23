@@ -29,7 +29,7 @@ test: lint ## Run all tests and lints
 
 .PHONY: coverage
 coverage: lint ## Run all tests with coverage
-	PIPENV_DONT_LOAD_ENV=1 ENV_FOR_DYNACONF=test pipenv run pytest --cov
+	PIPENV_DONT_LOAD_ENV=1 ENV_FOR_DYNACONF=test pipenv run pytest --cov --cov-report=term --cov-report=html
 
 .PHONY: dev
 dev: ## Run web service locally, with reloading
