@@ -425,9 +425,7 @@ def main() -> None:
     idb = IssueDB(args.db_file)
     api_conf = fatcat_openapi_client.Configuration()
     api_conf.host = settings.FATCAT_API_HOST
-    api = fatcat_openapi_client.DefaultApi(
-        fatcat_openapi_client.ApiClient(api_conf)
-    )
+    api = fatcat_openapi_client.DefaultApi(fatcat_openapi_client.ApiClient(api_conf))
     es_client = elasticsearch.Elasticsearch(settings.FATCAT_ELASTICSEARCH_BACKEND)
 
     if args.func == "load_pubs":
