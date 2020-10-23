@@ -15,7 +15,7 @@ import sentry_sdk
 from sentry_sdk.integrations.asgi import SentryAsgiMiddleware
 
 from fatcat_scholar.config import settings, GIT_REVISION
-from fatcat_scholar.hacks import Jinja2Templates
+from fatcat_scholar.hacks import Jinja2Templates, parse_accept_lang
 from fatcat_scholar.search import do_fulltext_search, FulltextQuery, FulltextHits
 
 
@@ -49,6 +49,17 @@ class LangPrefix:
     def __init__(self, request: Request):
         self.prefix: str = ""
         self.code: str = settings.I18N_LANG_DEFAULT
+        # first try to parse a language code from header
+        try:
+            accept_code = parse_accept_lang(
+                request.headers.get("accept-language", ""), I18N_LANG_TRANSLATIONS,
+            )
+            if accept_code:
+                self.code = accept_code
+        except Exception:
+            pass
+
+        # then override this with any language code in URL
         for lang_option in I18N_LANG_OPTIONS:
             if request.url.path.startswith(f"/{lang_option}/"):
                 self.prefix = f"/{lang_option}"
