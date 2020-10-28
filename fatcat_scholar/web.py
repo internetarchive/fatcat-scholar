@@ -43,7 +43,7 @@ class LangPrefix:
         # first try to parse a language code from header
         try:
             accept_code = parse_accept_lang(
-                request.headers.get("accept-language", ""), I18N_LANG_TRANSLATIONS,
+                request.headers.get("accept-language", ""), I18N_LANG_OPTIONS,
             )
             if accept_code:
                 self.code = accept_code

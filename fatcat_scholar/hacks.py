@@ -77,3 +77,13 @@ def test_parse_accept_lang() -> None:
         parse_accept_lang("en-ca,en;q=0.8,en-us;q=0.6,de-de;q=0.4,de;q=0.2", ["de"])
         == "de"
     )
+    assert (
+        parse_accept_lang(
+            "en-ca,en;q=0.8,en-us;q=0.6,de-de;q=0.4,de;q=0.2", ["en", "de"]
+        )
+        == "en"
+    )
+    assert (
+        parse_accept_lang("en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7", ["zh", "en", "de"])
+        == "en"
+    )
