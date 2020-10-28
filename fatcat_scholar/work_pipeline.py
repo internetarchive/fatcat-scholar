@@ -70,8 +70,11 @@ def fulltext_pref_list(releases: List[ReleaseEntity]) -> List[str]:
             r.ext_ids.pmid is not None,
             r.release_stage == "submitted",
             r.release_type is not None,
+            r.release_year is not None,
             r.release_year,
+            r.release_date is not None,
             r.release_date,
+            r.version is not None,
             r.version,
         ),
     )
