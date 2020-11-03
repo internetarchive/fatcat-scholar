@@ -191,7 +191,7 @@ def main() -> None:
 
     args = parser.parse_args()
     if not args.__dict__.get("func"):
-        print("tell me what to do! (try --help)")
+        parser.print_help(file=sys.stderr)
         sys.exit(-1)
 
     sp = SimPipeline(issue_db=IssueDB(args.issue_db_file))
