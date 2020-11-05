@@ -58,9 +58,12 @@ dev-index: ## Delete/Create DEV elasticsearch fulltext index locally
 	http put ":9200/dev_scholar_fulltext_v01/_alias/dev_scholar_fulltext"
 	cat data/sim_intermediate.json data/work_intermediate.json | pipenv run python -m fatcat_scholar.transform run_transform | esbulk -verbose -size 200 -id key -w 4 -index dev_scholar_fulltext_v01 -type _doc
 
-.PHONY: update-i18n
-update-i18n:  ## Re-extract and compile translation files
+.PHONY: extract-i18n
+extract-i18n:  ## Re-extract translation source strings (for weblate)
 	pipenv run pybabel extract -F extra/i18n/babel.cfg -o extra/i18n/web_interface.pot fatcat_scholar/
+
+.PHONY: recompile-i18n
+recompile-i18n: extract-i18n  ## Re-extract and compile all translation files (bypass weblate)
 	pipenv run pybabel update -i extra/i18n/web_interface.pot -d fatcat_scholar/translations
 	pipenv run pybabel compile -d fatcat_scholar/translations
 

@@ -61,7 +61,7 @@ in the `./data/` directory. We don't have an out-of-the-box solution for non-IA
 staff at this step (yet).
 
 After making changes to any user interface strings, the interface translation
-file (".pot") needs to be updated with `make update-i18n`. When these changes
+file (".pot") needs to be updated with `make extract-i18n`. When these changes
 are merged to master, the Weblate translation system will be updated
 automatically.
 
