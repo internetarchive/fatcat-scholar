@@ -5,13 +5,14 @@
 # Martin Czygan <martin.czygan@gmail.com>, 2020.
 # nautilusx <mail.ka@mailbox.org>, 2020.
 # Bryan Newbold <bnewbold@robocracy.org>, 2020.
+# Milo Ivir <mail@milotype.de>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2020-10-15 10:14-0700\n"
-"PO-Revision-Date: 2020-10-17 09:26+0000\n"
-"Last-Translator: nautilusx <mail.ka@mailbox.org>\n"
+"PO-Revision-Date: 2020-11-05 23:02+0000\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/de/>\n"
 "Language: de\n"
@@ -19,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.3.1-dev\n"
+"X-Generator: Weblate 4.3.2\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:36
@@ -36,7 +37,7 @@ msgstr "Letzte Woche"
 
 #: fatcat_scholar/search.py:42
 msgid "Past Year"
-msgstr "Vergangenes Jahr"
+msgstr "Letztes Jahr"
 
 #: fatcat_scholar/search.py:43
 msgid "Since 2000"
@@ -48,11 +49,11 @@ msgstr "Vor 1925"
 
 #: fatcat_scholar/search.py:48
 msgid "Resource Type"
-msgstr "Ressourcentyp"
+msgstr "Ressourcenart"
 
 #: fatcat_scholar/search.py:52
 msgid "Papers"
-msgstr "Papiere"
+msgstr "Artikel"
 
 #: fatcat_scholar/search.py:53
 msgid "Reports"
@@ -80,7 +81,7 @@ msgstr "Mikrofilm"
 
 #: fatcat_scholar/search.py:65
 msgid "Open Access"
-msgstr "Offener Zugang"
+msgstr "Open Access"
 
 #: fatcat_scholar/search.py:66 fatcat_scholar/templates/search_macros.html:179
 msgid "Metadata"
@@ -127,8 +128,8 @@ msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
 msgstr ""
-"Wir sind eine gemeinnützige Bibliothek gemäß US 501(c)(3), die ein "
-"globales Archiv von Internetseiten und anderen kulturellen Artefakten in "
+"Wir sind eine gemeinnützige Bibliothek gemäß US 501(c)(3), die ein globales "
+"Archiv von Internetseiten und anderen kulturellen Er­zeug­nissen in "
 "digitaler Form erstellt."
 
 #: fatcat_scholar/templates/base.html:234
@@ -190,7 +191,7 @@ msgstr "Datenquellen"
 
 #: fatcat_scholar/templates/base.html:264
 msgid "Text and Data Mining"
-msgstr "Text und Data Mining"
+msgstr "Text- und Datenuntersuchung"
 
 #: fatcat_scholar/templates/base.html:265
 msgid "Help"
@@ -210,7 +211,7 @@ msgstr "nach Titel, Autor, Schlüsselwörtern..."
 
 #: fatcat_scholar/templates/home.html:23
 msgid "Search Millions of Research Papers"
-msgstr "Millionen wissenschaftlicher Publikationen durchsuchen"
+msgstr "Millionen wissenschaftlicher Arbeiten durchsuchen"
 
 #: fatcat_scholar/templates/home.html:24
 msgid ""
@@ -218,7 +219,7 @@ msgid ""
 " other scholarly documents preserved in the Internet Archive."
 msgstr ""
 "Dieser Volltextsuchindex enthält über 25 Millionen Forschungsartikel und "
-"andere wissenschaftliche Dokumente, die im Internetarchiv aufbewahrt "
+"andere wissenschaftliche Dokumente, die im „Internet Archive“ aufbewahrt "
 "werden."
 
 #: fatcat_scholar/templates/home.html:24
@@ -236,8 +237,8 @@ msgid ""
 "This service is in \"alpha\". It has several bugs, experiences\n"
 "        downtime, and has not been officially announced."
 msgstr ""
-"Dieser Service ist in \"Alpha\". Er hat mehrere Fehler, Erfahrungen mit\n"
-"        Ausfallzeiten und wurde nicht offiziell bekannt gegeben."
+"Dieser Dienst befindet sich im „Alpha“-Zustand. Er enthält Fehler,\n"
+"        Ausfallzeiten und wurde nicht offiziell veröffentlicht."
 
 #: fatcat_scholar/templates/home.html:49 fatcat_scholar/templates/home.html:63
 #: fatcat_scholar/templates/home.html:77 fatcat_scholar/templates/home.html:91
@@ -265,17 +266,16 @@ msgid ""
 "Query parsing is currently very naive. Sometimes you can fix this problem"
 " by adding quotes around terms or entire phrases."
 msgstr ""
-"Die Abfrageanalyse ist derzeit sehr naiv. Manchmal können Sie dieses Problem "
-"beheben, indem Sie Anführungszeichen um Begriffe oder ganze Phrasen "
-"hinzufügen."
+"Die Abfrage ist derzeit recht einfach. Das Problem kann jedoch manchmal "
+"durch das Hinzufügen von Anführungszeichen behoben werden."
 
 #: fatcat_scholar/templates/search.html:107
 msgid "We didn't find any documents matching your query"
-msgstr "Wir haben keine Dokumente gefunden, die Ihrer Anfrage entsprechen"
+msgstr "Wir haben keine entsprechende Dokumente gefunden"
 
 #: fatcat_scholar/templates/search.html:112
 msgid "Try All Resource Types"
-msgstr "Alle Ressourcentypen verwenden"
+msgstr "Alle Ressourcenarten verwenden"
 
 #: fatcat_scholar/templates/search.html:117
 msgid "Try All Time"
@@ -291,7 +291,7 @@ msgstr "Neue Suche"
 
 #: fatcat_scholar/templates/search.html:138
 msgid "Enter a query in the box above to get started"
-msgstr "Geben Sie eine Abfrage in das Feld oben ein, um loszulegen"
+msgstr "Suchbegriff ins obige Feld eintragen, um loszulegen"
 
 #: fatcat_scholar/templates/search_macros.html:49
 #: fatcat_scholar/templates/search_macros.html:187
@@ -349,8 +349,7 @@ msgstr "Vorherige"
 #: fatcat_scholar/templates/search_macros.html:308
 #, python-format
 msgid "Showing results %(start)s &mdash; %(end)s out of %(total)s results"
-msgstr ""
-"Anzeigen von Ergebnissen %(start)s &mdash; %(end)s von %(total)s Ergebnissen"
+msgstr "Ergebnisse %(start)s &ndash; %(end)s von %(total)s"
 
 #: fatcat_scholar/templates/search_macros.html:314
 #: fatcat_scholar/templates/search_macros.html:316
