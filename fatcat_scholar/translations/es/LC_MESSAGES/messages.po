@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2020-11-05 15:08-0800\n"
-"PO-Revision-Date: 2020-10-16 00:24+0000\n"
+"PO-Revision-Date: 2020-11-05 23:37+0000\n"
 "Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/es/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.3-dev\n"
+"X-Generator: Weblate 4.3.2\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:37
@@ -109,11 +109,11 @@ msgstr ""
 #, fuzzy
 #| msgid "Internet Archive Scholar logo (vaporwave)"
 msgid "Internet Archive Scholar"
-msgstr "Logotipo de un erudito del Archivo de Internet (vaporwave)"
+msgstr "Académico de Internet Archive"
 
 #: fatcat_scholar/templates/base.html:155
 msgid "language selection menu"
-msgstr ""
+msgstr "Carta de selección de la lengua"
 
 #: fatcat_scholar/templates/base.html:172
 msgid "Contribute to translations"
@@ -277,9 +277,9 @@ msgstr[1] "Visita"
 
 #: fatcat_scholar/templates/search.html:52
 #: fatcat_scholar/templates/search.html:84
-#, python-format
+#, fuzzy, python-format
 msgid "in %(frac_sec)ssec"
-msgstr ""
+msgstr "En %(frac_sec)ssec"
 
 #: fatcat_scholar/templates/search.html:108
 msgid "Backend Search Engine Error"
@@ -332,8 +332,9 @@ msgid "unknown"
 msgstr "desconocido"
 
 #: fatcat_scholar/templates/search_macros.html:64
+#, fuzzy
 msgid "access microfilm on archive.org"
-msgstr ""
+msgstr "acceder al microfilm en archive.org"
 
 #: fatcat_scholar/templates/search_macros.html:65
 #, python-format
@@ -382,10 +383,8 @@ msgid "read fulltext microfilm"
 msgstr ""
 
 #: fatcat_scholar/templates/search_macros.html:272
-#, fuzzy
-#| msgid "Fulltext"
 msgid "fulltext access"
-msgstr "Texto completo"
+msgstr "texto completo"
 
 #: fatcat_scholar/templates/search_macros.html:308
 #: fatcat_scholar/templates/search_macros.html:311
