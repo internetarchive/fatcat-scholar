@@ -96,8 +96,8 @@ def locale_gettext(translations: Any) -> Any:
 
 
 def locale_ngettext(translations: Any) -> Any:
-    def ngt(s, n):  # noqa: ANN001,ANN201
-        return translations.ungettext(s)
+    def ngt(s, p, n):  # noqa: ANN001,ANN201
+        return translations.ungettext(s, p, n)
 
     return ngt
 
