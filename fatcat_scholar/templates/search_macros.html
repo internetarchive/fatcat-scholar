@@ -252,7 +252,9 @@
     <button class="ui basic label blue small button" form="search_form" type="submit" name="collapse_key" value="{{ paper.collapse_key }}">
       <i class="ui icon zoom-in"></i>
       {% trans trimmed count=paper._collapsed_count %}
-        Show {{ count }} additional hits from this issue
+        Show {{ count }} additional result from this issue
+      {% pluralize %}
+        Show {{ count }} additional results from this issue
       {% endtrans %}
     </button>
   {% endif %}

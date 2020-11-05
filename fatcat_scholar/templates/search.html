@@ -3,9 +3,9 @@
 
 {% macro format_query_time(query_time_ms) -%}
   {% if query_time_ms >= 10000 %}
-    {{ "{:0.3}".format(hits.query_time_ms/1000.0) }}sec
+    {{ "{:0.3}".format(hits.query_time_ms/1000.0) }}
   {% else %}
-    {{ "{:0.2}".format(hits.query_time_ms/1000.0) }}sec
+    {{ "{:0.2}".format(hits.query_time_ms/1000.0) }}
   {% endif %}
 {%- endmacro %}
 
@@ -43,8 +43,16 @@
 
   {% if hits %}
     <span class="hit-count" style="font-size: 1.5em;">{{ "{:,}".format(hits.count_found) }}</span>
-    Hits
-    <span style="color: rgba(0,0,0,0.55);">in {{ format_query_time(hits.query_time_ms) }}</span>
+      {% trans trimmed count=hits.count_found %}
+        Hit
+      {% pluralize %}
+        Hits
+      {% endtrans %}
+    <span style="color: rgba(0,0,0,0.55);">
+      {% trans trimmed frac_sec=format_query_time(hits.query_time_ms) %}
+        in {{ frac_sec }}sec
+      {% endtrans %}
+    </span>
   {% else %}
     &nbsp;
   {% endif %}
@@ -65,10 +73,18 @@
         <span class="hit-count" style="display: block; font-size: {{ count_size }};">
           {{ "{:,}".format(hits.count_found) }}
         </span>
-        {{ _("Hits") }}
+        {% trans trimmed count=hits.count_found %}
+          Hit
+        {% pluralize %}
+          Hits
+        {% endtrans %}
       </div>
       <div style="text-align: end;">
-        <span style="color: rgba(0,0,0,0.55);">in {{ format_query_time(hits.query_time_ms) }}</span>
+        <span style="color: rgba(0,0,0,0.55);">
+          {% trans trimmed frac_sec=format_query_time(hits.query_time_ms) %}
+            in {{ frac_sec }}sec
+          {% endtrans %}
+        </span>
       </div>
       <div class="ui clearing divider"></div>
     {% endif %}
