@@ -6,121 +6,136 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
-"POT-Creation-Date: 2020-10-15 10:14-0700\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2020-11-05 15:08-0800\n"
 "PO-Revision-Date: 2020-10-16 00:25+0000\n"
 "Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 4.3-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
-#: fatcat_scholar/search.py:36
+#: fatcat_scholar/search.py:37
 msgid "Release Date"
 msgstr "Date de version"
 
-#: fatcat_scholar/search.py:40
+#: fatcat_scholar/search.py:41
 msgid "All Time"
 msgstr "Tout le temps"
 
-#: fatcat_scholar/search.py:41
+#: fatcat_scholar/search.py:42
 msgid "Past Week"
 msgstr "La semaine dernière"
 
-#: fatcat_scholar/search.py:42
+#: fatcat_scholar/search.py:43
 msgid "Past Year"
 msgstr "L'année passée"
 
-#: fatcat_scholar/search.py:43
+#: fatcat_scholar/search.py:44
 msgid "Since 2000"
 msgstr "Depuis 2000"
 
-#: fatcat_scholar/search.py:44
+#: fatcat_scholar/search.py:45
 msgid "Before 1925"
 msgstr "Avant 1925"
 
-#: fatcat_scholar/search.py:48
+#: fatcat_scholar/search.py:49
 msgid "Resource Type"
 msgstr "Type de Ressource"
 
-#: fatcat_scholar/search.py:52
+#: fatcat_scholar/search.py:53
 msgid "Papers"
 msgstr "Papiers"
 
-#: fatcat_scholar/search.py:53
+#: fatcat_scholar/search.py:54
 msgid "Reports"
 msgstr "Rapports"
 
-#: fatcat_scholar/search.py:54
+#: fatcat_scholar/search.py:55
 msgid "Datasets"
 msgstr "Ensembles de données"
 
-#: fatcat_scholar/search.py:55
+#: fatcat_scholar/search.py:56
 msgid "Everything"
 msgstr "Tout"
 
-#: fatcat_scholar/search.py:59
+#: fatcat_scholar/search.py:60
 msgid "Availability"
 msgstr "Disponibilité"
 
-#: fatcat_scholar/search.py:63 fatcat_scholar/templates/search_macros.html:178
+#: fatcat_scholar/search.py:64 fatcat_scholar/templates/search_macros.html:180
 msgid "Fulltext"
 msgstr "Texte entier"
 
-#: fatcat_scholar/search.py:64
+#: fatcat_scholar/search.py:65
 msgid "Microfilm"
 msgstr "Microfilm"
 
-#: fatcat_scholar/search.py:65
+#: fatcat_scholar/search.py:66
 msgid "Open Access"
 msgstr "Accès libre"
 
-#: fatcat_scholar/search.py:66 fatcat_scholar/templates/search_macros.html:179
+#: fatcat_scholar/search.py:67 fatcat_scholar/templates/search_macros.html:181
 msgid "Metadata"
 msgstr "Métadonnées"
 
-#: fatcat_scholar/search.py:70
+#: fatcat_scholar/search.py:71
 msgid "Sort Order"
 msgstr "Ordre de tri"
 
-#: fatcat_scholar/search.py:74
+#: fatcat_scholar/search.py:75
 msgid "Relevancy"
 msgstr "Pertinence"
 
-#: fatcat_scholar/search.py:75
+#: fatcat_scholar/search.py:76
 msgid "Recent First"
 msgstr "Récent en premier"
 
-#: fatcat_scholar/search.py:76
+#: fatcat_scholar/search.py:77
 msgid "Oldest First"
 msgstr "Plus ancien en premier"
 
-#: fatcat_scholar/templates/base.html:162
-msgid "select language"
-msgstr "sélectionner la langue"
+#: fatcat_scholar/templates/about.html:4
+#, python-format
+msgid "About %(website_name)s"
+msgstr ""
 
-#: fatcat_scholar/templates/base.html:173
+#: fatcat_scholar/templates/base.html:12
+#, fuzzy
+#| msgid "Internet Archive Scholar logo (vaporwave)"
+msgid "Internet Archive Scholar"
+msgstr "Logo Internet Archive Scholar (vaporwave)"
+
+#: fatcat_scholar/templates/base.html:155
+msgid "language selection menu"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:172
 msgid "Contribute to translations"
 msgstr "Contribuer aux traductions"
 
-#: fatcat_scholar/templates/base.html:196
+#: fatcat_scholar/templates/base.html:195
 msgid "by title, authors, keywords..."
 msgstr "par titre, auteurs, mots-clés ..."
 
-#: fatcat_scholar/templates/base.html:197 fatcat_scholar/templates/home.html:16
+#: fatcat_scholar/templates/base.html:195
+msgid "search for papers"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:196 fatcat_scholar/templates/home.html:16
 msgid "Search"
 msgstr "Recherche"
 
-#: fatcat_scholar/templates/base.html:204
+#: fatcat_scholar/templates/base.html:203
 msgid "User Guide"
 msgstr "Guide d’utilisation"
 
-#: fatcat_scholar/templates/base.html:232
+#: fatcat_scholar/templates/base.html:231
 msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
@@ -129,72 +144,77 @@ msgstr ""
 "construisant une archive mondiale de sites Internet et d'autres objets "
 "culturels sous forme numérique."
 
-#: fatcat_scholar/templates/base.html:234
+#: fatcat_scholar/templates/base.html:233
 #, python-format
 msgid ""
-"Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and"
-" %(archive_it)s."
+"Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and "
+"%(archive_it)s."
 msgstr ""
 "D'autres projets comprennent %(wayback)s, %(archive_org)s, %(openlibrary)s "
 "et %(archive_it)s."
 
-#: fatcat_scholar/templates/base.html:241
+#: fatcat_scholar/templates/base.html:240
 msgid "About Us"
 msgstr "À propos de nous"
 
-#: fatcat_scholar/templates/base.html:242
+#: fatcat_scholar/templates/base.html:241
 msgid "Contact Us"
 msgstr "Nous Contacter"
 
-#: fatcat_scholar/templates/base.html:243
+#: fatcat_scholar/templates/base.html:242
 msgid "Policies"
 msgstr "Politiques"
 
-#: fatcat_scholar/templates/base.html:244
+#: fatcat_scholar/templates/base.html:243
 msgid "Donate"
 msgstr "Faire un don"
 
-#: fatcat_scholar/templates/base.html:250
+#: fatcat_scholar/templates/base.html:249
 msgid "Open Infrastructure"
 msgstr "Infrastructure ouverte"
 
-#: fatcat_scholar/templates/base.html:252
+#: fatcat_scholar/templates/base.html:251
 msgid "Editable Catalog (Fatcat)"
 msgstr "Catalogue modifiable (Fatcat)"
 
-#: fatcat_scholar/templates/base.html:253
+#: fatcat_scholar/templates/base.html:252
 msgid "Contribute"
 msgstr "Contribuer"
 
-#: fatcat_scholar/templates/base.html:254
+#: fatcat_scholar/templates/base.html:253
 msgid "Search API"
 msgstr "API de recherche"
 
-#: fatcat_scholar/templates/base.html:255
+#: fatcat_scholar/templates/base.html:254
 msgid "Service Status"
 msgstr "État des services"
 
-#: fatcat_scholar/templates/base.html:256
+#: fatcat_scholar/templates/base.html:255
 msgid "Source Code"
 msgstr "Code source"
 
-#: fatcat_scholar/templates/base.html:262
+#: fatcat_scholar/templates/base.html:261
 msgid "How It Works"
 msgstr "Comment ça marche"
 
-#: fatcat_scholar/templates/base.html:263
+#: fatcat_scholar/templates/base.html:262
 msgid "Content Sources"
 msgstr "Sources de contenu"
 
-#: fatcat_scholar/templates/base.html:264
+#: fatcat_scholar/templates/base.html:263
 msgid "Text and Data Mining"
 msgstr "Exploration de texte et de données"
 
-#: fatcat_scholar/templates/base.html:265
+#: fatcat_scholar/templates/base.html:264
 msgid "Help"
 msgstr "Aide"
 
-#: fatcat_scholar/templates/help.html:9
+#: fatcat_scholar/templates/help.html:4
+#, python-format
+msgid "%(website_name)s Help"
+msgstr ""
+
+#: fatcat_scholar/templates/help.html:13
 msgid "Try It"
 msgstr "Essayez-le"
 
@@ -212,8 +232,8 @@ msgstr "Rechercher des millions d'articles de recherche"
 
 #: fatcat_scholar/templates/home.html:24
 msgid ""
-"This fulltext search index includes over 25 million research articles and"
-" other scholarly documents preserved in the Internet Archive."
+"This fulltext search index includes over 25 million research articles and "
+"other scholarly documents preserved in the Internet Archive."
 msgstr ""
 "Cet index de recherche en texte intégral comprend plus de 25 millions "
 "d'articles de recherche et d'autres documents scientifiques conservés dans "
@@ -221,9 +241,9 @@ msgstr ""
 
 #: fatcat_scholar/templates/home.html:24
 msgid ""
-"The collection spans from digitized copies of eighteenth century journals"
-" though the latest Open Access conference proceedings and pre-prints "
-"crawled from the World Wide Web."
+"The collection spans from digitized copies of eighteenth century journals "
+"though the latest Open Access conference proceedings and pre-prints crawled "
+"from the World Wide Web."
 msgstr ""
 "La collection s'étend des copies numérisées de revues du XVIIIe siècle à "
 "travers les derniers actes de conférence Open Access et les pré-impressions "
@@ -242,118 +262,149 @@ msgstr ""
 msgid "PDF thumbnail"
 msgstr "Vignette PDF"
 
-#: fatcat_scholar/templates/search.html:26
+#: fatcat_scholar/templates/search.html:35
 msgid "Filters"
 msgstr "Filtres"
 
-#: fatcat_scholar/templates/search.html:50
-msgid "Hits"
-msgstr "Les coups"
+#: fatcat_scholar/templates/search.html:46
+#: fatcat_scholar/templates/search.html:76
+#, fuzzy
+#| msgid "Hits"
+msgid "Hit"
+msgid_plural "Hits"
+msgstr[0] "Les coups"
+msgstr[1] "Les coups"
 
-#: fatcat_scholar/templates/search.html:74
+#: fatcat_scholar/templates/search.html:52
+#: fatcat_scholar/templates/search.html:84
+#, python-format
+msgid "in %(frac_sec)ssec"
+msgstr ""
+
+#: fatcat_scholar/templates/search.html:108
 msgid "Backend Search Engine Error"
 msgstr "Erreur du moteur de recherche backend"
 
-#: fatcat_scholar/templates/search.html:76
+#: fatcat_scholar/templates/search.html:110
 msgid "Search Query Error"
 msgstr "Erreur de requête de recherche"
 
-#: fatcat_scholar/templates/search.html:80
+#: fatcat_scholar/templates/search.html:114
 msgid ""
-"Query parsing is currently very naive. Sometimes you can fix this problem"
-" by adding quotes around terms or entire phrases."
+"Query parsing is currently very naive. Sometimes you can fix this problem by "
+"adding quotes around terms or entire phrases."
 msgstr ""
 "L'analyse des requêtes est actuellement très naïve. Parfois, vous pouvez "
 "résoudre ce problème en ajoutant des guillemets autour des termes ou des "
 "phrases entières."
 
-#: fatcat_scholar/templates/search.html:107
+#: fatcat_scholar/templates/search.html:141
 msgid "We didn't find any documents matching your query"
 msgstr "Nous n'avons trouvé aucun document correspondant à votre requête"
 
-#: fatcat_scholar/templates/search.html:112
+#: fatcat_scholar/templates/search.html:146
 msgid "Try All Resource Types"
 msgstr "Essayer tous les types de ressources"
 
-#: fatcat_scholar/templates/search.html:117
+#: fatcat_scholar/templates/search.html:151
 msgid "Try All Time"
 msgstr "Essayez tous les temps"
 
-#: fatcat_scholar/templates/search.html:122
+#: fatcat_scholar/templates/search.html:156
 msgid "Try Metadata Records"
 msgstr "Essayez les enregistrements de métadonnées"
 
-#: fatcat_scholar/templates/search.html:125
+#: fatcat_scholar/templates/search.html:159
 msgid "Start Over"
 msgstr "Recommencer"
 
-#: fatcat_scholar/templates/search.html:138
+#: fatcat_scholar/templates/search.html:172
 msgid "Enter a query in the box above to get started"
 msgstr "Entrez une requête dans la case ci-dessus pour commencer"
 
+#: fatcat_scholar/templates/search_macros.html:34
+msgid "access fatcat landing page"
+msgstr ""
+
 #: fatcat_scholar/templates/search_macros.html:49
-#: fatcat_scholar/templates/search_macros.html:187
+#: fatcat_scholar/templates/search_macros.html:189
 msgid "unknown"
 msgstr "inconnu"
 
 #: fatcat_scholar/templates/search_macros.html:64
+msgid "access microfilm on archive.org"
+msgstr ""
+
+#: fatcat_scholar/templates/search_macros.html:65
 #, python-format
 msgid "Page %(page_num)s of %(journal_name)s Vol. %(volume)s, Issue %(issue)s"
 msgstr ""
 "Page %(page_num)s sur %(journal_name)s Vol. %(volume)s, question %(issue)s"
 
-#: fatcat_scholar/templates/search_macros.html:65
+#: fatcat_scholar/templates/search_macros.html:67
 msgid "page"
 msgstr "page"
 
-#: fatcat_scholar/templates/search_macros.html:170
+#: fatcat_scholar/templates/search_macros.html:172
 msgid "Multiple Versions"
 msgstr "Versions multiples"
 
-#: fatcat_scholar/templates/search_macros.html:176
+#: fatcat_scholar/templates/search_macros.html:178
 msgid "Publication Stage"
 msgstr "Étape de publication"
 
-#: fatcat_scholar/templates/search_macros.html:177
+#: fatcat_scholar/templates/search_macros.html:179
 msgid "Date"
 msgstr "Date"
 
-#: fatcat_scholar/templates/search_macros.html:226
+#: fatcat_scholar/templates/search_macros.html:228
 msgid "published"
 msgstr "publié"
 
-#: fatcat_scholar/templates/search_macros.html:234
+#: fatcat_scholar/templates/search_macros.html:236
 msgid "microfilm"
 msgstr "microfilm"
 
-#: fatcat_scholar/templates/search_macros.html:252
-#, python-format
-msgid "Show %(count)s additional hits from this issue"
-msgstr "Afficher %(count)s appels supplémentaires liés à ce problème"
+#: fatcat_scholar/templates/search_macros.html:254
+#, fuzzy, python-format
+#| msgid "Show %(count)s additional hits from this issue"
+msgid "Show %(count)s additional result from this issue"
+msgid_plural "Show %(count)s additional results from this issue"
+msgstr[0] "Afficher %(count)s appels supplémentaires liés à ce problème"
+msgstr[1] "Afficher %(count)s appels supplémentaires liés à ce problème"
 
-#: fatcat_scholar/templates/search_macros.html:265
+#: fatcat_scholar/templates/search_macros.html:268
 msgid "fulltext PDF download"
 msgstr "Téléchargement PDF du texte intégral"
 
-#: fatcat_scholar/templates/search_macros.html:266
-msgid "fulltext thumbnail"
-msgstr "miniature du texte intégral"
+#: fatcat_scholar/templates/search_macros.html:270
+msgid "read fulltext microfilm"
+msgstr ""
 
-#: fatcat_scholar/templates/search_macros.html:302
-#: fatcat_scholar/templates/search_macros.html:305
+#: fatcat_scholar/templates/search_macros.html:272
+#, fuzzy
+#| msgid "Fulltext"
+msgid "fulltext access"
+msgstr "Texte entier"
+
+#: fatcat_scholar/templates/search_macros.html:308
+#: fatcat_scholar/templates/search_macros.html:311
 msgid "Previous"
 msgstr "Précédent"
 
-#: fatcat_scholar/templates/search_macros.html:308
+#: fatcat_scholar/templates/search_macros.html:314
 #, python-format
 msgid "Showing results %(start)s &mdash; %(end)s out of %(total)s results"
 msgstr ""
 "Affichage des résultats %(start)s &mdash; %(end)s sur %(total)s résultats"
 
-#: fatcat_scholar/templates/search_macros.html:314
-#: fatcat_scholar/templates/search_macros.html:316
+#: fatcat_scholar/templates/search_macros.html:320
+#: fatcat_scholar/templates/search_macros.html:322
 msgid "Next"
 msgstr "Suivant"
 
-#~ msgid "Other projects include"
-#~ msgstr ""
+#~ msgid "select language"
+#~ msgstr "sélectionner la langue"
+
+#~ msgid "fulltext thumbnail"
+#~ msgstr "miniature du texte intégral"
