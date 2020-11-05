@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2020-11-05 15:08-0800\n"
-"PO-Revision-Date: 2020-10-16 00:24+0000\n"
+"PO-Revision-Date: 2020-11-05 23:37+0000\n"
 "Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "internetarchive/fatcat-scholar/zh_Hans/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.3-dev\n"
+"X-Generator: Weblate 4.3.2\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:37
@@ -101,17 +101,18 @@ msgid "Oldest First"
 msgstr "最早的优先"
 
 #: fatcat_scholar/templates/about.html:4
-#, python-format
+#, fuzzy, python-format
 msgid "About %(website_name)s"
-msgstr ""
+msgstr "关于%(website_name)s"
 
 #: fatcat_scholar/templates/base.html:12
+#, fuzzy
 msgid "Internet Archive Scholar"
-msgstr ""
+msgstr "互联网档案学者"
 
 #: fatcat_scholar/templates/base.html:155
 msgid "language selection menu"
-msgstr ""
+msgstr "语言选择菜单"
 
 #: fatcat_scholar/templates/base.html:172
 msgid "Contribute to translations"
@@ -123,7 +124,7 @@ msgstr "按标题、作者、关键词... ..."
 
 #: fatcat_scholar/templates/base.html:195
 msgid "search for papers"
-msgstr ""
+msgstr "搜索论文"
 
 #: fatcat_scholar/templates/base.html:196 fatcat_scholar/templates/home.html:16
 msgid "Search"
@@ -170,8 +171,9 @@ msgid "Open Infrastructure"
 msgstr "开放基础架构"
 
 #: fatcat_scholar/templates/base.html:251
+#, fuzzy
 msgid "Editable Catalog (Fatcat)"
-msgstr ""
+msgstr "可编辑目录（Fatcat）"
 
 #: fatcat_scholar/templates/base.html:252
 msgid "Contribute"
@@ -195,7 +197,7 @@ msgstr "怎么运行的"
 
 #: fatcat_scholar/templates/base.html:262
 msgid "Content Sources"
-msgstr ""
+msgstr "内容来源"
 
 #: fatcat_scholar/templates/base.html:263
 msgid "Text and Data Mining"
@@ -206,9 +208,9 @@ msgid "Help"
 msgstr "说明"
 
 #: fatcat_scholar/templates/help.html:4
-#, python-format
+#, fuzzy, python-format
 msgid "%(website_name)s Help"
-msgstr ""
+msgstr "%(website_name)s 帮助"
 
 #: fatcat_scholar/templates/help.html:13
 msgid "Try It"
@@ -216,7 +218,7 @@ msgstr "试试看"
 
 #: fatcat_scholar/templates/home.html:10
 msgid "Internet Archive Scholar logo (vaporwave)"
-msgstr ""
+msgstr "互联网档案学者标志(蒸汽波)"
 
 #: fatcat_scholar/templates/home.html:15
 msgid "by title, author, keywords..."
@@ -227,10 +229,11 @@ msgid "Search Millions of Research Papers"
 msgstr "搜索数以百万计的研究论文"
 
 #: fatcat_scholar/templates/home.html:24
+#, fuzzy
 msgid ""
 "This fulltext search index includes over 25 million research articles and "
 "other scholarly documents preserved in the Internet Archive."
-msgstr ""
+msgstr "全文检索索引包括保存在Internet存档中的2500万篇研究文章和其他学术文献。"
 
 #: fatcat_scholar/templates/home.html:24
 msgid ""
@@ -252,7 +255,7 @@ msgstr ""
 #: fatcat_scholar/templates/home.html:49 fatcat_scholar/templates/home.html:63
 #: fatcat_scholar/templates/home.html:77 fatcat_scholar/templates/home.html:91
 msgid "PDF thumbnail"
-msgstr ""
+msgstr "PDF缩略图"
 
 #: fatcat_scholar/templates/search.html:35
 msgid "Filters"
@@ -266,13 +269,14 @@ msgstr[0] ""
 
 #: fatcat_scholar/templates/search.html:52
 #: fatcat_scholar/templates/search.html:84
-#, python-format
+#, fuzzy, python-format
 msgid "in %(frac_sec)ssec"
-msgstr ""
+msgstr "在%(frac_sec)s秒内"
 
 #: fatcat_scholar/templates/search.html:108
+#, fuzzy
 msgid "Backend Search Engine Error"
-msgstr ""
+msgstr "后端搜索引擎错误"
 
 #: fatcat_scholar/templates/search.html:110
 msgid "Search Query Error"
@@ -292,15 +296,15 @@ msgstr "找不到符合您查询条件的文件"
 
 #: fatcat_scholar/templates/search.html:146
 msgid "Try All Resource Types"
-msgstr ""
+msgstr "尝试所有资源类型"
 
 #: fatcat_scholar/templates/search.html:151
 msgid "Try All Time"
-msgstr ""
+msgstr "尝试所有时间"
 
 #: fatcat_scholar/templates/search.html:156
 msgid "Try Metadata Records"
-msgstr ""
+msgstr "尝试元数据记录"
 
 #: fatcat_scholar/templates/search.html:159
 msgid "Start Over"
@@ -312,7 +316,7 @@ msgstr "在上面的框中输入查询以开始使用"
 
 #: fatcat_scholar/templates/search_macros.html:34
 msgid "access fatcat landing page"
-msgstr ""
+msgstr "访问Fatcat登录页面"
 
 #: fatcat_scholar/templates/search_macros.html:49
 #: fatcat_scholar/templates/search_macros.html:189
@@ -321,7 +325,7 @@ msgstr "未知的"
 
 #: fatcat_scholar/templates/search_macros.html:64
 msgid "access microfilm on archive.org"
-msgstr ""
+msgstr "在archive.org上访问缩微胶片"
 
 #: fatcat_scholar/templates/search_macros.html:65
 #, python-format
@@ -337,8 +341,9 @@ msgid "Multiple Versions"
 msgstr "多个版本"
 
 #: fatcat_scholar/templates/search_macros.html:178
+#, fuzzy
 msgid "Publication Stage"
-msgstr ""
+msgstr "出版阶段"
 
 #: fatcat_scholar/templates/search_macros.html:179
 msgid "Date"
@@ -365,7 +370,7 @@ msgstr "全文PDF下载"
 
 #: fatcat_scholar/templates/search_macros.html:270
 msgid "read fulltext microfilm"
-msgstr ""
+msgstr "阅读全文缩微胶片"
 
 #: fatcat_scholar/templates/search_macros.html:272
 #, fuzzy
