@@ -6,122 +6,137 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
-"POT-Creation-Date: 2020-10-15 10:14-0700\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2020-11-05 15:08-0800\n"
 "PO-Revision-Date: 2020-10-16 00:24+0000\n"
 "Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/ar/>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=0 && n%100<=2 ? 4 : 5);\n"
 "X-Generator: Weblate 4.3-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
-#: fatcat_scholar/search.py:36
+#: fatcat_scholar/search.py:37
 msgid "Release Date"
 msgstr "تاريخ الإصدار"
 
-#: fatcat_scholar/search.py:40
+#: fatcat_scholar/search.py:41
 msgid "All Time"
 msgstr "كل الوقت"
 
-#: fatcat_scholar/search.py:41
+#: fatcat_scholar/search.py:42
 msgid "Past Week"
 msgstr "الأسبوع الماضي"
 
-#: fatcat_scholar/search.py:42
+#: fatcat_scholar/search.py:43
 msgid "Past Year"
 msgstr "العام الماضي"
 
-#: fatcat_scholar/search.py:43
+#: fatcat_scholar/search.py:44
 msgid "Since 2000"
 msgstr "منذ عام 2000"
 
-#: fatcat_scholar/search.py:44
+#: fatcat_scholar/search.py:45
 msgid "Before 1925"
 msgstr "قبل عام 1925"
 
-#: fatcat_scholar/search.py:48
+#: fatcat_scholar/search.py:49
 msgid "Resource Type"
 msgstr "نوع المورد"
 
-#: fatcat_scholar/search.py:52
+#: fatcat_scholar/search.py:53
 msgid "Papers"
 msgstr "أوراق"
 
-#: fatcat_scholar/search.py:53
+#: fatcat_scholar/search.py:54
 msgid "Reports"
 msgstr "التقارير"
 
-#: fatcat_scholar/search.py:54
+#: fatcat_scholar/search.py:55
 msgid "Datasets"
 msgstr "مجموعات البيانات"
 
-#: fatcat_scholar/search.py:55
+#: fatcat_scholar/search.py:56
 msgid "Everything"
 msgstr "كل شىء"
 
-#: fatcat_scholar/search.py:59
+#: fatcat_scholar/search.py:60
 msgid "Availability"
 msgstr "الإتاحة"
 
-#: fatcat_scholar/search.py:63 fatcat_scholar/templates/search_macros.html:178
+#: fatcat_scholar/search.py:64 fatcat_scholar/templates/search_macros.html:180
 msgid "Fulltext"
 msgstr "النص كاملا"
 
-#: fatcat_scholar/search.py:64
+#: fatcat_scholar/search.py:65
 msgid "Microfilm"
 msgstr "ميكروفيلم"
 
-#: fatcat_scholar/search.py:65
+#: fatcat_scholar/search.py:66
 msgid "Open Access"
 msgstr "الوصول المفتوح"
 
-#: fatcat_scholar/search.py:66 fatcat_scholar/templates/search_macros.html:179
+#: fatcat_scholar/search.py:67 fatcat_scholar/templates/search_macros.html:181
 msgid "Metadata"
 msgstr "بيانات التعريف"
 
-#: fatcat_scholar/search.py:70
+#: fatcat_scholar/search.py:71
 msgid "Sort Order"
 msgstr "ترتيب الفرز"
 
-#: fatcat_scholar/search.py:74
+#: fatcat_scholar/search.py:75
 msgid "Relevancy"
 msgstr "الصلة"
 
-#: fatcat_scholar/search.py:75
+#: fatcat_scholar/search.py:76
 msgid "Recent First"
 msgstr "الأخيرة أولاً"
 
-#: fatcat_scholar/search.py:76
+#: fatcat_scholar/search.py:77
 msgid "Oldest First"
 msgstr "الأقدم أولا"
 
-#: fatcat_scholar/templates/base.html:162
-msgid "select language"
-msgstr "حدد اللغة"
+#: fatcat_scholar/templates/about.html:4
+#, python-format
+msgid "About %(website_name)s"
+msgstr ""
 
-#: fatcat_scholar/templates/base.html:173
+#: fatcat_scholar/templates/base.html:12
+#, fuzzy
+#| msgid "Internet Archive Scholar logo (vaporwave)"
+msgid "Internet Archive Scholar"
+msgstr "شعار Internet Archive Scholar (vaporwave)"
+
+#: fatcat_scholar/templates/base.html:155
+msgid "language selection menu"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:172
 msgid "Contribute to translations"
 msgstr "المساهمة في الترجمات"
 
-#: fatcat_scholar/templates/base.html:196
+#: fatcat_scholar/templates/base.html:195
 msgid "by title, authors, keywords..."
 msgstr "حسب العنوان والمؤلفين والكلمات الرئيسية ..."
 
-#: fatcat_scholar/templates/base.html:197 fatcat_scholar/templates/home.html:16
+#: fatcat_scholar/templates/base.html:195
+msgid "search for papers"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:196 fatcat_scholar/templates/home.html:16
 msgid "Search"
 msgstr "بحث"
 
-#: fatcat_scholar/templates/base.html:204
+#: fatcat_scholar/templates/base.html:203
 msgid "User Guide"
 msgstr "دليل المستخدم"
 
-#: fatcat_scholar/templates/base.html:232
+#: fatcat_scholar/templates/base.html:231
 msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
@@ -129,72 +144,77 @@ msgstr ""
 "نحن مكتبة أمريكية غير هادفة للربح 501 (ج) (3) ، نبني أرشيفًا عالميًا لمواقع "
 "الإنترنت والتحف الثقافية الأخرى في شكل رقمي."
 
-#: fatcat_scholar/templates/base.html:234
+#: fatcat_scholar/templates/base.html:233
 #, python-format
 msgid ""
-"Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and"
-" %(archive_it)s."
+"Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and "
+"%(archive_it)s."
 msgstr ""
 "تشمل المشاريع الأخرى %(wayback)s و %(archive_org)s و %(openlibrary)s و "
 "%(archive_it)s."
 
-#: fatcat_scholar/templates/base.html:241
+#: fatcat_scholar/templates/base.html:240
 msgid "About Us"
 msgstr "معلومات عنا"
 
-#: fatcat_scholar/templates/base.html:242
+#: fatcat_scholar/templates/base.html:241
 msgid "Contact Us"
 msgstr "اتصل بنا"
 
-#: fatcat_scholar/templates/base.html:243
+#: fatcat_scholar/templates/base.html:242
 msgid "Policies"
 msgstr "سياسات"
 
-#: fatcat_scholar/templates/base.html:244
+#: fatcat_scholar/templates/base.html:243
 msgid "Donate"
 msgstr "تبرع"
 
-#: fatcat_scholar/templates/base.html:250
+#: fatcat_scholar/templates/base.html:249
 msgid "Open Infrastructure"
 msgstr "فتح البنية التحتية"
 
-#: fatcat_scholar/templates/base.html:252
+#: fatcat_scholar/templates/base.html:251
 msgid "Editable Catalog (Fatcat)"
 msgstr "كتالوج قابل للتحرير (Fatcat)"
 
-#: fatcat_scholar/templates/base.html:253
+#: fatcat_scholar/templates/base.html:252
 msgid "Contribute"
 msgstr "المساهمة"
 
-#: fatcat_scholar/templates/base.html:254
+#: fatcat_scholar/templates/base.html:253
 msgid "Search API"
 msgstr "بحث API"
 
-#: fatcat_scholar/templates/base.html:255
+#: fatcat_scholar/templates/base.html:254
 msgid "Service Status"
 msgstr "حالة الخدمة"
 
-#: fatcat_scholar/templates/base.html:256
+#: fatcat_scholar/templates/base.html:255
 msgid "Source Code"
 msgstr "الشفرة المصدرية"
 
-#: fatcat_scholar/templates/base.html:262
+#: fatcat_scholar/templates/base.html:261
 msgid "How It Works"
 msgstr "كيف تعمل"
 
-#: fatcat_scholar/templates/base.html:263
+#: fatcat_scholar/templates/base.html:262
 msgid "Content Sources"
 msgstr "مصادر المحتوى"
 
-#: fatcat_scholar/templates/base.html:264
+#: fatcat_scholar/templates/base.html:263
 msgid "Text and Data Mining"
 msgstr "التنقيب عن النصوص والبيانات"
 
-#: fatcat_scholar/templates/base.html:265
+#: fatcat_scholar/templates/base.html:264
 msgid "Help"
 msgstr "ساعدني"
 
-#: fatcat_scholar/templates/help.html:9
+#: fatcat_scholar/templates/help.html:4
+#, python-format
+msgid "%(website_name)s Help"
+msgstr ""
+
+#: fatcat_scholar/templates/help.html:13
 msgid "Try It"
 msgstr "جربها"
 
@@ -212,17 +232,17 @@ msgstr "بحث الملايين من الأوراق البحثية"
 
 #: fatcat_scholar/templates/home.html:24
 msgid ""
-"This fulltext search index includes over 25 million research articles and"
-" other scholarly documents preserved in the Internet Archive."
+"This fulltext search index includes over 25 million research articles and "
+"other scholarly documents preserved in the Internet Archive."
 msgstr ""
 "يتضمن فهرس البحث في النص الكامل هذا أكثر من 25 مليون مقال بحثي ووثائق علمية "
 "أخرى محفوظة في أرشيف الإنترنت."
 
 #: fatcat_scholar/templates/home.html:24
 msgid ""
-"The collection spans from digitized copies of eighteenth century journals"
-" though the latest Open Access conference proceedings and pre-prints "
-"crawled from the World Wide Web."
+"The collection spans from digitized copies of eighteenth century journals "
+"though the latest Open Access conference proceedings and pre-prints crawled "
+"from the World Wide Web."
 msgstr ""
 "تمتد المجموعة من النسخ الرقمية لمجلات القرن الثامن عشر على الرغم من أحدث "
 "وقائع المؤتمرات ذات الوصول المفتوح والمطبوعات المسبقة التي تم الزحف إليها من "
@@ -241,124 +261,155 @@ msgstr ""
 msgid "PDF thumbnail"
 msgstr "صورة مصغرة بتنسيق PDF"
 
-#: fatcat_scholar/templates/search.html:26
+#: fatcat_scholar/templates/search.html:35
 msgid "Filters"
 msgstr "تصفية"
 
-#: fatcat_scholar/templates/search.html:50
-msgid "Hits"
-msgstr "يضرب"
+#: fatcat_scholar/templates/search.html:46
+#: fatcat_scholar/templates/search.html:76
+#, fuzzy
+#| msgid "Hits"
+msgid "Hit"
+msgid_plural "Hits"
+msgstr[0] "يضرب"
+msgstr[1] "يضرب"
+msgstr[2] "يضرب"
+msgstr[3] "يضرب"
+msgstr[4] "يضرب"
+msgstr[5] "يضرب"
 
-#: fatcat_scholar/templates/search.html:74
+#: fatcat_scholar/templates/search.html:52
+#: fatcat_scholar/templates/search.html:84
+#, python-format
+msgid "in %(frac_sec)ssec"
+msgstr ""
+
+#: fatcat_scholar/templates/search.html:108
 msgid "Backend Search Engine Error"
 msgstr "خطأ في محرك البحث في الخلفية"
 
-#: fatcat_scholar/templates/search.html:76
+#: fatcat_scholar/templates/search.html:110
 msgid "Search Query Error"
 msgstr "خطأ في استعلام البحث"
 
-#: fatcat_scholar/templates/search.html:80
+#: fatcat_scholar/templates/search.html:114
 msgid ""
-"Query parsing is currently very naive. Sometimes you can fix this problem"
-" by adding quotes around terms or entire phrases."
+"Query parsing is currently very naive. Sometimes you can fix this problem by "
+"adding quotes around terms or entire phrases."
 msgstr ""
 "تحليل الاستعلام حاليًا ساذج جدًا. يمكنك أحيانًا حل هذه المشكلة عن طريق إضافة "
 "علامات اقتباس حول المصطلحات أو العبارات بأكملها."
 
-#: fatcat_scholar/templates/search.html:107
+#: fatcat_scholar/templates/search.html:141
 msgid "We didn't find any documents matching your query"
 msgstr "لم نعثر على أي مستندات تطابق استفسارك"
 
-#: fatcat_scholar/templates/search.html:112
+#: fatcat_scholar/templates/search.html:146
 msgid "Try All Resource Types"
 msgstr "جرب كل أنواع الموارد"
 
-#: fatcat_scholar/templates/search.html:117
+#: fatcat_scholar/templates/search.html:151
 msgid "Try All Time"
 msgstr "جرب طوال الوقت"
 
-#: fatcat_scholar/templates/search.html:122
+#: fatcat_scholar/templates/search.html:156
 msgid "Try Metadata Records"
 msgstr "جرب سجلات البيانات الوصفية"
 
-#: fatcat_scholar/templates/search.html:125
+#: fatcat_scholar/templates/search.html:159
 msgid "Start Over"
 msgstr "ابدأ من جديد"
 
-#: fatcat_scholar/templates/search.html:138
+#: fatcat_scholar/templates/search.html:172
 msgid "Enter a query in the box above to get started"
 msgstr "أدخل استعلامًا في المربع أعلاه للبدء"
 
+#: fatcat_scholar/templates/search_macros.html:34
+msgid "access fatcat landing page"
+msgstr ""
+
 #: fatcat_scholar/templates/search_macros.html:49
-#: fatcat_scholar/templates/search_macros.html:187
+#: fatcat_scholar/templates/search_macros.html:189
 msgid "unknown"
 msgstr "مجهول"
 
 #: fatcat_scholar/templates/search_macros.html:64
+msgid "access microfilm on archive.org"
+msgstr ""
+
+#: fatcat_scholar/templates/search_macros.html:65
 #, python-format
 msgid "Page %(page_num)s of %(journal_name)s Vol. %(volume)s, Issue %(issue)s"
 msgstr ""
 "الصفحة %(page_num)s من %(journal_name)s Vol. %(volume)s ، العدد %(issue)s"
 
-#: fatcat_scholar/templates/search_macros.html:65
+#: fatcat_scholar/templates/search_macros.html:67
 msgid "page"
 msgstr "الصفحة"
 
-#: fatcat_scholar/templates/search_macros.html:170
+#: fatcat_scholar/templates/search_macros.html:172
 msgid "Multiple Versions"
 msgstr "إصدارات متعددة"
 
-#: fatcat_scholar/templates/search_macros.html:176
+#: fatcat_scholar/templates/search_macros.html:178
 msgid "Publication Stage"
 msgstr "مرحلة النشر"
 
-#: fatcat_scholar/templates/search_macros.html:177
+#: fatcat_scholar/templates/search_macros.html:179
 msgid "Date"
 msgstr "التاريخ"
 
-#: fatcat_scholar/templates/search_macros.html:226
+#: fatcat_scholar/templates/search_macros.html:228
 msgid "published"
 msgstr "نشر"
 
-#: fatcat_scholar/templates/search_macros.html:234
+#: fatcat_scholar/templates/search_macros.html:236
 msgid "microfilm"
 msgstr "ميكروفيلم"
 
-#: fatcat_scholar/templates/search_macros.html:252
-#, python-format
-msgid "Show %(count)s additional hits from this issue"
-msgstr "اعرض %(count)s نتائج إضافية من هذه المشكلة"
+#: fatcat_scholar/templates/search_macros.html:254
+#, fuzzy, python-format
+#| msgid "Show %(count)s additional hits from this issue"
+msgid "Show %(count)s additional result from this issue"
+msgid_plural "Show %(count)s additional results from this issue"
+msgstr[0] "اعرض %(count)s نتائج إضافية من هذه المشكلة"
+msgstr[1] "اعرض %(count)s نتائج إضافية من هذه المشكلة"
+msgstr[2] "اعرض %(count)s نتائج إضافية من هذه المشكلة"
+msgstr[3] "اعرض %(count)s نتائج إضافية من هذه المشكلة"
+msgstr[4] "اعرض %(count)s نتائج إضافية من هذه المشكلة"
+msgstr[5] "اعرض %(count)s نتائج إضافية من هذه المشكلة"
 
-#: fatcat_scholar/templates/search_macros.html:265
+#: fatcat_scholar/templates/search_macros.html:268
 msgid "fulltext PDF download"
 msgstr "تنزيل PDF نص كامل"
 
-#: fatcat_scholar/templates/search_macros.html:266
-msgid "fulltext thumbnail"
-msgstr "صورة مصغرة للنص الكامل"
+#: fatcat_scholar/templates/search_macros.html:270
+msgid "read fulltext microfilm"
+msgstr ""
 
-#: fatcat_scholar/templates/search_macros.html:302
-#: fatcat_scholar/templates/search_macros.html:305
+#: fatcat_scholar/templates/search_macros.html:272
+#, fuzzy
+#| msgid "Fulltext"
+msgid "fulltext access"
+msgstr "النص كاملا"
+
+#: fatcat_scholar/templates/search_macros.html:308
+#: fatcat_scholar/templates/search_macros.html:311
 msgid "Previous"
 msgstr "السابق"
 
-#: fatcat_scholar/templates/search_macros.html:308
+#: fatcat_scholar/templates/search_macros.html:314
 #, python-format
 msgid "Showing results %(start)s &mdash; %(end)s out of %(total)s results"
 msgstr "عرض النتائج %(start)s &mdash; %(end)s من %(total)s نتيجة"
 
-#: fatcat_scholar/templates/search_macros.html:314
-#: fatcat_scholar/templates/search_macros.html:316
+#: fatcat_scholar/templates/search_macros.html:320
+#: fatcat_scholar/templates/search_macros.html:322
 msgid "Next"
 msgstr "التالي"
 
-#~ msgid "Other projects include"
-#~ msgstr ""
+#~ msgid "select language"
+#~ msgstr "حدد اللغة"
 
-#~ msgid ""
-#~ "\n"
-#~ "              Other projects include "
-#~ "%(wayback)s, %(archive_org)s, %(openlibrary)s, and"
-#~ " %(archive_it)s.\n"
-#~ "            "
-#~ msgstr ""
+#~ msgid "fulltext thumbnail"
+#~ msgstr "صورة مصغرة للنص الكامل"
