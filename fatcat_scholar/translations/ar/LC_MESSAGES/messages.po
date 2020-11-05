@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2020-11-05 15:08-0800\n"
-"PO-Revision-Date: 2020-10-16 00:24+0000\n"
+"PO-Revision-Date: 2020-11-05 23:37+0000\n"
 "Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/ar/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=0 && n%100<=2 ? 4 : 5);\n"
-"X-Generator: Weblate 4.3-dev\n"
+"X-Generator: Weblate 4.3.2\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:37
@@ -107,14 +107,12 @@ msgid "About %(website_name)s"
 msgstr ""
 
 #: fatcat_scholar/templates/base.html:12
-#, fuzzy
-#| msgid "Internet Archive Scholar logo (vaporwave)"
 msgid "Internet Archive Scholar"
-msgstr "شعار Internet Archive Scholar (vaporwave)"
+msgstr "باحث أرشيف الإنترنت"
 
 #: fatcat_scholar/templates/base.html:155
 msgid "language selection menu"
-msgstr ""
+msgstr "قائمة اختيار اللغة"
 
 #: fatcat_scholar/templates/base.html:172
 msgid "Contribute to translations"
@@ -126,7 +124,7 @@ msgstr "حسب العنوان والمؤلفين والكلمات الرئيسي
 
 #: fatcat_scholar/templates/base.html:195
 msgid "search for papers"
-msgstr ""
+msgstr "البحث عن الأوراق"
 
 #: fatcat_scholar/templates/base.html:196 fatcat_scholar/templates/home.html:16
 msgid "Search"
@@ -385,7 +383,7 @@ msgstr "تنزيل PDF نص كامل"
 
 #: fatcat_scholar/templates/search_macros.html:270
 msgid "read fulltext microfilm"
-msgstr ""
+msgstr "قراءة الميكروفيلم النص الكامل"
 
 #: fatcat_scholar/templates/search_macros.html:272
 #, fuzzy
