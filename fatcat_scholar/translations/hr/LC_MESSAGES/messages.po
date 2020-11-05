@@ -2,128 +2,132 @@
 # Copyright (C) 2020 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
-#
+# Milo Ivir <mail@milotype.de>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2020-10-15 10:14-0700\n"
-"PO-Revision-Date: 2020-11-02 21:53-0800\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2020-11-05 23:02+0000\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>\n"
+"Language-Team: Croatian <https://hosted.weblate.org/projects/internetarchive/"
+"fatcat-scholar/hr/>\n"
 "Language: hr\n"
-"Language-Team: hr <LL@li.org>\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.3.2\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:36
 msgid "Release Date"
-msgstr ""
+msgstr "Datum objave"
 
 #: fatcat_scholar/search.py:40
 msgid "All Time"
-msgstr ""
+msgstr "Svo vrijeme"
 
 #: fatcat_scholar/search.py:41
 msgid "Past Week"
-msgstr ""
+msgstr "Prošli tjedan"
 
 #: fatcat_scholar/search.py:42
 msgid "Past Year"
-msgstr ""
+msgstr "Prošla godina"
 
 #: fatcat_scholar/search.py:43
 msgid "Since 2000"
-msgstr ""
+msgstr "Nakon 2000."
 
 #: fatcat_scholar/search.py:44
 msgid "Before 1925"
-msgstr ""
+msgstr "Prije 1925."
 
 #: fatcat_scholar/search.py:48
 msgid "Resource Type"
-msgstr ""
+msgstr "Vrsta građe"
 
 #: fatcat_scholar/search.py:52
 msgid "Papers"
-msgstr ""
+msgstr "Članci"
 
 #: fatcat_scholar/search.py:53
 msgid "Reports"
-msgstr ""
+msgstr "Izvještaji"
 
 #: fatcat_scholar/search.py:54
 msgid "Datasets"
-msgstr ""
+msgstr "Skupovi podataka"
 
 #: fatcat_scholar/search.py:55
 msgid "Everything"
-msgstr ""
+msgstr "Sve"
 
 #: fatcat_scholar/search.py:59
 msgid "Availability"
-msgstr ""
+msgstr "Dostupnost"
 
 #: fatcat_scholar/search.py:63 fatcat_scholar/templates/search_macros.html:178
 msgid "Fulltext"
-msgstr ""
+msgstr "Potpuni tekst"
 
 #: fatcat_scholar/search.py:64
 msgid "Microfilm"
-msgstr ""
+msgstr "Mikrofilm"
 
 #: fatcat_scholar/search.py:65
 msgid "Open Access"
-msgstr ""
+msgstr "Open Access"
 
 #: fatcat_scholar/search.py:66 fatcat_scholar/templates/search_macros.html:179
 msgid "Metadata"
-msgstr ""
+msgstr "Metapodaci"
 
 #: fatcat_scholar/search.py:70
 msgid "Sort Order"
-msgstr ""
+msgstr "Redoslijed"
 
 #: fatcat_scholar/search.py:74
 msgid "Relevancy"
-msgstr ""
+msgstr "Relevantnost"
 
 #: fatcat_scholar/search.py:75
 msgid "Recent First"
-msgstr ""
+msgstr "Najprije najnovije"
 
 #: fatcat_scholar/search.py:76
 msgid "Oldest First"
-msgstr ""
+msgstr "Najprije najstarije"
 
 #: fatcat_scholar/templates/base.html:162
 msgid "select language"
-msgstr ""
+msgstr "odaberi jezik"
 
 #: fatcat_scholar/templates/base.html:173
 msgid "Contribute to translations"
-msgstr ""
+msgstr "Doprinesi prijevodima"
 
 #: fatcat_scholar/templates/base.html:196
 msgid "by title, authors, keywords..."
-msgstr ""
+msgstr "po naslovu, autorima, ključnim riječima …"
 
 #: fatcat_scholar/templates/base.html:197 fatcat_scholar/templates/home.html:16
 msgid "Search"
-msgstr ""
+msgstr "Traži"
 
 #: fatcat_scholar/templates/base.html:204
 msgid "User Guide"
-msgstr ""
+msgstr "Korisnički priručnik"
 
 #: fatcat_scholar/templates/base.html:232
 msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
 msgstr ""
+"Mi smo američka 501(c)(3) neprofitna knjižnica. Gradimo digitalnu arhivu "
+"internetskih stranica i drugih kulturnih predmeta."
 
 #: fatcat_scholar/templates/base.html:234
 #, python-format
@@ -131,84 +135,89 @@ msgid ""
 "Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and"
 " %(archive_it)s."
 msgstr ""
+"Drugi projekti uključuju %(wayback)s, %(archive_org)s, %(openlibrary)s i "
+"%(archive_it)s."
 
 #: fatcat_scholar/templates/base.html:241
 msgid "About Us"
-msgstr ""
+msgstr "O nama"
 
 #: fatcat_scholar/templates/base.html:242
 msgid "Contact Us"
-msgstr ""
+msgstr "Kontakt"
 
 #: fatcat_scholar/templates/base.html:243
 msgid "Policies"
-msgstr ""
+msgstr "Smjernice"
 
 #: fatcat_scholar/templates/base.html:244
 msgid "Donate"
-msgstr ""
+msgstr "Doniraj"
 
 #: fatcat_scholar/templates/base.html:250
 msgid "Open Infrastructure"
-msgstr ""
+msgstr "Otvorena infrastruktura"
 
 #: fatcat_scholar/templates/base.html:252
 msgid "Editable Catalog (Fatcat)"
-msgstr ""
+msgstr "Urediv katalog (Fatcat)"
 
 #: fatcat_scholar/templates/base.html:253
 msgid "Contribute"
-msgstr ""
+msgstr "Doprinesi"
 
 #: fatcat_scholar/templates/base.html:254
 msgid "Search API"
-msgstr ""
+msgstr "API pretrage"
 
 #: fatcat_scholar/templates/base.html:255
 msgid "Service Status"
-msgstr ""
+msgstr "Stanje usluge"
 
 #: fatcat_scholar/templates/base.html:256
 msgid "Source Code"
-msgstr ""
+msgstr "Izvorni kȏd"
 
 #: fatcat_scholar/templates/base.html:262
 msgid "How It Works"
-msgstr ""
+msgstr "Opis rada"
 
 #: fatcat_scholar/templates/base.html:263
 msgid "Content Sources"
-msgstr ""
+msgstr "Izvori sadržaja"
 
 #: fatcat_scholar/templates/base.html:264
 msgid "Text and Data Mining"
-msgstr ""
+msgstr "Analiziranje tekstova i podataka"
 
 #: fatcat_scholar/templates/base.html:265
 msgid "Help"
-msgstr ""
+msgstr "Pomoć"
 
 #: fatcat_scholar/templates/help.html:9
 msgid "Try It"
-msgstr ""
+msgstr "Isprobaj"
 
 #: fatcat_scholar/templates/home.html:10
 msgid "Internet Archive Scholar logo (vaporwave)"
-msgstr ""
+msgstr "Internet Archive Scholar logotip (vaporwave)"
 
 #: fatcat_scholar/templates/home.html:15
 msgid "by title, author, keywords..."
-msgstr ""
+msgstr "po naslovu, autoru, ključnim riječima …"
 
 #: fatcat_scholar/templates/home.html:23
 msgid "Search Millions of Research Papers"
-msgstr ""
+msgstr "Pretraži milijune znanstvenih radova"
 
 #: fatcat_scholar/templates/home.html:24
 msgid ""
 "This fulltext search index includes over 25 million research articles and"
 " other scholarly documents preserved in the Internet Archive."
 msgstr ""
+"Ovaj indeks pretraživanja potunog teksta obuhvaća preko 25 milijuna "
+"istraživačkih članaka i drugih znanstvenih radova sačuvanih u knjižnici „"
+"Internet Archive”."
 
 #: fatcat_scholar/templates/home.html:24
 msgid ""
@@ -216,123 +225,131 @@ msgid ""
 " though the latest Open Access conference proceedings and pre-prints "
 "crawled from the World Wide Web."
 msgstr ""
+"Zbirka obuhvaća digitalizirane primjerke časopisa iz osamnaestog stoljeća, "
+"dok se najnoviji zbornici i pretisci konferencije „Open Access” pretražuju "
+"na internetu."
 
 #: fatcat_scholar/templates/home.html:36
 msgid ""
 "This service is in \"alpha\". It has several bugs, experiences\n"
 "        downtime, and has not been officially announced."
 msgstr ""
+"Usluga se nalazi u „alfa” fazi. Sadrži greške,\n"
+"        ponakad je nedostupna i nije javno objavljena."
 
 #: fatcat_scholar/templates/home.html:49 fatcat_scholar/templates/home.html:63
 #: fatcat_scholar/templates/home.html:77 fatcat_scholar/templates/home.html:91
 msgid "PDF thumbnail"
-msgstr ""
+msgstr "Minijatura PDF-a"
 
 #: fatcat_scholar/templates/search.html:26
 msgid "Filters"
-msgstr ""
+msgstr "Filtri"
 
 #: fatcat_scholar/templates/search.html:50
 msgid "Hits"
-msgstr ""
+msgstr "Pogodci"
 
 #: fatcat_scholar/templates/search.html:74
 msgid "Backend Search Engine Error"
-msgstr ""
+msgstr "Interna greška tražilice"
 
 #: fatcat_scholar/templates/search.html:76
 msgid "Search Query Error"
-msgstr ""
+msgstr "Greška upita pretrage"
 
 #: fatcat_scholar/templates/search.html:80
 msgid ""
 "Query parsing is currently very naive. Sometimes you can fix this problem"
 " by adding quotes around terms or entire phrases."
 msgstr ""
+"Obrada upita trenutačno je još nije zrela. Taj se problem ponekad može "
+"riješiti stavljanjem pojmova ili čitavih izraza pod navodnike."
 
 #: fatcat_scholar/templates/search.html:107
 msgid "We didn't find any documents matching your query"
-msgstr ""
+msgstr "Nismo pronašli nijedan odgovarajući dokument"
 
 #: fatcat_scholar/templates/search.html:112
 msgid "Try All Resource Types"
-msgstr ""
+msgstr "Pretraži sve vrste građe"
 
 #: fatcat_scholar/templates/search.html:117
 msgid "Try All Time"
-msgstr ""
+msgstr "Pretraži svo vrijeme"
 
 #: fatcat_scholar/templates/search.html:122
 msgid "Try Metadata Records"
-msgstr ""
+msgstr "Pretraži zapise metapodataka"
 
 #: fatcat_scholar/templates/search.html:125
 msgid "Start Over"
-msgstr ""
+msgstr "Počni ispočetka"
 
 #: fatcat_scholar/templates/search.html:138
 msgid "Enter a query in the box above to get started"
-msgstr ""
+msgstr "Najprije upiši traženi pojam u gornje polje"
 
 #: fatcat_scholar/templates/search_macros.html:49
 #: fatcat_scholar/templates/search_macros.html:187
 msgid "unknown"
-msgstr ""
+msgstr "nepoznato"
 
 #: fatcat_scholar/templates/search_macros.html:64
 #, python-format
 msgid "Page %(page_num)s of %(journal_name)s Vol. %(volume)s, Issue %(issue)s"
 msgstr ""
+"%(page_num)s. stranica u %(journal_name)s, %(volume)s. svezak, izdanje "
+"%(issue)s"
 
 #: fatcat_scholar/templates/search_macros.html:65
 msgid "page"
-msgstr ""
+msgstr "stranica"
 
 #: fatcat_scholar/templates/search_macros.html:170
 msgid "Multiple Versions"
-msgstr ""
+msgstr "Višestruke verzije"
 
 #: fatcat_scholar/templates/search_macros.html:176
 msgid "Publication Stage"
-msgstr ""
+msgstr "Faza publikacije"
 
 #: fatcat_scholar/templates/search_macros.html:177
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 #: fatcat_scholar/templates/search_macros.html:226
 msgid "published"
-msgstr ""
+msgstr "objavljeno"
 
 #: fatcat_scholar/templates/search_macros.html:234
 msgid "microfilm"
-msgstr ""
+msgstr "mikrofilm"
 
 #: fatcat_scholar/templates/search_macros.html:252
 #, python-format
 msgid "Show %(count)s additional hits from this issue"
-msgstr ""
+msgstr "Prikaži %(count)s dodatna pogotka ovog izdanja"
 
 #: fatcat_scholar/templates/search_macros.html:265
 msgid "fulltext PDF download"
-msgstr ""
+msgstr "preuzimanje potpunog teksta u PDF formatu"
 
 #: fatcat_scholar/templates/search_macros.html:266
 msgid "fulltext thumbnail"
-msgstr ""
+msgstr "minijatura potpunog teksta"
 
 #: fatcat_scholar/templates/search_macros.html:302
 #: fatcat_scholar/templates/search_macros.html:305
 msgid "Previous"
-msgstr ""
+msgstr "Prethodni"
 
 #: fatcat_scholar/templates/search_macros.html:308
 #, python-format
 msgid "Showing results %(start)s &mdash; %(end)s out of %(total)s results"
-msgstr ""
+msgstr "Prikaz rezultata: %(start)s. &ndash; %(end)s. od %(total)s"
 
 #: fatcat_scholar/templates/search_macros.html:314
 #: fatcat_scholar/templates/search_macros.html:316
 msgid "Next"
-msgstr ""
-
+msgstr "Sljedeći"
