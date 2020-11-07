@@ -1,9 +1,10 @@
 import sys
 import argparse
 import datetime
+import xml.etree.ElementTree as ET
 from typing import List, Dict, Optional, Any, Sequence
 
-from fatcat_openapi_client import ReleaseEntity, FileEntity
+from fatcat_openapi_client import ReleaseEntity, FileEntity, WebcaptureEntity
 
 from fatcat_scholar.api_entities import *
 from fatcat_scholar.schema import *
@@ -230,6 +231,36 @@ def es_fulltext_from_pdftotext(
     return _add_file_release_meta(ret, pdf_meta, re, fe)
 
 
+def es_fulltext_from_html(
+    html_fulltext: Dict[str, Any], re: ReleaseEntity, wc: WebcaptureEntity,
+) -> Optional[ScholarFulltext]:
+
+    if not wc.archive_urls or not html_fulltext.get("tei_xml"):
+        return None
+
+    ns = {"tei": "http://www.tei-c.org/ns/1.0"}
+    tree = ET.fromstring(html_fulltext["tei_xml"])
+    body = tree.find(".//tei:body", ns)
+    if body:
+        raw_text = " ".join(body.itertext())
+    else:
+        return None
+
+    ret = ScholarFulltext(
+        lang_code=re.language,
+        body=raw_text,
+        acknowledgement=None,
+        annex=None,
+        release_ident=re.ident,
+        # webcapture_ident=wc.ident,
+        file_sha1=html_fulltext.get("html_meta", {}).get("sha1hex"),
+        file_mimetype="text/html",
+        access_url=wc.archive_urls[0].url,
+        access_type=AccessType.wayback,
+    )
+    return ret
+
+
 def biblio_metadata_hacks(biblio: ScholarBiblio) -> ScholarBiblio:  # noqa: C901
     """
     This function does platform/publisher specific metadata hacks.
@@ -435,7 +466,20 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
             fulltext_file,
         )
 
-    # TODO: additional access list
+    if not fulltext and heavy.html_fulltext:
+        fulltext_release = [
+            r for r in heavy.releases if r.ident == heavy.html_fulltext["release_ident"]
+        ][0]
+        fulltext_webcapture = [
+            f
+            for f in fulltext_release.webcaptures
+            if f.ident == heavy.html_fulltext["webcapture_ident"]
+        ][0]
+        fulltext = es_fulltext_from_html(
+            heavy.html_fulltext, fulltext_release, fulltext_webcapture,
+        )
+
+    # TODO: additional access list (eg, HTML if only PDF currently)
     access_dict = dict()
     if fulltext and fulltext.access_type:
         access_dict[fulltext.access_type] = ScholarAccess(

@@ -131,6 +131,7 @@ class IndexDocsWorker(KafkaWorker):
                 grobid_fulltext=obj.get("grobid_fulltext"),
                 pdftotext_fulltext=obj.get("pdftotext_fulltext"),
                 pdf_meta=obj.get("pdf_meta"),
+                html_fulltext=obj.get("html_fulltext"),
                 sim_fulltext=obj.get("sim_fulltext"),
             )
             es_doc = transform_heavy(bundle)
