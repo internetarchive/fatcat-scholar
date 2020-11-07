@@ -33,6 +33,7 @@ class IntermediateBundle(BaseModel):
     grobid_fulltext: Optional[Dict[str, Any]]
     pdftotext_fulltext: Optional[Dict[str, Any]]
     pdf_meta: Optional[Dict[str, Any]]
+    html_fulltext: Optional[Dict[str, Any]]
     sim_fulltext: Optional[Dict[str, Any]]
     fetched: Optional[datetime.datetime]
 

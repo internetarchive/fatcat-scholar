@@ -7,7 +7,7 @@ from typing import List, Dict, Tuple, Optional, Any, Sequence
 import minio
 import requests
 import internetarchive
-from fatcat_openapi_client import ReleaseEntity, FileEntity
+from fatcat_openapi_client import ReleaseEntity, FileEntity, WebcaptureEntity
 
 from fatcat_scholar.api_entities import *
 from fatcat_scholar.config import settings
@@ -169,6 +169,41 @@ class WorkPipeline:
             raw_text=raw_text, release_ident=release_ident, file_ident=fe.ident,
         )
 
+    def fetch_webcapture_html_fulltext(
+        self, wc: WebcaptureEntity, release_ident: str,
+    ) -> Optional[Dict[str, Any]]:
+
+        primary_resources = [cdx for cdx in wc.cdx if cdx.url == wc.original_url]
+        if not primary_resources or primary_resources[0].mimetype != "text/html":
+            return None
+        html_meta = self.sandcrawler_db_client.get_html_meta(primary_resources[0].sha1)
+        if not html_meta:
+            return None
+        sha1hex = html_meta.get("sha1hex")
+        if not sha1hex:
+            return None
+        if html_meta.get("status") != "success" or not html_meta.get("has_teixml"):
+            return None
+
+        try:
+            tei_xml = self.sandcrawler_s3_client.get_blob(
+                bucket="sandcrawler",
+                prefix="",
+                folder="html_body",
+                sha1hex=sha1hex,
+                extension=".tei.xml",
+            )
+            # print(grobid_xml)
+        except minio.error.NoSuchKey:
+            return None
+
+        return dict(
+            html_meta=html_meta,
+            tei_xml=tei_xml,
+            release_ident=release_ident,
+            webcapture_ident=wc.ident,
+        )
+
     def lookup_sim(self, release: ReleaseEntity) -> Optional[SimIssueRow]:
         """
         Checks in IssueDB to see if this release is likely to have a copy in a
@@ -279,6 +314,7 @@ class WorkPipeline:
         grobid_fulltext: Optional[Any] = None
         pdf_meta: Optional[Any] = None
         pdftotext_fulltext: Optional[Any] = None
+        html_fulltext: Optional[Any] = None
         for ident in pref_idents:
             release = release_dict[ident]
             if not release.files:
@@ -295,7 +331,14 @@ class WorkPipeline:
                     pdftotext_fulltext = self.fetch_file_pdftotext(fe, ident)
                 if grobid_fulltext or pdftotext_fulltext:
                     break
-            if grobid_fulltext or pdftotext_fulltext:
+                pdf_meta = None
+            for wc in release.webcaptures:
+                # find primary web capture object
+                html_fulltext = self.fetch_webcapture_html_fulltext(wc, ident)
+                if html_fulltext and html_fulltext.get("tei_xml"):
+                    break
+                html_fulltext = None
+            if grobid_fulltext or pdftotext_fulltext or html_fulltext:
                 break
 
         # find best accessible SIM metadata and fulltext
@@ -335,6 +378,7 @@ class WorkPipeline:
             grobid_fulltext=grobid_fulltext,
             pdftotext_fulltext=pdftotext_fulltext,
             pdf_meta=pdf_meta,
+            html_fulltext=html_fulltext,
             sim_fulltext=sim_fulltext,
         )
 
