@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2020-11-05 15:08-0800\n"
-"PO-Revision-Date: 2020-11-06 19:25+0000\n"
+"PO-Revision-Date: 2020-11-11 01:28+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/hr/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.3.2\n"
+"X-Generator: Weblate 4.4-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:37
@@ -71,7 +71,7 @@ msgstr "Dostupnost"
 
 #: fatcat_scholar/search.py:64 fatcat_scholar/templates/search_macros.html:180
 msgid "Fulltext"
-msgstr "Potpuni tekst"
+msgstr "Tekst"
 
 #: fatcat_scholar/search.py:65
 msgid "Microfilm"
@@ -139,7 +139,7 @@ msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
 msgstr ""
-"Mi smo američka 501(c)(3) neprofitna knjižnica. Gradimo digitalnu arhivu "
+"Mi smo američka 501(c)(3) neprofitna knjižnica. Gradimo digitalni arhiv "
 "internetskih stranica i drugih kulturnih predmeta."
 
 #: fatcat_scholar/templates/base.html:233
@@ -161,7 +161,7 @@ msgstr "Kontakt"
 
 #: fatcat_scholar/templates/base.html:242
 msgid "Policies"
-msgstr "Smjernice"
+msgstr "Pravila"
 
 #: fatcat_scholar/templates/base.html:243
 msgid "Donate"
@@ -233,9 +233,8 @@ msgid ""
 "This fulltext search index includes over 25 million research articles and "
 "other scholarly documents preserved in the Internet Archive."
 msgstr ""
-"Ovaj indeks pretraživanja potunog teksta obuhvaća preko 25 milijuna "
-"istraživačkih članaka i drugih znanstvenih radova sačuvanih u knjižnici "
-"„Internet Archive”."
+"Ovaj indeks pretraživanja teksta obuhvaća preko 25 milijuna istraživačkih "
+"članaka i drugih znanstvenih radova sačuvanih u knjižnici „Internet Archive”."
 
 #: fatcat_scholar/templates/home.html:24
 msgid ""
