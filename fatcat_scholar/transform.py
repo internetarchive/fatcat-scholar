@@ -561,7 +561,7 @@ def refs_from_release_refs(release: ReleaseEntity) -> Sequence[RefStructured]:
                     publisher=extra.get("publisher"),
                     volume=extra.get("volume"),
                     issue=extra.get("issue"),
-                    pages=extra.get("pages"),
+                    pages=extra.get("pages") or extra.get("page"),
                     doi=extra.get("doi"),
                     pmid=extra.get("pmid"),
                     pmcid=extra.get("pmcid"),
