@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # Bryan Newbold <bnewbold@robocracy.org>, 2020.
+# ysard <ysard_git@gmx.fr>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2020-11-05 15:08-0800\n"
-"PO-Revision-Date: 2020-10-16 00:25+0000\n"
-"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"PO-Revision-Date: 2020-11-17 19:28+0000\n"
+"Last-Translator: ysard <ysard_git@gmx.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/fr/>\n"
 "Language: fr\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.3-dev\n"
+"X-Generator: Weblate 4.4-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:37
@@ -26,7 +27,7 @@ msgstr "Date de version"
 
 #: fatcat_scholar/search.py:41
 msgid "All Time"
-msgstr "Tout le temps"
+msgstr "N'importe quelle date"
 
 #: fatcat_scholar/search.py:42
 msgid "Past Week"
@@ -50,7 +51,7 @@ msgstr "Type de Ressource"
 
 #: fatcat_scholar/search.py:53
 msgid "Papers"
-msgstr "Papiers"
+msgstr "Publications"
 
 #: fatcat_scholar/search.py:54
 msgid "Reports"
@@ -103,17 +104,15 @@ msgstr "Plus ancien en premier"
 #: fatcat_scholar/templates/about.html:4
 #, python-format
 msgid "About %(website_name)s"
-msgstr ""
+msgstr "À propos de %(website_name)s"
 
 #: fatcat_scholar/templates/base.html:12
-#, fuzzy
-#| msgid "Internet Archive Scholar logo (vaporwave)"
 msgid "Internet Archive Scholar"
-msgstr "Logo Internet Archive Scholar (vaporwave)"
+msgstr "Internet Archive Scholar"
 
 #: fatcat_scholar/templates/base.html:155
 msgid "language selection menu"
-msgstr ""
+msgstr "menu de sélection de la langue"
 
 #: fatcat_scholar/templates/base.html:172
 msgid "Contribute to translations"
@@ -125,7 +124,7 @@ msgstr "par titre, auteurs, mots-clés ..."
 
 #: fatcat_scholar/templates/base.html:195
 msgid "search for papers"
-msgstr ""
+msgstr "rechercher des publications"
 
 #: fatcat_scholar/templates/base.html:196 fatcat_scholar/templates/home.html:16
 msgid "Search"
@@ -212,7 +211,7 @@ msgstr "Aide"
 #: fatcat_scholar/templates/help.html:4
 #, python-format
 msgid "%(website_name)s Help"
-msgstr ""
+msgstr "Aide de %(website_name)s"
 
 #: fatcat_scholar/templates/help.html:13
 msgid "Try It"
@@ -268,18 +267,16 @@ msgstr "Filtres"
 
 #: fatcat_scholar/templates/search.html:46
 #: fatcat_scholar/templates/search.html:76
-#, fuzzy
-#| msgid "Hits"
 msgid "Hit"
 msgid_plural "Hits"
-msgstr[0] "Les coups"
-msgstr[1] "Les coups"
+msgstr[0] "Résultat"
+msgstr[1] "Résultats"
 
 #: fatcat_scholar/templates/search.html:52
 #: fatcat_scholar/templates/search.html:84
 #, python-format
 msgid "in %(frac_sec)ssec"
-msgstr ""
+msgstr "en %(frac_sec)ssec"
 
 #: fatcat_scholar/templates/search.html:108
 msgid "Backend Search Engine Error"
@@ -324,7 +321,7 @@ msgstr "Entrez une requête dans la case ci-dessus pour commencer"
 
 #: fatcat_scholar/templates/search_macros.html:34
 msgid "access fatcat landing page"
-msgstr ""
+msgstr "accès à la page d'accueil fatcat"
 
 #: fatcat_scholar/templates/search_macros.html:49
 #: fatcat_scholar/templates/search_macros.html:189
@@ -333,7 +330,7 @@ msgstr "inconnu"
 
 #: fatcat_scholar/templates/search_macros.html:64
 msgid "access microfilm on archive.org"
-msgstr ""
+msgstr "accès au microfilm sur archive.org"
 
 #: fatcat_scholar/templates/search_macros.html:65
 #, python-format
@@ -366,12 +363,11 @@ msgid "microfilm"
 msgstr "microfilm"
 
 #: fatcat_scholar/templates/search_macros.html:254
-#, fuzzy, python-format
-#| msgid "Show %(count)s additional hits from this issue"
+#, python-format
 msgid "Show %(count)s additional result from this issue"
 msgid_plural "Show %(count)s additional results from this issue"
-msgstr[0] "Afficher %(count)s appels supplémentaires liés à ce problème"
-msgstr[1] "Afficher %(count)s appels supplémentaires liés à ce problème"
+msgstr[0] "Afficher %(count)s résultat supplémentaire lié à ce numéro"
+msgstr[1] "Afficher %(count)s résultats supplémentaires liés à ce numéro"
 
 #: fatcat_scholar/templates/search_macros.html:268
 msgid "fulltext PDF download"
@@ -379,13 +375,11 @@ msgstr "Téléchargement PDF du texte intégral"
 
 #: fatcat_scholar/templates/search_macros.html:270
 msgid "read fulltext microfilm"
-msgstr ""
+msgstr "lire l'intégralité du microfilm"
 
 #: fatcat_scholar/templates/search_macros.html:272
-#, fuzzy
-#| msgid "Fulltext"
 msgid "fulltext access"
-msgstr "Texte entier"
+msgstr "accès au texte entier"
 
 #: fatcat_scholar/templates/search_macros.html:308
 #: fatcat_scholar/templates/search_macros.html:311
