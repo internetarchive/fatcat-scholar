@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2020-11-05 15:08-0800\n"
-"PO-Revision-Date: 2020-11-14 01:55+0000\n"
+"PO-Revision-Date: 2020-11-17 19:28+0000\n"
 "Last-Translator: Artem <KovalevArtem.ru@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/ru/>\n"
@@ -109,7 +109,7 @@ msgstr "О %(website_name)s"
 
 #: fatcat_scholar/templates/base.html:12
 msgid "Internet Archive Scholar"
-msgstr ""
+msgstr "Академия архива Интернета"
 
 #: fatcat_scholar/templates/base.html:155
 msgid "language selection menu"
@@ -217,7 +217,7 @@ msgstr "Попробовать"
 
 #: fatcat_scholar/templates/home.html:10
 msgid "Internet Archive Scholar logo (vaporwave)"
-msgstr ""
+msgstr "Логотип академии архива Интернета (vaporwave)"
 
 #: fatcat_scholar/templates/home.html:15
 msgid "by title, author, keywords..."
@@ -326,6 +326,7 @@ msgstr "доступ к микрофильму на archive.org"
 #, python-format
 msgid "Page %(page_num)s of %(journal_name)s Vol. %(volume)s, Issue %(issue)s"
 msgstr ""
+"Страница %(page_num)s из %(journal_name)s Том %(volume)s, Издание %(issue)s"
 
 #: fatcat_scholar/templates/search_macros.html:67
 msgid "page"
