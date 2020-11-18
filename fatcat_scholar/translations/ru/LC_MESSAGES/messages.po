@@ -7,9 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2020-11-05 15:08-0800\n"
-"PO-Revision-Date: 2020-11-05 23:02+0000\n"
+"PO-Revision-Date: 2020-11-17 19:28+0000\n"
 "Last-Translator: Artem <KovalevArtem.ru@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/ru/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.3.2\n"
+"X-Generator: Weblate 4.4-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:37
@@ -105,15 +105,15 @@ msgstr "Сначала старые"
 #: fatcat_scholar/templates/about.html:4
 #, python-format
 msgid "About %(website_name)s"
-msgstr ""
+msgstr "О %(website_name)s"
 
 #: fatcat_scholar/templates/base.html:12
 msgid "Internet Archive Scholar"
-msgstr ""
+msgstr "Академия архива Интернета"
 
 #: fatcat_scholar/templates/base.html:155
 msgid "language selection menu"
-msgstr ""
+msgstr "меню выбора языка"
 
 #: fatcat_scholar/templates/base.html:172
 msgid "Contribute to translations"
@@ -125,7 +125,7 @@ msgstr "по названию, авторам, ключевым словам..."
 
 #: fatcat_scholar/templates/base.html:195
 msgid "search for papers"
-msgstr ""
+msgstr "поиск документов"
 
 #: fatcat_scholar/templates/base.html:196 fatcat_scholar/templates/home.html:16
 msgid "Search"
@@ -147,6 +147,8 @@ msgid ""
 "Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and "
 "%(archive_it)s."
 msgstr ""
+"Другие проекты включают в себя %(wayback)s, %(archive_org)s, %(openlibrary)"
+"s, и %(archive_it)s."
 
 #: fatcat_scholar/templates/base.html:240
 msgid "About Us"
@@ -207,7 +209,7 @@ msgstr "Справка"
 #: fatcat_scholar/templates/help.html:4
 #, python-format
 msgid "%(website_name)s Help"
-msgstr ""
+msgstr "%(website_name)s Справка"
 
 #: fatcat_scholar/templates/help.html:13
 msgid "Try It"
@@ -215,7 +217,7 @@ msgstr "Попробовать"
 
 #: fatcat_scholar/templates/home.html:10
 msgid "Internet Archive Scholar logo (vaporwave)"
-msgstr ""
+msgstr "Логотип академии архива Интернета (vaporwave)"
 
 #: fatcat_scholar/templates/home.html:15
 msgid "by title, author, keywords..."
@@ -257,19 +259,17 @@ msgstr "Фильтры"
 
 #: fatcat_scholar/templates/search.html:46
 #: fatcat_scholar/templates/search.html:76
-#, fuzzy
-#| msgid "Hits"
 msgid "Hit"
 msgid_plural "Hits"
-msgstr[0] "Просмотры"
-msgstr[1] "Просмотры"
-msgstr[2] "Просмотры"
+msgstr[0] "Просмотр"
+msgstr[1] "Просмотра"
+msgstr[2] "Просмотров"
 
 #: fatcat_scholar/templates/search.html:52
 #: fatcat_scholar/templates/search.html:84
 #, python-format
 msgid "in %(frac_sec)ssec"
-msgstr ""
+msgstr "в %(frac_sec)sсек"
 
 #: fatcat_scholar/templates/search.html:108
 msgid "Backend Search Engine Error"
@@ -320,12 +320,13 @@ msgstr "неизвестно"
 
 #: fatcat_scholar/templates/search_macros.html:64
 msgid "access microfilm on archive.org"
-msgstr ""
+msgstr "доступ к микрофильму на archive.org"
 
 #: fatcat_scholar/templates/search_macros.html:65
 #, python-format
 msgid "Page %(page_num)s of %(journal_name)s Vol. %(volume)s, Issue %(issue)s"
 msgstr ""
+"Страница %(page_num)s из %(journal_name)s Том %(volume)s, Издание %(issue)s"
 
 #: fatcat_scholar/templates/search_macros.html:67
 msgid "page"
@@ -368,10 +369,8 @@ msgid "read fulltext microfilm"
 msgstr ""
 
 #: fatcat_scholar/templates/search_macros.html:272
-#, fuzzy
-#| msgid "Fulltext"
 msgid "fulltext access"
-msgstr "Полнотекстовый"
+msgstr "полнотекстовый доступ"
 
 #: fatcat_scholar/templates/search_macros.html:308
 #: fatcat_scholar/templates/search_macros.html:311
@@ -382,6 +381,7 @@ msgstr "Предыдущий"
 #, python-format
 msgid "Showing results %(start)s &mdash; %(end)s out of %(total)s results"
 msgstr ""
+"Отображение результатов %(start)s &mdash; %(end)s из %(total)s результатов"
 
 #: fatcat_scholar/templates/search_macros.html:320
 #: fatcat_scholar/templates/search_macros.html:322

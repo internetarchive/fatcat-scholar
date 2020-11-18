@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # Bryan Newbold <bnewbold@robocracy.org>, 2020.
+# Eric <spice2wolf@gmail.com>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2020-11-05 15:08-0800\n"
-"PO-Revision-Date: 2020-11-05 23:37+0000\n"
-"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"PO-Revision-Date: 2020-11-17 19:28+0000\n"
+"Last-Translator: Eric <spice2wolf@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "internetarchive/fatcat-scholar/zh_Hans/>\n"
 "Language: zh\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.3.2\n"
+"X-Generator: Weblate 4.4-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:37
@@ -101,14 +102,13 @@ msgid "Oldest First"
 msgstr "最早的优先"
 
 #: fatcat_scholar/templates/about.html:4
-#, fuzzy, python-format
+#, python-format
 msgid "About %(website_name)s"
-msgstr "关于%(website_name)s"
+msgstr "关于 %(website_name)s"
 
 #: fatcat_scholar/templates/base.html:12
-#, fuzzy
 msgid "Internet Archive Scholar"
-msgstr "互联网档案学者"
+msgstr "互联网档案学术"
 
 #: fatcat_scholar/templates/base.html:155
 msgid "language selection menu"
@@ -138,9 +138,7 @@ msgstr "用户指南"
 msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
-msgstr ""
-"我们是501（c）（3）非营利组织，以数字形式建立了互联网站点和其他文化人工制品的"
-"数字图书馆"
+msgstr "我们是一家美国的501(c)(3)非营利图书馆，旨在以数字形式建立一个互联网站点和其他文化文物的全球档案馆。"
 
 #: fatcat_scholar/templates/base.html:233
 #, python-format
@@ -171,9 +169,8 @@ msgid "Open Infrastructure"
 msgstr "开放基础架构"
 
 #: fatcat_scholar/templates/base.html:251
-#, fuzzy
 msgid "Editable Catalog (Fatcat)"
-msgstr "可编辑目录（Fatcat）"
+msgstr "可编辑目录 (Fatcat)"
 
 #: fatcat_scholar/templates/base.html:252
 msgid "Contribute"
@@ -208,9 +205,9 @@ msgid "Help"
 msgstr "说明"
 
 #: fatcat_scholar/templates/help.html:4
-#, fuzzy, python-format
+#, python-format
 msgid "%(website_name)s Help"
-msgstr "%(website_name)s 帮助"
+msgstr "%(website_name)s 帮助文件"
 
 #: fatcat_scholar/templates/help.html:13
 msgid "Try It"
@@ -229,11 +226,10 @@ msgid "Search Millions of Research Papers"
 msgstr "搜索数以百万计的研究论文"
 
 #: fatcat_scholar/templates/home.html:24
-#, fuzzy
 msgid ""
 "This fulltext search index includes over 25 million research articles and "
 "other scholarly documents preserved in the Internet Archive."
-msgstr "全文检索索引包括保存在Internet存档中的2500万篇研究文章和其他学术文献。"
+msgstr "全文检索索引包含超过2500万的研究文章和其他保存在互联网档案馆里的学术文档。"
 
 #: fatcat_scholar/templates/home.html:24
 msgid ""
@@ -265,16 +261,15 @@ msgstr "搜索过滤器"
 #: fatcat_scholar/templates/search.html:76
 msgid "Hit"
 msgid_plural "Hits"
-msgstr[0] ""
+msgstr[0] "点击"
 
 #: fatcat_scholar/templates/search.html:52
 #: fatcat_scholar/templates/search.html:84
-#, fuzzy, python-format
+#, python-format
 msgid "in %(frac_sec)ssec"
-msgstr "在%(frac_sec)s秒内"
+msgstr "在 %(frac_sec)s秒内"
 
 #: fatcat_scholar/templates/search.html:108
-#, fuzzy
 msgid "Backend Search Engine Error"
 msgstr "后端搜索引擎错误"
 
@@ -341,7 +336,6 @@ msgid "Multiple Versions"
 msgstr "多个版本"
 
 #: fatcat_scholar/templates/search_macros.html:178
-#, fuzzy
 msgid "Publication Stage"
 msgstr "出版阶段"
 
@@ -358,11 +352,10 @@ msgid "microfilm"
 msgstr "缩微胶卷"
 
 #: fatcat_scholar/templates/search_macros.html:254
-#, fuzzy, python-format
-#| msgid "Show %(count)s additional hits from this issue"
+#, python-format
 msgid "Show %(count)s additional result from this issue"
 msgid_plural "Show %(count)s additional results from this issue"
-msgstr[0] "显示%(count)s本期的额外点击"
+msgstr[0] "显示来自该发行物的%(count)s个额外结果"
 
 #: fatcat_scholar/templates/search_macros.html:268
 msgid "fulltext PDF download"
@@ -373,10 +366,8 @@ msgid "read fulltext microfilm"
 msgstr "阅读全文缩微胶片"
 
 #: fatcat_scholar/templates/search_macros.html:272
-#, fuzzy
-#| msgid "Fulltext"
 msgid "fulltext access"
-msgstr "全文"
+msgstr "全文访问"
 
 #: fatcat_scholar/templates/search_macros.html:308
 #: fatcat_scholar/templates/search_macros.html:311
