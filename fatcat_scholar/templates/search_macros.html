@@ -311,7 +311,7 @@
   <span style="color:rgba(0,0,0,0.55); margin-right: 2em;">&#xab; {% trans %}Previous{% endtrans %}</span>
 {% endif %}
 <i>
-  {% trans trimmed start=hits.offset, end=(hits.offset + hits.limit), total="{:,}".format(hits.count_found) %}
+  {% trans trimmed start=(hits.offset + 1), end=(hits.offset + hits.limit), total="{:,}".format(hits.count_found) %}
     Showing results {{ start }} &mdash; {{ end }} out of {{ total }} results
   {% endtrans %}
 </i>
