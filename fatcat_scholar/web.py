@@ -22,7 +22,7 @@ from fatcat_scholar.search import do_fulltext_search, FulltextQuery, FulltextHit
 
 logger = logging.getLogger()
 
-I18N_LANG_TRANSLATIONS = ["de", "zh", "ru", "ar", "fr", "es", "nb"]
+I18N_LANG_TRANSLATIONS = ["de", "zh", "ru", "ar", "fr", "es", "nb", "hr"]
 I18N_LANG_OPTIONS = I18N_LANG_TRANSLATIONS + [
     settings.I18N_LANG_DEFAULT,
 ]
