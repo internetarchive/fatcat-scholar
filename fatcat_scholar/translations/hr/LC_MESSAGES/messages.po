@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2020-11-05 15:08-0800\n"
-"PO-Revision-Date: 2020-11-11 01:28+0000\n"
+"PO-Revision-Date: 2020-11-20 19:28+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/hr/>\n"
@@ -140,7 +140,7 @@ msgid ""
 "Internet sites and other cultural artifacts in digital form."
 msgstr ""
 "Mi smo američka 501(c)(3) neprofitna knjižnica. Gradimo digitalni arhiv "
-"internetskih stranica i drugih kulturnih predmeta."
+"internetskih stranica i druge kulturne građe u digitalnom obliku."
 
 #: fatcat_scholar/templates/base.html:233
 #, python-format
@@ -275,7 +275,7 @@ msgstr[2] "pogodaka"
 #: fatcat_scholar/templates/search.html:84
 #, python-format
 msgid "in %(frac_sec)ssec"
-msgstr "u %(frac_sec)s s"
+msgstr "u %(frac_sec)ss"
 
 #: fatcat_scholar/templates/search.html:108
 msgid "Backend Search Engine Error"
