@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2020-11-05 15:08-0800\n"
-"PO-Revision-Date: 2020-11-27 13:29+0000\n"
+"PO-Revision-Date: 2020-11-29 09:29+0000\n"
 "Last-Translator: Artem <KovalevArtem.ru@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/ru/>\n"
@@ -140,6 +140,8 @@ msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
 msgstr ""
+"Мы - некоммерческая библиотека US 501(c)(3), создающая глобальный архив "
+"Интернет-сайтов и других культурных артефактов в цифровой форме."
 
 #: fatcat_scholar/templates/base.html:233
 #, python-format
@@ -313,7 +315,7 @@ msgstr "Введите запрос в поле выше, чтобы начат�
 
 #: fatcat_scholar/templates/search_macros.html:34
 msgid "access fatcat landing page"
-msgstr ""
+msgstr "доступ к целевой странице fatcat"
 
 #: fatcat_scholar/templates/search_macros.html:49
 #: fatcat_scholar/templates/search_macros.html:189
