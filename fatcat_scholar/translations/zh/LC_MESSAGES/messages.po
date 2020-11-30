@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2020-11-05 15:08-0800\n"
 "PO-Revision-Date: 2020-11-26 02:28+0000\n"
 "Last-Translator: Eric <spice2wolf@gmail.com>\n"
@@ -139,7 +139,9 @@ msgstr "用户指南"
 msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
-msgstr "我们是一家美国的501(c)(3)非营利图书馆，旨在以数字形式建立一个互联网站点和其他文化文物的全球档案馆。"
+msgstr ""
+"我们是一家美国的501(c)(3)非营利图书馆，旨在以数字形式建立一个互联网站点和其他"
+"文化文物的全球档案馆。"
 
 #: fatcat_scholar/templates/base.html:233
 #, python-format
@@ -230,7 +232,8 @@ msgstr "搜索数以百万计的研究论文"
 msgid ""
 "This fulltext search index includes over 25 million research articles and "
 "other scholarly documents preserved in the Internet Archive."
-msgstr "全文检索索引包含超过2500万的研究文章和其他保存在互联网档案馆里的学术文档。"
+msgstr ""
+"全文检索索引包含超过2500万的研究文章和其他保存在互联网档案馆里的学术文档。"
 
 #: fatcat_scholar/templates/home.html:24
 msgid ""
