@@ -60,7 +60,7 @@ def parse_accept_lang(header: str, options: typing.List[str]) -> typing.Optional
     """
     if not header:
         return None
-    chunks = [v.split(";")[0].split("-")[0] for v in header.split(",")]
+    chunks = [v.split(";")[0].split("-")[0].split("_")[0] for v in header.split(",")]
     for c in chunks:
         if len(c) == 2 and c in options:
             return c
@@ -72,6 +72,7 @@ def test_parse_accept_lang() -> None:
     assert parse_accept_lang("en,de", []) == None
     assert parse_accept_lang("en,de", ["en"]) == "en"
     assert parse_accept_lang("en-GB,de", ["en"]) == "en"
+    assert parse_accept_lang("zh_Hans_CN", ["en", "zh"]) == "zh"
     assert parse_accept_lang("en,de", ["de"]) == "de"
     assert (
         parse_accept_lang("en-ca,en;q=0.8,en-us;q=0.6,de-de;q=0.4,de;q=0.2", ["de"])

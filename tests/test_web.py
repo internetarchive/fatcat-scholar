@@ -25,6 +25,10 @@ def test_main_view(client: Any) -> None:
     assert resp.status_code == 200
     assert "معلومات عن" in resp.content.decode("utf-8")
 
+    resp = client.get("/", headers={"Accept-Language": "zh_Hans_CN"})
+    assert resp.status_code == 200
+    assert "我们是" in resp.content.decode("utf-8")
+
 
 def test_basic_api(client: Any) -> None:
     """
