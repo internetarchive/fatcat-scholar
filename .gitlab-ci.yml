@@ -1,9 +1,9 @@
 
 # This image comes with:
-# - ubuntu:xenial (what IA infrastructure runs circa spring 2020)
+# - ubuntu:focal (what IA infrastructure runs circa 2021)
 # - python3 dev setup
 # - pipenv
-image: "bnewbold/fatcat-test-base:xenial"
+image: "bnewbold/fatcat-test-base:focal"
 
 before_script:
   - pipenv --version
