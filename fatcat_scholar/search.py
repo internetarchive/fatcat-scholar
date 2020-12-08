@@ -314,8 +314,9 @@ def do_fulltext_search(
     query_start = datetime.datetime.now()
     try:
         resp = search.execute()
-    except elasticsearch.exceptions.RequestError as e:
+    except elasticsearch.exceptions.RequestError as e_raw:
         # this is a "user" error
+        e: Any = e_raw
         logging.warn("elasticsearch 400: " + str(e.info))
         if e.info.get("error", {}).get("root_cause", {}):
             raise ValueError(str(e.info["error"]["root_cause"][0].get("reason"))) from e
