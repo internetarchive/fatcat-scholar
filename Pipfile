@@ -32,6 +32,8 @@ starlette-prometheus = "*"
 [dev-packages]
 ipython = "*"
 mypy = "*"
+# typing_extensions is required for mypy to operate
+typing_extensions = "*"
 pytype = "*"
 flake8 = "*"
 flake8-annotations = "*"
@@ -43,4 +45,4 @@ pytest-cov = "*"
 black = "==19.10b0"
 
 [requires]
-python_version = "3.7"
+python_version = "3.8"

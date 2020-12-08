@@ -40,7 +40,7 @@ Flask.
 
 ## Getting Started for Developers
 
-You need `pipenv` and Python 3.7 installed. Most tasks are run using a
+You need `pipenv` and Python 3.8 installed. Most tasks are run using a
 Makefile; `make help` will show all options.
 
 Working on the indexing pipeline effectively requires internal access to the
