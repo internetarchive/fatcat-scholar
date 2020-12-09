@@ -1,12 +1,7 @@
 
-# This image comes with:
-# - ubuntu:xenial (what IA infrastructure runs circa spring 2020)
-# - python3 dev setup
-# - pipenv
-image: "bnewbold/fatcat-test-base:latest"
-
-before_script:
-  - pipenv --version
+stages:
+  - accessibility
+  - test
 
 variables:
   LC_ALL: "C.UTF-8"
@@ -14,10 +9,17 @@ variables:
   a11y_urls: "https://scholar-qa.archive.org https://scholar-qa.archive.org/search?q=vision https://openlibrary.org https://archive.org/details/editionofoneauto0000powe"
 
 test_python:
+  # This image comes with:
+  # - ubuntu:xenial (what IA infrastructure runs circa spring 2020)
+  # - python3 dev setup
+  # - pipenv
+  image: "bnewbold/fatcat-test-base:latest"
+  stage: test
+  before_script:
+    - pipenv --version
   script:
     - pipenv install --dev --deploy
     - make test
 
 include:
   - template: "Verify/Accessibility.gitlab-ci.yml"
-￼
