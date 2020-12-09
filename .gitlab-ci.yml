@@ -11,8 +11,13 @@ before_script:
 variables:
   LC_ALL: "C.UTF-8"
   LANG: "C.UTF-8"
+  a11y_urls: "https://scholar-qa.archive.org https://scholar-qa.archive.org/search?q=vision https://openlibrary.org https://archive.org/details/editionofoneauto0000powe"
 
 test_python:
   script:
     - pipenv install --dev --deploy
     - make test
+
+include:
+  - template: "Verify/Accessibility.gitlab-ci.yml"
+￼
