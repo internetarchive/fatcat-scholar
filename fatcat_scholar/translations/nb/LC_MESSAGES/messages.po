@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2020-11-05 15:08-0800\n"
-"PO-Revision-Date: 2020-10-19 10:27+0000\n"
+"PO-Revision-Date: 2020-12-11 13:29+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
 "internetarchive/fatcat-scholar/nb_NO/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.3.1-dev\n"
+"X-Generator: Weblate 4.4-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:37
@@ -104,7 +104,7 @@ msgstr "Eldste først"
 #: fatcat_scholar/templates/about.html:4
 #, python-format
 msgid "About %(website_name)s"
-msgstr ""
+msgstr "Om %(website_name)s"
 
 #: fatcat_scholar/templates/base.html:12
 #, fuzzy
@@ -114,7 +114,7 @@ msgstr "Internet Archive Scholar-logo (vaporwave)"
 
 #: fatcat_scholar/templates/base.html:155
 msgid "language selection menu"
-msgstr ""
+msgstr "Språkvalgsmeny"
 
 #: fatcat_scholar/templates/base.html:172
 msgid "Contribute to translations"
@@ -213,7 +213,7 @@ msgstr "Hjelp"
 #: fatcat_scholar/templates/help.html:4
 #, python-format
 msgid "%(website_name)s Help"
-msgstr ""
+msgstr "%(website_name)s-hjelp"
 
 #: fatcat_scholar/templates/help.html:13
 msgid "Try It"
@@ -278,9 +278,9 @@ msgstr[1] "Hint"
 
 #: fatcat_scholar/templates/search.html:52
 #: fatcat_scholar/templates/search.html:84
-#, python-format
+#, fuzzy, python-format
 msgid "in %(frac_sec)ssec"
-msgstr ""
+msgstr "på %(frac_sec)s sek"
 
 #: fatcat_scholar/templates/search.html:108
 msgid "Backend Search Engine Error"
