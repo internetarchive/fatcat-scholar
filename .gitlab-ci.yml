@@ -3,7 +3,7 @@
 # - ubuntu:xenial (what IA infrastructure runs circa spring 2020)
 # - python3 dev setup
 # - pipenv
-image: "bnewbold/fatcat-test-base:latest"
+image: "bnewbold/fatcat-test-base:xenial"
 
 before_script:
   - pipenv --version
@@ -11,6 +11,7 @@ before_script:
 variables:
   LC_ALL: "C.UTF-8"
   LANG: "C.UTF-8"
+  PIPENV_VENV_IN_PROJECT: "true"
 
 test_python:
   script:
