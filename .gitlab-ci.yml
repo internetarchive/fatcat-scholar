@@ -17,3 +17,4 @@ test_python:
   script:
     - pipenv install --dev --deploy
     - make test
+    - make lint
