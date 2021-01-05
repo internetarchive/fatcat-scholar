@@ -12,11 +12,14 @@ See also:
 
 ### Added
 
-- added Russian (ru) translation (thanks @artem.ru)
+- added Russian (ru) translation (thanks @artem.ru!)
+- added Norwegian Bokmål (nb) translation (thanks kingu!)
+- added Croatian (hr) translation (thanks milotype!)
 
 ### Changed
 
 - updated dynaconf dependency to version 3 (thanks @rochabruno)
+- update required python version to 3.8
 
 ### Fixed
 
