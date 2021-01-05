@@ -145,9 +145,12 @@ class IndexDocsWorker(KafkaWorker):
         if not bulk_actions:
             return
 
-        self.es_client.bulk(
+        resp = self.es_client.bulk(
             "\n".join(bulk_actions), self.es_index, timeout="30s",
         )
+        if resp.get("errors"):
+            print(resp["errors"], file=sys.stderr)
+            raise Exception("elasticsearch index response errors")
         self.counts["batches-indexed"] += 1
 
 
