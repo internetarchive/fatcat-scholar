@@ -24,11 +24,11 @@ fmt: ## Run code formating on all source code
 	pipenv run black fatcat_scholar/ tests/
 
 .PHONY: test
-test: lint ## Run all tests and lints
+test: ## Run all tests and lints
 	PIPENV_DONT_LOAD_ENV=1 ENV_FOR_DYNACONF=test pipenv run pytest
 
 .PHONY: coverage
-coverage: lint ## Run all tests with coverage
+coverage: ## Run all tests with coverage
 	PIPENV_DONT_LOAD_ENV=1 ENV_FOR_DYNACONF=test pipenv run pytest --cov --cov-report=term --cov-report=html
 
 .PHONY: serve
