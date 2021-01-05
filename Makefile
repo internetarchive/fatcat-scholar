@@ -31,16 +31,16 @@ test: lint ## Run all tests and lints
 coverage: lint ## Run all tests with coverage
 	PIPENV_DONT_LOAD_ENV=1 ENV_FOR_DYNACONF=test pipenv run pytest --cov --cov-report=term --cov-report=html
 
-.PHONY: dev
-dev: ## Run web service locally, with reloading
+.PHONY: serve
+serve: ## Run web service locally, with reloading
 	ENV_FOR_DYNACONF=development pipenv run uvicorn fatcat_scholar.web:app --reload --port 9819
 
-.PHONY: dev-qa
-dev-qa: ## Run web service locally, with reloading, but point search queries to QA search index
+.PHONY: serve-qa
+serve-qa: ## Run web service locally, with reloading, but point search queries to QA search index
 	ENV_FOR_DYNACONF=qa DYNACONF_SCHOLAR_ENV=dev pipenv run uvicorn fatcat_scholar.web:app --reload --port 9819
 
-.PHONY: run
-run: ## Run web service under gunicorn
+.PHONY: serve-gunicorn
+serve-gunicorn: ## Run web service under gunicorn
 	pipenv run gunicorn fatcat_scholar.web:app -w 4 -k uvicorn.workers.UvicornWorker
 
 .PHONY: fetch-works
