@@ -527,7 +527,7 @@ Sharded indexing:
         cat /bigger/scholar/release_export_expanded.split_$SHARD.json \
             | parallel -j8 --line-buffer --compress --round-robin --pipe python -m fatcat_scholar.work_pipeline run_releases \
             | pv -l \
-            | pigz > /grande/snapshots/fatcat_scholar_work_fulltext.split_$SHARD.json.gz
+            | pigz > /grande/scholar/2020-12-30/fatcat_scholar_work_fulltext.split_$SHARD.json.gz
     done
 
 Record counts:
@@ -608,3 +608,21 @@ Had some hardware (?) issue and had to restart.
 Stop elasticsearch, `sync`, restart, to ensure index is fully flushed to disk.
 
 Some warm-up queries: "*", "blood", "to be or not to be"
+
+
+## 2020-12-30 Simple Release Batch
+
+Hopefully no special cases in this iteration!
+
+    mkdir -p /grande/scholar/2020-12-30/
+    cd /grande/scholar/2020-12-30/
+    zcat /fast/download/release_export_expanded.2020-12-30.json.gz | split --lines 25000000 - release_export_expanded.split_ -d --additional-suffix .json
+
+    export TMPDIR=/sandcrawler-db/tmp
+    for SHARD in {00..06}; do
+        cat /grande/scholar_index/2020-12-30/release_export_expanded.split_$SHARD.json \
+            | parallel -j8 --line-buffer --compress --round-robin --pipe python -m fatcat_scholar.work_pipeline run_releases \
+            | pv -l \
+            | pigz > /grande/scholar_index/2020-12-30/fatcat_scholar_work_fulltext.split_$SHARD.json.gz
+    done
+
