@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # Bryan Newbold <bnewbold@robocracy.org>, 2020.
+# badlop <badlop@process-one.net>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2020-11-05 15:08-0800\n"
-"PO-Revision-Date: 2020-11-05 23:37+0000\n"
-"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"PO-Revision-Date: 2021-01-12 22:32+0000\n"
+"Last-Translator: badlop <badlop@process-one.net>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/es/>\n"
 "Language: es\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.3.2\n"
+"X-Generator: Weblate 4.4.1-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:37
@@ -50,7 +51,7 @@ msgstr "Tipo de fondo"
 
 #: fatcat_scholar/search.py:53
 msgid "Papers"
-msgstr "Papeles"
+msgstr "Artículos"
 
 #: fatcat_scholar/search.py:54
 msgid "Reports"
@@ -103,13 +104,11 @@ msgstr "Los más antiguos primero"
 #: fatcat_scholar/templates/about.html:4
 #, python-format
 msgid "About %(website_name)s"
-msgstr ""
+msgstr "Sobre %(website_name)s"
 
 #: fatcat_scholar/templates/base.html:12
-#, fuzzy
-#| msgid "Internet Archive Scholar logo (vaporwave)"
 msgid "Internet Archive Scholar"
-msgstr "Académico de Internet Archive"
+msgstr "Archivo de Internet Académico"
 
 #: fatcat_scholar/templates/base.html:155
 msgid "language selection menu"
@@ -125,7 +124,7 @@ msgstr "por título, autores, palabras clave..."
 
 #: fatcat_scholar/templates/base.html:195
 msgid "search for papers"
-msgstr ""
+msgstr "buscar artículos"
 
 #: fatcat_scholar/templates/base.html:196 fatcat_scholar/templates/home.html:16
 msgid "Search"
@@ -212,7 +211,7 @@ msgstr "Ayuda"
 #: fatcat_scholar/templates/help.html:4
 #, python-format
 msgid "%(website_name)s Help"
-msgstr ""
+msgstr "Ayuda de %(website_name)s"
 
 #: fatcat_scholar/templates/help.html:13
 msgid "Try It"
@@ -228,7 +227,7 @@ msgstr "por título, autor, palabras clave..."
 
 #: fatcat_scholar/templates/home.html:23
 msgid "Search Millions of Research Papers"
-msgstr "Buscar en millones de documentos de investigación"
+msgstr "Buscar en millones de artículos de investigación"
 
 #: fatcat_scholar/templates/home.html:24
 msgid ""
@@ -268,18 +267,16 @@ msgstr "Filtros"
 
 #: fatcat_scholar/templates/search.html:46
 #: fatcat_scholar/templates/search.html:76
-#, fuzzy
-#| msgid "Hits"
 msgid "Hit"
 msgid_plural "Hits"
 msgstr[0] "Visita"
-msgstr[1] "Visita"
+msgstr[1] "Visitas"
 
 #: fatcat_scholar/templates/search.html:52
 #: fatcat_scholar/templates/search.html:84
-#, fuzzy, python-format
+#, python-format
 msgid "in %(frac_sec)ssec"
-msgstr "En %(frac_sec)ssec"
+msgstr "en %(frac_sec)sseg"
 
 #: fatcat_scholar/templates/search.html:108
 msgid "Backend Search Engine Error"
@@ -332,7 +329,6 @@ msgid "unknown"
 msgstr "desconocido"
 
 #: fatcat_scholar/templates/search_macros.html:64
-#, fuzzy
 msgid "access microfilm on archive.org"
 msgstr "acceder al microfilm en archive.org"
 
@@ -367,11 +363,10 @@ msgid "microfilm"
 msgstr "microfilm"
 
 #: fatcat_scholar/templates/search_macros.html:254
-#, fuzzy, python-format
-#| msgid "Show %(count)s additional hits from this issue"
+#, python-format
 msgid "Show %(count)s additional result from this issue"
 msgid_plural "Show %(count)s additional results from this issue"
-msgstr[0] "Mostrar %(count)s resultados adicionales de esta edición"
+msgstr[0] "Mostrar %(count)s resultado adicional de esta edición"
 msgstr[1] "Mostrar %(count)s resultados adicionales de esta edición"
 
 #: fatcat_scholar/templates/search_macros.html:268
@@ -380,7 +375,7 @@ msgstr "descarga de texto completo en PDF"
 
 #: fatcat_scholar/templates/search_macros.html:270
 msgid "read fulltext microfilm"
-msgstr ""
+msgstr "leer microfilm completo"
 
 #: fatcat_scholar/templates/search_macros.html:272
 msgid "fulltext access"
