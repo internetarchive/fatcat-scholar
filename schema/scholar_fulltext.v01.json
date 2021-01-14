@@ -243,7 +243,7 @@
         "withdrawn_status":{"type": "alias", "path": "biblio.withdrawn_status" },
         "volume":         { "type": "alias", "path": "biblio.volume" },
         "issue":          { "type": "alias", "path": "biblio.issue" },
-
+        "publisher":      { "type": "alias", "path": "biblio.publisher" },
         "affiliation":    { "type": "alias", "path": "biblio.affiliations" },
         "author":         { "type": "alias", "path": "biblio.contrib_names" },
         "journal":        { "type": "alias", "path": "biblio.container_name" },
@@ -253,8 +253,11 @@
         "lang":           { "type": "alias", "path": "biblio.lang_code" },
         "stage":          { "type": "alias", "path": "biblio.release_stage" },
         "type":           { "type": "alias", "path": "biblio.release_type" },
-        "country":        { "type": "alias", "path": "biblio.country_code" }
+        "country":        { "type": "alias", "path": "biblio.country_code" },
 
+        "issue_item":     { "type": "alias", "path": "ia_sim.issue_item" },
+        "pub_collection": { "type": "alias", "path": "ia_sim.pub_collection" },
+        "sim_pubid":      { "type": "alias", "path": "ia_sim.sim_pubid" }
     }
   }
 }
