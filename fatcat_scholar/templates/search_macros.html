@@ -121,7 +121,11 @@
   {% elif paper.abstracts %}
     <div style="padding-top: 0.5em; padding-bottom: 0.5em;">
       {% if paper.abstracts[0].body|length > 500 %}
-        {{ paper.abstracts[0].body[:500] }}...
+        {{ paper.abstracts[0].body | truncate(500, False, '') }}
+        <details style="display:inline;">
+          <summary>{% trans %}more &raquo;{% endtrans %}</summary>
+          ... {{ paper.abstracts[0].body[480:] }}
+        </details>
       {% else %}
         {{ paper.abstracts[0].body }}
       {% endif %}

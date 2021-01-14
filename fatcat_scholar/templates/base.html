@@ -74,6 +74,16 @@
       line-height: 1.28571429em;
     }
 
+    .serp-hit-box details > summary {
+      list-style-type: none;
+      color: #28629c;
+      text-decoration: underline;
+      margin-left: 0.3em;
+    }
+    .serp-hit-box details > summary::-webkit-details-marker {
+      display: none;
+    }
+
     {# fix RTL dividers #}
     {% if locale in ['ar'] %}
     .ui.divided.grid:not([class*="vertically divided"])>.column:not(.row), .ui.divided.grid:not([class*="vertically divided"])>.row>.column {
