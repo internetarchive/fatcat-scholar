@@ -286,7 +286,8 @@ def do_fulltext_search(
         highlight_query=highlight_query.to_dict(),
         require_field_match=False,
         number_of_fragments=2,
-        fragment_size=300,
+        fragment_size=200,
+        order="score",
         # TODO: this will fix highlight encoding, but requires ES 7.x
         # encoder="html",
     )

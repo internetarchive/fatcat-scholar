@@ -113,7 +113,7 @@
     {# this highlight HTML escape hacking should not be necessary in ES 7.x with highlight escaping #}
     {# but for now we manually escape, then de-escape the 'em' highlight tags #}
     {% autoescape false %}
-      {% for highlight in paper._highlights %}
+      {% for highlight in paper._highlights[:3] %}
         {{ highlight|e|replace("&lt;em&gt;", "<em>")|replace("&lt;/em&gt;", "</em>") }} &nbsp;...&nbsp;
       {% endfor %}
     {% endautoescape %}
