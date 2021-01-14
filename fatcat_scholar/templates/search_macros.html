@@ -88,7 +88,7 @@
   <h3 class="biblio-title">
 
     {% if paper.doc_type == "work" %}
-      <a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}" target="_blank" rel="noopener" title="{{ _('access fatcat landing page') }}" {% if settings.ENABLE_GOATCOUNTER %}data-goatcounter-click="serp-title-fatcat-work"{% endif %}>
+      <a style="color: #2224c7; cursor: pointer;" onclick="document.getElementById('access-modal-{{ paper.key }}').showModal()">
         {% if paper.biblio.title %}
           {{ paper.biblio.title[:512] }}
           {% if paper.biblio.title|length > 512 %}...{% endif %}
@@ -235,136 +235,198 @@
       {% set access_alt = _('fulltext access') %}
     {% endif %}
     <a target="_blank" rel="noopener" href="{{ paper.fulltext.access_url}}" title="{{ access_alt }}" {% if settings.ENABLE_GOATCOUNTER %}data-goatcounter-click="serp-fulltext-button"{% endif %}>
-      <button class="ui fluid compact black button serp_button">
-        <img src="static/ia-logo.svg" style="height: 1em; margin-right: 0.2em;">
-        {# <i class="archive icon"></i> #}
+      <button class="ui simple dropdown fluid compact black labeled icon button serp-button">
+        <i class="icon" style="background: no-repeat center / 50% url('/static/ia-logo.svg');"></i>
         {% if paper.fulltext.access_type == "wayback" %}
-          web.archive.org
+          PDF (1.42 MB)
         {% elif paper.fulltext.access_type == "ia_sim" %}
-          IA Microfilm
+          Microfilm
         {% elif paper.fulltext.access_type == "ia_file" %}
-          archive.org
+          PDF (2.34 MB)
         {% else %}
           other
+        {% endif %}
+      {% if paper.fulltext.thumbnail_url %}
+        <div class="menu" style="left: 185px; margin-top: -2em;">
+          <img src="{{ paper.fulltext.thumbnail_url }}" alt="fulltext thumbnail">
+        </div>
+      {% endif %}
+      </button>
+    </a>
+  {% endif %}
+
+  {# publisher #}
+  {% if paper.biblio.doi %}
+    <a target="_blank" rel="external noopener noreferrer" href="https://doi.org/{{paper.biblio.doi }}" style="color: green;">
+      <button class="ui fluid left aligned compact blue labeled icon button serp-button">
+        {% if "oa" in paper.tags %}
+          <i class="unlock alternate icon" style="background-color: orange;"></i>
+        {% else %}
+          <i class="linkify icon"></i>
+        {% endif %}
+        {# TODO: detect prefix? JSTOR, biorxiv, medrxiv, zenodo, figshare, dryad, etc #}
+        {# helpful: https://gist.github.com/TomDemeranville/8699224 #}
+        {% if paper.biblio.doi_prefix == "10.6084" %}
+          figshare.com
+        {% elif paper.biblio.doi_prefix == "10.5281" %}
+          zenodo.org
+        {% elif paper.biblio.doi_prefix == "10.1371" %}
+          plos.org
+        {% elif paper.biblio.doi_prefix == "10.1016" %}
+          elsevier.com
+        {% elif paper.biblio.doi_prefix in ["10.1186", "10.1007"] %}
+          springer.com
+        {% elif paper.biblio.doi_prefix in ["10.1042", "10.1111", "10.1177"] %}
+          sagepub.com
+        {% elif paper.biblio.doi_prefix in ["10.1080"] %}
+          tandfonline.com
+        {% else %}
+          Publisher (DOI)
         {% endif %}
       </button>
     </a>
   {% endif %}
 
-  <button class="ui fluid compact grey basic button serp_button">
-    <i class="quote left icon"></i>
-    Cite
-  </button>
+  {# trusted platform fulltext links #}
+  {# TODO: DOAJ, dblp #}
+  {% if paper.biblio.arxiv_id %}
+    <a target="_blank" rel="noopener" href="https://arxiv.org/abs/{{ paper.biblio.arxiv_id }}" title="arxiv.org access">
+      <button class="ui fluid compact blue labeled icon button serp-button">
+        <i class="file alternate outline icon"></i>
+        arxiv.org
+      </button>
+    </a>
+  {% elif paper.biblio.pmcid %}
+    <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pmc/articles/{{paper.biblio.pmcid }}" title="pubmed link">
+      <button class="ui fluid compact blue labeled icon button serp-button">
+        <i class="file alternate outline icon"></i>
+        Pubmed Central
+      </button>
+    </a>
+  {% endif %}
 
   {# ### VERSIONS #}
   {% if (paper.access and paper.access|length > 1) or (paper.releases and paper.releases|length > 1) %}
-    <div class="ui fluid left aligned compact basic blue button dropdown item serp_button">
+    <div class="ui simple dropdown fluid left aligned compact basic blue labeled icon button serp-button">
       <i class="ui icon add"></i>
       {% trans %}Versions{% endtrans %}
 
       <div class="menu" style="font-weight: normal;">
-        <table class="ui celled table">
-          <thead>
-            <tr>
-              <th>{{ _("Publication Stage") }}</th>
-              <th>{{ _("Date") }}</th>
-              <th>{{ _("Fulltext") }}</th>
-              <th>{{ _("Metadata") }}</th>
-            </tr>
-          </thead>
-          <tbody>
-          {% for release in paper.releases %}
-            <tr>
-              <td>
-                <span class="release-stage">{{ release.release_stage or _("unknown") }}</span>
-              </td>
-              <td>
-                {% if release.release_date %}
-                  {{ release.release_date }}
-                {% elif release.release_year %}
-                  {{ release.release_year }}
-                {% endif %}
-              </td>
-              <td>
-                {% for access in paper.access %}
-                  {% if access.release_ident == release.ident %}
-                    <a href="{{ access.access_url }}">
-                      <span class="ui blue label">
-                        {% if access.mimetype == "application/pdf" %}
-                          <i class="file pdf outline icon"></i>
-                        {% endif %}
-                        {{ access.access_type }}
-                      </span>
-                    </a>
-                  {% endif %}
-                {% endfor %}
-              </td>
-              <td>
-                <a href="https://fatcat.wiki/release/{{ release.ident }}">
-                  <span class="ui green label">
-                    <i class="share square icon"></i>
-                    fatcat
-                  </span>
-                </a>
-              </td>
-            </tr>
-          {% endfor %}
-          {% for access in paper.access %}
-            {% if not access.release_ident and access.access_type == "ia_sim" %}
-              <tr>
-                <td>
-                  <span style="font-weight: normal; text-transform: uppercase; font-weight: bold; color: brown;">
-                    {{ _("published") }}
-                  </span>
-                </td>
-                <td></td>
-                <td>
-                  <a href="{{ access.access_url }}">
-                    <span class="ui blue label">
-                      <i class="film icon"></i>
-                      {{ _("microfilm") }}
-                    </span>
-                  </a>
-                </td>
-                <td></td>
-              </tr>
-            {% endif %}
-          {% endfor %}
-          </tbody>
-        </table>
       </div>
     </div>
   {% endif %}
 
   {# ### COLLAPSED HITS  #}
   {% if paper._collapsed_count > 0 %}
-    <button class="ui fluid left aligned basic blue compact button serp_button" form="search_form" type="submit" name="collapse_key" value="{{ paper.collapse_key }}">
+    <button class="ui fluid left aligned basic blue compact button serp-button" form="search_form" type="submit" name="collapse_key" value="{{ paper.collapse_key }}">
       <i class="ui icon zoom-in"></i>
       {% trans trimmed count=paper._collapsed_count %}
         Issue ({{ count }})
       {% endtrans %}
     </button>
   {% endif %}
-</div>
 
-<div class="one wide left aligned column" style="padding-top: 0.5em; padding-right: 0.5em;">
-  {% if paper.fulltext and paper.fulltext.access_url and paper.fulltext.thumbnail_url and 0 %}
-    {% if paper.fulltext.file_mimetype == "application/pdf" %}
-      {% set access_alt = _('fulltext PDF download') %}
-    {% elif paper.fulltext.access_type == "ia_sim" %}
-      {% set access_alt = _('read fulltext microfilm') %}
-    {% else %}
-      {% set access_alt = _('fulltext access') %}
+  {# ### OTHER ACTIONS #}
+  <a onclick="document.getElementById('cite-modal-{{ paper.key }}').showModal()">
+    <button class="ui compact icon button serp-button" style="box-shadow: 0;">
+      <i class="quote left icon"></i>
+    </button>
+  </a>
+  <a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}" target="_blank" rel="noopener" title="{{ _('access fatcat landing page') }}">
+    <button class="ui compact icon button serp-button" style="box-shadow: 0;">
+      <i class="edit icon"></i>
+    </button>
+  </a>
+
+  {# ### CITATION MODAL #}
+  <dialog id="cite-modal-{{ paper.key }}">
+    <h2>Cite Paper</h2>
+    Something something bibtex will go here.
+  </dialog>
+
+  {# ### VERSIONS MODAL #}
+  <dialog id="access-modal-{{ paper.key }}">
+    <h2>Paper Versions</h2>
+    {% if paper.fulltext.thumbnail_url %}
+      <img src="{{ paper.fulltext.thumbnail_url }}" alt="fulltext thumbnail">
+      <br>
     {% endif %}
+    There are several versions of this paper!
 
-    <a target="_blank" rel="noopener" href="{{ paper.fulltext.access_url}}" title="{{ access_alt }}" {% if settings.ENABLE_GOATCOUNTER %}data-goatcounter-click="serp-fulltext"{% endif %}>
-      <div class="ui serp card">
-        <img src="{{ paper.fulltext.thumbnail_url }}" alt="fulltext thumbnail">
-      </div>
-    </a>
-  {% else %}
-    {# No Fulltext #}
-  {% endif %}
+    <table class="ui celled table">
+      <thead>
+        <tr>
+          <th>{{ _("Publication Stage") }}</th>
+          <th>{{ _("Date") }}</th>
+          <th>{{ _("Fulltext") }}</th>
+          <th>{{ _("Metadata") }}</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for release in paper.releases %}
+        <tr>
+          <td>
+            <span style="font-weight: normal; text-transform: uppercase; font-weight: bold; color: brown;">
+              {{ release.release_stage or _("unknown") }}
+            </span>
+          </td>
+          <td>
+            {% if release.release_date %}
+              {{ release.release_date }}
+            {% elif release.release_year %}
+              {{ release.release_year }}
+            {% endif %}
+          </td>
+          <td>
+            {% for access in paper.access %}
+              {% if access.release_ident == release.ident %}
+                <a href="{{ access.access_url }}">
+                  <span class="ui blue label">
+                    {% if access.mimetype == "application/pdf" %}
+                      <i class="file pdf outline icon"></i>
+                    {% endif %}
+                    {{ access.access_type }}
+                  </span>
+                </a>
+              {% endif %}
+            {% endfor %}
+          </td>
+          <td>
+            <a href="https://fatcat.wiki/release/{{ release.ident }}">
+              <span class="ui green label">
+                <i class="share square icon"></i>
+                fatcat
+              </span>
+            </a>
+          </td>
+        </tr>
+      {% endfor %}
+      {% for access in paper.access %}
+        {% if not access.release_ident and access.access_type == "ia_sim" %}
+          <tr>
+            <td>
+              <span style="font-weight: normal; text-transform: uppercase; font-weight: bold; color: brown;">
+                {{ _("published") }}
+              </span>
+            </td>
+            <td></td>
+            <td>
+              <a href="{{ access.access_url }}">
+                <span class="ui blue label">
+                  <i class="film icon"></i>
+                  {{ _("microfilm") }}
+                </span>
+              </a>
+            </td>
+            <td></td>
+          </tr>
+        {% endif %}
+      {% endfor %}
+      </tbody>
+    </table>
+
+  </dialog>
+
 </div>
 </div>
 {% endmacro %}

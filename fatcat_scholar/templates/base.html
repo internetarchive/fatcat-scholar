@@ -35,14 +35,19 @@
     nav.ui.inverted.menu .item:before { background: none; }
     nav.ui.menu { border-radius: 0; }
 
-    .ui.button.serp_button {
+    .ui.button.serp-button {
       border-radius: 0;
       margin-bottom: 0.3em;
       text-align: left;
     }
 
-    .ui.blue.button.serp_button {
+    .ui.blue.button.serp-button {
       background-color: #2224c7ad;
+    }
+
+    .ui.labeled.icon.button.serp-button {
+      padding-left: 3.5em!important;
+      padding-right: 1em!important;
     }
 
     @media only screen and (max-width: 767px) {
@@ -181,6 +186,59 @@
       cursor: pointer;
       display: inline-block;
     }
+
+    .modal-overlay {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0,0,0,0.5);
+      transition: opacity 200ms;
+      visibility: hidden;
+      opacity: 0;
+    }
+    .modal-overlay .cancel {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      cursor: default;
+    }
+    .modal-overlay:target {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .modal-popup {
+        margin: 75px auto;
+        padding: 20px;
+        background: #fff;
+        border: 1px solid #666;
+        width: 300px;
+        box-shadow: 0 0 50px rgba(0,0,0,0.5);
+        position: relative;
+    }
+    .modal-popup .close {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        top: 20px;
+        right: 20px;
+        opacity: 0.8;
+        transition: all 200ms;
+        font-size: 24px;
+        font-weight: bold;
+        text-decoration: none;
+        color: #666;
+    }
+    .modal-popup:hover {
+      opacity: 1;
+    }
+    .modal-popup .content {
+      max-height: 400px;
+      overflow: auto;
+    }
+
   </style>
   <link rel="icon" 
     type="image/x-icon" 
