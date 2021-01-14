@@ -26,6 +26,7 @@ def es_fulltext_from_sim(sim: Dict[str, Any]) -> Optional[ScholarFulltext]:
         # file_ident=None,
         # file_sha1=None,
         # file_mimetype=None,
+        # size_bytes=None,
         thumbnail_url=f"https://archive.org/serve/{issue_item}/__ia_thumb.jpg",
         access_url=f"https://archive.org/details/{issue_item}/page/{first_page}",
         access_type=AccessType.ia_sim,
@@ -199,6 +200,7 @@ def _add_file_release_meta(
     fulltext.file_ident = fe.ident
     fulltext.file_sha1 = fe.sha1
     fulltext.file_mimetype = fe.mimetype
+    fulltext.size_bytes = fe.size
     fulltext.access_url = best_url
     fulltext.access_type = best_url_type
     if pdf_meta is not None and pdf_meta["pdf_meta"].get("has_page0_thumbnail"):
@@ -255,6 +257,7 @@ def es_fulltext_from_html(
         # webcapture_ident=wc.ident,
         file_sha1=html_fulltext.get("html_meta", {}).get("sha1hex"),
         file_mimetype="text/html",
+        # size_bytess
         access_url=wc.archive_urls[0].url,
         access_type=AccessType.wayback,
     )

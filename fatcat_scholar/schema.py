@@ -86,7 +86,9 @@ class ScholarBiblio(BaseModel):
     wikidata_qid: Optional[str]
     arxiv_id: Optional[str]
     jstor_id: Optional[str]
-    mag_id: Optional[str]
+    doaj_id: Optional[str]
+    dblp_id: Optional[str]
+    oai_id: Optional[str]
 
     license_slug: Optional[str]
     publisher: Optional[str]
@@ -112,6 +114,7 @@ class ScholarFulltext(BaseModel):
     file_ident: Optional[str]
     file_sha1: Optional[str]
     file_mimetype: Optional[str]
+    size_bytes: Optional[int]
     thumbnail_url: Optional[str]
     access_url: Optional[str]
     access_type: Optional[AccessType]
@@ -136,7 +139,9 @@ class ScholarRelease(BaseModel):
     wikidata_qid: Optional[str]
     arxiv_id: Optional[str]
     jstor_id: Optional[str]
-    mag_id: Optional[str]
+    doaj_id: Optional[str]
+    dblp_id: Optional[str]
+    oai_id: Optional[str]
 
     license_slug: Optional[str]
     container_name: Optional[str]
@@ -486,7 +491,9 @@ def es_biblio_from_release(release: ReleaseEntity) -> ScholarBiblio:
         wikidata_qid=release.ext_ids.wikidata_qid,
         arxiv_id=release.ext_ids.arxiv,
         jstor_id=release.ext_ids.jstor,
-        mag_id=release.ext_ids.mag,
+        doaj_id=release.ext_ids.doaj,
+        dblp_id=release.ext_ids.dblp,
+        oai_id=release.ext_ids.oai,
         license_slug=release.license_slug,
         publisher=publisher,
         container_name=clean_str(container_name),
@@ -548,7 +555,9 @@ def es_release_from_release(release: ReleaseEntity) -> ScholarRelease:
         wikidata_qid=release.ext_ids.wikidata_qid,
         arxiv_id=release.ext_ids.arxiv,
         jstor_id=release.ext_ids.jstor,
-        mag_id=release.ext_ids.mag,
+        doaj_id=release.ext_ids.doaj,
+        dblp_id=release.ext_ids.dblp,
+        oai_id=release.ext_ids.oai,
         license_slug=release.license_slug,
         container_name=container_name,
         container_ident=container_ident,
