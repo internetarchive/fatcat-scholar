@@ -18,6 +18,7 @@ from pydantic import BaseModel
 
 from fatcat_scholar.config import settings
 from fatcat_scholar.identifiers import *
+from fatcat_scholar.schema import ScholarDoc
 
 # i18n note: the use of gettext below doesn't actually do the translation here,
 # it just ensures that the strings are caught by babel for translation later
@@ -129,7 +130,11 @@ def transform_es_results(resp: Response) -> List[dict]:
         # ensure collapse_key is a single value, not an array
         if type(h["collapse_key"]) == list:
             h["collapse_key"] = h["collapse_key"][0]
-
+        # add ScholarDoc object as a helper (eg, to call python helpers)
+        try:
+            h["_obj"] = ScholarDoc.parse_obj(h)
+        except:
+            pass
     return results
 
 
