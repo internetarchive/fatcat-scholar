@@ -20,7 +20,8 @@
   {% elif tag.startswith("lang:") %}
     <span class="ui label basic black small" title="ISO Language Code">{{ tag }}</span>
   {% else %}
-    <span class="ui label basic grey small">{{ _(tag) }}</span>
+    {# disabling "other" tags for now #}
+    {# <span class="ui label basic grey small">{{ _(tag) }}</span> #}
   {% endif %}
 {% endmacro %}
 
@@ -163,7 +164,10 @@
     {% endif %}
 
     {% for tag in paper.tags|sort %}
-      {{ tag_label(tag) }}
+      {# HACK: don't show "oa" tag if already obvious #}
+      {% if tag != "oa" or ("doaj" not in paper.tags and "szczepanski" not in paper.tags) %}
+        {{ tag_label(tag) }}
+      {% endif %}
     {% endfor %}
     {% if paper.biblio.lang_code and paper.biblio.lang_code != (locale or 'en') %}
       {{ tag_label("lang:" + paper.biblio.lang_code) }}
