@@ -42,6 +42,7 @@ flake8-annotations = "*"
 pytest = "*"
 pytest-mock = "*"
 pytest-cov = "*"
+responses = "*"
 # must lock black to an exact version because it is still "beta"
 # see: https://github.com/psf/black/issues/517
 black = "==19.10b0"
