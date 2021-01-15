@@ -25,6 +25,31 @@
   {% endif %}
 {% endmacro %}
 
+{% macro external_identifiers(biblio) -%}
+  {# NOTE: should be able to call with paper.biblio or any paper.release[] #}
+  {% if biblio.doi %}
+    <a target="_blank" rel="external noopener noreferrer" href="https://doi.org/{{ biblio.doi }}" style="color: green;">doi:{{ biblio.doi }}</a> &nbsp;
+  {% endif %}
+  {% if biblio.pmid %}
+    <a target="_blank" rel="external noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/{{ biblio.pmid }}" style="color: green;">pmid:{{ biblio.pmid }}</a> &nbsp;
+  {% endif %}
+  {% if biblio.pmcid %}
+    <a target="_blank" rel="external noopener" href="https://pubmed.ncbi.nlm.nih.gov/{{ biblio.pmcid }}/" style="color: green;">pmcid:{{ biblio.pmcid }}</a> &nbsp;
+  {% endif %}
+  {% if biblio.arxiv_id %}
+    <a target="_blank" rel="external noopener" href="https://arxiv.org/abs/{{ biblio.arxiv_id }}" style="color: green;">arXiv:{{ biblio.arxiv_id }}</a> &nbsp;
+  {% endif %}
+  {% if biblio.dblp_id %}
+    <a target="_blank" rel="external noopener" href="https://dblp.org/rec/{{ biblio.dblp_id }}.html" style="color: green;">dblp:{{ biblio.dblp_id }}</a> &nbsp;
+  {% endif %}
+  {% if biblio.doaj_id %}
+    <a target="_blank" rel="external noopener" href="https://doaj.org/article/{{ biblio.doaj_id }}" style="color: green;">doaj:{{ biblio.doaj_id }}</a> &nbsp;
+  {% endif %}
+  {% if biblio.release_ident %}
+    <a target="_blank" rel="external noopener" href="https://fatcat.wiki/release/{{ biblio.release_ident}}" style="color: green;">fatcat:{{ biblio.release_ident}}</a> &nbsp;
+  {% endif %}
+{% endmacro %}
+
 {% macro fulltext_search_result_row(paper, locale=None, debug_mode=False) -%}
 <div class="ui grid">
 <div class="thirteen wide column serp-hit-box">
@@ -136,21 +161,7 @@
   {% endif %}
 
   {# ### IDENTIFIERS #}
-  {% if paper.biblio.doi %}
-    <a target="_blank" rel="external noopener noreferrer" href="https://doi.org/{{paper.biblio.doi }}" style="color: green;">doi:{{ paper.biblio.doi }}</a> &nbsp;
-  {% endif %}
-  {% if paper.biblio.pmid %}
-    <a target="_blank" rel="external noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/{{paper.biblio.pmid }}" style="color: green;">pmid:{{ paper.biblio.pmid }}</a> &nbsp;
-  {% endif %}
-  {% if paper.biblio.pmcid %}
-    <a target="_blank" rel="external noopener" href="https://pubmed.ncbi.nlm.nih.gov/{{paper.biblio.pmcid }}/" style="color: green;">pmcid:{{ paper.biblio.pmcid }}</a> &nbsp;
-  {% endif %}
-  {% if paper.biblio.arxiv_id %}
-    <a target="_blank" rel="external noopener" href="https://arxiv.org/abs/{{paper.biblio.arxiv_id }}" style="color: green;">arXiv:{{ paper.biblio.arxiv_id }}</a> &nbsp;
-  {% endif %}
-  {% if paper.biblio.release_ident %}
-    <a target="_blank" rel="external noopener" href="https://fatcat.wiki/release/{{paper.biblio.release_ident}}" style="color: green;">fatcat:{{ paper.biblio.release_ident}}</a> &nbsp;
-  {% endif %}
+  {{ external_identifiers(paper.biblio) }}
 
   <div style="margin-top: 0.2em;">
   {# ### TAGS #}
