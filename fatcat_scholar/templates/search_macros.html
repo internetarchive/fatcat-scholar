@@ -319,6 +319,9 @@
     </a>
   </div>
 
+</div>
+</div>
+
   {# ### CITATION MODAL #}
   {% if paper.doc_type == "work" %}
   <dialog id="cite-modal-{{ paper.key }}">
@@ -381,9 +384,6 @@
       {% endfor %}
     {% endif %}
   </dialog>
-
-</div>
-</div>
 {% endmacro %}
 
 {% macro search_pagination(hits, top) %}
