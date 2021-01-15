@@ -31,8 +31,9 @@
       color: rgba(0,0,0,0.55);
     }
 
-    {# bnewbold: fix light grey bars in header #}
-    .ui.inverted.menu .item:before { background: none; }
+    {# bnewbold: fix light grey bars in header, and "rounded" header #}
+    nav.ui.inverted.menu .item:before { background: none; }
+    nav.ui.menu { border-radius: 0; }
 
     @media only screen and (max-width: 767px) {
       .mobile-hide { display: none !important; }
