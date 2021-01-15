@@ -5,8 +5,9 @@ So far there are few endpoints, so we just put them all here!
 """
 
 import logging
-from typing import Optional, Any
+from typing import Optional, Any, List
 
+from pydantic import BaseModel
 import babel.support
 from fastapi import FastAPI, APIRouter, Request, Depends, Response
 from fastapi.staticfiles import StaticFiles
@@ -19,6 +20,7 @@ from starlette.exceptions import HTTPException as StarletteHTTPException
 from fatcat_scholar.config import settings, GIT_REVISION
 from fatcat_scholar.hacks import Jinja2Templates, parse_accept_lang
 from fatcat_scholar.search import do_fulltext_search, FulltextQuery, FulltextHits
+from fatcat_scholar.schema import ScholarDoc
 
 
 logger = logging.getLogger()
@@ -80,10 +82,33 @@ api = APIRouter()
 async def home() -> Any:
     return {"endpoints": {"/": "this", "/search": "fulltext search"}}
 
+class HitsModel(BaseModel):
+    count_returned: int
+    count_found: int
+    offset: int
+    limit: int
+    query_time_ms: int
+    query_wall_time_ms: int
+    results: List[ScholarDoc]
 
-@api.get("/search", operation_id="get_search")
-async def search(query: FulltextQuery = Depends(FulltextQuery)) -> Any:
-    return {"message": "search results would go here, I guess"}
+@api.get("/search", operation_id="get_search", response_model=HitsModel)
+async def search(query: FulltextQuery = Depends(FulltextQuery)) -> FulltextHits:
+    if query.q is not None:
+        try:
+            hits: FulltextHits = do_fulltext_search(query)
+        except ValueError as e:
+            sentry_sdk.set_level("warning")
+            sentry_sdk.capture_exception(e)
+            raise HTTPException(status_code=400, detail=f"Query Error: {e}")
+        except IOError as e:
+            sentry_sdk.capture_exception(e)
+            raise HTTPException(status_code=500, detail=f"Backend Error: {e}")
+
+    # remove internal context from hit objects
+    for doc in hits.results:
+        doc.pop('_obj', None)
+
+    return hits
 
 
 web = APIRouter()
