@@ -228,7 +228,7 @@
         {% endif %}
       {% if paper.fulltext and paper.fulltext.thumbnail_url %}
         <div class="menu" style="left: -110%; margin-top: -2.5em;">
-          <img src="{{ paper.fulltext.thumbnail_url }}" alt="fulltext thumbnail">
+          <img src="{{ paper.fulltext.thumbnail_url }}" alt="fulltext thumbnail" loading="lazy">
         </div>
       {% endif %}
       </button>
@@ -350,7 +350,7 @@
     <h2>{% trans %}Access Options{% endtrans %}</h2>
     {% if paper.fulltext and paper.fulltext.thumbnail_url %}
       <a href="{{ paper.fulltext.access_url }}">
-        <img src="{{ paper.fulltext.thumbnail_url }}" alt="fulltext thumbnail">
+        <img src="{{ paper.fulltext.thumbnail_url }}" alt="fulltext thumbnail" loading="lazy">
       </a>
     {% endif %}
 
