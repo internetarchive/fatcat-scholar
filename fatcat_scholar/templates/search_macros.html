@@ -85,7 +85,7 @@
 <div class="ui grid">
 <div class="thirteen wide column biblio-record">
   {# ### TITLE ROW #}
-  <h3 class="biblio-title" style="margin-bottom: 0.1em; font-size: 1.2em; font-weight: bold; line-height: 1.2em;">
+  <h3 class="biblio-title">
 
     {% if paper.doc_type == "work" %}
       <a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}" target="_blank" rel="noopener" title="{{ _('access fatcat landing page') }}" {% if settings.ENABLE_GOATCOUNTER %}data-goatcounter-click="serp-title-fatcat-work"{% endif %}>
