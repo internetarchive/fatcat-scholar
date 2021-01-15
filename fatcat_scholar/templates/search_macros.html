@@ -106,7 +106,7 @@
 
   {# ### JOURNAL ROW #}
   {% if paper.biblio.release_year %}
-    {{ paper.biblio.release_year }}
+    <span title="{{ paper.biblio.release_date or '' }}">{{ paper.biblio.release_year }}</span>
   {% endif %}
   {% if paper.biblio.container_name %}
     <i>
