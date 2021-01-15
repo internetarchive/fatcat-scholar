@@ -287,6 +287,13 @@ document.getElementById("search_form").onsubmit = function(){
 </script>
 {% if settings.ENABLE_GOATCOUNTER -%}
   {# for local testing: <script>window.goatcounter = {allow_local: true};</script> #}
+  <script>
+    window.goatcounter = {
+        /* title leaks search query, so don't report it */
+        title: null,
+        {# to allow localhost connections (dev) to be colected, set: allow_local: true #}
+    };
+  </script>
   <script data-goatcounter="{{ settings.GOATCOUNTER_ENDPOINT }}" async src="{{ settings.GOATCOUNTER_SCRIPT_URL }}"></script>
 {%- endif %}
 {% block postscript %}{% endblock %}
