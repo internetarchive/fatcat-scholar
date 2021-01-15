@@ -23,6 +23,8 @@ ENABLE_PROMETHEUS = false
 [test]
 SCHOLAR_ENV = "test"
 FATCAT_API_HOST = "http://disabled-during-tests-bogus.xyz:3333"
+ELASTICSEARCH_FRONTEND = "http://disabled-during-tests-bogus.xyz:3333"
+ELASTICSEARCH_BACKEND = "http://disabled-during-tests-bogus.xyz:3333"
 SCHOLAR_ISSUEDB_PATH = ":memory:"
 
 [development]
