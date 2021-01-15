@@ -389,9 +389,21 @@
 </footer>
 
 <script>
-// when search is submitted, have submit button animate
+/* when search is submitted, have submit button animate */
 document.getElementById("search_form").onsubmit = function(){
   document.getElementById("search_submit_button").classList.add("loading");
+};
+
+/* conditionally load polyfill for <dialog> */
+if (!(typeof HTMLDialogElement === 'function')) {
+  var js = document.createElement('script');
+  js.src = "/static/dialog-polyfill.js";
+  document.head.appendChild(js);
+  var link = document.createElement('link');
+  link.rel = "stylesheet"
+  link.type = "text/css"
+  link.href= "/static/dialog-polyfill.css";
+  document.head.appendChild(link);
 };
 </script>
 {% if settings.ENABLE_GOATCOUNTER -%}
