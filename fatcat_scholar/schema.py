@@ -114,11 +114,11 @@ class ScholarBiblio(BaseModel):
         """
         if style == "bibtex":
             type_map = {
-                'article-journal': 'article',
-                'conference-paper': 'proceedings',
-                'thesis': 'phdthesis',
-                'book': 'book',
-                None: 'unpublished',
+                "article-journal": "article",
+                "conference-paper": "proceedings",
+                "thesis": "phdthesis",
+                "book": "book",
+                None: "unpublished",
             }
             val = f"@{type_map.get(self.release_type, 'unpublished')}{{{self.release_ident},\n"
             val += f"  title = {{{self.title}}}\n"
@@ -142,7 +142,7 @@ class ScholarBiblio(BaseModel):
             val = ", ".join(self.contrib_names)
             if val:
                 val += ". "
-            val += f" \"self.title.\" "
+            val += f' "self.title." '
             if self.container_name:
                 val += self.container_name
                 if self.volume and self.issue:

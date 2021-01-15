@@ -82,6 +82,7 @@ api = APIRouter()
 async def home() -> Any:
     return {"endpoints": {"/": "this", "/search": "fulltext search"}}
 
+
 class HitsModel(BaseModel):
     count_returned: int
     count_found: int
@@ -90,6 +91,7 @@ class HitsModel(BaseModel):
     query_time_ms: int
     query_wall_time_ms: int
     results: List[ScholarDoc]
+
 
 @api.get("/search", operation_id="get_search", response_model=HitsModel)
 async def search(query: FulltextQuery = Depends(FulltextQuery)) -> FulltextHits:
@@ -106,7 +108,7 @@ async def search(query: FulltextQuery = Depends(FulltextQuery)) -> FulltextHits:
 
     # remove internal context from hit objects
     for doc in hits.results:
-        doc.pop('_obj', None)
+        doc.pop("_obj", None)
 
     return hits
 
@@ -267,9 +269,13 @@ app.include_router(api)
 
 app.mount("/static", StaticFiles(directory="fatcat_scholar/static"), name="static")
 
+
 @app.get("/favicon.ico", include_in_schema=False)
 async def favicon():
-    return FileResponse("fatcat_scholar/static/ia-favicon.ico", media_type="image/x-icon")
+    return FileResponse(
+        "fatcat_scholar/static/ia-favicon.ico", media_type="image/x-icon"
+    )
+
 
 ROBOTS_ALLOW = open("fatcat_scholar/static/robots.allow.txt", "r").read()
 ROBOTS_DISALLOW = open("fatcat_scholar/static/robots.disallow.txt", "r").read()
@@ -281,6 +287,7 @@ async def robots_txt(response_class: Any = PlainTextResponse) -> Any:
         return PlainTextResponse(ROBOTS_ALLOW)
     else:
         return PlainTextResponse(ROBOTS_DISALLOW)
+
 
 @app.exception_handler(StarletteHTTPException)
 async def http_exception_handler(request: Request, exc: StarletteHTTPException) -> Any:
@@ -303,13 +310,11 @@ async def http_exception_handler(request: Request, exc: StarletteHTTPException) 
             status_code=exc.status_code,
         )
     else:
-        resp = {'status_code': exc.status_code}
+        resp = {"status_code": exc.status_code}
         if exc.detail:
-            resp['detail'] = exc.detail
-        return JSONResponse(
-            status_code=exc.status_code,
-            content=resp,
-        )
+            resp["detail"] = exc.detail
+        return JSONResponse(status_code=exc.status_code, content=resp,)
+
 
 # configure middleware
 
