@@ -226,7 +226,7 @@
         {% else %}
           Other
         {% endif %}
-      {% if paper.fulltext.thumbnail_url %}
+      {% if paper.fulltext and paper.fulltext.thumbnail_url %}
         <div class="menu" style="left: -110%; margin-top: -2.5em;">
           <img src="{{ paper.fulltext.thumbnail_url }}" alt="fulltext thumbnail">
         </div>
@@ -261,7 +261,7 @@
         {% elif paper.biblio.doi_prefix in ["10.1080"] %}
           tandfonline.com
         {% else %}
-          Publisher (DOI)
+          Publisher DOI
         {% endif %}
       </button>
     </a>
@@ -322,6 +322,9 @@
   {# ### CITATION MODAL #}
   {% if paper.doc_type == "work" %}
   <dialog id="cite-modal-{{ paper.key }}">
+    <button class="circular ui right floated compact basic icon button" onclick="this.parentElement.close()">
+      <i class="close icon"></i>
+    </button>
     <h2>{% trans %}Cite Work{% endtrans %}</h2>
     <table class="ui very basic table">
       <tbody>
@@ -340,8 +343,12 @@
 
   {# ### VERSIONS MODAL #}
   <dialog id="access-modal-{{ paper.key }}">
+    <button class="circular ui right floated compact basic icon button" onclick="this.parentElement.close()">
+      <i class="close icon"></i>
+    </button>
+
     <h2>{% trans %}Access Options{% endtrans %}</h2>
-    {% if paper.fulltext.thumbnail_url %}
+    {% if paper.fulltext and paper.fulltext.thumbnail_url %}
       <a href="{{ paper.fulltext.access_url }}">
         <img src="{{ paper.fulltext.thumbnail_url }}" alt="fulltext thumbnail">
       </a>
@@ -358,6 +365,9 @@
         <p>Some other <a href="{{ access.access_url }}">access here</a>.
       {% endif %}
     {% endfor %}
+    {% if paper.biblio.doi %}
+      <p>You can visit the publisher <a href="{{ paper.biblio.doi }}">landing page</a>.
+    {% endif %}
 
     {% if paper.releases|length > 1 %}
       <h2>All Versions</h2>
