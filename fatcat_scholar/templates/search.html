@@ -33,12 +33,12 @@
 
   <details class="search_filters">
     <summary style="float: right;"><i class="filter icon"></i>{{ _("Filters") }}</summary>
-    <p>
-    {{ search_macros.query_option(query.time_options, query.filter_time) }}
-    {{ search_macros.query_option(query.type_options, query.filter_type) }}
-    {{ search_macros.query_option(query.availability_options, query.filter_availability) }}
-    {{ search_macros.query_option(query.sort_options, query.sort_order) }}
-    </p>
+    <div style="display: flex; align-items: flex-start; column-gap: 2em; row-gap: 2em; flex-wrap: wrap; padding-bottom:1.5em;">
+      {{ search_macros.query_option(query.time_options, query.filter_time) }}
+      {{ search_macros.query_option(query.type_options, query.filter_type) }}
+      {{ search_macros.query_option(query.availability_options, query.filter_availability) }}
+      {{ search_macros.query_option(query.sort_options, query.sort_order) }}
+    </div>
   </details>
 
   {% if hits %}
@@ -58,7 +58,7 @@
   {% endif %}
 </div>
 
-<div class="ui equal height stackable divided grid" style="margin-top: 1em;">
+<div class="ui equal height divided grid" style="margin-top: 1em;">
 
   <nav class="ui tablet-hide two wide column">
     {% if hits %}
@@ -98,7 +98,7 @@
     
   </nav>
 
-  <div class="ui fourteen wide column">
+  <div class="ui fourteen wide column serp-column">
     {% if search_error %}
       <div class="ui icon error message">
         <i class="ban icon"></i>
