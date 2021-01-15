@@ -405,7 +405,14 @@ if (!(typeof HTMLDialogElement === 'function')) {
   link.rel = "stylesheet"
   link.type = "text/css"
   link.href= "/static/dialog-polyfill.css";
+  js.onload = function() {
+    var dialogs = document.querySelectorAll('dialog');
+    for (i = 0; i < dialogs.length; i++) {
+      dialogPolyfill.registerDialog(dialogs[i]);
+    }
+  };
   document.head.appendChild(link);
+
 };
 </script>
 {% if settings.ENABLE_GOATCOUNTER -%}
