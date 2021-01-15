@@ -9,7 +9,7 @@ from typing import Optional, Any, List
 
 from pydantic import BaseModel
 import babel.support
-from fastapi import FastAPI, APIRouter, Request, Depends, Response
+from fastapi import FastAPI, APIRouter, Request, Depends, Response, HTTPException
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import PlainTextResponse, JSONResponse, FileResponse
 import sentry_sdk
@@ -93,16 +93,16 @@ class HitsModel(BaseModel):
 
 @api.get("/search", operation_id="get_search", response_model=HitsModel)
 async def search(query: FulltextQuery = Depends(FulltextQuery)) -> FulltextHits:
-    if query.q is not None:
-        try:
-            hits: FulltextHits = do_fulltext_search(query)
-        except ValueError as e:
-            sentry_sdk.set_level("warning")
-            sentry_sdk.capture_exception(e)
-            raise HTTPException(status_code=400, detail=f"Query Error: {e}")
-        except IOError as e:
-            sentry_sdk.capture_exception(e)
-            raise HTTPException(status_code=500, detail=f"Backend Error: {e}")
+    hits: Optional[FulltextHits] = None
+    try:
+        hits = do_fulltext_search(query)
+    except ValueError as e:
+        sentry_sdk.set_level("warning")
+        sentry_sdk.capture_exception(e)
+        raise HTTPException(status_code=400, detail=f"Query Error: {e}")
+    except IOError as e:
+        sentry_sdk.capture_exception(e)
+        raise HTTPException(status_code=500, detail=f"Backend Error: {e}")
 
     # remove internal context from hit objects
     for doc in hits.results:
