@@ -56,7 +56,7 @@
     <span title="{{ biblio.release_date or '' }}">{{ biblio.release_year }}</span>
   {% endif %}
   {% if biblio.container_name %}
-    <i>
+    <i {% if biblio.publisher %}title="{{ biblio.publisher }}"{% endif %}>
     {% if biblio.container_ident %}
       <a target="_blank" rel="noopener" href="https://fatcat.wiki/container/{{ biblio.container_ident }}" style="color: black;">{{ biblio.container_name }}</a>
     {% elif paper.doc_type == "sim_page" %}
