@@ -10,7 +10,7 @@ from typing import Optional, Any
 import babel.support
 from fastapi import FastAPI, APIRouter, Request, Depends, Response
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import PlainTextResponse, JSONResponse
+from fastapi.responses import PlainTextResponse, JSONResponse, FileResponse
 import sentry_sdk
 from sentry_sdk.integrations.asgi import SentryAsgiMiddleware
 from starlette_prometheus import metrics, PrometheusMiddleware
@@ -241,6 +241,10 @@ for lang_option in I18N_LANG_OPTIONS:
 app.include_router(api)
 
 app.mount("/static", StaticFiles(directory="fatcat_scholar/static"), name="static")
+
+@app.get("/favicon.ico", include_in_schema=False)
+async def favicon():
+    return FileResponse("fatcat_scholar/static/ia-favicon.ico", media_type="image/x-icon")
 
 ROBOTS_ALLOW = open("fatcat_scholar/static/robots.allow.txt", "r").read()
 ROBOTS_DISALLOW = open("fatcat_scholar/static/robots.disallow.txt", "r").read()
