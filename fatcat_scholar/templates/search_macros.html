@@ -320,70 +320,71 @@
   </div>
 
 </div>
-</div>
 
-  {# ### CITATION MODAL #}
-  {% if paper.doc_type == "work" %}
-  <dialog id="cite-modal-{{ paper.key }}">
-    <button class="circular ui right floated compact basic icon button" onclick="this.parentElement.close()">
-      <i class="close icon"></i>
-    </button>
-    <h2>{% trans %}Cite Work{% endtrans %}</h2>
-    <table class="ui very basic table">
-      <tbody>
-        <tr>
-          <td>Generic</td>
-          <td>{{ paper._obj.biblio.citation_str("default") }}</td>
-        </tr>
-        <tr>
-          <td>BibTeX</td>
-          <td><pre>{{ paper._obj.biblio.citation_str("bibtex") }}</pre></td>
-        </tr>
-      </tbody>
-    </table>
-  </dialog>
+{# ### CITATION MODAL #}
+{% if paper.doc_type == "work" %}
+<dialog id="cite-modal-{{ paper.key }}">
+  <button class="circular ui right floated compact basic icon button" onclick="this.parentElement.close()">
+    <i class="close icon"></i>
+  </button>
+  <h2>{% trans %}Cite Work{% endtrans %}</h2>
+  <table class="ui very basic table">
+    <tbody>
+      <tr>
+        <td>Generic</td>
+        <td>{{ paper._obj.biblio.citation_str("default") }}</td>
+      </tr>
+      <tr>
+        <td>BibTeX</td>
+        <td><pre>{{ paper._obj.biblio.citation_str("bibtex") }}</pre></td>
+      </tr>
+    </tbody>
+  </table>
+</dialog>
+{% endif %}
+
+{# ### VERSIONS MODAL #}
+<dialog id="access-modal-{{ paper.key }}">
+  <button class="circular ui right floated compact basic icon button" onclick="this.parentElement.close()">
+    <i class="close icon"></i>
+  </button>
+
+  <h2>{% trans %}Access Options{% endtrans %}</h2>
+  {% if paper.fulltext and paper.fulltext.thumbnail_url %}
+    <a href="{{ paper.fulltext.access_url }}">
+      <img src="{{ paper.fulltext.thumbnail_url }}" alt="fulltext thumbnail" loading="lazy">
+    </a>
   {% endif %}
 
-  {# ### VERSIONS MODAL #}
-  <dialog id="access-modal-{{ paper.key }}">
-    <button class="circular ui right floated compact basic icon button" onclick="this.parentElement.close()">
-      <i class="close icon"></i>
-    </button>
-
-    <h2>{% trans %}Access Options{% endtrans %}</h2>
-    {% if paper.fulltext and paper.fulltext.thumbnail_url %}
-      <a href="{{ paper.fulltext.access_url }}">
-        <img src="{{ paper.fulltext.thumbnail_url }}" alt="fulltext thumbnail" loading="lazy">
-      </a>
+  {% for access in paper.access %}
+    {% if access.access_type == "ia_sim" %}
+      <p>There is a digitized microfilm copy <a href="{{ access.access_url }}">at archive.org</a>.
+    {% elif access.access_type == "ia_file" %}
+      <p>There is a <code>{{ access.mimetype }}</code> file <a href="{{ access.access_url }}">at archive.org</a>.
+    {% elif access.access_type == "wayback" %}
+      <p>There is a <code>{{ access.mimetype }}</code> file <a href="{{ access.access_url }}">in The Wayback Machine</a>.
+    {% else %}
+      <p>Some other <a href="{{ access.access_url }}">access here</a>.
     {% endif %}
+  {% endfor %}
+  {% if paper.biblio.doi %}
+    <p>You can visit the publisher <a href="{{ paper.biblio.doi }}">landing page</a>.
+  {% endif %}
 
-    {% for access in paper.access %}
-      {% if access.access_type == "ia_sim" %}
-        <p>There is a digitized microfilm copy <a href="{{ access.access_url }}">at archive.org</a>.
-      {% elif access.access_type == "ia_file" %}
-        <p>There is a <code>{{ access.mimetype }}</code> file <a href="{{ access.access_url }}">at archive.org</a>.
-      {% elif access.access_type == "wayback" %}
-        <p>There is a <code>{{ access.mimetype }}</code> file <a href="{{ access.access_url }}">in The Wayback Machine</a>.
-      {% else %}
-        <p>Some other <a href="{{ access.access_url }}">access here</a>.
-      {% endif %}
-    {% endfor %}
-    {% if paper.biblio.doi %}
-      <p>You can visit the publisher <a href="{{ paper.biblio.doi }}">landing page</a>.
-    {% endif %}
-
-    {% if paper.releases|length > 1 %}
-      <h2>All Versions</h2>
-      {% for release in paper.releases %}
-        <div class="biblio-record">
-          {{ journal_row(release, paper) }}
-          <br>
-          {{ external_identifiers(release) }}
-        </div>
+  {% if paper.releases|length > 1 %}
+    <h2>All Versions</h2>
+    {% for release in paper.releases %}
+      <div class="biblio-record">
+        {{ journal_row(release, paper) }}
         <br>
-      {% endfor %}
-    {% endif %}
-  </dialog>
+        {{ external_identifiers(release) }}
+      </div>
+      <br>
+    {% endfor %}
+  {% endif %}
+</dialog>
+
+</div> {# final row close #}
 {% endmacro %}
 
 {% macro search_pagination(hits, top) %}
