@@ -37,17 +37,26 @@
 
     .ui.button.serp-button {
       border-radius: 0;
-      margin-bottom: 0.3em;
+      margin-bottom: 0.4em;
       text-align: left;
     }
 
     .ui.blue.button.serp-button {
-      background-color: #2224c7ad;
+      background-color: #6b6ebb;
     }
 
     .ui.labeled.icon.button.serp-button {
-      padding-left: 3.5em!important;
+      padding-left: 3.0em!important;
       padding-right: 1em!important;
+      min-width: 12em;
+      max-width: 15em;
+      box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.3);
+    }
+
+    .action-bar {
+      display: flex;
+      justify-content: center;
+      column-gap: 0.3em;
     }
 
     @media only screen and (max-width: 767px) {
@@ -55,9 +64,6 @@
     }
     @media only screen and (min-width: 768px) {
       .mobile-only { display: none !important; }
-    }
-    @media only screen and (max-width: 991px) and (min-width: 768px) {
-      .ui.container { width: 820px; }
     }
     @media only screen and (max-width: 991px) {
       .tablet-hide { display: none !important; }
