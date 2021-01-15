@@ -104,6 +104,55 @@ class ScholarBiblio(BaseModel):
     contrib_names: List[str]
     affiliations: List[str]
 
+    def citation_str(self, style: str) -> Optional[str]:
+        """
+        Tries to format this biblio metadata as a citation string. If it fails,
+        returns None.
+
+        Urgently, will probably refactor to use a proper citeproc library. Will
+        need to do something different about author names at the same time.
+        """
+        if style == "bibtex":
+            type_map = {
+                'article-journal': 'article',
+                'conference-paper': 'proceedings',
+                'thesis': 'phdthesis',
+                'book': 'book',
+                None: 'unpublished',
+            }
+            val = f"@{type_map.get(self.release_type, 'unpublished')}{{{self.release_ident},\n"
+            val += f"  title = {{{self.title}}}\n"
+            for name in self.contrib_names:
+                val += f"  author = {{{name}}}\n"
+            if self.pages:
+                val += f"  pages = {{{self.pages}}}\n"
+            if self.volume:
+                val += f"  volume = {{{self.volume}}}\n"
+            if self.issue:
+                val += f"  number = {{{self.issue}}}\n"
+            if self.release_year:
+                val += f"  year = {self.release_year}\n"
+            if self.container_name:
+                val += f"  journal = {{{self.container_name}}}\n"
+            if self.publisher:
+                val += f"  publisher = {{{self.publisher}}}\n"
+            val += "}"
+            return val
+        elif style == "default":
+            val = ", ".join(self.contrib_names)
+            if val:
+                val += ". "
+            val += f" \"self.title.\" "
+            if self.container_name:
+                val += self.container_name
+                if self.volume and self.issue:
+                    val += f"{self.volume}.{self.issue} "
+            if self.release_year:
+                val += f" ({self.release_year})"
+            if self.pages:
+                val += f": {self.pages}"
+            return val
+
 
 class ScholarFulltext(BaseModel):
     lang_code: Optional[str]
