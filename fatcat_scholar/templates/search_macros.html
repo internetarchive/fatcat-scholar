@@ -50,14 +50,45 @@
   {% endif %}
 {% endmacro %}
 
+{% macro journal_row(biblio, paper) -%}
+  {# NOTE: should be able to call with paper.biblio or any paper.release[] #}
+  {% if biblio.release_year %}
+    <span title="{{ biblio.release_date or '' }}">{{ biblio.release_year }}</span>
+  {% endif %}
+  {% if biblio.container_name %}
+    <i>
+    {% if biblio.container_ident %}
+      <a target="_blank" rel="noopener" href="https://fatcat.wiki/container/{{ biblio.container_ident }}" style="color: black;">{{ biblio.container_name }}</a>
+    {% elif paper.doc_type == "sim_page" %}
+      <a target="_blank" rel="noopener" href="https://archive.org/details/{{ paper.ia_sim.pub_collection }}" style="color: black;">{{ biblio.container_name }}</a>
+    {% else %}
+      {{ biblio.container_name }}
+    {% endif %}
+    </i>
+    &nbsp;
+  {% endif %}
+
+  {% if biblio.release_stage == "submitted" %}
+    <span class="release-stage" >pre-print</span>
+  {% elif biblio.release_stage and biblio.release_stage != "published" %}
+    <span class="release-stage">{{ biblio.release_stage }}</span>
+  {% elif not biblio.release_stage %}
+    <span class="release-stage">unpublished</span>
+  {% endif %}
+
+  {% if biblio.withdrawn_status %}
+    <span class="release-stage" style="color: red;">{{ biblio.withdrawn_status }}</span>
+  {% endif %}
+{% endmacro %}
+
 {% macro fulltext_search_result_row(paper, locale=None, debug_mode=False) -%}
 <div class="ui grid">
-<div class="thirteen wide column serp-hit-box">
+<div class="thirteen wide column biblio-record">
   {# ### TITLE ROW #}
-  <h3 style="margin-bottom: 0.1em; font-size: 1.2em; font-weight: bold; line-height: 1.2em;">
+  <h3 class="biblio-title" style="margin-bottom: 0.1em; font-size: 1.2em; font-weight: bold; line-height: 1.2em;">
 
     {% if paper.doc_type == "work" %}
-      <a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}" style="color: #2224c7;" target="_blank" rel="noopener" title="{{ _('access fatcat landing page') }}" {% if settings.ENABLE_GOATCOUNTER %}data-goatcounter-click="serp-title-fatcat-work"{% endif %}>
+      <a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}" target="_blank" rel="noopener" title="{{ _('access fatcat landing page') }}" {% if settings.ENABLE_GOATCOUNTER %}data-goatcounter-click="serp-title-fatcat-work"{% endif %}>
         {% if paper.biblio.title %}
           {{ paper.biblio.title[:512] }}
           {% if paper.biblio.title|length > 512 %}...{% endif %}
@@ -66,7 +97,7 @@
         {% endif %}
       </a>
       {# release type suffix #}
-      <span style="font-weight: normal; text-transform: uppercase; font-weight: bold;">
+      <span class="release-type" >
       {% if paper.biblio.release_type in ("article-journal", "paper-conference") or paper.doc_type == "sim_page" %}
         {# pass #}
       {% elif paper.biblio.release_type in ("book", "chapter", "dataset") %}
@@ -81,23 +112,23 @@
       {# show inverse of title/original_title above #}
       {% if paper.biblio.original_title and paper.biblio.title != paper.biblio.original_title %}
         <br>
-        <i style="font-weight: bold;">
+        <span class="original-title">
           {{ paper.biblio.original_title[:512] }} {% if paper.biblio.original_title|length > 512 %}...{% endif %}
-        </i>
+        </span>
       {% endif %}
 
     {% elif paper.doc_type == "sim_page" %}
-      <a target="_blank" rel="noopener" href="https://archive.org/details/{{ paper.ia_sim.issue_item }}/page/{{ paper.ia_sim.first_page }}" style="color: #2224c7;" title="{{ _('access microfilm on archive.org') }}" {% if settings.ENABLE_GOATCOUNTER %}data-goatcounter-click="serp-title-sim-page"{% endif %}>
+      <a target="_blank" rel="noopener" href="https://archive.org/details/{{ paper.ia_sim.issue_item }}/page/{{ paper.ia_sim.first_page }}" title="{{ _('access microfilm on archive.org') }}" {% if settings.ENABLE_GOATCOUNTER %}data-goatcounter-click="serp-title-sim-page"{% endif %}>
         {% trans page_num = paper.ia_sim.first_page, journal_name = paper.biblio.container_name, volume = paper.biblio.volume, issue = paper.biblio.issue %}Page {{ page_num }} of {{ journal_name }} Vol. {{ volume }}, Issue {{ issue }}{% endtrans %}
       </a>
-      <span style="font-weight: normal; text-transform: uppercase; font-weight: bold;">[{{ _("page") }}]</span>
+      <span class="release-type">[{{ _("page") }}]</span>
     {% endif %}
 
   </h3>
 
   {# ### AUTHOR ROW #}
   {% if paper.biblio.contrib_names %}
-    <div style="margin-top: 0; margin-bottom: 0.2em; font-size: 1.1em;">
+    <div class="author-row">
     {{ ", ".join(paper.biblio.contrib_names[:12]) }}
     {% if paper.biblio.contrib_names|length > 12 %}<i>(+{{ paper.biblio.contrib_names|length - 12 }} others)</i>{% endif %}
     </div>
@@ -105,33 +136,7 @@
 
 
   {# ### JOURNAL ROW #}
-  {% if paper.biblio.release_year %}
-    <span title="{{ paper.biblio.release_date or '' }}">{{ paper.biblio.release_year }}</span>
-  {% endif %}
-  {% if paper.biblio.container_name %}
-    <i>
-    {% if paper.biblio.container_ident %}
-      <a target="_blank" rel="noopener" href="https://fatcat.wiki/container/{{ paper.biblio.container_ident }}" style="color: black;">{{ paper.biblio.container_name }}</a>
-    {% elif paper.doc_type == "sim_page" %}
-      <a target="_blank" rel="noopener" href="https://archive.org/details/{{ paper.ia_sim.pub_collection }}" style="color: black;">{{ paper.biblio.container_name }}</a>
-    {% else %}
-      {{ paper.biblio.container_name }}
-    {% endif %}
-    </i>
-    &nbsp;
-  {% endif %}
-
-  {% if paper.biblio.release_stage == "submitted" %}
-    <b style="color: brown; text-transform: uppercase;">pre-print</b>
-  {% elif paper.biblio.release_stage and paper.biblio.release_stage != "published" %}
-    <b style="color: brown; text-transform: uppercase;">{{ paper.biblio.release_stage }} version</b>
-  {% elif not paper.biblio.release_stage %}
-    <b style="color: brown; text-transform: uppercase;">unpublished</b>
-  {% endif %}
-
-  {% if paper.biblio.withdrawn_status %}
-    <b style="color: red; text-transform: uppercase;">{{ paper.biblio.withdrawn_status }}</b>
-  {% endif %}
+  {{ journal_row(paper.biblio, paper) }}
 
   {# ### ABSTRACT / QUERY HIGHLIGHT #}
   {% if paper._highlights %}
@@ -204,9 +209,7 @@
           {% for release in paper.releases %}
             <tr>
               <td>
-                <span style="font-weight: normal; text-transform: uppercase; font-weight: bold; color: brown;">
-                  {{ release.release_stage or _("unknown") }}
-                </span>
+                <span class="release-stage">{{ release.release_stage or _("unknown") }}</span>
               </td>
               <td>
                 {% if release.release_date %}

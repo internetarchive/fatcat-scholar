@@ -65,7 +65,7 @@
       div.fulltext-link {
         width: 180px;
       }
-      div.serp-hit-box {
+      div.biblio-record {
         padding-left: 1.1em;
       }
     }
@@ -82,13 +82,40 @@
       line-height: 1.28571429em;
     }
 
-    .serp-hit-box details > summary {
+    .biblio-record .biblio-title {
+      margin-bottom: 0.1em;
+      font-size: 1.2em;
+      font-weight: bold;
+      line-height: 1.2em;
+    }
+    .biblio-record .biblio-title a {
+      color: #2224c7;
+    }
+    .biblio-record .release-type {
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+    .biblio-record .original-title {
+      font-style: italic;
+      font-weight: normal;
+    }
+    .biblio-record .author-row {
+      margin-top: 0;
+      margin-bottom: 0.2em;
+      font-size: 1.1em;
+    }
+    .biblio-record .release-stage {
+      color: brown;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .biblio-record details > summary {
       list-style-type: none;
       color: #28629c;
       text-decoration: underline;
       margin-left: 0.3em;
     }
-    .serp-hit-box details > summary::-webkit-details-marker {
+    .biblio-record details > summary::-webkit-details-marker {
       display: none;
     }
 
