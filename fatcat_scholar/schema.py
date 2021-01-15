@@ -107,7 +107,7 @@ class ScholarBiblio(BaseModel):
 
 class ScholarFulltext(BaseModel):
     lang_code: Optional[str]
-    body: str
+    body: Optional[str]
     acknowledgement: Optional[str]
     annex: Optional[str]
     release_ident: Optional[str]
