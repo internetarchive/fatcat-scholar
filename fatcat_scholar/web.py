@@ -10,10 +10,11 @@ from typing import Optional, Any
 import babel.support
 from fastapi import FastAPI, APIRouter, Request, Depends, Response
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import PlainTextResponse
+from fastapi.responses import PlainTextResponse, JSONResponse
 import sentry_sdk
 from sentry_sdk.integrations.asgi import SentryAsgiMiddleware
 from starlette_prometheus import metrics, PrometheusMiddleware
+from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from fatcat_scholar.config import settings, GIT_REVISION
 from fatcat_scholar.hacks import Jinja2Templates, parse_accept_lang
@@ -252,6 +253,34 @@ async def robots_txt(response_class: Any = PlainTextResponse) -> Any:
     else:
         return PlainTextResponse(ROBOTS_DISALLOW)
 
+@app.exception_handler(StarletteHTTPException)
+async def http_exception_handler(request: Request, exc: StarletteHTTPException) -> Any:
+    """
+    This is the generic handler for things like 404 errors.
+    """
+    # TODO: what if there is an error in any of the detection code?
+    content = ContentNegotiation(request)
+
+    if content.mimetype == "text/html":
+        lang = LangPrefix(request)
+        return i18n_templates[lang.code].TemplateResponse(
+            "error.html",
+            {
+                "request": request,
+                "locale": lang.code,
+                "lang_prefix": lang.prefix,
+                "error": exc,
+            },
+            status_code=exc.status_code,
+        )
+    else:
+        resp = {'status_code': exc.status_code}
+        if exc.detail:
+            resp['detail'] = exc.detail
+        return JSONResponse(
+            status_code=exc.status_code,
+            content=resp,
+        )
 
 # configure middleware
 
