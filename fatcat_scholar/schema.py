@@ -480,7 +480,8 @@ def es_abstracts_from_release(release: ReleaseEntity) -> List[ScholarAbstract]:
 def es_biblio_from_release(release: ReleaseEntity) -> ScholarBiblio:
 
     if release.container:
-        publisher = release.publisher
+        publisher = release.container.publisher or release.publisher
+        publisher_type = release.container.extra.get("publisher_type", None)
         container_name = release.container.name
         container_original_name = (
             release.container.extra and release.container.extra.get("original_name")
@@ -500,6 +501,7 @@ def es_biblio_from_release(release: ReleaseEntity) -> ScholarBiblio:
         issns = list(set(issns))
     else:
         publisher = release.extra and release.extra.get("publisher")
+        publisher_type = None
         container_name = release.extra and release.extra.get("container_name")
         container_original_name = None
         container_ident = None
@@ -545,6 +547,7 @@ def es_biblio_from_release(release: ReleaseEntity) -> ScholarBiblio:
         oai_id=release.ext_ids.oai,
         license_slug=release.license_slug,
         publisher=publisher,
+        publisher_type=publisher_type,
         container_name=clean_str(container_name),
         container_original_name=container_original_name,
         container_ident=container_ident,

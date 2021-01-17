@@ -277,7 +277,9 @@ def biblio_metadata_hacks(biblio: ScholarBiblio) -> ScholarBiblio:  # noqa: C901
     """
 
     # valid year
-    if biblio.release_year and biblio.release_year > 2025:
+    if biblio.release_year and (
+        biblio.release_year > 2025 or biblio.release_year < 1500
+    ):
         biblio.release_year = None
         biblio.release_date = None
 
@@ -386,7 +388,7 @@ def generate_tags(
             if container.extra.get("platform"):
                 # scielo, ojs, wordpress, etc
                 tags.append(container.extra["platform"].lower())
-    if biblio.doi_prefix == "10.2307":
+    if biblio.doi_prefix == "10.2307" or biblio.jstor_id:
         tags.append("jstor")
     return list(set(tags))
 
