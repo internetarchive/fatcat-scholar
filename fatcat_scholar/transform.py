@@ -369,7 +369,7 @@ def generate_tags(
     if primary_release and primary_release.container:
         container = primary_release.container
         if container.extra:
-            if container.extra.get("doaj"):
+            if container.extra.get("doaj") or biblio.doaj_id:
                 tags.append("doaj")
                 tags.append("oa")
             if container.extra.get("road"):
@@ -377,11 +377,11 @@ def generate_tags(
                 tags.append("oa")
             if container.extra.get("szczepanski"):
                 tags.append("szczepanski")
-                tags.append("oa")
+                if biblio.publisher_type not in ["big5"]:
+                    # szczepanski not accurate OA flag for some large publishers (eg, Springer)
+                    tags.append("oa")
             if container.extra.get("ia", {}).get("longtail_oa"):
                 tags.append("longtail")
-                tags.append("oa")
-            if container.extra.get("sherpa_romeo", {}).get("color") == "white":
                 tags.append("oa")
             if container.extra.get("default_license", "").lower().startswith("cc-"):
                 tags.append("oa")
