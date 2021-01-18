@@ -142,7 +142,7 @@ class ScholarBiblio(BaseModel):
             val = ", ".join(self.contrib_names)
             if val:
                 val += ". "
-            val += f' "self.title." '
+            val += f' "{self.title}." '
             if self.container_name:
                 val += self.container_name
                 if self.volume and self.issue:
@@ -152,6 +152,7 @@ class ScholarBiblio(BaseModel):
             if self.pages:
                 val += f": {self.pages}"
             return val
+        return None
 
 
 class ScholarFulltext(BaseModel):

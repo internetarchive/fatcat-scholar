@@ -5,7 +5,7 @@ So far there are few endpoints, so we just put them all here!
 """
 
 import logging
-from typing import Optional, Any, List
+from typing import Optional, Any, List, Dict
 
 from pydantic import BaseModel
 import babel.support
@@ -271,7 +271,7 @@ app.mount("/static", StaticFiles(directory="fatcat_scholar/static"), name="stati
 
 
 @app.get("/favicon.ico", include_in_schema=False)
-async def favicon():
+async def favicon() -> Any:
     return FileResponse(
         "fatcat_scholar/static/ia-favicon.ico", media_type="image/x-icon"
     )
@@ -310,7 +310,7 @@ async def http_exception_handler(request: Request, exc: StarletteHTTPException) 
             status_code=exc.status_code,
         )
     else:
-        resp = {"status_code": exc.status_code}
+        resp: Dict[str, Any] = {"status_code": exc.status_code}
         if exc.detail:
             resp["detail"] = exc.detail
         return JSONResponse(status_code=exc.status_code, content=resp,)

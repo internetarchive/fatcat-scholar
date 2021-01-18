@@ -133,7 +133,7 @@ def transform_es_results(resp: Response) -> List[dict]:
         # add ScholarDoc object as a helper (eg, to call python helpers)
         try:
             h["_obj"] = ScholarDoc.parse_obj(h)
-        except:
+        except Exception:
             pass
     return results
 
