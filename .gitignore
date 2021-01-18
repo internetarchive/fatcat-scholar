@@ -21,5 +21,10 @@ _build/
 src/build/
 *.log
 
+!.flake8
+!.gitlab-ci.yml
+!.pylintrc
+!.coveragerc
+
 # Don't ignore this file itself
 !.gitignore
