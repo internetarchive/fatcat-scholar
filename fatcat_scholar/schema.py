@@ -483,6 +483,8 @@ def es_biblio_from_release(release: ReleaseEntity) -> ScholarBiblio:
     if release.container:
         publisher = release.container.publisher or release.publisher
         publisher_type = release.container.extra.get("publisher_type", None)
+        if not publisher_type or not isinstance(publisher_type, str):
+            publisher_type = None
         container_name = release.container.name
         container_original_name = (
             release.container.extra and release.container.extra.get("original_name")
