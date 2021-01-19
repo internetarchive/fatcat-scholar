@@ -25,13 +25,14 @@ import fuzzycat.verify
 from fatcat_scholar.grobid2json import biblio_info
 
 
-def grobid_process_citation(raw: str) -> Optional[str]:
-    GROBID_URL = "https://grobid.qa.fatcat.wiki"
+def grobid_process_citation(
+    raw: str, grobid_host: str = "https://grobid.qa.fatcat.wiki", timeout: float = 10.0
+) -> Optional[str]:
     try:
         grobid_response = requests.post(
-            GROBID_URL + "/api/processCitation",
+            grobid_host + "/api/processCitation",
             data={"citations": raw, "consolidateCitations": 0,},
-            timeout=180.0,
+            timeout=timeout,
         )
     except requests.Timeout:
         print("GROBID request (HTTP POST) timeout", file=sys.stderr)
@@ -48,6 +49,8 @@ def transform_grobid(raw_xml: str) -> Optional[dict]:
     tree = ET.parse(io.StringIO(raw_xml))
     root = tree.getroot()
     ref = biblio_info(root, ns="")
+    if not any(ref.values()):
+        return None
     return ref
 
 
@@ -83,7 +86,7 @@ def ref_to_release(ref: dict) -> ReleaseEntity:
 
 
 def fuzzy_match(
-    release: ReleaseEntity, es_client: Any, api_client: Any
+    release: ReleaseEntity, es_client: Any, api_client: Any, timeout: float = 10.0
 ) -> Optional[Tuple[str, str, ReleaseEntity]]:
     """
     This helper function uses fuzzycat (and elasticsearch) to look for
@@ -102,6 +105,8 @@ def fuzzy_match(
 
     Eg, if there is any EXACT match that is always returned; an AMBIGIOUS
     result is only returned if all the candidate matches were ambiguous.
+
+    TODO: actually do something with timeout
     """
 
     # this map used to establish priority order of verified matches
@@ -138,6 +143,28 @@ def fuzzy_match(
         raise NotImplementedError("fuzzycat verify hit a Status.TODO")
     else:
         return (closest[0].status.name, closest[0].reason.value, closest[1])
+
+
+def try_fuzzy_match(
+    citation: str, grobid_host: str, es_client: Any, fatcat_api_client: Any
+) -> Optional[str]:
+    """
+    All-in-one helper method
+    """
+    resp = grobid_process_citation(citation, grobid_host=grobid_host, timeout=3.0)
+    if not resp:
+        return None
+    ref = transform_grobid(resp)
+    if not ref:
+        return None
+    release = ref_to_release(ref)
+
+    matches = fuzzy_match(
+        release, es_client=es_client, api_client=fatcat_api_client, timeout=3.0
+    )
+    if not matches or matches[0] not in ("EXACT", "STRONG", "WEAK"):
+        return None
+    return f"work_{matches[2].work_id}"
 
 
 if __name__ == "__main__":
