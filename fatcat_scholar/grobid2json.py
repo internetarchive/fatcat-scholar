@@ -35,7 +35,7 @@ xml_ns = "http://www.w3.org/XML/1998/namespace"
 ns = "http://www.tei-c.org/ns/1.0"
 
 
-def all_authors(elem: Optional[ET.Element]) -> List[Dict[str, Any]]:
+def all_authors(elem: Optional[ET.Element], ns: str = ns) -> List[Dict[str, Any]]:
     if not elem:
         return []
     names = []
@@ -96,7 +96,7 @@ def journal_info(elem: ET.Element) -> Dict[str, Any]:
     return journal
 
 
-def biblio_info(elem: ET.Element) -> Dict[str, Any]:
+def biblio_info(elem: ET.Element, ns: str = ns) -> Dict[str, Any]:
     ref: Dict[str, Any] = dict()
     ref["id"] = elem.attrib.get("{http://www.w3.org/XML/1998/namespace}id")
     ref["unstructured"] = elem.findtext('.//{%s}note[@type="raw_reference"]' % ns)
@@ -109,7 +109,7 @@ def biblio_info(elem: ET.Element) -> Dict[str, Any]:
         else:
             ref["journal"] = None
             ref["title"] = other_title
-    ref["authors"] = all_authors(elem)
+    ref["authors"] = all_authors(elem, ns=ns)
     ref["publisher"] = elem.findtext(".//{%s}publicationStmt/{%s}publisher" % (ns, ns))
     if not ref["publisher"]:
         ref["publisher"] = elem.findtext(".//{%s}imprint/{%s}publisher" % (ns, ns))
