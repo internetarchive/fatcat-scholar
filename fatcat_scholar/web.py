@@ -19,7 +19,7 @@ from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from fatcat_scholar.config import settings, GIT_REVISION
 from fatcat_scholar.hacks import Jinja2Templates, parse_accept_lang
-from fatcat_scholar.search import do_fulltext_search, FulltextQuery, FulltextHits
+from fatcat_scholar.search import process_query, FulltextQuery, FulltextHits
 from fatcat_scholar.schema import ScholarDoc
 
 
@@ -97,7 +97,7 @@ class HitsModel(BaseModel):
 async def search(query: FulltextQuery = Depends(FulltextQuery)) -> FulltextHits:
     hits: Optional[FulltextHits] = None
     try:
-        hits = do_fulltext_search(query)
+        hits = process_query(query)
     except ValueError as e:
         sentry_sdk.set_level("warning")
         sentry_sdk.capture_exception(e)
@@ -213,7 +213,7 @@ async def web_search(
     status_code: int = 200
     if query.q is not None:
         try:
-            hits = do_fulltext_search(query)
+            hits = process_query(query)
         except ValueError as e:
             sentry_sdk.set_level("warning")
             sentry_sdk.capture_exception(e)

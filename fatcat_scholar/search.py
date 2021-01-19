@@ -2,6 +2,7 @@
 Helpers to make elasticsearch queries.
 """
 
+import copy
 import logging
 import datetime
 from gettext import gettext
@@ -10,6 +11,7 @@ from typing import List, Optional, Any
 import elasticsearch
 from elasticsearch_dsl import Search, Q
 from elasticsearch_dsl.response import Response
+import fatcat_openapi_client
 
 # pytype: disable=import-error
 from pydantic import BaseModel
@@ -19,6 +21,8 @@ from pydantic import BaseModel
 from fatcat_scholar.config import settings
 from fatcat_scholar.identifiers import *
 from fatcat_scholar.schema import ScholarDoc
+from fatcat_scholar.query_parse import sniff_citation_query, pre_parse_query
+from fatcat_scholar.query_citation import try_fuzzy_match
 
 # i18n note: the use of gettext below doesn't actually do the translation here,
 # it just ensures that the strings are caught by babel for translation later
@@ -81,6 +85,7 @@ class FulltextQuery(BaseModel):
 
 
 class FulltextHits(BaseModel):
+    query_type: str
     count_returned: int
     count_found: int
     offset: int
@@ -206,26 +211,75 @@ def apply_filters(search: Search, query: FulltextQuery) -> Search:
     return search
 
 
+def process_query(query: FulltextQuery) -> FulltextHits:
+
+    if not query.q:
+        return do_fulltext_search(query)
+
+    # try handling raw identifier queries
+    if len(query.q.strip().split()) == 1 and not '"' in query.q:
+        doi = clean_doi(query.q)
+        if doi:
+            return do_lookup_query(f'doi:"{doi}"')
+        pmcid = clean_pmcid(query.q)
+        if pmcid:
+            return do_lookup_query(f'pmcid:"{pmcid}"')
+
+    # if this is a citation string, do a fuzzy lookup
+    if settings.ENABLE_CITATION_QUERY and sniff_citation_query(query.q):
+        api_conf = fatcat_openapi_client.Configuration()
+        api_conf.host = settings.FATCAT_API_HOST
+        api_client = fatcat_openapi_client.DefaultApi(
+            fatcat_openapi_client.ApiClient(api_conf)
+        )
+        fatcat_es_client = elasticsearch.Elasticsearch("https://search.fatcat.wiki")
+        key: Optional[str] = None
+        try:
+            key = try_fuzzy_match(
+                query.q,
+                grobid_host=settings.GROBID_HOST,
+                es_client=fatcat_es_client,
+                fatcat_api_client=api_client,
+            )
+        except elasticsearch.exceptions.RequestError as e:
+            logging.warn(f"citation fuzzy failure: {e}")
+            pass
+        except Exception as e:
+            # TODO: sentry log?
+            logging.warn(f"citation fuzzy failure: {e}")
+            raise e
+        if key:
+            result = do_lookup_query(f"key:{key}")
+            if result:
+                result.query_type = "citation"
+                return result
+
+    # fall through to regular query, with pre-parsing
+    query = copy.copy(query)
+    if query.q:
+        query.q = pre_parse_query(query.q)
+
+    return do_fulltext_search(query)
+
+
+def do_lookup_query(lookup: str) -> FulltextHits:
+    logging.info(f"lookup query: {lookup}")
+    query = FulltextQuery(
+        q=lookup,
+        filter_type="everything",
+        filter_availability="everything",
+        filter_time="all_time",
+    )
+    result = do_fulltext_search(query)
+    result.query_type = "lookup"
+    return result
+
+
 def do_fulltext_search(
     query: FulltextQuery, deep_page_limit: int = 2000
 ) -> FulltextHits:
 
     search = Search(using=es_client, index=settings.ELASTICSEARCH_FULLTEXT_INDEX)
-
-    # Try handling raw identifier queries
-    if query.q and len(query.q.strip().split()) == 1 and not '"' in query.q:
-        doi = clean_doi(query.q)
-        if doi:
-            query.q = f'doi:"{doi}"'
-            query.filter_type = "everything"
-            query.filter_availability = "everything"
-            query.filter_time = "all_time"
-        pmcid = clean_pmcid(query.q)
-        if pmcid:
-            query.q = f'pmcid:"{pmcid}"'
-            query.filter_type = "everything"
-            query.filter_availability = "everything"
-            query.filter_time = "all_time"
 
     if query.collapse_key:
         search = search.filter("term", collapse_key=query.collapse_key)
@@ -349,6 +403,7 @@ def do_fulltext_search(
         count_found = count_returned
 
     return FulltextHits(
+        query_type="fulltext",
         count_returned=count_returned,
         count_found=count_found,
         offset=offset,

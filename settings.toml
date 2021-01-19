@@ -10,6 +10,7 @@ ELASTICSEARCH_FULLTEXT_INDEX = "scholar_fulltext"
 THUMBNAIL_URL_PREFIX = "https://blobs.fatcat.wiki/thumbnail/pdf/"
 SANDCRAWLER_DB_API = "http://aitio.us.archive.org:3030"
 SANDCRAWLER_S3_API = "wbgrp-svc169.us.archive.org:8333"
+GROBID_HOST = "https://grobid.qa.fatcat.wiki"
 KAFKA_BROKERS = []
 FATCAT_API_HOST = "https://api.fatcat.wiki/v0"
 INDEX_WORKER_BATCH_SIZE = 50
@@ -19,6 +20,7 @@ GOATCOUNTER_ENDPOINT = "https://goatcounter.scholar.fatcat.wiki/count"
 GOATCOUNTER_SCRIPT_URL = "https://goatcounter.scholar.fatcat.wiki/count.js"
 ONION_DOMAIN = "scholar-qa.archivev3qli37bju4rlh27glh24lljyezwxf4pokmrdbpefjlcrp5id.onion"
 ENABLE_PROMETHEUS = false
+ENABLE_CITATION_QUERY = false
 
 [test]
 SCHOLAR_ENV = "test"
@@ -28,6 +30,7 @@ ELASTICSEARCH_FRONTEND = "http://disabled-during-tests-bogus.xyz:3333"
 ELASTICSEARCH_BACKEND = "http://disabled-during-tests-bogus.xyz:3333"
 SANDCRAWLER_DB_API = "http://disabled-during-tests-bogus.xyz:3333"
 SANDCRAWLER_S3_API = "disabled-during-tests-bogus.xyz:8333"
+GROBID_HOST = "http://disabled-during-tests-bogus.xyz:3333"
 SCHOLAR_ISSUEDB_PATH = ":memory:"
 
 [development]
