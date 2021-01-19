@@ -15,6 +15,9 @@ def _clean_token(raw: str) -> str:
     if len(raw.split()) > 1:
         # has whitespace, will get quoted
         return raw
+    if '"' in raw:
+        # is quoted already
+        return raw
     if "/" in raw or raw.endswith(":") or raw.endswith("!") or raw.endswith("?"):
         return '"{}"'.format(raw)
     if raw.startswith("[") and raw.endswith("]"):
@@ -45,7 +48,7 @@ def pre_parse_query(raw: str) -> str:
     lex.commenters = ""
     lex.whitespace_split = True
     tokens = list(map(_clean_token, list(lex)))
-    print(list(tokens))
+    # print(list(tokens))
     return " ".join(tokens)
 
 
@@ -61,6 +64,10 @@ def test_pre_parse_query() -> None:
     assert pre_parse_query("a/B thing") == '"a/B" thing'
     assert pre_parse_query('"a/B thing"') == '"a/B thing"'
     assert pre_parse_query("Krämer") == "Krämer"
+    assert (
+        pre_parse_query('"10.1093/qjmed/os-14.56.398"')
+        == '"10.1093/qjmed/os-14.56.398"'
+    )
     assert (
         pre_parse_query("this (is my) paper: here are the results")
         == 'this (is my) "paper:" here are the results'
@@ -138,6 +145,8 @@ def test_sniff_citation_query() -> None:
         sniff_citation_query("(title:foo OR title:bar)^1.5 (body:foo OR body:bar)")
         is False
     )
+    assert sniff_citation_query("DR. SCHAUDINN'S WORK ON BLOOD PARASITES") is True
+    assert sniff_citation_query('"DR. SCHAUDINN\'S WORK ON BLOOD PARASITES"') is True
     assert (
         sniff_citation_query(
             '"DR. SCHAUDINN\'S WORK ON BLOOD PARASITES." BMJ (Clinical Research Edition) (1905): 442-444'
