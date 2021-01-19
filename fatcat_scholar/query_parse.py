@@ -114,6 +114,10 @@ def sniff_citation_query(raw: str) -> bool:
     if len(raw) < 12 or len(raw.split()) < 6:
         return False
 
+    # if single quoted string, not a citation
+    if raw.count('"') == 2 and raw.startswith('"') and raw.endswith('"'):
+        return False
+
     # if there is a filter query, boost, or fuzzy match, not a citation
     if re.search(r'([a-zA-Z]:[^\s])|(["\\)][\^~]\d)', raw):
         return False
@@ -132,8 +136,12 @@ def sniff_citation_query(raw: str) -> bool:
             char_types["period"] = True
         elif c == ",":
             char_types["comma"] = True
+        elif c == ";":
+            char_types["semicolon"] = True
+        elif c == "(" or c == ")":
+            char_types["parens"] = True
 
-        if len(char_types) > 2:
+        if len(char_types) >= 4:
             return True
 
     return False
@@ -145,8 +153,8 @@ def test_sniff_citation_query() -> None:
         sniff_citation_query("(title:foo OR title:bar)^1.5 (body:foo OR body:bar)")
         is False
     )
-    assert sniff_citation_query("DR. SCHAUDINN'S WORK ON BLOOD PARASITES") is True
-    assert sniff_citation_query('"DR. SCHAUDINN\'S WORK ON BLOOD PARASITES"') is True
+    assert sniff_citation_query("DR. SCHAUDINN'S WORK ON BLOOD PARASITES") is False
+    assert sniff_citation_query('"DR. SCHAUDINN\'S WORK ON BLOOD PARASITES"') is False
     assert (
         sniff_citation_query(
             '"DR. SCHAUDINN\'S WORK ON BLOOD PARASITES." BMJ (Clinical Research Edition) (1905): 442-444'
