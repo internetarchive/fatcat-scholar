@@ -219,7 +219,7 @@
             File |{{ paper.fulltext.file_mimetype }}|
           {% endif %}
           {% if paper.fulltext.size_bytes %}
-            ({{ paper.fulltext.size_bytes }})
+            ({{ paper.fulltext.size_bytes|filesizeformat }})
           {% endif %}
         {% elif paper.fulltext.access_type == "ia_sim" %}
           Microfilm
