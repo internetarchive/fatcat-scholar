@@ -13,6 +13,7 @@ elasticsearch = { version = ">=7.8.0,<8.0.0", extras = ["async"] }
 elasticsearch-dsl = ">=7.0.0,<8.0.0"
 fastapi = "*"
 fatcat-openapi-client = ">=0.3.3"
+fuzzycat = "==0.1.12"
 ftfy = "*"
 gunicorn = "*"
 httptools = "*"
