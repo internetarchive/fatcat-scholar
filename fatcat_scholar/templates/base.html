@@ -247,6 +247,42 @@
       overflow: auto;
     }
 
+    details.serp-action-menu[open] > summary .ui.basic.button {
+        box-shadow: 0 0 0 1px rgba(0,0,0,.15) inset, 0 1px 4px 0 rgba(34,36,38,.15) inset;
+        background: #f8f8f8!important;
+    }
+    details.serp-action-menu > summary {
+      list-style: none;
+    }
+    details.serp-action-menu > summary::-webkit-details-marker {
+      display: none;
+    }
+    details.serp-action-menu > .citation-menu {
+        min-width: 50em;
+        height: auto;
+        position: absolute;
+        display: block;
+        background: #fff;
+        box-shadow: 0 2px 3px 0 rgba(34,36,38,.15);
+        border: 1px solid rgba(34,36,38,.15);
+        z-index: 11;
+        min-width: 30em;
+        border-radius: .28571429rem;
+        right: 50%;
+        margin-top: -2em;
+        margin-right: 1.5em;
+        padding: 1em;
+    }
+    @media only screen and (max-width: 767px) {
+        details.serp-action-menu > .citation-menu {
+            overflow-x: scroll;
+            width: calc(100vw - 3em);
+            height: auto;
+            min-width: 0;
+            left: 0.5em;
+            margin-top: 0em;
+        }
+    }
   </style>
   <link rel="icon" 
     type="image/x-icon" 

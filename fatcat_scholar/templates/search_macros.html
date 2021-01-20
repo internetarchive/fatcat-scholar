@@ -206,7 +206,7 @@
       {% set access_alt = _('fulltext access') %}
     {% endif %}
     <a target="_blank" rel="noopener" href="{{ paper.fulltext.access_url}}" title="{{ access_alt }}" {% if settings.ENABLE_GOATCOUNTER %}data-goatcounter-click="serp-fulltext-button"{% endif %}>
-      <button class="ui simple dropdown fluid compact black labeled icon button serp-button">
+      <button class="ui simple right pointing dropdown fluid compact black labeled icon button serp-button">
         <i class="icon" style="background: no-repeat center / 50% url('/static/ia-favicon.ico');"></i>
         {% if paper.fulltext.access_type in ["wayback", "ia_file"] %}
           {% if paper.fulltext.file_mimetype == "application/pdf" or not paper.fulltext.file_mimetype %}
@@ -307,41 +307,38 @@
 
   {# ### OTHER ACTIONS #}
   <div class="action-bar">
-    <a onclick="document.getElementById('cite-modal-{{ paper.key }}').showModal()">
-      <button class="circular ui icon compact basic button">
-        <i class="quote left icon"></i>
-      </button>
-    </a>
+
+    <details class="serp-action-menu">
+      <summary>
+        <div class="circular ui icon compact basic button">
+          <i class="quote left icon"></i>
+        </div>
+      </summary>
+      <div class="citation-menu menu">
+        <table class="ui very basic table">
+          <tbody>
+            <tr>
+              <td>Generic</td>
+              <td>{{ paper._obj.biblio.citation_str("default") }}</td>
+            </tr>
+            <tr>
+              <td>BibTeX</td>
+              <td><pre>{{ paper._obj.biblio.citation_str("bibtex") }}</pre></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
     <a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}" target="_blank" rel="noopener" title="{{ _('access fatcat landing page') }}">
       <button class="circular ui icon compact basic button">
         <i class="edit icon"></i>
       </button>
     </a>
+
   </div>
 
 </div>
-
-{# ### CITATION MODAL #}
-{% if paper.doc_type == "work" %}
-<dialog id="cite-modal-{{ paper.key }}">
-  <button class="circular ui right floated compact basic icon button" onclick="this.parentElement.close()">
-    <i class="close icon"></i>
-  </button>
-  <h2>{% trans %}Cite Work{% endtrans %}</h2>
-  <table class="ui very basic table">
-    <tbody>
-      <tr>
-        <td>Generic</td>
-        <td>{{ paper._obj.biblio.citation_str("default") }}</td>
-      </tr>
-      <tr>
-        <td>BibTeX</td>
-        <td><pre>{{ paper._obj.biblio.citation_str("bibtex") }}</pre></td>
-      </tr>
-    </tbody>
-  </table>
-</dialog>
-{% endif %}
 
 {# ### VERSIONS MODAL #}
 <dialog id="access-modal-{{ paper.key }}">
