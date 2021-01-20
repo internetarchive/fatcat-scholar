@@ -626,3 +626,34 @@ Hopefully no special cases in this iteration!
             | pigz > /grande/scholar_index/2020-12-30/fatcat_scholar_work_fulltext.split_$SHARD.json.gz
     done
 
+Continuing 2020-01-16, on new focal elasticsearch 7.10 cluster:
+
+    # commit: e5a5318829e1f3a08a2e0dbc252d839cc6f5e8f0
+    http put ":9200/scholar_fulltext_v01?include_type_name=true" < schema/scholar_fulltext.v01.json
+
+    http put ":9200/scholar_fulltext_v01/_settings" index.routing.allocation.include._name=wbgrp-svc500
+
+    # start with single shard (00)
+    ssh aitio.us.archive.org cat /grande/snapshots/fatcat_scholar_work_fulltext.split_00.json.gz \
+      | gunzip \
+      | sudo -u fatcat parallel -j8 --compress --tmpdir /srv/tmp/ --line-buffer --round-robin --pipe pipenv run python -m fatcat_scholar.transform run_transform \
+      | pv -l \
+      | esbulk -verbose -size 100 -id key -w 4 -index scholar_fulltext_v01 -type _doc \
+      2> /tmp/error.txt 1> /tmp/output.txt
+
+Got an error:
+
+    parallel: Error: Output is incomplete. Cannot append to buffer file in /tmp. Is the disk full?
+    parallel: Error: Change $TMPDIR with --tmpdir or use --compress.
+    Warning: unable to close filehandle properly: No space left on device during global destruction.
+
+So added `--compress` and the `--tmpdir` (which needed to be created):
+
+    # run other shards
+    ssh aitio.us.archive.org cat /grande/snapshots/fatcat_scholar_work_fulltext.split_{01..06}.json.gz \
+      | gunzip \
+      | sudo -u fatcat parallel -j8 --compress --tmpdir /srv/tmp/ --line-buffer --round-robin --pipe pipenv run python -m fatcat_scholar.transform run_transform \
+      | pv -l \
+      | esbulk -verbose -size 100 -id key -w 4 -index scholar_fulltext_v01 -type _doc \
+      2> /tmp/error.txt 1> /tmp/output.txt
+
