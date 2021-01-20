@@ -50,6 +50,24 @@
   {% endif %}
 {% endmacro %}
 
+{% macro ia_access_button(access) -%}
+  {% set access_alt = _('fulltext access') %}
+  <a target="_blank" rel="noopener" href="{{ access.access_url}}" title="{{ access_alt }}" {% if settings.ENABLE_GOATCOUNTER %}data-goatcounter-click="serp-fulltext-button"{% endif %}>
+    <button class="ui compact black labeled icon button serp-button">
+      <i class="icon" style="background: no-repeat center / 50% url('/static/ia-favicon.ico');"></i>
+      {% if access.access_type in ["wayback",] %}
+        Wayback
+      {% elif access.access_type in ["ia_file",] %}
+        File
+      {% elif access.access_type == "ia_sim" %}
+        Microfilm
+      {% else %}
+        Other
+      {% endif %}
+    </button>
+  </a>
+{% endmacro %}
+
 {% macro journal_row(biblio, paper) -%}
   {# NOTE: should be able to call with paper.biblio or any paper.release[] #}
   {% if biblio.release_year %}
@@ -84,18 +102,21 @@
 {% macro fulltext_search_result_row(paper, locale=None, debug_mode=False) -%}
 <div class="ui stackable doubling grid">
 <div class="thirteen wide column biblio-record">
+
+<details class="access-options">
+<summary>
   {# ### TITLE ROW #}
   <h3 class="biblio-title">
 
     {% if paper.doc_type == "work" %}
-      <a style="color: #2224c7; cursor: pointer;" onclick="document.getElementById('access-modal-{{ paper.key }}').showModal()">
+      <span style="color: #2224c7; cursor: pointer;">
         {% if paper.biblio.title %}
           {{ paper.biblio.title[:512] }}
           {% if paper.biblio.title|length > 512 %}...{% endif %}
         {% else %}
           [blank]
         {% endif %}
-      </a>
+      </span>
       {# release type suffix #}
       <span class="release-type" >
       {% if paper.biblio.release_type in ("article-journal", "paper-conference") or paper.doc_type == "sim_page" %}
@@ -137,6 +158,113 @@
 
   {# ### JOURNAL ROW #}
   {{ journal_row(paper.biblio, paper) }}
+
+</summary>
+<div class="menu">
+  {# ### FULLTEXT ACCESS OPTIONS #}
+  <h4 class="ui horizontal divider header">
+    {% trans %}Preserved Fulltext{% endtrans %}
+  </h4>
+
+  {% if paper.fulltext %}
+    <div class="ui items">
+      <div class="item">
+        <div class="image">
+          <a target="_blank" rel="noopener" href="{{ paper.fulltext.access_url }}">
+          {% if paper.fulltext.thumbnail_url %}
+            <div class="ui serp card">
+              <img src="{{ paper.fulltext.thumbnail_url }}" alt="fulltext thumbnail" loading="lazy">
+            </div>
+          {% else %}
+            <div class="ui serp card" style="box-shadow: none;">
+              <img src="/static/document-icon.svg" style="opacity: 0.6;" alt="">
+            </div>
+          {% endif %}
+          </a>
+        </div>
+        <div class="content">
+          <div class="header">
+            <a href="{{ paper.fulltext.access_url }}">
+            {% if paper.fulltext.access_type == "wayback" %}
+              Web Archive Capture
+            {% elif paper.fulltext.access_type == "ia_file" %}
+              Archive Collections
+            {% elif paper.fulltext.access_type == "ia_sim" %}
+              Digitized Microfilm
+            {% endif %}
+            </a>
+          </div>
+          <div class="description">
+            {% if paper.fulltext.access_type == "wayback" %}
+              <p>A copy of this work was available on the public web and has been preserved in the Wayback Machine. The capture dates from {{ paper.fulltext.access_url.split('/')[4][:4] }}; you can also visit <a href="{{ '/'.join(paper.fulltext.access_url.split('/')[5:]) }}">the original URL</a>.
+            {% elif paper.fulltext.access_type == "ia_file" %}
+              <p>{% trans %}The Internet Archive has a preservation copy of this work in our general collections.{% endtrans %}
+            {% elif paper.fulltext.access_type == "ia_sim" %}
+              <p>{% trans %}The Internet Archive has digitized a microfilm copy of this work. It may be possible to borrow a copy for reading.{% endtrans %}
+            {% endif %}
+
+            {% if paper.fulltext.file_mimetype %}
+              <p>The file type is <code>{{ paper.fulltext.file_mimetype }}</code>.
+            {% endif %}
+
+            {% if paper.fulltext.release_ident and (paper.biblio.release_ident != paper.fulltext.release_ident) %}
+              {# Fulltext copy is different from biblio version! #}
+              <p>Note that this fulltext copy is not of the "primary" version
+              of this work. The version it corresponds to is:
+              <div class="ui fitted divider"></div>
+              {% for release in paper.releases if release.ident == paper.fulltext.release_ident %}
+                {{ journal_row(release, paper) }}
+                <br>
+                {{ external_identifiers(release) }}
+              {% endfor %}
+              <div class="ui fitted divider"></div>
+            {% endif %}
+          </div>
+          <div class="extra">
+          {# currently, ia_sim access types are not linked to specific versions #}
+          {% for access in paper.access if access.access_type != paper.fulltext.access_type and (access.release_ident == paper.fulltext.release_ident or access.release_ident == paper.biblio.release_ident or access.access_type == 'ia_sim') %}
+            {% if loop.first %}
+              <p>Additional access options for the primary version of this work:
+            {% endif %}
+            {{ ia_access_button(access )}}
+          {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% else %}
+    {# No fulltext case #}
+    <p>{% trans %}We don't yet know of a public preservation copy of this work. You may be able to obtain a copy of this work to read from the publisher, platforms, or institutional libraries.{% endtrans %}
+    {% if paper.doc_type == "work" %}
+      {% set save_paper_now_url = "https://fatcat.wiki/release/" + paper.biblio.release_ident + "/save" %}
+      <p>{% trans %}If you know of a legal, public version that we should archive, please let us know via <a rel="noopener" href="{{ save_paper_now_url }}">"Save Paper Now"</a>.{% endtrans %}
+    {% endif %}
+  {% endif %}
+
+  {% if paper.releases|length > 1 %}
+  <h4 class="ui horizontal divider header">
+    {# <i class="tag icon"></i> #}
+    Other Versions
+  </h4>
+    {% for release in paper.releases if (release.ident != paper.biblio.release_ident and release.ident != paper.fulltext.release_ident) %}
+      <div class="biblio-record">
+        {{ journal_row(release, paper) }}
+        <br>
+        {{ external_identifiers(release) }}
+        <br>
+        {% for access in paper.access if access.release_ident == release.ident %}
+          {{ ia_access_button(access )}}
+        {% endfor %}
+      </div>
+      {% if not loop.last %}
+        <div class="ui divider"></div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+  <div class="ui divider"></div>
+</div>
+</details>
+
 
   {# ### ABSTRACT / QUERY HIGHLIGHT #}
   {% if paper._highlights %}
@@ -216,7 +344,7 @@
           {% elif paper.fulltext.file_mimetype == "text/xml" %}
             XML
           {% else %}
-            File |{{ paper.fulltext.file_mimetype }}|
+            File
           {% endif %}
           {% if paper.fulltext.size_bytes %}
             ({{ paper.fulltext.size_bytes|filesizeformat }})
@@ -287,12 +415,10 @@
 
   {# ### VERSIONS #}
   {% if (paper.access and paper.access|length > 1) or (paper.releases and paper.releases|length > 1) %}
-    <a style="color: #2224c7; cursor: pointer;" onclick="document.getElementById('access-modal-{{ paper.key }}').showModal()">
-      <div class="ui fluid compact basic blue labeled icon button serp-button">
-        <i class="ui icon add"></i>
-        {% trans %}Other Versions{% endtrans %}
-      </div>
-    </a>
+    <div class="ui fluid compact basic blue labeled icon button serp-button">
+      <i class="ui icon add"></i>
+      {% trans %}Multiple Versions{% endtrans %}
+    </div>
   {% endif %}
 
   {# ### COLLAPSED HITS  #}
@@ -339,47 +465,6 @@
   </div>
 
 </div>
-
-{# ### VERSIONS MODAL #}
-<dialog id="access-modal-{{ paper.key }}">
-  <button class="circular ui right floated compact basic icon button" onclick="this.parentElement.close()">
-    <i class="close icon"></i>
-  </button>
-
-  <h2>{% trans %}Access Options{% endtrans %}</h2>
-  {% if paper.fulltext and paper.fulltext.thumbnail_url %}
-    <a href="{{ paper.fulltext.access_url }}">
-      <img src="{{ paper.fulltext.thumbnail_url }}" alt="fulltext thumbnail" loading="lazy">
-    </a>
-  {% endif %}
-
-  {% for access in paper.access %}
-    {% if access.access_type == "ia_sim" %}
-      <p>There is a digitized microfilm copy <a href="{{ access.access_url }}">at archive.org</a>.
-    {% elif access.access_type == "ia_file" %}
-      <p>There is a <code>{{ access.mimetype }}</code> file <a href="{{ access.access_url }}">at archive.org</a>.
-    {% elif access.access_type == "wayback" %}
-      <p>There is a <code>{{ access.mimetype }}</code> file <a href="{{ access.access_url }}">in The Wayback Machine</a>.
-    {% else %}
-      <p>Some other <a href="{{ access.access_url }}">access here</a>.
-    {% endif %}
-  {% endfor %}
-  {% if paper.biblio.doi %}
-    <p>You can visit the publisher <a href="{{ paper.biblio.doi }}">landing page</a>.
-  {% endif %}
-
-  {% if paper.releases|length > 1 %}
-    <h2>All Versions</h2>
-    {% for release in paper.releases %}
-      <div class="biblio-record">
-        {{ journal_row(release, paper) }}
-        <br>
-        {{ external_identifiers(release) }}
-      </div>
-      <br>
-    {% endfor %}
-  {% endif %}
-</dialog>
 
 </div> {# final row close #}
 {% endmacro %}

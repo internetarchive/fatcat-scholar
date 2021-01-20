@@ -48,7 +48,7 @@
     .ui.labeled.icon.button.serp-button {
       padding-left: 3.0em!important;
       padding-right: 1em!important;
-      min-width: 12em;
+      min-width: 10em;
       max-width: 15em;
       box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.3);
     }
@@ -97,9 +97,6 @@
         font-size: 16px;
         line-height: 20px;
       }
-      .ui.serp.card {
-        max-width: 180px;
-      }
       div.fulltext-link {
         width: 180px;
       }
@@ -109,11 +106,9 @@
     }
 
     .ui.serp.card {
+      max-width: 180px;
       margin-bottom: 0.2em;
       border-radius: 0;
-    }
-    .ui.serp.card img {
-      max-width: 100%;
     }
     .hit-count {
       font-weight: bold;
@@ -260,6 +255,17 @@
     .modal-popup .content {
       max-height: 400px;
       overflow: auto;
+    }
+
+    details.access-options summary {
+        text-decoration: none;
+        color: inherit;
+    }
+    details.access-options .menu {
+        /* border: 1px solid black; */
+        margin: 0.5em;
+        width: auto;
+        padding: 1em;
     }
 
     details.serp-action-menu[open] > summary .ui.basic.button {
