@@ -205,58 +205,6 @@
       display: inline-block;
     }
 
-    .modal-overlay {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(0,0,0,0.5);
-      transition: opacity 200ms;
-      visibility: hidden;
-      opacity: 0;
-    }
-    .modal-overlay .cancel {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      cursor: default;
-    }
-    .modal-overlay:target {
-      visibility: visible;
-      opacity: 1;
-    }
-
-    .modal-popup {
-        margin: 75px auto;
-        padding: 20px;
-        background: #fff;
-        border: 1px solid #666;
-        width: 300px;
-        box-shadow: 0 0 50px rgba(0,0,0,0.5);
-        position: relative;
-    }
-    .modal-popup .close {
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        top: 20px;
-        right: 20px;
-        opacity: 0.8;
-        transition: all 200ms;
-        font-size: 24px;
-        font-weight: bold;
-        text-decoration: none;
-        color: #666;
-    }
-    .modal-popup:hover {
-      opacity: 1;
-    }
-    .modal-popup .content {
-      max-height: 400px;
-      overflow: auto;
-    }
-
     details.access-options summary {
         text-decoration: none;
         color: inherit;
@@ -451,25 +399,6 @@
 /* when search is submitted, have submit button animate */
 document.getElementById("search_form").onsubmit = function(){
   document.getElementById("search_submit_button").classList.add("loading");
-};
-
-/* conditionally load polyfill for <dialog> */
-if (!(typeof HTMLDialogElement === 'function')) {
-  var js = document.createElement('script');
-  js.src = "/static/dialog-polyfill.js";
-  document.head.appendChild(js);
-  var link = document.createElement('link');
-  link.rel = "stylesheet"
-  link.type = "text/css"
-  link.href= "/static/dialog-polyfill.css";
-  js.onload = function() {
-    var dialogs = document.querySelectorAll('dialog');
-    for (i = 0; i < dialogs.length; i++) {
-      dialogPolyfill.registerDialog(dialogs[i]);
-    }
-  };
-  document.head.appendChild(link);
-
 };
 </script>
 {% if settings.ENABLE_GOATCOUNTER -%}
