@@ -77,12 +77,14 @@
 
     @media only screen and (max-width: 767px) {
       .mobile-hide { display: none !important; }
+      .ui.items>.item>.image:not(.ui) { width: auto };
     }
     @media only screen and (min-width: 768px) {
       .mobile-only { display: none !important; }
     }
     @media only screen and (max-width: 991px) {
       .tablet-hide { display: none !important; }
+      .ui.items>.item>.image:not(.ui) { width: auto };
       .ui.grid>[class*="fourteen wide"].column.serp-column {
         width: 100% !important;
         box-shadow: none !important;
@@ -215,6 +217,7 @@
     }
     details.access-options .meta {
         width: 100%;
+        white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         text-decoration: underline;

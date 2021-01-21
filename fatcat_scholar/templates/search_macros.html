@@ -1,7 +1,7 @@
 
 {% macro tag_label(tag) -%}
   {% if tag == "oa" %}
-    <span class="ui label basic orange small" title="Open Access">OA</span>
+    <span class="ui label basic orange small" title="Open Access">{% trans %}Open Access{% endtrans %}</span>
   {% elif tag == "jstor" %}
     <span class="ui label basic purple small" title="Preserved in JSTOR">JSTOR</span>
   {% elif tag == "scielo" %}
@@ -17,6 +17,8 @@
     <span class="ui label basic orange small" title="Szcezepanski OA Journal List">Szczepanski</span>
   {% elif tag == "doaj" %}
     <span class="ui label basic orange small" title="Directory of Open Access Journals">DOAJ</span>
+  {% elif tag == "multiple-versions" %}
+    <span class="ui label basic blue small">{% trans %}Multiple Versions{% endtrans %}</span>
   {% elif tag.startswith("lang:") %}
     <span class="ui label basic black small" title="ISO Language Code">{{ tag }}</span>
   {% else %}
@@ -65,31 +67,25 @@
     <button class="ui simple right pointing dropdown fluid compact black labeled icon button serp-button">
       <i class="icon" style="background: no-repeat center / 50% url('/static/ia-favicon.ico');"></i>
       {% if access.access_type == "wayback" %}
-        Web Archive
+        {% trans %}Web Archive{% endtrans %}
       {% elif access.access_type == "ia_file" %}
-        File Archive
+        {% trans %}File Archive{% endtrans %}
       {% elif access.access_type == "ia_sim" %}
-        Microfilm
+        {% trans %}Archive [Microfilm]{% endtrans %}
       {% else %}
-        Other
+        {% trans %}Other{% endtrans %}
       {% endif %}
 
       {% if access.file_mimetype == "application/pdf" or (access.file_mimetype == None and access.access_type == "wayback") %}
-        [PDF]
+        {% trans %}[PDF]{% endtrans %}
       {% elif access.file_mimetype == "text/html" %}
-        [HTML]
+        {% trans %}[HTML]{% endtrans %}
       {% elif access.file_mimetype == "text/xml" %}
-        [XML]
+        {% trans %}[XML]{% endtrans %}
       {% endif %}
-
-      {#
-      {% if access.size_bytes %}
-        ({{ access.size_bytes|filesizeformat }})
-      {% endif %}
-      #}
 
       {% if other_version %}
-        <span style="color: brown;">&#10033;</span>
+        <span style="color: #f43e3e;">&#10033;</span>
       {% endif %}
 
       {% if show_thumbnail and access.thumbnail_url %}
@@ -261,10 +257,10 @@
     <div class="ui items">
       <div class="item">
         <div class="image">
-          <a target="_blank" rel="noopener" href="{{ paper.fulltext.access_url }}">
+          <a target="_blank" rel="noopener" href="{{ paper.fulltext.access_url }}" title="{{ _('fulltext access') }}">
           {% if paper.fulltext.thumbnail_url %}
             <div class="ui serp card">
-              <img src="{{ paper.fulltext.thumbnail_url }}" alt="fulltext thumbnail" loading="lazy">
+              <img class="ui" src="{{ paper.fulltext.thumbnail_url }}" alt="fulltext thumbnail" loading="lazy">
             </div>
           {% else %}
             <div class="ui serp card" style="box-shadow: none;">
@@ -277,11 +273,23 @@
           <div class="header">
             <a href="{{ paper.fulltext.access_url }}">
             {% if paper.fulltext.access_type == "wayback" %}
-              Web Archive Capture
+              {% trans %}Web Archive Capture{% endtrans %}
             {% elif paper.fulltext.access_type == "ia_file" %}
-              Archive Collections
+              {% trans %}File Archive{% endtrans %}
             {% elif paper.fulltext.access_type == "ia_sim" %}
-              Digitized Microfilm
+              {% trans %}Digitized Microfilm{% endtrans %}
+            {% endif %}
+
+            {% if paper.fulltext.file_mimetype == "application/pdf" or (paper.fulltext.file_mimetype == None and paper.fulltext.access_type == "wayback") %}
+              PDF
+            {% elif paper.fulltext.file_mimetype == "text/html" %}
+              HTML
+            {% elif paper.fulltext.file_mimetype == "text/xml" %}
+              XML
+            {% endif %}
+
+            {% if paper.fulltext.size_bytes %}
+                ({{ paper.fulltext.size_bytes|filesizeformat }})
             {% endif %}
             </a>
           </div>
@@ -406,23 +414,22 @@
       </a>
     {% endif %}
 
-    {% for tag in paper.tags|sort %}
-      {# HACK: don't show "oa" tag if already obvious #}
-      {% if tag != "oa" or ("doaj" not in paper.tags and "szczepanski" not in paper.tags) %}
-        {{ tag_label(tag) }}
-      {% endif %}
-    {% endfor %}
-    {% if paper.biblio.lang_code and paper.biblio.lang_code != (locale or 'en') %}
-      {{ tag_label("lang:" + paper.biblio.lang_code) }}
-    {% endif %}
+    <a rel="noopener" href="{{ lang_prefix }}/help#tags" title="">
+      {% for tag in paper.tags|sort %}
+        {# HACK: don't show "oa" tag if already obvious #}
+        {% if tag != "oa" or ("doaj" not in paper.tags and "szczepanski" not in paper.tags) %}
+          {{ tag_label(tag) }}
+        {% endif %}
+      {% endfor %}
 
-    {# "Multiple Versions" disabled for now
-    {% if (paper.access and paper.access|length > 1) or (paper.releases and paper.releases|length > 1) %}
-      <span class="ui label basic blue small">
-        {% trans %}Multiple Versions{% endtrans %}
-      </span>
-    {% endif %}
-    #}
+      {% if paper.biblio.lang_code and paper.biblio.lang_code != (locale or 'en') %}
+        {{ tag_label("lang:" + paper.biblio.lang_code) }}
+      {% endif %}
+
+      {% if (paper.access and paper.access|length > 1) or (paper.releases and paper.releases|length > 1) %}
+        {{ tag_label('multiple-versions') }}
+      {% endif %}
+    </a>
 
   </div>
 
@@ -482,8 +489,8 @@
       </div>
     </details>
 
-    <a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}" target="_blank" rel="noopener" title="{{ _('access fatcat landing page') }}">
-      <button class="circular ui icon compact basic button">
+    <a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}" rel="noopener" title="{{ _('edit on fatcat wiki') }}">
+      <button class="circular ui icon compact basic button" aria-label="">
         <i class="edit icon"></i>
       </button>
     </a>
@@ -542,6 +549,15 @@
   </div>
 </div>
 <br>
+{% endmacro %}
+
+{% macro clear_query(query) -%}
+  {% if query.filter_time or query.filter_type or query.filter_availability or query.sort_order %}
+    <div>
+      <a href="{{ lang_prefix }}/search{% if query.q %}?q={{ query.q|urlencode }}{% endif %}" style="color: rgba(0,0,0,0.55); color: brown;">{% trans %}Clear Filters{% endtrans %}</a>
+    </div>
+    <br>
+  {% endif %}
 {% endmacro %}
 
 {% macro query_hidden(options, selected) -%}
