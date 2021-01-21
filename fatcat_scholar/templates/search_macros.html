@@ -50,22 +50,113 @@
   {% endif %}
 {% endmacro %}
 
-{% macro ia_access_button(access) -%}
-  {% set access_alt = _('fulltext access') %}
+{% macro ia_access_button(access, show_thumbnail=False, other_version=False) -%}
+  {% if access.file_mimetype == "application/pdf" %}
+    {% set access_alt = _('fulltext PDF download') %}
+  {% elif access.access_type == "ia_sim" %}
+    {% set access_alt = _('read fulltext microfilm') %}
+  {% else %}
+    {% set access_alt = _('fulltext access') %}
+  {% endif %}
+  {% if other_version %}
+    {% set access_alt = access_alt + " [" + other_version + "]" %}
+  {% endif %}
   <a target="_blank" rel="noopener" href="{{ access.access_url}}" title="{{ access_alt }}" {% if settings.ENABLE_GOATCOUNTER %}data-goatcounter-click="serp-fulltext-button"{% endif %}>
-    <button class="ui compact black labeled icon button serp-button">
+    <button class="ui simple right pointing dropdown fluid compact black labeled icon button serp-button">
       <i class="icon" style="background: no-repeat center / 50% url('/static/ia-favicon.ico');"></i>
-      {% if access.access_type in ["wayback",] %}
-        Wayback
-      {% elif access.access_type in ["ia_file",] %}
-        File
+      {% if access.access_type == "wayback" %}
+        Web Archive
+      {% elif access.access_type == "ia_file" %}
+        File Archive
       {% elif access.access_type == "ia_sim" %}
         Microfilm
       {% else %}
         Other
       {% endif %}
+
+      {% if access.file_mimetype == "application/pdf" or (access.file_mimetype == None and access.access_type == "wayback") %}
+        [PDF]
+      {% elif access.file_mimetype == "text/html" %}
+        [HTML]
+      {% elif access.file_mimetype == "text/xml" %}
+        [XML]
+      {% endif %}
+
+      {#
+      {% if access.size_bytes %}
+        ({{ access.size_bytes|filesizeformat }})
+      {% endif %}
+      #}
+
+      {% if other_version %}
+        <span style="color: brown;">&#10033;</span>
+      {% endif %}
+
+      {% if show_thumbnail and access.thumbnail_url %}
+        <div class="menu fulltext-thumbnail">
+          <img src="{{ access.thumbnail_url }}" alt="fulltext thumbnail" loading="lazy">
+        </div>
+      {% endif %}
     </button>
   </a>
+{% endmacro %}
+
+{% macro doi_access_button(biblio, is_oa=False) %}
+  {% if biblio.doi %}
+    {% set publisher = "" or (biblio.publisher and biblio.publisher.lower()) %}
+    {% set container_name = "" or (biblio.container_name and biblio.container_name.lower()) %}
+    <a target="_blank" rel="external noopener noreferrer" href="https://doi.org/{{ biblio.doi }}" style="color: green;">
+      <button class="ui fluid left aligned compact blue labeled icon button serp-button">
+        {% if is_oa %}
+          <i class="unlock alternate icon" style="background-color: #fb971f;"></i>
+        {% else %}
+          <i class="external alternate icon"></i>
+        {% endif %}
+        {# TODO: detect prefix? JSTOR, biorxiv, medrxiv, zenodo, figshare, dryad, etc #}
+        {# helpful: https://gist.github.com/TomDemeranville/8699224 #}
+        {% if biblio.doi_prefix == "10.6084" %}
+          figshare.com
+        {% elif biblio.doi_prefix == "10.5281" %}
+          zenodo.org
+        {% elif biblio.doi_prefix == "10.1371" %}
+          plos.org
+        {% elif biblio.doi_prefix == "10.1101" and "biorxiv" in container_name %}
+          biorxiv.org
+        {% elif biblio.doi_prefix == "10.1101" and "medrxiv" in container_name %}
+          medrxiv.org
+        {% elif biblio.doi_prefix == "10.1016" and "elsevier" in publisher %}
+          elsevier.com
+        {% elif biblio.doi_prefix in ["10.1186", "10.1007"] and "springer" in publisher %}
+          springer.com
+        {% elif biblio.doi_prefix in ["10.1042", "10.1111", "10.1177"] and "sage" in publisher %}
+          sagepub.com
+        {% elif biblio.doi_prefix in ["10.1080"] and "taylor" in publisher %}
+          tandfonline.com
+        {% else %}
+          Publisher / doi.org
+        {% endif %}
+      </button>
+    </a>
+  {% endif %}
+{% endmacro %}
+
+{% macro platform_access_button(biblio) %}
+  {# TODO: DOAJ, dblp #}
+  {% if biblio.arxiv_id %}
+    <a target="_blank" rel="noopener" href="https://arxiv.org/abs/{{ biblio.arxiv_id }}" title="arxiv.org access">
+      <button class="ui fluid compact blue labeled icon button serp-button">
+        <i class="file alternate outline icon"></i>
+        arxiv.org
+      </button>
+    </a>
+  {% elif biblio.pmcid %}
+    <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pmc/articles/{{ biblio.pmcid }}" title="pubmed link">
+      <button class="ui fluid compact blue labeled icon button serp-button">
+        <i class="file alternate outline icon"></i>
+        pubmed.gov
+      </button>
+    </a>
+  {% endif %}
 {% endmacro %}
 
 {% macro journal_row(biblio, paper) -%}
@@ -194,6 +285,11 @@
             {% endif %}
             </a>
           </div>
+          <div class="meta">
+            <a href="{{ paper.fulltext.access_url}}">
+              {{ paper.fulltext.access_url }}
+            </a>
+          </div>
           <div class="description">
             {% if paper.fulltext.access_type == "wayback" %}
               <p>A copy of this work was available on the public web and has been preserved in the Wayback Machine. The capture dates from {{ paper.fulltext.access_url.split('/')[4][:4] }}; you can also visit <a href="{{ '/'.join(paper.fulltext.access_url.split('/')[5:]) }}">the original URL</a>.
@@ -204,13 +300,14 @@
             {% endif %}
 
             {% if paper.fulltext.file_mimetype %}
-              <p>The file type is <code>{{ paper.fulltext.file_mimetype }}</code>.
+              {% trans mimetype = ("<code>" + paper.fulltext.file_mimetype + "</code>")|safe %}
+                The file type is {{ mimetype }}.
+              {% endtrans %}
             {% endif %}
 
             {% if paper.fulltext.release_ident and (paper.biblio.release_ident != paper.fulltext.release_ident) %}
               {# Fulltext copy is different from biblio version! #}
-              <p>Note that this fulltext copy is not of the "primary" version
-              of this work. The version it corresponds to is:
+              <p>{% trans %}Note that this fulltext copy is not of the "primary" version of this work. The version it corresponds to is:{% endtrans %}
               <div class="ui fitted divider"></div>
               {% for release in paper.releases if release.ident == paper.fulltext.release_ident %}
                 {{ journal_row(release, paper) }}
@@ -224,7 +321,7 @@
           {# currently, ia_sim access types are not linked to specific versions #}
           {% for access in paper.access if access.access_type != paper.fulltext.access_type and (access.release_ident == paper.fulltext.release_ident or access.release_ident == paper.biblio.release_ident or access.access_type == 'ia_sim') %}
             {% if loop.first %}
-              <p>Additional access options for the primary version of this work:
+              <p>{% trans %}Additional access options for the primary version of this work:{% endtrans %}
             {% endif %}
             {{ ia_access_button(access )}}
           {% endfor %}
@@ -242,18 +339,20 @@
   {% endif %}
 
   {% if paper.releases|length > 1 %}
-  <h4 class="ui horizontal divider header">
-    {# <i class="tag icon"></i> #}
-    Other Versions
-  </h4>
     {% for release in paper.releases if (release.ident != paper.biblio.release_ident and release.ident != paper.fulltext.release_ident) %}
+      {% if loop.first %}
+        <h4 class="ui horizontal divider header">
+          {# <i class="tag icon"></i> #}
+          Other Versions
+        </h4>
+      {% endif %}
       <div class="biblio-record">
         {{ journal_row(release, paper) }}
         <br>
         {{ external_identifiers(release) }}
         <br>
         {% for access in paper.access if access.release_ident == release.ident %}
-          {{ ia_access_button(access )}}
+          {{ ia_access_button(access)}}
         {% endfor %}
       </div>
       {% if not loop.last %}
@@ -317,6 +416,14 @@
       {{ tag_label("lang:" + paper.biblio.lang_code) }}
     {% endif %}
 
+    {# "Multiple Versions" disabled for now
+    {% if (paper.access and paper.access|length > 1) or (paper.releases and paper.releases|length > 1) %}
+      <span class="ui label basic blue small">
+        {% trans %}Multiple Versions{% endtrans %}
+      </span>
+    {% endif %}
+    #}
+
   </div>
 
 </div>
@@ -326,100 +433,19 @@
 
   {# archive links (if available) #}
   {% if paper.fulltext and paper.fulltext.access_url %}
-    {% if paper.fulltext.file_mimetype == "application/pdf" %}
-      {% set access_alt = _('fulltext PDF download') %}
-    {% elif paper.fulltext.access_type == "ia_sim" %}
-      {% set access_alt = _('read fulltext microfilm') %}
+    {% if (paper.fulltext.release_ident and paper.fulltext.release_ident != paper.biblio.release_ident) %}
+      {% set other_version = _("not primary version") %}
     {% else %}
-      {% set access_alt = _('fulltext access') %}
+      {% set other_version = "" %}
     {% endif %}
-    <a target="_blank" rel="noopener" href="{{ paper.fulltext.access_url}}" title="{{ access_alt }}" {% if settings.ENABLE_GOATCOUNTER %}data-goatcounter-click="serp-fulltext-button"{% endif %}>
-      <button class="ui simple right pointing dropdown fluid compact black labeled icon button serp-button">
-        <i class="icon" style="background: no-repeat center / 50% url('/static/ia-favicon.ico');"></i>
-        {% if paper.fulltext.access_type in ["wayback", "ia_file"] %}
-          {% if paper.fulltext.file_mimetype == "application/pdf" or not paper.fulltext.file_mimetype %}
-            PDF
-          {% elif paper.fulltext.file_mimetype == "text/html" %}
-            HTML
-          {% elif paper.fulltext.file_mimetype == "text/xml" %}
-            XML
-          {% else %}
-            File
-          {% endif %}
-          {% if paper.fulltext.size_bytes %}
-            ({{ paper.fulltext.size_bytes|filesizeformat }})
-          {% endif %}
-        {% elif paper.fulltext.access_type == "ia_sim" %}
-          Microfilm
-        {% else %}
-          Other
-        {% endif %}
-      {% if paper.fulltext and paper.fulltext.thumbnail_url %}
-        <div class="menu fulltext-thumbnail">
-          <img src="{{ paper.fulltext.thumbnail_url }}" alt="fulltext thumbnail" loading="lazy">
-        </div>
-      {% endif %}
-      </button>
-    </a>
+    {{ ia_access_button(paper.fulltext, show_thumbnail=True, other_version=other_version) }}
   {% endif %}
 
-  {# publisher #}
-  {% if paper.biblio.doi %}
-    <a target="_blank" rel="external noopener noreferrer" href="https://doi.org/{{paper.biblio.doi }}" style="color: green;">
-      <button class="ui fluid left aligned compact blue labeled icon button serp-button">
-        {% if "oa" in paper.tags %}
-          <i class="unlock alternate icon" style="background-color: #fb971f;"></i>
-        {% else %}
-          <i class="linkify icon"></i>
-        {% endif %}
-        {# TODO: detect prefix? JSTOR, biorxiv, medrxiv, zenodo, figshare, dryad, etc #}
-        {# helpful: https://gist.github.com/TomDemeranville/8699224 #}
-        {% if paper.biblio.doi_prefix == "10.6084" %}
-          figshare.com
-        {% elif paper.biblio.doi_prefix == "10.5281" %}
-          zenodo.org
-        {% elif paper.biblio.doi_prefix == "10.1371" %}
-          plos.org
-        {% elif paper.biblio.doi_prefix == "10.1016" %}
-          elsevier.com
-        {% elif paper.biblio.doi_prefix in ["10.1186", "10.1007"] %}
-          springer.com
-        {% elif paper.biblio.doi_prefix in ["10.1042", "10.1111", "10.1177"] %}
-          sagepub.com
-        {% elif paper.biblio.doi_prefix in ["10.1080"] %}
-          tandfonline.com
-        {% else %}
-          Publisher DOI
-        {% endif %}
-      </button>
-    </a>
-  {% endif %}
+  {# publisher / repository #}
+  {{ doi_access_button(paper.biblio, is_oa=("oa" in paper.tags)) }}
 
   {# trusted platform fulltext links #}
-  {# TODO: DOAJ, dblp #}
-  {% if paper.biblio.arxiv_id %}
-    <a target="_blank" rel="noopener" href="https://arxiv.org/abs/{{ paper.biblio.arxiv_id }}" title="arxiv.org access">
-      <button class="ui fluid compact blue labeled icon button serp-button">
-        <i class="file alternate outline icon"></i>
-        arxiv.org
-      </button>
-    </a>
-  {% elif paper.biblio.pmcid %}
-    <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pmc/articles/{{paper.biblio.pmcid }}" title="pubmed link">
-      <button class="ui fluid compact blue labeled icon button serp-button">
-        <i class="file alternate outline icon"></i>
-        Pubmed Central
-      </button>
-    </a>
-  {% endif %}
-
-  {# ### VERSIONS #}
-  {% if (paper.access and paper.access|length > 1) or (paper.releases and paper.releases|length > 1) %}
-    <div class="ui fluid compact basic blue labeled icon button serp-button">
-      <i class="ui icon add"></i>
-      {% trans %}Multiple Versions{% endtrans %}
-    </div>
-  {% endif %}
+  {{ platform_access_button(paper.biblio) }}
 
   {# ### COLLAPSED HITS  #}
   {% if paper._collapsed_count > 0 %}

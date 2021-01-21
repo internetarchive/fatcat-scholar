@@ -48,13 +48,12 @@
     .ui.labeled.icon.button.serp-button {
       padding-left: 3.0em!important;
       padding-right: 1em!important;
-      min-width: 10em;
-      max-width: 15em;
+      width: 14em;
       box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.3);
     }
 
     .ui.labeled.icon.button.serp-button .menu.fulltext-thumbnail {
-        left: calc(-100% - 1.6em);
+        left: calc(-100% + 0.3em);
         margin-top: -2.4em;
         background-color: black;
         min-width: 186px;
@@ -72,7 +71,7 @@
       display: flex;
       justify-content: center;
       column-gap: 0.3em;
-      min-width: 12em;
+      min-width: 14em;
       max-width: 15em;
     }
 
@@ -210,10 +209,15 @@
         color: inherit;
     }
     details.access-options .menu {
-        /* border: 1px solid black; */
         margin: 0.5em;
+        margin-top: 1.5em;
         width: auto;
-        padding: 1em;
+    }
+    details.access-options .meta {
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-decoration: underline;
     }
 
     details.serp-action-menu[open] > summary .ui.basic.button {
