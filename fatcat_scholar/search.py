@@ -224,6 +224,8 @@ def process_query(query: FulltextQuery) -> FulltextHits:
         pmcid = clean_pmcid(query.q)
         if pmcid:
             return do_lookup_query(f'pmcid:"{pmcid}"')
+        if query.q.strip().startswith("key:"):
+            return do_lookup_query(query.q)
 
     # if this is a citation string, do a fuzzy lookup
     if settings.ENABLE_CITATION_QUERY and sniff_citation_query(query.q):
