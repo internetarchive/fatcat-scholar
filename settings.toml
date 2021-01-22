@@ -20,7 +20,7 @@ GOATCOUNTER_ENDPOINT = "https://goatcounter.scholar.fatcat.wiki/count"
 GOATCOUNTER_SCRIPT_URL = "https://goatcounter.scholar.fatcat.wiki/count.js"
 ONION_DOMAIN = "scholar-qa.archivev3qli37bju4rlh27glh24lljyezwxf4pokmrdbpefjlcrp5id.onion"
 ENABLE_PROMETHEUS = false
-ENABLE_CITATION_QUERY = false
+ENABLE_CITATION_QUERY = true
 
 [test]
 SCHOLAR_ENV = "test"
