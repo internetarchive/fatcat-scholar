@@ -15,11 +15,16 @@ See also:
 - added Russian (ru) translation (thanks @artem.ru!)
 - added Norwegian Bokmål (nb) translation (thanks kingu!)
 - added Croatian (hr) translation (thanks milotype!)
+- citation pop-up feature (web)
+- basic citation parsing to reduce query syntax errors
+- citation parse-and-fuzzy-match feature
 
 ### Changed
 
 - updated dynaconf dependency to version 3 (thanks @rochabruno)
 - update required python version to 3.8
+- major changes to search result page
+- rewrote help page
 
 ### Fixed
 
