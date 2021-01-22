@@ -108,7 +108,12 @@
         {% else %}
           <i class="external alternate icon"></i>
         {% endif %}
-        {{ paper._obj.biblio.doi_link_domain("Publisher / doi.org") }}
+        {% set default_domain = "Publisher / doi.org" %}
+        {% if paper._obj and paper._obj.biblio %}
+          {{ paper._obj.biblio.doi_link_domain(default_domain) }}
+        {% else %}
+          {{ default_domain }} 
+        {% endif %}
       </button>
     </a>
   {% endif %}

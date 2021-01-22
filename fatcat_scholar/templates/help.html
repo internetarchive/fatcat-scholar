@@ -128,11 +128,11 @@ apply range queries like <code>year:&gt;1989 year:&lt;2000</code>.{% endtrans %}
       <td>{% trans %}Digitized copies of works on microfilm may be linked to experimentally. Access may be limited to controlled lending{% endtrans %}</td>
     </tr>
     <tr>
-      <td>{{ search_macros.doi_access_button({'doi': '#'}, is_oa=False) }}</td>
+      <td>{{ search_macros.doi_access_button({'biblio': {'doi': '#'}}, is_oa=False) }}</td>
       <td>{% trans %}A publisher landing page is the authoriative source for the "version of record" of a research publication, but content is not always accessible to the general public{% endtrans %}</td>
     </tr>
     <tr>
-      <td>{{ search_macros.doi_access_button({'doi': '#'}, is_oa=True) }}</td>
+      <td>{{ search_macros.doi_access_button({'biblio': {'doi': '#'}}, is_oa=True) }}</td>
       <td>{% trans %}When the work is from an Open Access publication (sometimes known as "Gold" or "Diamond" OA), and the publisher is expected to provide access to all readers, the button has an orange "unlocked" icon{% endtrans %}</td>
     </tr>
     <tr>
