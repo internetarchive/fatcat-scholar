@@ -2,7 +2,7 @@
 # Copyright (C) 2020 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
-# Bryan Newbold <bnewbold@robocracy.org>, 2020.
+# Bryan Newbold <bnewbold@robocracy.org>, 2020, 2021.
 # Eric <spice2wolf@gmail.com>, 2020, 2021.
 # Forbidden <10278743+f0rb1d@users.noreply.github.com>, 2020.
 msgid ""
@@ -11,7 +11,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-01-21 19:44-0800\n"
 "PO-Revision-Date: 2021-01-22 19:25+0000\n"
-"Last-Translator: Eric <spice2wolf@gmail.com>\n"
+"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "internetarchive/fatcat-scholar/zh_Hans/>\n"
 "Language: zh\n"
@@ -213,19 +213,19 @@ msgstr "说明"
 
 #: fatcat_scholar/templates/error.html:12
 msgid "Not Found"
-msgstr ""
+msgstr "没有找到"
 
 #: fatcat_scholar/templates/error.html:14
 msgid "Access Forbidden"
-msgstr ""
+msgstr "禁止访问"
 
 #: fatcat_scholar/templates/error.html:16
 msgid "Request Error"
-msgstr ""
+msgstr "请求错误"
 
 #: fatcat_scholar/templates/error.html:18
 msgid "Internal Error"
-msgstr ""
+msgstr "内部异常"
 
 #: fatcat_scholar/templates/help.html:5
 #, python-format
@@ -243,7 +243,7 @@ msgstr "用户指南"
 #: fatcat_scholar/templates/help.html:23
 #, python-format
 msgid "See also: <a href=\"%(lang_prefix)s/about\">About Scholarly Search</a>"
-msgstr ""
+msgstr "另请参阅：<a href=\"%(lang_prefix)s/about\">关于学术搜索</a>"
 
 #: fatcat_scholar/templates/help.html:25
 msgid ""
@@ -253,24 +253,26 @@ msgid ""
 "natural sciences, humanities, biomedicine, art, history, industrial "
 "research, government reports, and more."
 msgstr ""
+"该服务可对Internet档案馆各种馆藏中的所有研究出版物进行<a href=\"https://en.wikipedia.org/wiki/Full-"
+"text_search\">全文搜索</a>。它包括自然科学，人文科学，生物医学，艺术，历史，工业研究，政府报告等内容。"
 
 #: fatcat_scholar/templates/help.html:26
 msgid ""
 "Reader access to the content is provided when possible. Sometimes this "
 "access is to a \"pre-print\" or other version of the work, and this is "
 "indicated in the search results."
-msgstr ""
+msgstr "如果可能，提供读者对内容的访问。有时，这种访问是对作品的“预印本”或其他版本的访问，这在搜索结果中指明。"
 
 #: fatcat_scholar/templates/help.html:27
 msgid ""
 "In other cases, depending on search filters, results are included for which "
 "there is only a bibliographic catalog entry. It may still be possible to "
 "obtain access through a public library or from the publisher directly."
-msgstr ""
+msgstr "在其他情况下，根据搜索过滤器，将包括仅包含书目目录条目的结果。仍然有可能通过公共图书馆或直接从出版商获得访问权限。"
 
 #: fatcat_scholar/templates/help.html:29
 msgid "Query Syntax"
-msgstr ""
+msgstr "查询语法"
 
 #: fatcat_scholar/templates/help.html:31
 msgid ""
@@ -282,39 +284,44 @@ msgid ""
 "<code>journal:Science</code>, set filters like <code>lang:de</code>, and\n"
 "apply range queries like <code>year:&gt;1989 year:&lt;2000</code>."
 msgstr ""
+"除了基本的过滤和排序选项，此搜索\n"
+"界面还允许在搜索框中使用Lucene查询语法。您可以\n"
+"使用冒号语句限制对多个元数据字段的术语查询\n"
+"<code> journal：Science </code>，设置过滤器，例如<code> lang：de </code>，以及\n"
+"应用范围查询，例如<code> year：&gt; 1989 year：&lt; 2000 </code>。"
 
 #: fatcat_scholar/templates/help.html:37
 msgid ""
 "While this syntax allows for relatively complex and powerful queries, at "
 "some point advanded users may run in to limits on the size or complexity of "
 "queries."
-msgstr ""
+msgstr "尽管此语法允许相对复杂和强大的查询，但在某些时候，高级用户可能会遇到查询大小或复杂性的限制。"
 
 #: fatcat_scholar/templates/help.html:38
 msgid ""
 "For the time being we recommend systems like <a href=\"https://lens.org"
 "\">lens.org</a> for a more powerful interface."
-msgstr ""
+msgstr "目前，我们建议使用<a href=\"https://lens.org\"> lens.org </a>之类的系统来提供更强大的界面。"
 
 #: fatcat_scholar/templates/help.html:41
 msgid "Example Queries"
-msgstr ""
+msgstr "查询示例"
 
 #: fatcat_scholar/templates/help.html:43
 msgid "Search for digitized pages about a topic from specific years:"
-msgstr ""
+msgstr "搜索特定年份的有关主题的数字化页面："
 
 #: fatcat_scholar/templates/help.html:47
 msgid "Search for papers in Chinese matching a term:"
-msgstr ""
+msgstr "搜索符合条件的中文论文："
 
 #: fatcat_scholar/templates/help.html:51
 msgid "Conference papers with an author name query:"
-msgstr ""
+msgstr "具有作者姓名查询的会议论文："
 
 #: fatcat_scholar/templates/help.html:55
 msgid "Citation Queries"
-msgstr ""
+msgstr "引文查询"
 
 #: fatcat_scholar/templates/help.html:56
 msgid ""
@@ -323,6 +330,8 @@ msgid ""
 "attempt to parse the citation and do a match against our catalog of known "
 "works. When this happens, any filters are ignored."
 msgstr ""
+"作为一项实验性功能，如果搜索查询“看起来像”是正式引文（如在研究论文的书目中发现的那样），则该服务将尝试解析引文，并与我们的已知作品目录进行匹配。发生这种"
+"情况时，将忽略所有过滤器。"
 
 #: fatcat_scholar/templates/help.html:60
 msgid "Metadata Fields"
@@ -334,6 +343,8 @@ msgid ""
 "<code>doi:*</code>, and negate any term like <code>!type:article-journal</"
 "code>."
 msgstr ""
+"您可以使用星号（例如<code> doi：* </code>）限制字段存在的记录，并否定<code>！type：article-journal "
+"</code>之类的任何术语。"
 
 #: fatcat_scholar/templates/help.html:64
 msgid ""
@@ -342,6 +353,9 @@ msgid ""
 "string-query.html#query-string-query-notes\">from the Elasticsearch project</"
 "a>."
 msgstr ""
+"可从Elasticsearch项目</a>中获得有关查询语法的深入文档<a href=\"https://www.elastic.co/guide/en/"
+"elasticsearch/reference/current/query-dsl-query-string-query.html#query-"
+"string-query-notes\">。"
 
 #: fatcat_scholar/templates/help.html:66
 msgid ""
@@ -349,6 +363,8 @@ msgid ""
 "\"https://github.com/internetarchive/fatcat-scholar/blob/master/schema/"
 "scholar_fulltext.v01.json\">in the source code</a>."
 msgstr ""
+"源代码</a>中提供了完整的当前搜索文档架构（作为JSON）<a href=\"https://github.com/internetarchive/"
+"fatcat-scholar/blob/master/schema/scholar_fulltext.v01.json\">。"
 
 #: fatcat_scholar/templates/help.html:103
 msgid "Search Results"
@@ -356,40 +372,40 @@ msgstr "搜索结果"
 
 #: fatcat_scholar/templates/help.html:106
 msgid "Access Links"
-msgstr ""
+msgstr "访问链接"
 
 #: fatcat_scholar/templates/help.html:116
 msgid ""
 "All Internet Archive preservation copy links have the same style and icon. "
 "Content from the Wayback Machine looks like this."
-msgstr ""
+msgstr "所有Internet存档保留副本链接均具有相同的样式和图标。 Wayback Machine的内容如下所示。"
 
 #: fatcat_scholar/templates/help.html:120
 msgid ""
 "If the preserved copy of the work is from a pre-print, author manuscript, or "
 "other alternative version of the work, the access link has an indicator. You "
 "can get details and view all versions by clicking on the primary title link"
-msgstr ""
+msgstr "如果该作品的保留副本来自该作品的预印本，作者手稿或其他替代版本，则访问链接具有指示符。您可以通过单击主要标题链接来获取详细信息并查看所有版本"
 
 #: fatcat_scholar/templates/help.html:124
 msgid ""
 "Some preserved content, particularly older Public Domain works, may be "
 "stored in general Internet Archive digital collections (as opposed to the "
 "web archive)"
-msgstr ""
+msgstr "一些保留的内容，尤其是较旧的Public Domain作品，可以存储在一般的Internet存档数字馆藏中（与Web存档相对）"
 
 #: fatcat_scholar/templates/help.html:128
 msgid ""
 "Digitized copies of works on microfilm may be linked to experimentally. "
 "Access may be limited to controlled lending"
-msgstr ""
+msgstr "缩微胶卷作品的数字化副本可以与实验相关。访问权限可能仅限于受控贷款"
 
 #: fatcat_scholar/templates/help.html:132
 msgid ""
 "A publisher landing page is the authoriative source for the \"version of "
 "record\" of a research publication, but content is not always accessible to "
 "the general public"
-msgstr ""
+msgstr "出版商登录页面是研究出版物“记录版本”的权威来源，但公众并不总是可以访问内容"
 
 #: fatcat_scholar/templates/help.html:136
 msgid ""
@@ -397,26 +413,28 @@ msgid ""
 "\" or \"Diamond\" OA), and the publisher is expected to provide access to "
 "all readers, the button has an orange \"unlocked\" icon"
 msgstr ""
+"当作品来自Open Access出版物（有时称为“ Gold”或“ Diamond” "
+"OA），并且期望出版者提供对所有阅读器的访问权限时，该按钮具有橙色的“解锁”图标"
 
 #: fatcat_scholar/templates/help.html:140
 msgid ""
 "If the work is archived in full on a reliable, open platform, we will "
 "sometimes provide additional links"
-msgstr ""
+msgstr "如果作品是在可靠的开放平台上完整归档的，则有时我们会提供其他链接"
 
 #: fatcat_scholar/templates/help.html:148
 msgid ""
 "Search results may have tag labels which provide additional context about "
 "the work. For example, indexes the journal is included in, or open platform "
 "technology used for publications."
-msgstr ""
+msgstr "搜索结果可能具有标签标签，这些标签标签提供了有关作品的其他背景信息。例如，包含期刊的索引，或用于出版物的开放平台技术。"
 
 #: fatcat_scholar/templates/help.html:158
 msgid ""
 "There are multiple released \"versions\" or \"editions\" of this work, and "
 "bibliographic metadata for the \"primary\" is being shown. Click the title "
 "to see other versions"
-msgstr ""
+msgstr "该作品有多个发行的“版本”或“版本”，并且正在显示“主要”的书目元数据。点击标题以查看其他版本"
 
 #: fatcat_scholar/templates/help.html:162
 msgid ""
@@ -424,18 +442,20 @@ msgid ""
 "language. The <a href=\"https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes"
 "\">ISO two-letter language code</a> is indicated"
 msgstr ""
+"这项工作的主要语言不同于搜索界面语言。指示<a href=\"https://en.wikipedia.org/wiki/List_of_ISO_639-"
+"1_codes\"> ISO两字母语言代码</a>"
 
 #: fatcat_scholar/templates/help.html:166
 msgid ""
 "Published in a <a href=\"https://doaj.org\">Directory of Open Access "
 "Journals</a> publication, which implies that this is an Open Access work"
-msgstr ""
+msgstr "发表在<a href=\"https://doaj.org\">开放获取期刊目录</a>出版物中，这意味着这是一项开放获取工作"
 
 #: fatcat_scholar/templates/help.html:170
 msgid ""
 "Published on a <a href=\"https://en.wikipedia.org/wiki/SciELO\">SciELO</a> "
 "national platform"
-msgstr ""
+msgstr "在<a href=\"https://en.wikipedia.org/wiki/SciELO\"> SciELO </a>国家平台上发布"
 
 #: fatcat_scholar/templates/help.html:174
 msgid ""
@@ -443,37 +463,45 @@ msgid ""
 "szczepanski-list\">Szczepanski's List of Open Access Journals</a>, which "
 "implies that this is an Open Access work"
 msgstr ""
+"在<a href=\"https://www.ebsco.com/open-access/szczepanski-list\"> "
+"Szczepanski的“开放获取期刊列表” </a>中索引的出版物，这意味着这是一项开放获取工作"
 
 #: fatcat_scholar/templates/help.html:178
 msgid ""
 "The work is believed to be <a href=\"https://en.wikipedia.org/wiki/"
 "Open_access\">\"Open Access\"</a> for any other reason"
 msgstr ""
+"由于任何其他原因，该作品被认为是<a href=\"https://en.wikipedia.org/wiki/Open_access\">“开放获取” "
+"</a>"
 
 #: fatcat_scholar/templates/help.html:182
 msgid ""
 "Published using <a href=\"https://en.wikipedia.org/wiki/Open_Journal_Systems"
 "\">Open Journal Systems</a> software"
 msgstr ""
+"使用<a href=\"https://en.wikipedia.org/wiki/Open_Journal_Systems\"> Open "
+"Journal Systems </a>软件发布"
 
 #: fatcat_scholar/templates/help.html:186
 msgid ""
 "Published using <a href=\"https://en.wikipedia.org/wiki/Wordpress"
 "\">WordPress</a> software"
 msgstr ""
+"使用<a href=\"https://en.wikipedia.org/wiki/Wordpress\"> WordPress </a>软件发布"
 
 #: fatcat_scholar/templates/help.html:190
 msgid ""
 "Preserved and/or hosted on the <a href=\"https://en.wikipedia.org/wiki/JSTOR"
 "\">JSTOR</a> digital preservation platform"
 msgstr ""
+"在<a href=\"https://en.wikipedia.org/wiki/JSTOR\"> JSTOR </a>数字保存平台上保存和/或托管"
 
 #: fatcat_scholar/templates/help.html:198
 msgid ""
 "Underneath search results, and alternate version listings, are any known "
 "\"persistent identifiers\" that uniquely identify the specific version of "
 "the work. These are usually hyperlinks."
-msgstr ""
+msgstr "在搜索结果和替代版本列表的下方，是可以唯一标识作品特定版本的任何已知“持久标识符”。这些通常是超链接。"
 
 #: fatcat_scholar/templates/help.html:208
 msgid ""
@@ -481,37 +509,41 @@ msgid ""
 "Object Identifier (DOI)</a>, provides a redirect to the publisher's landing "
 "page"
 msgstr ""
+"<a href=\"https://en.wikipedia.org/wiki/Digital_object_identifier\""
+">数字对象标识符（DOI）</a>，用于重定向到发布者的登录页面"
 
 #: fatcat_scholar/templates/help.html:212
 msgid "PubMed/MEDLINE"
-msgstr ""
+msgstr "PubMed / MEDLINE"
 
 #: fatcat_scholar/templates/help.html:216
 msgid "PubMed Central"
-msgstr ""
+msgstr "PubMed Central"
 
 #: fatcat_scholar/templates/help.html:220
 msgid "arXiv pre-print service"
-msgstr ""
+msgstr "arXiv预印服务"
 
 #: fatcat_scholar/templates/help.html:224
 msgid "Digital Bibliography of Logic Programming"
-msgstr ""
+msgstr "逻辑程序设计数字书目"
 
 #: fatcat_scholar/templates/help.html:228
 msgid ""
 "Article-level identifier for works in DOAJ, particularly those with no DOI"
-msgstr ""
+msgstr "DOAJ中作品的文章级标识符，尤其是没有DOI的作品"
 
 #: fatcat_scholar/templates/help.html:232
 msgid ""
 "<a href=\"https://fatcat.wiki\">fatcat.wiki</a> \"release\" identifier. "
 "Scholar is built on top of the fatcat catalog"
 msgstr ""
+"<a href=\"https://fatcat.wiki\"> fatcat.wiki </a>“发布”标识符。 "
+"Scholar是基于fatcat目录建立的"
 
 #: fatcat_scholar/templates/help.html:238
 msgid "Work In Progress"
-msgstr ""
+msgstr "工作正在进行中"
 
 #: fatcat_scholar/templates/help.html:241
 msgid ""
@@ -521,7 +553,7 @@ msgstr "这项服务处于 \"alpha\" 阶段。它有几个错误，经历宕机�
 
 #: fatcat_scholar/templates/help.html:244
 msgid "This project is currently a <i>prototype</i>"
-msgstr ""
+msgstr "该项目目前是<i>原型</i>"
 
 #: fatcat_scholar/templates/home.html:10
 msgid "Internet Archive Scholar logo (vaporwave)"
@@ -553,7 +585,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/home.html:24
 msgid "More &raquo;"
-msgstr ""
+msgstr "更多&raquo;"
 
 #: fatcat_scholar/templates/home.html:36
 msgid ""
@@ -643,12 +675,12 @@ msgstr "全文访问"
 
 #: fatcat_scholar/templates/search_macros.html:72
 msgid "Web Archive"
-msgstr ""
+msgstr "网络档案"
 
 #: fatcat_scholar/templates/search_macros.html:74
 #: fatcat_scholar/templates/search_macros.html:256
 msgid "File Archive"
-msgstr ""
+msgstr "档案存档"
 
 #: fatcat_scholar/templates/search_macros.html:76
 msgid "Archive [Microfilm]"
@@ -656,19 +688,19 @@ msgstr "存档 [微缩胶卷]"
 
 #: fatcat_scholar/templates/search_macros.html:78
 msgid "Other"
-msgstr ""
+msgstr "其它"
 
 #: fatcat_scholar/templates/search_macros.html:82
 msgid "[PDF]"
-msgstr ""
+msgstr "[PDF]"
 
 #: fatcat_scholar/templates/search_macros.html:84
 msgid "[HTML]"
-msgstr ""
+msgstr "[HTML]"
 
 #: fatcat_scholar/templates/search_macros.html:86
 msgid "[XML]"
-msgstr ""
+msgstr "[XML]"
 
 #: fatcat_scholar/templates/search_macros.html:95
 msgid "fulltext thumbnail"
@@ -693,7 +725,7 @@ msgstr "保存的全文"
 
 #: fatcat_scholar/templates/search_macros.html:254
 msgid "Web Archive Capture"
-msgstr ""
+msgstr "网络档案捕获"
 
 #: fatcat_scholar/templates/search_macros.html:258
 msgid "Digitized Microfilm"
@@ -707,18 +739,20 @@ msgid ""
 "also visit <a rel=\"external noopener\" href=\"%(original_url)s\">the "
 "original URL</a>."
 msgstr ""
+"这项工作的副本可以在公共网站上找到，并保存在Wayback Machine中。捕获日期为%(capture_year)s；您还可以访问<a rel="
+"\"external noopener\" href=\"%(original_url)s\">原始URL </a>。"
 
 #: fatcat_scholar/templates/search_macros.html:285
 msgid ""
 "The Internet Archive has a preservation copy of this work in our general "
 "collections."
-msgstr ""
+msgstr "Internet档案库在我们的一般馆藏中有此作品的保存副本。"
 
 #: fatcat_scholar/templates/search_macros.html:287
 msgid ""
 "The Internet Archive has digitized a microfilm copy of this work. It may be "
 "possible to borrow a copy for reading."
-msgstr ""
+msgstr "互联网档案馆已将该作品的缩微胶卷数字化。可能可以借阅一份副本。"
 
 #: fatcat_scholar/templates/search_macros.html:291
 #, python-format
@@ -727,23 +761,26 @@ msgid ""
 "                The file type is %(mimetype)s.\n"
 "              "
 msgstr ""
+"\n"
+"                文件类型为%(mimetype)s。\n"
+"              "
 
 #: fatcat_scholar/templates/search_macros.html:298
 msgid ""
 "Note that this fulltext copy is not of the \"primary\" version of this work. "
 "The version it corresponds to is:"
-msgstr ""
+msgstr "请注意，此全文副本不是本作品的“主要”版本。对应的版本是："
 
 #: fatcat_scholar/templates/search_macros.html:312
 msgid "Additional access options for the primary version of this work:"
-msgstr ""
+msgstr "此作品主要版本的其他访问选项："
 
 #: fatcat_scholar/templates/search_macros.html:322
 msgid ""
 "We don't yet know of a public preservation copy of this work. You may be "
 "able to obtain a copy of this work to read from the publisher, platforms, or "
 "institutional libraries."
-msgstr ""
+msgstr "我们尚不知道该作品的公共保存副本。您可能可以获取此作品的副本，以从出版商，平台或机构图书馆中阅读。"
 
 #: fatcat_scholar/templates/search_macros.html:325
 #, python-format
@@ -752,35 +789,37 @@ msgid ""
 "know via <a rel=\"noopener\" href=\"%(save_paper_now_url)s\">\"Save Paper Now"
 "\"</a>."
 msgstr ""
+"如果您知道应存档的合法公共版本，请通过<a rel=\"noopener\" href=\"%(save_paper_now_url)s\""
+">“立即保存纸张” </a>告知我们。"
 
 #: fatcat_scholar/templates/search_macros.html:372
 msgid "more &raquo;"
-msgstr ""
+msgstr "更多&raquo;"
 
 #: fatcat_scholar/templates/search_macros.html:397
 msgid "tag definitions"
-msgstr ""
+msgstr "标签定义"
 
 #: fatcat_scholar/templates/search_macros.html:424
 msgid "not primary version"
-msgstr ""
+msgstr "不是主要版本"
 
 #: fatcat_scholar/templates/search_macros.html:441
 #, python-format
 msgid "Same Issue (%(count)s)"
-msgstr ""
+msgstr "同一期（%(count)s）"
 
 #: fatcat_scholar/templates/search_macros.html:457
 msgid "Citation"
-msgstr ""
+msgstr "引文"
 
 #: fatcat_scholar/templates/search_macros.html:471
 msgid "edit on fatcat wiki"
-msgstr ""
+msgstr "在Fatcat Wiki上编辑"
 
 #: fatcat_scholar/templates/search_macros.html:477
 msgid "permalink"
-msgstr ""
+msgstr "永久链接"
 
 #: fatcat_scholar/templates/search_macros.html:493
 #: fatcat_scholar/templates/search_macros.html:496
