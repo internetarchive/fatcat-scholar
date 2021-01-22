@@ -108,7 +108,7 @@
         {% else %}
           <i class="external alternate icon"></i>
         {% endif %}
-        {% set default_domain = "Publisher / doi.org" %}
+        {% set default_domain = _("Publisher / doi.org") %}
         {% if paper._obj and paper._obj.biblio %}
           {{ paper._obj.biblio.doi_link_domain(default_domain) }}
         {% else %}
@@ -293,9 +293,7 @@
             {% endif %}
 
             {% if paper.fulltext.file_mimetype %}
-              {% trans mimetype = ("<code>" + paper.fulltext.file_mimetype + "</code>")|safe %}
-                The file type is {{ mimetype }}.
-              {% endtrans %}
+              {% trans mimetype = ("<code>" + paper.fulltext.file_mimetype + "</code>")|safe %}The file type is {{ mimetype }}.{% endtrans %}
             {% endif %}
 
             {% if paper.fulltext.release_ident and (paper.biblio.release_ident != paper.fulltext.release_ident) %}
