@@ -7,9 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-01-22 11:48-0800\n"
-"PO-Revision-Date: 2021-01-22 19:25+0000\n"
+"PO-Revision-Date: 2021-01-22 19:56+0000\n"
 "Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/es/>\n"
@@ -841,8 +841,9 @@ msgid "fulltext thumbnail"
 msgstr "miniatura de texto completo"
 
 #: fatcat_scholar/templates/search_macros.html:111
+#, fuzzy
 msgid "Publisher / doi.org"
-msgstr ""
+msgstr "Editorial / doi.org"
 
 #: fatcat_scholar/templates/search_macros.html:197
 msgid "unknown"
@@ -971,8 +972,9 @@ msgid "Same Issue (%(count)s)"
 msgstr "El mismo tema (%(count)s)"
 
 #: fatcat_scholar/templates/search_macros.html:455
+#, fuzzy
 msgid "cite this work"
-msgstr ""
+msgstr "citar este trabajo"
 
 #: fatcat_scholar/templates/search_macros.html:460
 #, fuzzy
@@ -985,8 +987,9 @@ msgid "edit metadata on fatcat wiki"
 msgstr "editar en fatcat wiki"
 
 #: fatcat_scholar/templates/search_macros.html:480
+#, fuzzy
 msgid "permalink to this record"
-msgstr ""
+msgstr "permalink a este disco"
 
 #: fatcat_scholar/templates/search_macros.html:496
 #: fatcat_scholar/templates/search_macros.html:499
