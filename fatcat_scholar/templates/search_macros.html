@@ -28,28 +28,30 @@
 {% endmacro %}
 
 {% macro external_identifiers(biblio) -%}
-  {# NOTE: should be able to call with paper.biblio or any paper.release[] #}
+{# NOTE: should be able to call with paper.biblio or any paper.release[] #}
+<span class="external-identifiers">
   {% if biblio.doi %}
-    <a target="_blank" rel="external noopener noreferrer" href="https://doi.org/{{ biblio.doi }}" style="color: green;">doi:{{ biblio.doi }}</a> &nbsp;
+    <a target="_blank" rel="external noopener noreferrer" href="https://doi.org/{{ biblio.doi }}">doi:{{ biblio.doi }}</a> &nbsp;
   {% endif %}
   {% if biblio.pmid %}
-    <a target="_blank" rel="external noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/{{ biblio.pmid }}" style="color: green;">pmid:{{ biblio.pmid }}</a> &nbsp;
+    <a target="_blank" rel="external noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/{{ biblio.pmid }}">pmid:{{ biblio.pmid }}</a> &nbsp;
   {% endif %}
   {% if biblio.pmcid %}
-    <a target="_blank" rel="external noopener" href="https://pubmed.ncbi.nlm.nih.gov/{{ biblio.pmcid }}/" style="color: green;">pmcid:{{ biblio.pmcid }}</a> &nbsp;
+    <a target="_blank" rel="external noopener" href="https://pubmed.ncbi.nlm.nih.gov/{{ biblio.pmcid }}/">pmcid:{{ biblio.pmcid }}</a> &nbsp;
   {% endif %}
   {% if biblio.arxiv_id %}
-    <a target="_blank" rel="external noopener" href="https://arxiv.org/abs/{{ biblio.arxiv_id }}" style="color: green;">arXiv:{{ biblio.arxiv_id }}</a> &nbsp;
+    <a target="_blank" rel="external noopener" href="https://arxiv.org/abs/{{ biblio.arxiv_id }}">arXiv:{{ biblio.arxiv_id }}</a> &nbsp;
   {% endif %}
   {% if biblio.dblp_id %}
-    <a target="_blank" rel="external noopener" href="https://dblp.org/rec/{{ biblio.dblp_id }}.html" style="color: green;">dblp:{{ biblio.dblp_id }}</a> &nbsp;
+    <a target="_blank" rel="external noopener" href="https://dblp.org/rec/{{ biblio.dblp_id }}.html">dblp:{{ biblio.dblp_id }}</a> &nbsp;
   {% endif %}
   {% if biblio.doaj_id %}
-    <a target="_blank" rel="external noopener" href="https://doaj.org/article/{{ biblio.doaj_id }}" style="color: green;">doaj:{{ biblio.doaj_id }}</a> &nbsp;
+    <a target="_blank" rel="external noopener" href="https://doaj.org/article/{{ biblio.doaj_id }}">doaj:{{ biblio.doaj_id }}</a> &nbsp;
   {% endif %}
   {% if biblio.release_ident or biblio.ident %}
-    <a target="_blank" rel="external noopener" href="https://fatcat.wiki/release/{{ biblio.release_ident or biblio.ident }}" style="color: green;">fatcat:{{ biblio.release_ident or biblio.ident }}</a> &nbsp;
+    <a target="_blank" rel="external noopener" href="https://fatcat.wiki/release/{{ biblio.release_ident or biblio.ident }}">fatcat:{{ biblio.release_ident or biblio.ident }}</a> &nbsp;
   {% endif %}
+</span>
 {% endmacro %}
 
 {% macro ia_access_button(access, show_thumbnail=False, other_version=False) -%}
@@ -65,7 +67,7 @@
   {% endif %}
   <a target="_blank" rel="noopener" href="{{ access.access_url}}" title="{{ access_alt }}" {% if settings.ENABLE_GOATCOUNTER %}data-goatcounter-click="serp-fulltext-button"{% endif %}>
     <button class="ui simple right pointing dropdown compact black labeled icon button serp-button">
-      <i class="icon" style="background: no-repeat center / 50% url('/static/ia-favicon.ico');"></i>
+      <i class="icon ia-icon"></i>
       {% if access.access_type == "wayback" %}
         {% trans %}Web Archive{% endtrans %}
       {% elif access.access_type == "ia_file" %}
@@ -101,7 +103,7 @@
   {% if biblio.doi %}
     {% set publisher = "" or (biblio.publisher and biblio.publisher.lower()) %}
     {% set container_name = "" or (biblio.container_name and biblio.container_name.lower()) %}
-    <a target="_blank" rel="external noopener noreferrer" href="https://doi.org/{{ biblio.doi }}" style="color: green;">
+    <a target="_blank" rel="external noopener noreferrer" href="https://doi.org/{{ biblio.doi }}">
       <button class="ui left aligned compact blue labeled icon button serp-button">
         {% if is_oa %}
           <i class="unlock alternate icon" style="background-color: #fb971f;"></i>
@@ -377,7 +379,7 @@
 
   {# ### ABSTRACT / QUERY HIGHLIGHT #}
   {% if paper._highlights %}
-    <div style="padding-top: 0.5em; padding-bottom: 0.5em;" class="search_highlights">
+    <div class="search-highlights">
     {# this highlight HTML escape hacking should not be necessary in ES 7.x with highlight escaping #}
     {# but for now we manually escape, then de-escape the 'em' highlight tags #}
     {% autoescape false %}
@@ -387,7 +389,7 @@
     {% endautoescape %}
     </div>
   {% elif paper.abstracts %}
-    <div style="padding-top: 0.5em; padding-bottom: 0.5em;">
+    <div class="search-highlights">
       {% if paper.abstracts[0].body|length > 500 %}
         {{ paper.abstracts[0].body | truncate(500, False, '') }}
         <details style="display:inline;">
@@ -405,7 +407,7 @@
   {# ### IDENTIFIERS #}
   {{ external_identifiers(paper.biblio) }}
 
-  <div style="margin-top: 0.2em;">
+  <div class="tag-row">
   {# ### TAGS #}
     {# colors to use: olive, brown, grey, pink, red, etc #}
     {# TODO: remove doc for ES 7.x-style lack of type #}
@@ -437,7 +439,7 @@
 
 </div>
 
-<div class="three wide left aligned column" style="padding-top: 0.5em; padding-right: 0.5em; min-width: 10em;">
+<div class="three wide left aligned column serp-right-col">
   {# ### ACCESS LINKS #}
 
   {# archive links (if available) #}

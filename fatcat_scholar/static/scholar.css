@@ -37,6 +37,9 @@ nav.ui.menu {
 .ui.basic.blue.button.serp-button > .icon {
   background-color: transparent;
 }
+.ui.button.serp-button > .ia-icon {
+  background: no-repeat center / 50% url('/static/ia-favicon.ico');
+}
 
 .ui.labeled.icon.button.serp-button {
   padding-left: 3.0em!important;
@@ -156,9 +159,17 @@ nav.ui.menu {
 }
 
 /* for fulltext search result highlighting */
-.search_highlights em {
+.search-highlights em {
   font-style: normal;
   font-weight: bold;
+}
+.search-highlights {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em
+}
+
+.tag-row {
+  margin-top: 0.2em;
 }
 
 .search_filters summary::marker {
@@ -210,6 +221,12 @@ details.access-options .meta {
   text-decoration: underline;
 }
 
+.serp-right-col {
+  padding-top: 0.5em;
+  padding-right: 0.5em;
+  min-width: 10em;
+}
+
 details.serp-action-menu[open] > summary .ui.basic.button {
   box-shadow: 0 0 0 1px rgba(0,0,0,.15) inset, 0 1px 4px 0 rgba(34,36,38,.15) inset;
   background: #f8f8f8!important;
@@ -258,6 +275,10 @@ details.serp-action-menu > .citation-menu {
 .translate-dropdown {
   padding-top: 0!important;
   padding-bottom: 0!important;
+}
+
+.external-identifiers > a {
+  color: green;
 }
 
 .translate-icon {
