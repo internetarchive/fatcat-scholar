@@ -454,7 +454,7 @@
 
     <details class="serp-action-menu">
       <summary>
-        <div class="circular ui icon compact basic button">
+        <div class="circular ui icon compact basic button" title="{{ _('cite this work') }}">
           <i class="quote left icon"></i>
         </div>
       </summary>
@@ -464,22 +464,22 @@
         {% if paper.doc_type == "work" %}
           <div class="ui divider"></div>
           <ul class="ui horizontal list">
-            <li class="item"><a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}/citeproc?style=modern-language-association" target="_blank" rel="noopener">MLA</a></li>
-            <li class="item"><a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}/citeproc?style=elsevier-harvard" target="_blank" rel="noopener">Harvard</a></li>
-            <li class="item"><a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}/citeproc?style=csl-json" target="_blank" rel="noopener">CSL-JSON</a></li>
-            <li class="item"><a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}.bib" target="_blank" rel="noopener">BibTeX</a></li>
+            <li class="item"><a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}/citeproc?style=modern-language-association" target="_blank" rel="noopener"><i class="external icon"></i>MLA</a></li>
+            <li class="item"><a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}/citeproc?style=elsevier-harvard" target="_blank" rel="noopener"><i class="external icon"></i>Harvard</a></li>
+            <li class="item"><a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}/citeproc?style=csl-json" target="_blank" rel="noopener"><i class="external icon"></i>CSL-JSON</a></li>
+            <li class="item"><a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}.bib" target="_blank" rel="noopener"><i class="external icon"></i>BibTeX</a></li>
           </ul>
         {% endif %}
       </div>
     </details>
 
-    <a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}" rel="noopener" title="{{ _('edit on fatcat wiki') }}">
+    <a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}" rel="noopener" title="{{ _('edit metadata on fatcat wiki') }}">
       <div class="circular ui icon compact basic button">
         <i class="edit icon"></i>
       </div>
     </a>
 
-    <a href="{{ lang_prefix }}/search?q=key:{{ paper.key }}" rel="noopener" title="{{ _('permalink') }}">
+    <a href="{{ lang_prefix }}/search?q=key:{{ paper.key }}" rel="noopener" title="{{ _('permalink to this record') }}">
       <div class="circular ui icon compact basic button">
         <i class="linkify icon"></i>
       </div>

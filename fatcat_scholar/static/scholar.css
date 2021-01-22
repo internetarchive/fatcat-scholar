@@ -66,8 +66,7 @@ nav.ui.menu {
   display: flex;
   justify-content: center;
   column-gap: 0.3em;
-  min-width: 14em;
-  max-width: 15em;
+  width: 12.5em;
 }
 
 @media only screen and (max-width: 767px) {
@@ -248,7 +247,7 @@ details.serp-action-menu > .citation-menu {
   z-index: 11;
   min-width: 30em;
   border-radius: .28571429rem;
-  right: 50%;
+  right: 55%;
   margin-top: -2em;
   margin-right: 1.5em;
   padding: 1em;
