@@ -19,6 +19,7 @@ from pydantic import BaseModel
 
 from fatcat_openapi_client import ReleaseEntity, ReleaseContrib
 from fatcat_scholar.api_entities import entity_to_dict
+from fatcat_scholar.biblio_hacks import doi_link_domain
 
 
 class DocType(str, Enum):
@@ -103,6 +104,19 @@ class ScholarBiblio(BaseModel):
     contrib_count: Optional[int]
     contrib_names: List[str]
     affiliations: List[str]
+
+    def doi_link_domain(self, default: str = "doi.org") -> str:
+        if not self.doi_prefix:
+            return default
+        domain = doi_link_domain(
+            self.doi_prefix,
+            container_name=self.container_name,
+            publisher=self.publisher,
+        )
+        if domain:
+            return domain
+        else:
+            return default
 
     def citation_str(self, style: str) -> Optional[str]:
         """

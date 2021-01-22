@@ -99,40 +99,16 @@
   </a>
 {% endmacro %}
 
-{% macro doi_access_button(biblio, is_oa=False) %}
-  {% if biblio.doi %}
-    {% set publisher = "" or (biblio.publisher and biblio.publisher.lower()) %}
-    {% set container_name = "" or (biblio.container_name and biblio.container_name.lower()) %}
-    <a target="_blank" rel="external noopener noreferrer" href="https://doi.org/{{ biblio.doi }}">
+{% macro doi_access_button(paper, is_oa=False) %}
+  {% if paper.biblio and paper.biblio.doi %}
+    <a target="_blank" rel="external noopener noreferrer" href="https://doi.org/{{ paper.biblio.doi }}">
       <button class="ui left aligned compact blue labeled icon button serp-button">
         {% if is_oa %}
           <i class="unlock alternate icon" style="background-color: #fb971f;"></i>
         {% else %}
           <i class="external alternate icon"></i>
         {% endif %}
-        {# TODO: detect prefix? JSTOR, biorxiv, medrxiv, zenodo, figshare, dryad, etc #}
-        {# helpful: https://gist.github.com/TomDemeranville/8699224 #}
-        {% if biblio.doi_prefix == "10.6084" %}
-          figshare.com
-        {% elif biblio.doi_prefix == "10.5281" %}
-          zenodo.org
-        {% elif biblio.doi_prefix == "10.1371" %}
-          plos.org
-        {% elif biblio.doi_prefix == "10.1101" and "biorxiv" in container_name %}
-          biorxiv.org
-        {% elif biblio.doi_prefix == "10.1101" and "medrxiv" in container_name %}
-          medrxiv.org
-        {% elif biblio.doi_prefix == "10.1016" and "elsevier" in publisher %}
-          elsevier.com
-        {% elif biblio.doi_prefix in ["10.1186", "10.1007"] and "springer" in publisher %}
-          springer.com
-        {% elif biblio.doi_prefix in ["10.1042", "10.1111", "10.1177"] and "sage" in publisher %}
-          sagepub.com
-        {% elif biblio.doi_prefix in ["10.1080"] and "taylor" in publisher %}
-          tandfonline.com
-        {% else %}
-          Publisher / doi.org
-        {% endif %}
+        {{ paper._obj.biblio.doi_link_domain("Publisher / doi.org") }}
       </button>
     </a>
   {% endif %}
@@ -453,7 +429,7 @@
   {% endif %}
 
   {# publisher / repository #}
-  {{ doi_access_button(paper.biblio, is_oa=("oa" in paper.tags)) }}
+  {{ doi_access_button(paper, is_oa=("oa" in paper.tags)) }}
 
   {# trusted platform fulltext links #}
   {{ platform_access_button(paper.biblio) }}
