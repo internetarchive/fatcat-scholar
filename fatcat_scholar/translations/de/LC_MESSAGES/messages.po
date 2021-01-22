@@ -9,8 +9,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
-"POT-Creation-Date: 2021-01-21 19:44-0800\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2021-01-22 11:48-0800\n"
 "PO-Revision-Date: 2021-01-22 19:25+0000\n"
 "Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/internetarchive/"
@@ -254,7 +254,8 @@ msgstr "Benutzerhandbuch"
 #: fatcat_scholar/templates/help.html:23
 #, fuzzy, python-format
 msgid "See also: <a href=\"%(lang_prefix)s/about\">About Scholarly Search</a>"
-msgstr "Siehe auch: <a href=\"%(lang_prefix)s/about\">Über Scholarly Search</a>"
+msgstr ""
+"Siehe auch: <a href=\"%(lang_prefix)s/about\">Über Scholarly Search</a>"
 
 #: fatcat_scholar/templates/help.html:25
 #, fuzzy
@@ -374,8 +375,8 @@ msgid ""
 "attempt to parse the citation and do a match against our catalog of known "
 "works. When this happens, any filters are ignored."
 msgstr ""
-"Als experimentelle Funktion versucht der Dienst, wenn die Suchanfrage \"wie\""
-" ein formales Zitat aussieht, wie es in der Bibliographie einer "
+"Als experimentelle Funktion versucht der Dienst, wenn die Suchanfrage \"wie"
+"\" ein formales Zitat aussieht, wie es in der Bibliographie einer "
 "Forschungsarbeit zu finden ist, das Zitat zu analysieren und einen Abgleich "
 "mit unserem Katalog bekannter Werke durchzuführen. Wenn dies geschieht, "
 "werden alle Filter ignoriert."
@@ -394,8 +395,8 @@ msgid ""
 "code>."
 msgstr ""
 "Sie können mit einem Sternchen wie <code>doi:*</code> auf Datensätze "
-"beschränken, in denen das Feld vorhanden ist, und jeden Begriff wie "
-"<code>!type:article-journal</code> negieren."
+"beschränken, in denen das Feld vorhanden ist, und jeden Begriff wie <code>!"
+"type:article-journal</code> negieren."
 
 #: fatcat_scholar/templates/help.html:64
 #, fuzzy
@@ -417,8 +418,8 @@ msgid ""
 "\"https://github.com/internetarchive/fatcat-scholar/blob/master/schema/"
 "scholar_fulltext.v01.json\">in the source code</a>."
 msgstr ""
-"Das vollständige aktuelle Suchdokumentenschema ist (als JSON) <a href=\"https"
-"://github.com/internetarchive/fatcat-scholar/blob/master/schema/"
+"Das vollständige aktuelle Suchdokumentenschema ist (als JSON) <a href="
+"\"https://github.com/internetarchive/fatcat-scholar/blob/master/schema/"
 "scholar_fulltext.v01.json\">im Quellcode</a> verfügbar."
 
 #: fatcat_scholar/templates/help.html:103
@@ -536,8 +537,8 @@ msgid ""
 "\">ISO two-letter language code</a> is indicated"
 msgstr ""
 "Die primäre Sprache dieser Arbeit ist eine andere als die Sprache der "
-"Suchoberfläche. Der <a href=\"https://en.wikipedia.org/wiki/List_of_ISO_639-"
-"1_codes\">ISO-Zweibuchstaben-Sprachcode</a> wird angegeben"
+"Suchoberfläche. Der <a href=\"https://en.wikipedia.org/wiki/"
+"List_of_ISO_639-1_codes\">ISO-Zweibuchstaben-Sprachcode</a> wird angegeben"
 
 #: fatcat_scholar/templates/help.html:166
 #, fuzzy
@@ -552,15 +553,6 @@ msgstr ""
 #: fatcat_scholar/templates/help.html:170
 #, fuzzy
 msgid ""
-"Published on a <a href=\"https://en.wikipedia.org/wiki/SciELO\">SciELO</a> "
-"national platform"
-msgstr ""
-"Veröffentlicht auf einer <a href=\"https://en.wikipedia.org/wiki/SciELO\""
-">SciELO</a> nationalen Plattform"
-
-#: fatcat_scholar/templates/help.html:174
-#, fuzzy
-msgid ""
 "Publication indexed in <a href=\"https://www.ebsco.com/open-access/"
 "szczepanski-list\">Szczepanski's List of Open Access Journals</a>, which "
 "implies that this is an Open Access work"
@@ -569,7 +561,7 @@ msgstr ""
 "szczepanski-list\">Szczepanski's List of Open Access Journals</a> indiziert, "
 "was bedeutet, dass es sich um eine Open-Access-Arbeit handelt"
 
-#: fatcat_scholar/templates/help.html:178
+#: fatcat_scholar/templates/help.html:174
 #, fuzzy
 msgid ""
 "The work is believed to be <a href=\"https://en.wikipedia.org/wiki/"
@@ -577,6 +569,15 @@ msgid ""
 msgstr ""
 "Die Arbeit wird aus einem anderen Grund als <a href=\"https://en.wikipedia."
 "org/wiki/Open_access\">\"Open Access\"</a> angesehen"
+
+#: fatcat_scholar/templates/help.html:178
+#, fuzzy
+msgid ""
+"Published on a <a href=\"https://en.wikipedia.org/wiki/SciELO\">SciELO</a> "
+"national platform"
+msgstr ""
+"Veröffentlicht auf einer <a href=\"https://en.wikipedia.org/wiki/SciELO"
+"\">SciELO</a> nationalen Plattform"
 
 #: fatcat_scholar/templates/help.html:182
 #, fuzzy
@@ -593,8 +594,8 @@ msgid ""
 "Published using <a href=\"https://en.wikipedia.org/wiki/Wordpress"
 "\">WordPress</a> software"
 msgstr ""
-"Veröffentlicht mit <a href=\"https://en.wikipedia.org/wiki/Wordpress\""
-">WordPress</a> Software"
+"Veröffentlicht mit <a href=\"https://en.wikipedia.org/wiki/Wordpress"
+"\">WordPress</a> Software"
 
 #: fatcat_scholar/templates/help.html:190
 #, fuzzy
@@ -669,7 +670,7 @@ msgstr ""
 msgid "Work In Progress"
 msgstr "Laufende Arbeiten"
 
-#: fatcat_scholar/templates/help.html:241
+#: fatcat_scholar/templates/help.html:241 fatcat_scholar/templates/home.html:36
 #, fuzzy
 #| msgid ""
 #| "This service is in \"alpha\". It has several bugs, experiences\n"
@@ -722,20 +723,8 @@ msgstr ""
 msgid "More &raquo;"
 msgstr "Mehr &raquo;"
 
-#: fatcat_scholar/templates/home.html:36
-#, fuzzy
-#| msgid ""
-#| "This service is in \"alpha\". It has several bugs, experiences\n"
-#| "        downtime, and has not been officially announced."
-msgid ""
-"This service is in \"alpha\". It has several bugs, experiences\n"
-"          downtime, and has not been officially announced."
-msgstr ""
-"Dieser Dienst befindet sich im „Alpha“-Zustand. Er enthält Fehler,\n"
-"        Ausfallzeiten und wurde nicht offiziell veröffentlicht."
-
-#: fatcat_scholar/templates/home.html:50 fatcat_scholar/templates/home.html:64
-#: fatcat_scholar/templates/home.html:78 fatcat_scholar/templates/home.html:92
+#: fatcat_scholar/templates/home.html:49 fatcat_scholar/templates/home.html:63
+#: fatcat_scholar/templates/home.html:77 fatcat_scholar/templates/home.html:91
 msgid "PDF thumbnail"
 msgstr "PDF-Miniaturansicht"
 
@@ -772,27 +761,27 @@ msgstr ""
 "Die Abfrage ist derzeit recht einfach. Das Problem kann jedoch manchmal "
 "durch das Hinzufügen von Anführungszeichen behoben werden."
 
-#: fatcat_scholar/templates/search.html:143
+#: fatcat_scholar/templates/search.html:144
 msgid "We didn't find any documents matching your query"
 msgstr "Wir haben keine entsprechende Dokumente gefunden"
 
-#: fatcat_scholar/templates/search.html:148
+#: fatcat_scholar/templates/search.html:149
 msgid "Try All Resource Types"
 msgstr "Alle Ressourcenarten verwenden"
 
-#: fatcat_scholar/templates/search.html:153
+#: fatcat_scholar/templates/search.html:154
 msgid "Try All Time"
 msgstr "Ohne Datumsfilter"
 
-#: fatcat_scholar/templates/search.html:158
+#: fatcat_scholar/templates/search.html:159
 msgid "Try Metadata Records"
 msgstr "Metadatensätze verwenden"
 
-#: fatcat_scholar/templates/search.html:161
+#: fatcat_scholar/templates/search.html:162
 msgid "Start Over"
 msgstr "Neue Suche"
 
-#: fatcat_scholar/templates/search.html:174
+#: fatcat_scholar/templates/search.html:175
 msgid "Enter a query in the box above to get started"
 msgstr "Suchbegriff ins obige Feld eintragen, um loszulegen"
 
@@ -809,7 +798,7 @@ msgid "read fulltext microfilm"
 msgstr "Volltext auf Mikrofilm lesen"
 
 #: fatcat_scholar/templates/search_macros.html:63
-#: fatcat_scholar/templates/search_macros.html:238
+#: fatcat_scholar/templates/search_macros.html:243
 msgid "fulltext access"
 msgstr "Zugriff auf Volltext"
 
@@ -819,7 +808,7 @@ msgid "Web Archive"
 msgstr "Web-Archiv"
 
 #: fatcat_scholar/templates/search_macros.html:74
-#: fatcat_scholar/templates/search_macros.html:256
+#: fatcat_scholar/templates/search_macros.html:261
 #, fuzzy
 msgid "File Archive"
 msgstr "Datei-Archiv"
@@ -854,38 +843,42 @@ msgstr "[XML]"
 msgid "fulltext thumbnail"
 msgstr "Volltext-Miniaturansicht"
 
-#: fatcat_scholar/templates/search_macros.html:192
+#: fatcat_scholar/templates/search_macros.html:111
+msgid "Publisher / doi.org"
+msgstr ""
+
+#: fatcat_scholar/templates/search_macros.html:197
 msgid "unknown"
 msgstr "unbekannt"
 
-#: fatcat_scholar/templates/search_macros.html:208
+#: fatcat_scholar/templates/search_macros.html:213
 #, python-format
 msgid "Page %(page_num)s of %(journal_name)s Vol. %(volume)s, Issue %(issue)s"
 msgstr ""
 "Seite %(page_num)s von %(journal_name)s Band %(volume)s, Ausgabe %(issue)s"
 
-#: fatcat_scholar/templates/search_macros.html:210
+#: fatcat_scholar/templates/search_macros.html:215
 msgid "page"
 msgstr "Seite"
 
-#: fatcat_scholar/templates/search_macros.html:231
+#: fatcat_scholar/templates/search_macros.html:236
 #, fuzzy
 #| msgid "Fulltext"
 msgid "Preserved Fulltext"
 msgstr "Voller Text"
 
-#: fatcat_scholar/templates/search_macros.html:254
+#: fatcat_scholar/templates/search_macros.html:259
 #, fuzzy
 msgid "Web Archive Capture"
 msgstr "Web-Archiv-Erfassung"
 
-#: fatcat_scholar/templates/search_macros.html:258
+#: fatcat_scholar/templates/search_macros.html:263
 #, fuzzy
 #| msgid "Microfilm"
 msgid "Digitized Microfilm"
 msgstr "Mikrofilm"
 
-#: fatcat_scholar/templates/search_macros.html:283
+#: fatcat_scholar/templates/search_macros.html:288
 #, fuzzy, python-format
 msgid ""
 "A copy of this work was available on the public web and has been preserved "
@@ -895,10 +888,10 @@ msgid ""
 msgstr ""
 "Eine Kopie dieser Arbeit war im öffentlichen Web verfügbar und ist in der "
 "Wayback Machine erhalten geblieben. Die Erfassung stammt aus "
-"%(capture_year)s; Sie können auch <a rel=\"external noopener\" href=\""
-"%(original_url)s\">die ursprüngliche URL</a> besuchen."
+"%(capture_year)s; Sie können auch <a rel=\"external noopener\" href="
+"\"%(original_url)s\">die ursprüngliche URL</a> besuchen."
 
-#: fatcat_scholar/templates/search_macros.html:285
+#: fatcat_scholar/templates/search_macros.html:290
 #, fuzzy
 msgid ""
 "The Internet Archive has a preservation copy of this work in our general "
@@ -907,7 +900,7 @@ msgstr ""
 "Das Internet Archive hat eine Erhaltungskopie dieses Werks in unseren "
 "allgemeinen Sammlungen."
 
-#: fatcat_scholar/templates/search_macros.html:287
+#: fatcat_scholar/templates/search_macros.html:292
 #, fuzzy
 msgid ""
 "The Internet Archive has digitized a microfilm copy of this work. It may be "
@@ -916,18 +909,15 @@ msgstr ""
 "Das Internet Archive hat eine Mikrofilmkopie dieses Werkes digitalisiert. Es "
 "ist eventuell möglich, eine Kopie zum Lesen auszuleihen."
 
-#: fatcat_scholar/templates/search_macros.html:291
+#: fatcat_scholar/templates/search_macros.html:296
 #, fuzzy, python-format
-msgid ""
-"\n"
-"                The file type is %(mimetype)s.\n"
-"              "
+msgid "The file type is %(mimetype)s."
 msgstr ""
 "\n"
 "                Der Dateityp ist %(mimetype)s.\n"
 "              "
 
-#: fatcat_scholar/templates/search_macros.html:298
+#: fatcat_scholar/templates/search_macros.html:301
 #, fuzzy
 msgid ""
 "Note that this fulltext copy is not of the \"primary\" version of this work. "
@@ -936,12 +926,12 @@ msgstr ""
 "Beachten Sie, dass diese Volltextkopie nicht der \"primären\" Version dieses "
 "Werks entspricht. Die Version, der sie entspricht, ist:"
 
-#: fatcat_scholar/templates/search_macros.html:312
+#: fatcat_scholar/templates/search_macros.html:315
 #, fuzzy
 msgid "Additional access options for the primary version of this work:"
 msgstr "Zusätzliche Zugriffsmöglichkeiten auf die Primärversion dieses Werkes:"
 
-#: fatcat_scholar/templates/search_macros.html:322
+#: fatcat_scholar/templates/search_macros.html:325
 #, fuzzy
 msgid ""
 "We don't yet know of a public preservation copy of this work. You may be "
@@ -952,7 +942,7 @@ msgstr ""
 "Möglicherweise können Sie ein Exemplar dieses Werks zum Lesen vom Verlag, "
 "von Plattformen oder von institutionellen Bibliotheken erhalten."
 
-#: fatcat_scholar/templates/search_macros.html:325
+#: fatcat_scholar/templates/search_macros.html:328
 #, fuzzy, python-format
 msgid ""
 "If you know of a legal, public version that we should archive, please let us "
@@ -960,64 +950,82 @@ msgid ""
 "\"</a>."
 msgstr ""
 "Wenn Sie eine legale, öffentliche Version kennen, die wir archivieren "
-"sollten, informieren Sie uns bitte über <a rel=\"noopener\" href=\""
-"%(save_paper_now_url)s\">\"Save Paper Now\"</a>."
+"sollten, informieren Sie uns bitte über <a rel=\"noopener\" href="
+"\"%(save_paper_now_url)s\">\"Save Paper Now\"</a>."
 
-#: fatcat_scholar/templates/search_macros.html:372
+#: fatcat_scholar/templates/search_macros.html:375
 #, fuzzy
 msgid "more &raquo;"
 msgstr "mehr &raquo;"
 
-#: fatcat_scholar/templates/search_macros.html:397
+#: fatcat_scholar/templates/search_macros.html:400
 #, fuzzy
 msgid "tag definitions"
 msgstr "Tag-Definitionen"
 
-#: fatcat_scholar/templates/search_macros.html:424
+#: fatcat_scholar/templates/search_macros.html:427
 #, fuzzy
 msgid "not primary version"
 msgstr "nicht primäre Version"
 
-#: fatcat_scholar/templates/search_macros.html:441
+#: fatcat_scholar/templates/search_macros.html:444
 #, fuzzy, python-format
 msgid "Same Issue (%(count)s)"
 msgstr "Gleiche Ausgabe (%(count)s)"
 
-#: fatcat_scholar/templates/search_macros.html:457
+#: fatcat_scholar/templates/search_macros.html:455
+msgid "cite this work"
+msgstr ""
+
+#: fatcat_scholar/templates/search_macros.html:460
 #, fuzzy
 msgid "Citation"
 msgstr "Zitat"
 
-#: fatcat_scholar/templates/search_macros.html:471
+#: fatcat_scholar/templates/search_macros.html:474
 #, fuzzy
-msgid "edit on fatcat wiki"
+msgid "edit metadata on fatcat wiki"
 msgstr "bearbeiten auf fatcat wiki"
 
-#: fatcat_scholar/templates/search_macros.html:477
-#, fuzzy
-msgid "permalink"
-msgstr "Permalink"
+#: fatcat_scholar/templates/search_macros.html:480
+msgid "permalink to this record"
+msgstr ""
 
-#: fatcat_scholar/templates/search_macros.html:493
 #: fatcat_scholar/templates/search_macros.html:496
+#: fatcat_scholar/templates/search_macros.html:499
 msgid "Previous"
 msgstr "Vorherige"
 
-#: fatcat_scholar/templates/search_macros.html:499
+#: fatcat_scholar/templates/search_macros.html:502
 #, python-format
 msgid "Showing results %(start)s &mdash; %(end)s out of %(total)s results"
 msgstr "Ergebnisse %(start)s &ndash; %(end)s von %(total)s"
 
-#: fatcat_scholar/templates/search_macros.html:505
-#: fatcat_scholar/templates/search_macros.html:507
+#: fatcat_scholar/templates/search_macros.html:508
+#: fatcat_scholar/templates/search_macros.html:510
 msgid "Next"
 msgstr "Nächste"
 
-#: fatcat_scholar/templates/search_macros.html:536
+#: fatcat_scholar/templates/search_macros.html:539
 #, fuzzy
 #| msgid "Filters"
 msgid "Clear Filters"
 msgstr "Suchfilter"
+
+#, fuzzy
+#~| msgid ""
+#~| "This service is in \"alpha\". It has several bugs, experiences\n"
+#~| "        downtime, and has not been officially announced."
+#~ msgid ""
+#~ "This service is in \"alpha\". It has several bugs, experiences\n"
+#~ "          downtime, and has not been officially announced."
+#~ msgstr ""
+#~ "Dieser Dienst befindet sich im „Alpha“-Zustand. Er enthält Fehler,\n"
+#~ "        Ausfallzeiten und wurde nicht offiziell veröffentlicht."
+
+#, fuzzy
+#~ msgid "permalink"
+#~ msgstr "Permalink"
 
 #~ msgid "access fatcat landing page"
 #~ msgstr "Zugang zur Fatcat-Landingpage"
