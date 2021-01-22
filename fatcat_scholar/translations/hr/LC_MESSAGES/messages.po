@@ -2,13 +2,13 @@
 # Copyright (C) 2020 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
-# Milo Ivir <mail@milotype.de>, 2020.
+# Milo Ivir <mail@milotype.de>, 2020, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-01-21 19:44-0800\n"
-"PO-Revision-Date: 2020-11-26 02:28+0000\n"
+"PO-Revision-Date: 2021-01-22 19:25+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/hr/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.4-dev\n"
+"X-Generator: Weblate 4.5-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:42
@@ -107,10 +107,8 @@ msgid "About %(website_name)s"
 msgstr "Informacije o %(website_name)s"
 
 #: fatcat_scholar/templates/about.html:8
-#, fuzzy
-#| msgid "Internet Archive Scholar"
 msgid "About Internet Archive Scholar"
-msgstr "Internet Archive Scholar"
+msgstr "Informacije o Internet Archive Scholar"
 
 #: fatcat_scholar/templates/base.html:12
 msgid "Internet Archive Scholar"
@@ -215,19 +213,19 @@ msgstr "Pomoć"
 
 #: fatcat_scholar/templates/error.html:12
 msgid "Not Found"
-msgstr ""
+msgstr "Nije pronađeno"
 
 #: fatcat_scholar/templates/error.html:14
 msgid "Access Forbidden"
-msgstr ""
+msgstr "Zabranjen pristup"
 
 #: fatcat_scholar/templates/error.html:16
 msgid "Request Error"
-msgstr ""
+msgstr "Greška zahtijeva"
 
 #: fatcat_scholar/templates/error.html:18
 msgid "Internal Error"
-msgstr ""
+msgstr "Interna greška"
 
 #: fatcat_scholar/templates/help.html:5
 #, python-format
@@ -329,10 +327,8 @@ msgid ""
 msgstr ""
 
 #: fatcat_scholar/templates/help.html:60
-#, fuzzy
-#| msgid "Metadata"
 msgid "Metadata Fields"
-msgstr "Metapodaci"
+msgstr "Polja metapodataka"
 
 #: fatcat_scholar/templates/help.html:62
 msgid ""
@@ -357,10 +353,8 @@ msgid ""
 msgstr ""
 
 #: fatcat_scholar/templates/help.html:103
-#, fuzzy
-#| msgid "Search"
 msgid "Search Results"
-msgstr "Traži"
+msgstr "Rezultati pretrage"
 
 #: fatcat_scholar/templates/help.html:106
 msgid "Access Links"
@@ -522,16 +516,12 @@ msgid "Work In Progress"
 msgstr ""
 
 #: fatcat_scholar/templates/help.html:241
-#, fuzzy
-#| msgid ""
-#| "This service is in \"alpha\". It has several bugs, experiences\n"
-#| "        downtime, and has not been officially announced."
 msgid ""
 "This service is in \"alpha\". It has several bugs, experiences downtime, and "
 "has not been officially announced."
 msgstr ""
-"Usluga se nalazi u „alfa” fazi. Sadrži greške,\n"
-"        ponakad je nedostupna i nije javno objavljena."
+"Usluga se nalazi u „alfa” fazi. Sadrži greške, ponakad je nedostupna i nije "
+"javno objavljena."
 
 #: fatcat_scholar/templates/help.html:244
 msgid "This project is currently a <i>prototype</i>"
@@ -572,10 +562,6 @@ msgid "More &raquo;"
 msgstr ""
 
 #: fatcat_scholar/templates/home.html:36
-#, fuzzy
-#| msgid ""
-#| "This service is in \"alpha\". It has several bugs, experiences\n"
-#| "        downtime, and has not been officially announced."
 msgid ""
 "This service is in \"alpha\". It has several bugs, experiences\n"
 "          downtime, and has not been officially announced."
@@ -666,38 +652,36 @@ msgstr "pristup tekstu"
 
 #: fatcat_scholar/templates/search_macros.html:72
 msgid "Web Archive"
-msgstr ""
+msgstr "Internetski arhiv"
 
 #: fatcat_scholar/templates/search_macros.html:74
 #: fatcat_scholar/templates/search_macros.html:256
 msgid "File Archive"
-msgstr ""
+msgstr "Datotečni arhiv"
 
 #: fatcat_scholar/templates/search_macros.html:76
-#, fuzzy
-#| msgid "Microfilm"
 msgid "Archive [Microfilm]"
-msgstr "Mikrofilm"
+msgstr "Arhiv [Mikrofilm]"
 
 #: fatcat_scholar/templates/search_macros.html:78
 msgid "Other"
-msgstr ""
+msgstr "Ostalo"
 
 #: fatcat_scholar/templates/search_macros.html:82
 msgid "[PDF]"
-msgstr ""
+msgstr "[PDF]"
 
 #: fatcat_scholar/templates/search_macros.html:84
 msgid "[HTML]"
-msgstr ""
+msgstr "[HTML]"
 
 #: fatcat_scholar/templates/search_macros.html:86
 msgid "[XML]"
-msgstr ""
+msgstr "[XML]"
 
 #: fatcat_scholar/templates/search_macros.html:95
 msgid "fulltext thumbnail"
-msgstr "minijatura potpunog teksta"
+msgstr "minijatura teksta"
 
 #: fatcat_scholar/templates/search_macros.html:192
 msgid "unknown"
@@ -715,20 +699,16 @@ msgid "page"
 msgstr "stranica"
 
 #: fatcat_scholar/templates/search_macros.html:231
-#, fuzzy
-#| msgid "Fulltext"
 msgid "Preserved Fulltext"
-msgstr "Tekst"
+msgstr "Očuvan tekst"
 
 #: fatcat_scholar/templates/search_macros.html:254
 msgid "Web Archive Capture"
-msgstr ""
+msgstr "Snimanje web arhiva"
 
 #: fatcat_scholar/templates/search_macros.html:258
-#, fuzzy
-#| msgid "Microfilm"
 msgid "Digitized Microfilm"
-msgstr "Mikrofilm"
+msgstr "Digitaliziran mikrofilm"
 
 #: fatcat_scholar/templates/search_macros.html:283
 #, python-format
@@ -829,10 +809,8 @@ msgid "Next"
 msgstr "Sljedeći"
 
 #: fatcat_scholar/templates/search_macros.html:536
-#, fuzzy
-#| msgid "Filters"
 msgid "Clear Filters"
-msgstr "Filtri"
+msgstr "Izbriši filtre"
 
 #~ msgid "access fatcat landing page"
 #~ msgstr "pristup fatcat stranici"
