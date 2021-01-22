@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # Bryan Newbold <bnewbold@robocracy.org>, 2020.
-# Eric <spice2wolf@gmail.com>, 2020.
+# Eric <spice2wolf@gmail.com>, 2020, 2021.
 # Forbidden <10278743+f0rb1d@users.noreply.github.com>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-01-21 19:44-0800\n"
-"PO-Revision-Date: 2020-11-26 02:28+0000\n"
+"PO-Revision-Date: 2021-01-22 19:25+0000\n"
 "Last-Translator: Eric <spice2wolf@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "internetarchive/fatcat-scholar/zh_Hans/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.4-dev\n"
+"X-Generator: Weblate 4.5-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:42
@@ -108,10 +108,8 @@ msgid "About %(website_name)s"
 msgstr "关于 %(website_name)s"
 
 #: fatcat_scholar/templates/about.html:8
-#, fuzzy
-#| msgid "Internet Archive Scholar"
 msgid "About Internet Archive Scholar"
-msgstr "互联网档案学术"
+msgstr "关于互联网档案馆学术"
 
 #: fatcat_scholar/templates/base.html:12
 msgid "Internet Archive Scholar"
@@ -239,8 +237,6 @@ msgid "Try It"
 msgstr "试试看"
 
 #: fatcat_scholar/templates/help.html:22
-#, fuzzy
-#| msgid "User Guide"
 msgid "Scholar User Guide"
 msgstr "用户指南"
 
@@ -329,10 +325,8 @@ msgid ""
 msgstr ""
 
 #: fatcat_scholar/templates/help.html:60
-#, fuzzy
-#| msgid "Metadata"
 msgid "Metadata Fields"
-msgstr "元数据"
+msgstr "元数据字段"
 
 #: fatcat_scholar/templates/help.html:62
 msgid ""
@@ -357,10 +351,8 @@ msgid ""
 msgstr ""
 
 #: fatcat_scholar/templates/help.html:103
-#, fuzzy
-#| msgid "Search"
 msgid "Search Results"
-msgstr "搜索"
+msgstr "搜索结果"
 
 #: fatcat_scholar/templates/help.html:106
 msgid "Access Links"
@@ -522,16 +514,10 @@ msgid "Work In Progress"
 msgstr ""
 
 #: fatcat_scholar/templates/help.html:241
-#, fuzzy
-#| msgid ""
-#| "This service is in \"alpha\". It has several bugs, experiences\n"
-#| "        downtime, and has not been officially announced."
 msgid ""
 "This service is in \"alpha\". It has several bugs, experiences downtime, and "
 "has not been officially announced."
-msgstr ""
-"此服务为“ alpha”。它有几个错误，经验\n"
-"        停机时间，尚未正式宣布。"
+msgstr "这项服务处于 \"alpha\" 阶段。它有几个错误，经历宕机，且尚未正式发布。"
 
 #: fatcat_scholar/templates/help.html:244
 msgid "This project is currently a <i>prototype</i>"
@@ -570,16 +556,12 @@ msgid "More &raquo;"
 msgstr ""
 
 #: fatcat_scholar/templates/home.html:36
-#, fuzzy
-#| msgid ""
-#| "This service is in \"alpha\". It has several bugs, experiences\n"
-#| "        downtime, and has not been officially announced."
 msgid ""
 "This service is in \"alpha\". It has several bugs, experiences\n"
 "          downtime, and has not been officially announced."
 msgstr ""
-"此服务为“ alpha”。它有几个错误，经验\n"
-"        停机时间，尚未正式宣布。"
+"这项服务处于 \"alpha\" 阶段。它有几个错误，\n"
+"          经历宕机，且尚未正式发布。"
 
 #: fatcat_scholar/templates/home.html:50 fatcat_scholar/templates/home.html:64
 #: fatcat_scholar/templates/home.html:78 fatcat_scholar/templates/home.html:92
@@ -669,10 +651,8 @@ msgid "File Archive"
 msgstr ""
 
 #: fatcat_scholar/templates/search_macros.html:76
-#, fuzzy
-#| msgid "Microfilm"
 msgid "Archive [Microfilm]"
-msgstr "缩微胶卷"
+msgstr "存档 [微缩胶卷]"
 
 #: fatcat_scholar/templates/search_macros.html:78
 msgid "Other"
@@ -691,10 +671,8 @@ msgid "[XML]"
 msgstr ""
 
 #: fatcat_scholar/templates/search_macros.html:95
-#, fuzzy
-#| msgid "PDF thumbnail"
 msgid "fulltext thumbnail"
-msgstr "PDF缩略图"
+msgstr "全文缩略图"
 
 #: fatcat_scholar/templates/search_macros.html:192
 msgid "unknown"
@@ -710,20 +688,16 @@ msgid "page"
 msgstr "分页模式"
 
 #: fatcat_scholar/templates/search_macros.html:231
-#, fuzzy
-#| msgid "Fulltext"
 msgid "Preserved Fulltext"
-msgstr "全文"
+msgstr "保存的全文"
 
 #: fatcat_scholar/templates/search_macros.html:254
 msgid "Web Archive Capture"
 msgstr ""
 
 #: fatcat_scholar/templates/search_macros.html:258
-#, fuzzy
-#| msgid "Microfilm"
 msgid "Digitized Microfilm"
-msgstr "缩微胶卷"
+msgstr "数字化的缩微胶卷"
 
 #: fatcat_scholar/templates/search_macros.html:283
 #, python-format
@@ -824,10 +798,8 @@ msgid "Next"
 msgstr "下一个"
 
 #: fatcat_scholar/templates/search_macros.html:536
-#, fuzzy
-#| msgid "Filters"
 msgid "Clear Filters"
-msgstr "搜索过滤器"
+msgstr "清除过滤器"
 
 #~ msgid "access fatcat landing page"
 #~ msgstr "访问Fatcat登录页面"
