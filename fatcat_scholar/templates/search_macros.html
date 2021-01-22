@@ -169,11 +169,11 @@
   {% endif %}
 {% endmacro %}
 
-{% macro fulltext_search_result_row(paper, locale=None, debug_mode=False) -%}
+{% macro fulltext_search_result_row(paper, locale=None, debug_mode=False, expand=False) -%}
 <div class="ui stackable doubling grid">
 <div class="thirteen wide column biblio-record">
 
-<details class="access-options">
+<details class="access-options" {% if expand %}open{% endif %}>
 <summary>
   {# ### TITLE ROW #}
   <h3 class="biblio-title">

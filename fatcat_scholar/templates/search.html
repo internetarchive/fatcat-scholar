@@ -126,8 +126,9 @@
         {% endif %}
 
         {# search results (rendered via macro) #}
+        {% set expand_result = hits.query_type == 'lookup' %}
         {% for paper in hits.results %}
-          {{ search_macros.fulltext_search_result_row(paper, locale=locale, debug_mode=query.debug) }}
+          {{ search_macros.fulltext_search_result_row(paper, locale=locale, debug_mode=query.debug, expand=expand_result) }}
         {% endfor %}
 
         {% if hits.count_found > hits.limit %}
