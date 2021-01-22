@@ -64,7 +64,7 @@
     {% set access_alt = access_alt + " [" + other_version + "]" %}
   {% endif %}
   <a target="_blank" rel="noopener" href="{{ access.access_url}}" title="{{ access_alt }}" {% if settings.ENABLE_GOATCOUNTER %}data-goatcounter-click="serp-fulltext-button"{% endif %}>
-    <button class="ui simple right pointing dropdown fluid compact black labeled icon button serp-button">
+    <button class="ui simple right pointing dropdown compact black labeled icon button serp-button">
       <i class="icon" style="background: no-repeat center / 50% url('/static/ia-favicon.ico');"></i>
       {% if access.access_type == "wayback" %}
         {% trans %}Web Archive{% endtrans %}
@@ -102,7 +102,7 @@
     {% set publisher = "" or (biblio.publisher and biblio.publisher.lower()) %}
     {% set container_name = "" or (biblio.container_name and biblio.container_name.lower()) %}
     <a target="_blank" rel="external noopener noreferrer" href="https://doi.org/{{ biblio.doi }}" style="color: green;">
-      <button class="ui fluid left aligned compact blue labeled icon button serp-button">
+      <button class="ui left aligned compact blue labeled icon button serp-button">
         {% if is_oa %}
           <i class="unlock alternate icon" style="background-color: #fb971f;"></i>
         {% else %}
@@ -137,17 +137,17 @@
 {% endmacro %}
 
 {% macro platform_access_button(biblio) %}
-  {# TODO: DOAJ, dblp #}
+  {# TODO: DOAJ #}
   {% if biblio.arxiv_id %}
     <a target="_blank" rel="noopener" href="https://arxiv.org/abs/{{ biblio.arxiv_id }}" title="arxiv.org access">
-      <button class="ui fluid compact blue labeled icon button serp-button">
+      <button class="ui compact blue labeled icon button serp-button">
         <i class="file alternate outline icon"></i>
         arxiv.org
       </button>
     </a>
   {% elif biblio.pmcid %}
     <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pmc/articles/{{ biblio.pmcid }}" title="pubmed link">
-      <button class="ui fluid compact blue labeled icon button serp-button">
+      <button class="ui compact blue labeled icon button serp-button">
         <i class="file alternate outline icon"></i>
         pubmed.gov
       </button>
@@ -196,7 +196,7 @@
   <h3 class="biblio-title">
 
     {% if paper.doc_type == "work" %}
-      <span style="color: #2224c7; cursor: pointer;">
+      <span class="link">
         {% if paper.biblio.title %}
           {{ paper.biblio.title[:512] }}
           {% if paper.biblio.title|length > 512 %}...{% endif %}
@@ -226,9 +226,9 @@
       {% endif %}
 
     {% elif paper.doc_type == "sim_page" %}
-      <a target="_blank" rel="noopener" href="https://archive.org/details/{{ paper.ia_sim.issue_item }}/page/{{ paper.ia_sim.first_page }}" title="{{ _('access microfilm on archive.org') }}" {% if settings.ENABLE_GOATCOUNTER %}data-goatcounter-click="serp-title-sim-page"{% endif %}>
+      <span class="link">
         {% trans page_num = paper.ia_sim.first_page, journal_name = paper.biblio.container_name, volume = paper.biblio.volume, issue = paper.biblio.issue %}Page {{ page_num }} of {{ journal_name }} Vol. {{ volume }}, Issue {{ issue }}{% endtrans %}
-      </a>
+      </span>
       <span class="release-type">[{{ _("page") }}]</span>
     {% endif %}
 
@@ -456,7 +456,7 @@
 
   {# ### COLLAPSED HITS  #}
   {% if paper._collapsed_count > 0 %}
-    <button class="ui fluid left aligned basic blue compact button serp-button" form="search_form" type="submit" name="collapse_key" value="{{ paper.collapse_key }}">
+    <button class="ui basic compact blue labeled icon button serp-button" form="search_form" type="submit" name="collapse_key" value="{{ paper.collapse_key }}">
       <i class="ui icon zoom-in"></i>
       {% trans trimmed count=paper._collapsed_count %}
         Same Issue ({{ count }})
@@ -474,18 +474,17 @@
         </div>
       </summary>
       <div class="citation-menu menu">
-        <table class="ui very basic table">
-          <tbody>
-            <tr>
-              <td>Generic</td>
-              <td>{{ paper._obj.biblio.citation_str("default") }}</td>
-            </tr>
-            <tr>
-              <td>BibTeX</td>
-              <td><pre>{{ paper._obj.biblio.citation_str("bibtex") }}</pre></td>
-            </tr>
-          </tbody>
-        </table>
+        <b>{% trans %}Citation{% endtrans %}</b>
+        <p>{{ paper._obj.biblio.citation_str("default") }}
+        {% if paper.doc_type == "work" %}
+          <div class="ui divider"></div>
+          <ul class="ui horizontal list">
+            <li class="item"><a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}/citeproc?style=modern-language-association" target="_blank" rel="noopener">MLA</a></li>
+            <li class="item"><a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}/citeproc?style=elsevier-harvard" target="_blank" rel="noopener">Harvard</a></li>
+            <li class="item"><a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}/citeproc?style=csl-json" target="_blank" rel="noopener">CSL-JSON</a></li>
+            <li class="item"><a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}.bib" target="_blank" rel="noopener">BibTeX</a></li>
+          </ul>
+        {% endif %}
       </div>
     </details>
 
