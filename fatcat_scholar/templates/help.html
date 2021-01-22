@@ -1,3 +1,4 @@
+{% import "search_macros.html" as search_macros %}
 {% extends "base.html" %}
 
 {% block title %}
@@ -18,61 +19,229 @@
 {% endmacro %}
 
 {% block main %}
-<h1>Scholar Search User Guide</h1>
-<p><i>See also: <a href="{{ lang_prefix }}/about">About Scholarly Search</a></i>
+<h1>{% trans %}Scholar User Guide{% endtrans %}</h1>
+<p><i>{% trans %}See also: <a href="{{ lang_prefix }}/about">About Scholarly Search</a>{% endtrans %}</i>
 
-<p>In addition to the basic filtering and sorting options, this search
+<p>{% trans %}This service provides <a href="https://en.wikipedia.org/wiki/Full-text_search">fulltext searching</a> over all research publications archived in Internet Archive's various collections. It includes content from the natural sciences, humanities, biomedicine, art, history, industrial research, government reports, and more.{% endtrans %}
+<p>{% trans %}Reader access to the content is provided when possible. Sometimes this access is to a "pre-print" or other version of the work, and this is indicated in the search results.{% endtrans %}
+{% trans %}In other cases, depending on search filters, results are included for which there is only a bibliographic catalog entry. It may still be possible to obtain access through a public library or from the publisher directly.{% endtrans %}
+
+<h2>{% trans %}Query Syntax{% endtrans %}</h2>
+
+<p>{% trans %}In addition to the basic filtering and sorting options, this search
 interface also allows the use of Lucene query syntax in the search box. You can
 restrict term queries on multiple metadata fields using colon statements like
 <code>journal:Science</code>, set filters like <code>lang:de</code>, and
-apply range queries like <code>year:&gt;1989 year:&lt;2000</code>.
+apply range queries like <code>year:&gt;1989 year:&lt;2000</code>.{% endtrans %}
+
+<p>{% trans %}While this syntax allows for relatively complex and powerful queries, at some point advanded users may run in to limits on the size or complexity of queries.{% endtrans %}
+{% trans %}For the time being we recommend systems like <a href="https://lens.org">lens.org</a> for a more powerful interface.{% endtrans %}
 
 
-<h3>Example Queries</h3>
+<h3>{% trans %}Example Queries{% endtrans %}</h3>
 
-<p>Search for digitized pages about a topic from specific years:
+<p>{% trans %}Search for digitized pages about a topic from specific years:{% endtrans %}
 
 {{ example_search_box('"egyptian pyramid" access_type:ia_sim year:<2000') }}
 
-<p>Search for papers in Chinese matching a term:
+<p>{% trans %}Search for papers in Chinese matching a term:{% endtrans %}
 
 {{ example_search_box('lang:zh 临床表现多样') }}
 
-<p>Conference papers with an author name query:
+<p>{% trans %}Conference papers with an author name query:{% endtrans %}
 
 {{ example_search_box('type:paper-conference author:"natasha noy"') }}
 
-<h3>Details</h3>
+<h3>{% trans %}Citation Queries{% endtrans %}</h3>
+<p>{% trans %}As an experimental feature, if the search query "looks like" a formal citation, as found in the bibliography of a research paper, the service will attempt to parse the citation and do a match against our catalog of known works. When this happens, any filters are ignored.{% endtrans %}
 
-<p>A partial list of metadata fields is:
+{{ example_search_box('Spertus, Ellen. "ParaSite: Mining structural information on the Web." Computer Networks and ISDN Systems 29.8-13 (1997): 1205-1215.') }}
 
-<ul>
-  <li>title
-  <li>author
-  <li>journal
-  <li>year
-  <li>issue
-  <li>volume
-  <li>doi
-  <li>type (eg, "article-journal", "dataset", "book")
-  <li>stage (eg, "published", "submitted", "accepted", "draft")
-  <li>lang (value is a 2-character lower-case ISO lanuage code)
-  <li>country (value is a 2-character lower-case ISO country code)
-  <li>access_type (eg, "wayback", "ia_file", "ia_sim")
-  <li>tag
-</ul>
+<h3>{% trans %}Metadata Fields{% endtrans %}</h3>
 
-<p>You can restrict to records where the field exists with an asterisk like
-<code>doi:*</code>, and negate any term like
-<code>!type:article-journal</code>.
+<p>{% trans %}You can restrict to records where the field exists with an asterisk like <code>doi:*</code>, and negate any term like <code>!type:article-journal</code>.{% endtrans %}
 
-<p>In-depth documentation of the query syntax is available <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-query-notes">from the open source project</a>. The complete current search document schema can be fetched (in JSON format) <a href="https://search.fatcat.wiki/qa_scholar_fulltext/_mapping">from the search index itself</a>.
+<p>{% trans %}In-depth documentation of the query syntax is available <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-query-notes">from the Elasticsearch project</a>.{% endtrans %}
 
+<p>{% trans %}The complete current search document schema is available (as JSON) <a href="https://github.com/internetarchive/fatcat-scholar/blob/master/schema/scholar_fulltext.v01.json">in the source code</a>.{% endtrans %}
 
-<h3>Known Issues</h3>
+<table class="ui very basic compact small table">
+  <colgroup>
+    <col>
+    <col>
+  </colgroup>
+  <tbody>
+    <tr><td style="font-family: monospace;">title:
+        <td>
+    <tr><td style="font-family: monospace;">author:
+        <td>
+    <tr><td style="font-family: monospace;">journal:
+        <td>
+    <tr><td style="font-family: monospace;">year:
+        <td>
+    <tr><td style="font-family: monospace;">issue:
+        <td>
+    <tr><td style="font-family: monospace;">volume:
+        <td>
+    <tr><td style="font-family: monospace;">doi:
+        <td>
+    <tr><td style="font-family: monospace;">tag:
+        <td style="font-family: monospace;">eg, "tag:oa"
+    <tr><td style="font-family: monospace;">type:
+        <td>eg, "article-journal", "dataset", "book"
+    <tr><td style="font-family: monospace;">stage:
+        <td>eg, "published", "submitted", "accepted", "draft"
+    <tr><td style="font-family: monospace;">lang;
+        <td>value is a 2-character lower-case ISO lanuage code)
+    <tr><td style="font-family: monospace;">country:
+        <td>value is a 2-character lower-case ISO country code
+    <tr><td style="font-family: monospace;">access_type:
+        <td>"wayback", "ia_file", "ia_sim"
+  </tbody>
+</table>
 
-<p>This project is currently a <i>prototype</i>, with only a limited amount of
-content indexed.
+<h2>{% trans %}Search Results{% endtrans %}</h3>
+
+<a name="access"></a>
+<h3>{% trans %}Access Links{% endtrans %}</h3>
+
+<table class="ui very basic compact small table">
+  <colgroup>
+    <col style="width: 18%;">
+    <col>
+  </colgroup>
+  <tbody>
+    <tr>
+      <td>{{ search_macros.ia_access_button({'access_type': 'wayback', 'access_url': '#', 'file_mimetype': 'application/pdf'}) }}</td>
+      <td>{% trans %}All Internet Archive preservation copy links have the same style and icon. Content from the Wayback Machine looks like this.{% endtrans %}</td>
+    </tr>
+    <tr>
+      <td>{{ search_macros.ia_access_button({'access_type': 'wayback', 'access_url': '#', 'file_mimetype': 'text/html'}, other_version='123') }}</td>
+      <td>{% trans %}If the preserved copy of the work is from a pre-print, author manuscript, or other alternative version of the work, the access link has an indicator. You can get details and view all versions by clicking on the primary title link{% endtrans %}</td>
+    </tr>
+    <tr>
+      <td>{{ search_macros.ia_access_button({'access_type': 'ia_file', 'access_url': '#', 'file_mimetype': 'application/pdf'}) }}</td>
+      <td>{% trans %}Some preserved content, particularly older Public Domain works, may be stored in general Internet Archive digital collections (as opposed to the web archive){% endtrans %}</td>
+    </tr>
+    <tr>
+      <td>{{ search_macros.ia_access_button({'access_type': 'ia_sim', 'access_url': '#'}) }}</td>
+      <td>{% trans %}Digitized copies of works on microfilm may be linked to experimentally. Access may be limited to controlled lending{% endtrans %}</td>
+    </tr>
+    <tr>
+      <td>{{ search_macros.doi_access_button({'doi': '#'}, is_oa=False) }}</td>
+      <td>{% trans %}A publisher landing page is the authoriative source for the "version of record" of a research publication, but content is not always accessible to the general public{% endtrans %}</td>
+    </tr>
+    <tr>
+      <td>{{ search_macros.doi_access_button({'doi': '#'}, is_oa=True) }}</td>
+      <td>{% trans %}When the work is from an Open Access publication (sometimes known as "Gold" or "Diamond" OA), and the publisher is expected to provide access to all readers, the button has an orange "unlocked" icon{% endtrans %}</td>
+    </tr>
+    <tr>
+      <td>{{ search_macros.platform_access_button({'arxiv_id': '#'}) }}</td>
+      <td>{% trans %}If the work is archived in full on a reliable, open platform, we will sometimes provide additional links{% endtrans %}</td>
+    </tr>
+  </tbody>
+</table>
+
+<a name="tags"></a>
+<h3>Tags</h3>
+
+<p>{% trans %}Search results may have tag labels which provide additional context about the work. For example, indexes the journal is included in, or open platform technology used for publications.{% endtrans %}
+
+<table class="ui very basic compact small table">
+  <colgroup>
+    <col style="width: 18%;">
+    <col>
+  </colgroup>
+  <tbody>
+    <tr>
+      <td>{{ search_macros.tag_label('multiple-versions') }}</td>
+      <td>{% trans %}There are multiple released "versions" or "editions" of this work, and bibliographic metadata for the "primary" is being shown. Click the title to see other versions{% endtrans %}</td>
+    </tr>
+    <tr>
+      <td>{{ search_macros.tag_label('lang:en') }}</td>
+      <td>{% trans %}The primary language of this work is different from the search interface language. The <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">ISO two-letter language code</a> is indicated{% endtrans %}</td>
+    </tr>
+    <tr>
+      <td>{{ search_macros.tag_label('doaj') }}</td>
+      <td>{% trans %}Published in a <a href="https://doaj.org">Directory of Open Access Journals</a> publication, which implies that this is an Open Access work{% endtrans %}</td>
+    </tr>
+    <tr>
+      <td>{{ search_macros.tag_label('scielo') }}</td>
+      <td>{% trans %}Published on a <a href="https://en.wikipedia.org/wiki/SciELO">SciELO</a> national platform{% endtrans %}</td>
+    </tr>
+    <tr>
+      <td>{{ search_macros.tag_label('szczepanski') }}</td>
+      <td>{% trans %}Publication indexed in <a href="https://www.ebsco.com/open-access/szczepanski-list">Szczepanski's List of Open Access Journals</a>, which implies that this is an Open Access work{% endtrans %}</td>
+    </tr>
+    <tr>
+      <td>{{ search_macros.tag_label('oa') }}</td>
+      <td>{% trans %}The work is believed to be <a href="https://en.wikipedia.org/wiki/Open_access">"Open Access"</a> for any other reason{% endtrans %}</td>
+    </tr>
+    <tr>
+      <td>{{ search_macros.tag_label('ojs') }}</td>
+      <td>{% trans %}Published using <a href="https://en.wikipedia.org/wiki/Open_Journal_Systems">Open Journal Systems</a> software{% endtrans %}</td>
+    </tr>
+    <tr>
+      <td>{{ search_macros.tag_label('wordpress') }}</td>
+      <td>{% trans %}Published using <a href="https://en.wikipedia.org/wiki/Wordpress">WordPress</a> software{% endtrans %}</td>
+    </tr>
+    <tr>
+      <td>{{ search_macros.tag_label('jstor') }}</td>
+      <td>{% trans %}Preserved and/or hosted on the <a href="https://en.wikipedia.org/wiki/JSTOR">JSTOR</a> digital preservation platform{% endtrans %}</td>
+    </tr>
+  </tbody>
+</table>
+
+<a name="pids"></a>
+<h3>Persistent Identifiers</h3>
+
+<p>{% trans %}Underneath search results, and alternate version listings, are any known "persistent identifiers" that uniquely identify the specific version of the work. These are usually hyperlinks.{% endtrans %}
+
+<table class="ui very basic compact small table">
+  <colgroup>
+    <col>
+    <col>
+  </colgroup>
+  <tbody>
+    <tr>
+      <td style="color: green;">doi:</td>
+      <td>{% trans %}<a href="https://en.wikipedia.org/wiki/Digital_object_identifier">Digital Object Identifier (DOI)</a>, provides a redirect to the publisher's landing page{% endtrans %}</td>
+    </tr>
+    <tr>
+      <td style="color: green;">pmid:</td>
+      <td>{% trans %}PubMed/MEDLINE{% endtrans %}</td>
+    </tr>
+    <tr>
+      <td style="color: green;">pmcid:</td>
+      <td>{% trans %}PubMed Central{% endtrans %}</td>
+    </tr>
+    <tr>
+      <td style="color: green;">arxiv:</td>
+      <td>{% trans %}arXiv pre-print service{% endtrans %}</td>
+    </tr>
+    <tr>
+      <td style="color: green;">dblp:</td>
+      <td>{% trans %}Digital Bibliography of Logic Programming{% endtrans %}</td>
+    </tr>
+    <tr>
+      <td style="color: green;">doaj:</td>
+      <td>{% trans %}Article-level identifier for works in DOAJ, particularly those with no DOI{% endtrans %}</td>
+    </tr>
+    <tr>
+      <td style="color: green;">fatcat:</td>
+      <td>{% trans %}<a href="https://fatcat.wiki">fatcat.wiki</a> "release" identifier. Scholar is built on top of the fatcat catalog{% endtrans %}</td>
+    </tr>
+  </tbody>
+</table>
+
+<a name="bugs"></a>
+<h2>{% trans %}Work In Progress{% endtrans %}</h2>
+
+<div class="ui yellow message" style="color: black;">
+  {% trans %}This service is in "alpha". It has several bugs, experiences downtime, and has not been officially announced.{% endtrans %}
+</div>
+
+<p>{% trans %}This project is currently a <i>prototype</i>{% endtrans %}
 
 <p>Some known bugs and issues:
 
