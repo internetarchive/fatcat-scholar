@@ -90,7 +90,7 @@
 
       {% if show_thumbnail and access.thumbnail_url %}
         <div class="menu fulltext-thumbnail">
-          <img src="{{ access.thumbnail_url }}" alt="fulltext thumbnail" loading="lazy">
+          <img src="{{ access.thumbnail_url }}" alt="{{ _('fulltext thumbnail') }}" loading="lazy">
         </div>
       {% endif %}
     </button>
@@ -139,14 +139,14 @@
 {% macro platform_access_button(biblio) %}
   {# TODO: DOAJ #}
   {% if biblio.arxiv_id %}
-    <a target="_blank" rel="noopener" href="https://arxiv.org/abs/{{ biblio.arxiv_id }}" title="arxiv.org access">
+    <a target="_blank" rel="external noopener" href="https://arxiv.org/abs/{{ biblio.arxiv_id }}" title="arxiv.org access">
       <button class="ui compact blue labeled icon button serp-button">
         <i class="file alternate outline icon"></i>
         arxiv.org
       </button>
     </a>
   {% elif biblio.pmcid %}
-    <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pmc/articles/{{ biblio.pmcid }}" title="pubmed link">
+    <a target="_blank" rel="external noopener" href="https://www.ncbi.nlm.nih.gov/pmc/articles/{{ biblio.pmcid }}" title="pubmed link">
       <button class="ui compact blue labeled icon button serp-button">
         <i class="file alternate outline icon"></i>
         pubmed.gov
@@ -271,7 +271,7 @@
         </div>
         <div class="content">
           <div class="header">
-            <a href="{{ paper.fulltext.access_url }}">
+            <a rel="noopener" href="{{ paper.fulltext.access_url }}">
             {% if paper.fulltext.access_type == "wayback" %}
               {% trans %}Web Archive Capture{% endtrans %}
             {% elif paper.fulltext.access_type == "ia_file" %}
@@ -294,13 +294,15 @@
             </a>
           </div>
           <div class="meta">
-            <a href="{{ paper.fulltext.access_url}}">
+            <a rel="noopener" href="{{ paper.fulltext.access_url}}">
               {{ paper.fulltext.access_url }}
             </a>
           </div>
           <div class="description">
             {% if paper.fulltext.access_type == "wayback" %}
-              <p>A copy of this work was available on the public web and has been preserved in the Wayback Machine. The capture dates from {{ paper.fulltext.access_url.split('/')[4][:4] }}; you can also visit <a href="{{ '/'.join(paper.fulltext.access_url.split('/')[5:]) }}">the original URL</a>.
+              {% set original_url = '/'.join(paper.fulltext.access_url.split('/')[5:]) %}
+              {% set capture_year = paper.fulltext.access_url.split('/')[4][:4] %}
+              <p>{% trans %}A copy of this work was available on the public web and has been preserved in the Wayback Machine. The capture dates from {{ capture_year }}; you can also visit <a rel="external noopener" href="{{ original_url }}">the original URL</a>.{% endtrans %}
             {% elif paper.fulltext.access_type == "ia_file" %}
               <p>{% trans %}The Internet Archive has a preservation copy of this work in our general collections.{% endtrans %}
             {% elif paper.fulltext.access_type == "ia_sim" %}
@@ -414,7 +416,7 @@
       </a>
     {% endif %}
 
-    <a rel="noopener" href="{{ lang_prefix }}/help#tags" title="">
+    <a rel="noopener" href="{{ lang_prefix }}/help#tags" aria-label="{{ _('tag definitions') }}">
       {% for tag in paper.tags|sort %}
         {# HACK: don't show "oa" tag if already obvious #}
         {% if tag != "oa" or ("doaj" not in paper.tags and "szczepanski" not in paper.tags) %}
@@ -489,15 +491,15 @@
     </details>
 
     <a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}" rel="noopener" title="{{ _('edit on fatcat wiki') }}">
-      <button class="circular ui icon compact basic button" aria-label="">
+      <div class="circular ui icon compact basic button">
         <i class="edit icon"></i>
-      </button>
+      </div>
     </a>
 
     <a href="{{ lang_prefix }}/search?q=key:{{ paper.key }}" rel="noopener" title="{{ _('permalink') }}">
-      <button class="circular ui icon compact basic button" aria-label="">
+      <div class="circular ui icon compact basic button">
         <i class="linkify icon"></i>
-      </button>
+      </div>
     </a>
 
   </div>
