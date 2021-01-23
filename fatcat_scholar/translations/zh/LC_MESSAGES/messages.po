@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-01-22 11:48-0800\n"
-"PO-Revision-Date: 2021-01-22 19:56+0000\n"
-"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"PO-Revision-Date: 2021-01-24 12:32+0000\n"
+"Last-Translator: Eric <spice2wolf@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "internetarchive/fatcat-scholar/zh_Hans/>\n"
 "Language: zh\n"
@@ -729,7 +729,6 @@ msgid "fulltext thumbnail"
 msgstr "全文缩略图"
 
 #: fatcat_scholar/templates/search_macros.html:111
-#, fuzzy
 msgid "Publisher / doi.org"
 msgstr "出版社/doi.org"
 
@@ -783,16 +782,9 @@ msgid ""
 msgstr "互联网档案馆已将该作品的缩微胶卷数字化。可能可以借阅一份副本。"
 
 #: fatcat_scholar/templates/search_macros.html:296
-#, fuzzy, python-format
-#| msgid ""
-#| "\n"
-#| "                The file type is %(mimetype)s.\n"
-#| "              "
+#, python-format
 msgid "The file type is %(mimetype)s."
-msgstr ""
-"\n"
-"                文件类型为%(mimetype)s。\n"
-"              "
+msgstr "文件类型为 %(mimetype)s。"
 
 #: fatcat_scholar/templates/search_macros.html:301
 msgid ""
@@ -841,7 +833,6 @@ msgid "Same Issue (%(count)s)"
 msgstr "同一期（%(count)s）"
 
 #: fatcat_scholar/templates/search_macros.html:455
-#, fuzzy
 msgid "cite this work"
 msgstr "引用此作品"
 
@@ -850,15 +841,12 @@ msgid "Citation"
 msgstr "引文"
 
 #: fatcat_scholar/templates/search_macros.html:474
-#, fuzzy
-#| msgid "edit on fatcat wiki"
 msgid "edit metadata on fatcat wiki"
-msgstr "在Fatcat Wiki上编辑"
+msgstr "在 fatcat wiki 上编辑元数据"
 
 #: fatcat_scholar/templates/search_macros.html:480
-#, fuzzy
 msgid "permalink to this record"
-msgstr "该记录的永久记录"
+msgstr "该记录的永久链接"
 
 #: fatcat_scholar/templates/search_macros.html:496
 #: fatcat_scholar/templates/search_macros.html:499
