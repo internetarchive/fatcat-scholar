@@ -99,6 +99,7 @@ class ScholarBiblio(BaseModel):
     container_ident: Optional[str]
     container_issnl: Optional[str]
     container_wikidata_qid: Optional[str]
+    container_sherpa_color: Optional[str]
     issns: List[str]
     container_type: Optional[str]
     contrib_count: Optional[int]
@@ -469,38 +470,36 @@ def es_abstracts_from_release(release: ReleaseEntity) -> List[ScholarAbstract]:
 
 def es_biblio_from_release(release: ReleaseEntity) -> ScholarBiblio:
 
+    container_name = release.extra and release.extra.get("container_name")
+
     if release.container:
-        publisher = release.container.publisher or release.publisher
-        publisher_type = release.container.extra and release.container.extra.get(
-            "publisher_type", None
-        )
-        if not publisher_type or not isinstance(publisher_type, str):
-            publisher_type = None
-        container_name = release.container.name
-        container_original_name = (
-            release.container.extra and release.container.extra.get("original_name")
-        )
-        if not container_original_name or not isinstance(container_original_name, str):
-            container_original_name = None
+        publisher = release.publisher or release.container.publisher
+        container_name = container_name or release.container.name
         container_ident = release.container.ident
         container_type = release.container.container_type
         container_issnl = release.container.issnl
         issns = []
         if container_issnl:
             issns.append(container_issnl)
-        if release.container.extra and release.container.extra.get("issne"):
-            issns.append(release.container.extra["issne"])
-        if release.container.extra and release.container.extra.get("issnp"):
-            issns.append(release.container.extra["issnp"])
+        publisher_type = None
+        container_original_name = None
+        if release.container.extra:
+            publisher_type = release.container.extra.get("publisher_type")
+            container_original_name = release.container.extra.get("original_name")
+            container_sherpa_color = release.container.extra.get("sherpa_romeo", {}).get("color")
+            if release.container.extra.get("issne"):
+                issns.append(release.container.extra["issne"])
+            if release.container.extra.get("issnp"):
+                issns.append(release.container.extra["issnp"])
         issns = list(set(issns))
     else:
-        publisher = release.extra and release.extra.get("publisher")
         publisher_type = None
-        container_name = release.extra and release.extra.get("container_name")
+        publisher = release.publisher
         container_original_name = None
         container_ident = None
         container_type = None
         container_issnl = None
+        container_sherpa_color = None
         issns = []
 
     first_page: Optional[str] = None
@@ -547,6 +546,7 @@ def es_biblio_from_release(release: ReleaseEntity) -> ScholarBiblio:
         container_ident=container_ident,
         container_type=container_type,
         container_issnl=container_issnl,
+        container_sherpa_color=container_sherpa_color,
         issns=issns,
         # TODO; these filters sort of meh. refactor to be above?
         contrib_names=list(

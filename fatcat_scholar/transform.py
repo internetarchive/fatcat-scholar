@@ -168,6 +168,7 @@ def es_biblio_from_sim(sim: Dict[str, Any]) -> ScholarBiblio:
         container_ident=None,  # TODO
         container_type=None,  # TODO
         container_issnl=None,  # TODO
+        # container_sherpa_color
         issns=issns,
         # no contrib/affiliation info
         contrib_names=[],

@@ -118,6 +118,7 @@
             "container_ident":      { "type": "keyword", "normalizer": "default" },
             "container_issnl":      { "type": "keyword", "normalizer": "default" },
             "container_wikidata_qid": { "type": "keyword", "normalizer": "default" },
+            "container_sherpa_color": { "type": "keyword", "normalizer": "default" },
             "issns":                { "type": "keyword", "normalizer": "default" },
             "container_type":       { "type": "keyword", "normalizer": "default" },
             "contrib_count":        { "type": "short" },
