@@ -158,8 +158,6 @@ def load_i18n_templates() -> Any:
         # remove a lot of whitespace in HTML output with these configs
         templates.env.trim_blocks = True
         templates.env.lstrip_blocks = True
-        # have {% trans %} blocks trim whitespace by default
-        templates.env.policies['ext.i18n.trimmed'] = True
         # pass-through application settings to be available in templates
         templates.env.globals["settings"] = settings
         d[lang_opt] = templates
