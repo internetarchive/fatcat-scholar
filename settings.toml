@@ -21,6 +21,8 @@ GOATCOUNTER_SCRIPT_URL = "https://goatcounter.scholar.fatcat.wiki/count.js"
 ONION_DOMAIN = "scholar-qa.archivev3qli37bju4rlh27glh24lljyezwxf4pokmrdbpefjlcrp5id.onion"
 ENABLE_PROMETHEUS = false
 ENABLE_CITATION_QUERY = true
+EXCLUDE_WEB_CONTAINER_IDENTS = []
+EXCLUDE_WEB_PUBLISHERS = []
 
 [test]
 SCHOLAR_ENV = "test"

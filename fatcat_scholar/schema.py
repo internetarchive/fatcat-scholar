@@ -159,6 +159,20 @@ class ScholarFulltext(BaseModel):
     access_url: Optional[str]
     access_type: Optional[AccessType]
 
+    def remove_access(self) -> Any:
+        """
+        Returns a fulltext-indexable copy of self, but with access options and
+        file-level details removed
+        """
+        return ScholarFulltext(
+            lang_code=self.lang_code,
+            body=self.body,
+            acknowledgement=self.acknowledgement,
+            annex=self.annex,
+            release_ident=self.release_ident,
+            thumbnail_url=self.thumbnail_url,
+        )
+
 
 class ScholarRelease(BaseModel):
     ident: Optional[str]

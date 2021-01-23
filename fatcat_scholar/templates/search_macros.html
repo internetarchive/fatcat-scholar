@@ -236,7 +236,7 @@
     {% trans %}Preserved Fulltext{% endtrans %}
   </h4>
 
-  {% if paper.fulltext %}
+  {% if paper.fulltext and paper.fulltext.access_url %}
     <div class="ui items">
       <div class="item">
         <div class="image">

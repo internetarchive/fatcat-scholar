@@ -394,6 +394,28 @@ def generate_tags(
     return list(set(tags))
 
 
+def check_exclude_web(biblio: ScholarBiblio) -> bool:
+    """
+    Returns a flag that fulltext web archive options to a work should not be
+    linked to from web interface
+    """
+    if biblio.release_year and biblio.release_year <= 1925:
+        return False
+    if biblio.container_ident and biblio.container_ident in settings.EXCLUDE_WEB_CONTAINER_IDENTS:
+        return True
+    if biblio.publisher:
+        for pub in settings.EXCLUDE_WEB_PUBLISHERS:
+            if pub in biblio.publisher.lower():
+                return True
+    if biblio.license_slug and biblio.license_slug.startswith("cc-"):
+        return False
+    if biblio.pmcid:
+        return False
+    if biblio.container_sherpa_color and biblio.container_sherpa_color == "white":
+        return True
+    return False
+
+
 def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
 
     tags: List[str] = []
@@ -402,6 +424,7 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
     abstracts: List[ScholarAbstract] = []
     fulltext: Optional[ScholarFulltext] = None
     primary_release: Optional[ReleaseEntity] = None
+    exclude_web_fulltext: bool = False
 
     ia_sim: Optional[ScholarSim] = None
     if heavy.sim_fulltext is not None:
@@ -427,6 +450,7 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
         ][0]
         biblio = es_biblio_from_release(primary_release)
         biblio = biblio_metadata_hacks(biblio)
+        exclude_web_fulltext = check_exclude_web(biblio)
         abstracts = es_abstracts_from_release(primary_release)
 
         # if no abstract from primary_release, try all the other releases
@@ -448,11 +472,17 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
             if f.ident == heavy.grobid_fulltext["file_ident"]
         ][0]
         tei_dict = teixml2json(heavy.grobid_fulltext["tei_xml"])
-        fulltext = es_fulltext_from_grobid(
-            tei_dict, heavy.pdf_meta, fulltext_release, fulltext_file
-        )
         if not abstracts:
             abstracts = es_abstracts_from_grobid(tei_dict)
+        grobid_fulltext = es_fulltext_from_grobid(
+            tei_dict, heavy.pdf_meta, fulltext_release, fulltext_file
+        )
+        if exclude_web_fulltext and grobid_fulltext:
+            if not fulltext:
+                # include only partial fulltext object, with no access
+                fulltext = grobid_fulltext.remove_access()
+        else:
+            fulltext = grobid_fulltext
 
     if not fulltext and heavy.pdftotext_fulltext:
         fulltext_release = [
@@ -465,12 +495,16 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
             for f in fulltext_release.files
             if f.ident == heavy.pdftotext_fulltext["file_ident"]
         ][0]
-        fulltext = es_fulltext_from_pdftotext(
+        pdftotext_fulltext = es_fulltext_from_pdftotext(
             heavy.pdftotext_fulltext["raw_text"],
             heavy.pdf_meta,
             fulltext_release,
             fulltext_file,
         )
+        if exclude_web_fulltext and pdftotext_fulltext:
+            fulltext = pdftotext_fulltext.remove_access()
+        else:
+            fulltext = pdftotext_fulltext
 
     if not fulltext and heavy.html_fulltext:
         fulltext_release = [
@@ -481,9 +515,13 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
             for f in fulltext_release.webcaptures
             if f.ident == heavy.html_fulltext["webcapture_ident"]
         ][0]
-        fulltext = es_fulltext_from_html(
+        html_fulltext = es_fulltext_from_html(
             heavy.html_fulltext, fulltext_release, fulltext_webcapture,
         )
+        if exclude_web_fulltext and html_fulltext:
+            fulltext = html_fulltext.remove_access()
+        else:
+            fulltext = html_fulltext
 
     # TODO: additional access list (eg, HTML if only PDF currently)
     access_dict = dict()
@@ -499,9 +537,10 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
         access_dict[AccessType.ia_sim] = ScholarAccess(
             access_type=AccessType.ia_sim,
             access_url=f"https://archive.org/details/{ia_sim.issue_item}/page/{ia_sim.first_page}",
+            # TODO: release_ident
         )
 
-    # TODO: additional abstracts
+    # TODO: additional abstracts (?)
 
     tags = generate_tags(biblio, primary_release)
 
