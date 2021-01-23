@@ -7,9 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-01-22 11:48-0800\n"
-"PO-Revision-Date: 2021-01-01 04:29+0000\n"
+"PO-Revision-Date: 2021-01-24 12:32+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
 "internetarchive/fatcat-scholar/nb_NO/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.4.1-dev\n"
+"X-Generator: Weblate 4.5-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:42
@@ -133,7 +133,7 @@ msgstr "etter tittel, forfattere, nøkkelord…"
 
 #: fatcat_scholar/templates/base.html:98
 msgid "search for papers"
-msgstr ""
+msgstr "søk etter publiseringer"
 
 #: fatcat_scholar/templates/base.html:99 fatcat_scholar/templates/home.html:16
 msgid "Search"
@@ -218,19 +218,19 @@ msgstr "Hjelp"
 
 #: fatcat_scholar/templates/error.html:12
 msgid "Not Found"
-msgstr ""
+msgstr "Ikke funnet"
 
 #: fatcat_scholar/templates/error.html:14
 msgid "Access Forbidden"
-msgstr ""
+msgstr "Tilgang nektes"
 
 #: fatcat_scholar/templates/error.html:16
 msgid "Request Error"
-msgstr ""
+msgstr "Forespørselsfeil"
 
 #: fatcat_scholar/templates/error.html:18
 msgid "Internal Error"
-msgstr ""
+msgstr "Intern feil"
 
 #: fatcat_scholar/templates/help.html:5
 #, python-format
@@ -250,7 +250,7 @@ msgstr "Brukerveiledning"
 #: fatcat_scholar/templates/help.html:23
 #, python-format
 msgid "See also: <a href=\"%(lang_prefix)s/about\">About Scholarly Search</a>"
-msgstr ""
+msgstr "Sjekk også: <a href=\"%(lang_prefix)s/about\">Om Scholarly-søk</a>"
 
 #: fatcat_scholar/templates/help.html:25
 msgid ""
@@ -277,7 +277,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:29
 msgid "Query Syntax"
-msgstr ""
+msgstr "Spørringssyntaks"
 
 #: fatcat_scholar/templates/help.html:31
 msgid ""
@@ -302,26 +302,29 @@ msgid ""
 "For the time being we recommend systems like <a href=\"https://lens.org"
 "\">lens.org</a> for a more powerful interface."
 msgstr ""
+"For øyeblikket anbefaler vi systemer som <a href=\"https://lens.org\">lens."
+"org</a> for et kraftigere grensesnitt."
 
 #: fatcat_scholar/templates/help.html:41
 msgid "Example Queries"
-msgstr ""
+msgstr "Eksempelspørringer"
 
 #: fatcat_scholar/templates/help.html:43
 msgid "Search for digitized pages about a topic from specific years:"
-msgstr ""
+msgstr "Søk etter digitaliserte sider om et emne fra spesifikke år:"
 
 #: fatcat_scholar/templates/help.html:47
 msgid "Search for papers in Chinese matching a term:"
-msgstr ""
+msgstr "Søk etter publiseringer på Kinesisk som samsvarer med et søk:"
 
 #: fatcat_scholar/templates/help.html:51
+#, fuzzy
 msgid "Conference papers with an author name query:"
-msgstr ""
+msgstr "Konferansepubliseringer med forfatternavns-spørring:"
 
 #: fatcat_scholar/templates/help.html:55
 msgid "Citation Queries"
-msgstr ""
+msgstr "Siterings-spørringer"
 
 #: fatcat_scholar/templates/help.html:56
 msgid ""
@@ -330,6 +333,10 @@ msgid ""
 "attempt to parse the citation and do a match against our catalog of known "
 "works. When this happens, any filters are ignored."
 msgstr ""
+"Som en eksperimentell funksjon, hvis søket «ser ut som» en formell sitering, "
+"som den er å finne i bibliografien til en forskningspublikasjon, vil "
+"tjenesten prøve å tolke siteringen og jamføre den mot vår katalog av kjente "
+"verker. Hvis dette skjer, ignoreres alle filtre."
 
 #: fatcat_scholar/templates/help.html:60
 #, fuzzy
@@ -367,7 +374,7 @@ msgstr "Søk"
 
 #: fatcat_scholar/templates/help.html:106
 msgid "Access Links"
-msgstr ""
+msgstr "Tilgangslenker"
 
 #: fatcat_scholar/templates/help.html:116
 msgid ""
@@ -435,6 +442,9 @@ msgid ""
 "language. The <a href=\"https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes"
 "\">ISO two-letter language code</a> is indicated"
 msgstr ""
+"Hovedspråket for dette verket er forskjellig fra søkegrensesnittsspråket. <a "
+"href=\"https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes\">ISO-"
+"tobokstavskode</a> er indikert"
 
 #: fatcat_scholar/templates/help.html:166
 msgid ""
@@ -454,24 +464,33 @@ msgid ""
 "The work is believed to be <a href=\"https://en.wikipedia.org/wiki/"
 "Open_access\">\"Open Access\"</a> for any other reason"
 msgstr ""
+"Dette verket er antatt å være <a href=\"https://en.wikipedia.org/wiki/"
+"Open_access\">\"åpen tilgang\"</a> for ethvert annet formål"
 
 #: fatcat_scholar/templates/help.html:178
+#, fuzzy
 msgid ""
 "Published on a <a href=\"https://en.wikipedia.org/wiki/SciELO\">SciELO</a> "
 "national platform"
 msgstr ""
+"Publisert på en nasjonal <a href=\"https://en.wikipedia.org/wiki/SciELO\""
+">SciELO</a>-plattform"
 
 #: fatcat_scholar/templates/help.html:182
 msgid ""
 "Published using <a href=\"https://en.wikipedia.org/wiki/Open_Journal_Systems"
 "\">Open Journal Systems</a> software"
 msgstr ""
+"Publisert ved bruk av <a href=\"https://en.wikipedia.org/wiki/"
+"Open_Journal_Systems\">Open Journal Systems</a>-programvare"
 
 #: fatcat_scholar/templates/help.html:186
 msgid ""
 "Published using <a href=\"https://en.wikipedia.org/wiki/Wordpress"
 "\">WordPress</a> software"
 msgstr ""
+"Publisert ved bruk av <a href=\"https://en.wikipedia.org/wiki/Wordpress\""
+">WordPress</a>-programvare"
 
 #: fatcat_scholar/templates/help.html:190
 msgid ""
@@ -495,11 +514,11 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:212
 msgid "PubMed/MEDLINE"
-msgstr ""
+msgstr "PubMed/MEDLINE"
 
 #: fatcat_scholar/templates/help.html:216
 msgid "PubMed Central"
-msgstr ""
+msgstr "PubMed Central"
 
 #: fatcat_scholar/templates/help.html:220
 msgid "arXiv pre-print service"
@@ -522,23 +541,19 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:238
 msgid "Work In Progress"
-msgstr ""
+msgstr "Arbeid underveis"
 
 #: fatcat_scholar/templates/help.html:241 fatcat_scholar/templates/home.html:36
-#, fuzzy
-#| msgid ""
-#| "This service is in \"alpha\". It has several bugs, experiences\n"
-#| "        downtime, and has not been officially announced."
 msgid ""
 "This service is in \"alpha\". It has several bugs, experiences downtime, and "
 "has not been officially announced."
 msgstr ""
-"Denne tjenesten er i alfa-stadie. Den har flere feil, opplever\n"
-"        nedetid, og har ikke blitt offisielt annonsert enda."
+"Denne tjenesten er i alfa-stadie. Den har flere feil, den opplever nedetid, "
+"og har ikke blitt offisielt annonsert enda."
 
 #: fatcat_scholar/templates/help.html:244
 msgid "This project is currently a <i>prototype</i>"
-msgstr ""
+msgstr "Dette prosjektet er for tiden en <i>prototype</i>"
 
 #: fatcat_scholar/templates/home.html:10
 msgid "Internet Archive Scholar logo (vaporwave)"
@@ -573,7 +588,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/home.html:24
 msgid "More &raquo;"
-msgstr ""
+msgstr "Mer"
 
 #: fatcat_scholar/templates/home.html:49 fatcat_scholar/templates/home.html:63
 #: fatcat_scholar/templates/home.html:77 fatcat_scholar/templates/home.html:91
@@ -661,12 +676,12 @@ msgstr "Fulltekst"
 
 #: fatcat_scholar/templates/search_macros.html:72
 msgid "Web Archive"
-msgstr ""
+msgstr "Nettarkiv"
 
 #: fatcat_scholar/templates/search_macros.html:74
 #: fatcat_scholar/templates/search_macros.html:261
 msgid "File Archive"
-msgstr ""
+msgstr "Filarkiv"
 
 #: fatcat_scholar/templates/search_macros.html:76
 #, fuzzy
@@ -676,19 +691,19 @@ msgstr "Mikrofilm"
 
 #: fatcat_scholar/templates/search_macros.html:78
 msgid "Other"
-msgstr ""
+msgstr "Annet"
 
 #: fatcat_scholar/templates/search_macros.html:82
 msgid "[PDF]"
-msgstr ""
+msgstr "[PDF}"
 
 #: fatcat_scholar/templates/search_macros.html:84
 msgid "[HTML]"
-msgstr ""
+msgstr "[HTML]"
 
 #: fatcat_scholar/templates/search_macros.html:86
 msgid "[XML]"
-msgstr ""
+msgstr "[XML]"
 
 #: fatcat_scholar/templates/search_macros.html:95
 msgid "fulltext thumbnail"
@@ -750,9 +765,9 @@ msgid ""
 msgstr ""
 
 #: fatcat_scholar/templates/search_macros.html:296
-#, python-format
+#, fuzzy, python-format
 msgid "The file type is %(mimetype)s."
-msgstr ""
+msgstr "Filtypen er %(mimetype)s."
 
 #: fatcat_scholar/templates/search_macros.html:301
 msgid ""
@@ -778,18 +793,22 @@ msgid ""
 "know via <a rel=\"noopener\" href=\"%(save_paper_now_url)s\">\"Save Paper Now"
 "\"</a>."
 msgstr ""
+"Hvis du vet om en lovlig, offentlig versjon vi bør arkivere, la det komme "
+"oss til kjenne via <a rel=\"noopener\" href=\"%(save_paper_now_url)s\">«"
+"Lagre publikasjon nå»</a>."
 
 #: fatcat_scholar/templates/search_macros.html:375
 msgid "more &raquo;"
-msgstr ""
+msgstr "mer"
 
 #: fatcat_scholar/templates/search_macros.html:400
 msgid "tag definitions"
-msgstr ""
+msgstr "etikett-definisjoner"
 
 #: fatcat_scholar/templates/search_macros.html:427
+#, fuzzy
 msgid "not primary version"
-msgstr ""
+msgstr "ikke hovedversjonen"
 
 #: fatcat_scholar/templates/search_macros.html:444
 #, python-format
@@ -798,15 +817,15 @@ msgstr ""
 
 #: fatcat_scholar/templates/search_macros.html:455
 msgid "cite this work"
-msgstr ""
+msgstr "siter dette verket"
 
 #: fatcat_scholar/templates/search_macros.html:460
 msgid "Citation"
-msgstr ""
+msgstr "Sitering"
 
 #: fatcat_scholar/templates/search_macros.html:474
 msgid "edit metadata on fatcat wiki"
-msgstr ""
+msgstr "rediger metadata på fatcat-wiki-en"
 
 #: fatcat_scholar/templates/search_macros.html:480
 msgid "permalink to this record"
