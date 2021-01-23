@@ -317,7 +317,7 @@ class WorkPipeline:
         html_fulltext: Optional[Any] = None
         for ident in pref_idents:
             release = release_dict[ident]
-            if not release.files:
+            if not (release.files or release.webcaptures):
                 continue
             for fe in release.files:
                 if not fe.sha1 or fe.mimetype not in (None, "application/pdf"):
