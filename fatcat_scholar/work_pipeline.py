@@ -404,7 +404,7 @@ class WorkPipeline:
                 continue
             if batch:
                 ib = self.process_release_list(batch)
-                print(ib.json(exclude_none=True))
+                print(ib.json(exclude_none=True, sort_keys=True))
                 batch_work_id = None
             batch = [
                 release,
