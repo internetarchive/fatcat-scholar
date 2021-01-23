@@ -680,6 +680,7 @@ def run_transform(infile: Sequence) -> None:
             pdftotext_fulltext=obj.get("pdftotext_fulltext"),
             pdf_meta=obj.get("pdf_meta"),
             sim_fulltext=obj.get("sim_fulltext"),
+            html_fulltext=obj.get("html_fulltext"),
         )
         es_doc = transform_heavy(heavy)
         if not es_doc:
@@ -702,6 +703,7 @@ def run_refs(infile: Sequence) -> None:
             pdftotext_fulltext=obj.get("pdftotext_fulltext"),
             pdf_meta=obj.get("pdf_meta"),
             sim_fulltext=obj.get("sim_fulltext"),
+            html_fulltext=obj.get("html_fulltext"),
         )
         refs = refs_from_heavy(heavy)
         for ref in refs:
