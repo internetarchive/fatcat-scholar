@@ -2,15 +2,15 @@
 # Copyright (C) 2020 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
-# Artem <KovalevArtem.ru@gmail.com>, 2020.
+# Artem <KovalevArtem.ru@gmail.com>, 2020, 2021.
 # Bryan Newbold <bnewbold@robocracy.org>, 2020, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-01-22 11:48-0800\n"
-"PO-Revision-Date: 2021-01-22 19:56+0000\n"
-"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"PO-Revision-Date: 2021-01-26 06:46+0000\n"
+"Last-Translator: Artem <KovalevArtem.ru@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/ru/>\n"
 "Language: ru\n"
@@ -215,22 +215,18 @@ msgid "Help"
 msgstr "Справка"
 
 #: fatcat_scholar/templates/error.html:12
-#, fuzzy
 msgid "Not Found"
-msgstr "Не Найдено"
+msgstr "Не найдено"
 
 #: fatcat_scholar/templates/error.html:14
-#, fuzzy
 msgid "Access Forbidden"
-msgstr "Доступ Запрещён"
+msgstr "Доступ запрещён"
 
 #: fatcat_scholar/templates/error.html:16
-#, fuzzy
 msgid "Request Error"
 msgstr "Ошибка запроса"
 
 #: fatcat_scholar/templates/error.html:18
-#, fuzzy
 msgid "Internal Error"
 msgstr "Внутренняя ошибка"
 
@@ -339,7 +335,6 @@ msgstr ""
 "\">lens.org</a> для более мощного интерфейса."
 
 #: fatcat_scholar/templates/help.html:41
-#, fuzzy
 msgid "Example Queries"
 msgstr "Примеры запросов"
 
