@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-01-22 11:48-0800\n"
-"PO-Revision-Date: 2021-01-22 19:25+0000\n"
+"PO-Revision-Date: 2021-01-26 06:46+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/hr/>\n"
@@ -237,15 +237,15 @@ msgid "Try It"
 msgstr "Isprobaj"
 
 #: fatcat_scholar/templates/help.html:22
-#, fuzzy
-#| msgid "User Guide"
 msgid "Scholar User Guide"
-msgstr "Korisnički priručnik"
+msgstr "Korisnički priručnik za Scholar"
 
 #: fatcat_scholar/templates/help.html:23
 #, python-format
 msgid "See also: <a href=\"%(lang_prefix)s/about\">About Scholarly Search</a>"
 msgstr ""
+"Također pogledaj: <a href=\"%(lang_prefix)s/about\">Pretraživanje "
+"znanstvenih radova</a>"
 
 #: fatcat_scholar/templates/help.html:25
 msgid ""
@@ -272,7 +272,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:29
 msgid "Query Syntax"
-msgstr ""
+msgstr "Sintaksa za pretragu"
 
 #: fatcat_scholar/templates/help.html:31
 msgid ""
@@ -300,23 +300,23 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:41
 msgid "Example Queries"
-msgstr ""
+msgstr "Primjeri pretraživanja"
 
 #: fatcat_scholar/templates/help.html:43
 msgid "Search for digitized pages about a topic from specific years:"
-msgstr ""
+msgstr "Traži digitalizirane stranice o temi u određenim godinama:"
 
 #: fatcat_scholar/templates/help.html:47
 msgid "Search for papers in Chinese matching a term:"
-msgstr ""
+msgstr "Traži članke na kineskom koji odgovaraju pojmu:"
 
 #: fatcat_scholar/templates/help.html:51
 msgid "Conference papers with an author name query:"
-msgstr ""
+msgstr "Konferencijski članci s pretragom imena autora:"
 
 #: fatcat_scholar/templates/help.html:55
 msgid "Citation Queries"
-msgstr ""
+msgstr "Pretraživanja citata"
 
 #: fatcat_scholar/templates/help.html:56
 msgid ""
@@ -325,6 +325,10 @@ msgid ""
 "attempt to parse the citation and do a match against our catalog of known "
 "works. When this happens, any filters are ignored."
 msgstr ""
+"Kao eksperimentalna funkcija, ako pretraživanje „sliči” formalnom citatu, "
+"kao što se nalazi u bibliografiji istraživačkog članka, usluga će pokušati "
+"analizirati citat i usporediti ga s našim katalogom poznatih članaka. Kada "
+"se to dogodi, svi filtri se zanemaruju."
 
 #: fatcat_scholar/templates/help.html:60
 msgid "Metadata Fields"
@@ -336,6 +340,9 @@ msgid ""
 "<code>doi:*</code>, and negate any term like <code>!type:article-journal</"
 "code>."
 msgstr ""
+"Možeš ograničiti na zapise gdje polje postoji sa zvjezdicom poput "
+"<code>doi:*</code>, i negirati bilo koji pojam poput <code>!type:article-"
+"journal</code>."
 
 #: fatcat_scholar/templates/help.html:64
 msgid ""
@@ -344,6 +351,9 @@ msgid ""
 "string-query.html#query-string-query-notes\">from the Elasticsearch project</"
 "a>."
 msgstr ""
+"Detaljna dokumentacija sintakse za pretragu dostupna je <a href=\"https://www"
+".elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-"
+"query.html#query-string-query-notes\">u projektu Elasticsearch</a>."
 
 #: fatcat_scholar/templates/help.html:66
 msgid ""
@@ -351,6 +361,9 @@ msgid ""
 "\"https://github.com/internetarchive/fatcat-scholar/blob/master/schema/"
 "scholar_fulltext.v01.json\">in the source code</a>."
 msgstr ""
+"Potpuna trenutačna shema za pretraživanje dokumenata dostupna je (kao JSON) "
+"<a href=\"https://github.com/internetarchive/fatcat-scholar/blob/master/"
+"schema/scholar_fulltext.v01.json\">u izvornoj kodu</a>."
 
 #: fatcat_scholar/templates/help.html:103
 msgid "Search Results"
@@ -510,6 +523,8 @@ msgid ""
 "<a href=\"https://fatcat.wiki\">fatcat.wiki</a> \"release\" identifier. "
 "Scholar is built on top of the fatcat catalog"
 msgstr ""
+"<a href=\"https://fatcat.wiki\">fatcat.wiki</a> identifikator „izdanja”. "
+"Scholar je izgrađen na osnovi fatcat kataloga"
 
 #: fatcat_scholar/templates/help.html:238
 msgid "Work In Progress"
@@ -525,7 +540,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:244
 msgid "This project is currently a <i>prototype</i>"
-msgstr ""
+msgstr "Ovaj je projekt trenutačno <i>prototip</i>"
 
 #: fatcat_scholar/templates/home.html:10
 msgid "Internet Archive Scholar logo (vaporwave)"
@@ -537,7 +552,7 @@ msgstr "po naslovu, autoru, ključnim riječima …"
 
 #: fatcat_scholar/templates/home.html:23
 msgid "Search Millions of Research Papers"
-msgstr "Pretraži milijune znanstvenih radova"
+msgstr "Pretraži milijune znanstvenih članaka"
 
 #: fatcat_scholar/templates/home.html:24
 msgid ""
@@ -545,7 +560,7 @@ msgid ""
 "other scholarly documents preserved in the Internet Archive."
 msgstr ""
 "Ovaj indeks pretraživanja teksta obuhvaća preko 25 milijuna istraživačkih "
-"članaka i drugih znanstvenih radova sačuvanih u knjižnici „Internet Archive”."
+"članaka i drugih znanstvenih dokumenata sačuvanih u „Internet Archive”."
 
 #: fatcat_scholar/templates/home.html:24
 msgid ""
@@ -719,28 +734,32 @@ msgstr ""
 msgid ""
 "The Internet Archive has a preservation copy of this work in our general "
 "collections."
-msgstr ""
+msgstr "Internet Archive ima primjerak ovog djela u našim općim zbirkama."
 
 #: fatcat_scholar/templates/search_macros.html:292
 msgid ""
 "The Internet Archive has digitized a microfilm copy of this work. It may be "
 "possible to borrow a copy for reading."
 msgstr ""
+"Internet Archive ima primjerak ovog djela u obliku digitaliziranog "
+"mikrofilma. Moguće je posuditi primjerak za čitanje."
 
 #: fatcat_scholar/templates/search_macros.html:296
 #, python-format
 msgid "The file type is %(mimetype)s."
-msgstr ""
+msgstr "Datotečna vrsta je %(mimetype)s."
 
 #: fatcat_scholar/templates/search_macros.html:301
 msgid ""
 "Note that this fulltext copy is not of the \"primary\" version of this work. "
 "The version it corresponds to is:"
 msgstr ""
+"Ova kopija cijelog teksta nije „primarna” verzija ovog djela. Verzija kojoj "
+"odgovara je:"
 
 #: fatcat_scholar/templates/search_macros.html:315
 msgid "Additional access options for the primary version of this work:"
-msgstr ""
+msgstr "Dodatne mogućnosti pristupa za primarnu verziju ovog rada:"
 
 #: fatcat_scholar/templates/search_macros.html:325
 msgid ""
@@ -756,39 +775,42 @@ msgid ""
 "know via <a rel=\"noopener\" href=\"%(save_paper_now_url)s\">\"Save Paper Now"
 "\"</a>."
 msgstr ""
+"Ako poznaš legalnu, javnu verziju koju bismo trebali arhivirati, javi nam "
+"putem <a rel=\"noopener\" href=\"%(save_paper_now_url)s\">„Spremi članak "
+"sada”</a>."
 
 #: fatcat_scholar/templates/search_macros.html:375
 msgid "more &raquo;"
-msgstr ""
+msgstr "više &raquo;"
 
 #: fatcat_scholar/templates/search_macros.html:400
 msgid "tag definitions"
-msgstr ""
+msgstr "definicije oznaka"
 
 #: fatcat_scholar/templates/search_macros.html:427
 msgid "not primary version"
-msgstr ""
+msgstr "nije primarna verzija"
 
 #: fatcat_scholar/templates/search_macros.html:444
 #, python-format
 msgid "Same Issue (%(count)s)"
-msgstr ""
+msgstr "Isto izdanje (%(count)s)"
 
 #: fatcat_scholar/templates/search_macros.html:455
 msgid "cite this work"
-msgstr ""
+msgstr "citiraj ovo djelo"
 
 #: fatcat_scholar/templates/search_macros.html:460
 msgid "Citation"
-msgstr ""
+msgstr "Citat"
 
 #: fatcat_scholar/templates/search_macros.html:474
 msgid "edit metadata on fatcat wiki"
-msgstr ""
+msgstr "uredi metapodatke na fatcat wiki"
 
 #: fatcat_scholar/templates/search_macros.html:480
 msgid "permalink to this record"
-msgstr ""
+msgstr "trajna poveznica na ovaj zapis"
 
 #: fatcat_scholar/templates/search_macros.html:496
 #: fatcat_scholar/templates/search_macros.html:499
