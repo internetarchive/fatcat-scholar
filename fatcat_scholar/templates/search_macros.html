@@ -490,18 +490,18 @@
 {% macro search_pagination(hits, top) %}
 {% if hits.offset > 0 %}
   <button class="text-button" form="search_form" type="submit" name="offset" value="{{ hits.offset - hits.limit }}" style="float: left;" rel="prev">
-    <a>&#xab; {% trans %}Previous{% endtrans %}</a>
+    <a>{% trans %}&laquo; Previous{% endtrans %}</a>
   </button>
 {% else %}
-  <span style="color:rgba(0,0,0,0.55); float: left">&#xab; {% trans %}Previous{% endtrans %}</span>
+  <span style="color:rgba(0,0,0,0.55); float: left">{% trans %}&laquo; Previous{% endtrans %}</span>
 {% endif %}
 
 {% if hits.offset + hits.limit < hits.count_found %}
 <button class="text-button" form="search_form" type="submit" name="offset" value="{{ hits.offset + hits.limit }}" style="float: right;" rel="next">
-  <a>{% trans %}Next{% endtrans %} &#xbb;</a>
+  <a>{% trans %}Next &raquo;{% endtrans %}</a>
 </button>
 {% else %}
-  <span style="color:rgba(0,0,0,0.55); float: right;">{% trans %}Next{% endtrans %} &#xbb;</span>
+  <span style="color:rgba(0,0,0,0.55); float: right;">{% trans %}Next &raquo;{% endtrans %}</span>
 {% endif %}
 
 <i>
