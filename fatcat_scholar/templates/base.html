@@ -18,7 +18,7 @@
     href="/static/scholar.css"
     type="text/css">
   <style>
-    {# fix RTL dividers #}
+    {# locale specific CSS hacks (mostly RTL fixes) #}
     {% if locale in ['ar'] %}
     .ui.divided.grid:not([class*="vertically divided"])>.column:not(.row), .ui.divided.grid:not([class*="vertically divided"])>.row>.column {
       box-shadow: 1px 0 0 0 rgba(34,36,38,.15);
@@ -28,6 +28,10 @@
     }
     .ui.inverted.divided.grid:not([class*="vertically divided"])>.column:not(.row), .ui.inverted.divided.grid:not([class*="vertically divided"])>.row>.column {
       box-shadow: 1px 0 0 0 rgba(255,255,255,.1);
+    }
+    {# search query box right edge #}
+    .ui.action.input:not([class*="left action"]) > input {
+      border-right-color: #999!important;
     }
     {% endif %}
   </style>

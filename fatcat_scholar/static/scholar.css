@@ -69,6 +69,12 @@ nav.ui.menu {
   width: 12.5em;
 }
 
+/* RTL padding fix */
+.ui.items > .item > .content {
+  padding-left: 0;
+  padding-inline-start: 1.5em;
+};
+
 @media only screen and (max-width: 767px) {
   .action-bar {
     justify-content: left;
