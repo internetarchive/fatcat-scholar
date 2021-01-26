@@ -26,7 +26,7 @@ nav.ui.menu {
   box-sizing: border-box;
   border-radius: 0;
   margin-bottom: 0.4em;
-  text-align: left;
+  text-align: start;
   width: 14em;
 }
 
@@ -220,6 +220,27 @@ a:hover .ui.card {
   font-family: inherit;
   cursor: pointer;
   display: inline-block;
+}
+
+.tablet-filter-bar {
+  display: flex;
+  align-items: flex-start;
+  column-gap: 2em;
+  row-gap: 2em;
+  flex-wrap: wrap;
+  padding-bottom:1.5em;
+}
+
+.filter-bar .text-button {
+  white-space: nowrap;
+  position: absolute;
+  right: 0.9em;
+}
+.filter-bar .filter-label {
+  color: rgba(0,0,0,0.55);
+  white-space: nowrap;
+  position: absolute;
+  right: 0.9em;
 }
 
 details.title-dropdown summary {

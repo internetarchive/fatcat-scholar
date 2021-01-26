@@ -33,7 +33,7 @@
 
   <details class="search-filters">
     <summary style="float: right;"><i class="filter icon"></i>{{ _("Filters") }}</summary>
-    <div style="display: flex; align-items: flex-start; column-gap: 2em; row-gap: 2em; flex-wrap: wrap; padding-bottom:1.5em;">
+    <div class="tablet-filter-bar">
       {{ search_macros.query_option(query.time_options, query.filter_time) }}
       {{ search_macros.query_option(query.type_options, query.filter_type) }}
       {{ search_macros.query_option(query.availability_options, query.filter_availability) }}
@@ -90,7 +90,7 @@
       <div class="ui clearing divider"></div>
     {% endif %}
 
-    <div style="white-space: nowrap; direction: {% if locale in ['ar'] %}ltr{% else %}rtl{% endif %};">
+    <div class = "filter-bar">
       {{ search_macros.query_option(query.time_options, query.filter_time) }}
       {{ search_macros.query_option(query.type_options, query.filter_type) }}
       {{ search_macros.query_option(query.availability_options, query.filter_availability) }}
