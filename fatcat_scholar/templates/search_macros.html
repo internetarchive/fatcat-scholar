@@ -504,7 +504,7 @@
   <span style="color:rgba(0,0,0,0.55); float: right;">{% trans %}Next &raquo;{% endtrans %}</span>
 {% endif %}
 
-<i>
+<i style="padding-left: 0.5em; padding-right: 0.5em;">
   {% trans trimmed start=(hits.offset + 1), end=(hits.offset + hits.limit), total="{:,}".format(hits.count_found) %}
     Showing results {{ start }} &mdash; {{ end }} out of {{ total }} results
   {% endtrans %}
