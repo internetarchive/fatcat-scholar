@@ -500,7 +500,9 @@ def es_biblio_from_release(release: ReleaseEntity) -> ScholarBiblio:
         if release.container.extra:
             publisher_type = release.container.extra.get("publisher_type")
             container_original_name = release.container.extra.get("original_name")
-            container_sherpa_color = release.container.extra.get("sherpa_romeo", {}).get("color")
+            container_sherpa_color = release.container.extra.get(
+                "sherpa_romeo", {}
+            ).get("color")
             if release.container.extra.get("issne"):
                 issns.append(release.container.extra["issne"])
             if release.container.extra.get("issnp"):

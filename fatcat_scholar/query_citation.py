@@ -188,7 +188,9 @@ if __name__ == "__main__":
     release = ref_to_release(ref)
     print(release)
 
-    es_backend = os.environ.get("ELASTICSEARCH_FATCAT_BASE", "https://search.fatcat.wiki")
+    es_backend = os.environ.get(
+        "ELASTICSEARCH_FATCAT_BASE", "https://search.fatcat.wiki"
+    )
     es_client = elasticsearch.Elasticsearch(es_backend)
     api_conf = fatcat_openapi_client.Configuration()
     api_conf.host = os.environ.get("FATCAT_API_HOST", "https://api.fatcat.wiki/v0")

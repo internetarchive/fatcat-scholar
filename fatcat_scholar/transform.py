@@ -401,7 +401,10 @@ def check_exclude_web(biblio: ScholarBiblio) -> bool:
     """
     if biblio.release_year and biblio.release_year <= 1925:
         return False
-    if biblio.container_ident and biblio.container_ident in settings.EXCLUDE_WEB_CONTAINER_IDENTS:
+    if (
+        biblio.container_ident
+        and biblio.container_ident in settings.EXCLUDE_WEB_CONTAINER_IDENTS
+    ):
         return True
     if biblio.publisher:
         for pub in settings.EXCLUDE_WEB_PUBLISHERS:
