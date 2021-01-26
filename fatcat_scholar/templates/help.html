@@ -22,8 +22,9 @@
 <h1>{% trans %}Scholar User Guide{% endtrans %}</h1>
 <p><i>{% trans %}See also: <a href="{{ lang_prefix }}/about">About Scholarly Search</a>{% endtrans %}</i>
 
-<p>{% trans %}This service provides <a href="https://en.wikipedia.org/wiki/Full-text_search">fulltext searching</a> over all research publications archived in Internet Archive's various collections. It includes content from the natural sciences, humanities, biomedicine, art, history, industrial research, government reports, and more.{% endtrans %}
+<p>{% trans %}This service provides <a href="https://en.wikipedia.org/wiki/Full-text_search">fulltext searching</a> over research publications archived in Internet Archive's various collections. It includes content from the natural sciences, humanities, biomedicine, art, history, industrial research, government reports, and more.{% endtrans %}
 <p>{% trans %}Reader access to the content is provided when possible. Sometimes this access is to a "pre-print" or other version of the work, and this is indicated in the search results.{% endtrans %}
+&nbsp;
 {% trans %}In other cases, depending on search filters, results are included for which there is only a bibliographic catalog entry. It may still be possible to obtain access through a public library or from the publisher directly.{% endtrans %}
 
 <h2>{% trans %}Query Syntax{% endtrans %}</h2>
@@ -34,7 +35,8 @@ restrict term queries on multiple metadata fields using colon statements like
 <code>journal:Science</code>, set filters like <code>lang:de</code>, and
 apply range queries like <code>year:&gt;1989 year:&lt;2000</code>.{% endtrans %}
 
-<p>{% trans %}While this syntax allows for relatively complex and powerful queries, at some point advanded users may run in to limits on the size or complexity of queries.{% endtrans %}
+<p>{% trans %}While this syntax allows for relatively complex and powerful queries, at some point advanced users may run into limits on the size or complexity of queries.{% endtrans %}
+&nbsp;
 {% trans %}For the time being we recommend systems like <a href="https://lens.org">lens.org</a> for a more powerful interface.{% endtrans %}
 
 
