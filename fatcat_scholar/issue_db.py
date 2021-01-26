@@ -124,7 +124,7 @@ def es_issue_count(
         .filter("term", issue=issue)
         .extra(request_cache=True)
     )
-    search = search.params(request_cache="true")
+    search = search.params()
 
     return search.count()
 
@@ -173,6 +173,7 @@ class IssueDB:
     def insert_sim_pub(self, pub: SimPubRow, cur: Any = None) -> None:
         if not cur:
             cur = self.db.cursor()
+        # print(pub.tuple(), file=sys.stderr)
         cur.execute(
             "INSERT OR REPLACE INTO sim_pub VALUES (?,?,?,?,?,?,?,?,?)", pub.tuple()
         )
@@ -258,7 +259,7 @@ class IssueDB:
             meta = obj["metadata"]
             assert "periodicals" in meta["collection"]
             container: Optional[fatcat_openapi_client.ContainerEntity] = None
-            if meta.get("issn"):
+            if meta.get("issn") and len(meta["issn"]) == 9:
                 try:
                     container = api.lookup_container(issnl=meta["issn"])
                 except fatcat_openapi_client.ApiException as ae:
@@ -275,6 +276,8 @@ class IssueDB:
                 container_ident=container and container.ident,
                 wikidata_qid=container and container.wikidata_qid,
             )
+            if isinstance(row.publisher, list):
+                row.publisher = row.publisher[0]
             self.insert_sim_pub(row, cur)
         cur.close()
         self.db.commit()
@@ -350,8 +353,16 @@ class IssueDB:
                 "SELECT sim_pubid, container_ident FROM sim_pub WHERE container_ident IS NOT NULL;"
             )
         )
+        print(
+            f"Loading fatcat container counts for {len(all_pub_containers)} entities...",
+            file=sys.stderr,
+        )
         cur: Any = self.db.cursor()
+        count = 0
         for (sim_pubid, container_ident) in all_pub_containers:
+            count += 1
+            if count % 500 == 0:
+                print(f"  {count}...", file=sys.stderr)
             aggs = es_container_aggs(es_client, container_ident)
             for agg in aggs:
                 row = ReleaseCountsRow(
