@@ -46,3 +46,11 @@ Transform and index both into local elasticsearch:
 
     => 132635 docs in 2m18.787824205s at 955.667 docs/s with 4 workers
 
+## Iterated
+
+    # in pipenv shell
+    python -m fatcat_scholar.sim_pipeline run_print_issues \
+        | parallel -j8 --colsep "\t" python -m fatcat_scholar.sim_pipeline run_fetch_issue {1} {2} \
+        | pv -l \
+        | gzip \
+        > data/sim_intermediate.json.gz
