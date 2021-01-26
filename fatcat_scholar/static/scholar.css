@@ -184,6 +184,9 @@ nav.ui.menu {
   margin-top: 0.2em;
 }
 
+.tablet-only .search-filters summary {
+  float: right;
+}
 .search-filters summary::marker {
   display: none;
 }
