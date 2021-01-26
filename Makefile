@@ -74,7 +74,7 @@ data/$(TODAY)/sim_collections.tsv:
 
 data/$(TODAY)/sim_items.tsv:
 	mkdir -p data/$(TODAY)
-	pipenv run ia search "collection:periodicals collection:sim_microfilm mediatype:texts" --itemlist | rg "^sim_" > $@.wip
+	pipenv run ia search "collection:periodicals collection:sim_microfilm mediatype:texts !noindex:true !pub_type:Magazines" --itemlist | rg "^sim_" | pv -l > $@.wip
 	mv $@.wip $@
 
 data/$(TODAY)/sim_collections.json: data/$(TODAY)/sim_collections.tsv
