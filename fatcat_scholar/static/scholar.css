@@ -77,7 +77,8 @@ nav.ui.menu {
     display: none !important;
   }
   .ui.items>.item>.image:not(.ui) {
-    width: auto
+    width: auto;
+    max-height: 300px!important;
   };
 }
 @media only screen and (min-width: 768px) {
