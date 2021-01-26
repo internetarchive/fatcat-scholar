@@ -3,6 +3,7 @@ import io
 import sys
 import argparse
 from typing import List, Dict, Tuple, Optional, Any, Sequence
+import urllib3.exceptions
 
 import minio
 import requests
@@ -117,6 +118,10 @@ class WorkPipeline:
             )
             # print(grobid_xml)
         except minio.error.NoSuchKey:
+            return None
+        except urllib3.exceptions.MaxRetryError:
+            # HACK: work around broken seaweedfs keys
+            print(f"seaweedfs failure: sha1hex={fe.sha1}", file=sys.stderr)
             return None
         return dict(
             tei_xml=grobid_xml, release_ident=release_ident, file_ident=fe.ident,
