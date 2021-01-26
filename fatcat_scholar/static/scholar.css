@@ -184,6 +184,12 @@ nav.ui.menu {
   display: none;
 }
 
+.search-pagination {
+  max-width: 35em;
+  margin: auto;
+  text-align: center;
+}
+
 footer p a {
   color: rgba(255, 255, 255, 0.5);
 }

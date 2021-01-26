@@ -120,8 +120,10 @@
     {% elif hits and hits.results %}
       {% if hits.results %}
         {% if hits.offset != 0 %}
-          <div style="text-align: center; margin-bottom: 2em;">
-            {{ search_macros.search_pagination(hits) }}
+          <div style="margin-bottom: 2em; width: 100%;">
+            <div class="search-pagination">
+              {{ search_macros.search_pagination(hits) }}
+            </div>
           </div>
         {% endif %}
 
@@ -132,8 +134,10 @@
         {% endfor %}
 
         {% if hits.count_found > hits.limit %}
-          <div style="text-align: center; margin-top: 2em;">
-            {{ search_macros.search_pagination(hits) }}
+          <div style="margin-top: 2em; width: 100%;">
+            <div class="search-pagination">
+              {{ search_macros.search_pagination(hits) }}
+            </div>
           </div>
         {% endif %}
       {% endif %}
