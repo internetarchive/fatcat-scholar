@@ -37,7 +37,7 @@ serve: ## Run web service locally, with reloading
 
 .PHONY: serve-qa
 serve-qa: ## Run web service locally, with reloading, but point search queries to QA search index
-	ENV_FOR_DYNACONF=qa DYNACONF_SCHOLAR_ENV=dev pipenv run uvicorn fatcat_scholar.web:app --reload --port 9819
+	ENV_FOR_DYNACONF=development-qa pipenv run uvicorn fatcat_scholar.web:app --reload --port 9819
 
 .PHONY: serve-gunicorn
 serve-gunicorn: ## Run web service under gunicorn
@@ -48,7 +48,7 @@ fetch-works: ## Fetches some works from any release .json in the data dir
 	cat data/release_*.json | jq . -c | pipenv run python -m fatcat_scholar.work_pipeline run_releases | pv -l > data/work_intermediate.json
 
 .PHONY: fetch-sim
-fetch-sim: ## Fetches some SIM pages
+fetch-sim: ## Fetches some (not all) SIM pages
 	pipenv run python -m fatcat_scholar.sim_pipeline run_issue_db --limit 500 | pv -l > data/sim_intermediate.json
 
 .PHONY: dev-index

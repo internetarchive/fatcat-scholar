@@ -49,6 +49,11 @@ ELASTICSEARCH_WRITE_FULLTEXT_INDEX = "dev_scholar_fulltext"
 ELASTICSEARCH_PUBLIC_URL = "http://localhost:9200"
 KAFKA_BROKERS = ["localhost"]
 
+[development-qa]
+SCHOLAR_ENV = "dev"
+ELASTICSEARCH_QUERY_BASE = "http://scholar-svc500.fatcat.wiki:9292"
+ELASTICSEARCH_PUBLIC_URL = "http://scholar-svc500.fatcat.wiki:9292"
+
 [qa]
 SCHOLAR_ENV = "qa"
 ELASTICSEARCH_QUERY_BASE = "http://scholar-svc500.fatcat.wiki:9292"
