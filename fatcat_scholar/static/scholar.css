@@ -70,8 +70,15 @@ nav.ui.menu {
 }
 
 @media only screen and (max-width: 767px) {
-  .mobile-hide { display: none !important; }
-  .ui.items>.item>.image:not(.ui) { width: auto };
+  .action-bar {
+    justify-content: left;
+  }
+  .mobile-hide {
+    display: none !important;
+  }
+  .ui.items>.item>.image:not(.ui) {
+    width: auto
+  };
 }
 @media only screen and (min-width: 768px) {
   .mobile-only { display: none !important; }
@@ -163,7 +170,6 @@ nav.ui.menu {
   font-weight: bold;
 }
 .search-highlights {
-  padding-top: 0.5em;
   padding-bottom: 0.5em
 }
 
@@ -171,10 +177,10 @@ nav.ui.menu {
   margin-top: 0.2em;
 }
 
-.search_filters summary::marker {
+.search-filters summary::marker {
   display: none;
 }
-.search_filters summary::-webkit-details-marker {
+.search-filters summary::-webkit-details-marker {
   display: none;
 }
 
@@ -203,16 +209,17 @@ a:hover .ui.card {
   display: inline-block;
 }
 
-details.access-options summary {
+details.title-dropdown summary {
   text-decoration: none;
   color: inherit;
+  margin-left: 0;
+  margin-bottom: 0.3em;
 }
-details.access-options .menu {
-  margin: 0.5em;
-  margin-top: 1.5em;
+details.title-dropdown .dropdown-menu {
+  margin-top: 1.0em;
   width: auto;
 }
-details.access-options .meta {
+details.title-dropdown .meta {
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
@@ -224,6 +231,14 @@ details.access-options .meta {
   padding-top: 0.5em;
   padding-right: 0.5em;
   min-width: 10em;
+}
+@media only screen and (max-width: 767px) {
+  .ui.stackable.grid > .column.biblio-record {
+    padding-bottom: 0.5em!important;
+  }
+  .ui.stackable.grid > .column.serp-right-col {
+    padding-top: 0!important;
+  }
 }
 
 details.serp-action-menu[open] > summary .ui.basic.button {
@@ -278,6 +293,7 @@ details.serp-action-menu > .citation-menu {
 
 .external-identifiers > a {
   color: green;
+  margin-right: 0.25em;
 }
 
 .translate-icon {

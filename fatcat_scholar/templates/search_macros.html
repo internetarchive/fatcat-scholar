@@ -31,25 +31,25 @@
 {# NOTE: should be able to call with paper.biblio or any paper.release[] #}
 <span class="external-identifiers">
   {% if biblio.doi %}
-    <a target="_blank" rel="external noopener noreferrer" href="https://doi.org/{{ biblio.doi }}">doi:{{ biblio.doi }}</a> &nbsp;
+    <a target="_blank" rel="external noopener noreferrer" href="https://doi.org/{{ biblio.doi }}">doi:{{ biblio.doi }}</a>
   {% endif %}
   {% if biblio.pmid %}
-    <a target="_blank" rel="external noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/{{ biblio.pmid }}">pmid:{{ biblio.pmid }}</a> &nbsp;
+    <a target="_blank" rel="external noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/{{ biblio.pmid }}">pmid:{{ biblio.pmid }}</a>
   {% endif %}
   {% if biblio.pmcid %}
-    <a target="_blank" rel="external noopener" href="https://pubmed.ncbi.nlm.nih.gov/{{ biblio.pmcid }}/">pmcid:{{ biblio.pmcid }}</a> &nbsp;
+    <a target="_blank" rel="external noopener" href="https://pubmed.ncbi.nlm.nih.gov/{{ biblio.pmcid }}/">pmcid:{{ biblio.pmcid }}</a>
   {% endif %}
   {% if biblio.arxiv_id %}
-    <a target="_blank" rel="external noopener" href="https://arxiv.org/abs/{{ biblio.arxiv_id }}">arXiv:{{ biblio.arxiv_id }}</a> &nbsp;
+    <a target="_blank" rel="external noopener" href="https://arxiv.org/abs/{{ biblio.arxiv_id }}">arXiv:{{ biblio.arxiv_id }}</a>
   {% endif %}
   {% if biblio.dblp_id %}
-    <a target="_blank" rel="external noopener" href="https://dblp.org/rec/{{ biblio.dblp_id }}.html">dblp:{{ biblio.dblp_id }}</a> &nbsp;
+    <a target="_blank" rel="external noopener" href="https://dblp.org/rec/{{ biblio.dblp_id }}.html">dblp:{{ biblio.dblp_id }}</a>
   {% endif %}
   {% if biblio.doaj_id %}
-    <a target="_blank" rel="external noopener" href="https://doaj.org/article/{{ biblio.doaj_id }}">doaj:{{ biblio.doaj_id }}</a> &nbsp;
+    <a target="_blank" rel="external noopener" href="https://doaj.org/article/{{ biblio.doaj_id }}">doaj:{{ biblio.doaj_id }}</a>
   {% endif %}
   {% if biblio.release_ident or biblio.ident %}
-    <a target="_blank" rel="external noopener" href="https://fatcat.wiki/release/{{ biblio.release_ident or biblio.ident }}">fatcat:{{ biblio.release_ident or biblio.ident }}</a> &nbsp;
+    <a target="_blank" rel="external noopener" href="https://fatcat.wiki/release/{{ biblio.release_ident or biblio.ident }}">fatcat:{{ biblio.release_ident or biblio.ident }}</a>
   {% endif %}
 </span>
 {% endmacro %}
@@ -173,7 +173,7 @@
 <div class="ui stackable doubling grid">
 <div class="thirteen wide column biblio-record">
 
-<details class="access-options" {% if expand %}open{% endif %}>
+<details class="title-dropdown" {% if expand %}open{% endif %}>
 <summary>
   {# ### TITLE ROW #}
   <h3 class="biblio-title">
@@ -230,7 +230,7 @@
   {{ journal_row(paper.biblio, paper) }}
 
 </summary>
-<div class="menu">
+<div class="dropdown-menu">
   {# ### FULLTEXT ACCESS OPTIONS #}
   <h4 class="ui horizontal divider header">
     {% trans %}Preserved Fulltext{% endtrans %}
@@ -302,7 +302,6 @@
               <div class="ui fitted divider"></div>
               {% for release in paper.releases if release.ident == paper.fulltext.release_ident %}
                 {{ journal_row(release, paper) }}
-                <br>
                 {{ external_identifiers(release) }}
               {% endfor %}
               <div class="ui fitted divider"></div>
@@ -379,8 +378,6 @@
         {{ paper.abstracts[0].body }}
       {% endif %}
     </div>
-  {% else %}
-    <br>
   {% endif %}
 
   {# ### IDENTIFIERS #}
