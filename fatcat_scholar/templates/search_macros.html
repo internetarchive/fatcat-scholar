@@ -141,7 +141,7 @@
 {% macro journal_row(biblio, paper) -%}
   {# NOTE: should be able to call with paper.biblio or any paper.release[] #}
   {% if biblio.release_year %}
-    <span title="{{ biblio.release_date or '' }}">{{ biblio.release_year }}</span>
+    <span title="{{ biblio.release_date or '' }}">{% trans year=biblio.release_year %}{{ year }}{% endtrans %}</span>
   {% endif %}
   {% if biblio.container_name %}
     <i {% if biblio.publisher %}title="{{ biblio.publisher }}"{% endif %}>
@@ -169,7 +169,7 @@
   {% endif %}
 {% endmacro %}
 
-{% macro fulltext_search_result_row(paper, locale=None, debug_mode=False, expand=False) -%}
+{% macro fulltext_search_result_row(paper, locale, debug_mode=False, expand=False) -%}
 <div class="ui stackable doubling grid">
 <div class="thirteen wide column biblio-record">
 
@@ -487,7 +487,7 @@
 </div> {# final row close #}
 {% endmacro %}
 
-{% macro search_pagination(hits, top) %}
+{% macro search_pagination(hits, locale) %}
 {% if hits.offset > 0 %}
   <button class="text-button" form="search_form" type="submit" name="offset" value="{{ hits.offset - hits.limit }}" style="float: left;" rel="prev">
     <a>{% trans %}&laquo; Previous{% endtrans %}</a>
@@ -505,7 +505,9 @@
 {% endif %}
 
 <i style="padding-left: 0.5em; padding-right: 0.5em;">
-  {% trans trimmed start=(hits.offset + 1), end=(hits.offset + hits.limit), total="{:,}".format(hits.count_found) %}
+  {% trans trimmed start=babel_numbers.format_number(hits.offset + 1, locale=locale),
+                   end=babel_numbers.format_number(hits.offset + hits.limit, locale=locale),
+                   total=babel_numbers.format_number(hits.count_found, locale=locale) %}
     Showing results {{ start }} &mdash; {{ end }} out of {{ total }} results
   {% endtrans %}
 </i>

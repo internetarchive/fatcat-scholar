@@ -8,6 +8,7 @@ import logging
 from typing import Optional, Any, List, Dict
 
 from pydantic import BaseModel
+import babel.numbers
 import babel.support
 from fastapi import FastAPI, APIRouter, Request, Depends, Response, HTTPException
 from fastapi.staticfiles import StaticFiles
@@ -160,6 +161,7 @@ def load_i18n_templates() -> Any:
         templates.env.lstrip_blocks = True
         # pass-through application settings to be available in templates
         templates.env.globals["settings"] = settings
+        templates.env.globals["babel_numbers"] = babel.numbers
         d[lang_opt] = templates
     return d
 
