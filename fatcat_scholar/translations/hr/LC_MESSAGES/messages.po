@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-01-25 22:58-0800\n"
-"PO-Revision-Date: 2021-01-26 06:46+0000\n"
+"PO-Revision-Date: 2021-01-28 09:32+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/hr/>\n"
@@ -255,6 +255,11 @@ msgid ""
 "sciences, humanities, biomedicine, art, history, industrial research, "
 "government reports, and more."
 msgstr ""
+"Ova usluga omogućuje <a href=\"https://en.wikipedia.org/wiki/Full-"
+"text_search\">pretraživanje teksta</a> u istraživačkim publikacijama "
+"arhiviranim u raznim Internet Archive zbirkama. Obuhvaća sadržaje iz "
+"prirodnih znanosti, humanističkih znanosti, biomedicine, umjetnosti, "
+"povijesti, industrijskih istraživanja, vladinih izvještaja i drugih."
 
 #: fatcat_scholar/templates/help.html:26
 msgid ""
@@ -262,6 +267,9 @@ msgid ""
 "access is to a \"pre-print\" or other version of the work, and this is "
 "indicated in the search results."
 msgstr ""
+"Kadgod moguće, omogućuje se čitateljski pristup sadržaju. Ponekad se radi o "
+"pristupu „predizdanju” ili jednoj drugoj verziji rada. Stanje se naznačuje u "
+"rezultatima pretrage."
 
 #: fatcat_scholar/templates/help.html:28
 msgid ""
@@ -371,13 +379,15 @@ msgstr "Rezultati pretrage"
 
 #: fatcat_scholar/templates/help.html:108
 msgid "Access Links"
-msgstr ""
+msgstr "Poveznice za pristup"
 
 #: fatcat_scholar/templates/help.html:118
 msgid ""
 "All Internet Archive preservation copy links have the same style and icon. "
 "Content from the Wayback Machine looks like this."
 msgstr ""
+"Sve poveznice za Internet Archive primjerke imaju isti stil i ikonu. Sadržaj "
+"od Wayback Machine izgleda ovako."
 
 #: fatcat_scholar/templates/help.html:122
 msgid ""
@@ -418,6 +428,8 @@ msgid ""
 "If the work is archived in full on a reliable, open platform, we will "
 "sometimes provide additional links"
 msgstr ""
+"Ako je rad u cijelosti arhiviran na pouzdanoj, otvorenoj platformi, ponekad "
+"ćemo pružiti dodatne poveznice"
 
 #: fatcat_scholar/templates/help.html:150
 msgid ""
@@ -425,6 +437,9 @@ msgid ""
 "the work. For example, indexes the journal is included in, or open platform "
 "technology used for publications."
 msgstr ""
+"Rezultati pretraživanja mogu sadržati oznake koje pružaju dodatni kontekst o "
+"radu. Na primjer, indekse u kojima je časopis uključen ili tehnologiju "
+"otvorene platforme koja se koristi za publikacije."
 
 #: fatcat_scholar/templates/help.html:160
 msgid ""
@@ -432,6 +447,9 @@ msgid ""
 "bibliographic metadata for the \"primary\" is being shown. Click the title "
 "to see other versions"
 msgstr ""
+"Postoji više objavljenih „verzija” ili „izdanja” ovog rada, a prikazuju se "
+"bibliografski metapodaci za „primarni” rad. Za prikaz drugih verzija "
+"pritisni naslov"
 
 #: fatcat_scholar/templates/help.html:164
 msgid ""
@@ -439,12 +457,17 @@ msgid ""
 "language. The <a href=\"https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes"
 "\">ISO two-letter language code</a> is indicated"
 msgstr ""
+"Primarni jezik ovog rada razlikuje se od jezika sučelja pretrage. Na jezik "
+"se ukazuje <a href=\"https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes\""
+">dvoslovnim ISO kodom</a>"
 
 #: fatcat_scholar/templates/help.html:168
 msgid ""
 "Published in a <a href=\"https://doaj.org\">Directory of Open Access "
 "Journals</a> publication, which implies that this is an Open Access work"
 msgstr ""
+"Objavljeno u publikaciji na <a href=\"https://doaj.org\">Directory of Open "
+"Access Journals</a>, što implicira da se radi o radu otvorenog pristupa"
 
 #: fatcat_scholar/templates/help.html:172
 msgid ""
@@ -452,36 +475,49 @@ msgid ""
 "szczepanski-list\">Szczepanski's List of Open Access Journals</a>, which "
 "implies that this is an Open Access work"
 msgstr ""
+"Publikacija je indeksirana na <a href=\"https://www.ebsco.com/open-access/"
+"szczepanski-list\">Szczepanski's List of Open Access Journals</a>, to "
+"implicira da se radi o radu otvorenog pristupa"
 
 #: fatcat_scholar/templates/help.html:176
 msgid ""
 "The work is believed to be <a href=\"https://en.wikipedia.org/wiki/"
 "Open_access\">\"Open Access\"</a> for any other reason"
 msgstr ""
+"Rad je vrste <a href=\"https://en.wikipedia.org/wiki/Open_access\">„"
+"otvorenog pristupa”</a> iz drugih razloga"
 
 #: fatcat_scholar/templates/help.html:180
 msgid ""
 "Published on a <a href=\"https://en.wikipedia.org/wiki/SciELO\">SciELO</a> "
 "national platform"
 msgstr ""
+"Objavljeno na nacionalnoj <a href=\"https://en.wikipedia.org/wiki/SciELO\""
+">SciELO</a> platformi"
 
 #: fatcat_scholar/templates/help.html:184
 msgid ""
 "Published using <a href=\"https://en.wikipedia.org/wiki/Open_Journal_Systems"
 "\">Open Journal Systems</a> software"
 msgstr ""
+"Objavljeno pomoću <a href=\"https://en.wikipedia.org/wiki/"
+"Open_Journal_Systems\">Open Journal Systems</a> softvera"
 
 #: fatcat_scholar/templates/help.html:188
 msgid ""
 "Published using <a href=\"https://en.wikipedia.org/wiki/Wordpress"
 "\">WordPress</a> software"
 msgstr ""
+"Objavljeno pomoću <a href=\"https://en.wikipedia.org/wiki/Wordpress\""
+">WordPress</a> softvera"
 
 #: fatcat_scholar/templates/help.html:192
 msgid ""
 "Preserved and/or hosted on the <a href=\"https://en.wikipedia.org/wiki/JSTOR"
 "\">JSTOR</a> digital preservation platform"
 msgstr ""
+"Čuvanje i/ili hosting na <a href=\"https://en.wikipedia.org/wiki/JSTOR\""
+">JSTOR</a> platformi za čuvanje digitalne građe"
 
 #: fatcat_scholar/templates/help.html:200
 msgid ""
@@ -496,27 +532,32 @@ msgid ""
 "Object Identifier (DOI)</a>, provides a redirect to the publisher's landing "
 "page"
 msgstr ""
+"<a href=\"https://en.wikipedia.org/wiki/Digital_object_identifier\""
+">Digitalni identifikator objekta (DOI)</a>, omogućuje preusmjeravanje na "
+"stranicu izdavača"
 
 #: fatcat_scholar/templates/help.html:214
 msgid "PubMed/MEDLINE"
-msgstr ""
+msgstr "PubMed/MEDLINE"
 
 #: fatcat_scholar/templates/help.html:218
 msgid "PubMed Central"
-msgstr ""
+msgstr "PubMed Central"
 
 #: fatcat_scholar/templates/help.html:222
 msgid "arXiv pre-print service"
-msgstr ""
+msgstr "arXiv usluga predizdanja"
 
 #: fatcat_scholar/templates/help.html:226
 msgid "Digital Bibliography of Logic Programming"
-msgstr ""
+msgstr "Digitalna bibliografija logičkog programiranja"
 
 #: fatcat_scholar/templates/help.html:230
 msgid ""
 "Article-level identifier for works in DOAJ, particularly those with no DOI"
 msgstr ""
+"Identifikator na razini članka za radove na DOAJ stranicama, posebno onih "
+"koji nemaju digitalni identifikator objekta"
 
 #: fatcat_scholar/templates/help.html:234
 msgid ""
@@ -528,7 +569,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:240
 msgid "Work In Progress"
-msgstr ""
+msgstr "Radovi u tijeku"
 
 #: fatcat_scholar/templates/help.html:243 fatcat_scholar/templates/home.html:36
 msgid ""
@@ -569,12 +610,12 @@ msgid ""
 "from the World Wide Web."
 msgstr ""
 "Zbirka obuhvaća digitalizirane primjerke časopisa iz osamnaestog stoljeća, "
-"dok se najnoviji zbornici i pretisci konferencije „Open Access” pretražuju "
-"na internetu."
+"dok se najnoviji zbornici i predizdanja konferencija slobodnog pristupa "
+"pretražuju na internetu."
 
 #: fatcat_scholar/templates/home.html:24
 msgid "More &raquo;"
-msgstr ""
+msgstr "Više &raquo;"
 
 #: fatcat_scholar/templates/home.html:49 fatcat_scholar/templates/home.html:63
 #: fatcat_scholar/templates/home.html:77 fatcat_scholar/templates/home.html:91
@@ -692,7 +733,7 @@ msgstr "minijatura teksta"
 
 #: fatcat_scholar/templates/search_macros.html:111
 msgid "Publisher / doi.org"
-msgstr ""
+msgstr "Izdavač / doi.org"
 
 #: fatcat_scholar/templates/search_macros.html:144
 #, python-format
@@ -759,8 +800,8 @@ msgid ""
 "Note that this fulltext copy is not of the \"primary\" version of this work. "
 "The version it corresponds to is:"
 msgstr ""
-"Ova kopija cijelog teksta nije „primarna” verzija ovog djela. Verzija kojoj "
-"odgovara je:"
+"Ovaj primjerak cijelog teksta nije „primarna” verzija ovog rada. Verzija "
+"kojoj odgovara je:"
 
 #: fatcat_scholar/templates/search_macros.html:314
 msgid "Additional access options for the primary version of this work:"
@@ -819,17 +860,13 @@ msgstr "trajna poveznica na ovaj zapis"
 
 #: fatcat_scholar/templates/search_macros.html:493
 #: fatcat_scholar/templates/search_macros.html:496
-#, fuzzy
-#| msgid "Previous"
 msgid "&laquo; Previous"
-msgstr "Prethodni"
+msgstr "&laquo; Prethodni"
 
 #: fatcat_scholar/templates/search_macros.html:501
 #: fatcat_scholar/templates/search_macros.html:504
-#, fuzzy
-#| msgid "more &raquo;"
 msgid "Next &raquo;"
-msgstr "više &raquo;"
+msgstr "Sljedeći &raquo;"
 
 #: fatcat_scholar/templates/search_macros.html:508
 #, python-format
