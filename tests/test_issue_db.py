@@ -11,7 +11,7 @@ def test_issue_db_basics() -> None:
     api_conf.host = settings.FATCAT_API_HOST
     api = fatcat_openapi_client.DefaultApi(fatcat_openapi_client.ApiClient(api_conf))
 
-    es_client = elasticsearch.Elasticsearch(settings.FATCAT_ELASTICSEARCH_BACKEND)
+    es_client = elasticsearch.Elasticsearch(settings.ELASTICSEARCH_FATCAT_BASE)
 
     issue_db = IssueDB(settings.SCHOLAR_ISSUEDB_PATH)
     issue_db.init_db()

@@ -97,7 +97,7 @@ class FulltextHits(BaseModel):
 
 
 # global sync client connection
-es_client = elasticsearch.Elasticsearch(settings.ELASTICSEARCH_BACKEND, timeout=25.0)
+es_client = elasticsearch.Elasticsearch(settings.ELASTICSEARCH_QUERY_BASE, timeout=25.0)
 
 
 def transform_es_results(resp: Response) -> List[dict]:
@@ -281,7 +281,7 @@ def do_fulltext_search(
     query: FulltextQuery, deep_page_limit: int = 2000
 ) -> FulltextHits:
 
-    search = Search(using=es_client, index=settings.ELASTICSEARCH_FULLTEXT_INDEX)
+    search = Search(using=es_client, index=settings.ELASTICSEARCH_QUERY_FULLTEXT_INDEX)
 
     if query.collapse_key:
         search = search.filter("term", collapse_key=query.collapse_key)

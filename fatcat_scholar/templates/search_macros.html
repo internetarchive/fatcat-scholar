@@ -392,7 +392,7 @@
     {# TODO: remove doc for ES 7.x-style lack of type #}
     {# TODO: only show 'json' link if from cluster? #}
     {% if debug_mode %}
-      <a target="_blank" rel="noopener" href="{{ settings.ELASTICSEARCH_FRONTEND }}/{{ settings.ELASTICSEARCH_FULLTEXT_INDEX }}/_doc/{{ paper.key }}">
+      <a target="_blank" rel="noopener" href="{{ settings.ELASTICSEARCH_PUBLIC_URL }}/{{ settings.ELASTICSEARCH_QUERY_FULLTEXT_INDEX }}/_doc/{{ paper.key }}">
         <span class="ui label small" title="search document JSON debug link">json</span>
       </a>
     {% endif %}

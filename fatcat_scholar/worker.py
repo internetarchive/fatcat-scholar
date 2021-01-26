@@ -227,7 +227,7 @@ def main() -> None:
         fdw.run()
     elif args.worker == "index-docs-worker":
         es_client = elasticsearch.Elasticsearch(
-            settings.ELASTICSEARCH_BACKEND, timeout=25.0
+            settings.ELASTICSEARCH_WRITE_BASE, timeout=25.0
         )
         idw = IndexDocsWorker(
             kafka_brokers=settings.KAFKA_BROKERS,
@@ -235,7 +235,7 @@ def main() -> None:
             consume_topics=[f"scholar-{settings.SCHOLAR_ENV}.update-docs"],
             consumer_group=f"scholar-{settings.SCHOLAR_ENV}-index-workers",
             es_client=es_client,
-            es_index=settings.ELASTICSEARCH_FULLTEXT_INDEX,
+            es_index=settings.ELASTICSEARCH_WRITE_FULLTEXT_INDEX,
         )
         idw.run()
 
