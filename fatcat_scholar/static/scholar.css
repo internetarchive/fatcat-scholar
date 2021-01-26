@@ -73,11 +73,11 @@ nav.ui.menu {
 .ui.items > .item > .content {
   padding-left: 0;
   padding-inline-start: 1.5em;
-};
+}
 
 @media only screen and (max-width: 767px) {
   .action-bar {
-    justify-content: left;
+    justify-content: flex-start;
   }
   .mobile-hide {
     display: none !important;
@@ -85,7 +85,7 @@ nav.ui.menu {
   .ui.items>.item>.image:not(.ui) {
     width: auto;
     max-height: 300px!important;
-  };
+  }
 }
 @media only screen and (min-width: 768px) {
   .mobile-only { display: none !important; }
