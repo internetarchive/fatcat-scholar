@@ -8,9 +8,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-01-25 22:58-0800\n"
-"PO-Revision-Date: 2021-01-24 12:32+0000\n"
+"PO-Revision-Date: 2021-01-28 09:32+0000\n"
 "Last-Translator: Eric <spice2wolf@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "internetarchive/fatcat-scholar/zh_Hans/>\n"
@@ -246,13 +246,6 @@ msgid "See also: <a href=\"%(lang_prefix)s/about\">About Scholarly Search</a>"
 msgstr "另请参阅：<a href=\"%(lang_prefix)s/about\">关于学术搜索</a>"
 
 #: fatcat_scholar/templates/help.html:25
-#, fuzzy
-#| msgid ""
-#| "This service provides <a href=\"https://en.wikipedia.org/wiki/Full-"
-#| "text_search\">fulltext searching</a> over all research publications "
-#| "archived in Internet Archive's various collections. It includes content "
-#| "from the natural sciences, humanities, biomedicine, art, history, "
-#| "industrial research, government reports, and more."
 msgid ""
 "This service provides <a href=\"https://en.wikipedia.org/wiki/Full-"
 "text_search\">fulltext searching</a> over research publications archived in "
@@ -260,9 +253,8 @@ msgid ""
 "sciences, humanities, biomedicine, art, history, industrial research, "
 "government reports, and more."
 msgstr ""
-"该服务可对Internet档案馆各种馆藏中的所有研究出版物进行<a href=\"https://en."
-"wikipedia.org/wiki/Full-text_search\">全文搜索</a>。它包括自然科学，人文科"
-"学，生物医学，艺术，历史，工业研究，政府报告等内容。"
+"本服务提供对存档于互联网档案馆中各种集合的研究出版物进行<a href=\"https://en.wikipedia.org/wiki/Full-"
+"text_search\">全文搜索</a>。它包括自然科学，人文科学，生物医学，艺术，历史，工业研究，政府报告等内容。"
 
 #: fatcat_scholar/templates/help.html:26
 msgid ""
@@ -304,18 +296,11 @@ msgstr ""
 "应用范围查询，例如<code> year：&gt; 1989 year：&lt; 2000 </code>。"
 
 #: fatcat_scholar/templates/help.html:38
-#, fuzzy
-#| msgid ""
-#| "While this syntax allows for relatively complex and powerful queries, at "
-#| "some point advanded users may run in to limits on the size or complexity "
-#| "of queries."
 msgid ""
 "While this syntax allows for relatively complex and powerful queries, at "
 "some point advanced users may run into limits on the size or complexity of "
 "queries."
-msgstr ""
-"尽管此语法允许相对复杂和强大的查询，但在某些时候，高级用户可能会遇到查询大小"
-"或复杂性的限制。"
+msgstr "虽然这种语法允许相对复杂和强大的查询，但某些时候，高级用户可能会遇到查询的大小或复杂性的限制。"
 
 #: fatcat_scholar/templates/help.html:40
 msgid ""
@@ -747,7 +732,7 @@ msgstr "出版社/doi.org"
 #: fatcat_scholar/templates/search_macros.html:144
 #, python-format
 msgid "%(year)s"
-msgstr ""
+msgstr "%(year)s"
 
 #: fatcat_scholar/templates/search_macros.html:197
 msgid "unknown"
@@ -867,17 +852,13 @@ msgstr "该记录的永久链接"
 
 #: fatcat_scholar/templates/search_macros.html:493
 #: fatcat_scholar/templates/search_macros.html:496
-#, fuzzy
-#| msgid "Previous"
 msgid "&laquo; Previous"
-msgstr "上一个"
+msgstr "&laquo; 上一个"
 
 #: fatcat_scholar/templates/search_macros.html:501
 #: fatcat_scholar/templates/search_macros.html:504
-#, fuzzy
-#| msgid "More &raquo;"
 msgid "Next &raquo;"
-msgstr "更多&raquo;"
+msgstr "下一个 &raquo;"
 
 #: fatcat_scholar/templates/search_macros.html:508
 #, python-format
