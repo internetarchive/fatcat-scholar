@@ -155,10 +155,11 @@ class SimPipeline:
                 full_issue = self.fetch_sim_issue(
                     row["issue_item"], row["pub_collection"]
                 )
-            except requests.exceptions.ConnectionError as e:
-                print(str(e), file=sys.stderr)
-                continue
-            except requests.exceptions.ReadTimeout as e:
+            except (
+                requests.exceptions.ConnectionError,
+                requests.exceptions.Timeout,
+                requests.exceptions.RetryError,
+            ) as e:
                 print(str(e), file=sys.stderr)
                 continue
             if not full_issue:
