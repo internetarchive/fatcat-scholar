@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-01-25 22:58-0800\n"
-"PO-Revision-Date: 2021-01-29 15:32+0000\n"
+"PO-Revision-Date: 2021-01-29 23:34+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/hr/>\n"
@@ -753,7 +753,7 @@ msgstr "minijatura teksta"
 
 #: fatcat_scholar/templates/search_macros.html:111
 msgid "Publisher / doi.org"
-msgstr "Izdavač / doi.org"
+msgstr "Izdavač/doi.org"
 
 #: fatcat_scholar/templates/search_macros.html:144
 #, python-format
@@ -795,10 +795,9 @@ msgid ""
 "also visit <a rel=\"external noopener\" href=\"%(original_url)s\">the "
 "original URL</a>."
 msgstr ""
-"Primjerak ovog rada bio je dostupan na javnom webu i sačuvana je na Wayback "
-"Machine stranicama. Datum snimke je od %(capture_year)s; također možeš "
-"posjetiti <a rel=\"external noopener\" href=\"%(original_url)s\">izvorni "
-"URL</a>."
+"Primjerak ovog rada bio je dostupan na javnom webu i sačuvan je na Wayback "
+"Machine stranicama. Snimljeno %(capture_year)s. <a rel=\"external noopener\" "
+"href=\"%(original_url)s\">Izvorni URL</a>."
 
 #: fatcat_scholar/templates/search_macros.html:290
 msgid ""
