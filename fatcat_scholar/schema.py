@@ -485,6 +485,7 @@ def es_abstracts_from_release(release: ReleaseEntity) -> List[ScholarAbstract]:
 def es_biblio_from_release(release: ReleaseEntity) -> ScholarBiblio:
 
     container_name = release.extra and release.extra.get("container_name")
+    container_sherpa_color = None
 
     if release.container:
         publisher = release.publisher or release.container.publisher
@@ -515,7 +516,6 @@ def es_biblio_from_release(release: ReleaseEntity) -> ScholarBiblio:
         container_ident = None
         container_type = None
         container_issnl = None
-        container_sherpa_color = None
         issns = []
 
     first_page: Optional[str] = None
