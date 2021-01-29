@@ -138,6 +138,12 @@ def es_biblio_from_sim(sim: Dict[str, Any]) -> ScholarBiblio:
     if release_year and abs(release_year) > 2050:
         release_year = None
 
+    lang_code = SIM_LANG_MAP.get(issue_meta.get("language")) or SIM_LANG_MAP.get(
+        pub_meta.get("language")
+    )
+    if isinstance(lang_code, list):
+        lang_code = lang_code[0]
+
     return ScholarBiblio(
         # release_ident=release.ident,
         title=None,
@@ -149,8 +155,7 @@ def es_biblio_from_sim(sim: Dict[str, Any]) -> ScholarBiblio:
         or SIM_RELEASE_TYPE_MAP.get(pub_meta.get("pub_type")),
         release_stage="published",  # as a default
         # withdrawn_status=release.withdrawn_status,
-        lang_code=SIM_LANG_MAP.get(issue_meta.get("language"))
-        or SIM_LANG_MAP.get(pub_meta.get("language")),
+        lang_code=lang_code,
         country_code=SIM_COUNTRY_MAP.get(pub_meta.get("country")),
         volume=volume,
         volume_int=volume_int,
