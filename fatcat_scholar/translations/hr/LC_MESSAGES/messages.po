@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-01-25 22:58-0800\n"
-"PO-Revision-Date: 2021-01-29 23:34+0000\n"
+"PO-Revision-Date: 2021-01-31 14:41+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/hr/>\n"
@@ -400,8 +400,8 @@ msgid ""
 "All Internet Archive preservation copy links have the same style and icon. "
 "Content from the Wayback Machine looks like this."
 msgstr ""
-"Sve poveznice za Internet Archive primjerke imaju isti stil i ikonu. Sadržaj "
-"od Wayback Machine izgleda ovako."
+"Sve poveznice za sačuvane primjerke u arhivu Internet Archive imaju isti "
+"stil i ikonu. Sadržaj od Wayback Machine izgleda ovako."
 
 #: fatcat_scholar/templates/help.html:122
 msgid ""
@@ -416,9 +416,9 @@ msgid ""
 "stored in general Internet Archive digital collections (as opposed to the "
 "web archive)"
 msgstr ""
-"Neki sačuvani sadržaji, osobito stariji radovi u javnom vlasništvu, mogu "
-"biti spremljeni u digitalnim zbirkama od Internet Archive (za razliku od web-"
-"arhiva)"
+"Neki sačuvani sadržaji, osobito stariji radovi u javnom vlasništvu, su možda "
+"biti spremljeni u općim digitalnim zbirkama arhiva Internet Archive (za "
+"razliku od web-arhiva)"
 
 #: fatcat_scholar/templates/help.html:130
 msgid ""
@@ -621,7 +621,7 @@ msgid ""
 "other scholarly documents preserved in the Internet Archive."
 msgstr ""
 "Ovaj indeks pretraživanja teksta obuhvaća preko 25 milijuna istraživačkih "
-"članaka i drugih znanstvenih dokumenata sačuvanih u „Internet Archive”."
+"članaka i drugih znanstvenih dokumenata sačuvanih u arhivu Internet Archive."
 
 #: fatcat_scholar/templates/home.html:24
 msgid ""
@@ -777,7 +777,7 @@ msgstr "stranica"
 
 #: fatcat_scholar/templates/search_macros.html:236
 msgid "Preserved Fulltext"
-msgstr "Očuvan tekst"
+msgstr "Sačuvani tekst"
 
 #: fatcat_scholar/templates/search_macros.html:259
 msgid "Web Archive Capture"
@@ -803,7 +803,7 @@ msgstr ""
 msgid ""
 "The Internet Archive has a preservation copy of this work in our general "
 "collections."
-msgstr "Internet Archive ima primjerak ovog djela u našim općim zbirkama."
+msgstr "Internet Archive ima primjerak ovog rada u našim općim zbirkama."
 
 #: fatcat_scholar/templates/search_macros.html:292
 msgid ""
@@ -836,6 +836,8 @@ msgid ""
 "able to obtain a copy of this work to read from the publisher, platforms, or "
 "institutional libraries."
 msgstr ""
+"Još ne znamo za javno sačuvan primjerak ovog rada. Primjerak ovog rada se "
+"možda može dobiti od izdavača, platformi ili institucionalnih knjižnica."
 
 #: fatcat_scholar/templates/search_macros.html:327
 #, python-format
