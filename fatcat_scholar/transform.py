@@ -1,6 +1,7 @@
 import sys
 import argparse
 import datetime
+import xml.etree.ElementTree
 import xml.etree.ElementTree as ET
 from typing import List, Dict, Optional, Any, Sequence
 
@@ -479,18 +480,22 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
             for f in fulltext_release.files
             if f.ident == heavy.grobid_fulltext["file_ident"]
         ][0]
-        tei_dict = teixml2json(heavy.grobid_fulltext["tei_xml"])
-        if not abstracts:
-            abstracts = es_abstracts_from_grobid(tei_dict)
-        grobid_fulltext = es_fulltext_from_grobid(
-            tei_dict, heavy.pdf_meta, fulltext_release, fulltext_file
-        )
-        if exclude_web_fulltext and grobid_fulltext:
-            if not fulltext:
-                # include only partial fulltext object, with no access
-                fulltext = grobid_fulltext.remove_access()
-        else:
-            fulltext = grobid_fulltext
+        try:
+            tei_dict: Optional[dict] = teixml2json(heavy.grobid_fulltext["tei_xml"])
+        except xml.etree.ElementTree.ParseError:
+            tei_dict = None
+        if tei_dict:
+            if not abstracts:
+                abstracts = es_abstracts_from_grobid(tei_dict)
+            grobid_fulltext = es_fulltext_from_grobid(
+                tei_dict, heavy.pdf_meta, fulltext_release, fulltext_file
+            )
+            if exclude_web_fulltext and grobid_fulltext:
+                if not fulltext:
+                    # include only partial fulltext object, with no access
+                    fulltext = grobid_fulltext.remove_access()
+            else:
+                fulltext = grobid_fulltext
 
     if not fulltext and heavy.pdftotext_fulltext:
         fulltext_release = [
