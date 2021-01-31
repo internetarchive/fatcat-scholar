@@ -6,12 +6,13 @@ import datetime
 from typing import List, Any
 
 import requests
+import sentry_sdk
 import elasticsearch
 import elasticsearch.helpers
 import fatcat_openapi_client
 from fatcat_openapi_client import ReleaseEntity
 
-from fatcat_scholar.config import settings
+from fatcat_scholar.config import settings, GIT_REVISION
 from fatcat_scholar.issue_db import IssueDB
 from fatcat_scholar.sandcrawler import (
     SandcrawlerPostgrestClient,
@@ -197,6 +198,14 @@ def main() -> None:
     if not args.__dict__.get("worker"):
         parser.print_help(file=sys.stderr)
         sys.exit(-1)
+
+    if settings.SENTRY_DSN:
+        sentry_sdk.init(
+            dsn=settings.SENTRY_DSN,
+            environment=settings.SCHOLAR_ENV,
+            max_breadcrumbs=10,
+            release=GIT_REVISION,
+        )
 
     if args.worker == "fetch-docs-worker":
         issue_db = IssueDB(args.issue_db_file)

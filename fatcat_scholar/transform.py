@@ -4,11 +4,12 @@ import datetime
 import xml.etree.ElementTree as ET
 from typing import List, Dict, Optional, Any, Sequence
 
+import sentry_sdk
 from fatcat_openapi_client import ReleaseEntity, FileEntity, WebcaptureEntity
 
 from fatcat_scholar.api_entities import *
 from fatcat_scholar.schema import *
-from fatcat_scholar.config import settings
+from fatcat_scholar.config import settings, GIT_REVISION
 from fatcat_scholar.grobid2json import teixml2json
 
 
@@ -797,6 +798,16 @@ def main() -> None:
     if not args.__dict__.get("func"):
         parser.print_help(file=sys.stderr)
         sys.exit(-1)
+
+    # enable sentry exception catching; this helps a lot with debugging bulk
+    # transform runs
+    if settings.SENTRY_DSN:
+        sentry_sdk.init(
+            dsn=settings.SENTRY_DSN,
+            environment=settings.SCHOLAR_ENV,
+            max_breadcrumbs=10,
+            release=GIT_REVISION,
+        )
 
     if args.func == "run_transform":
         run_transform(infile=args.json_file)

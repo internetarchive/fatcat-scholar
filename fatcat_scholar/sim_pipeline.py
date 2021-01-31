@@ -5,8 +5,10 @@ import argparse
 from typing import List, Dict, Optional, Any
 
 import requests
+import sentry_sdk
 import internetarchive
 
+from fatcat_scholar.config import settings, GIT_REVISION
 from fatcat_scholar.djvu import djvu_extract_leaf_texts
 from fatcat_scholar.issue_db import IssueDB
 from fatcat_scholar.schema import (
@@ -253,6 +255,14 @@ def main() -> None:
     if not args.__dict__.get("func"):
         parser.print_help(file=sys.stderr)
         sys.exit(-1)
+
+    if settings.SENTRY_DSN:
+        sentry_sdk.init(
+            dsn=settings.SENTRY_DSN,
+            environment=settings.SCHOLAR_ENV,
+            max_breadcrumbs=10,
+            release=GIT_REVISION,
+        )
 
     sp = SimPipeline(issue_db=IssueDB(args.issue_db_file))
 
