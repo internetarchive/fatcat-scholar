@@ -138,11 +138,10 @@ def es_biblio_from_sim(sim: Dict[str, Any]) -> ScholarBiblio:
     if release_year and abs(release_year) > 2050:
         release_year = None
 
-    lang_code = SIM_LANG_MAP.get(issue_meta.get("language")) or SIM_LANG_MAP.get(
-        pub_meta.get("language")
-    )
-    if isinstance(lang_code, list):
-        lang_code = lang_code[0]
+    language = issue_meta.get("language") or pub_meta.get("language")
+    if isinstance(language, list):
+        language = language[0]
+    lang_code = SIM_LANG_MAP.get(language)
 
     return ScholarBiblio(
         # release_ident=release.ident,
