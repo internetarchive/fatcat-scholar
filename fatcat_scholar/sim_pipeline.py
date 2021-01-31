@@ -3,6 +3,7 @@ import sys
 import sqlite3
 import argparse
 from typing import List, Dict, Optional, Any
+import urllib3.exceptions
 
 import requests
 import sentry_sdk
@@ -161,6 +162,7 @@ class SimPipeline:
                 requests.exceptions.ConnectionError,
                 requests.exceptions.Timeout,
                 requests.exceptions.RetryError,
+                urllib3.exceptions.MaxRetryError,
             ) as e:
                 print(str(e), file=sys.stderr)
                 continue
