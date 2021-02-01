@@ -380,8 +380,15 @@ def clean_str(raw: Optional[str], strip_trailing_period: bool = False) -> Option
 
     text = ftfy.fix_text(raw)
 
-    # remove HTML
-    text = BeautifulSoup(text, "html.parser").get_text()
+    # remove HTML tags
+    try:
+        # TODO: work_h4ufpvlh3rcefacajni7sdndwa as a regression test
+        # TODO: consider w3clib "remove tags" as an alternative
+        clean_text = BeautifulSoup(text, "html.parser").get_text()
+        text = clean_text
+    except UnboundLocalError:
+        # TODO: passing through raw string; what should behavior actually be?
+        pass
 
     # TODO: for performance, compile these as globals?
     # replaces whitespace with single space
