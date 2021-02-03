@@ -4,13 +4,14 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # Artem <KovalevArtem.ru@gmail.com>, 2020, 2021.
 # Bryan Newbold <bnewbold@robocracy.org>, 2020, 2021.
+# Nikita Epifanov <nikgreens@protonmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-01-25 22:58-0800\n"
-"PO-Revision-Date: 2021-01-26 06:46+0000\n"
-"Last-Translator: Artem <KovalevArtem.ru@gmail.com>\n"
+"PO-Revision-Date: 2021-02-04 14:41+0000\n"
+"Last-Translator: Nikita Epifanov <nikgreens@protonmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/ru/>\n"
 "Language: ru\n"
@@ -108,10 +109,8 @@ msgid "About %(website_name)s"
 msgstr "О %(website_name)s"
 
 #: fatcat_scholar/templates/about.html:8
-#, fuzzy
-#| msgid "Internet Archive Scholar"
 msgid "About Internet Archive Scholar"
-msgstr "Академия архива Интернета"
+msgstr "О Академии архива Интернета"
 
 #: fatcat_scholar/templates/base.html:12
 msgid "Internet Archive Scholar"
@@ -240,18 +239,17 @@ msgid "Try It"
 msgstr "Попробовать"
 
 #: fatcat_scholar/templates/help.html:22
-#, fuzzy
-#| msgid "User Guide"
 msgid "Scholar User Guide"
-msgstr "Руководство пользователя"
+msgstr "Научное руководство пользователя"
 
 #: fatcat_scholar/templates/help.html:23
-#, fuzzy, python-format
+#, python-format
 msgid "See also: <a href=\"%(lang_prefix)s/about\">About Scholarly Search</a>"
-msgstr "См. также: <a href=\"%(lang_prefix)s/about\"> О научном поиске </a>"
+msgstr ""
+"См. также: <a href=\"%(lang_prefix)s/about\">\n"
+"О научном поиске</a>"
 
 #: fatcat_scholar/templates/help.html:25
-#, fuzzy
 msgid ""
 "This service provides <a href=\"https://en.wikipedia.org/wiki/Full-"
 "text_search\">fulltext searching</a> over research publications archived in "
@@ -260,7 +258,7 @@ msgid ""
 "government reports, and more."
 msgstr ""
 "Данный сервис обеспечивает <a href=\"https://en.wikipedia.org/wiki/Full-"
-"text_search\"> полнотекстовый поиск </a> по всем исследовательским "
+"text_search\">полнотекстовый поиск</a> по всем исследовательским "
 "публикациям, заархивированным в различных коллекциях Архива Интернета. Он "
 "включает в себя материалы из области естественных наук, гуманитарных наук, "
 "биомедицины, искусства, истории, промышленных исследований, "
@@ -839,7 +837,7 @@ msgstr "Издатель / doi.org"
 #: fatcat_scholar/templates/search_macros.html:144
 #, python-format
 msgid "%(year)s"
-msgstr ""
+msgstr "%(year)s"
 
 #: fatcat_scholar/templates/search_macros.html:197
 msgid "unknown"
