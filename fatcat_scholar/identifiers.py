@@ -17,7 +17,7 @@ def clean_doi(raw: Optional[str]) -> Optional[str]:
     """
     if not raw:
         return None
-    raw = raw.strip()
+    raw = raw.strip().lower()
     if "\u2013" in raw:
         # Do not attempt to normalize "en dash" and since FC does not allow
         # unicode in DOI, treat this as invalid.
@@ -62,6 +62,7 @@ def test_clean_doi() -> None:
     assert clean_doi("asdf") == None
     assert clean_doi("10.123") == None
     assert clean_doi("10.1234/asdf ") == "10.1234/asdf"
+    assert clean_doi("10.1234/ASdf ") == "10.1234/asdf"
     assert clean_doi("10.1037//0002-9432.72.1.50") == "10.1037/0002-9432.72.1.50"
     assert clean_doi("10.1037/0002-9432.72.1.50") == "10.1037/0002-9432.72.1.50"
     assert clean_doi("10.23750/abm.v88i2 -s.6506") == None
@@ -79,7 +80,7 @@ def test_clean_doi() -> None:
 def clean_pmcid(raw: Optional[str]) -> Optional[str]:
     if not raw:
         return None
-    raw = raw.strip()
+    raw = raw.strip().upper()
     if len(raw.split()) != 1:
         return None
     if raw.startswith("PMC") and raw[3:] and raw[3:].isdigit():
@@ -93,3 +94,4 @@ def test_clean_pmcid() -> None:
     assert clean_pmcid("1 2") == None
     assert clean_pmcid(None) == None
     assert clean_pmcid("PMC123") == "PMC123"
+    assert clean_pmcid("pmc123") == "PMC123"
