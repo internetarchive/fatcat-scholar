@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-01-25 22:58-0800\n"
-"PO-Revision-Date: 2021-01-29 15:32+0000\n"
+"PO-Revision-Date: 2021-02-04 14:41+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/hr/>\n"
@@ -400,8 +400,8 @@ msgid ""
 "All Internet Archive preservation copy links have the same style and icon. "
 "Content from the Wayback Machine looks like this."
 msgstr ""
-"Sve poveznice za Internet Archive primjerke imaju isti stil i ikonu. Sadržaj "
-"od Wayback Machine izgleda ovako."
+"Sve poveznice za sačuvane primjerke u arhivu Internet Archive imaju isti "
+"stil i ikonu. Sadržaj od Wayback Machine izgleda ovako."
 
 #: fatcat_scholar/templates/help.html:122
 msgid ""
@@ -409,6 +409,9 @@ msgid ""
 "other alternative version of the work, the access link has an indicator. You "
 "can get details and view all versions by clicking on the primary title link"
 msgstr ""
+"Ako se u sačuvanom primjerku radi o predizdanju, manuskriptu autora ili neke "
+"druge alternativne verzije rada, poveznica za pristup sadrži oznaku. Detalje "
+"i prikaz svih verzija možeš dobiti pritiskom poveznice za primarni naslov"
 
 #: fatcat_scholar/templates/help.html:126
 msgid ""
@@ -416,15 +419,17 @@ msgid ""
 "stored in general Internet Archive digital collections (as opposed to the "
 "web archive)"
 msgstr ""
-"Neki sačuvani sadržaji, osobito stariji radovi u javnom vlasništvu, mogu "
-"biti spremljeni u digitalnim zbirkama od Internet Archive (za razliku od web-"
-"arhiva)"
+"Neki sačuvani sadržaji, osobito stariji radovi u javnom vlasništvu, možda su "
+"spremljeni u općim digitalnim zbirkama arhiva Internet Archive (za razliku "
+"od web-arhiva)"
 
 #: fatcat_scholar/templates/help.html:130
 msgid ""
 "Digitized copies of works on microfilm may be linked to experimentally. "
 "Access may be limited to controlled lending"
 msgstr ""
+"Digitalizirani primjerci rada na mikrofilmu mogu se eksperimentalno "
+"povezati. Pristup se može ograničiti na kontroliranu posudbu"
 
 #: fatcat_scholar/templates/help.html:134
 msgid ""
@@ -432,6 +437,8 @@ msgid ""
 "record\" of a research publication, but content is not always accessible to "
 "the general public"
 msgstr ""
+"Odredišna stranica izdavača ovlašteni je izvor za „verziju zapisa” "
+"istraživačke publikacije, ali sadržaj nije uvijek dostupan široj javnosti"
 
 #: fatcat_scholar/templates/help.html:138
 msgid ""
@@ -545,6 +552,9 @@ msgid ""
 "\"persistent identifiers\" that uniquely identify the specific version of "
 "the work. These are usually hyperlinks."
 msgstr ""
+"Ispod rezultata pretraživanja i alternativnih popisa verzija nalaze se svi "
+"poznati „trajni identifikatori” koji jedinstveno identificiraju određenu "
+"verziju rada. Uobičajeno su to poveznice."
 
 #: fatcat_scholar/templates/help.html:210
 msgid ""
@@ -621,7 +631,7 @@ msgid ""
 "other scholarly documents preserved in the Internet Archive."
 msgstr ""
 "Ovaj indeks pretraživanja teksta obuhvaća preko 25 milijuna istraživačkih "
-"članaka i drugih znanstvenih dokumenata sačuvanih u „Internet Archive”."
+"članaka i drugih znanstvenih dokumenata sačuvanih u arhivu Internet Archive."
 
 #: fatcat_scholar/templates/home.html:24
 msgid ""
@@ -753,7 +763,7 @@ msgstr "minijatura teksta"
 
 #: fatcat_scholar/templates/search_macros.html:111
 msgid "Publisher / doi.org"
-msgstr "Izdavač / doi.org"
+msgstr "Izdavač/doi.org"
 
 #: fatcat_scholar/templates/search_macros.html:144
 #, python-format
@@ -777,7 +787,7 @@ msgstr "stranica"
 
 #: fatcat_scholar/templates/search_macros.html:236
 msgid "Preserved Fulltext"
-msgstr "Očuvan tekst"
+msgstr "Sačuvani tekst"
 
 #: fatcat_scholar/templates/search_macros.html:259
 msgid "Web Archive Capture"
@@ -795,16 +805,15 @@ msgid ""
 "also visit <a rel=\"external noopener\" href=\"%(original_url)s\">the "
 "original URL</a>."
 msgstr ""
-"Primjerak ovog rada bio je dostupan na javnom webu i sačuvana je na Wayback "
-"Machine stranicama. Datum snimke je od %(capture_year)s; također možeš "
-"posjetiti <a rel=\"external noopener\" href=\"%(original_url)s\">izvorni "
-"URL</a>."
+"Primjerak ovog rada bio je dostupan na javnom webu i sačuvan je na Wayback "
+"Machine stranicama. Snimljeno %(capture_year)s. <a rel=\"external noopener\" "
+"href=\"%(original_url)s\">Izvorni URL</a>."
 
 #: fatcat_scholar/templates/search_macros.html:290
 msgid ""
 "The Internet Archive has a preservation copy of this work in our general "
 "collections."
-msgstr "Internet Archive ima primjerak ovog djela u našim općim zbirkama."
+msgstr "Internet Archive ima primjerak ovog rada u našim općim zbirkama."
 
 #: fatcat_scholar/templates/search_macros.html:292
 msgid ""
@@ -837,6 +846,8 @@ msgid ""
 "able to obtain a copy of this work to read from the publisher, platforms, or "
 "institutional libraries."
 msgstr ""
+"Još ne znamo za javno sačuvan primjerak ovog rada. Primjerak ovog rada se "
+"možda može dobiti od izdavača, platformi ili institucionalnih knjižnica."
 
 #: fatcat_scholar/templates/search_macros.html:327
 #, python-format

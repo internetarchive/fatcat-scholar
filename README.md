@@ -6,13 +6,13 @@
 `fatcat-scholar` / Internet Archive Scholar
 ===========================================
 
-This is source code for an experimental ("alpha") fulltext web search interface
+This is source code for an experimental ("alpha") full-text web search interface
 over the 25+ million open research papers in the [fatcat](https://fatcat.wiki)
 catalog. A demonstration (pre-production) interface is available at
 <https://scholar-qa.archive.org>.
 
 All of the heavy lifting of harvesting, crawling, and metadata corrections are
-all handled by the fatcat service; this service is just a bare-bones, read-only
+handled by the fatcat service; this service is just a bare-bones, read-only
 search interface. Unlike the basic fatcat.wiki search, this index allows
 querying the full content of papers when available.
 
@@ -21,15 +21,15 @@ querying the full content of papers when available.
 
 This repository is fairly small and contains:
 
-- `fatcat_scholar/`: Python code for web servce and indexing pipeline
+- `fatcat_scholar/`: Python code for web serivce and indexing pipeline
 - `fatcat_scholar/templates/`: HTML template for web interface
 - `tests/`: Python test files
 - `proposals/`: design documentation and change proposals
 - `data/`: empty directory for indexing pipeline
 
 A data pipeline converts groups of one or more fatcat "release" entities
-(grouped under a single "work") into a single search index document.
-Elasticsearch is used as the fulltext search engine. A simple web interface
+(grouped under a single "work" entitiy) into a single search index document.
+Elasticsearch is used as the full-text search engine. A simple web interface
 parses search requests and formats Elasticsearch results with highlights and
 first-page thumbnails.
 
@@ -47,23 +47,23 @@ Working on the indexing pipeline effectively requires internal access to the
 Internet Archive cluster and services, though some contributions and bugfixes
 are probably possible without staff access.
 
-To install dependencies for the first time, then run the tests (to ensure
-everything is working):
+To install dependencies for the first time run:
 
-    make dep
-    make test
+    `make dep`
 
-If developing the web interface, you will almost certainly need an example
+then run the tests (to ensure everything is working):
+
+    `make test`
+
+
+While developing the web interface, you will almost certainly need an example
 database running locally. A docker-compose file in `extra/docker/` can be used
 to run Elasticsearch 7.x locally. The `make dev-index` command will reset the
 local index with the correct schema mapping, and index any intermediate files
 in the `./data/` directory. We don't have an out-of-the-box solution for non-IA
 staff at this step (yet).
 
-After making changes to any user interface strings, the interface translation
-file (".pot") needs to be updated with `make extract-i18n`. When these changes
-are merged to master, the Weblate translation system will be updated
-automatically.
+After making changes to any user interface strings, the interface translation file (".pot") needs to be updated with `make extract-i18n`. When these changes are merged to master, the Weblate translation system will be updated automatically.
 
 This repository uses `black` for code formatting; please run `make fmt` and
 `make lint` for submitting a pull request.
