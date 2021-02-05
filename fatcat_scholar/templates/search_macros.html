@@ -538,7 +538,7 @@
 {% macro clear_query(query) -%}
   {% if query.filter_time or query.filter_type or query.filter_availability or query.sort_order %}
     <div>
-      <a href="{{ lang_prefix }}/search{% if query.q %}?q={{ query.q|urlencode }}{% endif %}" style="color: rgba(0,0,0,0.55); color: brown;">{% trans %}Clear Filters{% endtrans %}</a>
+      <a class="filter-label" href="{{ lang_prefix }}/search{% if query.q %}?q={{ query.q|urlencode }}{% endif %}" style="color: rgba(0,0,0,0.55); color: brown;">{% trans %}Clear Filters{% endtrans %}</a>
     </div>
     <br>
   {% endif %}
