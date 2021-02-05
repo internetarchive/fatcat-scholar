@@ -49,12 +49,11 @@ are probably possible without staff access.
 
 To install dependencies for the first time run:
 
-    `make dep`
+    make dep
 
 then run the tests (to ensure everything is working):
 
-    `make test`
-
+    make test
 
 While developing the web interface, you will almost certainly need an example
 database running locally. A docker-compose file in `extra/docker/` can be used
@@ -63,7 +62,10 @@ local index with the correct schema mapping, and index any intermediate files
 in the `./data/` directory. We don't have an out-of-the-box solution for non-IA
 staff at this step (yet).
 
-After making changes to any user interface strings, the interface translation file (".pot") needs to be updated with `make extract-i18n`. When these changes are merged to master, the Weblate translation system will be updated automatically.
+After making changes to any user interface strings, the interface translation
+file (".pot") needs to be updated with `make extract-i18n`. When these changes
+are merged to master, the Weblate translation system will be updated
+automatically.
 
 This repository uses `black` for code formatting; please run `make fmt` and
 `make lint` for submitting a pull request.
