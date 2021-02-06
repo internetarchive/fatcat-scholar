@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-01-25 22:58-0800\n"
-"PO-Revision-Date: 2021-02-04 14:41+0000\n"
-"Last-Translator: Nikita Epifanov <nikgreens@protonmail.com>\n"
+"PO-Revision-Date: 2021-02-07 00:50+0000\n"
+"Last-Translator: Artem <KovalevArtem.ru@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/ru/>\n"
 "Language: ru\n"
@@ -409,10 +409,8 @@ msgstr ""
 "scholar_fulltext.v01.json\"> в исходном коде </a>."
 
 #: fatcat_scholar/templates/help.html:105
-#, fuzzy
-#| msgid "Search"
 msgid "Search Results"
-msgstr "Поиск"
+msgstr "Результаты поиска"
 
 #: fatcat_scholar/templates/help.html:108
 #, fuzzy
@@ -806,22 +804,18 @@ msgid "Archive [Microfilm]"
 msgstr "Микрофильм"
 
 #: fatcat_scholar/templates/search_macros.html:78
-#, fuzzy
 msgid "Other"
-msgstr "Другие"
+msgstr "Другое"
 
 #: fatcat_scholar/templates/search_macros.html:82
-#, fuzzy
 msgid "[PDF]"
 msgstr "[PDF]"
 
 #: fatcat_scholar/templates/search_macros.html:84
-#, fuzzy
 msgid "[HTML]"
 msgstr "[HTML]"
 
 #: fatcat_scholar/templates/search_macros.html:86
-#, fuzzy
 msgid "[XML]"
 msgstr "[XML]"
 
@@ -830,7 +824,6 @@ msgid "fulltext thumbnail"
 msgstr "полнотекстовая миниатюра"
 
 #: fatcat_scholar/templates/search_macros.html:111
-#, fuzzy
 msgid "Publisher / doi.org"
 msgstr "Издатель / doi.org"
 
@@ -865,10 +858,8 @@ msgid "Web Archive Capture"
 msgstr "Захват веб-архива"
 
 #: fatcat_scholar/templates/search_macros.html:263
-#, fuzzy
-#| msgid "Microfilm"
 msgid "Digitized Microfilm"
-msgstr "Микрофильм"
+msgstr "Оцифрованный микрофильм"
 
 #: fatcat_scholar/templates/search_macros.html:288
 #, fuzzy, python-format
@@ -901,12 +892,9 @@ msgstr ""
 "копию можно взять напрокат для чтения."
 
 #: fatcat_scholar/templates/search_macros.html:296
-#, fuzzy, python-format
+#, python-format
 msgid "The file type is %(mimetype)s."
-msgstr ""
-"\n"
-"                Тип файла - %(mimetype)s.\n"
-"              "
+msgstr "Тип файла %(mimetype)s."
 
 #: fatcat_scholar/templates/search_macros.html:301
 #, fuzzy
@@ -970,9 +958,8 @@ msgid "cite this work"
 msgstr "привести эту работу"
 
 #: fatcat_scholar/templates/search_macros.html:457
-#, fuzzy
 msgid "Citation"
-msgstr "Цитата"
+msgstr "Цитирование"
 
 #: fatcat_scholar/templates/search_macros.html:471
 #, fuzzy
@@ -986,16 +973,13 @@ msgstr "связь с этой пластинкой"
 
 #: fatcat_scholar/templates/search_macros.html:493
 #: fatcat_scholar/templates/search_macros.html:496
-#, fuzzy
-#| msgid "Previous"
 msgid "&laquo; Previous"
-msgstr "Предыдущий"
+msgstr "&laquo; Предыдущий"
 
 #: fatcat_scholar/templates/search_macros.html:501
 #: fatcat_scholar/templates/search_macros.html:504
-#, fuzzy
 msgid "Next &raquo;"
-msgstr "Еще &raquo;"
+msgstr "Следующий &raquo;"
 
 #: fatcat_scholar/templates/search_macros.html:508
 #, python-format
@@ -1004,10 +988,8 @@ msgstr ""
 "Отображение результатов %(start)s &mdash; %(end)s из %(total)s результатов"
 
 #: fatcat_scholar/templates/search_macros.html:541
-#, fuzzy
-#| msgid "Filters"
 msgid "Clear Filters"
-msgstr "Фильтры"
+msgstr "Очистить фильтры"
 
 #~ msgid "Next"
 #~ msgstr "Следующий"
