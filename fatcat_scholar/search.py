@@ -386,8 +386,8 @@ def do_fulltext_search(
             raise ValueError(str(e.info)) from e
     except elasticsearch.exceptions.TransportError as e:
         # all other errors
-        logging.warn("elasticsearch non-200 status code: {}".format(e.info))
-        raise IOError(str(e.info)) from e
+        logging.warn(f"elasticsearch non-200 status code: {e.info}")
+        raise OSError(str(e.info)) from e
     query_delta = datetime.datetime.now() - query_start
 
     # convert from API objects to dicts

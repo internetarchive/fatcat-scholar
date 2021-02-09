@@ -3,7 +3,7 @@ from fatcat_scholar.grobid2json import teixml2json
 
 def test_grobid_teixml2json() -> None:
 
-    with open("tests/files/example_grobid.tei.xml", "r") as f:
+    with open("tests/files/example_grobid.tei.xml") as f:
         blob = f.read()
 
     obj = teixml2json(blob, True)

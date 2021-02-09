@@ -320,7 +320,7 @@ class WorkPipeline:
         2. find best SIM microfilm copy available
         """
         pref_idents = fulltext_pref_list(releases)
-        release_dict = dict([(r.ident, r) for r in releases])
+        release_dict = {r.ident: r for r in releases}
 
         # print(f"pref_idents={pref_idents}", file=sys.stderr)
 

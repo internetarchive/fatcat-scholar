@@ -77,9 +77,9 @@ def all_authors(elem: Optional[ET.Element], ns: str = ns) -> List[Dict[str, Any]
 
 def journal_info(elem: ET.Element) -> Dict[str, Any]:
     journal = dict()
-    journal["name"] = elem.findtext(".//{%s}monogr/{%s}title" % (ns, ns))
+    journal["name"] = elem.findtext(f".//{{{ns}}}monogr/{{{ns}}}title")
     journal["publisher"] = elem.findtext(
-        ".//{%s}publicationStmt/{%s}publisher" % (ns, ns)
+        f".//{{{ns}}}publicationStmt/{{{ns}}}publisher"
     )
     if journal["publisher"] == "":
         journal["publisher"] = None
@@ -101,8 +101,8 @@ def biblio_info(elem: ET.Element, ns: str = ns) -> Dict[str, Any]:
     ref["id"] = elem.attrib.get("{http://www.w3.org/XML/1998/namespace}id")
     ref["unstructured"] = elem.findtext('.//{%s}note[@type="raw_reference"]' % ns)
     # Title stuff is messy in references...
-    ref["title"] = elem.findtext(".//{%s}analytic/{%s}title" % (ns, ns))
-    other_title = elem.findtext(".//{%s}monogr/{%s}title" % (ns, ns))
+    ref["title"] = elem.findtext(f".//{{{ns}}}analytic/{{{ns}}}title")
+    other_title = elem.findtext(f".//{{{ns}}}monogr/{{{ns}}}title")
     if other_title:
         if ref["title"]:
             ref["journal"] = other_title
@@ -110,9 +110,9 @@ def biblio_info(elem: ET.Element, ns: str = ns) -> Dict[str, Any]:
             ref["journal"] = None
             ref["title"] = other_title
     ref["authors"] = all_authors(elem, ns=ns)
-    ref["publisher"] = elem.findtext(".//{%s}publicationStmt/{%s}publisher" % (ns, ns))
+    ref["publisher"] = elem.findtext(f".//{{{ns}}}publicationStmt/{{{ns}}}publisher")
     if not ref["publisher"]:
-        ref["publisher"] = elem.findtext(".//{%s}imprint/{%s}publisher" % (ns, ns))
+        ref["publisher"] = elem.findtext(f".//{{{ns}}}imprint/{{{ns}}}publisher")
     if ref["publisher"] == "":
         ref["publisher"] = None
     date = elem.find('.//{%s}date[@type="published"]' % ns)
@@ -162,12 +162,12 @@ def teixml2json(content: AnyStr, encumbered: bool = True) -> Dict[str, Any]:
     header = tei.find(".//{%s}teiHeader" % ns)
     if header is None:
         raise ValueError("XML does not look like TEI format")
-    application_tag = header.findall(".//{%s}appInfo/{%s}application" % (ns, ns))[0]
+    application_tag = header.findall(f".//{{{ns}}}appInfo/{{{ns}}}application")[0]
     info["grobid_version"] = application_tag.attrib["version"].strip()
     info["grobid_timestamp"] = application_tag.attrib["when"].strip()
-    info["title"] = header.findtext(".//{%s}analytic/{%s}title" % (ns, ns))
+    info["title"] = header.findtext(f".//{{{ns}}}analytic/{{{ns}}}title")
     info["authors"] = all_authors(
-        header.find(".//{%s}sourceDesc/{%s}biblStruct" % (ns, ns))
+        header.find(f".//{{{ns}}}sourceDesc/{{{ns}}}biblStruct")
     )
     info["journal"] = journal_info(header)
     date = header.find('.//{%s}date[@type="published"]' % ns)
@@ -178,7 +178,7 @@ def teixml2json(content: AnyStr, encumbered: bool = True) -> Dict[str, Any]:
         info["doi"] = info["doi"].lower()
 
     refs = []
-    for (i, bs) in enumerate(tei.findall(".//{%s}listBibl/{%s}biblStruct" % (ns, ns))):
+    for (i, bs) in enumerate(tei.findall(f".//{{{ns}}}listBibl/{{{ns}}}biblStruct")):
         ref = biblio_info(bs)
         ref["index"] = i
         refs.append(ref)
@@ -190,13 +190,13 @@ def teixml2json(content: AnyStr, encumbered: bool = True) -> Dict[str, Any]:
         info["language_code"] = text.attrib["{%s}lang" % xml_ns]  # xml:lang
 
     if encumbered:
-        el = tei.find(".//{%s}profileDesc/{%s}abstract" % (ns, ns))
+        el = tei.find(f".//{{{ns}}}profileDesc/{{{ns}}}abstract")
         info["abstract"] = (el or None) and " ".join(el.itertext()).strip()
-        el = tei.find(".//{%s}text/{%s}body" % (ns, ns))
+        el = tei.find(f".//{{{ns}}}text/{{{ns}}}body")
         info["body"] = (el or None) and " ".join(el.itertext()).strip()
-        el = tei.find('.//{%s}back/{%s}div[@type="acknowledgement"]' % (ns, ns))
+        el = tei.find(f'.//{{{ns}}}back/{{{ns}}}div[@type="acknowledgement"]')
         info["acknowledgement"] = (el or None) and " ".join(el.itertext()).strip()
-        el = tei.find('.//{%s}back/{%s}div[@type="annex"]' % (ns, ns))
+        el = tei.find(f'.//{{{ns}}}back/{{{ns}}}div[@type="annex"]')
         info["annex"] = (el or None) and " ".join(el.itertext()).strip()
 
     # remove empty/null keys
@@ -223,7 +223,7 @@ def main() -> None:  # pragma no cover
     args = parser.parse_args()
 
     for filename in args.teifiles:
-        content = open(filename, "r").read()
+        content = open(filename).read()
         print(
             json.dumps(
                 teixml2json(content, encumbered=(not args.no_encumbered)),

@@ -7,7 +7,7 @@ from typing import List, Any
 from confluent_kafka import Consumer, Producer, KafkaException
 
 
-class KafkaWorker(object):
+class KafkaWorker:
     """
     Base class for Scholar workers which consume from Kafka topics.
 
@@ -69,7 +69,7 @@ class KafkaWorker(object):
     @staticmethod
     def _fail_fast_produce(err: Any, msg: Any) -> None:
         if err is not None:
-            print("Kafka producer delivery error: {}".format(err), file=sys.stderr)
+            print(f"Kafka producer delivery error: {err}", file=sys.stderr)
             raise KafkaException(err)
 
     @staticmethod
@@ -97,13 +97,13 @@ class KafkaWorker(object):
 
         def _fail_fast_consume(err: Any, partitions: Any) -> None:
             if err is not None:
-                print("Kafka consumer commit error: {}".format(err), file=sys.stderr)
+                print(f"Kafka consumer commit error: {err}", file=sys.stderr)
                 raise KafkaException(err)
             for p in partitions:
                 # check for partition-specific commit errors
                 if p.error:
                     print(
-                        "Kafka consumer commit error: {}".format(p.error),
+                        f"Kafka consumer commit error: {p.error}",
                         file=sys.stderr,
                     )
                     raise KafkaException(p.error)

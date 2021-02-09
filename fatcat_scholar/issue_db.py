@@ -167,7 +167,7 @@ class IssueDB:
             PRAGMA main.synchronous = OFF;
         """
         )
-        with open("schema/issue_db.sql", "r") as fschema:
+        with open("schema/issue_db.sql") as fschema:
             self.db.executescript(fschema.read())
 
     def insert_sim_pub(self, pub: SimPubRow, cur: Any = None) -> None:
