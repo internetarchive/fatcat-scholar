@@ -39,7 +39,7 @@ class SandcrawlerPostgrestClient:
             return None
 
 
-class SandcrawlerMinioClient(object):
+class SandcrawlerMinioClient:
     def __init__(
         self,
         host_url: str,

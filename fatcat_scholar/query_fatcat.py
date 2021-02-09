@@ -67,7 +67,7 @@ def run_query_fatcat(query: str, fulltext_only: bool, json_output: Any) -> None:
         Q("query_string", query=query, default_operator="AND", fields=["biblio"])
     )
 
-    print("Expecting {} search hits".format(search.count()), file=sys.stderr)
+    print(f"Expecting {search.count()} search hits", file=sys.stderr)
 
     search = search.params(clear_scroll=False)
     search = search.params(_source=False)
@@ -76,7 +76,7 @@ def run_query_fatcat(query: str, fulltext_only: bool, json_output: Any) -> None:
     for hit in results:
         release_id = hit.meta.id
         resp = api_session.get(
-            "https://api.fatcat.wiki/v0/release/{}".format(release_id),
+            f"https://api.fatcat.wiki/v0/release/{release_id}",
             params={
                 "expand": "container,files,filesets,webcaptures",
                 "hide": "references",

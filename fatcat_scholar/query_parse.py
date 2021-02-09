@@ -11,7 +11,7 @@ import shlex
 def _clean_token(raw: str) -> str:
     raw = raw.strip()
     if not raw:
-        return '"{}"'.format(raw)
+        return f'"{raw}"'
     if len(raw.split()) > 1:
         # has whitespace, will get quoted
         return raw
@@ -19,11 +19,11 @@ def _clean_token(raw: str) -> str:
         # is quoted already
         return raw
     if "/" in raw or raw.endswith(":") or raw.endswith("!") or raw.endswith("?"):
-        return '"{}"'.format(raw)
+        return f'"{raw}"'
     if raw.startswith("[") and raw.endswith("]"):
-        return '"{}"'.format(raw)
+        return f'"{raw}"'
     if raw.startswith("{") and raw.endswith("}"):
-        return '"{}"'.format(raw)
+        return f'"{raw}"'
     return raw
 
 
