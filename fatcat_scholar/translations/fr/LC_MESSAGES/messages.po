@@ -4,13 +4,14 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # Bryan Newbold <bnewbold@robocracy.org>, 2020, 2021.
 # ysard <ysard_git@gmx.fr>, 2020.
+# Nathan <bonnemainsnathan@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-01-25 22:58-0800\n"
-"PO-Revision-Date: 2021-01-28 09:32+0000\n"
-"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"PO-Revision-Date: 2021-02-12 21:18+0000\n"
+"Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/fr/>\n"
 "Language: fr\n"
@@ -107,10 +108,8 @@ msgid "About %(website_name)s"
 msgstr "À propos de %(website_name)s"
 
 #: fatcat_scholar/templates/about.html:8
-#, fuzzy
-#| msgid "Internet Archive Scholar"
 msgid "About Internet Archive Scholar"
-msgstr "Internet Archive Scholar"
+msgstr "À propos d'Internet Archive Scholar"
 
 #: fatcat_scholar/templates/base.html:12
 msgid "Internet Archive Scholar"
@@ -215,22 +214,18 @@ msgid "Help"
 msgstr "Aide"
 
 #: fatcat_scholar/templates/error.html:12
-#, fuzzy
 msgid "Not Found"
-msgstr "Nœud non trouvé"
+msgstr "Non trouvé"
 
 #: fatcat_scholar/templates/error.html:14
-#, fuzzy
 msgid "Access Forbidden"
 msgstr "Accès interdit"
 
 #: fatcat_scholar/templates/error.html:16
-#, fuzzy
 msgid "Request Error"
-msgstr "Demande d'erreur"
+msgstr "Erreur de requête"
 
 #: fatcat_scholar/templates/error.html:18
-#, fuzzy
 msgid "Internal Error"
 msgstr "Erreur interne"
 
@@ -244,10 +239,8 @@ msgid "Try It"
 msgstr "Essayez-le"
 
 #: fatcat_scholar/templates/help.html:22
-#, fuzzy
-#| msgid "User Guide"
 msgid "Scholar User Guide"
-msgstr "Guide d’utilisation"
+msgstr "Guide d’utilisation de Scholar"
 
 #: fatcat_scholar/templates/help.html:23
 #, fuzzy, python-format
