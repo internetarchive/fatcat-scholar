@@ -97,6 +97,8 @@ class HitsModel(BaseModel):
 @api.get("/search", operation_id="get_search", response_model=HitsModel)
 async def search(query: FulltextQuery = Depends(FulltextQuery)) -> FulltextHits:
     hits: Optional[FulltextHits] = None
+    if query.q is None:
+        raise HTTPException(status_code=400, detail=f"Expected a 'q' query parameter")
     try:
         hits = process_query(query)
     except ValueError as e:

@@ -39,6 +39,10 @@ def test_basic_api(client: Any, mocker: Any) -> None:
     assert resp.status_code == 200
     assert resp.json()
 
+    # request with no 'q' parameter is an error
+    resp = client.get("/search", headers=headers)
+    assert resp.status_code == 400
+
     with open("tests/files/elastic_fulltext_search.json") as f:
         elastic_resp = json.loads(f.read())
 
@@ -49,7 +53,7 @@ def test_basic_api(client: Any, mocker: Any) -> None:
         (200, {}, json.dumps(elastic_resp)),
     ]
 
-    resp = client.get("/search", headers=headers)
+    resp = client.get("/search?q=blood", headers=headers)
     assert resp.status_code == 200
     assert resp.json()
 
