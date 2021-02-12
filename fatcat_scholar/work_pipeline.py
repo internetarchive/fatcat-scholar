@@ -171,6 +171,10 @@ class WorkPipeline:
             # print(raw_text)
         except minio.error.NoSuchKey:
             return None
+        except urllib3.exceptions.MaxRetryError:
+            # HACK: work around broken seaweedfs keys
+            print(f"seaweedfs failure: sha1hex={fe.sha1}", file=sys.stderr)
+            return None
         return dict(
             raw_text=raw_text, release_ident=release_ident, file_ident=fe.ident,
         )
@@ -201,6 +205,10 @@ class WorkPipeline:
             )
             # print(grobid_xml)
         except minio.error.NoSuchKey:
+            return None
+        except urllib3.exceptions.MaxRetryError:
+            # HACK: work around broken seaweedfs keys
+            print(f"seaweedfs failure: sha1hex={fe.sha1}", file=sys.stderr)
             return None
 
         return dict(
