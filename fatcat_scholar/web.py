@@ -13,6 +13,7 @@ import babel.support
 from fastapi import FastAPI, APIRouter, Request, Depends, Response, HTTPException
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import PlainTextResponse, JSONResponse, FileResponse
+from fastapi.middleware.cors import CORSMiddleware
 import sentry_sdk
 from sentry_sdk.integrations.asgi import SentryAsgiMiddleware
 from starlette_prometheus import metrics, PrometheusMiddleware
@@ -321,6 +322,14 @@ async def http_exception_handler(request: Request, exc: StarletteHTTPException) 
 
 
 # configure middleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=False,
+    allow_methods=["GET"],
+    allow_headers=[], # some defaults always enabled
+)
 
 if settings.SENTRY_DSN:
     logger.info("Sentry integration enabled")
