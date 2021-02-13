@@ -6,13 +6,14 @@
 # nautilusx <mail.ka@mailbox.org>, 2020.
 # Bryan Newbold <bnewbold@robocracy.org>, 2020, 2021.
 # Milo Ivir <mail@milotype.de>, 2020.
+# nautilusx <translate@disroot.org>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-01-25 22:58-0800\n"
-"PO-Revision-Date: 2021-01-28 09:32+0000\n"
-"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"PO-Revision-Date: 2021-02-14 16:50+0000\n"
+"Last-Translator: nautilusx <translate@disroot.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/de/>\n"
 "Language: de\n"
@@ -109,10 +110,8 @@ msgid "About %(website_name)s"
 msgstr "Über %(website_name)s"
 
 #: fatcat_scholar/templates/about.html:8
-#, fuzzy
-#| msgid "Internet Archive Scholar"
 msgid "About Internet Archive Scholar"
-msgstr "Internet Archive Scholar"
+msgstr "Über Internet Archive Scholar"
 
 #: fatcat_scholar/templates/base.html:12
 msgid "Internet Archive Scholar"
@@ -217,22 +216,18 @@ msgid "Help"
 msgstr "Hilfe"
 
 #: fatcat_scholar/templates/error.html:12
-#, fuzzy
 msgid "Not Found"
 msgstr "Nicht gefunden"
 
 #: fatcat_scholar/templates/error.html:14
-#, fuzzy
 msgid "Access Forbidden"
-msgstr "Zutritt nicht erlaubt"
+msgstr "Zugriff nicht erlaubt"
 
 #: fatcat_scholar/templates/error.html:16
-#, fuzzy
 msgid "Request Error"
-msgstr "Anfrage Fehler"
+msgstr "Anfragefehler"
 
 #: fatcat_scholar/templates/error.html:18
-#, fuzzy
 msgid "Internal Error"
 msgstr "Interner Fehler"
 
@@ -246,19 +241,15 @@ msgid "Try It"
 msgstr "Ausprobieren"
 
 #: fatcat_scholar/templates/help.html:22
-#, fuzzy
-#| msgid "User Guide"
 msgid "Scholar User Guide"
-msgstr "Benutzerhandbuch"
+msgstr "Scholar Benutzerhandbuch"
 
 #: fatcat_scholar/templates/help.html:23
-#, fuzzy, python-format
+#, python-format
 msgid "See also: <a href=\"%(lang_prefix)s/about\">About Scholarly Search</a>"
-msgstr ""
-"Siehe auch: <a href=\"%(lang_prefix)s/about\">Über Scholarly Search</a>"
+msgstr "Siehe auch: <a href=\"%(lang_prefix)s/about\">Über Scholarly Suche</a>"
 
 #: fatcat_scholar/templates/help.html:25
-#, fuzzy
 msgid ""
 "This service provides <a href=\"https://en.wikipedia.org/wiki/Full-"
 "text_search\">fulltext searching</a> over research publications archived in "
@@ -274,18 +265,16 @@ msgstr ""
 "Regierungsberichte und mehr."
 
 #: fatcat_scholar/templates/help.html:26
-#, fuzzy
 msgid ""
 "Reader access to the content is provided when possible. Sometimes this "
 "access is to a \"pre-print\" or other version of the work, and this is "
 "indicated in the search results."
 msgstr ""
-"Wenn möglich, wird ein Leserzugang zum Inhalt angeboten. Manchmal handelt es "
-"sich bei diesem Zugang um einen \"Pre-Print\" oder eine andere Version der "
-"Arbeit, und dies wird in den Suchergebnissen angegeben."
+"Wenn möglich, wird ein Lesezugriff zum Inhalt angeboten. Manchmal bietet "
+"dieser Zugriff auf einen \"Pre-Print\" oder eine andere Version der Arbeit, "
+"und dies wird in den Suchergebnissen angegeben."
 
 #: fatcat_scholar/templates/help.html:28
-#, fuzzy
 msgid ""
 "In other cases, depending on search filters, results are included for which "
 "there is only a bibliographic catalog entry. It may still be possible to "
@@ -297,9 +286,8 @@ msgstr ""
 "oder direkt über den Verlag zu erhalten."
 
 #: fatcat_scholar/templates/help.html:30
-#, fuzzy
 msgid "Query Syntax"
-msgstr "Abfrage-Syntax"
+msgstr "Abfragesyntax"
 
 #: fatcat_scholar/templates/help.html:32
 #, fuzzy
