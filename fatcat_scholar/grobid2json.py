@@ -223,7 +223,7 @@ def main() -> None:  # pragma no cover
     args = parser.parse_args()
 
     for filename in args.teifiles:
-        content = open(filename).read()
+        content = open(filename, "r").read()
         print(
             json.dumps(
                 teixml2json(content, encumbered=(not args.no_encumbered)),
