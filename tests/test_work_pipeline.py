@@ -84,5 +84,5 @@ def test_run_transform(mocker: Any) -> None:
         ),
     )
 
-    with open("tests/files/release_hsmo6p4smrganpb3fndaj2lon4_sans.json") as f:
+    with open("tests/files/release_hsmo6p4smrganpb3fndaj2lon4_sans.json", "r") as f:
         wp.run_releases(f.readlines())

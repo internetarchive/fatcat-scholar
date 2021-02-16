@@ -16,8 +16,8 @@ def test_issue_db_basics() -> None:
     issue_db = IssueDB(settings.SCHOLAR_ISSUEDB_PATH)
     issue_db.init_db()
 
-    with open("tests/files/sim_collections.json") as f:
+    with open("tests/files/sim_collections.json", "r") as f:
         issue_db.load_pubs(f.readlines(), api)
 
-    with open("tests/files/sim_items.json") as f:
+    with open("tests/files/sim_items.json", "r") as f:
         issue_db.load_issues(f.readlines(), es_client)

@@ -5,7 +5,7 @@ from fatcat_scholar.djvu import djvu_extract_leaf_texts
 def test_djvu_extract_leaf_texts() -> None:
 
     # https://archive.org/details/ERIC_ED441501
-    with open("tests/files/ERIC_ED441501_djvu.xml") as f:
+    with open("tests/files/ERIC_ED441501_djvu.xml", "r") as f:
         blob = f.read()
 
     leaves = djvu_extract_leaf_texts(io.StringIO(blob), [3, 6])

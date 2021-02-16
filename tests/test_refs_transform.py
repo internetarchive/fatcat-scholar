@@ -6,7 +6,7 @@ from fatcat_scholar.transform import refs_from_grobid
 
 def test_transform_refs_grobid() -> None:
 
-    with open("tests/files/example_grobid.tei.xml") as f:
+    with open("tests/files/example_grobid.tei.xml", "r") as f:
         blob = f.read()
 
     dummy_release = ReleaseEntity(

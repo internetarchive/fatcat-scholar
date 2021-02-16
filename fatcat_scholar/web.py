@@ -106,7 +106,7 @@ async def search(query: FulltextQuery = Depends(FulltextQuery)) -> FulltextHits:
         sentry_sdk.set_level("warning")
         sentry_sdk.capture_exception(e)
         raise HTTPException(status_code=400, detail=f"Query Error: {e}")
-    except OSError as e:
+    except IOError as e:
         sentry_sdk.capture_exception(e)
         raise HTTPException(status_code=500, detail=f"Backend Error: {e}")
 
@@ -224,7 +224,7 @@ async def web_search(
             sentry_sdk.capture_exception(e)
             search_error = dict(type="query", message=str(e))
             status_code = 400
-        except OSError as e:
+        except IOError as e:
             sentry_sdk.capture_exception(e)
             search_error = dict(type="backend", message=str(e))
             status_code = 500
@@ -282,8 +282,8 @@ async def favicon() -> Any:
     )
 
 
-ROBOTS_ALLOW = open("fatcat_scholar/static/robots.allow.txt").read()
-ROBOTS_DISALLOW = open("fatcat_scholar/static/robots.disallow.txt").read()
+ROBOTS_ALLOW = open("fatcat_scholar/static/robots.allow.txt", "r").read()
+ROBOTS_DISALLOW = open("fatcat_scholar/static/robots.disallow.txt", "r").read()
 
 
 @app.get("/robots.txt", include_in_schema=False)
