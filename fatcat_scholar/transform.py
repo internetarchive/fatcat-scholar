@@ -13,15 +13,19 @@ from fatcat_scholar.schema import *
 from fatcat_scholar.config import settings, GIT_REVISION
 from fatcat_scholar.grobid2json import teixml2json
 
+MAX_BODY_CHARS = 1024*1024
 
 def es_fulltext_from_sim(sim: Dict[str, Any]) -> Optional[ScholarFulltext]:
     if not sim["page_texts"]:
         return None
     first_page = sim["page_texts"][0]["page_num"]
     issue_item = sim["issue_item"]
+    body="\n".join([p["raw_text"] for p in sim["page_texts"]])
+    if body and len(body) > MAX_BODY_CHARS:
+        body = body[MAX_BODY_CHARS:]
     return ScholarFulltext(
         lang_code=None,  # TODO: pub/issue metadata? or langdetect?
-        body="\n".join([p["raw_text"] for p in sim["page_texts"]]),
+        body=body,
         # acknowledgement=None,
         # annex=None,
         release_ident=sim.get("release_ident"),
@@ -221,9 +225,12 @@ def es_fulltext_from_grobid(
 ) -> Optional[ScholarFulltext]:
     if not tei_dict.get("body"):
         return None
+    body = tei_dict.get("body")
+    if body and len(body) > MAX_BODY_CHARS:
+        body = body[MAX_BODY_CHARS:]
     ret = ScholarFulltext(
         lang_code=tei_dict.get("lang"),
-        body=tei_dict.get("body"),
+        body=body,
         acknowledgement=tei_dict.get("acknowledgement"),
         annex=tei_dict.get("annex"),
     )
@@ -234,6 +241,8 @@ def es_fulltext_from_pdftotext(
     raw_text: str, pdf_meta: Optional[dict], re: ReleaseEntity, fe: FileEntity
 ) -> Optional[ScholarFulltext]:
 
+    if raw_text and len(raw_text) > MAX_BODY_CHARS:
+        raw_text = raw_text[MAX_BODY_CHARS:]
     ret = ScholarFulltext(
         lang_code=re.language, body=raw_text, acknowledgement=None, annex=None,
     )
@@ -252,6 +261,8 @@ def es_fulltext_from_html(
     body = tree.find(".//tei:body", ns)
     if body:
         raw_text = " ".join(body.itertext())
+        if raw_text and len(raw_text) > MAX_BODY_CHARS:
+            raw_text = raw_text[MAX_BODY_CHARS:]
     else:
         return None
 
