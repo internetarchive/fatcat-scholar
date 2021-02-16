@@ -153,7 +153,7 @@ class IndexDocsWorker(KafkaWorker):
         if not bulk_actions:
             return
 
-        elasticsearch.helpers.bulk(self.es_client, bulk_actions, timeout="30s")
+        elasticsearch.helpers.bulk(self.es_client, bulk_actions, timeout="50s")
         self.counts["batches-indexed"] += 1
 
 
@@ -236,7 +236,7 @@ def main() -> None:
         fdw.run()
     elif args.worker == "index-docs-worker":
         es_client = elasticsearch.Elasticsearch(
-            settings.ELASTICSEARCH_WRITE_BASE, timeout=25.0
+            settings.ELASTICSEARCH_WRITE_BASE, timeout=50.0
         )
         idw = IndexDocsWorker(
             kafka_brokers=settings.KAFKA_BROKERS,
