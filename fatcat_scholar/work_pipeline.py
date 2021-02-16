@@ -208,7 +208,7 @@ class WorkPipeline:
             return None
         except urllib3.exceptions.MaxRetryError:
             # HACK: work around broken seaweedfs keys
-            print(f"seaweedfs failure: sha1hex={fe.sha1}", file=sys.stderr)
+            print(f"seaweedfs failure: sha1hex={sha1hex}", file=sys.stderr)
             return None
 
         return dict(

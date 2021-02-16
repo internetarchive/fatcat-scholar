@@ -13,14 +13,15 @@ from fatcat_scholar.schema import *
 from fatcat_scholar.config import settings, GIT_REVISION
 from fatcat_scholar.grobid2json import teixml2json
 
-MAX_BODY_CHARS = 1024*1024
+MAX_BODY_CHARS = 1024 * 1024
+
 
 def es_fulltext_from_sim(sim: Dict[str, Any]) -> Optional[ScholarFulltext]:
     if not sim["page_texts"]:
         return None
     first_page = sim["page_texts"][0]["page_num"]
     issue_item = sim["issue_item"]
-    body="\n".join([p["raw_text"] for p in sim["page_texts"]])
+    body = "\n".join([p["raw_text"] for p in sim["page_texts"]])
     if body and len(body) > MAX_BODY_CHARS:
         body = body[MAX_BODY_CHARS:]
     return ScholarFulltext(

@@ -99,7 +99,7 @@ class HitsModel(BaseModel):
 async def search(query: FulltextQuery = Depends(FulltextQuery)) -> FulltextHits:
     hits: Optional[FulltextHits] = None
     if query.q is None:
-        raise HTTPException(status_code=400, detail=f"Expected a 'q' query parameter")
+        raise HTTPException(status_code=400, detail="Expected a 'q' query parameter")
     try:
         hits = process_query(query)
     except ValueError as e:
@@ -328,7 +328,7 @@ app.add_middleware(
     allow_origins=["*"],
     allow_credentials=False,
     allow_methods=["GET"],
-    allow_headers=[], # some defaults always enabled
+    allow_headers=[],  # some defaults always enabled
 )
 
 if settings.SENTRY_DSN:
