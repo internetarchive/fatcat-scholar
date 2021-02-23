@@ -7,9 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-01-25 22:58-0800\n"
-"PO-Revision-Date: 2021-01-24 12:32+0000\n"
+"PO-Revision-Date: 2021-02-09 03:50+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
 "internetarchive/fatcat-scholar/nb_NO/>\n"
@@ -818,7 +818,7 @@ msgstr "ikke hovedversjonen"
 #: fatcat_scholar/templates/search_macros.html:441
 #, python-format
 msgid "Same Issue (%(count)s)"
-msgstr ""
+msgstr "Samme problem (%(count)s)"
 
 #: fatcat_scholar/templates/search_macros.html:452
 msgid "cite this work"
@@ -833,8 +833,9 @@ msgid "edit metadata on fatcat wiki"
 msgstr "rediger metadata på fatcat-wiki-en"
 
 #: fatcat_scholar/templates/search_macros.html:477
+#, fuzzy
 msgid "permalink to this record"
-msgstr ""
+msgstr "permanent lenke til denne oppføringen"
 
 #: fatcat_scholar/templates/search_macros.html:493
 #: fatcat_scholar/templates/search_macros.html:496

@@ -21,14 +21,14 @@ querying the full content of papers when available.
 
 This repository is fairly small and contains:
 
-- `fatcat_scholar/`: Python code for web serivce and indexing pipeline
+- `fatcat_scholar/`: Python code for web service and indexing pipeline
 - `fatcat_scholar/templates/`: HTML template for web interface
 - `tests/`: Python test files
 - `proposals/`: design documentation and change proposals
 - `data/`: empty directory for indexing pipeline
 
 A data pipeline converts groups of one or more fatcat "release" entities
-(grouped under a single "work" entitiy) into a single search index document.
+(grouped under a single "work" entity) into a single search index document.
 Elasticsearch is used as the full-text search engine. A simple web interface
 parses search requests and formats Elasticsearch results with highlights and
 first-page thumbnails.
