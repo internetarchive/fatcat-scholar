@@ -23,7 +23,7 @@ def es_fulltext_from_sim(sim: Dict[str, Any]) -> Optional[ScholarFulltext]:
     issue_item = sim["issue_item"]
     body = "\n".join([p["raw_text"] for p in sim["page_texts"]])
     if body and len(body) > MAX_BODY_CHARS:
-        body = body[MAX_BODY_CHARS:]
+        body = body[:MAX_BODY_CHARS]
     return ScholarFulltext(
         lang_code=None,  # TODO: pub/issue metadata? or langdetect?
         body=body,
@@ -228,7 +228,7 @@ def es_fulltext_from_grobid(
         return None
     body = tei_dict.get("body")
     if body and len(body) > MAX_BODY_CHARS:
-        body = body[MAX_BODY_CHARS:]
+        body = body[:MAX_BODY_CHARS]
     ret = ScholarFulltext(
         lang_code=tei_dict.get("lang"),
         body=body,
@@ -243,7 +243,7 @@ def es_fulltext_from_pdftotext(
 ) -> Optional[ScholarFulltext]:
 
     if raw_text and len(raw_text) > MAX_BODY_CHARS:
-        raw_text = raw_text[MAX_BODY_CHARS:]
+        raw_text = raw_text[:MAX_BODY_CHARS]
     ret = ScholarFulltext(
         lang_code=re.language, body=raw_text, acknowledgement=None, annex=None,
     )
@@ -263,7 +263,7 @@ def es_fulltext_from_html(
     if body:
         raw_text = " ".join(body.itertext())
         if raw_text and len(raw_text) > MAX_BODY_CHARS:
-            raw_text = raw_text[MAX_BODY_CHARS:]
+            raw_text = raw_text[:MAX_BODY_CHARS]
     else:
         return None
 
