@@ -13,7 +13,7 @@ from fatcat_scholar.schema import *
 from fatcat_scholar.config import settings, GIT_REVISION
 from fatcat_scholar.grobid2json import teixml2json
 
-MAX_BODY_CHARS = 1024 * 1024
+MAX_BODY_CHARS = 512 * 1024
 
 
 def es_fulltext_from_sim(sim: Dict[str, Any]) -> Optional[ScholarFulltext]:
