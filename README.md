@@ -1,10 +1,8 @@
-
 <div align="center">
 <img src="fatcat_scholar/static/scholar-vaporwave-logo.png">
 </div>
 
-`fatcat-scholar` / Internet Archive Scholar
-===========================================
+# `fatcat-scholar` / Internet Archive Scholar
 
 This is source code for an experimental ("alpha") full-text web search interface
 over the 25+ million open research papers in the [fatcat](https://fatcat.wiki)
@@ -16,16 +14,15 @@ handled by the fatcat service; this service is just a bare-bones, read-only
 search interface. Unlike the basic fatcat.wiki search, this index allows
 querying the full content of papers when available.
 
-
 ## Overview
 
 This repository is fairly small and contains:
 
-- `fatcat_scholar/`: Python code for web service and indexing pipeline
-- `fatcat_scholar/templates/`: HTML template for web interface
-- `tests/`: Python test files
-- `proposals/`: design documentation and change proposals
-- `data/`: empty directory for indexing pipeline
+-   `fatcat_scholar/`: Python code for web service and indexing pipeline
+-   `fatcat_scholar/templates/`: HTML template for web interface
+-   `tests/`: Python test files
+-   `proposals/`: design documentation and change proposals
+-   `data/`: empty directory for indexing pipeline
 
 A data pipeline converts groups of one or more fatcat "release" entities
 (grouped under a single "work" entity) into a single search index document.
@@ -36,7 +33,6 @@ first-page thumbnails.
 The current Python web framework is FastAPI, though the number of routes is
 very small and it would be easy to switch to a more conventional framework like
 Flask.
-
 
 ## Getting Started for Developers
 
@@ -55,6 +51,10 @@ then run the tests (to ensure everything is working):
 
     make test
 
+To start the web interface run:
+
+    make serve
+
 While developing the web interface, you will almost certainly need an example
 database running locally. A docker-compose file in `extra/docker/` can be used
 to run Elasticsearch 7.x locally. The `make dev-index` command will reset the
@@ -69,7 +69,6 @@ automatically.
 
 This repository uses `black` for code formatting; please run `make fmt` and
 `make lint` for submitting a pull request.
-
 
 ## Contributing
 
@@ -92,4 +91,3 @@ the license terms when making your first contribution.
 
 For software developers, the "help wanted" tag in Github Issues is a way to
 discover bugs and tasks that external folks could contribute to.
-
