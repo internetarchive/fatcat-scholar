@@ -21,7 +21,6 @@ SENTRY_DSN = ""
 ENABLE_GOATCOUNTER = false
 GOATCOUNTER_ENDPOINT = "https://goatcounter.scholar.fatcat.wiki/count"
 GOATCOUNTER_SCRIPT_URL = "https://goatcounter.scholar.fatcat.wiki/count.js"
-ONION_DOMAIN = "scholar-qa.archivev3qli37bju4rlh27glh24lljyezwxf4pokmrdbpefjlcrp5id.onion"
 ENABLE_PROMETHEUS = false
 ENABLE_CITATION_QUERY = true
 EXCLUDE_WEB_CONTAINER_IDENTS = []
@@ -63,6 +62,7 @@ KAFKA_BROKERS = ["wbgrp-svc263.us.archive.org"]
 
 [prod]
 SCHOLAR_ENV = "prod"
+ONION_DOMAIN = "scholar.archivev3qli37bju4rlh27glh24lljyezwxf4pokmrdbpefjlcrp5id.onion"
 ELASTICSEARCH_QUERY_BASE = "http://scholar-svc500.fatcat.wiki:9292"
 ELASTICSEARCH_QUERY_FULLTEXT_INDEX = "scholar_fulltext"
 ELASTICSEARCH_WRITE_BASE = "http://localhost:9200"
