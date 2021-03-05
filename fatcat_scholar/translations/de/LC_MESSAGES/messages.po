@@ -10,8 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
-"POT-Creation-Date: 2021-01-25 22:58-0800\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2021-03-04 19:39-0800\n"
 "PO-Revision-Date: 2021-02-14 16:50+0000\n"
 "Last-Translator: nautilusx <translate@disroot.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/internetarchive/"
@@ -658,7 +658,7 @@ msgstr ""
 msgid "Work In Progress"
 msgstr "Laufende Arbeiten"
 
-#: fatcat_scholar/templates/help.html:243 fatcat_scholar/templates/home.html:36
+#: fatcat_scholar/templates/help.html:244 fatcat_scholar/templates/home.html:37
 #, fuzzy
 #| msgid ""
 #| "This service is in \"alpha\". It has several bugs, experiences\n"
@@ -670,7 +670,13 @@ msgstr ""
 "Dieser Dienst befindet sich im „Alpha“-Zustand. Er enthält Fehler,\n"
 "        Ausfallzeiten und wurde nicht offiziell veröffentlicht."
 
-#: fatcat_scholar/templates/help.html:246
+#: fatcat_scholar/templates/help.html:246 fatcat_scholar/templates/home.html:39
+msgid ""
+"This is a new service. Metadata is being improved and features have not been "
+"finalized."
+msgstr ""
+
+#: fatcat_scholar/templates/help.html:250
 #, fuzzy
 msgid "This project is currently a <i>prototype</i>"
 msgstr "Dieses Projekt ist derzeit ein <i>Prototyp</i>"
@@ -711,8 +717,8 @@ msgstr ""
 msgid "More &raquo;"
 msgstr "Mehr &raquo;"
 
-#: fatcat_scholar/templates/home.html:49 fatcat_scholar/templates/home.html:63
-#: fatcat_scholar/templates/home.html:77 fatcat_scholar/templates/home.html:91
+#: fatcat_scholar/templates/home.html:52 fatcat_scholar/templates/home.html:66
+#: fatcat_scholar/templates/home.html:80 fatcat_scholar/templates/home.html:94
 msgid "PDF thumbnail"
 msgstr "PDF-Miniaturansicht"
 

@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
-"POT-Creation-Date: 2021-01-25 22:58-0800\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2021-03-04 19:39-0800\n"
 "PO-Revision-Date: 2021-01-28 09:32+0000\n"
 "Last-Translator: Eric <spice2wolf@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -253,8 +253,9 @@ msgid ""
 "sciences, humanities, biomedicine, art, history, industrial research, "
 "government reports, and more."
 msgstr ""
-"本服务提供对存档于互联网档案馆中各种集合的研究出版物进行<a href=\"https://en.wikipedia.org/wiki/Full-"
-"text_search\">全文搜索</a>。它包括自然科学，人文科学，生物医学，艺术，历史，工业研究，政府报告等内容。"
+"本服务提供对存档于互联网档案馆中各种集合的研究出版物进行<a href=\"https://en."
+"wikipedia.org/wiki/Full-text_search\">全文搜索</a>。它包括自然科学，人文科"
+"学，生物医学，艺术，历史，工业研究，政府报告等内容。"
 
 #: fatcat_scholar/templates/help.html:26
 msgid ""
@@ -300,7 +301,9 @@ msgid ""
 "While this syntax allows for relatively complex and powerful queries, at "
 "some point advanced users may run into limits on the size or complexity of "
 "queries."
-msgstr "虽然这种语法允许相对复杂和强大的查询，但某些时候，高级用户可能会遇到查询的大小或复杂性的限制。"
+msgstr ""
+"虽然这种语法允许相对复杂和强大的查询，但某些时候，高级用户可能会遇到查询的大"
+"小或复杂性的限制。"
 
 #: fatcat_scholar/templates/help.html:40
 msgid ""
@@ -572,13 +575,19 @@ msgstr ""
 msgid "Work In Progress"
 msgstr "工作正在进行中"
 
-#: fatcat_scholar/templates/help.html:243 fatcat_scholar/templates/home.html:36
+#: fatcat_scholar/templates/help.html:244 fatcat_scholar/templates/home.html:37
 msgid ""
 "This service is in \"alpha\". It has several bugs, experiences downtime, and "
 "has not been officially announced."
 msgstr "这项服务处于 \"alpha\" 阶段。它有几个错误，经历宕机，且尚未正式发布。"
 
-#: fatcat_scholar/templates/help.html:246
+#: fatcat_scholar/templates/help.html:246 fatcat_scholar/templates/home.html:39
+msgid ""
+"This is a new service. Metadata is being improved and features have not been "
+"finalized."
+msgstr ""
+
+#: fatcat_scholar/templates/help.html:250
 msgid "This project is currently a <i>prototype</i>"
 msgstr "该项目目前是<i>原型</i>"
 
@@ -614,8 +623,8 @@ msgstr ""
 msgid "More &raquo;"
 msgstr "更多&raquo;"
 
-#: fatcat_scholar/templates/home.html:49 fatcat_scholar/templates/home.html:63
-#: fatcat_scholar/templates/home.html:77 fatcat_scholar/templates/home.html:91
+#: fatcat_scholar/templates/home.html:52 fatcat_scholar/templates/home.html:66
+#: fatcat_scholar/templates/home.html:80 fatcat_scholar/templates/home.html:94
 msgid "PDF thumbnail"
 msgstr "PDF缩略图"
 
