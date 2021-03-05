@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-01-25 22:58-0800\n"
+"POT-Creation-Date: 2021-03-04 19:39-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -513,13 +513,19 @@ msgstr ""
 msgid "Work In Progress"
 msgstr ""
 
-#: fatcat_scholar/templates/help.html:243 fatcat_scholar/templates/home.html:36
+#: fatcat_scholar/templates/help.html:244 fatcat_scholar/templates/home.html:37
 msgid ""
 "This service is in \"alpha\". It has several bugs, experiences downtime, "
 "and has not been officially announced."
 msgstr ""
 
-#: fatcat_scholar/templates/help.html:246
+#: fatcat_scholar/templates/help.html:246 fatcat_scholar/templates/home.html:39
+msgid ""
+"This is a new service. Metadata is being improved and features have not "
+"been finalized."
+msgstr ""
+
+#: fatcat_scholar/templates/help.html:250
 msgid "This project is currently a <i>prototype</i>"
 msgstr ""
 
@@ -552,8 +558,8 @@ msgstr ""
 msgid "More &raquo;"
 msgstr ""
 
-#: fatcat_scholar/templates/home.html:49 fatcat_scholar/templates/home.html:63
-#: fatcat_scholar/templates/home.html:77 fatcat_scholar/templates/home.html:91
+#: fatcat_scholar/templates/home.html:52 fatcat_scholar/templates/home.html:66
+#: fatcat_scholar/templates/home.html:80 fatcat_scholar/templates/home.html:94
 msgid "PDF thumbnail"
 msgstr ""
 
