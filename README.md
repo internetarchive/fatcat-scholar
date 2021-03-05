@@ -6,13 +6,12 @@
 `fatcat-scholar` / Internet Archive Scholar
 ===========================================
 
-This is source code for an experimental ("alpha") full-text web search interface
-over the 25+ million open research papers in the [fatcat](https://fatcat.wiki)
-catalog. A demonstration (pre-production) interface is available at
-<https://scholar-qa.archive.org>.
+This is source code for [scholar.archive.org](https://scholar.archive.org), a
+full-text web search interface over the 25+ million open research papers in the
+Internet Archive.
 
-All of the heavy lifting of harvesting, crawling, and metadata corrections are
-handled by the fatcat service; this service is just a bare-bones, read-only
+All of the technical heavy lifting of harvesting, crawling, and metadata corrections are
+handled by the [fatcat](https://fatcat.wiki)  service; this service is just a bare-bones, read-only
 search interface. Unlike the basic fatcat.wiki search, this index allows
 querying the full content of papers when available.
 
