@@ -240,15 +240,19 @@ apply range queries like <code>year:&gt;1989 year:&lt;2000</code>.{% endtrans %}
 <h2>{% trans %}Work In Progress{% endtrans %}</h2>
 
 <div class="ui yellow message" style="color: black;">
+  <!-- old notice
   {% trans %}This service is in "alpha". It has several bugs, experiences downtime, and has not been officially announced.{% endtrans %}
+  -->
+  {% trans %}This is a new service. Metadata is being improved and features have not been finalized.{% endtrans %}
 </div>
 
+<!--
 <p>{% trans %}This project is currently a <i>prototype</i>{% endtrans %}
+-->
 
 <p>Some known bugs and issues:
 
 <ul>
-  <li>web.archive.org PDF links sometimes return "not found" errors. This is impacting up to 1% of recent papers. In almost all cases there is a preserved copy of the file that should be available.
   <li>Poor metadata quality for conference proceedings. Many are labeled "unpublished" and are not associated with the conference.
   <li>Duplicate versions of same work. Eg, different versions of the same paper or dataset. We are working on basic entity-deduplication in the fatcat catalog.
   <li>Mis-matching of file content or version with work metadata. For example, sometimes pre-prints or author manuscripts are incorrectly associated with version-of-record metadata, or vica-versa.
