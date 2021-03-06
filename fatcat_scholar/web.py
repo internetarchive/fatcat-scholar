@@ -84,6 +84,13 @@ api = APIRouter()
 async def home() -> Any:
     return {"endpoints": {"/": "this", "/search": "fulltext search"}}
 
+@api.head("/", include_in_schema=False)
+async def root_head() -> Any:
+    """
+    HTTP HEAD only for the root path. Requested by, eg, uptime monitoring
+    tools. This is distinct from the CORS middleware.
+    """
+    return Response()
 
 class HitsModel(BaseModel):
     count_returned: int
