@@ -506,7 +506,7 @@
 
 <i style="padding-left: 0.5em; padding-right: 0.5em;">
   {% trans trimmed start=babel_numbers.format_number(hits.offset + 1, locale=locale),
-                   end=babel_numbers.format_number(hits.offset + hits.limit, locale=locale),
+                   end=babel_numbers.format_number([hits.offset + hits.limit, hits.count_found]|min, locale=locale),
                    total=babel_numbers.format_number(hits.count_found, locale=locale) %}
     Showing results {{ start }} &mdash; {{ end }} out of {{ total }} results
   {% endtrans %}
