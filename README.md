@@ -1,8 +1,10 @@
+
 <div align="center">
 <img src="fatcat_scholar/static/scholar-vaporwave-logo.png">
 </div>
 
-# `fatcat-scholar` / Internet Archive Scholar
+`fatcat-scholar` / Internet Archive Scholar
+===========================================
 
 This is source code for [scholar.archive.org](https://scholar.archive.org), a
 full-text web search interface over the 25+ million open research papers in the
@@ -13,15 +15,16 @@ handled by the [fatcat](https://fatcat.wiki)  service; this service is just a ba
 search interface. Unlike the basic fatcat.wiki search, this index allows
 querying the full content of papers when available.
 
+
 ## Overview
 
 This repository is fairly small and contains:
 
--   `fatcat_scholar/`: Python code for web service and indexing pipeline
--   `fatcat_scholar/templates/`: HTML template for web interface
--   `tests/`: Python test files
--   `proposals/`: design documentation and change proposals
--   `data/`: empty directory for indexing pipeline
+- `fatcat_scholar/`: Python code for web service and indexing pipeline
+- `fatcat_scholar/templates/`: HTML template for web interface
+- `tests/`: Python test files
+- `proposals/`: design documentation and change proposals
+- `data/`: empty directory for indexing pipeline
 
 A data pipeline converts groups of one or more fatcat "release" entities
 (grouped under a single "work" entity) into a single search index document.
@@ -32,6 +35,7 @@ first-page thumbnails.
 The current Python web framework is FastAPI, though the number of routes is
 very small and it would be easy to switch to a more conventional framework like
 Flask.
+
 
 ## Getting Started for Developers
 
@@ -68,6 +72,7 @@ automatically.
 
 This repository uses `black` for code formatting; please run `make fmt` and
 `make lint` for submitting a pull request.
+
 
 ## Contributing
 
