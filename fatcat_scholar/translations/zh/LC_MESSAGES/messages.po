@@ -8,9 +8,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-03-10 12:06-0800\n"
-"PO-Revision-Date: 2021-03-06 04:50+0000\n"
+"PO-Revision-Date: 2021-03-12 04:02+0000\n"
 "Last-Translator: Eric <spice2wolf@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "internetarchive/fatcat-scholar/zh_Hans/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.5.1\n"
+"X-Generator: Weblate 4.5.2-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:42
@@ -611,18 +611,11 @@ msgstr ""
 "全文检索索引包含超过2500万的研究文章和其他保存在互联网档案馆里的学术文档。"
 
 #: fatcat_scholar/templates/home.html:24
-#, fuzzy
-#| msgid ""
-#| "The collection spans from digitized copies of eighteenth century journals "
-#| "though the latest Open Access conference proceedings and pre-prints "
-#| "crawled from the World Wide Web."
 msgid ""
 "The collection spans from digitized copies of eighteenth century journals "
 "through the latest Open Access conference proceedings and pre-prints crawled "
 "from the World Wide Web."
-msgstr ""
-"该馆藏涵盖了18世纪期刊的数字化副本，但最新的Open Access会议记录和预印本却是从"
-"万维网上抓取的。"
+msgstr "该馆藏涵盖从18世纪期刊的数字化副本，到最新的Open Access会议记录和从万维网上抓取的预印本。"
 
 #: fatcat_scholar/templates/home.html:24
 msgid "More &raquo;"
