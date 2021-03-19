@@ -7,9 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-03-10 12:06-0800\n"
-"PO-Revision-Date: 2021-03-09 18:02+0000\n"
+"PO-Revision-Date: 2021-03-20 12:18+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/hr/>\n"
@@ -641,11 +641,6 @@ msgstr ""
 "članaka i drugih znanstvenih dokumenata sačuvanih u arhivu Internet Archive."
 
 #: fatcat_scholar/templates/home.html:24
-#, fuzzy
-#| msgid ""
-#| "The collection spans from digitized copies of eighteenth century journals "
-#| "though the latest Open Access conference proceedings and pre-prints "
-#| "crawled from the World Wide Web."
 msgid ""
 "The collection spans from digitized copies of eighteenth century journals "
 "through the latest Open Access conference proceedings and pre-prints crawled "
