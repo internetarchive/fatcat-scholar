@@ -12,6 +12,11 @@ See also:
 
 ### Added
 
+- added Farsi/Persian (fa) translation
+- added Italian (it) translation
+- added Dutch (nl) translation
+- added Portuguese (pt) translation
+
 ### Changed
 
 ### Fixed
