@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-03-23 18:56-0700\n"
-"PO-Revision-Date: 2021-03-24 02:59+0000\n"
-"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"PO-Revision-Date: 2021-03-24 03:54+0000\n"
+"Last-Translator: Eric <spice2wolf@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "internetarchive/fatcat-scholar/zh_Hans/>\n"
 "Language: zh\n"
@@ -116,7 +116,7 @@ msgstr "关于互联网档案馆学术"
 msgid ""
 "See also: <a href=\"%(lang_prefix)s/help\">User Guide</a> which lists some "
 "bugs and known issues"
-msgstr "另见<a href=\"%(lang_prefix)s/help\">用户指南</a>，其中列出了一些错误和已知问题。"
+msgstr "另见<a href=\"%(lang_prefix)s/help\">用户指南</a>，其中列出了一些错误和已知问题"
 
 #: fatcat_scholar/templates/about.html:14
 #: fatcat_scholar/templates/base.html:187
@@ -125,7 +125,7 @@ msgstr "怎么运行的"
 
 #: fatcat_scholar/templates/about.html:16
 msgid "Content in this search index comes in one of three forms:"
-msgstr "本搜索索引中的内容有三种形式之一。"
+msgstr "这个搜索索引的内容将以下列三种形式之一呈现："
 
 #: fatcat_scholar/templates/about.html:19
 msgid ""
@@ -133,18 +133,19 @@ msgid ""
 "\">The Wayback Machine</a> and <a href=\"https://archive-it.org\">Archive-"
 "It</a> partner collections"
 msgstr ""
-"保存在<a href=\"https://web.archive.org\">The Wayback Machine</a>和<a href="
-"\"https://archive-it.org\">Archive-It</a>伙伴收藏中的公开网络内容</b> 。"
+"<b>公共网络内容</b>保存于 <a href=\"https://web.archive.org\">The Wayback Machine</"
+"a>和<a href=\"https://archive-it.org\">Archive-It</a>合作伙伴收藏"
 
 #: fatcat_scholar/templates/about.html:20
 msgid "<b>digitized print materials</b> from paper and microform collections"
-msgstr "0]纸质和缩微胶片收藏的数字化印刷品</b>。"
+msgstr "<b>数字化的印刷材料</b>，源自纸质和缩微收藏"
 
 #: fatcat_scholar/templates/about.html:21
 msgid ""
 "<b>general materials</b> from <a href=\"https://archive.org\">archive.org "
 "collections</a>, including collaborations with partners"
-msgstr "来自<a href=\"https://archive.org\">archive.org藏品</a>的一般资料<b>，包括与合作伙伴的合作。"
+msgstr ""
+"<b>一般材料</b>，源自<a href=\"https://archive.org\">archive.org 收藏</a>，包括与合作伙伴的协作"
 
 #: fatcat_scholar/templates/about.html:24
 #, python-format
@@ -700,7 +701,7 @@ msgstr "该项目目前是<i>原型</i>"
 
 #: fatcat_scholar/templates/help.html:253
 msgid "Some known bugs and issues:"
-msgstr "一些已知的错误和问题。"
+msgstr "一些已知的错误和问题："
 
 #: fatcat_scholar/templates/help.html:256
 msgid ""
