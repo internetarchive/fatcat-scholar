@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ locale or 'en' }}" style="position: relative; min-height: 100%; height: auto;" {% if locale in ['ar'] %}dir="rtl"{% endif %}>
+<html lang="{{ locale or 'en' }}" style="position: relative; min-height: 100%; height: auto;" {% if locale in ['ar', 'fa', 'he'] %}dir="rtl"{% endif %}>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +19,7 @@
     type="text/css">
   <style>
     {# locale specific CSS hacks (mostly RTL fixes) #}
-    {% if locale in ['ar'] %}
+    {% if locale in ['ar', 'fa', 'he'] %}
     .ui.divided.grid:not([class*="vertically divided"])>.column:not(.row), .ui.divided.grid:not([class*="vertically divided"])>.row>.column {
       box-shadow: 1px 0 0 0 rgba(34,36,38,.15);
     }
