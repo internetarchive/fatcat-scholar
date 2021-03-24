@@ -8,9 +8,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-03-23 18:56-0700\n"
-"PO-Revision-Date: 2021-03-21 03:46+0000\n"
+"PO-Revision-Date: 2021-03-24 03:54+0000\n"
 "Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/fr/>\n"
@@ -117,6 +117,8 @@ msgid ""
 "See also: <a href=\"%(lang_prefix)s/help\">User Guide</a> which lists some "
 "bugs and known issues"
 msgstr ""
+"Voir aussi : <a href=\"%(lang_prefix)s/help\">Guide de l'utilisateur</a> qui "
+"liste certains bogues et problèmes connus"
 
 #: fatcat_scholar/templates/about.html:14
 #: fatcat_scholar/templates/base.html:187
@@ -126,6 +128,8 @@ msgstr "Comment ça marche"
 #: fatcat_scholar/templates/about.html:16
 msgid "Content in this search index comes in one of three forms:"
 msgstr ""
+"Le contenu de cet index de recherche se présente sous l'une des trois formes "
+"suivantes :"
 
 #: fatcat_scholar/templates/about.html:19
 msgid ""
@@ -133,16 +137,24 @@ msgid ""
 "\">The Wayback Machine</a> and <a href=\"https://archive-it.org\">Archive-"
 "It</a> partner collections"
 msgstr ""
+"<b> contenu Web public </b> tel que conservé dans <a href=\"https://web."
+"archive.org\"> The Wayback Machine </a> et <a href=\"https://archive-it.org\""
+"> Archive-It </a> collections partenaires"
 
 #: fatcat_scholar/templates/about.html:20
 msgid "<b>digitized print materials</b> from paper and microform collections"
 msgstr ""
+"<b> documents imprimés numérisés </b> provenant de collections de papier et "
+"de microformes"
 
 #: fatcat_scholar/templates/about.html:21
 msgid ""
 "<b>general materials</b> from <a href=\"https://archive.org\">archive.org "
 "collections</a>, including collaborations with partners"
 msgstr ""
+"<b> matériel général </b> provenant de <a href=\"https://archive.org\"> "
+"collections archive.org </a>, y compris des collaborations avec des "
+"partenaires"
 
 #: fatcat_scholar/templates/about.html:24
 #, python-format
@@ -150,6 +162,9 @@ msgid ""
 "This <a href=\"%(url)s\">2019 FORCE11 conference presentation</a> gives an "
 "overview of the technical infrastructure and goals of the project overall."
 msgstr ""
+"Cette présentation <a href=\"%(url)s\">2019 de la conférence FORCE11</a> "
+"donne un aperçu de l'infrastructure technique et des objectifs du projet "
+"dans son ensemble."
 
 #: fatcat_scholar/templates/about.html:27
 #: fatcat_scholar/templates/base.html:188
@@ -164,6 +179,13 @@ msgid ""
 "attribute the provenance of content and metadata in all cases. Please\n"
 "<a href=\"#contact\">contact us</a> if you have questions."
 msgstr ""
+"Les métadonnées proviennent de <a href=\"https://fatcat.wiki\">fatcat.wiki</"
+"a>, un catalogue ouvert et modifiable par l'utilisateur.\n"
+"catalogue ouvert et modifiable par l'utilisateur des travaux universitaires. "
+"Il devrait être possible de suivre et d'attribuer\n"
+"d'attribuer la provenance du contenu et des métadonnées dans tous les cas. "
+"Veuillez\n"
+"<a href=\"#contact\">contactez-nous</a> si vous avez des questions."
 
 #: fatcat_scholar/templates/about.html:35
 #: fatcat_scholar/templates/base.html:189
@@ -179,6 +201,15 @@ msgid ""
 "interested\n"
 "or would like to see specific datasets made available, please contact us."
 msgstr ""
+"Nous avons l'intention de permettre aux chercheurs d'accéder au corpus "
+"complet à des fins d'exploration de textes et de données.\n"
+"de données. Des ensembles de données dérivées peuvent également être mis à "
+"la disposition du public pour analyse, par exemple un graphique de citations "
+"ou des fréquences de N-gram par année.\n"
+"par exemple un graphique de citations ou des fréquences de N-gram par année. "
+"Si vous êtes intéressé\n"
+"ou si vous souhaitez que des ensembles de données spécifiques soient mis à "
+"disposition, veuillez nous contacter."
 
 #: fatcat_scholar/templates/about.html:42
 msgid ""
@@ -187,16 +218,22 @@ msgid ""
 "details/ia_biblio_metadata\">Bulk Bibliographic Metadata</a> collection on "
 "archive.org."
 msgstr ""
+"Actuellement, des instantanés du corpus complet de métadonnées fatcat et des "
+"sources de métadonnées en amont sont téléchargés périodiquement dans la "
+"collection <a href=\"https://archive.org/details/ia_biblio_metadata\">Bulk "
+"Bibliographic Metadata</a> sur archive.org."
 
 #: fatcat_scholar/templates/about.html:44
 msgid ""
 "Read more in <a href=\"https://guide.fatcat.wiki/bulk_exports.html\">the "
 "Fatcat Guide</a>."
 msgstr ""
+"Pour en savoir plus, consultez <a href=\"https://guide.fatcat.wiki/"
+"bulk_exports.html\">le Guide du chat gras</a>."
 
 #: fatcat_scholar/templates/about.html:47
 msgid "Contact Information"
-msgstr ""
+msgstr "Informations de contact"
 
 #: fatcat_scholar/templates/about.html:50
 #, python-format
@@ -204,6 +241,8 @@ msgid ""
 "The organizational contact information for the Internet Archive is listed at "
 "<a href=\"%(url)s\">%(url)s</a>."
 msgstr ""
+"Les coordonnées de l'Internet Archive sont indiquées à <a href=\"%(url)s\""
+">%(url)s</a>."
 
 #: fatcat_scholar/templates/about.html:52
 #, python-format
@@ -211,11 +250,14 @@ msgid ""
 "Queries about this search service and the fatcat catalog can be directed to "
 "<a href=\"mailto:%(email)s\">%(email)s</a>."
 msgstr ""
+"Les demandes concernant ce service de recherche et le catalogue fatcat "
+"peuvent être adressées à <a href=\"mailto:%(email)s\">%(email)s</a>."
 
 #: fatcat_scholar/templates/about.html:54
 #, python-format
 msgid "There is a public chat channel at <a href=\"%(url)s\">%(url)s</a>."
 msgstr ""
+"Il existe un canal de discussion public à <a href=\"%(url)s\">%(url)s</a>."
 
 #: fatcat_scholar/templates/base.html:12
 msgid "Internet Archive Scholar"
@@ -688,7 +730,7 @@ msgstr "service de préimpression arXiv"
 
 #: fatcat_scholar/templates/help.html:226
 msgid "The DBLP Computer Science Bibliography"
-msgstr ""
+msgstr "La bibliographie informatique DBLP"
 
 #: fatcat_scholar/templates/help.html:230
 msgid ""
@@ -731,13 +773,15 @@ msgstr "Ce projet est actuellement un <i> prototype</i>"
 
 #: fatcat_scholar/templates/help.html:253
 msgid "Some known bugs and issues:"
-msgstr ""
+msgstr "Quelques bogues et problèmes connus :"
 
 #: fatcat_scholar/templates/help.html:256
 msgid ""
 "Poor metadata quality for conference proceedings. Many are labeled "
 "\"unpublished\" and are not associated with the conference."
 msgstr ""
+"Mauvaise qualité des métadonnées pour les actes des conférences. Beaucoup "
+"sont étiquetés \"non publiés\" et ne sont pas associés à la conférence."
 
 #: fatcat_scholar/templates/help.html:257
 msgid ""
@@ -745,6 +789,9 @@ msgid ""
 "paper or dataset. We are working on basic entity-deduplication in the fatcat "
 "catalog."
 msgstr ""
+"Versions dupliquées d'un même travail. Par exemple, différentes versions "
+"d'un même article ou d'un même ensemble de données. Nous travaillons sur la "
+"déduplication des entités de base dans le catalogue fatcat."
 
 #: fatcat_scholar/templates/help.html:258
 msgid ""
@@ -752,6 +799,10 @@ msgid ""
 "sometimes pre-prints or author manuscripts are incorrectly associated with "
 "version-of-record metadata, or vica-versa."
 msgstr ""
+"Correspondance erronée entre le contenu ou la version du fichier et les "
+"métadonnées de travail. Par exemple, il arrive que des prétirés ou des "
+"manuscrits d'auteur soient incorrectement associés à des métadonnées de "
+"version d'enregistrement, ou vice-versa."
 
 #: fatcat_scholar/templates/home.html:10
 msgid "Internet Archive Scholar logo (vaporwave)"
