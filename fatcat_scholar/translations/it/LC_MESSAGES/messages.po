@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
 # Bryan Newbold <bnewbold@robocracy.org>, 2021.
+# gio <gdamiola@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-03-23 18:56-0700\n"
-"PO-Revision-Date: 2021-03-24 03:55+0000\n"
-"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"PO-Revision-Date: 2021-03-24 19:57+0000\n"
+"Last-Translator: gio <gdamiola@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/it/>\n"
 "Language: it\n"
@@ -25,14 +26,17 @@ msgid "Release Date"
 msgstr "Data di uscita"
 
 #: fatcat_scholar/search.py:46
+#, fuzzy
 msgid "All Time"
 msgstr "Tutto il tempo"
 
 #: fatcat_scholar/search.py:47
+#, fuzzy
 msgid "Past Week"
 msgstr "Settimana passata"
 
 #: fatcat_scholar/search.py:48
+#, fuzzy
 msgid "Past Year"
 msgstr "Anno passato"
 
@@ -45,22 +49,24 @@ msgid "Before 1925"
 msgstr "Prima del 1925"
 
 #: fatcat_scholar/search.py:54
+#, fuzzy
 msgid "Resource Type"
 msgstr "Tipo di risorsa"
 
 #: fatcat_scholar/search.py:58
 msgid "Papers"
-msgstr "Documenti"
+msgstr "Papers"
 
 #: fatcat_scholar/search.py:59
 msgid "Reports"
-msgstr "Resoconti"
+msgstr "Reports"
 
 #: fatcat_scholar/search.py:60
 msgid "Datasets"
 msgstr "Datasets"
 
 #: fatcat_scholar/search.py:61
+#, fuzzy
 msgid "Everything"
 msgstr "Tutto"
 
@@ -69,6 +75,7 @@ msgid "Availability"
 msgstr "Disponibilità"
 
 #: fatcat_scholar/search.py:69
+#, fuzzy
 msgid "Fulltext"
 msgstr "Testo completo"
 
@@ -78,7 +85,7 @@ msgstr "Microfilm"
 
 #: fatcat_scholar/search.py:71 fatcat_scholar/templates/search_macros.html:4
 msgid "Open Access"
-msgstr "Accesso aperto"
+msgstr "Open Access"
 
 #: fatcat_scholar/search.py:72
 msgid "Metadata"
@@ -86,7 +93,7 @@ msgstr "Metadati"
 
 #: fatcat_scholar/search.py:76
 msgid "Sort Order"
-msgstr "Ordinamento"
+msgstr "Ordina per"
 
 #: fatcat_scholar/search.py:80
 msgid "Relevancy"
@@ -94,16 +101,17 @@ msgstr "Rilevanza"
 
 #: fatcat_scholar/search.py:81
 msgid "Recent First"
-msgstr "Prima recente"
+msgstr "Recenti"
 
 #: fatcat_scholar/search.py:82
+#, fuzzy
 msgid "Oldest First"
-msgstr "Per vecchiaia"
+msgstr "Più vecchi"
 
 #: fatcat_scholar/templates/about.html:4
-#, python-format
+#, fuzzy, python-format
 msgid "About %(website_name)s"
-msgstr "Circa %(website_name)s"
+msgstr "Chi siamo %(website_name)s"
 
 #: fatcat_scholar/templates/about.html:8
 msgid "About Internet Archive Scholar"
@@ -115,7 +123,7 @@ msgid ""
 "See also: <a href=\"%(lang_prefix)s/help\">User Guide</a> which lists "
 "some bugs and known issues"
 msgstr ""
-"Vedi anche: <a href=\"%(lang_prefix)s/help\">Guida utente</a> che elenca "
+"Vedi anche la <a href=\"%(lang_prefix)s/help\">Guida utente</a> che elenca "
 "alcuni bug e problemi noti"
 
 #: fatcat_scholar/templates/about.html:14
@@ -124,6 +132,7 @@ msgid "How It Works"
 msgstr "Come funziona"
 
 #: fatcat_scholar/templates/about.html:16
+#, fuzzy
 msgid "Content in this search index comes in one of three forms:"
 msgstr ""
 "Il contenuto di questo indice di ricerca si presenta in una delle tre forme:"
@@ -134,41 +143,41 @@ msgid ""
 "href=\"https://web.archive.org\">The Wayback Machine</a> and <a "
 "href=\"https://archive-it.org\">Archive-It</a> partner collections"
 msgstr ""
-"<b>contenuti web pubblici</b> conservati in <a href=\"https://web.archive."
-"org\">The Wayback Machine</a> e <a href=\"https://archive-it.org\">Archive-"
-"It</a> collezioni partner"
+"<b>contenuti web pubblici</b> conservati nella <a href=\"https://web.archive."
+"org\">The Wayback Machine</a> e nelle collezioni partner di <a href=\"https"
+"://archive-it.org\">Archive-It</a>"
 
 #: fatcat_scholar/templates/about.html:20
 msgid "<b>digitized print materials</b> from paper and microform collections"
-msgstr ""
-"<b>materiale stampato digitalizzato</b> da collezioni cartacee e di "
-"microforme"
+msgstr "<b>materiale digitalizzato</b> da collezioni cartacee e microfilm"
 
 #: fatcat_scholar/templates/about.html:21
 msgid ""
 "<b>general materials</b> from <a href=\"https://archive.org\">archive.org"
 " collections</a>, including collaborations with partners"
 msgstr ""
-"<b>materiali generali</b> dalle collezioni <a href=\"https://archive.org\""
-">archive.org</a>, incluse le collaborazioni con i partner"
+"<b>materiali</b> dagli archivi di  <a href=\"https://archive.org\">archive."
+"org</a>, incluse le collaborazioni con i partner"
 
 #: fatcat_scholar/templates/about.html:24
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "This <a href=\"%(url)s\">2019 FORCE11 conference presentation</a> gives "
 "an overview of the technical infrastructure and goals of the project "
 "overall."
 msgstr ""
-"Questa presentazione della conferenza <a href=\"%(url)s\">2019 FORCE11</a> "
+"La <a href=\"%(url)s\">presentazione alla conferenza 2019 FORCE11</a> "
 "fornisce una panoramica dell'infrastruttura tecnica e degli obiettivi del "
 "progetto nel suo complesso."
 
 #: fatcat_scholar/templates/about.html:27
 #: fatcat_scholar/templates/base.html:188
+#, fuzzy
 msgid "Content Sources"
-msgstr "Fonti di contenuto"
+msgstr "Fonti"
 
 #: fatcat_scholar/templates/about.html:29
+#, fuzzy
 msgid ""
 "Metadata comes from <a href=\"https://fatcat.wiki\">fatcat.wiki</a>, an "
 "open\n"
@@ -178,19 +187,19 @@ msgid ""
 "<a href=\"#contact\">contact us</a> if you have questions."
 msgstr ""
 "I metadati provengono da <a href=\"https://fatcat.wiki\"> fatcat.wiki </a>, "
-"un file aperto\n"
-"catalogo modificabile dall'utente di opere accademiche. Dovrebbe essere "
-"possibile monitorare e\n"
-"attribuire in tutti i casi la provenienza dei contenuti e dei metadati. Per "
+"un catalogo di opere accademice, open e modificabile dall'utente, in cui "
+"dovrebbe essere sempre possibile tracciare la provenienza originale. Per "
 "favore\n"
 "<a href=\"#contact\"> contattaci </a> se hai domande."
 
 #: fatcat_scholar/templates/about.html:35
 #: fatcat_scholar/templates/base.html:189
+#, fuzzy
 msgid "Text and Data Mining"
-msgstr "Estrazione di testi e dati"
+msgstr "Testi e Data Mining"
 
 #: fatcat_scholar/templates/about.html:37
+#, fuzzy
 msgid ""
 "We intend to provide researcher access to the full corpus for text and "
 "data\n"
@@ -201,12 +210,11 @@ msgid ""
 "or would like to see specific datasets made available, please contact us."
 msgstr ""
 "Intendiamo fornire ai ricercatori l'accesso all'intero corpus per scopi di "
-"text e data\n"
-"per scopi di estrazione dei dati. I set di dati derivati possono anche "
-"essere pubblicati pubblicamente per l'analisi, per\n"
-"ad esempio un grafico citazionale o le frequenze di N-gram per anno. Se "
-"siete interessati\n"
-"o desideri che specifici set di dati siano resi disponibili, contattaci."
+"ricerca e data mining. \n"
+"Dataset derivati, come le frequenze degli N-gram per anno o un grafo delle "
+"citazioni, possono essere pubblicati liberamente per ulteriori analisi. Se "
+"siete interessati o desideri che specifici set di dati siano resi "
+"disponibili, contattaci."
 
 #: fatcat_scholar/templates/about.html:42
 msgid ""
@@ -215,22 +223,22 @@ msgid ""
 "href=\"https://archive.org/details/ia_biblio_metadata\">Bulk "
 "Bibliographic Metadata</a> collection on archive.org."
 msgstr ""
-"Attualmente le istantanee dell'intero corpus di metadati fatcat e delle "
-"fonti di metadati a monte sono caricate periodicamente nella collezione <a "
-"href=\"https://archive.org/details/ia_biblio_metadata\">Bulk Bibliographic "
-"Metadata</a> su archive.org."
+"Attualmente gli snapshots dell'intero corpus di metadati fatcat e delle "
+"fonti a monte sono caricati periodicamente nella collezione <a href=\"https"
+"://archive.org/details/ia_biblio_metadata\">Bulk Bibliographic Metadata</a> "
+"su archive.org."
 
 #: fatcat_scholar/templates/about.html:44
 msgid ""
 "Read more in <a href=\"https://guide.fatcat.wiki/bulk_exports.html\">the "
 "Fatcat Guide</a>."
 msgstr ""
-"Leggete di più in <a href=\"https://guide.fatcat.wiki/bulk_exports.html\""
-">the Fatcat Guide</a>."
+"Per saperne di più visita <a href=\"https://guide.fatcat.wiki/bulk_exports."
+"html\">the Fatcat Guide</a>."
 
 #: fatcat_scholar/templates/about.html:47
 msgid "Contact Information"
-msgstr "Informazioni di Contatto"
+msgstr "Contatti"
 
 #: fatcat_scholar/templates/about.html:50
 #, python-format
