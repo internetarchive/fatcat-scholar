@@ -12,12 +12,24 @@ See also:
 
 ### Added
 
+### Changed
+
+### Fixed
+
+## [0.2.0] - 2021-03-23
+
+This version roughly corresponds to the official launch of of the service (on
+the https://scholar.archive.org domain) in March 2021.
+
+### Added
+
 - added Russian (ru) translation (thanks @artem.ru!)
 - added Norwegian Bokmål (nb) translation (thanks kingu!)
 - added Croatian (hr) translation (thanks milotype!)
 - citation pop-up feature (web)
 - basic citation parsing to reduce query syntax errors
 - citation parse-and-fuzzy-match feature
+- optional goatcounter analytics
 
 ### Changed
 
@@ -27,6 +39,9 @@ See also:
 - rewrote help page
 
 ### Fixed
+
+- many i18n/localization bugs
+- several mobile/responsive bugs
 
 ## [0.1.0] - 2020-10-01
 
