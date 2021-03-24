@@ -11,7 +11,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-03-23 18:56-0700\n"
 "PO-Revision-Date: 2021-03-24 20:03+0000\n"
-"Last-Translator: Alessandro Mandelli <mandelli.alessandro@ngi.it>\n"
+"Last-Translator: gio <gdamiola@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/it/>\n"
 "Language: it\n"
@@ -321,6 +321,7 @@ msgid "Open Infrastructure"
 msgstr "Infrastruttura Open"
 
 #: fatcat_scholar/templates/base.html:177
+#, fuzzy
 msgid "Editable Catalog (Fatcat)"
 msgstr "Catalogo modificabile (Fatcat)"
 
