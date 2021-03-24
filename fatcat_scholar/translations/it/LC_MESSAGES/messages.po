@@ -309,16 +309,14 @@ msgid "Contact Us"
 msgstr "Contattaci"
 
 #: fatcat_scholar/templates/base.html:168
-#, fuzzy
 msgid "Policies"
-msgstr "Policy"
+msgstr "Linee di condotta"
 
 #: fatcat_scholar/templates/base.html:169
 msgid "Donate"
 msgstr "Fai una donazione"
 
 #: fatcat_scholar/templates/base.html:175
-#, fuzzy
 msgid "Open Infrastructure"
 msgstr "Infrastruttura Open"
 
