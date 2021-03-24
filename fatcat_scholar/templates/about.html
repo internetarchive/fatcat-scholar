@@ -6,55 +6,52 @@
 
 {% block main %}
 <h1>{% trans %}About Internet Archive Scholar{% endtrans %}</h1>
-<p><i>See also: <a href="{{ lang_prefix }}/help">User Guide</a> which lists
-some bugs and known issues</i>
+<p><i>
+  {% trans %}See also: <a href="{{ lang_prefix }}/help">User Guide</a> which lists some bugs and known issues{% endtrans %}
+</i>
 
 <a name="howitworks"></a>
-<h3>How It Works</h3>
+<h3>{% trans %}How It Works{% endtrans %}</h3>
 
-<p>Content in this search index comes in one of three forms:
+<p>{% trans %}Content in this search index comes in one of three forms:{% endtrans %}
 
 <ul>
-  <li><b>public web content</b> as preserved in <a href="https://web.archive.org">The Wayback Machine</a> and <a href="https://archive-it.org">Archive-It</a> partner collections
-  <li><b>digitized print materials</b> from paper and microform collections
-  <li><b>general materials</b> from <a href="https://archive.org">archive.org collections</a>, including collaborations with partners
+  <li>{% trans %}<b>public web content</b> as preserved in <a href="https://web.archive.org">The Wayback Machine</a> and <a href="https://archive-it.org">Archive-It</a> partner collections{% endtrans %}
+  <li>{% trans %}<b>digitized print materials</b> from paper and microform collections{% endtrans %}
+  <li>{% trans %}<b>general materials</b> from <a href="https://archive.org">archive.org collections</a>, including collaborations with partners{% endtrans %}
 </ul>
 
-<p>This <a href="https://www.youtube.com/watch?v=PARqfbYIdXQ">2019 FORCE11
-conference presentation</a> gives an overview of the technical infrastructure
-and goals of the project overall.
+<p>{% trans url="https://www.youtube.com/watch?v=PARqfbYIdXQ" %}This <a href="{{ url }}">2019 FORCE11 conference presentation</a> gives an overview of the technical infrastructure and goals of the project overall.{% endtrans %}
 
 <a name="sources"></a>
-<h3>Content Sources</h3>
+<h3>{% trans %}Content Sources{% endtrans %}</h3>
 
-<p>Metadata comes from <a href="https://fatcat.wiki">fatcat.wiki</a>, an open
+<p>{% trans %}Metadata comes from <a href="https://fatcat.wiki">fatcat.wiki</a>, an open
 user-editable catalog of scholarly work. It should be possible to track and
 attribute the provenance of content and metadata in all cases. Please
-<a href="#contact">contact us</a> if you have questions.
+<a href="#contact">contact us</a> if you have questions.{% endtrans %}
 
 <a name="tdm"></a>
-<h3>Text and Data Mining</h3>
+<h3>{% trans %}Text and Data Mining{% endtrans %}</h3>
 
-<p>We intend to provide researcher access to the full corpus for text and data
+<p>{% trans %}We intend to provide researcher access to the full corpus for text and data
 mining purposes. Derived datasets may also be posted publicly for analysis, for
 example a citation graph or N-gram frequencies by year. If you are interested
-or would like to see specific datasets made available, please contact us.
+or would like to see specific datasets made available, please contact us.{% endtrans %}
 
-<p>Currently snapshots of the full fatcat metadata corpus and upstream metadata
-sources are uploaded periodically to the
-<a href="https://archive.org/details/ia_biblio_metadata">Bulk Bibliographic
-Metadata</a> collection on archive.org.
-Read more in <a href="https://guide.fatcat.wiki/bulk_exports.html">the Fatcat Guide</a>.
+<p>{% trans %}Currently snapshots of the full fatcat metadata corpus and upstream metadata sources are uploaded periodically to the <a href="https://archive.org/details/ia_biblio_metadata">Bulk Bibliographic Metadata</a> collection on archive.org.{% endtrans %}
+
+{% trans %}Read more in <a href="https://guide.fatcat.wiki/bulk_exports.html">the Fatcat Guide</a>.{% endtrans %}
 
 <a name="contact"></a>
-<h3>Contact Information</h3>
+<h3>{% trans %}Contact Information{% endtrans %}</h3>
 
-<p>The organizational contact information for the Internet Archive is listed at
-<a href="https://archive.org/about/contact.php">https://archive.org/about/contact.php</a>.
-Queries about this search service and the fatcat catalog can be directed to
-<a href="mailto:webservices@archive.org">webservices@archive.org</a>. There is
-a public chat channel at
-<a href="https://gitter.im/internetarchive/fatcat">gitter.im/internetarchive/fatcat</a>.
+<p>
+{% trans url="https://archive.org/about/contact.php" %}The organizational contact information for the Internet Archive is listed at <a href="{{ url }}">{{ url }}</a>.{% endtrans %}
+
+{% trans email="webservices@archive.org" %}Queries about this search service and the fatcat catalog can be directed to <a href="mailto:{{ email }}">{{ email }}</a>.{% endtrans %}
+
+{% trans url="https://gitter.im/internetarchive/fatcat" %}There is a public chat channel at <a href="{{ url }}">{{ url }}</a>.{% endtrans %}
 
 
 {% endblock %}

@@ -250,11 +250,11 @@ apply range queries like <code>year:&gt;1989 year:&lt;2000</code>.{% endtrans %}
 <p>{% trans %}This project is currently a <i>prototype</i>{% endtrans %}
 -->
 
-<p>Some known bugs and issues:
+<p>{% trans %}Some known bugs and issues:{% endtrans %}
 
 <ul>
-  <li>Poor metadata quality for conference proceedings. Many are labeled "unpublished" and are not associated with the conference.
-  <li>Duplicate versions of same work. Eg, different versions of the same paper or dataset. We are working on basic entity-deduplication in the fatcat catalog.
-  <li>Mis-matching of file content or version with work metadata. For example, sometimes pre-prints or author manuscripts are incorrectly associated with version-of-record metadata, or vica-versa.
+  <li>{% trans %}Poor metadata quality for conference proceedings. Many are labeled "unpublished" and are not associated with the conference.{% endtrans %}
+  <li>{% trans %}Duplicate versions of same work. For example, different versions of the same paper or dataset. We are working on basic entity-deduplication in the fatcat catalog.{% endtrans %}
+  <li>{% trans %}Mis-matching of file content or version with work metadata. For example, sometimes pre-prints or author manuscripts are incorrectly associated with version-of-record metadata, or vica-versa.{% endtrans %}
 </ul>
 {% endblock %}
