@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-03-23 18:56-0700\n"
-"PO-Revision-Date: 2021-03-24 19:57+0000\n"
-"Last-Translator: Alessandro Mandelli <mandelli.alessandro@ngi.it>\n"
+"PO-Revision-Date: 2021-03-24 20:01+0000\n"
+"Last-Translator: gio <gdamiola@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/it/>\n"
 "Language: it\n"
@@ -31,14 +31,12 @@ msgid "All Time"
 msgstr "Tutto il tempo"
 
 #: fatcat_scholar/search.py:47
-#, fuzzy
 msgid "Past Week"
-msgstr "Settimana passata"
+msgstr "Settimana scorsa"
 
 #: fatcat_scholar/search.py:48
-#, fuzzy
 msgid "Past Year"
-msgstr "Anno passato"
+msgstr "Anno scorso"
 
 #: fatcat_scholar/search.py:49
 msgid "Since 2000"
@@ -217,6 +215,7 @@ msgstr ""
 "disponibili, contattaci."
 
 #: fatcat_scholar/templates/about.html:42
+#, fuzzy
 msgid ""
 "Currently snapshots of the full fatcat metadata corpus and upstream "
 "metadata sources are uploaded periodically to the <a "
@@ -224,9 +223,9 @@ msgid ""
 "Bibliographic Metadata</a> collection on archive.org."
 msgstr ""
 "Attualmente gli snapshots dell'intero corpus di metadati fatcat e delle "
-"fonti a monte sono caricati periodicamente nella collezione <a href=\"https"
-"://archive.org/details/ia_biblio_metadata\">Bulk Bibliographic Metadata</a> "
-"su archive.org."
+"fonti sono caricati periodicamente su archive.org nella collezione <a href="
+"\"https://archive.org/details/ia_biblio_metadata\">Bulk Bibliographic "
+"Metadata</a>."
 
 #: fatcat_scholar/templates/about.html:44
 msgid ""
@@ -241,13 +240,13 @@ msgid "Contact Information"
 msgstr "Contatti"
 
 #: fatcat_scholar/templates/about.html:50
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "The organizational contact information for the Internet Archive is listed"
 " at <a href=\"%(url)s\">%(url)s</a>."
 msgstr ""
-"Le informazioni di contatto organizzativo per l'Internet Archive sono "
-"elencate in <a href=\"%(url)s\">%(url)s</a>."
+"I contatti di Internet Archive sono elencati qui <a href=\"%(url)s\""
+">%(url)s</a>."
 
 #: fatcat_scholar/templates/about.html:52
 #, python-format
@@ -255,13 +254,13 @@ msgid ""
 "Queries about this search service and the fatcat catalog can be directed "
 "to <a href=\"mailto:%(email)s\">%(email)s</a>."
 msgstr ""
-"Le domande su questo servizio di ricerca e sul catalogo fatcat possono "
-"essere indirizzate a <a href=\"mailto:%(email)s\">%(email)s</a>."
+"Domande su questo servizio e sul catalogo fatcat possono essere mandate a <a "
+"href=\"mailto:%(email)s\">%(email)s</a>."
 
 #: fatcat_scholar/templates/about.html:54
 #, python-format
 msgid "There is a public chat channel at <a href=\"%(url)s\">%(url)s</a>."
-msgstr "C'è un canale di chat pubblico su <a href=\"%(url)s\">%(url)s</a>."
+msgstr "C'è chat pubblica su <a href=\"%(url)s\">%(url)s</a>."
 
 #: fatcat_scholar/templates/base.html:12
 msgid "Internet Archive Scholar"
@@ -277,28 +276,30 @@ msgstr "Contribuire alle traduzioni"
 
 #: fatcat_scholar/templates/base.html:121
 msgid "by title, authors, keywords..."
-msgstr "per titolo, autori, parole chiave..."
+msgstr "per titolo, autore, parole chiave..."
 
 #: fatcat_scholar/templates/base.html:121
+#, fuzzy
 msgid "search for papers"
-msgstr "ricerca di documenti"
+msgstr "ricerca di papers"
 
 #: fatcat_scholar/templates/base.html:122 fatcat_scholar/templates/home.html:16
 msgid "Search"
 msgstr "Cerca"
 
 #: fatcat_scholar/templates/base.html:129
+#, fuzzy
 msgid "User Guide"
-msgstr "Guida per l'utente"
+msgstr "Guida Utente"
 
 #: fatcat_scholar/templates/base.html:157
+#, fuzzy
 msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
 msgstr ""
-"Siamo una biblioteca statunitense 501(c)(3) senza scopo di lucro, che "
-"costruisce un archivio globale di siti Internet e altri artefatti culturali "
-"in forma digitale."
+"Siamo una biblioteca US 501(c)(3) senza scopo di lucro, che archivia siti "
+"Internet e altri materiali in forma digitale."
 
 #: fatcat_scholar/templates/base.html:159
 #, python-format
