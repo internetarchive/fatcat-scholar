@@ -11,7 +11,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-03-23 18:56-0700\n"
 "PO-Revision-Date: 2021-03-24 20:01+0000\n"
-"Last-Translator: gio <gdamiola@gmail.com>\n"
+"Last-Translator: Alessandro Mandelli <mandelli.alessandro@ngi.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/it/>\n"
 "Language: it\n"
@@ -47,7 +47,6 @@ msgid "Before 1925"
 msgstr "Prima del 1925"
 
 #: fatcat_scholar/search.py:54
-#, fuzzy
 msgid "Resource Type"
 msgstr "Tipo di risorsa"
 
@@ -64,7 +63,6 @@ msgid "Datasets"
 msgstr "Datasets"
 
 #: fatcat_scholar/search.py:61
-#, fuzzy
 msgid "Everything"
 msgstr "Tutto"
 
@@ -73,7 +71,6 @@ msgid "Availability"
 msgstr "Disponibilità"
 
 #: fatcat_scholar/search.py:69
-#, fuzzy
 msgid "Fulltext"
 msgstr "Testo completo"
 
@@ -99,15 +96,14 @@ msgstr "Rilevanza"
 
 #: fatcat_scholar/search.py:81
 msgid "Recent First"
-msgstr "Recenti"
+msgstr "Recenti prima"
 
 #: fatcat_scholar/search.py:82
-#, fuzzy
 msgid "Oldest First"
-msgstr "Più vecchi"
+msgstr "Più vecchi prima"
 
 #: fatcat_scholar/templates/about.html:4
-#, fuzzy, python-format
+#, python-format
 msgid "About %(website_name)s"
 msgstr "Chi siamo %(website_name)s"
 
@@ -130,7 +126,6 @@ msgid "How It Works"
 msgstr "Come funziona"
 
 #: fatcat_scholar/templates/about.html:16
-#, fuzzy
 msgid "Content in this search index comes in one of three forms:"
 msgstr ""
 "Il contenuto di questo indice di ricerca si presenta in una delle tre forme:"
@@ -154,11 +149,11 @@ msgid ""
 "<b>general materials</b> from <a href=\"https://archive.org\">archive.org"
 " collections</a>, including collaborations with partners"
 msgstr ""
-"<b>materiali</b> dagli archivi di  <a href=\"https://archive.org\">archive."
+"<b>materiali</b> dagli archivi di <a href=\"https://archive.org\">archive."
 "org</a>, incluse le collaborazioni con i partner"
 
 #: fatcat_scholar/templates/about.html:24
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "This <a href=\"%(url)s\">2019 FORCE11 conference presentation</a> gives "
 "an overview of the technical infrastructure and goals of the project "
@@ -170,12 +165,10 @@ msgstr ""
 
 #: fatcat_scholar/templates/about.html:27
 #: fatcat_scholar/templates/base.html:188
-#, fuzzy
 msgid "Content Sources"
-msgstr "Fonti"
+msgstr "Fonti bibliografiche"
 
 #: fatcat_scholar/templates/about.html:29
-#, fuzzy
 msgid ""
 "Metadata comes from <a href=\"https://fatcat.wiki\">fatcat.wiki</a>, an "
 "open\n"
@@ -185,19 +178,19 @@ msgid ""
 "<a href=\"#contact\">contact us</a> if you have questions."
 msgstr ""
 "I metadati provengono da <a href=\"https://fatcat.wiki\"> fatcat.wiki </a>, "
-"un catalogo di opere accademice, open e modificabile dall'utente, in cui "
-"dovrebbe essere sempre possibile tracciare la provenienza originale. Per "
-"favore\n"
+"un catalogo \n"
+"di opere accademiche, open e modificabile dall'utente. Dovrebbe essere "
+"sempre \n"
+"possibile tracciare la provenienza originale del contenuto e dei metadati. "
+"Per favore\n"
 "<a href=\"#contact\"> contattaci </a> se hai domande."
 
 #: fatcat_scholar/templates/about.html:35
 #: fatcat_scholar/templates/base.html:189
-#, fuzzy
 msgid "Text and Data Mining"
 msgstr "Testi e Data Mining"
 
 #: fatcat_scholar/templates/about.html:37
-#, fuzzy
 msgid ""
 "We intend to provide researcher access to the full corpus for text and "
 "data\n"
@@ -208,11 +201,12 @@ msgid ""
 "or would like to see specific datasets made available, please contact us."
 msgstr ""
 "Intendiamo fornire ai ricercatori l'accesso all'intero corpus per scopi di "
-"ricerca e data mining. \n"
+"ricerca e data mining.\n"
 "Dataset derivati, come le frequenze degli N-gram per anno o un grafo delle "
-"citazioni, possono essere pubblicati liberamente per ulteriori analisi. Se "
-"siete interessati o desideri che specifici set di dati siano resi "
-"disponibili, contattaci."
+"citazioni,\n"
+"possono essere pubblicati liberamente per ulteriori analisi. Se siete "
+"interessati o\n"
+"desideri che specifici set di dati siano resi disponibili, contattaci."
 
 #: fatcat_scholar/templates/about.html:42
 #, fuzzy
