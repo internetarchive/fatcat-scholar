@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
-"POT-Creation-Date: 2021-03-10 12:06-0800\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2021-03-23 18:56-0700\n"
 "PO-Revision-Date: 2021-03-21 03:46+0000\n"
 "Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/internetarchive/"
@@ -110,6 +110,112 @@ msgstr "حول %(website_name)s"
 msgid "About Internet Archive Scholar"
 msgstr "باحث أرشيف الإنترنت"
 
+#: fatcat_scholar/templates/about.html:10
+#, python-format
+msgid ""
+"See also: <a href=\"%(lang_prefix)s/help\">User Guide</a> which lists some "
+"bugs and known issues"
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:14
+#: fatcat_scholar/templates/base.html:187
+msgid "How It Works"
+msgstr "كيف تعمل"
+
+#: fatcat_scholar/templates/about.html:16
+msgid "Content in this search index comes in one of three forms:"
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:19
+msgid ""
+"<b>public web content</b> as preserved in <a href=\"https://web.archive.org"
+"\">The Wayback Machine</a> and <a href=\"https://archive-it.org\">Archive-"
+"It</a> partner collections"
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:20
+msgid "<b>digitized print materials</b> from paper and microform collections"
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:21
+msgid ""
+"<b>general materials</b> from <a href=\"https://archive.org\">archive.org "
+"collections</a>, including collaborations with partners"
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:24
+#, python-format
+msgid ""
+"This <a href=\"%(url)s\">2019 FORCE11 conference presentation</a> gives an "
+"overview of the technical infrastructure and goals of the project overall."
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:27
+#: fatcat_scholar/templates/base.html:188
+msgid "Content Sources"
+msgstr "مصادر المحتوى"
+
+#: fatcat_scholar/templates/about.html:29
+msgid ""
+"Metadata comes from <a href=\"https://fatcat.wiki\">fatcat.wiki</a>, an "
+"open\n"
+"user-editable catalog of scholarly work. It should be possible to track and\n"
+"attribute the provenance of content and metadata in all cases. Please\n"
+"<a href=\"#contact\">contact us</a> if you have questions."
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:35
+#: fatcat_scholar/templates/base.html:189
+msgid "Text and Data Mining"
+msgstr "التنقيب عن النصوص والبيانات"
+
+#: fatcat_scholar/templates/about.html:37
+msgid ""
+"We intend to provide researcher access to the full corpus for text and data\n"
+"mining purposes. Derived datasets may also be posted publicly for analysis, "
+"for\n"
+"example a citation graph or N-gram frequencies by year. If you are "
+"interested\n"
+"or would like to see specific datasets made available, please contact us."
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:42
+msgid ""
+"Currently snapshots of the full fatcat metadata corpus and upstream metadata "
+"sources are uploaded periodically to the <a href=\"https://archive.org/"
+"details/ia_biblio_metadata\">Bulk Bibliographic Metadata</a> collection on "
+"archive.org."
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:44
+msgid ""
+"Read more in <a href=\"https://guide.fatcat.wiki/bulk_exports.html\">the "
+"Fatcat Guide</a>."
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:47
+msgid "Contact Information"
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:50
+#, python-format
+msgid ""
+"The organizational contact information for the Internet Archive is listed at "
+"<a href=\"%(url)s\">%(url)s</a>."
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:52
+#, python-format
+msgid ""
+"Queries about this search service and the fatcat catalog can be directed to "
+"<a href=\"mailto:%(email)s\">%(email)s</a>."
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:54
+#, python-format
+msgid "There is a public chat channel at <a href=\"%(url)s\">%(url)s</a>."
+msgstr ""
+
 #: fatcat_scholar/templates/base.html:12
 msgid "Internet Archive Scholar"
 msgstr "باحث أرشيف الإنترنت"
@@ -194,18 +300,6 @@ msgstr "حالة الخدمة"
 #: fatcat_scholar/templates/base.html:181
 msgid "Source Code"
 msgstr "الشفرة المصدرية"
-
-#: fatcat_scholar/templates/base.html:187
-msgid "How It Works"
-msgstr "كيف تعمل"
-
-#: fatcat_scholar/templates/base.html:188
-msgid "Content Sources"
-msgstr "مصادر المحتوى"
-
-#: fatcat_scholar/templates/base.html:189
-msgid "Text and Data Mining"
-msgstr "التنقيب عن النصوص والبيانات"
 
 #: fatcat_scholar/templates/base.html:190
 msgid "Help"
@@ -380,8 +474,8 @@ msgid ""
 "scholar_fulltext.v01.json\">in the source code</a>."
 msgstr ""
 "مخطط وثيقة البحث الحالي الكامل متاح (مثل JSON) <a href=\"https://github.com/"
-"internetarchive/fatcat-scholar/blob/master/schema/scholar_fulltext.v01.json\""
-"> في كود المصدر </a>."
+"internetarchive/fatcat-scholar/blob/master/schema/scholar_fulltext.v01.json"
+"\"> في كود المصدر </a>."
 
 #: fatcat_scholar/templates/help.html:105
 msgid "Search Results"
@@ -459,8 +553,8 @@ msgid ""
 "the work. For example, indexes the journal is included in, or open platform "
 "technology used for publications."
 msgstr ""
-"قد تحتوي نتائج البحث على تسميات علامات توفر سياقًا إضافيًا حول العمل. على "
-"سبيل المثال ، الفهارس التي يتم تضمين المجلة فيها ، أو تقنية النظام الأساسي "
+"قد تحتوي نتائج البحث على تسميات علامات توفر سياقًا إضافيًا حول العمل. على سبيل "
+"المثال ، الفهارس التي يتم تضمين المجلة فيها ، أو تقنية النظام الأساسي "
 "المفتوح المستخدمة في المنشورات."
 
 #: fatcat_scholar/templates/help.html:160
@@ -479,9 +573,9 @@ msgid ""
 "language. The <a href=\"https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes"
 "\">ISO two-letter language code</a> is indicated"
 msgstr ""
-"تختلف اللغة الأساسية لهذا العمل عن لغة واجهة البحث. يشار إلى <a href=\"https"
-"://en.wikipedia.org/wiki/List_of_ISO_639-1_codes\"> رمز اللغة المكون من "
-"حرفين ISO </a>"
+"تختلف اللغة الأساسية لهذا العمل عن لغة واجهة البحث. يشار إلى <a href="
+"\"https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes\"> رمز اللغة المكون "
+"من حرفين ISO </a>"
 
 #: fatcat_scholar/templates/help.html:168
 msgid ""
@@ -530,8 +624,8 @@ msgid ""
 "Published using <a href=\"https://en.wikipedia.org/wiki/Wordpress"
 "\">WordPress</a> software"
 msgstr ""
-"تم النشر باستخدام برنامج <a href=\"https://en.wikipedia.org/wiki/Wordpress\""
-"> WordPress </a>"
+"تم النشر باستخدام برنامج <a href=\"https://en.wikipedia.org/wiki/Wordpress"
+"\"> WordPress </a>"
 
 #: fatcat_scholar/templates/help.html:192
 msgid ""
@@ -572,8 +666,8 @@ msgid "arXiv pre-print service"
 msgstr "خدمة arXiv قبل الطباعة"
 
 #: fatcat_scholar/templates/help.html:226
-msgid "Digital Bibliography of Logic Programming"
-msgstr "الببليوغرافيا الرقمية للبرمجة المنطقية"
+msgid "The DBLP Computer Science Bibliography"
+msgstr ""
 
 #: fatcat_scholar/templates/help.html:230
 msgid ""
@@ -611,6 +705,30 @@ msgstr ""
 #: fatcat_scholar/templates/help.html:250
 msgid "This project is currently a <i>prototype</i>"
 msgstr "هذا المشروع حاليًا <i> نموذج أولي </i>"
+
+#: fatcat_scholar/templates/help.html:253
+msgid "Some known bugs and issues:"
+msgstr ""
+
+#: fatcat_scholar/templates/help.html:256
+msgid ""
+"Poor metadata quality for conference proceedings. Many are labeled "
+"\"unpublished\" and are not associated with the conference."
+msgstr ""
+
+#: fatcat_scholar/templates/help.html:257
+msgid ""
+"Duplicate versions of same work. For example, different versions of the same "
+"paper or dataset. We are working on basic entity-deduplication in the fatcat "
+"catalog."
+msgstr ""
+
+#: fatcat_scholar/templates/help.html:258
+msgid ""
+"Mis-matching of file content or version with work metadata. For example, "
+"sometimes pre-prints or author manuscripts are incorrectly associated with "
+"version-of-record metadata, or vica-versa."
+msgstr ""
 
 #: fatcat_scholar/templates/home.html:10
 msgid "Internet Archive Scholar logo (vaporwave)"
@@ -806,8 +924,8 @@ msgid ""
 "original URL</a>."
 msgstr ""
 "نسخة من هذا العمل كانت متاحة على شبكة الإنترنت العامة وتم حفظها في Wayback "
-"Machine. تاريخ الأسر من %(capture_year)s؛ يمكنك أيضًا زيارة <a rel=\"external"
-" noopener\" href=\"%(original_url)s\"> عنوان URL الأصلي </a>."
+"Machine. تاريخ الأسر من %(capture_year)s؛ يمكنك أيضًا زيارة <a rel=\"external "
+"noopener\" href=\"%(original_url)s\"> عنوان URL الأصلي </a>."
 
 #: fatcat_scholar/templates/search_macros.html:290
 msgid ""
@@ -911,6 +1029,9 @@ msgstr "عرض النتائج %(start)s &mdash; %(end)s من %(total)s نتيج�
 #: fatcat_scholar/templates/search_macros.html:541
 msgid "Clear Filters"
 msgstr "تصفية"
+
+#~ msgid "Digital Bibliography of Logic Programming"
+#~ msgstr "الببليوغرافيا الرقمية للبرمجة المنطقية"
 
 #~ msgid "Next"
 #~ msgstr "التالي"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-10 12:06-0800\n"
+"POT-Creation-Date: 2021-03-23 18:56-0700\n"
 "PO-Revision-Date: 2021-02-09 03:50+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
@@ -112,6 +112,112 @@ msgstr "Om %(website_name)s"
 msgid "About Internet Archive Scholar"
 msgstr "Internet Archive Scholar-logo (vaporwave)"
 
+#: fatcat_scholar/templates/about.html:10
+#, python-format
+msgid ""
+"See also: <a href=\"%(lang_prefix)s/help\">User Guide</a> which lists some "
+"bugs and known issues"
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:14
+#: fatcat_scholar/templates/base.html:187
+msgid "How It Works"
+msgstr "Hvordan det fungerer"
+
+#: fatcat_scholar/templates/about.html:16
+msgid "Content in this search index comes in one of three forms:"
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:19
+msgid ""
+"<b>public web content</b> as preserved in <a href=\"https://web.archive.org"
+"\">The Wayback Machine</a> and <a href=\"https://archive-it.org\">Archive-"
+"It</a> partner collections"
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:20
+msgid "<b>digitized print materials</b> from paper and microform collections"
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:21
+msgid ""
+"<b>general materials</b> from <a href=\"https://archive.org\">archive.org "
+"collections</a>, including collaborations with partners"
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:24
+#, python-format
+msgid ""
+"This <a href=\"%(url)s\">2019 FORCE11 conference presentation</a> gives an "
+"overview of the technical infrastructure and goals of the project overall."
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:27
+#: fatcat_scholar/templates/base.html:188
+msgid "Content Sources"
+msgstr "Innholdskilder"
+
+#: fatcat_scholar/templates/about.html:29
+msgid ""
+"Metadata comes from <a href=\"https://fatcat.wiki\">fatcat.wiki</a>, an "
+"open\n"
+"user-editable catalog of scholarly work. It should be possible to track and\n"
+"attribute the provenance of content and metadata in all cases. Please\n"
+"<a href=\"#contact\">contact us</a> if you have questions."
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:35
+#: fatcat_scholar/templates/base.html:189
+msgid "Text and Data Mining"
+msgstr "Tekst og datautvinning"
+
+#: fatcat_scholar/templates/about.html:37
+msgid ""
+"We intend to provide researcher access to the full corpus for text and data\n"
+"mining purposes. Derived datasets may also be posted publicly for analysis, "
+"for\n"
+"example a citation graph or N-gram frequencies by year. If you are "
+"interested\n"
+"or would like to see specific datasets made available, please contact us."
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:42
+msgid ""
+"Currently snapshots of the full fatcat metadata corpus and upstream metadata "
+"sources are uploaded periodically to the <a href=\"https://archive.org/"
+"details/ia_biblio_metadata\">Bulk Bibliographic Metadata</a> collection on "
+"archive.org."
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:44
+msgid ""
+"Read more in <a href=\"https://guide.fatcat.wiki/bulk_exports.html\">the "
+"Fatcat Guide</a>."
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:47
+msgid "Contact Information"
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:50
+#, python-format
+msgid ""
+"The organizational contact information for the Internet Archive is listed at "
+"<a href=\"%(url)s\">%(url)s</a>."
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:52
+#, python-format
+msgid ""
+"Queries about this search service and the fatcat catalog can be directed to "
+"<a href=\"mailto:%(email)s\">%(email)s</a>."
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:54
+#, python-format
+msgid "There is a public chat channel at <a href=\"%(url)s\">%(url)s</a>."
+msgstr ""
+
 #: fatcat_scholar/templates/base.html:12
 #, fuzzy
 #| msgid "Internet Archive Scholar logo (vaporwave)"
@@ -199,18 +305,6 @@ msgstr "Tjenestestatus"
 #: fatcat_scholar/templates/base.html:181
 msgid "Source Code"
 msgstr "Kildekode"
-
-#: fatcat_scholar/templates/base.html:187
-msgid "How It Works"
-msgstr "Hvordan det fungerer"
-
-#: fatcat_scholar/templates/base.html:188
-msgid "Content Sources"
-msgstr "Innholdskilder"
-
-#: fatcat_scholar/templates/base.html:189
-msgid "Text and Data Mining"
-msgstr "Tekst og datautvinning"
 
 #: fatcat_scholar/templates/base.html:190
 msgid "Help"
@@ -525,7 +619,7 @@ msgid "arXiv pre-print service"
 msgstr ""
 
 #: fatcat_scholar/templates/help.html:226
-msgid "Digital Bibliography of Logic Programming"
+msgid "The DBLP Computer Science Bibliography"
 msgstr ""
 
 #: fatcat_scholar/templates/help.html:230
@@ -560,6 +654,30 @@ msgstr ""
 #: fatcat_scholar/templates/help.html:250
 msgid "This project is currently a <i>prototype</i>"
 msgstr "Dette prosjektet er for tiden en <i>prototype</i>"
+
+#: fatcat_scholar/templates/help.html:253
+msgid "Some known bugs and issues:"
+msgstr ""
+
+#: fatcat_scholar/templates/help.html:256
+msgid ""
+"Poor metadata quality for conference proceedings. Many are labeled "
+"\"unpublished\" and are not associated with the conference."
+msgstr ""
+
+#: fatcat_scholar/templates/help.html:257
+msgid ""
+"Duplicate versions of same work. For example, different versions of the same "
+"paper or dataset. We are working on basic entity-deduplication in the fatcat "
+"catalog."
+msgstr ""
+
+#: fatcat_scholar/templates/help.html:258
+msgid ""
+"Mis-matching of file content or version with work metadata. For example, "
+"sometimes pre-prints or author manuscripts are incorrectly associated with "
+"version-of-record metadata, or vica-versa."
+msgstr ""
 
 #: fatcat_scholar/templates/home.html:10
 msgid "Internet Archive Scholar logo (vaporwave)"
