@@ -2,110 +2,112 @@
 # Copyright (C) 2021 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
-#
+# Bryan Newbold <bnewbold@robocracy.org>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-03-23 18:56-0700\n"
-"PO-Revision-Date: 2021-03-23 19:09-0700\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2021-03-24 03:55+0000\n"
+"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/internetarchive/"
+"fatcat-scholar/nl/>\n"
 "Language: nl\n"
-"Language-Team: nl <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.5.2-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 #: fatcat_scholar/search.py:42
 msgid "Release Date"
-msgstr ""
+msgstr "Releasedatum"
 
 #: fatcat_scholar/search.py:46
 msgid "All Time"
-msgstr ""
+msgstr "Alle Tijden"
 
 #: fatcat_scholar/search.py:47
 msgid "Past Week"
-msgstr ""
+msgstr "Afgelopen week"
 
 #: fatcat_scholar/search.py:48
 msgid "Past Year"
-msgstr ""
+msgstr "Afgelopen Jaar"
 
 #: fatcat_scholar/search.py:49
 msgid "Since 2000"
-msgstr ""
+msgstr "Sinds 2000"
 
 #: fatcat_scholar/search.py:50
 msgid "Before 1925"
-msgstr ""
+msgstr "Vóór 1925"
 
 #: fatcat_scholar/search.py:54
 msgid "Resource Type"
-msgstr ""
+msgstr "Type bron"
 
 #: fatcat_scholar/search.py:58
 msgid "Papers"
-msgstr ""
+msgstr "Papieren"
 
 #: fatcat_scholar/search.py:59
 msgid "Reports"
-msgstr ""
+msgstr "Rapporten"
 
 #: fatcat_scholar/search.py:60
 msgid "Datasets"
-msgstr ""
+msgstr "Datasets"
 
 #: fatcat_scholar/search.py:61
 msgid "Everything"
-msgstr ""
+msgstr "Alles"
 
 #: fatcat_scholar/search.py:65
 msgid "Availability"
-msgstr ""
+msgstr "Beschikbaar"
 
 #: fatcat_scholar/search.py:69
 msgid "Fulltext"
-msgstr ""
+msgstr "Volledige tekst"
 
 #: fatcat_scholar/search.py:70
 msgid "Microfilm"
-msgstr ""
+msgstr "Microfilm"
 
 #: fatcat_scholar/search.py:71 fatcat_scholar/templates/search_macros.html:4
 msgid "Open Access"
-msgstr ""
+msgstr "Open toegang"
 
 #: fatcat_scholar/search.py:72
 msgid "Metadata"
-msgstr ""
+msgstr "Metagegevens"
 
 #: fatcat_scholar/search.py:76
 msgid "Sort Order"
-msgstr ""
+msgstr "Sorteervolgorde"
 
 #: fatcat_scholar/search.py:80
 msgid "Relevancy"
-msgstr ""
+msgstr "Relevantie"
 
 #: fatcat_scholar/search.py:81
 msgid "Recent First"
-msgstr ""
+msgstr "Recente Eerste"
 
 #: fatcat_scholar/search.py:82
 msgid "Oldest First"
-msgstr ""
+msgstr "Oudste eerst"
 
 #: fatcat_scholar/templates/about.html:4
 #, python-format
 msgid "About %(website_name)s"
-msgstr ""
+msgstr "Over %(website_name)s"
 
 #: fatcat_scholar/templates/about.html:8
 msgid "About Internet Archive Scholar"
-msgstr ""
+msgstr "Over Internet Archive Scholar"
 
 #: fatcat_scholar/templates/about.html:10
 #, python-format
@@ -113,15 +115,17 @@ msgid ""
 "See also: <a href=\"%(lang_prefix)s/help\">User Guide</a> which lists "
 "some bugs and known issues"
 msgstr ""
+"Zie ook: <a href=\"%(lang_prefix)s/help\">Gebruikershandleiding</a> die "
+"enkele bugs en bekende problemen opsomt"
 
 #: fatcat_scholar/templates/about.html:14
 #: fatcat_scholar/templates/base.html:187
 msgid "How It Works"
-msgstr ""
+msgstr "Hoe het werkt"
 
 #: fatcat_scholar/templates/about.html:16
 msgid "Content in this search index comes in one of three forms:"
-msgstr ""
+msgstr "Inhoud in deze zoekindex komt in een van de drie vormen:"
 
 #: fatcat_scholar/templates/about.html:19
 msgid ""
@@ -129,16 +133,21 @@ msgid ""
 "href=\"https://web.archive.org\">The Wayback Machine</a> and <a "
 "href=\"https://archive-it.org\">Archive-It</a> partner collections"
 msgstr ""
+"<b> openbare webcontent </b> zoals bewaard in <a href=\"https://web.archive."
+"org\"> The Wayback Machine </a> en <a href=\"https://archive-it.org\"> "
+"Archive-It </a> partnercollecties"
 
 #: fatcat_scholar/templates/about.html:20
 msgid "<b>digitized print materials</b> from paper and microform collections"
-msgstr ""
+msgstr "<b>gedigitaliseerd drukwerk</b> van papier- en microformaatcollecties"
 
 #: fatcat_scholar/templates/about.html:21
 msgid ""
 "<b>general materials</b> from <a href=\"https://archive.org\">archive.org"
 " collections</a>, including collaborations with partners"
 msgstr ""
+"<b>algemeen materiaal</b> van <a href=\"https://archive.org\">archive.org "
+"collecties</a>, met inbegrip van samenwerkingen met partners"
 
 #: fatcat_scholar/templates/about.html:24
 #, python-format
@@ -147,11 +156,14 @@ msgid ""
 "an overview of the technical infrastructure and goals of the project "
 "overall."
 msgstr ""
+"Deze <a href=\"%(url)s\">2019 FORCE11-conferentiepresentatie</a> geeft een "
+"overzicht van de technische infrastructuur en de algemene doelstellingen van "
+"het project."
 
 #: fatcat_scholar/templates/about.html:27
 #: fatcat_scholar/templates/base.html:188
 msgid "Content Sources"
-msgstr ""
+msgstr "Inhoud Bronnen"
 
 #: fatcat_scholar/templates/about.html:29
 msgid ""
@@ -162,11 +174,18 @@ msgid ""
 "attribute the provenance of content and metadata in all cases. Please\n"
 "<a href=\"#contact\">contact us</a> if you have questions."
 msgstr ""
+"Metadata komen van <a href=\"https://fatcat.wiki\">fatcat.wiki</a>, een "
+"open\n"
+"door gebruikers te bewerken catalogus van wetenschappelijk werk. Het moet "
+"mogelijk zijn om de herkomst\n"
+"de herkomst van inhoud en metadata in alle gevallen te achterhalen en toe te "
+"wijzen. Zie\n"
+"<a href=\"#contact\">contact met ons op</a> als u vragen heeft."
 
 #: fatcat_scholar/templates/about.html:35
 #: fatcat_scholar/templates/base.html:189
 msgid "Text and Data Mining"
-msgstr ""
+msgstr "Tekst- en datamining"
 
 #: fatcat_scholar/templates/about.html:37
 msgid ""
@@ -178,6 +197,14 @@ msgid ""
 "interested\n"
 "or would like to see specific datasets made available, please contact us."
 msgstr ""
+"We zijn van plan om onderzoekers toegang te geven tot het volledige corpus "
+"voor tekst en data\n"
+"mijnbouwdoeleinden. Afgeleide datasets kunnen ook openbaar worden gepost "
+"voor analyse, voor\n"
+"bijvoorbeeld een citatiegrafiek of N-gram-frequenties per jaar. Als je "
+"geïnteresseerd bent\n"
+"of als u specifieke datasets beschikbaar wilt zien, neem dan contact met ons "
+"op."
 
 #: fatcat_scholar/templates/about.html:42
 msgid ""
@@ -186,16 +213,22 @@ msgid ""
 "href=\"https://archive.org/details/ia_biblio_metadata\">Bulk "
 "Bibliographic Metadata</a> collection on archive.org."
 msgstr ""
+"Momenteel worden periodiek snapshots van het volledige fatcat-metadatacorpus "
+"en upstream-metadatabronnen geüpload naar de <a href=\"https://archive.org/"
+"details/ia_biblio_metadata\">Bulk Bibliographic Metadata</a> collectie op "
+"archive.org."
 
 #: fatcat_scholar/templates/about.html:44
 msgid ""
 "Read more in <a href=\"https://guide.fatcat.wiki/bulk_exports.html\">the "
 "Fatcat Guide</a>."
 msgstr ""
+"Lees meer in <a href=\"https://guide.fatcat.wiki/bulk_exports.html\">de "
+"Fatcat Gids</a>."
 
 #: fatcat_scholar/templates/about.html:47
 msgid "Contact Information"
-msgstr ""
+msgstr "Contact Informatie"
 
 #: fatcat_scholar/templates/about.html:50
 #, python-format
@@ -203,6 +236,8 @@ msgid ""
 "The organizational contact information for the Internet Archive is listed"
 " at <a href=\"%(url)s\">%(url)s</a>."
 msgstr ""
+"De contactgegevens van het Internet Archive staan vermeld op <a href=\"%(url)"
+"s\">%(url)s</a>."
 
 #: fatcat_scholar/templates/about.html:52
 #, python-format
@@ -210,45 +245,50 @@ msgid ""
 "Queries about this search service and the fatcat catalog can be directed "
 "to <a href=\"mailto:%(email)s\">%(email)s</a>."
 msgstr ""
+"Vragen over deze zoekdienst en de fatcat-catalogus kunnen worden gericht aan "
+"<a href=\"mailto:%(email)s\">%(email)s</a>."
 
 #: fatcat_scholar/templates/about.html:54
 #, python-format
 msgid "There is a public chat channel at <a href=\"%(url)s\">%(url)s</a>."
-msgstr ""
+msgstr "Er is een openbaar chatkanaal op <a href=\"%(url)s\">%(url)s</a>."
 
 #: fatcat_scholar/templates/base.html:12
 msgid "Internet Archive Scholar"
-msgstr ""
+msgstr "Internet Archief Wetenschapper"
 
 #: fatcat_scholar/templates/base.html:82
 msgid "language selection menu"
-msgstr ""
+msgstr "taalselectiemenu"
 
 #: fatcat_scholar/templates/base.html:98
 msgid "Contribute to translations"
-msgstr ""
+msgstr "Bijdragen aan vertalingen"
 
 #: fatcat_scholar/templates/base.html:121
 msgid "by title, authors, keywords..."
-msgstr ""
+msgstr "op titel, auteurs, trefwoorden..."
 
 #: fatcat_scholar/templates/base.html:121
 msgid "search for papers"
-msgstr ""
+msgstr "naar documenten zoeken"
 
 #: fatcat_scholar/templates/base.html:122 fatcat_scholar/templates/home.html:16
 msgid "Search"
-msgstr ""
+msgstr "Zoeken"
 
 #: fatcat_scholar/templates/base.html:129
 msgid "User Guide"
-msgstr ""
+msgstr "Gebruikershandleiding"
 
 #: fatcat_scholar/templates/base.html:157
 msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
 msgstr ""
+"Wij zijn een Amerikaanse 501(c)(3) non-profit bibliotheek, die een "
+"wereldwijd archief aanlegt van internetsites en andere culturele artefacten "
+"in digitale vorm."
 
 #: fatcat_scholar/templates/base.html:159
 #, python-format
@@ -256,84 +296,86 @@ msgid ""
 "Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and"
 " %(archive_it)s."
 msgstr ""
+"Andere projecten zijn %(wayback)s, %(archive_org)s, %(openlibrary)s, en "
+"%(archive_it)s."
 
 #: fatcat_scholar/templates/base.html:166
 msgid "About Us"
-msgstr ""
+msgstr "Over ons"
 
 #: fatcat_scholar/templates/base.html:167
 msgid "Contact Us"
-msgstr ""
+msgstr "Contact"
 
 #: fatcat_scholar/templates/base.html:168
 msgid "Policies"
-msgstr ""
+msgstr "Beleidsregels"
 
 #: fatcat_scholar/templates/base.html:169
 msgid "Donate"
-msgstr ""
+msgstr "Doneer"
 
 #: fatcat_scholar/templates/base.html:175
 msgid "Open Infrastructure"
-msgstr ""
+msgstr "Open infrastructuur"
 
 #: fatcat_scholar/templates/base.html:177
 msgid "Editable Catalog (Fatcat)"
-msgstr ""
+msgstr "Bewerkbare catalogus (Fatcat)"
 
 #: fatcat_scholar/templates/base.html:178
 msgid "Contribute"
-msgstr ""
+msgstr "Draag bij"
 
 #: fatcat_scholar/templates/base.html:179
 msgid "Search API"
-msgstr ""
+msgstr "Zoek API"
 
 #: fatcat_scholar/templates/base.html:180
 msgid "Service Status"
-msgstr ""
+msgstr "Dienststatus"
 
 #: fatcat_scholar/templates/base.html:181
 msgid "Source Code"
-msgstr ""
+msgstr "Broncode"
 
 #: fatcat_scholar/templates/base.html:190
 msgid "Help"
-msgstr ""
+msgstr "Hulp"
 
 #: fatcat_scholar/templates/error.html:12
 msgid "Not Found"
-msgstr ""
+msgstr "Niet Gevonden"
 
 #: fatcat_scholar/templates/error.html:14
 msgid "Access Forbidden"
-msgstr ""
+msgstr "Toegang Verboden"
 
 #: fatcat_scholar/templates/error.html:16
 msgid "Request Error"
-msgstr ""
+msgstr "Verzoek Fout"
 
 #: fatcat_scholar/templates/error.html:18
 msgid "Internal Error"
-msgstr ""
+msgstr "Interne fout"
 
 #: fatcat_scholar/templates/help.html:5
 #, python-format
 msgid "%(website_name)s Help"
-msgstr ""
+msgstr "%(website_name)s Help"
 
 #: fatcat_scholar/templates/help.html:14
 msgid "Try It"
-msgstr ""
+msgstr "Probeer het"
 
 #: fatcat_scholar/templates/help.html:22
 msgid "Scholar User Guide"
-msgstr ""
+msgstr "Scholar Gebruikersgids"
 
 #: fatcat_scholar/templates/help.html:23
 #, python-format
 msgid "See also: <a href=\"%(lang_prefix)s/about\">About Scholarly Search</a>"
-msgstr ""
+msgstr "Zie ook: <a href=\"%(lang_prefix)s/about\">Over Scholarly Search</a>"
 
 #: fatcat_scholar/templates/help.html:25
 msgid ""
@@ -343,6 +385,11 @@ msgid ""
 "natural sciences, humanities, biomedicine, art, history, industrial "
 "research, government reports, and more."
 msgstr ""
+"Deze dienst biedt <a href=\"https://en.wikipedia.org/wiki/Full-text_search\""
+">fulltext zoeken</a> in onderzoekspublicaties die zijn gearchiveerd in de "
+"verschillende collecties van het Internet Archive. De dienst omvat materiaal "
+"uit de natuurwetenschappen, geesteswetenschappen, biomedische wetenschappen, "
+"kunst, geschiedenis, industrieel onderzoek, overheidsrapporten, enzovoort."
 
 #: fatcat_scholar/templates/help.html:26
 msgid ""
@@ -350,6 +397,9 @@ msgid ""
 "access is to a \"pre-print\" or other version of the work, and this is "
 "indicated in the search results."
 msgstr ""
+"Indien mogelijk wordt toegang tot de inhoud verleend. Soms gaat het om een "
+"\"voordruk\" of een andere versie van het werk, en wordt dit in de "
+"zoekresultaten aangegeven."
 
 #: fatcat_scholar/templates/help.html:28
 msgid ""
@@ -358,10 +408,14 @@ msgid ""
 "possible to obtain access through a public library or from the publisher "
 "directly."
 msgstr ""
+"In andere gevallen worden, afhankelijk van de zoekfilters, resultaten "
+"opgenomen waarvoor alleen een bibliografische catalogusvermelding bestaat. "
+"Het kan nog steeds mogelijk zijn om toegang te krijgen via een openbare "
+"bibliotheek of rechtstreeks van de uitgever."
 
 #: fatcat_scholar/templates/help.html:30
 msgid "Query Syntax"
-msgstr ""
+msgstr "Query Syntax"
 
 #: fatcat_scholar/templates/help.html:32
 msgid ""
@@ -373,6 +427,14 @@ msgid ""
 "<code>journal:Science</code>, set filters like <code>lang:de</code>, and\n"
 "apply range queries like <code>year:&gt;1989 year:&lt;2000</code>."
 msgstr ""
+"Naast de basis filter- en sorteeropties, staat deze zoek\n"
+"interface ook het gebruik van Lucene query syntax toe in het zoekveld. U "
+"kunt\n"
+"term queries beperken op meerdere metadata velden met behulp van dubbele "
+"punt verklaringen zoals\n"
+"<code>journal:Science</code>, filters instellen zoals <code>lang:de</code>, "
+"en\n"
+"bereik queries toepassen zoals <code>jaar:&gt;1989 jaar:&lt;2000</code>."
 
 #: fatcat_scholar/templates/help.html:38
 msgid ""
@@ -380,32 +442,38 @@ msgid ""
 "some point advanced users may run into limits on the size or complexity "
 "of queries."
 msgstr ""
+"Hoewel deze syntaxis relatief complexe en krachtige query's mogelijk maakt, "
+"kunnen gevorderde gebruikers op een gegeven moment tegen grenzen aanlopen "
+"wat betreft de grootte of complexiteit van query's."
 
 #: fatcat_scholar/templates/help.html:40
 msgid ""
 "For the time being we recommend systems like <a "
 "href=\"https://lens.org\">lens.org</a> for a more powerful interface."
 msgstr ""
+"Voorlopig bevelen wij systemen als <a href=\"https://lens.org\">lens.org</a> "
+"aan voor een krachtigere interface."
 
 #: fatcat_scholar/templates/help.html:43
 msgid "Example Queries"
-msgstr ""
+msgstr "Voorbeeld zoekopdrachten"
 
 #: fatcat_scholar/templates/help.html:45
 msgid "Search for digitized pages about a topic from specific years:"
 msgstr ""
+"Zoek naar gedigitaliseerde pagina's over een onderwerp uit bepaalde jaren:"
 
 #: fatcat_scholar/templates/help.html:49
 msgid "Search for papers in Chinese matching a term:"
-msgstr ""
+msgstr "Zoek naar papers in het Chinees die overeenkomen met een term:"
 
 #: fatcat_scholar/templates/help.html:53
 msgid "Conference papers with an author name query:"
-msgstr ""
+msgstr "Conferentiepapers met een auteursnaam query:"
 
 #: fatcat_scholar/templates/help.html:57
 msgid "Citation Queries"
-msgstr ""
+msgstr "Citaten zoeken"
 
 #: fatcat_scholar/templates/help.html:58
 msgid ""
@@ -414,10 +482,15 @@ msgid ""
 "will attempt to parse the citation and do a match against our catalog of "
 "known works. When this happens, any filters are ignored."
 msgstr ""
+"Bij wijze van experiment zal de dienst, als de zoekopdracht \"lijkt\" op een "
+"formeel citaat, zoals gevonden in de bibliografie van een onderzoekspaper, "
+"proberen het citaat te ontleden en een vergelijking te maken met onze "
+"catalogus van bekende werken. Wanneer dit gebeurt, worden eventuele filters "
+"genegeerd."
 
 #: fatcat_scholar/templates/help.html:62
 msgid "Metadata Fields"
-msgstr ""
+msgstr "Metagegevensvelden"
 
 #: fatcat_scholar/templates/help.html:64
 msgid ""
@@ -425,6 +498,9 @@ msgid ""
 "<code>doi:*</code>, and negate any term like <code>!type:article-"
 "journal</code>."
 msgstr ""
+"U kunt beperken tot records waar het veld bestaat met een asterisk zoals "
+"<code>doi:*</code>, en elke term ontkennen zoals <code>!type:article-"
+"journal</code>."
 
 #: fatcat_scholar/templates/help.html:66
 msgid ""
@@ -433,6 +509,10 @@ msgid ""
 "/query-dsl-query-string-query.html#query-string-query-notes\">from the "
 "Elasticsearch project</a>."
 msgstr ""
+"Uitgebreide documentatie over de syntaxis van de query's is beschikbaar <a "
+"href=\"https://www.elastic.co/guide/en/elasticsearch/reference/current/query-"
+"dsl-query-string-query.html#query-string-query-notes\"> bij het "
+"Elasticsearch-project </a>."
 
 #: fatcat_scholar/templates/help.html:68
 msgid ""
@@ -441,20 +521,25 @@ msgid ""
 "scholar/blob/master/schema/scholar_fulltext.v01.json\">in the source "
 "code</a>."
 msgstr ""
+"Het volledige schema van de huidige zoekdocumenten is beschikbaar (als JSON) "
+"<a href=\"https://github.com/internetarchive/fatcat-scholar/blob/master/"
+"schema/scholar_fulltext.v01.json\"> in de broncode</a>."
 
 #: fatcat_scholar/templates/help.html:105
 msgid "Search Results"
-msgstr ""
+msgstr "Zoekresultaten"
 
 #: fatcat_scholar/templates/help.html:108
 msgid "Access Links"
-msgstr ""
+msgstr "Toegang Links"
 
 #: fatcat_scholar/templates/help.html:118
 msgid ""
 "All Internet Archive preservation copy links have the same style and "
 "icon. Content from the Wayback Machine looks like this."
 msgstr ""
+"Alle links naar de bewaringskopie van het Internet Archive hebben dezelfde "
+"stijl en hetzelfde pictogram. Inhoud van de Wayback Machine ziet er zo uit."
 
 #: fatcat_scholar/templates/help.html:122
 msgid ""
@@ -463,6 +548,10 @@ msgid ""
 "indicator. You can get details and view all versions by clicking on the "
 "primary title link"
 msgstr ""
+"Als de bewaarde kopie van het werk afkomstig is van een voordruk, "
+"auteursmanuscript of een andere alternatieve versie van het werk, is de "
+"toegangslink voorzien van een indicator. U kunt details krijgen en alle "
+"versies bekijken door op de link naar de primaire titel te klikken"
 
 #: fatcat_scholar/templates/help.html:126
 msgid ""
@@ -470,12 +559,18 @@ msgid ""
 "stored in general Internet Archive digital collections (as opposed to the"
 " web archive)"
 msgstr ""
+"Sommige bewaarde inhoud, met name oudere werken uit het publieke domein, "
+"kunnen worden opgeslagen in algemene digitale collecties van het Internet "
+"Archive (in tegenstelling tot het webarchief)"
 
 #: fatcat_scholar/templates/help.html:130
 msgid ""
 "Digitized copies of works on microfilm may be linked to experimentally. "
 "Access may be limited to controlled lending"
 msgstr ""
+"Gedigitaliseerde kopieën van werken op microfilm kunnen bij wijze van "
+"experiment worden gekoppeld. De toegang kan worden beperkt tot "
+"gecontroleerde uitlening"
 
 #: fatcat_scholar/templates/help.html:134
 msgid ""
@@ -483,6 +578,9 @@ msgid ""
 "record\" of a research publication, but content is not always accessible "
 "to the general public"
 msgstr ""
+"Een landingspagina van een uitgever is de gezaghebbende bron voor de "
+"\"version of record\" van een onderzoekspublicatie, maar de inhoud is niet "
+"altijd toegankelijk voor het grote publiek"
 
 #: fatcat_scholar/templates/help.html:138
 msgid ""
@@ -490,12 +588,18 @@ msgid ""
 "\"Gold\" or \"Diamond\" OA), and the publisher is expected to provide "
 "access to all readers, the button has an orange \"unlocked\" icon"
 msgstr ""
+"Wanneer het werk afkomstig is van een Open Access publicatie (soms bekend "
+"als \"Gold\" of \"Diamond\" OA), en van de uitgever verwacht wordt dat hij "
+"toegang verschaft aan alle lezers, heeft de knop een oranje \"ontgrendeld\" "
+"icoon"
 
 #: fatcat_scholar/templates/help.html:142
 msgid ""
 "If the work is archived in full on a reliable, open platform, we will "
 "sometimes provide additional links"
 msgstr ""
+"Als het werk volledig gearchiveerd is op een betrouwbaar, open platform, "
+"zullen wij soms extra links geven"
 
 #: fatcat_scholar/templates/help.html:150
 msgid ""
@@ -503,6 +607,9 @@ msgid ""
 " the work. For example, indexes the journal is included in, or open "
 "platform technology used for publications."
 msgstr ""
+"Zoekresultaten kunnen taglabels hebben die extra context geven over het "
+"werk. Bijvoorbeeld, indexen waarin het tijdschrift is opgenomen, of open "
+"platformtechnologie die voor publicaties wordt gebruikt."
 
 #: fatcat_scholar/templates/help.html:160
 msgid ""
@@ -510,6 +617,9 @@ msgid ""
 "and bibliographic metadata for the \"primary\" is being shown. Click the "
 "title to see other versions"
 msgstr ""
+"Er zijn meerdere \"versies\" of \"edities\" van dit werk uitgebracht, en de "
+"bibliografische metadata van de \"primaire\" worden getoond. Klik op de "
+"titel om andere versies te zien"
 
 #: fatcat_scholar/templates/help.html:164
 msgid ""
@@ -518,12 +628,17 @@ msgid ""
 "href=\"https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes\">ISO two-"
 "letter language code</a> is indicated"
 msgstr ""
+"De primaire taal van dit werk verschilt van de taal van de zoekinterface. De "
+"<a href=\"https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes\">ISO-"
+"tweelettercode</a> wordt aangegeven"
 
 #: fatcat_scholar/templates/help.html:168
 msgid ""
 "Published in a <a href=\"https://doaj.org\">Directory of Open Access "
 "Journals</a> publication, which implies that this is an Open Access work"
 msgstr ""
+"Gepubliceerd in een <a href=\"https://doaj.org\">Directory of Open Access "
+"Journals</a> publicatie, wat impliceert dat dit een Open Access werk is"
 
 #: fatcat_scholar/templates/help.html:172
 msgid ""
@@ -531,6 +646,9 @@ msgid ""
 "/szczepanski-list\">Szczepanski's List of Open Access Journals</a>, which"
 " implies that this is an Open Access work"
 msgstr ""
+"Publicatie opgenomen in <a href=\"https://www.ebsco.com/open-access/"
+"szczepanski-list\">Szczepanski's List of Open Access Journals</a>, wat "
+"impliceert dat dit een Open Access werk is"
 
 #: fatcat_scholar/templates/help.html:176
 msgid ""
@@ -538,6 +656,8 @@ msgid ""
 "href=\"https://en.wikipedia.org/wiki/Open_access\">\"Open Access\"</a> "
 "for any other reason"
 msgstr ""
+"Het werk wordt verondersteld <a href=\"https://en.wikipedia.org/wiki/"
+"Open_access\">\"Open Access\"</a> te zijn om een andere reden"
 
 #: fatcat_scholar/templates/help.html:180
 msgid ""
@@ -545,6 +665,8 @@ msgid ""
 "href=\"https://en.wikipedia.org/wiki/SciELO\">SciELO</a> national "
 "platform"
 msgstr ""
+"Gepubliceerd op een <a href=\"https://en.wikipedia.org/wiki/SciELO\">SciELO</"
+"a> nationaal platform"
 
 #: fatcat_scholar/templates/help.html:184
 msgid ""
@@ -552,12 +674,16 @@ msgid ""
 "href=\"https://en.wikipedia.org/wiki/Open_Journal_Systems\">Open Journal "
 "Systems</a> software"
 msgstr ""
+"Gepubliceerd met behulp van <a href=\"https://en.wikipedia.org/wiki/"
+"Open_Journal_Systems\">Open Journal Systems</a> software"
 
 #: fatcat_scholar/templates/help.html:188
 msgid ""
 "Published using <a "
 "href=\"https://en.wikipedia.org/wiki/Wordpress\">WordPress</a> software"
 msgstr ""
+"Gepubliceerd met behulp van <a href=\"https://en.wikipedia.org/wiki/"
+"Wordpress\">WordPress</a> software"
 
 #: fatcat_scholar/templates/help.html:192
 msgid ""
@@ -565,6 +691,8 @@ msgid ""
 "href=\"https://en.wikipedia.org/wiki/JSTOR\">JSTOR</a> digital "
 "preservation platform"
 msgstr ""
+"Bewaard en/of gehost op het <a href=\"https://en.wikipedia.org/wiki/JSTOR\""
+">JSTOR</a> platform voor digitale bewaring"
 
 #: fatcat_scholar/templates/help.html:200
 msgid ""
@@ -572,6 +700,9 @@ msgid ""
 "\"persistent identifiers\" that uniquely identify the specific version of"
 " the work. These are usually hyperlinks."
 msgstr ""
+"Onder zoekresultaten, en alternatieve versie lijsten, staan alle bekende "
+"\"persistent identifiers\" die uniek de specifieke versie van het werk "
+"identificeren. Dit zijn meestal hyperlinks."
 
 #: fatcat_scholar/templates/help.html:210
 msgid ""
@@ -580,62 +711,74 @@ msgid ""
 "Object Identifier (DOI)</a>, provides a redirect to the publisher's "
 "landing page"
 msgstr ""
+"<a href=\"https://en.wikipedia.org/wiki/Digital_object_identifier\"> Digital "
+"Object Identifier (DOI) </a>, biedt een omleiding naar de bestemmingspagina "
+"van de uitgever"
 
 #: fatcat_scholar/templates/help.html:214
 msgid "PubMed/MEDLINE"
-msgstr ""
+msgstr "PubMed/MEDLINE"
 
 #: fatcat_scholar/templates/help.html:218
 msgid "PubMed Central"
-msgstr ""
+msgstr "PubMed Central"
 
 #: fatcat_scholar/templates/help.html:222
 msgid "arXiv pre-print service"
-msgstr ""
+msgstr "arXiv pre-print dienst"
 
 #: fatcat_scholar/templates/help.html:226
 msgid "The DBLP Computer Science Bibliography"
-msgstr ""
+msgstr "De DBLP-bibliografie van de informatica"
 
 #: fatcat_scholar/templates/help.html:230
 msgid "Article-level identifier for works in DOAJ, particularly those with no DOI"
 msgstr ""
+"Identificatie op artikelniveau voor werken in DOAJ, met name die zonder DOI"
 
 #: fatcat_scholar/templates/help.html:234
 msgid ""
 "<a href=\"https://fatcat.wiki\">fatcat.wiki</a> \"release\" identifier. "
 "Scholar is built on top of the fatcat catalog"
 msgstr ""
+"<a href=\"https://fatcat.wiki\">fatcat.wiki</a> \"release\" identificator. "
+"Scholar is gebouwd bovenop de fatcat catalogus"
 
 #: fatcat_scholar/templates/help.html:240
 msgid "Work In Progress"
-msgstr ""
+msgstr "Werk in uitvoering"
 
 #: fatcat_scholar/templates/help.html:244 fatcat_scholar/templates/home.html:37
 msgid ""
 "This service is in \"alpha\". It has several bugs, experiences downtime, "
 "and has not been officially announced."
 msgstr ""
+"Deze dienst is in \"alpha\". Het heeft verschillende bugs, ondervindt "
+"downtime, en is niet officieel aangekondigd."
 
 #: fatcat_scholar/templates/help.html:246 fatcat_scholar/templates/home.html:39
 msgid ""
 "This is a new service. Metadata is being improved and features have not "
 "been finalized."
 msgstr ""
+"Dit is een nieuwe dienst. De metadata worden nog verbeterd en de functies "
+"zijn nog niet definitief vastgesteld."
 
 #: fatcat_scholar/templates/help.html:250
 msgid "This project is currently a <i>prototype</i>"
-msgstr ""
+msgstr "Dit project is momenteel een <i>prototype</i>"
 
 #: fatcat_scholar/templates/help.html:253
 msgid "Some known bugs and issues:"
-msgstr ""
+msgstr "Enkele bekende bugs en problemen:"
 
 #: fatcat_scholar/templates/help.html:256
 msgid ""
 "Poor metadata quality for conference proceedings. Many are labeled "
 "\"unpublished\" and are not associated with the conference."
 msgstr ""
+"Slechte kwaliteit van metadata voor conferentieverslagen. Vele zijn gelabeld "
+"als \"ongepubliceerd\" en zijn niet geassocieerd met de conferentie."
 
 #: fatcat_scholar/templates/help.html:257
 msgid ""
@@ -643,6 +786,9 @@ msgid ""
 "same paper or dataset. We are working on basic entity-deduplication in "
 "the fatcat catalog."
 msgstr ""
+"Duplicaatversies van hetzelfde werk. Bijvoorbeeld verschillende versies van "
+"dezelfde paper of dataset. Wij werken aan basis-entiteit-deduplicatie in de "
+"fatcat catalogus."
 
 #: fatcat_scholar/templates/help.html:258
 msgid ""
@@ -650,24 +796,30 @@ msgid ""
 "sometimes pre-prints or author manuscripts are incorrectly associated "
 "with version-of-record metadata, or vica-versa."
 msgstr ""
+"Verkeerd matchen van bestandsinhoud of versie met werkmetadata. Zo worden "
+"pre-prints of manuscripten van auteurs soms ten onrechte geassocieerd met "
+"metagegevens over de versie van het bestand, of vica-versa."
 
 #: fatcat_scholar/templates/home.html:10
 msgid "Internet Archive Scholar logo (vaporwave)"
-msgstr ""
+msgstr "Internet Archive Scholar-logo (vaporwave)"
 
 #: fatcat_scholar/templates/home.html:15
 msgid "by title, author, keywords..."
-msgstr ""
+msgstr "op titel, auteur, trefwoorden..."
 
 #: fatcat_scholar/templates/home.html:23
 msgid "Search Millions of Research Papers"
-msgstr ""
+msgstr "Zoek in miljoenen onderzoekspapers"
 
 #: fatcat_scholar/templates/home.html:24
 msgid ""
 "This fulltext search index includes over 25 million research articles and"
 " other scholarly documents preserved in the Internet Archive."
 msgstr ""
+"Deze index voor fulltext zoeken omvat meer dan 25 miljoen "
+"onderzoeksartikelen en andere wetenschappelijke documenten die in het "
+"Internet Archive worden bewaard."
 
 #: fatcat_scholar/templates/home.html:24
 msgid ""
@@ -675,154 +827,160 @@ msgid ""
 " through the latest Open Access conference proceedings and pre-prints "
 "crawled from the World Wide Web."
 msgstr ""
+"De collectie strekt zich uit van gedigitaliseerde kopieën van tijdschriften "
+"uit de achttiende eeuw tot de meest recente Open Access conferentieverslagen "
+"en pre-prints die van het World Wide Web zijn gekraakt."
 
 #: fatcat_scholar/templates/home.html:24
 msgid "More &raquo;"
-msgstr ""
+msgstr "Meer &raquo;"
 
 #: fatcat_scholar/templates/home.html:52 fatcat_scholar/templates/home.html:66
 #: fatcat_scholar/templates/home.html:80 fatcat_scholar/templates/home.html:94
 msgid "PDF thumbnail"
-msgstr ""
+msgstr "PDF miniatuur"
 
 #: fatcat_scholar/templates/search.html:35
 msgid "Filters"
-msgstr ""
+msgstr "Filters"
 
 #: fatcat_scholar/templates/search.html:47
 #: fatcat_scholar/templates/search.html:77
 msgid "Hit"
 msgid_plural "Hits"
-msgstr[0] ""
+msgstr[0] "Hit"
 msgstr[1] ""
 
 #: fatcat_scholar/templates/search.html:53
 #: fatcat_scholar/templates/search.html:85
 #, python-format
 msgid "in %(frac_sec)ssec"
-msgstr ""
+msgstr "in %(frac_sec)ssec"
 
 #: fatcat_scholar/templates/search.html:110
 msgid "Backend Search Engine Error"
-msgstr ""
+msgstr "Backend Zoekmachine Fout"
 
 #: fatcat_scholar/templates/search.html:112
 msgid "Search Query Error"
-msgstr ""
+msgstr "Zoekopdracht fout"
 
 #: fatcat_scholar/templates/search.html:116
 msgid ""
 "Query parsing is currently very naive. Sometimes you can fix this problem"
 " by adding quotes around terms or entire phrases."
 msgstr ""
+"Query parsing is momenteel erg naïef. Soms kun je dit probleem oplossen door "
+"aanhalingstekens toe te voegen rond termen of hele zinnen."
 
 #: fatcat_scholar/templates/search.html:148
 msgid "We didn't find any documents matching your query"
-msgstr ""
+msgstr "We hebben geen documenten gevonden die overeenkomen met uw zoekopdracht"
 
 #: fatcat_scholar/templates/search.html:153
 msgid "Try All Resource Types"
-msgstr ""
+msgstr "Probeer alle soorten bronnen"
 
 #: fatcat_scholar/templates/search.html:158
 msgid "Try All Time"
-msgstr ""
+msgstr "Probeer de hele tijd"
 
 #: fatcat_scholar/templates/search.html:163
 msgid "Try Metadata Records"
-msgstr ""
+msgstr "Probeer Metadata Records"
 
 #: fatcat_scholar/templates/search.html:166
 msgid "Start Over"
-msgstr ""
+msgstr "Begin opnieuw"
 
 #: fatcat_scholar/templates/search.html:179
 msgid "Enter a query in the box above to get started"
-msgstr ""
+msgstr "Voer een query in het bovenstaande vak in om te beginnen"
 
 #: fatcat_scholar/templates/search_macros.html:21
 msgid "Multiple Versions"
-msgstr ""
+msgstr "Meerdere versies"
 
 #: fatcat_scholar/templates/search_macros.html:59
 msgid "fulltext PDF download"
-msgstr ""
+msgstr "fulltext PDF download"
 
 #: fatcat_scholar/templates/search_macros.html:61
 msgid "read fulltext microfilm"
-msgstr ""
+msgstr "lees volledige tekst microfilm"
 
 #: fatcat_scholar/templates/search_macros.html:63
 #: fatcat_scholar/templates/search_macros.html:243
 msgid "fulltext access"
-msgstr ""
+msgstr "volledige tekst toegang"
 
 #: fatcat_scholar/templates/search_macros.html:72
 msgid "Web Archive"
-msgstr ""
+msgstr "Web Archief"
 
 #: fatcat_scholar/templates/search_macros.html:74
 #: fatcat_scholar/templates/search_macros.html:261
 msgid "File Archive"
-msgstr ""
+msgstr "Bestand Archief"
 
 #: fatcat_scholar/templates/search_macros.html:76
 msgid "Archive [Microfilm]"
-msgstr ""
+msgstr "Archief [Microfilm]"
 
 #: fatcat_scholar/templates/search_macros.html:78
 msgid "Other"
-msgstr ""
+msgstr "Alternatief"
 
 #: fatcat_scholar/templates/search_macros.html:82
 msgid "[PDF]"
-msgstr ""
+msgstr "[PDF]"
 
 #: fatcat_scholar/templates/search_macros.html:84
 msgid "[HTML]"
-msgstr ""
+msgstr "[HTML]"
 
 #: fatcat_scholar/templates/search_macros.html:86
 msgid "[XML]"
-msgstr ""
+msgstr "[XML]"
 
 #: fatcat_scholar/templates/search_macros.html:95
 msgid "fulltext thumbnail"
-msgstr ""
+msgstr "volledige tekst thumbnail"
 
 #: fatcat_scholar/templates/search_macros.html:111
 msgid "Publisher / doi.org"
-msgstr ""
+msgstr "Uitgever / doi.org"
 
 #: fatcat_scholar/templates/search_macros.html:144
 #, python-format
 msgid "%(year)s"
-msgstr ""
+msgstr "%(year)s"
 
 #: fatcat_scholar/templates/search_macros.html:197
 msgid "unknown"
-msgstr ""
+msgstr "onbekend"
 
 #: fatcat_scholar/templates/search_macros.html:213
 #, python-format
 msgid "Page %(page_num)s of %(journal_name)s Vol. %(volume)s, Issue %(issue)s"
 msgstr ""
+"Pagina %(page_num)s van %(journal_name)s Vol. %(volume)s, Issue %(issue)s"
 
 #: fatcat_scholar/templates/search_macros.html:215
 msgid "page"
-msgstr ""
+msgstr "pagina"
 
 #: fatcat_scholar/templates/search_macros.html:236
 msgid "Preserved Fulltext"
-msgstr ""
+msgstr "Bewaarde volledige tekst"
 
 #: fatcat_scholar/templates/search_macros.html:259
 msgid "Web Archive Capture"
-msgstr ""
+msgstr "Webarchief vastleggen"
 
 #: fatcat_scholar/templates/search_macros.html:263
 msgid "Digitized Microfilm"
-msgstr ""
+msgstr "Gedigitaliseerde microfilm"
 
 #: fatcat_scholar/templates/search_macros.html:288
 #, python-format
@@ -832,33 +990,43 @@ msgid ""
 "%(capture_year)s; you can also visit <a rel=\"external noopener\" "
 "href=\"%(original_url)s\">the original URL</a>."
 msgstr ""
+"Een kopie van dit werk was beschikbaar op het publieke web en is bewaard "
+"gebleven in de Wayback Machine. De opname dateert van %(capture_year)s; u "
+"kunt ook <a rel=\"external noopener\" href=\"%(original_url)s\"> de "
+"oorspronkelijke URL</a> bezoeken."
 
 #: fatcat_scholar/templates/search_macros.html:290
 msgid ""
 "The Internet Archive has a preservation copy of this work in our general "
 "collections."
 msgstr ""
+"Het Internet Archive heeft een preservation copy van dit werk in onze "
+"algemene collecties."
 
 #: fatcat_scholar/templates/search_macros.html:292
 msgid ""
 "The Internet Archive has digitized a microfilm copy of this work. It may "
 "be possible to borrow a copy for reading."
 msgstr ""
+"Het Internet Archive heeft een microfilmkopie van dit werk gedigitaliseerd. "
+"Het is misschien mogelijk een kopie te lenen om te lezen."
 
 #: fatcat_scholar/templates/search_macros.html:296
 #, python-format
 msgid "The file type is %(mimetype)s."
-msgstr ""
+msgstr "Het bestandstype is %(mimetype)s."
 
 #: fatcat_scholar/templates/search_macros.html:301
 msgid ""
 "Note that this fulltext copy is not of the \"primary\" version of this "
 "work. The version it corresponds to is:"
 msgstr ""
+"Merk op dat deze fulltext kopie niet van de \"primaire\" versie van dit werk "
+"is. De versie waar het mee overeenkomt is:"
 
 #: fatcat_scholar/templates/search_macros.html:314
 msgid "Additional access options for the primary version of this work:"
-msgstr ""
+msgstr "Aanvullende toegangsmogelijkheden voor de primaire versie van dit werk:"
 
 #: fatcat_scholar/templates/search_macros.html:324
 msgid ""
@@ -866,6 +1034,9 @@ msgid ""
 "able to obtain a copy of this work to read from the publisher, platforms,"
 " or institutional libraries."
 msgstr ""
+"Er is ons nog geen exemplaar van dit werk bekend dat door het publiek "
+"bewaard kan worden. Wellicht kunt u een exemplaar van dit werk verkrijgen om "
+"te lezen bij de uitgever, platforms of institutionele bibliotheken."
 
 #: fatcat_scholar/templates/search_macros.html:327
 #, python-format
@@ -874,56 +1045,58 @@ msgid ""
 " us know via <a rel=\"noopener\" href=\"%(save_paper_now_url)s\">\"Save "
 "Paper Now\"</a>."
 msgstr ""
+"Als u een legale, openbare versie kent die wij zouden moeten archiveren, "
+"laat het ons dan weten via <a rel=\"noopener\" href=\"%(save_paper_now_url)"
+"s\">\"Save Paper Now\"</a>."
 
 #: fatcat_scholar/templates/search_macros.html:374
 msgid "more &raquo;"
-msgstr ""
+msgstr "meer &raquo;"
 
 #: fatcat_scholar/templates/search_macros.html:397
 msgid "tag definitions"
-msgstr ""
+msgstr "tag-definities"
 
 #: fatcat_scholar/templates/search_macros.html:424
 msgid "not primary version"
-msgstr ""
+msgstr "niet primaire versie"
 
 #: fatcat_scholar/templates/search_macros.html:441
 #, python-format
 msgid "Same Issue (%(count)s)"
-msgstr ""
+msgstr "Dezelfde kwestie (%(count)s)"
 
 #: fatcat_scholar/templates/search_macros.html:452
 msgid "cite this work"
-msgstr ""
+msgstr "dit werk citeren"
 
 #: fatcat_scholar/templates/search_macros.html:457
 msgid "Citation"
-msgstr ""
+msgstr "Citaat"
 
 #: fatcat_scholar/templates/search_macros.html:471
 msgid "edit metadata on fatcat wiki"
-msgstr ""
+msgstr "metadata op fatcat wiki bewerken"
 
 #: fatcat_scholar/templates/search_macros.html:477
 msgid "permalink to this record"
-msgstr ""
+msgstr "permalink naar deze plaat"
 
 #: fatcat_scholar/templates/search_macros.html:493
 #: fatcat_scholar/templates/search_macros.html:496
 msgid "&laquo; Previous"
-msgstr ""
+msgstr "&laquo; Vorige"
 
 #: fatcat_scholar/templates/search_macros.html:501
 #: fatcat_scholar/templates/search_macros.html:504
 msgid "Next &raquo;"
-msgstr ""
+msgstr "Volgende &raquo;"
 
 #: fatcat_scholar/templates/search_macros.html:508
 #, python-format
 msgid "Showing results %(start)s &mdash; %(end)s out of %(total)s results"
-msgstr ""
+msgstr "Toont resultaten %(start)s &mdash; %(end)s van %(total)s resultaten"
 
 #: fatcat_scholar/templates/search_macros.html:541
 msgid "Clear Filters"
-msgstr ""
-
+msgstr "Wis filters"
