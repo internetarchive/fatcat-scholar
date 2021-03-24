@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-03-23 18:56-0700\n"
-"PO-Revision-Date: 2021-03-24 20:07+0000\n"
-"Last-Translator: Alessandro Mandelli <mandelli.alessandro@ngi.it>\n"
+"PO-Revision-Date: 2021-03-24 20:24+0000\n"
+"Last-Translator: gio <gdamiola@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/it/>\n"
 "Language: it\n"
@@ -389,22 +389,23 @@ msgid ""
 "research, government reports, and more."
 msgstr ""
 "Questo servizio fornisce <a href=\"https://en.wikipedia.org/wiki/Full-"
-"text_search\">ricerca fulltext</a> su pubblicazioni di ricerca archiviate "
+"text_search\">ricerca fulltext</a> di pubblicazioni di ricerca archiviate "
 "nelle varie collezioni di Internet Archive. Include contenuti di scienze "
 "naturali, umanistiche, biomedicina, arte, storia, ricerca industriale, "
 "rapporti governativi e altro."
 
 #: fatcat_scholar/templates/help.html:26
+#, fuzzy
 msgid ""
 "Reader access to the content is provided when possible. Sometimes this "
 "access is to a \"pre-print\" or other version of the work, and this is "
 "indicated in the search results."
 msgstr ""
-"L'accesso del lettore al contenuto è fornito quando possibile. A volte "
-"questo accesso è ad un \"pre-print\" o ad un'altra versione del lavoro, e "
-"questo è indicato nei risultati della ricerca."
+"Quando è possibile viene fornito accesso al contenuto originario, ma alle "
+"volte è disponibile solo un \"pre-print\" o un'altra versione dell'originale."
 
 #: fatcat_scholar/templates/help.html:28
+#, fuzzy
 msgid ""
 "In other cases, depending on search filters, results are included for "
 "which there is only a bibliographic catalog entry. It may still be "
@@ -412,15 +413,17 @@ msgid ""
 "directly."
 msgstr ""
 "In altri casi, a seconda dei filtri di ricerca, sono inclusi risultati per i "
-"quali esiste solo una voce del catalogo bibliografico. Può ancora essere "
-"possibile ottenere l'accesso attraverso una biblioteca pubblica o "
-"direttamente dall'editore."
+"quali esiste solo una voce del catalogo bibliografico, per cui potrebbe "
+"ancora essere possibile ottenerne l'accesso attraverso una biblioteca "
+"pubblica o direttamente dall'editore."
 
 #: fatcat_scholar/templates/help.html:30
+#, fuzzy
 msgid "Query Syntax"
 msgstr "Sintassi della query"
 
 #: fatcat_scholar/templates/help.html:32
+#, fuzzy
 msgid ""
 "In addition to the basic filtering and sorting options, this search\n"
 "interface also allows the use of Lucene query syntax in the search box. "
@@ -430,14 +433,12 @@ msgid ""
 "<code>journal:Science</code>, set filters like <code>lang:de</code>, and\n"
 "apply range queries like <code>year:&gt;1989 year:&lt;2000</code>."
 msgstr ""
-"Oltre alle opzioni base di filtraggio e ordinamento, questa interfaccia di "
-"ricerca\n"
-"permette anche l'uso della sintassi delle query di Lucene nella casella di "
-"ricerca. È possibile\n"
-"limitare le query terminologiche su più campi di metadati usando "
-"dichiarazioni di due punti come\n"
+"Questo motore di ricerca, oltre ai filtri base e alle varie modalità di "
+"ordinamento, permette anche l'uso di query con la sintassi di Lucene.\n"
+"È possibile definire le query su più campi e metadati usando i due punti "
+"come ad esempio:\n"
 "<code>journal:Science</code>, impostare filtri come <code>lang:de</code>, e\n"
-"applicare query di intervallo come <code>anno:&gt;1989 anno:&lt;2000</code>."
+"applicare query di come <code>anno:&gt;1989 anno:&lt;2000</code>."
 
 #: fatcat_scholar/templates/help.html:38
 msgid ""
@@ -445,8 +446,8 @@ msgid ""
 "some point advanced users may run into limits on the size or complexity "
 "of queries."
 msgstr ""
-"Mentre questa sintassi permette query relativamente complesse e potenti, ad "
-"un certo punto gli utenti avanzati possono imbattersi in limiti sulla "
+"Nonostante questa sintassi permetta query relativamente complesse e potenti, "
+"è possibile che utenti più esperti possano imbattersi in limiti sulla "
 "dimensione o sulla complessità delle query."
 
 #: fatcat_scholar/templates/help.html:40
@@ -454,8 +455,8 @@ msgid ""
 "For the time being we recommend systems like <a "
 "href=\"https://lens.org\">lens.org</a> for a more powerful interface."
 msgstr ""
-"Per il momento raccomandiamo sistemi come <a href=\"https://lens.org\">lens."
-"org</a> per un'interfaccia più potente."
+"Per il momento raccomandiamo strumenti come <a href=\"https://lens.org\">lens"
+".org</a> per un'interfaccia più potente."
 
 #: fatcat_scholar/templates/help.html:43
 msgid "Example Queries"
@@ -463,11 +464,13 @@ msgstr "Esempio di query"
 
 #: fatcat_scholar/templates/help.html:45
 msgid "Search for digitized pages about a topic from specific years:"
-msgstr "Cerca le pagine digitalizzate su un argomento da anni specifici:"
+msgstr ""
+"Cerca le pagine digitalizzate su un particolare argomento a partire da un "
+"anno specifico:"
 
 #: fatcat_scholar/templates/help.html:49
 msgid "Search for papers in Chinese matching a term:"
-msgstr "Cerca i documenti in cinese che corrispondono a un termine:"
+msgstr "Cerca i documenti in cinese che corrispondono a un particolare termine:"
 
 #: fatcat_scholar/templates/help.html:53
 msgid "Conference papers with an author name query:"
