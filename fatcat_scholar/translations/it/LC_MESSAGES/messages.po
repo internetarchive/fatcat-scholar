@@ -11,7 +11,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-03-23 18:56-0700\n"
 "PO-Revision-Date: 2021-03-24 20:05+0000\n"
-"Last-Translator: gio <gdamiola@gmail.com>\n"
+"Last-Translator: Alessandro Mandelli <mandelli.alessandro@ngi.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/it/>\n"
 "Language: it\n"
@@ -60,7 +60,7 @@ msgstr "Reports"
 
 #: fatcat_scholar/search.py:60
 msgid "Datasets"
-msgstr "Datasets"
+msgstr "Set di dati"
 
 #: fatcat_scholar/search.py:61
 msgid "Everything"
@@ -76,7 +76,7 @@ msgstr "Testo completo"
 
 #: fatcat_scholar/search.py:70
 msgid "Microfilm"
-msgstr "Microfilm"
+msgstr "Microfiches"
 
 #: fatcat_scholar/search.py:71 fatcat_scholar/templates/search_macros.html:4
 msgid "Open Access"
@@ -329,12 +329,10 @@ msgid "Contribute"
 msgstr "Contribuisci"
 
 #: fatcat_scholar/templates/base.html:179
-#, fuzzy
 msgid "Search API"
-msgstr "Search API"
+msgstr "API ricerca"
 
 #: fatcat_scholar/templates/base.html:180
-#, fuzzy
 msgid "Service Status"
 msgstr "Stato del servizio"
 
@@ -864,7 +862,7 @@ msgstr[1] "Risultati"
 #: fatcat_scholar/templates/search.html:85
 #, python-format
 msgid "in %(frac_sec)ssec"
-msgstr "in %(frac_sec)ssec"
+msgstr "in %(frac_sec)s s"
 
 #: fatcat_scholar/templates/search.html:110
 msgid "Backend Search Engine Error"
