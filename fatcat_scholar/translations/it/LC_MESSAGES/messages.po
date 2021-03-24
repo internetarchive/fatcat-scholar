@@ -4,13 +4,14 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
 # Bryan Newbold <bnewbold@robocracy.org>, 2021.
 # gio <gdamiola@gmail.com>, 2021.
+# Alessandro Mandelli <mandelli.alessandro@ngi.it>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-03-23 18:56-0700\n"
 "PO-Revision-Date: 2021-03-24 19:57+0000\n"
-"Last-Translator: gio <gdamiola@gmail.com>\n"
+"Last-Translator: Alessandro Mandelli <mandelli.alessandro@ngi.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/it/>\n"
 "Language: it\n"
@@ -26,7 +27,6 @@ msgid "Release Date"
 msgstr "Data di uscita"
 
 #: fatcat_scholar/search.py:46
-#, fuzzy
 msgid "All Time"
 msgstr "Tutto il tempo"
 
