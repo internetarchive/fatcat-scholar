@@ -11,7 +11,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-03-23 18:56-0700\n"
 "PO-Revision-Date: 2021-03-24 20:24+0000\n"
-"Last-Translator: gio <gdamiola@gmail.com>\n"
+"Last-Translator: Alessandro Mandelli <mandelli.alessandro@ngi.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/it/>\n"
 "Language: it\n"
@@ -374,7 +374,7 @@ msgid "Scholar User Guide"
 msgstr "Guida utente accademico"
 
 #: fatcat_scholar/templates/help.html:23
-#, fuzzy, python-format
+#, python-format
 msgid "See also: <a href=\"%(lang_prefix)s/about\">About Scholarly Search</a>"
 msgstr ""
 "Vedi anche: <a href=\"%(lang_prefix)s/about\">Informazioni su Scholarly "
