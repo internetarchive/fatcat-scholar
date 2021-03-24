@@ -8,10 +8,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-03-23 18:56-0700\n"
-"PO-Revision-Date: 2021-03-21 03:46+0000\n"
-"Last-Translator: Artem <KovalevArtem.ru@gmail.com>\n"
+"PO-Revision-Date: 2021-03-24 03:54+0000\n"
+"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/ru/>\n"
 "Language: ru\n"
@@ -118,6 +118,8 @@ msgid ""
 "See also: <a href=\"%(lang_prefix)s/help\">User Guide</a> which lists some "
 "bugs and known issues"
 msgstr ""
+"См. также: <a href=\"%(lang_prefix)s/help\">Руководство пользователя </a>, в "
+"котором перечислены некоторые ошибки и известные проблемы"
 
 #: fatcat_scholar/templates/about.html:14
 #: fatcat_scholar/templates/base.html:187
@@ -126,7 +128,7 @@ msgstr "Как это работает"
 
 #: fatcat_scholar/templates/about.html:16
 msgid "Content in this search index comes in one of three forms:"
-msgstr ""
+msgstr "Содержание в этом поисковом индексе поступает в одной из трех форм:"
 
 #: fatcat_scholar/templates/about.html:19
 msgid ""
@@ -134,16 +136,22 @@ msgid ""
 "\">The Wayback Machine</a> and <a href=\"https://archive-it.org\">Archive-"
 "It</a> partner collections"
 msgstr ""
+"<b>общедоступное веб-содержимое </b>, сохраненное в коллекциях партнеров <a "
+"href=\"https://web.archive.org\">The Wayback Machine </a> и <a href=\"https"
+"://archive-it.org\">Archive-It</a>"
 
 #: fatcat_scholar/templates/about.html:20
 msgid "<b>digitized print materials</b> from paper and microform collections"
 msgstr ""
+"<b> оцифрованные печатные материалы </b> из коллекций бумаги и микроформ"
 
 #: fatcat_scholar/templates/about.html:21
 msgid ""
 "<b>general materials</b> from <a href=\"https://archive.org\">archive.org "
 "collections</a>, including collaborations with partners"
 msgstr ""
+"<b>общие материалы </b> из коллекций <a href=\"https://archive.org\"> archive"
+".org</a>, включая сотрудничество с партнерами"
 
 #: fatcat_scholar/templates/about.html:24
 #, python-format
@@ -151,6 +159,8 @@ msgid ""
 "This <a href=\"%(url)s\">2019 FORCE11 conference presentation</a> gives an "
 "overview of the technical infrastructure and goals of the project overall."
 msgstr ""
+"Настоящая <a href=\"%(url)s\">2019 презентация конференции FORCE11</a> дает "
+"обзор технической инфраструктуры и целей проекта в целом."
 
 #: fatcat_scholar/templates/about.html:27
 #: fatcat_scholar/templates/base.html:188
@@ -165,6 +175,13 @@ msgid ""
 "attribute the provenance of content and metadata in all cases. Please\n"
 "<a href=\"#contact\">contact us</a> if you have questions."
 msgstr ""
+"Метаданные поступают из <a href=\"https://fatcat.wiki\"> fatcat.wiki </a>, "
+"открытого\n"
+"удобный для пользователя каталог научных работ. Должна быть возможность "
+"отслеживания и\n"
+"во всех случаях приписывать происхождение контента и метаданных. Пожалуйста,"
+"\n"
+"<a href=\"#contact\"> свяжитесь с нами </a>, если у вас есть вопросы."
 
 #: fatcat_scholar/templates/about.html:35
 #: fatcat_scholar/templates/base.html:189
@@ -180,6 +197,12 @@ msgid ""
 "interested\n"
 "or would like to see specific datasets made available, please contact us."
 msgstr ""
+"Мы намерены предоставить исследователю доступ к полному тексту и данным.\n"
+"в горнодобывающих целях. Полученные наборы данных также могут быть "
+"опубликованы публично для анализа в целях\n"
+"пример графика цитирования или N-граммовых частот по годам. Если вам "
+"интересно\n"
+"или хотели бы видеть конкретные наборы данных, пожалуйста, свяжитесь с нами."
 
 #: fatcat_scholar/templates/about.html:42
 msgid ""
@@ -188,16 +211,22 @@ msgid ""
 "details/ia_biblio_metadata\">Bulk Bibliographic Metadata</a> collection on "
 "archive.org."
 msgstr ""
+"В настоящее время снимки полного корпуса метаданных жирных кошек и "
+"источников метаданных вверх по течению периодически загружаются в коллекцию "
+"<a href=\"https://archive.org/details/ia_biblio_metadata\"> Bulk "
+"Bibliographic Metadata </a> на archive.org."
 
 #: fatcat_scholar/templates/about.html:44
 msgid ""
 "Read more in <a href=\"https://guide.fatcat.wiki/bulk_exports.html\">the "
 "Fatcat Guide</a>."
 msgstr ""
+"Подробнее см. в <a href=\"https://guide.fatcat.wiki/bulk_exports.html\"> "
+"Fatcat Guide </a>."
 
 #: fatcat_scholar/templates/about.html:47
 msgid "Contact Information"
-msgstr ""
+msgstr "Контактная информация"
 
 #: fatcat_scholar/templates/about.html:50
 #, python-format
@@ -205,6 +234,8 @@ msgid ""
 "The organizational contact information for the Internet Archive is listed at "
 "<a href=\"%(url)s\">%(url)s</a>."
 msgstr ""
+"Контактная информация организации для Архива Интернета указана по адресу <a "
+"href=\"%(url)s\"> %(url)s </a>."
 
 #: fatcat_scholar/templates/about.html:52
 #, python-format
@@ -212,11 +243,13 @@ msgid ""
 "Queries about this search service and the fatcat catalog can be directed to "
 "<a href=\"mailto:%(email)s\">%(email)s</a>."
 msgstr ""
+"Запросы об этой поисковой услуге и каталоге жирных кошек можно направлять по "
+"адресу <a href=\"mailto:%(email)s\">%(email)s</a>."
 
 #: fatcat_scholar/templates/about.html:54
 #, python-format
 msgid "There is a public chat channel at <a href=\"%(url)s\">%(url)s</a>."
-msgstr ""
+msgstr "На <a href=\"%(url)s\"> %(url)s </a> есть общедоступный канал чата."
 
 #: fatcat_scholar/templates/base.html:12
 msgid "Internet Archive Scholar"
@@ -679,7 +712,7 @@ msgstr "услуга предварительной печати arXiv"
 
 #: fatcat_scholar/templates/help.html:226
 msgid "The DBLP Computer Science Bibliography"
-msgstr ""
+msgstr "Компьютерная научная библиография DBLP"
 
 #: fatcat_scholar/templates/help.html:230
 msgid ""
@@ -720,13 +753,15 @@ msgstr "Этот проект в настоящее время является 
 
 #: fatcat_scholar/templates/help.html:253
 msgid "Some known bugs and issues:"
-msgstr ""
+msgstr "Некоторые известные ошибки и проблемы:"
 
 #: fatcat_scholar/templates/help.html:256
 msgid ""
 "Poor metadata quality for conference proceedings. Many are labeled "
 "\"unpublished\" and are not associated with the conference."
 msgstr ""
+"Плохое качество метаданных для работы конференции. Многие из них помечены "
+"как \"неопубликованные\" и не связаны с конференцией."
 
 #: fatcat_scholar/templates/help.html:257
 msgid ""
@@ -734,6 +769,9 @@ msgid ""
 "paper or dataset. We are working on basic entity-deduplication in the fatcat "
 "catalog."
 msgstr ""
+"Дублировать версии одной и той же работы. Например, разные версии одной и "
+"той же работы или набора данных. Мы работаем над базовой сущностной "
+"депубликацией в каталоге fatcat."
 
 #: fatcat_scholar/templates/help.html:258
 msgid ""
@@ -741,6 +779,9 @@ msgid ""
 "sometimes pre-prints or author manuscripts are incorrectly associated with "
 "version-of-record metadata, or vica-versa."
 msgstr ""
+"Неправильное совпадение содержимого файлов или версии с рабочими "
+"метаданными. Например, иногда препринты или авторские рукописи неправильно "
+"соотносятся с метаданными версий записей, или vica-versa."
 
 #: fatcat_scholar/templates/home.html:10
 msgid "Internet Archive Scholar logo (vaporwave)"
