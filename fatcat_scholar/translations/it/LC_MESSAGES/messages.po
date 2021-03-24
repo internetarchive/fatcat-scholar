@@ -11,7 +11,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-03-23 18:56-0700\n"
 "PO-Revision-Date: 2021-03-24 20:03+0000\n"
-"Last-Translator: gio <gdamiola@gmail.com>\n"
+"Last-Translator: Alessandro Mandelli <mandelli.alessandro@ngi.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/it/>\n"
 "Language: it\n"
@@ -209,7 +209,6 @@ msgstr ""
 "desideri che specifici set di dati siano resi disponibili, contattaci."
 
 #: fatcat_scholar/templates/about.html:42
-#, fuzzy
 msgid ""
 "Currently snapshots of the full fatcat metadata corpus and upstream "
 "metadata sources are uploaded periodically to the <a "
@@ -234,13 +233,13 @@ msgid "Contact Information"
 msgstr "Contatti"
 
 #: fatcat_scholar/templates/about.html:50
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "The organizational contact information for the Internet Archive is listed"
 " at <a href=\"%(url)s\">%(url)s</a>."
 msgstr ""
-"I contatti di Internet Archive sono elencati qui <a href=\"%(url)s\""
-">%(url)s</a>."
+"I contatti dell'organizzazione di Internet Archive sono elencati qui <a href="
+"\"%(url)s\">%(url)s</a>."
 
 #: fatcat_scholar/templates/about.html:52
 #, python-format
@@ -273,21 +272,18 @@ msgid "by title, authors, keywords..."
 msgstr "per titolo, autore, parole chiave..."
 
 #: fatcat_scholar/templates/base.html:121
-#, fuzzy
 msgid "search for papers"
-msgstr "ricerca di papers"
+msgstr "ricerca di documenti"
 
 #: fatcat_scholar/templates/base.html:122 fatcat_scholar/templates/home.html:16
 msgid "Search"
 msgstr "Cerca"
 
 #: fatcat_scholar/templates/base.html:129
-#, fuzzy
 msgid "User Guide"
 msgstr "Guida Utente"
 
 #: fatcat_scholar/templates/base.html:157
-#, fuzzy
 msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
@@ -859,8 +855,8 @@ msgstr "Filtri"
 #: fatcat_scholar/templates/search.html:77
 msgid "Hit"
 msgid_plural "Hits"
-msgstr[0] "Colpire"
-msgstr[1] ""
+msgstr[0] "Risultato"
+msgstr[1] "Risultati"
 
 #: fatcat_scholar/templates/search.html:53
 #: fatcat_scholar/templates/search.html:85
