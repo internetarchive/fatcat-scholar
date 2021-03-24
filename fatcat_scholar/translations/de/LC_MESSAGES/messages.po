@@ -10,8 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
-"POT-Creation-Date: 2021-03-10 12:06-0800\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2021-03-23 18:56-0700\n"
 "PO-Revision-Date: 2021-03-21 03:46+0000\n"
 "Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/internetarchive/"
@@ -113,6 +113,112 @@ msgstr "Über %(website_name)s"
 msgid "About Internet Archive Scholar"
 msgstr "Über Internet Archive Scholar"
 
+#: fatcat_scholar/templates/about.html:10
+#, python-format
+msgid ""
+"See also: <a href=\"%(lang_prefix)s/help\">User Guide</a> which lists some "
+"bugs and known issues"
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:14
+#: fatcat_scholar/templates/base.html:187
+msgid "How It Works"
+msgstr "Wie es funktioniert"
+
+#: fatcat_scholar/templates/about.html:16
+msgid "Content in this search index comes in one of three forms:"
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:19
+msgid ""
+"<b>public web content</b> as preserved in <a href=\"https://web.archive.org"
+"\">The Wayback Machine</a> and <a href=\"https://archive-it.org\">Archive-"
+"It</a> partner collections"
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:20
+msgid "<b>digitized print materials</b> from paper and microform collections"
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:21
+msgid ""
+"<b>general materials</b> from <a href=\"https://archive.org\">archive.org "
+"collections</a>, including collaborations with partners"
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:24
+#, python-format
+msgid ""
+"This <a href=\"%(url)s\">2019 FORCE11 conference presentation</a> gives an "
+"overview of the technical infrastructure and goals of the project overall."
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:27
+#: fatcat_scholar/templates/base.html:188
+msgid "Content Sources"
+msgstr "Datenquellen"
+
+#: fatcat_scholar/templates/about.html:29
+msgid ""
+"Metadata comes from <a href=\"https://fatcat.wiki\">fatcat.wiki</a>, an "
+"open\n"
+"user-editable catalog of scholarly work. It should be possible to track and\n"
+"attribute the provenance of content and metadata in all cases. Please\n"
+"<a href=\"#contact\">contact us</a> if you have questions."
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:35
+#: fatcat_scholar/templates/base.html:189
+msgid "Text and Data Mining"
+msgstr "Text- und Datenuntersuchung"
+
+#: fatcat_scholar/templates/about.html:37
+msgid ""
+"We intend to provide researcher access to the full corpus for text and data\n"
+"mining purposes. Derived datasets may also be posted publicly for analysis, "
+"for\n"
+"example a citation graph or N-gram frequencies by year. If you are "
+"interested\n"
+"or would like to see specific datasets made available, please contact us."
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:42
+msgid ""
+"Currently snapshots of the full fatcat metadata corpus and upstream metadata "
+"sources are uploaded periodically to the <a href=\"https://archive.org/"
+"details/ia_biblio_metadata\">Bulk Bibliographic Metadata</a> collection on "
+"archive.org."
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:44
+msgid ""
+"Read more in <a href=\"https://guide.fatcat.wiki/bulk_exports.html\">the "
+"Fatcat Guide</a>."
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:47
+msgid "Contact Information"
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:50
+#, python-format
+msgid ""
+"The organizational contact information for the Internet Archive is listed at "
+"<a href=\"%(url)s\">%(url)s</a>."
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:52
+#, python-format
+msgid ""
+"Queries about this search service and the fatcat catalog can be directed to "
+"<a href=\"mailto:%(email)s\">%(email)s</a>."
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:54
+#, python-format
+msgid "There is a public chat channel at <a href=\"%(url)s\">%(url)s</a>."
+msgstr ""
+
 #: fatcat_scholar/templates/base.html:12
 msgid "Internet Archive Scholar"
 msgstr "Internet Archive Scholar"
@@ -198,18 +304,6 @@ msgstr "Dienststatus"
 #: fatcat_scholar/templates/base.html:181
 msgid "Source Code"
 msgstr "Quellcode"
-
-#: fatcat_scholar/templates/base.html:187
-msgid "How It Works"
-msgstr "Wie es funktioniert"
-
-#: fatcat_scholar/templates/base.html:188
-msgid "Content Sources"
-msgstr "Datenquellen"
-
-#: fatcat_scholar/templates/base.html:189
-msgid "Text and Data Mining"
-msgstr "Text- und Datenuntersuchung"
 
 #: fatcat_scholar/templates/base.html:190
 msgid "Help"
@@ -354,8 +448,8 @@ msgid ""
 "attempt to parse the citation and do a match against our catalog of known "
 "works. When this happens, any filters are ignored."
 msgstr ""
-"Als experimentelle Funktion versucht der Dienst, wenn die Suchanfrage \"wie\""
-" ein formales Zitat aussieht, wie es in der Bibliographie einer "
+"Als experimentelle Funktion versucht der Dienst, wenn die Suchanfrage \"wie"
+"\" ein formales Zitat aussieht, wie es in der Bibliographie einer "
 "Forschungsarbeit zu finden ist, das Zitat zu analysieren und einen Abgleich "
 "mit unserem Katalog bekannter Werke durchzuführen. Wenn dies geschieht, "
 "werden alle Filter ignoriert."
@@ -371,8 +465,8 @@ msgid ""
 "code>."
 msgstr ""
 "Sie können mit einem Sternchen wie <code>doi:*</code> auf Datensätze "
-"beschränken, in denen das Feld vorhanden ist, und jeden Begriff wie "
-"<code>!type:article-journal</code> negieren."
+"beschränken, in denen das Feld vorhanden ist, und jeden Begriff wie <code>!"
+"type:article-journal</code> negieren."
 
 #: fatcat_scholar/templates/help.html:66
 msgid ""
@@ -381,8 +475,8 @@ msgid ""
 "string-query.html#query-string-query-notes\">from the Elasticsearch project</"
 "a>."
 msgstr ""
-"Eine ausführliche Dokumentation der Abfragesyntax ist beim <a href=\"https"
-"://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-"
+"Eine ausführliche Dokumentation der Abfragesyntax ist beim <a href=\"https://"
+"www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-"
 "string-query.html#query-string-query-notes\"> Elasticsearch-Projekt "
 "erhältlich</a>."
 
@@ -392,8 +486,8 @@ msgid ""
 "\"https://github.com/internetarchive/fatcat-scholar/blob/master/schema/"
 "scholar_fulltext.v01.json\">in the source code</a>."
 msgstr ""
-"Das vollständige aktuelle Suchdokumentenschema ist (als JSON) <a href=\"https"
-"://github.com/internetarchive/fatcat-scholar/blob/master/schema/"
+"Das vollständige aktuelle Suchdokumentenschema ist (als JSON) <a href="
+"\"https://github.com/internetarchive/fatcat-scholar/blob/master/schema/"
 "scholar_fulltext.v01.json\">im Quellcode</a> verfügbar."
 
 #: fatcat_scholar/templates/help.html:105
@@ -498,8 +592,8 @@ msgid ""
 "\">ISO two-letter language code</a> is indicated"
 msgstr ""
 "Die primäre Sprache dieser Arbeit ist eine andere als die Sprache der "
-"Suchoberfläche. Der <a href=\"https://en.wikipedia.org/wiki/List_of_ISO_639-"
-"1_codes\">ISO-Zweibuchstaben-Sprachcode</a> wird angegeben"
+"Suchoberfläche. Der <a href=\"https://en.wikipedia.org/wiki/"
+"List_of_ISO_639-1_codes\">ISO-Zweibuchstaben-Sprachcode</a> wird angegeben"
 
 #: fatcat_scholar/templates/help.html:168
 msgid ""
@@ -533,8 +627,8 @@ msgid ""
 "Published on a <a href=\"https://en.wikipedia.org/wiki/SciELO\">SciELO</a> "
 "national platform"
 msgstr ""
-"Veröffentlicht auf einer <a href=\"https://en.wikipedia.org/wiki/SciELO\""
-">SciELO</a> nationalen Plattform"
+"Veröffentlicht auf einer <a href=\"https://en.wikipedia.org/wiki/SciELO"
+"\">SciELO</a> nationalen Plattform"
 
 #: fatcat_scholar/templates/help.html:184
 msgid ""
@@ -549,8 +643,8 @@ msgid ""
 "Published using <a href=\"https://en.wikipedia.org/wiki/Wordpress"
 "\">WordPress</a> software"
 msgstr ""
-"Veröffentlicht mit <a href=\"https://en.wikipedia.org/wiki/Wordpress\""
-">WordPress</a> Software"
+"Veröffentlicht mit <a href=\"https://en.wikipedia.org/wiki/Wordpress"
+"\">WordPress</a> Software"
 
 #: fatcat_scholar/templates/help.html:192
 msgid ""
@@ -594,8 +688,8 @@ msgid "arXiv pre-print service"
 msgstr "arXiv-Preprint-Dienst"
 
 #: fatcat_scholar/templates/help.html:226
-msgid "Digital Bibliography of Logic Programming"
-msgstr "Digitale Bibliographie der logischen Programmierung"
+msgid "The DBLP Computer Science Bibliography"
+msgstr ""
 
 #: fatcat_scholar/templates/help.html:230
 msgid ""
@@ -635,6 +729,30 @@ msgstr ""
 #: fatcat_scholar/templates/help.html:250
 msgid "This project is currently a <i>prototype</i>"
 msgstr "Dieses Projekt ist derzeit ein <i>Prototyp</i>"
+
+#: fatcat_scholar/templates/help.html:253
+msgid "Some known bugs and issues:"
+msgstr ""
+
+#: fatcat_scholar/templates/help.html:256
+msgid ""
+"Poor metadata quality for conference proceedings. Many are labeled "
+"\"unpublished\" and are not associated with the conference."
+msgstr ""
+
+#: fatcat_scholar/templates/help.html:257
+msgid ""
+"Duplicate versions of same work. For example, different versions of the same "
+"paper or dataset. We are working on basic entity-deduplication in the fatcat "
+"catalog."
+msgstr ""
+
+#: fatcat_scholar/templates/help.html:258
+msgid ""
+"Mis-matching of file content or version with work metadata. For example, "
+"sometimes pre-prints or author manuscripts are incorrectly associated with "
+"version-of-record metadata, or vica-versa."
+msgstr ""
 
 #: fatcat_scholar/templates/home.html:10
 msgid "Internet Archive Scholar logo (vaporwave)"
@@ -828,8 +946,8 @@ msgid ""
 msgstr ""
 "Eine Kopie dieser Arbeit war im öffentlichen Web verfügbar und ist in der "
 "Wayback Machine erhalten geblieben. Die Erfassung stammt aus "
-"%(capture_year)s; Sie können auch <a rel=\"external noopener\" href=\""
-"%(original_url)s\">die ursprüngliche URL</a> besuchen."
+"%(capture_year)s; Sie können auch <a rel=\"external noopener\" href="
+"\"%(original_url)s\">die ursprüngliche URL</a> besuchen."
 
 #: fatcat_scholar/templates/search_macros.html:290
 msgid ""
@@ -882,8 +1000,8 @@ msgid ""
 "\"</a>."
 msgstr ""
 "Wenn Sie eine legale, öffentliche Version kennen, die wir archivieren "
-"sollten, informieren Sie uns bitte über <a rel=\"noopener\" href=\""
-"%(save_paper_now_url)s\">\"Save Paper Now\"</a>."
+"sollten, informieren Sie uns bitte über <a rel=\"noopener\" href="
+"\"%(save_paper_now_url)s\">\"Save Paper Now\"</a>."
 
 #: fatcat_scholar/templates/search_macros.html:374
 msgid "more &raquo;"
@@ -936,6 +1054,9 @@ msgstr "Ergebnisse %(start)s &ndash; %(end)s von %(total)s"
 #: fatcat_scholar/templates/search_macros.html:541
 msgid "Clear Filters"
 msgstr "Filter löschen"
+
+#~ msgid "Digital Bibliography of Logic Programming"
+#~ msgstr "Digitale Bibliographie der logischen Programmierung"
 
 #~ msgid "Next"
 #~ msgstr "Nächste"
