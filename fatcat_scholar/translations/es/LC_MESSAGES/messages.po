@@ -7,9 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-03-25 11:07-0700\n"
-"PO-Revision-Date: 2021-03-24 03:54+0000\n"
+"PO-Revision-Date: 2021-03-26 18:29+0000\n"
 "Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/es/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.5.2-dev\n"
+"X-Generator: Weblate 4.6-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:42
@@ -570,11 +570,6 @@ msgstr ""
 "experimentalmente. El acceso puede limitarse a los préstamos controlados"
 
 #: fatcat_scholar/templates/help.html:134
-#, fuzzy
-#| msgid ""
-#| "A publisher landing page is the authoriative source for the \"version of "
-#| "record\" of a research publication, but content is not always accessible "
-#| "to the general public"
 msgid ""
 "A publisher landing page is the authoritative source for the \"version of "
 "record\" of a research publication, but content is not always accessible to "
@@ -792,11 +787,6 @@ msgstr ""
 "deduplicación básica de entidades en el catálogo fatcat."
 
 #: fatcat_scholar/templates/help.html:258
-#, fuzzy
-#| msgid ""
-#| "Mis-matching of file content or version with work metadata. For example, "
-#| "sometimes pre-prints or author manuscripts are incorrectly associated "
-#| "with version-of-record metadata, or vica-versa."
 msgid ""
 "Mis-matching of file content or version with work metadata. For example, "
 "sometimes pre-prints or author manuscripts are incorrectly associated with "
@@ -805,7 +795,7 @@ msgstr ""
 "Coincidencia errónea del contenido del archivo o de la versión con los "
 "metadatos del trabajo. Por ejemplo, a veces los preimpresos o los "
 "manuscritos del autor se asocian incorrectamente con los metadatos de la "
-"versión del registro, o vica-versa."
+"versión del registro, o vice-versa."
 
 #: fatcat_scholar/templates/home.html:10
 msgid "Internet Archive Scholar logo (vaporwave)"
