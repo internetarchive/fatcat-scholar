@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
-"POT-Creation-Date: 2021-03-23 18:56-0700\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2021-03-25 11:07-0700\n"
 "PO-Revision-Date: 2021-03-24 03:54+0000\n"
 "Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/internetarchive/"
@@ -120,7 +120,7 @@ msgstr ""
 "بعض الأخطاء والمشكلات المعروفة"
 
 #: fatcat_scholar/templates/about.html:14
-#: fatcat_scholar/templates/base.html:187
+#: fatcat_scholar/templates/base.html:191
 msgid "How It Works"
 msgstr "كيف تعمل"
 
@@ -134,9 +134,9 @@ msgid ""
 "\">The Wayback Machine</a> and <a href=\"https://archive-it.org\">Archive-"
 "It</a> partner collections"
 msgstr ""
-"<b> محتوى الويب العام </b> كما هو محفوظ في <a href=\"https://web.archive."
-"org\"> The Wayback Machine </a> و <a href=\"https://archive-it.org\"> "
-"Archive-It </a> مجموعات الشركاء"
+"<b> محتوى الويب العام </b> كما هو محفوظ في <a href=\"https://web.archive.org"
+"\"> The Wayback Machine </a> و <a href=\"https://archive-it.org\"> Archive-"
+"It </a> مجموعات الشركاء"
 
 #: fatcat_scholar/templates/about.html:20
 msgid "<b>digitized print materials</b> from paper and microform collections"
@@ -160,7 +160,7 @@ msgstr ""
 "على البنية التحتية التقنية وأهداف المشروع بشكل عام."
 
 #: fatcat_scholar/templates/about.html:27
-#: fatcat_scholar/templates/base.html:188
+#: fatcat_scholar/templates/base.html:192
 msgid "Content Sources"
 msgstr "مصادر المحتوى"
 
@@ -180,7 +180,7 @@ msgstr ""
 "<a href=\"#contact\"> اتصل بنا </a> إذا كانت لديك أسئلة."
 
 #: fatcat_scholar/templates/about.html:35
-#: fatcat_scholar/templates/base.html:189
+#: fatcat_scholar/templates/base.html:193
 msgid "Text and Data Mining"
 msgstr "التنقيب عن النصوص والبيانات"
 
@@ -194,8 +194,7 @@ msgid ""
 "or would like to see specific datasets made available, please contact us."
 msgstr ""
 "نعتزم توفير وصول الباحث إلى المجموعة الكاملة للنصوص والبيانات\n"
-"أغراض التعدين. يمكن أيضًا نشر مجموعات البيانات المشتقة علنًا لتحليلها من "
-"أجل\n"
+"أغراض التعدين. يمكن أيضًا نشر مجموعات البيانات المشتقة علنًا لتحليلها من أجل\n"
 "مثال رسم بياني للاقتباس أو ترددات N-gram حسب السنة. إذا كنت مهتم\n"
 "أو ترغب في رؤية مجموعات بيانات محددة متاحة ، يرجى الاتصال بنا."
 
@@ -208,8 +207,8 @@ msgid ""
 msgstr ""
 "يتم حاليًا تحميل لقطات من مجموعة البيانات الوصفية الكاملة لـ fatcat ومصادر "
 "البيانات الوصفية الأولية بشكل دوري إلى <a href=\"https://archive.org/details/"
-"ia_biblio_metadata\"> البيانات الوصفية الببليوغرافية المجمعة </a> على archive"
-".org."
+"ia_biblio_metadata\"> البيانات الوصفية الببليوغرافية المجمعة </a> على "
+"archive.org."
 
 #: fatcat_scholar/templates/about.html:44
 msgid ""
@@ -238,8 +237,8 @@ msgid ""
 "Queries about this search service and the fatcat catalog can be directed to "
 "<a href=\"mailto:%(email)s\">%(email)s</a>."
 msgstr ""
-"يمكن توجيه الاستفسارات حول خدمة البحث وكتالوج fatcat إلى <a href=\"mailto"
-":%(email)s\"> %(email)s </a>."
+"يمكن توجيه الاستفسارات حول خدمة البحث وكتالوج fatcat إلى <a href=\"mailto:"
+"%(email)s\"> %(email)s </a>."
 
 #: fatcat_scholar/templates/about.html:54
 #, python-format
@@ -254,27 +253,27 @@ msgstr "باحث أرشيف الإنترنت"
 msgid "language selection menu"
 msgstr "قائمة اختيار اللغة"
 
-#: fatcat_scholar/templates/base.html:98
+#: fatcat_scholar/templates/base.html:102
 msgid "Contribute to translations"
 msgstr "المساهمة في الترجمات"
 
-#: fatcat_scholar/templates/base.html:121
+#: fatcat_scholar/templates/base.html:125
 msgid "by title, authors, keywords..."
 msgstr "حسب العنوان والمؤلفين والكلمات الرئيسية ..."
 
-#: fatcat_scholar/templates/base.html:121
+#: fatcat_scholar/templates/base.html:125
 msgid "search for papers"
 msgstr "البحث عن الأوراق"
 
-#: fatcat_scholar/templates/base.html:122 fatcat_scholar/templates/home.html:16
+#: fatcat_scholar/templates/base.html:126 fatcat_scholar/templates/home.html:16
 msgid "Search"
 msgstr "بحث"
 
-#: fatcat_scholar/templates/base.html:129
+#: fatcat_scholar/templates/base.html:133
 msgid "User Guide"
 msgstr "دليل المستخدم"
 
-#: fatcat_scholar/templates/base.html:157
+#: fatcat_scholar/templates/base.html:161
 msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
@@ -282,7 +281,7 @@ msgstr ""
 "نحن مكتبة أمريكية غير هادفة للربح 501 (ج) (3) ، نبني أرشيفًا عالميًا لمواقع "
 "الإنترنت والتحف الثقافية الأخرى في شكل رقمي."
 
-#: fatcat_scholar/templates/base.html:159
+#: fatcat_scholar/templates/base.html:163
 #, python-format
 msgid ""
 "Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and "
@@ -291,47 +290,47 @@ msgstr ""
 "تشمل المشاريع الأخرى %(wayback)s و %(archive_org)s و %(openlibrary)s و "
 "%(archive_it)s."
 
-#: fatcat_scholar/templates/base.html:166
+#: fatcat_scholar/templates/base.html:170
 msgid "About Us"
 msgstr "معلومات عنا"
 
-#: fatcat_scholar/templates/base.html:167
+#: fatcat_scholar/templates/base.html:171
 msgid "Contact Us"
 msgstr "اتصل بنا"
 
-#: fatcat_scholar/templates/base.html:168
+#: fatcat_scholar/templates/base.html:172
 msgid "Policies"
 msgstr "سياسات"
 
-#: fatcat_scholar/templates/base.html:169
+#: fatcat_scholar/templates/base.html:173
 msgid "Donate"
 msgstr "تبرع"
 
-#: fatcat_scholar/templates/base.html:175
+#: fatcat_scholar/templates/base.html:179
 msgid "Open Infrastructure"
 msgstr "فتح البنية التحتية"
 
-#: fatcat_scholar/templates/base.html:177
+#: fatcat_scholar/templates/base.html:181
 msgid "Editable Catalog (Fatcat)"
 msgstr "كتالوج قابل للتحرير (Fatcat)"
 
-#: fatcat_scholar/templates/base.html:178
+#: fatcat_scholar/templates/base.html:182
 msgid "Contribute"
 msgstr "المساهمة"
 
-#: fatcat_scholar/templates/base.html:179
+#: fatcat_scholar/templates/base.html:183
 msgid "Search API"
 msgstr "بحث API"
 
-#: fatcat_scholar/templates/base.html:180
+#: fatcat_scholar/templates/base.html:184
 msgid "Service Status"
 msgstr "حالة الخدمة"
 
-#: fatcat_scholar/templates/base.html:181
+#: fatcat_scholar/templates/base.html:185
 msgid "Source Code"
 msgstr "الشفرة المصدرية"
 
-#: fatcat_scholar/templates/base.html:190
+#: fatcat_scholar/templates/base.html:194
 msgid "Help"
 msgstr "ساعدني"
 
@@ -551,8 +550,13 @@ msgstr ""
 "على الإقراض المراقب"
 
 #: fatcat_scholar/templates/help.html:134
+#, fuzzy
+#| msgid ""
+#| "A publisher landing page is the authoriative source for the \"version of "
+#| "record\" of a research publication, but content is not always accessible "
+#| "to the general public"
 msgid ""
-"A publisher landing page is the authoriative source for the \"version of "
+"A publisher landing page is the authoritative source for the \"version of "
 "record\" of a research publication, but content is not always accessible to "
 "the general public"
 msgstr ""
@@ -759,10 +763,15 @@ msgstr ""
 "كتالوج fatcat."
 
 #: fatcat_scholar/templates/help.html:258
+#, fuzzy
+#| msgid ""
+#| "Mis-matching of file content or version with work metadata. For example, "
+#| "sometimes pre-prints or author manuscripts are incorrectly associated "
+#| "with version-of-record metadata, or vica-versa."
 msgid ""
 "Mis-matching of file content or version with work metadata. For example, "
 "sometimes pre-prints or author manuscripts are incorrectly associated with "
-"version-of-record metadata, or vica-versa."
+"version-of-record metadata, or vice-versa."
 msgstr ""
 "مطابقة محتوى الملف أو الإصدار بشكل خاطئ مع البيانات الوصفية للعمل. على سبيل "
 "المثال ، أحيانًا ما تكون المطبوعات المسبقة أو مخطوطات المؤلف مرتبطة بشكل غير "

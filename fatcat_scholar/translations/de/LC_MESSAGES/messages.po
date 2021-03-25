@@ -10,8 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
-"POT-Creation-Date: 2021-03-23 18:56-0700\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2021-03-25 11:07-0700\n"
 "PO-Revision-Date: 2021-03-24 03:54+0000\n"
 "Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/internetarchive/"
@@ -123,7 +123,7 @@ msgstr ""
 "einige Bugs und bekannte Probleme auflistet"
 
 #: fatcat_scholar/templates/about.html:14
-#: fatcat_scholar/templates/base.html:187
+#: fatcat_scholar/templates/base.html:191
 msgid "How It Works"
 msgstr "Wie es funktioniert"
 
@@ -137,9 +137,9 @@ msgid ""
 "\">The Wayback Machine</a> and <a href=\"https://archive-it.org\">Archive-"
 "It</a> partner collections"
 msgstr ""
-"<b>öffentliche Webinhalte</b>, die in <a href=\"https://web.archive.org\""
-">The Wayback Machine</a> und <a href=\"https://archive-it.org\">Archive-It</"
-"a> Partnersammlungen erhalten sind"
+"<b>öffentliche Webinhalte</b>, die in <a href=\"https://web.archive.org"
+"\">The Wayback Machine</a> und <a href=\"https://archive-it.org\">Archive-"
+"It</a> Partnersammlungen erhalten sind"
 
 #: fatcat_scholar/templates/about.html:20
 msgid "<b>digitized print materials</b> from paper and microform collections"
@@ -164,7 +164,7 @@ msgstr ""
 "Überblick über die technische Infrastruktur und die Ziele des Gesamtprojekts."
 
 #: fatcat_scholar/templates/about.html:27
-#: fatcat_scholar/templates/base.html:188
+#: fatcat_scholar/templates/base.html:192
 msgid "Content Sources"
 msgstr "Datenquellen"
 
@@ -185,7 +185,7 @@ msgstr ""
 "<a href=\"#contact\">kontaktieren Sie uns</a>, wenn Sie Fragen haben."
 
 #: fatcat_scholar/templates/about.html:35
-#: fatcat_scholar/templates/base.html:189
+#: fatcat_scholar/templates/base.html:193
 msgid "Text and Data Mining"
 msgstr "Text- und Datenuntersuchung"
 
@@ -224,8 +224,8 @@ msgid ""
 "Read more in <a href=\"https://guide.fatcat.wiki/bulk_exports.html\">the "
 "Fatcat Guide</a>."
 msgstr ""
-"Lesen Sie mehr in <a href=\"https://guide.fatcat.wiki/bulk_exports.html\""
-">the Fatcat Guide</a>."
+"Lesen Sie mehr in <a href=\"https://guide.fatcat.wiki/bulk_exports.html"
+"\">the Fatcat Guide</a>."
 
 #: fatcat_scholar/templates/about.html:47
 msgid "Contact Information"
@@ -263,27 +263,27 @@ msgstr "Internet Archive Scholar"
 msgid "language selection menu"
 msgstr "Sprachauswahl-Menü"
 
-#: fatcat_scholar/templates/base.html:98
+#: fatcat_scholar/templates/base.html:102
 msgid "Contribute to translations"
 msgstr "Übersetzungen hinzufügen"
 
-#: fatcat_scholar/templates/base.html:121
+#: fatcat_scholar/templates/base.html:125
 msgid "by title, authors, keywords..."
 msgstr "nach Titel, Autoren, Schlüsselwörtern..."
 
-#: fatcat_scholar/templates/base.html:121
+#: fatcat_scholar/templates/base.html:125
 msgid "search for papers"
 msgstr "Artikel suchen"
 
-#: fatcat_scholar/templates/base.html:122 fatcat_scholar/templates/home.html:16
+#: fatcat_scholar/templates/base.html:126 fatcat_scholar/templates/home.html:16
 msgid "Search"
 msgstr "Suche"
 
-#: fatcat_scholar/templates/base.html:129
+#: fatcat_scholar/templates/base.html:133
 msgid "User Guide"
 msgstr "Benutzerhandbuch"
 
-#: fatcat_scholar/templates/base.html:157
+#: fatcat_scholar/templates/base.html:161
 msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
@@ -292,7 +292,7 @@ msgstr ""
 "Archiv von Internetseiten und anderen kulturellen Er­zeug­nissen in digitaler "
 "Form erstellt."
 
-#: fatcat_scholar/templates/base.html:159
+#: fatcat_scholar/templates/base.html:163
 #, python-format
 msgid ""
 "Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and "
@@ -301,47 +301,47 @@ msgstr ""
 "Weitere Projekte sind %(wayback)s, %(archive_org)s, %(openlibrary)s und "
 "%(archive_it)s."
 
-#: fatcat_scholar/templates/base.html:166
+#: fatcat_scholar/templates/base.html:170
 msgid "About Us"
 msgstr "Über uns"
 
-#: fatcat_scholar/templates/base.html:167
+#: fatcat_scholar/templates/base.html:171
 msgid "Contact Us"
 msgstr "Kontakt"
 
-#: fatcat_scholar/templates/base.html:168
+#: fatcat_scholar/templates/base.html:172
 msgid "Policies"
 msgstr "Richtlinien"
 
-#: fatcat_scholar/templates/base.html:169
+#: fatcat_scholar/templates/base.html:173
 msgid "Donate"
 msgstr "Spenden"
 
-#: fatcat_scholar/templates/base.html:175
+#: fatcat_scholar/templates/base.html:179
 msgid "Open Infrastructure"
 msgstr "Offene Infrastruktur"
 
-#: fatcat_scholar/templates/base.html:177
+#: fatcat_scholar/templates/base.html:181
 msgid "Editable Catalog (Fatcat)"
 msgstr "Bearbeitbarer Katalog (Fatcat)"
 
-#: fatcat_scholar/templates/base.html:178
+#: fatcat_scholar/templates/base.html:182
 msgid "Contribute"
 msgstr "Mitmachen"
 
-#: fatcat_scholar/templates/base.html:179
+#: fatcat_scholar/templates/base.html:183
 msgid "Search API"
 msgstr "Such-API"
 
-#: fatcat_scholar/templates/base.html:180
+#: fatcat_scholar/templates/base.html:184
 msgid "Service Status"
 msgstr "Dienststatus"
 
-#: fatcat_scholar/templates/base.html:181
+#: fatcat_scholar/templates/base.html:185
 msgid "Source Code"
 msgstr "Quellcode"
 
-#: fatcat_scholar/templates/base.html:190
+#: fatcat_scholar/templates/base.html:194
 msgid "Help"
 msgstr "Hilfe"
 
@@ -573,8 +573,13 @@ msgstr ""
 "werden. Der Zugriff kann auf die kontrollierte Ausleihe beschränkt werden"
 
 #: fatcat_scholar/templates/help.html:134
+#, fuzzy
+#| msgid ""
+#| "A publisher landing page is the authoriative source for the \"version of "
+#| "record\" of a research publication, but content is not always accessible "
+#| "to the general public"
 msgid ""
-"A publisher landing page is the authoriative source for the \"version of "
+"A publisher landing page is the authoritative source for the \"version of "
 "record\" of a research publication, but content is not always accessible to "
 "the general public"
 msgstr ""
@@ -790,10 +795,15 @@ msgstr ""
 "grundlegenden Entity-Deduplizierung im fatcat-Katalog."
 
 #: fatcat_scholar/templates/help.html:258
+#, fuzzy
+#| msgid ""
+#| "Mis-matching of file content or version with work metadata. For example, "
+#| "sometimes pre-prints or author manuscripts are incorrectly associated "
+#| "with version-of-record metadata, or vica-versa."
 msgid ""
 "Mis-matching of file content or version with work metadata. For example, "
 "sometimes pre-prints or author manuscripts are incorrectly associated with "
-"version-of-record metadata, or vica-versa."
+"version-of-record metadata, or vice-versa."
 msgstr ""
 "Falsche Zuordnung von Dateiinhalt oder -version zu Arbeitsmetadaten. Zum "
 "Beispiel werden manchmal Preprints oder Autorenmanuskripte fälschlicherweise "

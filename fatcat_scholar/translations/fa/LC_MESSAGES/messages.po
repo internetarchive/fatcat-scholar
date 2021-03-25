@@ -6,15 +6,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
-"POT-Creation-Date: 2021-03-23 18:56-0700\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2021-03-25 11:07-0700\n"
 "PO-Revision-Date: 2021-03-24 03:54+0000\n"
 "Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/fa/>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 4.5.2-dev\n"
@@ -112,14 +112,14 @@ msgstr "درباره بایگانی اینترنتی"
 #: fatcat_scholar/templates/about.html:10
 #, python-format
 msgid ""
-"See also: <a href=\"%(lang_prefix)s/help\">User Guide</a> which lists "
-"some bugs and known issues"
+"See also: <a href=\"%(lang_prefix)s/help\">User Guide</a> which lists some "
+"bugs and known issues"
 msgstr ""
 "همچنین به: <a href=\"%(lang_prefix)s/help\"> راهنمای کاربر </a> که برخی از "
 "اشکالات و مشکلات شناخته شده را فهرست می کند ، مراجعه کنید"
 
 #: fatcat_scholar/templates/about.html:14
-#: fatcat_scholar/templates/base.html:187
+#: fatcat_scholar/templates/base.html:191
 msgid "How It Works"
 msgstr "نحوه کار"
 
@@ -129,9 +129,9 @@ msgstr "محتوای این فهرست جستجو به سه شکل وجود دا
 
 #: fatcat_scholar/templates/about.html:19
 msgid ""
-"<b>public web content</b> as preserved in <a "
-"href=\"https://web.archive.org\">The Wayback Machine</a> and <a "
-"href=\"https://archive-it.org\">Archive-It</a> partner collections"
+"<b>public web content</b> as preserved in <a href=\"https://web.archive.org"
+"\">The Wayback Machine</a> and <a href=\"https://archive-it.org\">Archive-"
+"It</a> partner collections"
 msgstr ""
 "<b> محتوای وب عمومی </b> همانطور که در <a href=\"https://web.archive.org\"> "
 "The Wayback Machine </a> و <a href=\"https://archive-it.org\"> Archive-It </"
@@ -143,8 +143,8 @@ msgstr "<b> مواد چاپ دیجیتالی </b> از مجموعه کاغذ و 
 
 #: fatcat_scholar/templates/about.html:21
 msgid ""
-"<b>general materials</b> from <a href=\"https://archive.org\">archive.org"
-" collections</a>, including collaborations with partners"
+"<b>general materials</b> from <a href=\"https://archive.org\">archive.org "
+"collections</a>, including collaborations with partners"
 msgstr ""
 "<b> مطالب عمومی </b> از <a href=\"https://archive.org\"> مجموعه archive.org "
 "</a> ، از جمله همکاری با شرکا"
@@ -152,15 +152,14 @@ msgstr ""
 #: fatcat_scholar/templates/about.html:24
 #, python-format
 msgid ""
-"This <a href=\"%(url)s\">2019 FORCE11 conference presentation</a> gives "
-"an overview of the technical infrastructure and goals of the project "
-"overall."
+"This <a href=\"%(url)s\">2019 FORCE11 conference presentation</a> gives an "
+"overview of the technical infrastructure and goals of the project overall."
 msgstr ""
 "این کنفرانس <a href=\"%(url)s\"> 2019 FORCE11 </a> به طور کلی زیرساخت های "
 "فنی و اهداف پروژه را ارائه می دهد."
 
 #: fatcat_scholar/templates/about.html:27
-#: fatcat_scholar/templates/base.html:188
+#: fatcat_scholar/templates/base.html:192
 msgid "Content Sources"
 msgstr "منابع محتوا"
 
@@ -168,8 +167,7 @@ msgstr "منابع محتوا"
 msgid ""
 "Metadata comes from <a href=\"https://fatcat.wiki\">fatcat.wiki</a>, an "
 "open\n"
-"user-editable catalog of scholarly work. It should be possible to track "
-"and\n"
+"user-editable catalog of scholarly work. It should be possible to track and\n"
 "attribute the provenance of content and metadata in all cases. Please\n"
 "<a href=\"#contact\">contact us</a> if you have questions."
 msgstr ""
@@ -179,16 +177,15 @@ msgstr ""
 "<a href=\"#contact\"> اگر سوالی دارید با ما تماس بگیرید </a>."
 
 #: fatcat_scholar/templates/about.html:35
-#: fatcat_scholar/templates/base.html:189
+#: fatcat_scholar/templates/base.html:193
 msgid "Text and Data Mining"
 msgstr "متن و داده کاوی"
 
 #: fatcat_scholar/templates/about.html:37
 msgid ""
-"We intend to provide researcher access to the full corpus for text and "
-"data\n"
-"mining purposes. Derived datasets may also be posted publicly for "
-"analysis, for\n"
+"We intend to provide researcher access to the full corpus for text and data\n"
+"mining purposes. Derived datasets may also be posted publicly for analysis, "
+"for\n"
 "example a citation graph or N-gram frequencies by year. If you are "
 "interested\n"
 "or would like to see specific datasets made available, please contact us."
@@ -203,10 +200,10 @@ msgstr ""
 
 #: fatcat_scholar/templates/about.html:42
 msgid ""
-"Currently snapshots of the full fatcat metadata corpus and upstream "
-"metadata sources are uploaded periodically to the <a "
-"href=\"https://archive.org/details/ia_biblio_metadata\">Bulk "
-"Bibliographic Metadata</a> collection on archive.org."
+"Currently snapshots of the full fatcat metadata corpus and upstream metadata "
+"sources are uploaded periodically to the <a href=\"https://archive.org/"
+"details/ia_biblio_metadata\">Bulk Bibliographic Metadata</a> collection on "
+"archive.org."
 msgstr ""
 "در حال حاضر تصاویر فوری از مجموعه متادیتای fatcat کامل و منابع فوق داده فوق "
 "بالادستی به صورت دوره ای در مجموعه <a href=\"https://archive.org/details/"
@@ -228,8 +225,8 @@ msgstr "اطلاعات تماس"
 #: fatcat_scholar/templates/about.html:50
 #, python-format
 msgid ""
-"The organizational contact information for the Internet Archive is listed"
-" at <a href=\"%(url)s\">%(url)s</a>."
+"The organizational contact information for the Internet Archive is listed at "
+"<a href=\"%(url)s\">%(url)s</a>."
 msgstr ""
 "اطلاعات تماس سازمانی برای بایگانی اینترنت در <a href=\"%(url)s\"> %(url)s </"
 "a> ذکر شده است."
@@ -237,8 +234,8 @@ msgstr ""
 #: fatcat_scholar/templates/about.html:52
 #, python-format
 msgid ""
-"Queries about this search service and the fatcat catalog can be directed "
-"to <a href=\"mailto:%(email)s\">%(email)s</a>."
+"Queries about this search service and the fatcat catalog can be directed to "
+"<a href=\"mailto:%(email)s\">%(email)s</a>."
 msgstr ""
 "سوالات مربوط به این سرویس جستجو و کاتالوگ fatcat را می توان به <a href="
 "\"mailto:%(email)s\"> %(email)s </a> هدایت کرد."
@@ -256,27 +253,27 @@ msgstr "پژوهشگر بایگانی اینترنتی"
 msgid "language selection menu"
 msgstr "منوی انتخاب زبان"
 
-#: fatcat_scholar/templates/base.html:98
+#: fatcat_scholar/templates/base.html:102
 msgid "Contribute to translations"
 msgstr "به ترجمه کمک کنید"
 
-#: fatcat_scholar/templates/base.html:121
+#: fatcat_scholar/templates/base.html:125
 msgid "by title, authors, keywords..."
 msgstr "با عنوان ، نویسندگان ، کلمات کلیدی ..."
 
-#: fatcat_scholar/templates/base.html:121
+#: fatcat_scholar/templates/base.html:125
 msgid "search for papers"
 msgstr "جستجوی مقالات"
 
-#: fatcat_scholar/templates/base.html:122 fatcat_scholar/templates/home.html:16
+#: fatcat_scholar/templates/base.html:126 fatcat_scholar/templates/home.html:16
 msgid "Search"
 msgstr "جستجو"
 
-#: fatcat_scholar/templates/base.html:129
+#: fatcat_scholar/templates/base.html:133
 msgid "User Guide"
 msgstr "راهنمای کاربر"
 
-#: fatcat_scholar/templates/base.html:157
+#: fatcat_scholar/templates/base.html:161
 msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
@@ -284,56 +281,56 @@ msgstr ""
 "ما یک کتابخانه غیرانتفاعی 501 (c) (3) ایالات متحده هستیم که یک آرشیو جهانی "
 "از سایت های اینترنتی و سایر آثار فرهنگی را به صورت دیجیتال ایجاد می کنیم."
 
-#: fatcat_scholar/templates/base.html:159
+#: fatcat_scholar/templates/base.html:163
 #, python-format
 msgid ""
-"Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and"
-" %(archive_it)s."
+"Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and "
+"%(archive_it)s."
 msgstr ""
 "سایر پروژه ها شامل %(wayback)s ، %(archive_org)s ، %(openlibrary)s و "
 "%(archive_it)s است."
 
-#: fatcat_scholar/templates/base.html:166
+#: fatcat_scholar/templates/base.html:170
 msgid "About Us"
 msgstr "درباره ما"
 
-#: fatcat_scholar/templates/base.html:167
+#: fatcat_scholar/templates/base.html:171
 msgid "Contact Us"
 msgstr "ارتباط با ما"
 
-#: fatcat_scholar/templates/base.html:168
+#: fatcat_scholar/templates/base.html:172
 msgid "Policies"
 msgstr "سیاست های"
 
-#: fatcat_scholar/templates/base.html:169
+#: fatcat_scholar/templates/base.html:173
 msgid "Donate"
 msgstr "اهدا کنید"
 
-#: fatcat_scholar/templates/base.html:175
+#: fatcat_scholar/templates/base.html:179
 msgid "Open Infrastructure"
 msgstr "زیرساخت باز"
 
-#: fatcat_scholar/templates/base.html:177
+#: fatcat_scholar/templates/base.html:181
 msgid "Editable Catalog (Fatcat)"
 msgstr "کاتالوگ قابل ویرایش (Fatcat)"
 
-#: fatcat_scholar/templates/base.html:178
+#: fatcat_scholar/templates/base.html:182
 msgid "Contribute"
 msgstr "مشارکت"
 
-#: fatcat_scholar/templates/base.html:179
+#: fatcat_scholar/templates/base.html:183
 msgid "Search API"
 msgstr "API را جستجو کنید"
 
-#: fatcat_scholar/templates/base.html:180
+#: fatcat_scholar/templates/base.html:184
 msgid "Service Status"
 msgstr "وضعیت سرویس"
 
-#: fatcat_scholar/templates/base.html:181
+#: fatcat_scholar/templates/base.html:185
 msgid "Source Code"
 msgstr "کد منبع"
 
-#: fatcat_scholar/templates/base.html:190
+#: fatcat_scholar/templates/base.html:194
 msgid "Help"
 msgstr "راهنمایی"
 
@@ -370,16 +367,16 @@ msgstr "راهنمای کاربر Scholar"
 #, python-format
 msgid "See also: <a href=\"%(lang_prefix)s/about\">About Scholarly Search</a>"
 msgstr ""
-"همچنین نگاه کنید به: <a href=\"%(lang_prefix)s/about\"> درباره جستجوی علمی "
-"</a>"
+"همچنین نگاه کنید به: <a href=\"%(lang_prefix)s/about\"> درباره جستجوی علمی </"
+"a>"
 
 #: fatcat_scholar/templates/help.html:25
 msgid ""
 "This service provides <a href=\"https://en.wikipedia.org/wiki/Full-"
-"text_search\">fulltext searching</a> over research publications archived "
-"in Internet Archive's various collections. It includes content from the "
-"natural sciences, humanities, biomedicine, art, history, industrial "
-"research, government reports, and more."
+"text_search\">fulltext searching</a> over research publications archived in "
+"Internet Archive's various collections. It includes content from the natural "
+"sciences, humanities, biomedicine, art, history, industrial research, "
+"government reports, and more."
 msgstr ""
 "این سرویس <a href=\"https://en.wikipedia.org/wiki/Full-text_search\"> جستجوی "
 "متن کامل </a> را از طریق انتشارات پژوهشی بایگانی شده در مجموعه های مختلف "
@@ -398,10 +395,9 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:28
 msgid ""
-"In other cases, depending on search filters, results are included for "
-"which there is only a bibliographic catalog entry. It may still be "
-"possible to obtain access through a public library or from the publisher "
-"directly."
+"In other cases, depending on search filters, results are included for which "
+"there is only a bibliographic catalog entry. It may still be possible to "
+"obtain access through a public library or from the publisher directly."
 msgstr ""
 "در موارد دیگر ، بسته به فیلترهای جستجو ، نتایجی گنجانده می شود که فقط یک "
 "ورودی فهرست کتابشناسی برای آنها وجود دارد. هنوز هم ممکن است دسترسی از طریق "
@@ -414,8 +410,8 @@ msgstr "نحو پرس و جو"
 #: fatcat_scholar/templates/help.html:32
 msgid ""
 "In addition to the basic filtering and sorting options, this search\n"
-"interface also allows the use of Lucene query syntax in the search box. "
-"You can\n"
+"interface also allows the use of Lucene query syntax in the search box. You "
+"can\n"
 "restrict term queries on multiple metadata fields using colon statements "
 "like\n"
 "<code>journal:Science</code>, set filters like <code>lang:de</code>, and\n"
@@ -427,23 +423,23 @@ msgstr ""
 "پرس و جوهای اصطلاح را در چندین زمینه فراداده با استفاده از عبارات کولون "
 "مانند محدود کنید\n"
 "<code> ژورنال: Science </code> ، فیلترهایی مانند <code> lang: de </code> و\n"
-"درخواستهای محدوده مانند <code> سال را اعمال کنید: &gt; 1989 سال: &lt; 2000 "
-"</code>."
+"درخواستهای محدوده مانند <code> سال را اعمال کنید: &gt; 1989 سال: &lt; 2000 </"
+"code>."
 
 #: fatcat_scholar/templates/help.html:38
 msgid ""
 "While this syntax allows for relatively complex and powerful queries, at "
-"some point advanced users may run into limits on the size or complexity "
-"of queries."
+"some point advanced users may run into limits on the size or complexity of "
+"queries."
 msgstr ""
-"در حالی که این نحو امکان پرس و جوهای نسبتاً پیچیده و قدرتمند را فراهم می کند "
-"، اما در برخی موارد کاربران پیشرفته ممکن است محدودیتی در اندازه یا پیچیدگی "
-"نمایش داده شوند."
+"در حالی که این نحو امکان پرس و جوهای نسبتاً پیچیده و قدرتمند را فراهم می "
+"کند ، اما در برخی موارد کاربران پیشرفته ممکن است محدودیتی در اندازه یا "
+"پیچیدگی نمایش داده شوند."
 
 #: fatcat_scholar/templates/help.html:40
 msgid ""
-"For the time being we recommend systems like <a "
-"href=\"https://lens.org\">lens.org</a> for a more powerful interface."
+"For the time being we recommend systems like <a href=\"https://lens.org"
+"\">lens.org</a> for a more powerful interface."
 msgstr ""
 "در حال حاضر سیستم هایی مانند <a href=\"https://lens.org\"> lens.org </a> را "
 "برای رابط کاربری قدرتمندتر توصیه می کنیم."
@@ -471,9 +467,9 @@ msgstr "استنادات"
 #: fatcat_scholar/templates/help.html:58
 msgid ""
 "As an experimental feature, if the search query \"looks like\" a formal "
-"citation, as found in the bibliography of a research paper, the service "
-"will attempt to parse the citation and do a match against our catalog of "
-"known works. When this happens, any filters are ignored."
+"citation, as found in the bibliography of a research paper, the service will "
+"attempt to parse the citation and do a match against our catalog of known "
+"works. When this happens, any filters are ignored."
 msgstr ""
 "به عنوان یک ویژگی آزمایشی ، اگر جستجوی جستجو \"مانند یک استناد رسمی به نظر "
 "برسد\" ، همانطور که در کتابشناسی یک مقاله تحقیقاتی یافت می شود ، این سرویس "
@@ -487,33 +483,32 @@ msgstr "قسمتهای فراداده"
 #: fatcat_scholar/templates/help.html:64
 msgid ""
 "You can restrict to records where the field exists with an asterisk like "
-"<code>doi:*</code>, and negate any term like <code>!type:article-"
-"journal</code>."
+"<code>doi:*</code>, and negate any term like <code>!type:article-journal</"
+"code>."
 msgstr ""
 "شما می توانید محدود به سوابق که در آن زمینه وجود دارد با ستاره مانند "
 "<code>doi:*</code>, و نفی هر اصطلاح مانند <code>!type:article-journal</code>."
 
 #: fatcat_scholar/templates/help.html:66
 msgid ""
-"In-depth documentation of the query syntax is available <a "
-"href=\"https://www.elastic.co/guide/en/elasticsearch/reference/current"
-"/query-dsl-query-string-query.html#query-string-query-notes\">from the "
-"Elasticsearch project</a>."
+"In-depth documentation of the query syntax is available <a href=\"https://"
+"www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-"
+"string-query.html#query-string-query-notes\">from the Elasticsearch project</"
+"a>."
 msgstr ""
 "مستندات عمیق نحو پرس و جو در دسترس است <a href=\"https://www.elastic.co/"
-"guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html"
-"#query-string-query-notes\"> از پروژه Elasticsearch </a>."
+"guide/en/elasticsearch/reference/current/query-dsl-query-string-query."
+"html#query-string-query-notes\"> از پروژه Elasticsearch </a>."
 
 #: fatcat_scholar/templates/help.html:68
 msgid ""
-"The complete current search document schema is available (as JSON) <a "
-"href=\"https://github.com/internetarchive/fatcat-"
-"scholar/blob/master/schema/scholar_fulltext.v01.json\">in the source "
-"code</a>."
+"The complete current search document schema is available (as JSON) <a href="
+"\"https://github.com/internetarchive/fatcat-scholar/blob/master/schema/"
+"scholar_fulltext.v01.json\">in the source code</a>."
 msgstr ""
 "طرح کامل اسناد جستجوی فعلی (به عنوان JSON) <a href=\"https://github.com/"
-"internetarchive/fatcat-scholar/blob/master/schema/scholar_fulltext.v01.json\""
-"> در کد منبع موجود است </a>."
+"internetarchive/fatcat-scholar/blob/master/schema/scholar_fulltext.v01.json"
+"\"> در کد منبع موجود است </a>."
 
 #: fatcat_scholar/templates/help.html:105
 msgid "Search Results"
@@ -525,18 +520,17 @@ msgstr "دسترسی به پیوندها"
 
 #: fatcat_scholar/templates/help.html:118
 msgid ""
-"All Internet Archive preservation copy links have the same style and "
-"icon. Content from the Wayback Machine looks like this."
+"All Internet Archive preservation copy links have the same style and icon. "
+"Content from the Wayback Machine looks like this."
 msgstr ""
 "همه پیوندهای کپی حفظ بایگانی اینترنتی دارای همان سبک و نماد هستند. محتوای "
 "Wayback Machine به این شکل است."
 
 #: fatcat_scholar/templates/help.html:122
 msgid ""
-"If the preserved copy of the work is from a pre-print, author manuscript,"
-" or other alternative version of the work, the access link has an "
-"indicator. You can get details and view all versions by clicking on the "
-"primary title link"
+"If the preserved copy of the work is from a pre-print, author manuscript, or "
+"other alternative version of the work, the access link has an indicator. You "
+"can get details and view all versions by clicking on the primary title link"
 msgstr ""
 "اگر نسخه حفظ شده از اثر از نسخه پیش چاپ ، دست نویسنده یا نسخه جایگزین دیگر "
 "اثر باشد ، پیوند دسترسی یک نشانگر دارد. با کلیک روی پیوند اصلی عنوان ، می "
@@ -545,8 +539,8 @@ msgstr ""
 #: fatcat_scholar/templates/help.html:126
 msgid ""
 "Some preserved content, particularly older Public Domain works, may be "
-"stored in general Internet Archive digital collections (as opposed to the"
-" web archive)"
+"stored in general Internet Archive digital collections (as opposed to the "
+"web archive)"
 msgstr ""
 "برخی از مطالب حفظ شده ، به ویژه آثار قدیمی دامنه عمومی ، ممکن است در مجموعه "
 "های دیجیتال عمومی بایگانی اینترنتی ذخیره شوند (برخلاف بایگانی وب)"
@@ -560,23 +554,28 @@ msgstr ""
 "دسترسی ممکن است محدود به وام کنترل شده باشد"
 
 #: fatcat_scholar/templates/help.html:134
+#, fuzzy
+#| msgid ""
+#| "A publisher landing page is the authoriative source for the \"version of "
+#| "record\" of a research publication, but content is not always accessible "
+#| "to the general public"
 msgid ""
-"A publisher landing page is the authoriative source for the \"version of "
-"record\" of a research publication, but content is not always accessible "
-"to the general public"
+"A publisher landing page is the authoritative source for the \"version of "
+"record\" of a research publication, but content is not always accessible to "
+"the general public"
 msgstr ""
 "یک صفحه فرود ناشر منبع اختیاری \"نسخه ثبت\" یک نشریه تحقیقاتی است ، اما "
 "محتوا همیشه در دسترس عموم نیست"
 
 #: fatcat_scholar/templates/help.html:138
 msgid ""
-"When the work is from an Open Access publication (sometimes known as "
-"\"Gold\" or \"Diamond\" OA), and the publisher is expected to provide "
-"access to all readers, the button has an orange \"unlocked\" icon"
+"When the work is from an Open Access publication (sometimes known as \"Gold"
+"\" or \"Diamond\" OA), and the publisher is expected to provide access to "
+"all readers, the button has an orange \"unlocked\" icon"
 msgstr ""
 "وقتی کار از انتشارات Open Access (که بعضاً با نام \"Gold\" یا \"Diamond\" OA "
-"شناخته می شود) است و انتظار می رود ناشر دسترسی به همه خوانندگان را فراهم کند "
-"، دکمه دارای نماد نارنجی \"قفل\" است"
+"شناخته می شود) است و انتظار می رود ناشر دسترسی به همه خوانندگان را فراهم "
+"کند ، دکمه دارای نماد نارنجی \"قفل\" است"
 
 #: fatcat_scholar/templates/help.html:142
 msgid ""
@@ -588,9 +587,9 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:150
 msgid ""
-"Search results may have tag labels which provide additional context about"
-" the work. For example, indexes the journal is included in, or open "
-"platform technology used for publications."
+"Search results may have tag labels which provide additional context about "
+"the work. For example, indexes the journal is included in, or open platform "
+"technology used for publications."
 msgstr ""
 "نتایج جستجو ممکن است دارای برچسب برچسبی باشند که زمینه اضافی در مورد کار را "
 "فراهم می کنند. به عنوان مثال ، نمایه هایی که ژورنال در آن گنجانده شده است ، "
@@ -598,9 +597,9 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:160
 msgid ""
-"There are multiple released \"versions\" or \"editions\" of this work, "
-"and bibliographic metadata for the \"primary\" is being shown. Click the "
-"title to see other versions"
+"There are multiple released \"versions\" or \"editions\" of this work, and "
+"bibliographic metadata for the \"primary\" is being shown. Click the title "
+"to see other versions"
 msgstr ""
 "چندین \"نسخه\" یا \"نسخه\" از این اثر منتشر شده وجود دارد، و فراداده کتاب "
 "شناسی برای \"اولیه\" در حال نشان دادن است. برای دیدن نسخه های دیگر روی عنوان "
@@ -609,9 +608,8 @@ msgstr ""
 #: fatcat_scholar/templates/help.html:164
 msgid ""
 "The primary language of this work is different from the search interface "
-"language. The <a "
-"href=\"https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes\">ISO two-"
-"letter language code</a> is indicated"
+"language. The <a href=\"https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes"
+"\">ISO two-letter language code</a> is indicated"
 msgstr ""
 "زبان اصلی این کار با زبان رابط جستجو متفاوت است. <a href=\"https://en."
 "wikipedia.org/wiki/List_of_ISO_639-1_codes\"> کد زبان دو حرف ISO </a> نشان "
@@ -627,9 +625,9 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:172
 msgid ""
-"Publication indexed in <a href=\"https://www.ebsco.com/open-access"
-"/szczepanski-list\">Szczepanski's List of Open Access Journals</a>, which"
-" implies that this is an Open Access work"
+"Publication indexed in <a href=\"https://www.ebsco.com/open-access/"
+"szczepanski-list\">Szczepanski's List of Open Access Journals</a>, which "
+"implies that this is an Open Access work"
 msgstr ""
 "انتشار نمایه شده در <a href=\"https://www.ebsco.com/open-access/szczepanski-"
 "list\"> فهرست مجلات دسترسی آزاد Szczepanski </a> ، که به این معنی است که این "
@@ -637,44 +635,40 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:176
 msgid ""
-"The work is believed to be <a "
-"href=\"https://en.wikipedia.org/wiki/Open_access\">\"Open Access\"</a> "
-"for any other reason"
+"The work is believed to be <a href=\"https://en.wikipedia.org/wiki/"
+"Open_access\">\"Open Access\"</a> for any other reason"
 msgstr ""
 "اعتقاد بر این است که اثر به هر دلیل دیگری <a href=\"https://en.wikipedia.org/"
 "wiki/Open_access\"> \"دسترسی آزاد\" </a> است"
 
 #: fatcat_scholar/templates/help.html:180
 msgid ""
-"Published on a <a "
-"href=\"https://en.wikipedia.org/wiki/SciELO\">SciELO</a> national "
-"platform"
+"Published on a <a href=\"https://en.wikipedia.org/wiki/SciELO\">SciELO</a> "
+"national platform"
 msgstr ""
 "منتشر شده در یک سکوی ملی <a href=\"https://en.wikipedia.org/wiki/SciELO\"> "
 "SciELO </a>"
 
 #: fatcat_scholar/templates/help.html:184
 msgid ""
-"Published using <a "
-"href=\"https://en.wikipedia.org/wiki/Open_Journal_Systems\">Open Journal "
-"Systems</a> software"
+"Published using <a href=\"https://en.wikipedia.org/wiki/Open_Journal_Systems"
+"\">Open Journal Systems</a> software"
 msgstr ""
 "با استفاده از نرم افزار <a href=\"https://en.wikipedia.org/wiki/"
 "Open_Journal_Systems\"> Open Journal Systems </a> منتشر شده است"
 
 #: fatcat_scholar/templates/help.html:188
 msgid ""
-"Published using <a "
-"href=\"https://en.wikipedia.org/wiki/Wordpress\">WordPress</a> software"
+"Published using <a href=\"https://en.wikipedia.org/wiki/Wordpress"
+"\">WordPress</a> software"
 msgstr ""
 "با استفاده از نرم افزار <a href=\"https://en.wikipedia.org/wiki/Wordpress\"> "
 "WordPress </a> منتشر شده است"
 
 #: fatcat_scholar/templates/help.html:192
 msgid ""
-"Preserved and/or hosted on the <a "
-"href=\"https://en.wikipedia.org/wiki/JSTOR\">JSTOR</a> digital "
-"preservation platform"
+"Preserved and/or hosted on the <a href=\"https://en.wikipedia.org/wiki/JSTOR"
+"\">JSTOR</a> digital preservation platform"
 msgstr ""
 "در پلتفرم حفاظت دیجیتال <a href=\"https://en.wikipedia.org/wiki/JSTOR\"> "
 "JSTOR </a> حفظ و یا میزبانی می شود"
@@ -682,8 +676,8 @@ msgstr ""
 #: fatcat_scholar/templates/help.html:200
 msgid ""
 "Underneath search results, and alternate version listings, are any known "
-"\"persistent identifiers\" that uniquely identify the specific version of"
-" the work. These are usually hyperlinks."
+"\"persistent identifiers\" that uniquely identify the specific version of "
+"the work. These are usually hyperlinks."
 msgstr ""
 "در زیر نتایج جستجو و لیست نسخه های جایگزین ، هر \"شناسه ثابت\" شناخته شده ای "
 "وجود دارد که نسخه خاص کار را به طور منحصر به فرد شناسایی می کند. این ها "
@@ -691,10 +685,9 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:210
 msgid ""
-"<a "
-"href=\"https://en.wikipedia.org/wiki/Digital_object_identifier\">Digital "
-"Object Identifier (DOI)</a>, provides a redirect to the publisher's "
-"landing page"
+"<a href=\"https://en.wikipedia.org/wiki/Digital_object_identifier\">Digital "
+"Object Identifier (DOI)</a>, provides a redirect to the publisher's landing "
+"page"
 msgstr ""
 "<a href=\"https://en.wikipedia.org/wiki/Digital_object_identifier\"> شناسه "
 "شی Digital دیجیتال (DOI) </a> ، هدایتی را به صفحه فرود ناشر ارائه می دهد"
@@ -716,7 +709,8 @@ msgid "The DBLP Computer Science Bibliography"
 msgstr "کتابشناسی علوم کامپیوتر DBLP"
 
 #: fatcat_scholar/templates/help.html:230
-msgid "Article-level identifier for works in DOAJ, particularly those with no DOI"
+msgid ""
+"Article-level identifier for works in DOAJ, particularly those with no DOI"
 msgstr "شناسه سطح مقاله برای کارهای در DOAJ ، به ویژه کسانی که فاقد DOI هستند"
 
 #: fatcat_scholar/templates/help.html:234
@@ -733,16 +727,16 @@ msgstr "کار در حال انجام"
 
 #: fatcat_scholar/templates/help.html:244 fatcat_scholar/templates/home.html:37
 msgid ""
-"This service is in \"alpha\". It has several bugs, experiences downtime, "
-"and has not been officially announced."
+"This service is in \"alpha\". It has several bugs, experiences downtime, and "
+"has not been officially announced."
 msgstr ""
 "این سرویس به صورت \"آلفا\" است. چندین اشکال دارد ، زمان خرابی را تجربه می "
 "کند و به طور رسمی اعلام نشده است."
 
 #: fatcat_scholar/templates/help.html:246 fatcat_scholar/templates/home.html:39
 msgid ""
-"This is a new service. Metadata is being improved and features have not "
-"been finalized."
+"This is a new service. Metadata is being improved and features have not been "
+"finalized."
 msgstr ""
 "این یک سرویس جدید است. فراداده در حال بهبود است و ویژگی ها نهایی نشده اند."
 
@@ -764,19 +758,24 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:257
 msgid ""
-"Duplicate versions of same work. For example, different versions of the "
-"same paper or dataset. We are working on basic entity-deduplication in "
-"the fatcat catalog."
+"Duplicate versions of same work. For example, different versions of the same "
+"paper or dataset. We are working on basic entity-deduplication in the fatcat "
+"catalog."
 msgstr ""
 "نسخه های تکراری از همان کار. به عنوان مثال ، نسخه های مختلف مقاله یا مجموعه "
 "داده های مشابه. ما در حال کار بر روی تکثیر اساسی موجودیت در فهرست fatcat "
 "هستیم."
 
 #: fatcat_scholar/templates/help.html:258
+#, fuzzy
+#| msgid ""
+#| "Mis-matching of file content or version with work metadata. For example, "
+#| "sometimes pre-prints or author manuscripts are incorrectly associated "
+#| "with version-of-record metadata, or vica-versa."
 msgid ""
 "Mis-matching of file content or version with work metadata. For example, "
-"sometimes pre-prints or author manuscripts are incorrectly associated "
-"with version-of-record metadata, or vica-versa."
+"sometimes pre-prints or author manuscripts are incorrectly associated with "
+"version-of-record metadata, or vice-versa."
 msgstr ""
 "تطبیق نادرست محتوای پرونده یا نسخه با فراداده کار. به عنوان مثال ، گاهی "
 "اوقات نسخه های پیش چاپ یا نویسنده به اشتباه با فراداده نسخه رکورد یا بالعکس "
@@ -796,17 +795,17 @@ msgstr "میلیون ها مقاله تحقیقاتی را جستجو کنید"
 
 #: fatcat_scholar/templates/home.html:24
 msgid ""
-"This fulltext search index includes over 25 million research articles and"
-" other scholarly documents preserved in the Internet Archive."
+"This fulltext search index includes over 25 million research articles and "
+"other scholarly documents preserved in the Internet Archive."
 msgstr ""
 "این فهرست جستجوی متن کامل شامل بیش از 25 میلیون مقاله پژوهشی و سایر اسناد "
 "علمی است که در بایگانی اینترنت نگهداری می شوند."
 
 #: fatcat_scholar/templates/home.html:24
 msgid ""
-"The collection spans from digitized copies of eighteenth century journals"
-" through the latest Open Access conference proceedings and pre-prints "
-"crawled from the World Wide Web."
+"The collection spans from digitized copies of eighteenth century journals "
+"through the latest Open Access conference proceedings and pre-prints crawled "
+"from the World Wide Web."
 msgstr ""
 "این مجموعه از نسخه های دیجیتالی ژورنال های قرن هجدهم از طریق آخرین جلسات "
 "کنفرانس Open Access و پیش چاپ های موجود در شبکه جهانی وب است."
@@ -846,8 +845,8 @@ msgstr "خطای جستجوی جستجو"
 
 #: fatcat_scholar/templates/search.html:116
 msgid ""
-"Query parsing is currently very naive. Sometimes you can fix this problem"
-" by adding quotes around terms or entire phrases."
+"Query parsing is currently very naive. Sometimes you can fix this problem by "
+"adding quotes around terms or entire phrases."
 msgstr ""
 "تجزیه و تحلیل کوئری در حال حاضر بسیار ساده است. بعضی اوقات می توانید این "
 "مشکل را با اضافه کردن نقل قول در اطراف اصطلاحات یا کل عبارات برطرف کنید."
@@ -942,7 +941,8 @@ msgstr "نامعلوم"
 #: fatcat_scholar/templates/search_macros.html:213
 #, python-format
 msgid "Page %(page_num)s of %(journal_name)s Vol. %(volume)s, Issue %(issue)s"
-msgstr "صفحه %(page_num)s از %(journal_name)s جلد. %(volume)s ، شماره %(issue)s"
+msgstr ""
+"صفحه %(page_num)s از %(journal_name)s جلد. %(volume)s ، شماره %(issue)s"
 
 #: fatcat_scholar/templates/search_macros.html:215
 msgid "page"
@@ -963,10 +963,10 @@ msgstr "میکروفیلم دیجیتالی"
 #: fatcat_scholar/templates/search_macros.html:288
 #, python-format
 msgid ""
-"A copy of this work was available on the public web and has been "
-"preserved in the Wayback Machine. The capture dates from "
-"%(capture_year)s; you can also visit <a rel=\"external noopener\" "
-"href=\"%(original_url)s\">the original URL</a>."
+"A copy of this work was available on the public web and has been preserved "
+"in the Wayback Machine. The capture dates from %(capture_year)s; you can "
+"also visit <a rel=\"external noopener\" href=\"%(original_url)s\">the "
+"original URL</a>."
 msgstr ""
 "نسخه ای از این اثر در وب عمومی در دسترس بود و در Wayback Machine حفظ شده "
 "است. تاریخ اسارت از %(capture_year)s؛ همچنین می توانید از <a rel=\"external "
@@ -981,8 +981,8 @@ msgstr ""
 
 #: fatcat_scholar/templates/search_macros.html:292
 msgid ""
-"The Internet Archive has digitized a microfilm copy of this work. It may "
-"be possible to borrow a copy for reading."
+"The Internet Archive has digitized a microfilm copy of this work. It may be "
+"possible to borrow a copy for reading."
 msgstr ""
 "بایگانی اینترنتی نسخه ای از میکروفیلم این اثر را دیجیتالی کرده است. ممکن است "
 "برای خواندن یک نسخه از آن را وام بگیرید."
@@ -994,8 +994,8 @@ msgstr "نوع پرونده %(mimetype)s است."
 
 #: fatcat_scholar/templates/search_macros.html:301
 msgid ""
-"Note that this fulltext copy is not of the \"primary\" version of this "
-"work. The version it corresponds to is:"
+"Note that this fulltext copy is not of the \"primary\" version of this work. "
+"The version it corresponds to is:"
 msgstr ""
 "توجه داشته باشید که این نسخه کامل متن از نسخه \"اصلی\" این اثر نیست. نسخه ای "
 "که با آن مطابقت دارد:"
@@ -1007,8 +1007,8 @@ msgstr "گزینه های دسترسی اضافی نسخه اصلی این کا�
 #: fatcat_scholar/templates/search_macros.html:324
 msgid ""
 "We don't yet know of a public preservation copy of this work. You may be "
-"able to obtain a copy of this work to read from the publisher, platforms,"
-" or institutional libraries."
+"able to obtain a copy of this work to read from the publisher, platforms, or "
+"institutional libraries."
 msgstr ""
 "ما هنوز نسخه ای از حفاظت عمومی از این اثر را نمی دانیم. شاید بتوانید نسخه ای "
 "از این اثر را برای خواندن از ناشر ، سیستم عامل ها یا کتابخانه های نهادی تهیه "
@@ -1017,13 +1017,13 @@ msgstr ""
 #: fatcat_scholar/templates/search_macros.html:327
 #, python-format
 msgid ""
-"If you know of a legal, public version that we should archive, please let"
-" us know via <a rel=\"noopener\" href=\"%(save_paper_now_url)s\">\"Save "
-"Paper Now\"</a>."
+"If you know of a legal, public version that we should archive, please let us "
+"know via <a rel=\"noopener\" href=\"%(save_paper_now_url)s\">\"Save Paper Now"
+"\"</a>."
 msgstr ""
-"اگر نسخه قانونی و عمومی ای را که باید بایگانی کنیم ، می دانید ، لطفاً از "
-"طریق <a rel=\"noopener\" href=\"%(save_paper_now_url)s\"> \"اکنون مقاله را "
-"ذخیره کنید\" </a> به ما اطلاع دهید."
+"اگر نسخه قانونی و عمومی ای را که باید بایگانی کنیم ، می دانید ، لطفاً از طریق "
+"<a rel=\"noopener\" href=\"%(save_paper_now_url)s\"> \"اکنون مقاله را ذخیره "
+"کنید\" </a> به ما اطلاع دهید."
 
 #: fatcat_scholar/templates/search_macros.html:374
 msgid "more &raquo;"
