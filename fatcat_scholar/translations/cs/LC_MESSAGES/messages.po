@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-23 18:56-0700\n"
+"POT-Creation-Date: 2021-03-25 11:07-0700\n"
 "PO-Revision-Date: 2020-11-02 21:52-0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: cs <LL@li.org>\n"
@@ -115,7 +115,7 @@ msgid ""
 msgstr ""
 
 #: fatcat_scholar/templates/about.html:14
-#: fatcat_scholar/templates/base.html:187
+#: fatcat_scholar/templates/base.html:191
 msgid "How It Works"
 msgstr ""
 
@@ -148,7 +148,7 @@ msgid ""
 msgstr ""
 
 #: fatcat_scholar/templates/about.html:27
-#: fatcat_scholar/templates/base.html:188
+#: fatcat_scholar/templates/base.html:192
 msgid "Content Sources"
 msgstr ""
 
@@ -162,7 +162,7 @@ msgid ""
 msgstr ""
 
 #: fatcat_scholar/templates/about.html:35
-#: fatcat_scholar/templates/base.html:189
+#: fatcat_scholar/templates/base.html:193
 msgid "Text and Data Mining"
 msgstr ""
 
@@ -221,80 +221,80 @@ msgstr ""
 msgid "language selection menu"
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:98
+#: fatcat_scholar/templates/base.html:102
 msgid "Contribute to translations"
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:121
+#: fatcat_scholar/templates/base.html:125
 msgid "by title, authors, keywords..."
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:121
+#: fatcat_scholar/templates/base.html:125
 msgid "search for papers"
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:122 fatcat_scholar/templates/home.html:16
+#: fatcat_scholar/templates/base.html:126 fatcat_scholar/templates/home.html:16
 msgid "Search"
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:129
+#: fatcat_scholar/templates/base.html:133
 msgid "User Guide"
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:157
+#: fatcat_scholar/templates/base.html:161
 msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:159
+#: fatcat_scholar/templates/base.html:163
 #, python-format
 msgid ""
 "Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and "
 "%(archive_it)s."
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:166
+#: fatcat_scholar/templates/base.html:170
 msgid "About Us"
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:167
+#: fatcat_scholar/templates/base.html:171
 msgid "Contact Us"
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:168
+#: fatcat_scholar/templates/base.html:172
 msgid "Policies"
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:169
+#: fatcat_scholar/templates/base.html:173
 msgid "Donate"
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:175
+#: fatcat_scholar/templates/base.html:179
 msgid "Open Infrastructure"
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:177
+#: fatcat_scholar/templates/base.html:181
 msgid "Editable Catalog (Fatcat)"
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:178
+#: fatcat_scholar/templates/base.html:182
 msgid "Contribute"
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:179
+#: fatcat_scholar/templates/base.html:183
 msgid "Search API"
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:180
+#: fatcat_scholar/templates/base.html:184
 msgid "Service Status"
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:181
+#: fatcat_scholar/templates/base.html:185
 msgid "Source Code"
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:190
+#: fatcat_scholar/templates/base.html:194
 msgid "Help"
 msgstr ""
 
@@ -473,7 +473,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:134
 msgid ""
-"A publisher landing page is the authoriative source for the \"version of "
+"A publisher landing page is the authoritative source for the \"version of "
 "record\" of a research publication, but content is not always accessible to "
 "the general public"
 msgstr ""
@@ -637,7 +637,7 @@ msgstr ""
 msgid ""
 "Mis-matching of file content or version with work metadata. For example, "
 "sometimes pre-prints or author manuscripts are incorrectly associated with "
-"version-of-record metadata, or vica-versa."
+"version-of-record metadata, or vice-versa."
 msgstr ""
 
 #: fatcat_scholar/templates/home.html:10

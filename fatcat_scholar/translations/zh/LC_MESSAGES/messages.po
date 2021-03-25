@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
-"POT-Creation-Date: 2021-03-23 18:56-0700\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2021-03-25 11:07-0700\n"
 "PO-Revision-Date: 2021-03-24 03:54+0000\n"
 "Last-Translator: Eric <spice2wolf@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -116,10 +116,12 @@ msgstr "关于互联网档案馆学术"
 msgid ""
 "See also: <a href=\"%(lang_prefix)s/help\">User Guide</a> which lists some "
 "bugs and known issues"
-msgstr "另见<a href=\"%(lang_prefix)s/help\">用户指南</a>，其中列出了一些错误和已知问题"
+msgstr ""
+"另见<a href=\"%(lang_prefix)s/help\">用户指南</a>，其中列出了一些错误和已知问"
+"题"
 
 #: fatcat_scholar/templates/about.html:14
-#: fatcat_scholar/templates/base.html:187
+#: fatcat_scholar/templates/base.html:191
 msgid "How It Works"
 msgstr "怎么运行的"
 
@@ -133,8 +135,8 @@ msgid ""
 "\">The Wayback Machine</a> and <a href=\"https://archive-it.org\">Archive-"
 "It</a> partner collections"
 msgstr ""
-"<b>公共网络内容</b>保存于 <a href=\"https://web.archive.org\">The Wayback Machine</"
-"a>和<a href=\"https://archive-it.org\">Archive-It</a>合作伙伴收藏"
+"<b>公共网络内容</b>保存于 <a href=\"https://web.archive.org\">The Wayback "
+"Machine</a>和<a href=\"https://archive-it.org\">Archive-It</a>合作伙伴收藏"
 
 #: fatcat_scholar/templates/about.html:20
 msgid "<b>digitized print materials</b> from paper and microform collections"
@@ -145,17 +147,20 @@ msgid ""
 "<b>general materials</b> from <a href=\"https://archive.org\">archive.org "
 "collections</a>, including collaborations with partners"
 msgstr ""
-"<b>一般材料</b>，源自<a href=\"https://archive.org\">archive.org 收藏</a>，包括与合作伙伴的协作"
+"<b>一般材料</b>，源自<a href=\"https://archive.org\">archive.org 收藏</a>，包"
+"括与合作伙伴的协作"
 
 #: fatcat_scholar/templates/about.html:24
 #, python-format
 msgid ""
 "This <a href=\"%(url)s\">2019 FORCE11 conference presentation</a> gives an "
 "overview of the technical infrastructure and goals of the project overall."
-msgstr "这份<a href=\"%(url)s\">2019年FORCE11会议报告</a>概述了项目整体的技术基础设施和目标。"
+msgstr ""
+"这份<a href=\"%(url)s\">2019年FORCE11会议报告</a>概述了项目整体的技术基础设施"
+"和目标。"
 
 #: fatcat_scholar/templates/about.html:27
-#: fatcat_scholar/templates/base.html:188
+#: fatcat_scholar/templates/base.html:192
 msgid "Content Sources"
 msgstr "内容来源"
 
@@ -173,7 +178,7 @@ msgstr ""
 "<a href=\"#contact\">如有疑问请联系我们</a>。"
 
 #: fatcat_scholar/templates/about.html:35
-#: fatcat_scholar/templates/base.html:189
+#: fatcat_scholar/templates/base.html:193
 msgid "Text and Data Mining"
 msgstr "文本和数据挖掘"
 
@@ -198,15 +203,17 @@ msgid ""
 "details/ia_biblio_metadata\">Bulk Bibliographic Metadata</a> collection on "
 "archive.org."
 msgstr ""
-"目前，完整的fatcat元数据语料库和上游元数据源的快照会定期上传到archive.org上的<a href=\"https://archive.org/"
-"details/ia_biblio_metadata\">批量书目元数据</a>集合。"
+"目前，完整的fatcat元数据语料库和上游元数据源的快照会定期上传到archive.org上的"
+"<a href=\"https://archive.org/details/ia_biblio_metadata\">批量书目元数据</a>"
+"集合。"
 
 #: fatcat_scholar/templates/about.html:44
 msgid ""
 "Read more in <a href=\"https://guide.fatcat.wiki/bulk_exports.html\">the "
 "Fatcat Guide</a>."
 msgstr ""
-"更多内容请阅读<a href=\"https://guide.fatcat.wiki/bulk_exports.html\">《肥猫指南》</a>。"
+"更多内容请阅读<a href=\"https://guide.fatcat.wiki/bulk_exports.html\">《肥猫"
+"指南》</a>。"
 
 #: fatcat_scholar/templates/about.html:47
 msgid "Contact Information"
@@ -224,7 +231,9 @@ msgstr "互联网档案馆的组织联系信息列于<a href=\"%(url)s\">%(url)s
 msgid ""
 "Queries about this search service and the fatcat catalog can be directed to "
 "<a href=\"mailto:%(email)s\">%(email)s</a>."
-msgstr "关于这个搜索服务和fatcat目录的查询可以直接到<a href=\"mailto:%(email)s\">%(email)s</a>。"
+msgstr ""
+"关于这个搜索服务和fatcat目录的查询可以直接到<a href=\"mailto:%(email)s\">"
+"%(email)s</a>。"
 
 #: fatcat_scholar/templates/about.html:54
 #, python-format
@@ -239,27 +248,27 @@ msgstr "互联网档案学术"
 msgid "language selection menu"
 msgstr "语言选择菜单"
 
-#: fatcat_scholar/templates/base.html:98
+#: fatcat_scholar/templates/base.html:102
 msgid "Contribute to translations"
 msgstr "贡献翻译"
 
-#: fatcat_scholar/templates/base.html:121
+#: fatcat_scholar/templates/base.html:125
 msgid "by title, authors, keywords..."
 msgstr "按标题、作者、关键词... ..."
 
-#: fatcat_scholar/templates/base.html:121
+#: fatcat_scholar/templates/base.html:125
 msgid "search for papers"
 msgstr "搜索论文"
 
-#: fatcat_scholar/templates/base.html:122 fatcat_scholar/templates/home.html:16
+#: fatcat_scholar/templates/base.html:126 fatcat_scholar/templates/home.html:16
 msgid "Search"
 msgstr "搜索"
 
-#: fatcat_scholar/templates/base.html:129
+#: fatcat_scholar/templates/base.html:133
 msgid "User Guide"
 msgstr "用户指南"
 
-#: fatcat_scholar/templates/base.html:157
+#: fatcat_scholar/templates/base.html:161
 msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
@@ -267,7 +276,7 @@ msgstr ""
 "我们是一家美国的501(c)(3)非营利图书馆，旨在以数字形式建立一个互联网站点和其他"
 "文化文物的全球档案馆。"
 
-#: fatcat_scholar/templates/base.html:159
+#: fatcat_scholar/templates/base.html:163
 #, python-format
 msgid ""
 "Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and "
@@ -275,47 +284,47 @@ msgid ""
 msgstr ""
 "其他项目包括%(wayback)s、%(archive_org)s、%(openlibrary)s和%(archive_it)s。"
 
-#: fatcat_scholar/templates/base.html:166
+#: fatcat_scholar/templates/base.html:170
 msgid "About Us"
 msgstr "关于我们"
 
-#: fatcat_scholar/templates/base.html:167
+#: fatcat_scholar/templates/base.html:171
 msgid "Contact Us"
 msgstr "联系我们"
 
-#: fatcat_scholar/templates/base.html:168
+#: fatcat_scholar/templates/base.html:172
 msgid "Policies"
 msgstr "策略"
 
-#: fatcat_scholar/templates/base.html:169
+#: fatcat_scholar/templates/base.html:173
 msgid "Donate"
 msgstr "捐赠"
 
-#: fatcat_scholar/templates/base.html:175
+#: fatcat_scholar/templates/base.html:179
 msgid "Open Infrastructure"
 msgstr "开放基础架构"
 
-#: fatcat_scholar/templates/base.html:177
+#: fatcat_scholar/templates/base.html:181
 msgid "Editable Catalog (Fatcat)"
 msgstr "可编辑目录 (Fatcat)"
 
-#: fatcat_scholar/templates/base.html:178
+#: fatcat_scholar/templates/base.html:182
 msgid "Contribute"
 msgstr "贡献"
 
-#: fatcat_scholar/templates/base.html:179
+#: fatcat_scholar/templates/base.html:183
 msgid "Search API"
 msgstr "搜索 API"
 
-#: fatcat_scholar/templates/base.html:180
+#: fatcat_scholar/templates/base.html:184
 msgid "Service Status"
 msgstr "服务状态"
 
-#: fatcat_scholar/templates/base.html:181
+#: fatcat_scholar/templates/base.html:185
 msgid "Source Code"
 msgstr "源代码"
 
-#: fatcat_scholar/templates/base.html:190
+#: fatcat_scholar/templates/base.html:194
 msgid "Help"
 msgstr "说明"
 
@@ -527,8 +536,13 @@ msgid ""
 msgstr "缩微胶卷作品的数字化副本可以与实验相关。访问权限可能仅限于受控贷款"
 
 #: fatcat_scholar/templates/help.html:134
+#, fuzzy
+#| msgid ""
+#| "A publisher landing page is the authoriative source for the \"version of "
+#| "record\" of a research publication, but content is not always accessible "
+#| "to the general public"
 msgid ""
-"A publisher landing page is the authoriative source for the \"version of "
+"A publisher landing page is the authoritative source for the \"version of "
 "record\" of a research publication, but content is not always accessible to "
 "the general public"
 msgstr ""
@@ -714,14 +728,23 @@ msgid ""
 "Duplicate versions of same work. For example, different versions of the same "
 "paper or dataset. We are working on basic entity-deduplication in the fatcat "
 "catalog."
-msgstr "同一作品的重复版本。例如，同一论文或数据集的不同版本。我们正在研究fatcat目录中的基本实体重复数据删除。"
+msgstr ""
+"同一作品的重复版本。例如，同一论文或数据集的不同版本。我们正在研究fatcat目录"
+"中的基本实体重复数据删除。"
 
 #: fatcat_scholar/templates/help.html:258
+#, fuzzy
+#| msgid ""
+#| "Mis-matching of file content or version with work metadata. For example, "
+#| "sometimes pre-prints or author manuscripts are incorrectly associated "
+#| "with version-of-record metadata, or vica-versa."
 msgid ""
 "Mis-matching of file content or version with work metadata. For example, "
 "sometimes pre-prints or author manuscripts are incorrectly associated with "
-"version-of-record metadata, or vica-versa."
-msgstr "文件内容或版本与作品元数据不匹配。例如，有时预印本或作者手稿与记录版本元数据的关联不正确，反之亦然。"
+"version-of-record metadata, or vice-versa."
+msgstr ""
+"文件内容或版本与作品元数据不匹配。例如，有时预印本或作者手稿与记录版本元数据"
+"的关联不正确，反之亦然。"
 
 #: fatcat_scholar/templates/home.html:10
 msgid "Internet Archive Scholar logo (vaporwave)"
