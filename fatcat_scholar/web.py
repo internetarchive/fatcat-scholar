@@ -100,9 +100,21 @@ async def home() -> Any:
 @api.head("/", include_in_schema=False)
 async def root_head() -> Any:
     """
-    HTTP HEAD only for the root path. Requested by, eg, uptime monitoring
-    tools. This is distinct from the CORS middleware.
+    HTTP HEAD only for the root path (and health check below). Requested by,
+    eg, uptime monitoring tools. This is distinct from the CORS middleware (for
+    OPTION).
     """
+    return Response()
+
+@api.get("/_health", operation_id="get_health")
+async def health() -> Any:
+    """
+    Checks that connection back to elasticsearch index is working.
+    """
+    return Response()
+
+@api.head("/_health", include_in_schema=False)
+async def health_head() -> Any:
     return Response()
 
 class HitsModel(BaseModel):
