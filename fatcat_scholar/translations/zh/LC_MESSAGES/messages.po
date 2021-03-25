@@ -8,10 +8,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-03-25 11:07-0700\n"
-"PO-Revision-Date: 2021-03-24 03:54+0000\n"
-"Last-Translator: Eric <spice2wolf@gmail.com>\n"
+"PO-Revision-Date: 2021-03-26 18:29+0000\n"
+"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "internetarchive/fatcat-scholar/zh_Hans/>\n"
 "Language: zh\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.5.2-dev\n"
+"X-Generator: Weblate 4.6-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:42
@@ -536,17 +536,11 @@ msgid ""
 msgstr "缩微胶卷作品的数字化副本可以与实验相关。访问权限可能仅限于受控贷款"
 
 #: fatcat_scholar/templates/help.html:134
-#, fuzzy
-#| msgid ""
-#| "A publisher landing page is the authoriative source for the \"version of "
-#| "record\" of a research publication, but content is not always accessible "
-#| "to the general public"
 msgid ""
 "A publisher landing page is the authoritative source for the \"version of "
 "record\" of a research publication, but content is not always accessible to "
 "the general public"
-msgstr ""
-"出版商登录页面是研究出版物“记录版本”的权威来源，但公众并不总是可以访问内容"
+msgstr "出版商登录页面是研究出版物“记录版本”的权威来源，但公众并不总是可以访问内容"
 
 #: fatcat_scholar/templates/help.html:138
 msgid ""
@@ -733,18 +727,11 @@ msgstr ""
 "中的基本实体重复数据删除。"
 
 #: fatcat_scholar/templates/help.html:258
-#, fuzzy
-#| msgid ""
-#| "Mis-matching of file content or version with work metadata. For example, "
-#| "sometimes pre-prints or author manuscripts are incorrectly associated "
-#| "with version-of-record metadata, or vica-versa."
 msgid ""
 "Mis-matching of file content or version with work metadata. For example, "
 "sometimes pre-prints or author manuscripts are incorrectly associated with "
 "version-of-record metadata, or vice-versa."
-msgstr ""
-"文件内容或版本与作品元数据不匹配。例如，有时预印本或作者手稿与记录版本元数据"
-"的关联不正确，反之亦然。"
+msgstr "文件内容或版本与作品元数据不匹配。例如，有时预印本或作者手稿与记录版本元数据的关联不正确，反之亦然。"
 
 #: fatcat_scholar/templates/home.html:10
 msgid "Internet Archive Scholar logo (vaporwave)"
