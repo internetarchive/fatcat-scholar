@@ -130,7 +130,7 @@ class HitsModel(BaseModel):
 
 
 @api.get("/search", operation_id="get_search", response_model=HitsModel)
-async def search(query: FulltextQuery = Depends(FulltextQuery)) -> FulltextHits:
+def search(query: FulltextQuery = Depends(FulltextQuery)) -> FulltextHits:
     hits: Optional[FulltextHits] = None
     if query.q is None:
         raise HTTPException(status_code=400, detail="Expected a 'q' query parameter")
@@ -237,7 +237,7 @@ async def web_help(request: Request, lang: LangPrefix = Depends(LangPrefix)) -> 
 
 
 @web.get("/search", include_in_schema=False)
-async def web_search(
+def web_search(
     request: Request,
     response: Response,
     query: FulltextQuery = Depends(FulltextQuery),
@@ -246,7 +246,7 @@ async def web_search(
 ) -> Any:
 
     if content.mimetype == "application/json":
-        return await search(query)
+        return search(query)
     hits: Optional[FulltextHits] = None
     search_error: Optional[dict] = None
     status_code: int = 200
