@@ -103,8 +103,7 @@ class KafkaWorker:
                 # check for partition-specific commit errors
                 if p.error:
                     print(
-                        f"Kafka consumer commit error: {p.error}",
-                        file=sys.stderr,
+                        f"Kafka consumer commit error: {p.error}", file=sys.stderr,
                     )
                     raise KafkaException(p.error)
 

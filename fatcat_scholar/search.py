@@ -416,6 +416,7 @@ def do_fulltext_search(
         results=results,
     )
 
+
 def es_scholar_index_exists() -> bool:
     """
     Checks if the configured back-end elasticsearch index exists.

@@ -21,7 +21,12 @@ from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from fatcat_scholar.config import settings, GIT_REVISION
 from fatcat_scholar.hacks import Jinja2Templates, parse_accept_lang
-from fatcat_scholar.search import process_query, FulltextQuery, FulltextHits, es_scholar_index_exists
+from fatcat_scholar.search import (
+    process_query,
+    FulltextQuery,
+    FulltextHits,
+    es_scholar_index_exists,
+)
 from fatcat_scholar.schema import ScholarDoc
 
 
@@ -97,6 +102,7 @@ api = APIRouter()
 async def home() -> Any:
     return {"endpoints": {"/": "this", "/search": "fulltext search"}}
 
+
 @api.head("/", include_in_schema=False)
 async def root_head() -> Any:
     """
@@ -105,6 +111,7 @@ async def root_head() -> Any:
     OPTION).
     """
     return Response()
+
 
 @api.get("/_health", operation_id="get_health")
 def health_get() -> Any:
@@ -115,9 +122,11 @@ def health_get() -> Any:
         raise HTTPException(status_code=503)
     return Response()
 
+
 @api.head("/_health", include_in_schema=False)
 def health_head() -> Any:
     return health_get()
+
 
 class HitsModel(BaseModel):
     count_returned: int
