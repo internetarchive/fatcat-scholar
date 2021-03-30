@@ -21,7 +21,7 @@ from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from fatcat_scholar.config import settings, GIT_REVISION
 from fatcat_scholar.hacks import Jinja2Templates, parse_accept_lang
-from fatcat_scholar.search import process_query, FulltextQuery, FulltextHits
+from fatcat_scholar.search import process_query, FulltextQuery, FulltextHits, es_scholar_index_exists
 from fatcat_scholar.schema import ScholarDoc
 
 
@@ -107,15 +107,17 @@ async def root_head() -> Any:
     return Response()
 
 @api.get("/_health", operation_id="get_health")
-async def health() -> Any:
+def health_get() -> Any:
     """
     Checks that connection back to elasticsearch index is working.
     """
+    if not es_scholar_index_exists():
+        raise HTTPException(status_code=503)
     return Response()
 
 @api.head("/_health", include_in_schema=False)
-async def health_head() -> Any:
-    return Response()
+def health_head() -> Any:
+    return health_get()
 
 class HitsModel(BaseModel):
     count_returned: int

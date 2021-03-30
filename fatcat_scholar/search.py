@@ -415,3 +415,17 @@ def do_fulltext_search(
         query_wall_time_ms=int(query_delta.total_seconds() * 1000),
         results=results,
     )
+
+def es_scholar_index_exists() -> bool:
+    """
+    Checks if the configured back-end elasticsearch index exists.
+    Intended to be used in health checks.
+    """
+    try:
+        resp = es_client.indices.exists(settings.ELASTICSEARCH_QUERY_FULLTEXT_INDEX)
+    except elasticsearch.exceptions.RequestError as e_raw:
+        if e_raw.status_code == 404:
+            return False
+        else:
+            raise e_raw
+    return resp
