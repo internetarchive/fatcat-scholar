@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-03-25 11:07-0700\n"
-"PO-Revision-Date: 2021-03-26 18:29+0000\n"
-"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"PO-Revision-Date: 2021-04-06 21:26+0000\n"
+"Last-Translator: nautilusx <translate@disroot.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/de/>\n"
 "Language: de\n"
@@ -1061,7 +1061,7 @@ msgid "not primary version"
 msgstr "nicht primäre Version"
 
 #: fatcat_scholar/templates/search_macros.html:441
-#, fuzzy, python-format
+#, python-format
 msgid "Same Issue (%(count)s)"
 msgstr "Gleiche Ausgabe (%(count)s)"
 
