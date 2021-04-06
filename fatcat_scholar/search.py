@@ -417,16 +417,25 @@ def do_fulltext_search(
     )
 
 
-def es_scholar_index_exists() -> bool:
+def es_scholar_index_alive() -> bool:
     """
-    Checks if the configured back-end elasticsearch index exists.
-    Intended to be used in health checks.
+    Checks if the configured back-end elasticsearch index exists and can
+    service queries. Intended to be used in health checks.
+
+    Note that the regular client.indices.exists(index) function call will
+    return an error if the cluster leader can not be reached, even if the local
+    node could service queries in a read-only manner.
+
+    The client.indices.get_mapping(index) API, or the client.cat.count(index)
+    API, both return quickly and indicate that queries can be run against the
+    index.
     """
     try:
-        resp = es_client.indices.exists(settings.ELASTICSEARCH_QUERY_FULLTEXT_INDEX)
+        resp = es_client.indices.get_mapping(settings.ELASTICSEARCH_QUERY_FULLTEXT_INDEX)
     except elasticsearch.exceptions.RequestError as e_raw:
         if e_raw.status_code == 404:
             return False
         else:
             raise e_raw
     return resp
+

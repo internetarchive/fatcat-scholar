@@ -25,7 +25,7 @@ from fatcat_scholar.search import (
     process_query,
     FulltextQuery,
     FulltextHits,
-    es_scholar_index_exists,
+    es_scholar_index_alive,
 )
 from fatcat_scholar.schema import ScholarDoc
 
@@ -118,7 +118,7 @@ def health_get() -> Any:
     """
     Checks that connection back to elasticsearch index is working.
     """
-    if not es_scholar_index_exists():
+    if not es_scholar_index_alive():
         raise HTTPException(status_code=503)
     return Response()
 
