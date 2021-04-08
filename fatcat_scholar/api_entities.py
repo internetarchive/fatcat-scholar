@@ -32,7 +32,7 @@ def entity_from_json(
     """
     if not api_client:
         api_client = _global_serde_api_client
-    thing = collections.namedtuple("Thing", ["data"])
+    thing = collections.namedtuple("thing", ["data"])
     thing.data = json_str
     return api_client.deserialize(thing, entity_type)
 
