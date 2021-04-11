@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # Bryan Newbold <bnewbold@robocracy.org>, 2021.
+# Eugenia Russell <eugenia.russell2019@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-03-25 11:07-0700\n"
-"PO-Revision-Date: 2021-03-25 00:25+0000\n"
-"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"PO-Revision-Date: 2021-04-13 00:26+0000\n"
+"Last-Translator: Eugenia Russell <eugenia.russell2019@gmail.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/el/>\n"
 "Language: el\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.5.2-dev\n"
+"X-Generator: Weblate 4.6-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 #: fatcat_scholar/search.py:42
@@ -26,7 +27,7 @@ msgstr "ημερομηνία κυκλοφορίας"
 
 #: fatcat_scholar/search.py:46
 msgid "All Time"
-msgstr ""
+msgstr "Όλος ο χρόνος"
 
 #: fatcat_scholar/search.py:47
 msgid "Past Week"
@@ -50,47 +51,47 @@ msgstr "Τύπος Πόρου"
 
 #: fatcat_scholar/search.py:58
 msgid "Papers"
-msgstr ""
+msgstr "Έγγραφα"
 
 #: fatcat_scholar/search.py:59
 msgid "Reports"
-msgstr ""
+msgstr "Αναφορές"
 
 #: fatcat_scholar/search.py:60
 msgid "Datasets"
-msgstr ""
+msgstr "Σύνολα δεδομένων"
 
 #: fatcat_scholar/search.py:61
 msgid "Everything"
-msgstr ""
+msgstr "Τα πάντα"
 
 #: fatcat_scholar/search.py:65
 msgid "Availability"
-msgstr ""
+msgstr "Διαθεσιμότητα"
 
 #: fatcat_scholar/search.py:69
 msgid "Fulltext"
-msgstr ""
+msgstr "Πλήρες κείμενο"
 
 #: fatcat_scholar/search.py:70
 msgid "Microfilm"
-msgstr ""
+msgstr "Μικροφίλμ"
 
 #: fatcat_scholar/search.py:71 fatcat_scholar/templates/search_macros.html:4
 msgid "Open Access"
-msgstr ""
+msgstr "Ανοικτή πρόσβαση"
 
 #: fatcat_scholar/search.py:72
 msgid "Metadata"
-msgstr ""
+msgstr "Μέτα δεδομένα"
 
 #: fatcat_scholar/search.py:76
 msgid "Sort Order"
-msgstr ""
+msgstr "Σειρά ταξινόμησης"
 
 #: fatcat_scholar/search.py:80
 msgid "Relevancy"
-msgstr ""
+msgstr "Σχετικότητα"
 
 #: fatcat_scholar/search.py:81
 msgid "Recent First"
