@@ -5,13 +5,14 @@
 # Bryan Newbold <bnewbold@robocracy.org>, 2020, 2021.
 # ysard <ysard_git@gmx.fr>, 2020.
 # Nathan <bonnemainsnathan@gmail.com>, 2021.
+# J. Lavoie <j.lavoie@net-c.ca>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-03-25 11:07-0700\n"
-"PO-Revision-Date: 2021-03-26 18:29+0000\n"
-"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"PO-Revision-Date: 2021-04-13 00:26+0000\n"
+"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/fr/>\n"
 "Language: fr\n"
@@ -48,7 +49,7 @@ msgstr "Avant 1925"
 
 #: fatcat_scholar/search.py:54
 msgid "Resource Type"
-msgstr "Type de Ressource"
+msgstr "Type de ressource"
 
 #: fatcat_scholar/search.py:58
 msgid "Papers"
@@ -129,7 +130,7 @@ msgstr "Comment ça marche"
 msgid "Content in this search index comes in one of three forms:"
 msgstr ""
 "Le contenu de cet index de recherche se présente sous l'une des trois formes "
-"suivantes :"
+"suivantes :"
 
 #: fatcat_scholar/templates/about.html:19
 msgid ""
@@ -137,15 +138,15 @@ msgid ""
 "\">The Wayback Machine</a> and <a href=\"https://archive-it.org\">Archive-"
 "It</a> partner collections"
 msgstr ""
-"<b> contenu Web public </b> tel que conservé dans <a href=\"https://web."
-"archive.org\"> The Wayback Machine </a> et <a href=\"https://archive-it.org"
-"\"> Archive-It </a> collections partenaires"
+"<b>contenu Web public</b> tel que conservé dans <a href=\"https://web.archive"
+".org\">The Wayback Machine</a> et <a href=\"https://archive-it.org\">Archive-"
+"It</a> collections partenaires"
 
 #: fatcat_scholar/templates/about.html:20
 msgid "<b>digitized print materials</b> from paper and microform collections"
 msgstr ""
-"<b> documents imprimés numérisés </b> provenant de collections de papier et "
-"de microformes"
+"<b>documents imprimés numérisés</b> provenant de collections de papier et de "
+"microformes"
 
 #: fatcat_scholar/templates/about.html:21
 msgid ""
@@ -273,7 +274,7 @@ msgstr "Contribuer aux traductions"
 
 #: fatcat_scholar/templates/base.html:125
 msgid "by title, authors, keywords..."
-msgstr "par titre, auteurs, mots-clés ..."
+msgstr "par titre, auteurs, mots-clés…"
 
 #: fatcat_scholar/templates/base.html:125
 msgid "search for papers"
@@ -311,7 +312,7 @@ msgstr "À propos de nous"
 
 #: fatcat_scholar/templates/base.html:171
 msgid "Contact Us"
-msgstr "Nous Contacter"
+msgstr "Nous contacter"
 
 #: fatcat_scholar/templates/base.html:172
 msgid "Policies"
@@ -407,8 +408,8 @@ msgid ""
 "indicated in the search results."
 msgstr ""
 "L'accès au contenu est fourni aux lecteurs lorsque cela est possible. "
-"Parfois, cet accès se fait à une \"pré-impression\" ou à une autre version "
-"de l'ouvrage, et cela est indiqué dans les résultats de la recherche."
+"Parfois, cet accès se fait à une « pré-impression » ou à ne autre version de "
+"l'ouvrage, et ceci est indiqué dans les résultats de la recherche."
 
 #: fatcat_scholar/templates/help.html:28
 msgid ""
@@ -490,7 +491,7 @@ msgid ""
 "attempt to parse the citation and do a match against our catalog of known "
 "works. When this happens, any filters are ignored."
 msgstr ""
-"À titre expérimental, si la requête de recherche \"ressemble\" à une "
+"À titre expérimental, si la requête de recherche « ressemble » à une "
 "citation formelle, telle que trouvée dans la bibliographie d'un document de "
 "recherche, le service tentera d'analyser la citation et d'établir une "
 "correspondance avec notre catalogue d'œuvres connues. Dans ce cas, les "
@@ -584,8 +585,8 @@ msgid ""
 "record\" of a research publication, but content is not always accessible to "
 "the general public"
 msgstr ""
-"La page d'accueil d'un éditeur est la source officielle de la \"version du "
-"dossier\" d'une publication de recherche, mais le contenu n'est pas toujours "
+"La page d'accueil d'un éditeur est la source officielle de la « version du "
+"dossier » d'une publication de recherche, mais le contenu n'est pas toujours "
 "accessible au grand public"
 
 #: fatcat_scholar/templates/help.html:138
@@ -595,8 +596,8 @@ msgid ""
 "all readers, the button has an orange \"unlocked\" icon"
 msgstr ""
 "Lorsque l'ouvrage provient d'une publication en libre accès (parfois appelée "
-"\"Gold\" ou \"Diamond\" OA), et que l'éditeur est censé permettre l'accès à "
-"tous les lecteurs, le bouton comporte une icône orange \"déverrouillée"
+"Gold ou Diamond OA), et que l'éditeur est censé permettre l'accès à tous les "
+"lecteurs, le bouton comporte une icône orange « déverrouillée »"
 
 #: fatcat_scholar/templates/help.html:142
 msgid ""
@@ -623,8 +624,8 @@ msgid ""
 "bibliographic metadata for the \"primary\" is being shown. Click the title "
 "to see other versions"
 msgstr ""
-"Il existe plusieurs \"versions\" ou \"éditions\" de cet ouvrage, et les "
-"métadonnées bibliographiques pour le \"primaire\" sont affichées. Cliquez "
+"Il existe plusieurs « versions » ou « éditions » de cet ouvrage, et les "
+"métadonnées bibliographiques pour le « primaire » sont affichées. Cliquez "
 "sur le titre pour voir les autres versions"
 
 #: fatcat_scholar/templates/help.html:164
@@ -634,16 +635,17 @@ msgid ""
 "\">ISO two-letter language code</a> is indicated"
 msgstr ""
 "La langue principale de ce travail est différente de la langue de "
-"l'interface de recherche. Le <a href=\"https://en.wikipedia.org/wiki/"
-"List_of_ISO_639-1_codes\"> code de langue ISO à deux lettres </a> est indiqué"
+"l'interface de recherche. Le <a href=\"https://fr.wikipedia.org/wiki/"
+"Liste_des_codes_ISO_639-1\"> code de langue ISO à deux lettres </a> est "
+"indiqué"
 
 #: fatcat_scholar/templates/help.html:168
 msgid ""
 "Published in a <a href=\"https://doaj.org\">Directory of Open Access "
 "Journals</a> publication, which implies that this is an Open Access work"
 msgstr ""
-"Publié dans un <a href=\"https://doaj.org\">\"Directory of Open Access "
-"Journals\"</a>, ce qui implique qu'il s'agit d'un ouvrage en libre accès"
+"Publié dans un <a href=\"https://doaj.org\">Directory of Open Access "
+"Journals</a>, ce qui implique qu'il s'agit d'un ouvrage en libre accès"
 
 #: fatcat_scholar/templates/help.html:172
 msgid ""
@@ -653,7 +655,7 @@ msgid ""
 msgstr ""
 "Publication indexée dans <a href=\"https://www.ebsco.com/open-access/"
 "szczepanski-list\">Szczepanski's List of Open Access Journals</a>, ce qui "
-"implique qu'il s'agit d'un travail Open Access"
+"implique qu'il s'agit d'un travail en accès libre"
 
 #: fatcat_scholar/templates/help.html:176
 msgid ""
@@ -702,7 +704,7 @@ msgid ""
 "the work. These are usually hyperlinks."
 msgstr ""
 "Sous les résultats de la recherche et les listes de versions alternatives, "
-"se trouvent des \"identifiants persistants\" connus qui identifient de "
+"se trouvent des « identifiants persistants » connus qui identifient de "
 "manière unique la version spécifique de l'œuvre. Il s'agit généralement "
 "d'hyperliens."
 
@@ -712,8 +714,8 @@ msgid ""
 "Object Identifier (DOI)</a>, provides a redirect to the publisher's landing "
 "page"
 msgstr ""
-"<a href=\"https://en.wikipedia.org/wiki/Digital_object_identifier\"> Digital "
-"Object Identifier (DOI) </a>, fournit une redirection vers la page de "
+"<a href=\"https://fr.wikipedia.org/wiki/Digital_Object_Identifier\">Digital "
+"Object Identifier (DOI)</a>, fournit une redirection vers la page de "
 "destination de l'éditeur"
 
 #: fatcat_scholar/templates/help.html:214
@@ -744,7 +746,7 @@ msgid ""
 "<a href=\"https://fatcat.wiki\">fatcat.wiki</a> \"release\" identifier. "
 "Scholar is built on top of the fatcat catalog"
 msgstr ""
-"<a href=\"https://fatcat.wiki\">fatcat.wiki</a> identifiant \"release\". "
+"<a href=\"https://fatcat.wiki\">fatcat.wiki</a> identifiant « release ». "
 "Scholar est construit sur le catalogue fatcat"
 
 #: fatcat_scholar/templates/help.html:240
@@ -756,7 +758,7 @@ msgid ""
 "This service is in \"alpha\". It has several bugs, experiences downtime, and "
 "has not been officially announced."
 msgstr ""
-"Ce service est en \"alpha\". Il a plusieurs bugs, connaît des interruptions "
+"Ce service est en « alpha ». Il a plusieurs bugs, connaît des interruptions "
 "de service, et n'a pas été officiellement annoncé."
 
 #: fatcat_scholar/templates/help.html:246 fatcat_scholar/templates/home.html:39
@@ -781,7 +783,7 @@ msgid ""
 "\"unpublished\" and are not associated with the conference."
 msgstr ""
 "Mauvaise qualité des métadonnées pour les actes des conférences. Beaucoup "
-"sont étiquetés \"non publiés\" et ne sont pas associés à la conférence."
+"sont étiquetés « non publiés » et ne sont pas associés à la conférence."
 
 #: fatcat_scholar/templates/help.html:257
 msgid ""
@@ -810,7 +812,7 @@ msgstr "Logo Internet Archive Scholar (vaporwave)"
 
 #: fatcat_scholar/templates/home.html:15
 msgid "by title, author, keywords..."
-msgstr "par titre, auteur, mots-clés ..."
+msgstr "par titre, auteur, mots-clés…"
 
 #: fatcat_scholar/templates/home.html:23
 msgid "Search Millions of Research Papers"
@@ -832,8 +834,8 @@ msgid ""
 "from the World Wide Web."
 msgstr ""
 "La collection s'étend des copies numérisées de revues du XVIIIe siècle à "
-"travers les derniers actes de conférence Open Access et les pré-impressions "
-"explorées à partir du World Wide Web."
+"travers les derniers actes de conférence en accès libre et les pré-"
+"impressions explorées à partir du World Wide Web."
 
 #: fatcat_scholar/templates/home.html:24
 msgid "More &raquo;"
