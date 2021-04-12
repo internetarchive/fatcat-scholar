@@ -8,6 +8,7 @@ import datetime
 from gettext import gettext
 from typing import List, Optional, Any
 
+import sentry_sdk
 import elasticsearch
 from elasticsearch_dsl import Search, Q
 from elasticsearch_dsl.response import Response
@@ -236,6 +237,7 @@ def process_query(query: FulltextQuery) -> FulltextHits:
         )
         fatcat_es_client = elasticsearch.Elasticsearch("https://search.fatcat.wiki")
         key: Optional[str] = None
+        # "best effort" fuzzy match lookup (but aggressively skip on any exception)
         try:
             key = try_fuzzy_match(
                 query.q,
@@ -243,13 +245,11 @@ def process_query(query: FulltextQuery) -> FulltextHits:
                 es_client=fatcat_es_client,
                 fatcat_api_client=api_client,
             )
-        except elasticsearch.exceptions.RequestError as e:
-            logging.warn(f"citation fuzzy failure: {e}")
-            pass
         except Exception as e:
-            # TODO: sentry log?
             logging.warn(f"citation fuzzy failure: {e}")
-            raise e
+            sentry_sdk.set_level("warning")
+            sentry_sdk.capture_exception(e)
+            pass
         if key:
             result = do_lookup_query(f"key:{key}")
             if result:
