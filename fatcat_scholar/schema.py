@@ -452,7 +452,9 @@ def scrub_text(raw: str, mimetype: str = None) -> Optional[str]:
 
 def contrib_name(contrib: ReleaseContrib) -> str:
     # TODO: support more cultural normals for name presentation
-    if contrib.raw_name:
+    if contrib.creator and contrib.creator.display_name:
+        return contrib.creator.display_name
+    elif contrib.raw_name:
         return contrib.raw_name
     elif contrib.given_name and contrib.surname:
         return f"{contrib.given_name} {contrib.surname}"
