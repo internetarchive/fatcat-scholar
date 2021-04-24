@@ -210,7 +210,7 @@ document.getElementById("search_form").onsubmit = function(){
     window.goatcounter = {
         /* title leaks search query, so don't report it */
         title: "",
-        {# to allow localhost connections (dev) to be colected, set: allow_local: true #}
+        {# to allow localhost connections (dev) to be collected, set: allow_local: true #}
     };
   </script>
   <script data-goatcounter="{{ settings.GOATCOUNTER_ENDPOINT }}" async src="{{ settings.GOATCOUNTER_SCRIPT_URL }}"></script>
