@@ -1,0 +1,48 @@
+{% import "search_macros.html" as search_macros %}
+{% extends "base.html" %}
+
+{% block title %}
+{{ doc.title }}
+{% endblock %}
+
+{% block extra_head %}
+  <link rel="canonical" href="/work/{{ doc.work_ident }}">
+
+  <meta name="citation_title" content="{{ doc.biblio.title }}">
+{% for contrib in doc.biblio.contrib_names %}
+  <meta name="citation_author" content="{{ contrib }}">
+{% endfor %}
+{% if doc.biblio.release_date or doc.biblio.release_year %}
+  <meta name="citation_publication_date" content="{{ doc.biblio.release_date or doc.biblio.release_year }}">
+{% endif %}
+{% if doc.biblio.container_name %}
+  <meta name="citation_journal_title" content="{{ doc.biblio.container_name }}">
+{% endif %}
+
+{% if doc.biblio.volume %}
+  <meta name="citation_volume" content="{{ doc.biblio.volume }}">
+{% endif %}
+{% if doc.biblio.issue %}
+  <meta name="citation_issue" content="{{ doc.biblio.issue }}">
+{% endif %}
+{% if doc.biblio.pages %}
+  <meta name="citation_first_page" content="{{ doc.biblio.pages }}">
+{% endif %}
+{% if doc.biblio.doi %}
+  <meta name="citation_doi" content="{{ doc.biblio.doi }}">
+{% endif %}
+{% if doc.fulltext.access_url and doc.biblio.release_ident == doc.fulltext.release_ident and doc.fulltext.access_type in ['wayback', 'ia_file'] and doc.fulltext.file_mimetype == "application/pdf" and doc.fulltext.file_sha1 %}
+<!-- PDF access redirect URL, as requested by, eg, scholar.google.com -->
+<meta name="citation_pdf_url" content="/access-redirect/{{ doc.fulltext.file_sha1 }}.pdf">
+<!-- <meta name="citation_pdf_url" content="{{ doc.fulltext.access_url }}"> -->
+{% endif %}
+
+{% endblock %}
+
+{% block fullmain %}
+<div class="ui centered grid">
+  <div class="ui fourteen wide column serp-column" style="margin-top: 2em;">
+    {{ search_macros.fulltext_search_result_row(doc, locale=locale, debug_mode=False, expand=True) }}
+  </div>
+</div>
+{% endblock %}

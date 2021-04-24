@@ -10,9 +10,14 @@ from typing import Optional, Any, List, Dict
 from pydantic import BaseModel
 import babel.numbers
 import babel.support
-from fastapi import FastAPI, APIRouter, Request, Depends, Response, HTTPException
+from fastapi import FastAPI, APIRouter, Request, Depends, Response, HTTPException, Query
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import PlainTextResponse, JSONResponse, FileResponse
+from fastapi.responses import (
+    PlainTextResponse,
+    JSONResponse,
+    FileResponse,
+    RedirectResponse,
+)
 from fastapi.middleware.cors import CORSMiddleware
 import sentry_sdk
 from sentry_sdk.integrations.asgi import SentryAsgiMiddleware
@@ -26,6 +31,8 @@ from fatcat_scholar.search import (
     FulltextQuery,
     FulltextHits,
     es_scholar_index_alive,
+    get_es_scholar_doc,
+    lookup_fulltext_pdf,
 )
 from fatcat_scholar.schema import ScholarDoc
 
@@ -158,6 +165,60 @@ def search(query: FulltextQuery = Depends(FulltextQuery)) -> FulltextHits:
         doc.pop("_obj", None)
 
     return hits
+
+
+@api.get("/work/{work_ident}", operation_id="get_work")
+def get_work(work_ident: str = Query(..., min_length=20, max_length=20)) -> dict:
+    doc = get_es_scholar_doc(f"work_{work_ident}")
+    if not doc:
+        raise HTTPException(status_code=404, detail="work not found")
+    doc.pop("_obj", None)
+    return doc
+
+
+def wayback_direct_url(url: str) -> str:
+    """
+    Re-writes a wayback replay URL to add the 'id_' suffix (or equivalent for direct file access)
+    """
+    if not "://web.archive.org" in url:
+        return url
+    segments = url.split("/")
+    if len(segments) < 6 or not segments[4].isdigit():
+        return url
+    segments[4] += "id_"
+    return "/".join(segments)
+
+
+def test_wayback_direct_url() -> None:
+    assert (
+        wayback_direct_url("http://fatcat.wiki/thing.pdf")
+        == "http://fatcat.wiki/thing.pdf"
+    )
+    assert (
+        wayback_direct_url("https://web.archive.org/web/*/http://fatcat.wiki/thing.pdf")
+        == "https://web.archive.org/web/*/http://fatcat.wiki/thing.pdf"
+    )
+    assert (
+        wayback_direct_url(
+            "https://web.archive.org/web/1234/http://fatcat.wiki/thing.pdf"
+        )
+        == "https://web.archive.org/web/1234id_/http://fatcat.wiki/thing.pdf"
+    )
+
+
+@api.get(
+    "/access-redirect/{sha1}.pdf",
+    operation_id="access_redirect_pdf",
+    include_in_schema=False,
+)
+def access_redirect_pdf(sha1: str = Query(..., min_length=40, max_length=40)) -> Any:
+    fulltext = lookup_fulltext_pdf(sha1)
+    if not fulltext or not fulltext.access_url:
+        raise HTTPException(status_code=404, detail="PDF file not found")
+    access_url = fulltext.access_url
+    if fulltext.access_type == "wayback":
+        access_url = wayback_direct_url(access_url)
+    return RedirectResponse(access_url, status_code=302)
 
 
 web = APIRouter()
@@ -293,6 +354,33 @@ def web_search(
         },
         headers=headers,
         status_code=status_code,
+    )
+
+
+@web.get("/work/{work_ident}", include_in_schema=False)
+def web_work(
+    request: Request,
+    response: Response,
+    work_ident: str = Query(..., min_length=20, max_length=20),
+    lang: LangPrefix = Depends(LangPrefix),
+    content: ContentNegotiation = Depends(ContentNegotiation),
+) -> Any:
+
+    if content.mimetype == "application/json":
+        return get_work(work_ident)
+
+    doc = get_es_scholar_doc(f"work_{work_ident}")
+    if not doc:
+        raise HTTPException(status_code=404, detail="work not found")
+
+    return i18n_templates[lang.code].TemplateResponse(
+        "work.html",
+        {
+            "request": request,
+            "locale": lang.code,
+            "lang_prefix": lang.prefix,
+            "doc": doc,
+        },
     )
 
 

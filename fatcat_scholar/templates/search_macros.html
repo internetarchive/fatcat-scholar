@@ -435,7 +435,7 @@
   {{ platform_access_button(paper.biblio) }}
 
   {# ### COLLAPSED HITS  #}
-  {% if paper._collapsed_count > 0 %}
+  {% if paper._collapsed_count and paper._collapsed_count > 0 %}
     <button class="ui basic compact blue labeled icon button serp-button" form="search_form" type="submit" name="collapse_key" value="{{ paper.collapse_key }}">
       <i class="ui icon zoom-in"></i>
       {% trans trimmed count=paper._collapsed_count %}

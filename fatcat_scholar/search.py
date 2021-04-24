@@ -21,7 +21,7 @@ from pydantic import BaseModel
 
 from fatcat_scholar.config import settings
 from fatcat_scholar.identifiers import *
-from fatcat_scholar.schema import ScholarDoc
+from fatcat_scholar.schema import ScholarDoc, ScholarFulltext
 from fatcat_scholar.query_parse import sniff_citation_query, pre_parse_query
 from fatcat_scholar.query_citation import try_fuzzy_match
 
@@ -444,3 +444,39 @@ def es_scholar_index_alive() -> bool:
         return bool(resp["_shards"]["successful"] == resp["_shards"]["total"])
     except KeyError:
         return False
+
+
+def get_es_scholar_doc(key: str) -> Optional[dict]:
+    """
+    Fetch a single document from search index, by key. Returns None if not found.
+    """
+    try:
+        resp = es_client.get(settings.ELASTICSEARCH_QUERY_FULLTEXT_INDEX, key)
+    except elasticsearch.exceptions.NotFoundError:
+        return None
+    doc = resp["_source"]
+    try:
+        doc["_obj"] = ScholarDoc.parse_obj(doc)
+    except Exception:
+        pass
+    return doc
+
+
+def lookup_fulltext_pdf(sha1: str) -> Optional[dict]:
+    """
+    Fetch a document by fulltext file sha1, returning only the 'fulltext' sub-document.
+    """
+    sha1 = sha1.lower()
+    assert len(sha1) == 40 and sha1.isalnum()
+    hits = do_lookup_query(
+        f'fulltext.file_sha1:{sha1} fulltext.file_mimetype:"application/pdf"'
+    )
+    if not hits.results:
+        return None
+    fulltext = ScholarFulltext.parse_obj(hits.results[0]["fulltext"])
+    if not fulltext.access_type in ("ia_file", "wayback"):
+        return None
+    assert fulltext.file_sha1 == sha1
+    assert fulltext.file_mimetype == "application/pdf"
+    assert fulltext.access_url
+    return fulltext
