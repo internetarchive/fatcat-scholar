@@ -1,0 +1,83 @@
+{
+  "_index" : "scholar_fulltext_v01",
+  "_type" : "_doc",
+  "_id" : "work_2x5qvct2dnhrbctqa2q2uyut6a",
+  "_score" : 128.72282,
+  "_source" : {
+    "collapse_key" : "2x5qvct2dnhrbctqa2q2uyut6a",
+    "work_ident" : "2x5qvct2dnhrbctqa2q2uyut6a",
+    "access" : [
+      {
+        "access_type" : "wayback",
+        "access_url" : "https://web.archive.org/web/20200206164725/https://www.federalreserve.gov/econresdata/feds/2015/files/2015118pap.pdf",
+        "file_ident" : "2ya6svbh7be6jcy5w7tuwqod4u",
+        "mimetype" : "application/pdf",
+        "release_ident" : "vtfxc3mibrcpxnv6q5xmr46o5a"
+      }
+    ],
+    "abstracts" : [
+      {
+        "body" : "The U.S. federal government enacted fuel efficiency standards for medium and heavy trucks for the first time in September 2011. Rationales for using this policy tool typically depend upon frictions existing in the marketplace or consumers being myopic, such that vehicle purchasers undervalue the future fuel savings from increased fuel efficiency. We measure by how much long-haul truck owners undervalue future fuel savings by employing recent advances to the classic hedonic approach to estimate the distribution of willingness-to-pay for fuel efficiency. We find significant heterogeneity in truck owners' willingness to pay for fuel efficiency, with the elasticity of fuel efficiency to price ranging from 0.51 at the 10th percentile to 1.33 at the 90th percentile, and an average of 0.91. Combining these results with estimates of future fuel savings from increases in fuel efficiency, we find that long-haul truck owners' willingness-to-pay for a 1 percent increase in fuel efficiency is, on average, just 29.5 percent of the expected future fuel savings. These results suggest that introducing fuel efficiency standards for heavy trucks might be an effective policy tool to raise medium and heavy trucks' fuel economy."
+      }
+    ],
+    "biblio" : {
+      "affiliations" : [ ],
+      "container_ident" : "57xsxj4wvrgofg57esefycoeuu",
+      "container_issnl" : "1936-2854",
+      "container_name" : "Finance and Economics Discussion Series",
+      "contrib_count" : 3,
+      "contrib_names" : [
+        "Jacob Adenbaum",
+        "Adam Copeland",
+        "John J. Stevens"
+      ],
+      "doi" : "10.17016/feds.2015.118",
+      "doi_prefix" : "10.17016",
+      "doi_registrar" : "crossref",
+      "first_page" : "1",
+      "first_page_int" : 1,
+      "issns" : [
+        "1936-2854"
+      ],
+      "issue" : "118",
+      "issue_int" : 118,
+      "pages" : "1-42",
+      "publisher" : "Board of Governors of the Federal Reserve System",
+      "release_ident" : "vtfxc3mibrcpxnv6q5xmr46o5a",
+      "release_stage" : "published",
+      "release_type" : "article-journal",
+      "release_year" : 2015,
+      "title" : "Do long-haul truckers undervalue future fuel savings?",
+      "volume" : "2015",
+      "volume_int" : 2015
+    },
+    "fulltext" : {
+      "file_mimetype" : "application/pdf",
+      "access_type" : "wayback",
+      "file_sha1" : "f81f84e23c9ba5d364c70f01fa26e645d29c0427",
+      "file_ident" : "2ya6svbh7be6jcy5w7tuwqod4u",
+      "access_url" : "https://web.archive.org/web/20200206164725/https://www.federalreserve.gov/econresdata/feds/2015/files/2015118pap.pdf",
+      "release_ident" : "vtfxc3mibrcpxnv6q5xmr46o5a"
+    },
+    "doc_type" : "work",
+    "doc_index_ts" : "2020-08-16T07:01:10.483107",
+    "key" : "work_2x5qvct2dnhrbctqa2q2uyut6a",
+    "releases" : [
+      {
+        "container_ident" : "57xsxj4wvrgofg57esefycoeuu",
+        "container_issnl" : "1936-2854",
+        "container_name" : "Finance and Economics Discussion Series",
+        "doi" : "10.17016/feds.2015.118",
+        "doi_prefix" : "10.17016",
+        "doi_registrar" : "crossref",
+        "ident" : "vtfxc3mibrcpxnv6q5xmr46o5a",
+        "release_stage" : "published",
+        "release_type" : "article-journal",
+        "release_year" : 2015,
+        "revision" : "00193f29-047a-4d00-9037-d7a2f93c3a71",
+        "title" : "Do long-haul truckers undervalue future fuel savings?"
+      }
+    ],
+    "tags" : [ ]
+  }
+}

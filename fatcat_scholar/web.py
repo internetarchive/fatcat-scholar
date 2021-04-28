@@ -380,6 +380,7 @@ def web_work(
             "locale": lang.code,
             "lang_prefix": lang.prefix,
             "doc": doc,
+            "work": doc["_obj"],
         },
     )
 

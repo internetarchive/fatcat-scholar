@@ -2,39 +2,39 @@
 {% extends "base.html" %}
 
 {% block title %}
-{{ doc.title }}
+{{ work.title }}
 {% endblock %}
 
 {% block extra_head %}
-  <link rel="canonical" href="/work/{{ doc.work_ident }}">
+  <link rel="canonical" href="/work/{{ work.work_ident }}">
 
-  <meta name="citation_title" content="{{ doc.biblio.title }}">
-{% for contrib in doc.biblio.contrib_names %}
+  <meta name="citation_title" content="{{ work.biblio.title }}">
+{% for contrib in work.biblio.contrib_names %}
   <meta name="citation_author" content="{{ contrib }}">
 {% endfor %}
-{% if doc.biblio.release_date or doc.biblio.release_year %}
-  <meta name="citation_publication_date" content="{{ doc.biblio.release_date or doc.biblio.release_year }}">
+{% if work.biblio.release_date or work.biblio.release_year %}
+  <meta name="citation_publication_date" content="{{ work.biblio.release_date or work.biblio.release_year }}">
 {% endif %}
-{% if doc.biblio.container_name %}
-  <meta name="citation_journal_title" content="{{ doc.biblio.container_name }}">
+{% if work.biblio.container_name %}
+  <meta name="citation_journal_title" content="{{ work.biblio.container_name }}">
 {% endif %}
 
-{% if doc.biblio.volume %}
-  <meta name="citation_volume" content="{{ doc.biblio.volume }}">
+{% if work.biblio.volume %}
+  <meta name="citation_volume" content="{{ work.biblio.volume }}">
 {% endif %}
-{% if doc.biblio.issue %}
-  <meta name="citation_issue" content="{{ doc.biblio.issue }}">
+{% if work.biblio.issue %}
+  <meta name="citation_issue" content="{{ work.biblio.issue }}">
 {% endif %}
-{% if doc.biblio.pages %}
-  <meta name="citation_first_page" content="{{ doc.biblio.pages }}">
+{% if work.biblio.pages %}
+  <meta name="citation_first_page" content="{{ work.biblio.pages }}">
 {% endif %}
-{% if doc.biblio.doi %}
-  <meta name="citation_doi" content="{{ doc.biblio.doi }}">
+{% if work.biblio.doi %}
+  <meta name="citation_doi" content="{{ work.biblio.doi }}">
 {% endif %}
-{% if doc.fulltext.access_url and doc.biblio.release_ident == doc.fulltext.release_ident and doc.fulltext.access_type in ['wayback', 'ia_file'] and doc.fulltext.file_mimetype == "application/pdf" and doc.fulltext.file_sha1 %}
+{% if work.fulltext.access_url and work.biblio.release_ident == work.fulltext.release_ident and work.fulltext.access_type in ['wayback', 'ia_file'] and work.fulltext.file_mimetype == "application/pdf" and work.fulltext.file_sha1 %}
 <!-- PDF access redirect URL, as requested by, eg, scholar.google.com -->
-<meta name="citation_pdf_url" content="/access-redirect/{{ doc.fulltext.file_sha1 }}.pdf">
-<!-- <meta name="citation_pdf_url" content="{{ doc.fulltext.access_url }}"> -->
+<meta name="citation_pdf_url" content="/access-redirect/{{ work.fulltext.file_sha1 }}.pdf">
+<!-- <meta name="citation_pdf_url" content="{{ work.fulltext.access_url }}"> -->
 {% endif %}
 
 {% endblock %}

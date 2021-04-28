@@ -469,14 +469,17 @@ def lookup_fulltext_pdf(sha1: str) -> Optional[dict]:
     sha1 = sha1.lower()
     assert len(sha1) == 40 and sha1.isalnum()
     hits = do_lookup_query(
-        f'fulltext.file_sha1:{sha1} fulltext.file_mimetype:"application/pdf"'
+        f'fulltext.file_sha1:{sha1} fulltext.file_mimetype:"application/pdf" fulltext.access_url:*'
     )
     if not hits.results:
         return None
     fulltext = ScholarFulltext.parse_obj(hits.results[0]["fulltext"])
     if not fulltext.access_type in ("ia_file", "wayback"):
         return None
-    assert fulltext.file_sha1 == sha1
-    assert fulltext.file_mimetype == "application/pdf"
-    assert fulltext.access_url
+    if fulltext.file_sha1 != sha1:
+        return None
+    if fulltext.file_mimetype != "application/pdf":
+        return None
+    if not fulltext.access_url:
+        return None
     return fulltext
