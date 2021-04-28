@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-03-25 11:07-0700\n"
-"PO-Revision-Date: 2021-04-13 00:26+0000\n"
+"PO-Revision-Date: 2021-04-29 19:35+0000\n"
 "Last-Translator: Eugenia Russell <eugenia.russell2019@gmail.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/el/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.6-dev\n"
+"X-Generator: Weblate 4.7-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 #: fatcat_scholar/search.py:42
@@ -95,20 +95,20 @@ msgstr "Σχετικότητα"
 
 #: fatcat_scholar/search.py:81
 msgid "Recent First"
-msgstr ""
+msgstr "Πρόσφατα πρώτα"
 
 #: fatcat_scholar/search.py:82
 msgid "Oldest First"
-msgstr ""
+msgstr "Πρώτα τα παλαιότερα"
 
 #: fatcat_scholar/templates/about.html:4
 #, python-format
 msgid "About %(website_name)s"
-msgstr ""
+msgstr "Σχετικά με το %(website_name)s"
 
 #: fatcat_scholar/templates/about.html:8
 msgid "About Internet Archive Scholar"
-msgstr ""
+msgstr "Σχετικά με το Internet Archive Scholar"
 
 #: fatcat_scholar/templates/about.html:10
 #, python-format
@@ -120,11 +120,11 @@ msgstr ""
 #: fatcat_scholar/templates/about.html:14
 #: fatcat_scholar/templates/base.html:191
 msgid "How It Works"
-msgstr ""
+msgstr "Πώς λειτουργεί"
 
 #: fatcat_scholar/templates/about.html:16
 msgid "Content in this search index comes in one of three forms:"
-msgstr ""
+msgstr "Το περιεχόμενο σε αυτό το ευρετήριο αναζήτησης έχει τρεις μορφές:"
 
 #: fatcat_scholar/templates/about.html:19
 msgid ""
