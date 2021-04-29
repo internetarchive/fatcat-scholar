@@ -1,5 +1,17 @@
-# Allow most queries, but please don't crawl search results (or at least do so very politely, eg no parallel requests)
+# Hello friends!
+# If you are considering large or automated crawling, you may want to look at
+# our catalog API (https://api.fatcat.wiki) or bulk database snapshots instead.
 
+# by default, can crawl anything on this domain. HTTP 429 ("backoff") status
+# codes are used for rate-limiting instead of any crawl delay specified here.
+# Up to a handful concurrent requests should be fine.
 User-Agent: *
-Disallow: /search
 Allow: /
+
+# crawling search result pages is expensive, so we do specify a long crawl delay for those
+User-agent: *
+Allow: /search
+Crawl-delay: 5
+
+Sitemap: /sitemap.xml
+Sitemap: /sitemap-index-works.xml

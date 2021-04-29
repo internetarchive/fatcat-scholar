@@ -413,6 +413,12 @@ async def favicon() -> Any:
         "fatcat_scholar/static/ia-favicon.ico", media_type="image/x-icon"
     )
 
+@app.get("/sitemap.xml", include_in_schema=False)
+async def basic_sitemap() -> Any:
+    return FileResponse(
+        "fatcat_scholar/static/sitemap.xml", media_type="application/xml"
+    )
+
 
 ROBOTS_ALLOW = open("fatcat_scholar/static/robots.allow.txt", "r").read()
 ROBOTS_DISALLOW = open("fatcat_scholar/static/robots.disallow.txt", "r").read()
