@@ -16,8 +16,14 @@ See also:
 - added Italian (it) translation
 - added Dutch (nl) translation
 - added Portuguese (pt) translation
+- added Korean (ko) translation
+- work landing pages
+- sitemaps (eg, sitemap.xml and work sitemaps linked from robots.txt)
+- "access-redirect" URLs for PDF access
 
 ### Changed
+
+- parsed queries do not clobber user input (search box)
 
 ### Fixed
 
