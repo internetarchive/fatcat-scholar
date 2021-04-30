@@ -31,6 +31,7 @@ from fatcat_scholar.query_citation import try_fuzzy_match
 
 class FulltextQuery(BaseModel):
     q: Optional[str] = None
+    parsed_q: Optional[str] = None
     limit: Optional[int] = None
     offset: Optional[int] = None
     filter_time: Optional[str] = None
@@ -259,7 +260,7 @@ def process_query(query: FulltextQuery) -> FulltextHits:
     # fall through to regular query, with pre-parsing
     query = copy.copy(query)
     if query.q:
-        query.q = pre_parse_query(query.q)
+        query.parsed_q = pre_parse_query(query.q)
 
     return do_fulltext_search(query)
 
@@ -301,7 +302,7 @@ def do_fulltext_search(
     # this query use the fancy built-in query string parser
     basic_fulltext = Q(
         "query_string",
-        query=query.q,
+        query=query.parsed_q or query.q,
         default_operator="AND",
         analyze_wildcard=True,
         allow_leading_wildcard=False,
@@ -337,7 +338,7 @@ def do_fulltext_search(
 
     # simplified version of basic_fulltext query, for highlighting
     highlight_query = Q(
-        "query_string", query=query.q, default_operator="AND", lenient=True,
+        "query_string", query=query.parsed_q or query.q, default_operator="AND", lenient=True,
     )
     search = search.highlight(
         "abstracts.body",

@@ -125,6 +125,9 @@
             <div class="ui action input large fluid">
               <input type="search" placeholder="{{ _("by title, authors, keywords...") }}" name="q" aria-label="{{ _('search for papers') }}" required itemprop="query-input" style="border-radius: 0; border: 1px #999 solid;" {% if query and query.q %}value="{{ query.q }}"{% endif %}>
               <button id="search_submit_button" class="ui green button" style="border-radius: 0; background-color: #44a25a; font-size: 1.2rem;">{{ _("Search") }}</button>
+              {% if query and query.parsed_q %}
+                <!-- parsed query: {{ query.parsed_q }} -->
+              {% endif %}
             </div>
           </div>
         </form>
