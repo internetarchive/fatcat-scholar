@@ -5,13 +5,14 @@
 # Bryan Newbold <bnewbold@robocracy.org>, 2021.
 # gio <gdamiola@gmail.com>, 2021.
 # Alessandro Mandelli <mandelli.alessandro@ngi.it>, 2021.
+# J. Lavoie <j.lavoie@net-c.ca>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-03-25 11:07-0700\n"
-"PO-Revision-Date: 2021-03-26 18:29+0000\n"
-"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"PO-Revision-Date: 2021-04-13 00:26+0000\n"
+"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/it/>\n"
 "Language: it\n"
@@ -52,15 +53,15 @@ msgstr "Tipo di risorsa"
 
 #: fatcat_scholar/search.py:58
 msgid "Papers"
-msgstr "Papers"
+msgstr "Pubblicazioni"
 
 #: fatcat_scholar/search.py:59
 msgid "Reports"
-msgstr "Reports"
+msgstr "Rapporti"
 
 #: fatcat_scholar/search.py:60
 msgid "Datasets"
-msgstr "Datasets"
+msgstr "Set di dati"
 
 #: fatcat_scholar/search.py:61
 msgid "Everything"
@@ -80,7 +81,7 @@ msgstr "Microfilm"
 
 #: fatcat_scholar/search.py:71 fatcat_scholar/templates/search_macros.html:4
 msgid "Open Access"
-msgstr "Open Access"
+msgstr "Accesso aperto"
 
 #: fatcat_scholar/search.py:72
 msgid "Metadata"
@@ -315,7 +316,7 @@ msgstr "Fai una donazione"
 
 #: fatcat_scholar/templates/base.html:179
 msgid "Open Infrastructure"
-msgstr "Infrastruttura Open"
+msgstr "Infrastruttura aperta"
 
 #: fatcat_scholar/templates/base.html:181
 msgid "Editable Catalog (Fatcat)"
@@ -335,7 +336,7 @@ msgstr "Stato del servizio"
 
 #: fatcat_scholar/templates/base.html:185
 msgid "Source Code"
-msgstr "Codice Sorgente"
+msgstr "Codice sorgente"
 
 #: fatcat_scholar/templates/base.html:194
 msgid "Help"
@@ -481,7 +482,7 @@ msgid ""
 "attempt to parse the citation and do a match against our catalog of known "
 "works. When this happens, any filters are ignored."
 msgstr ""
-"In via sperimentale, se la query di ricerca \"assomiglia\" ad una citazione "
+"In via sperimentale, se la query di ricerca «assomiglia» ad una citazione "
 "formale, come appare nella bibliografia di un paper di ricerca, il servizio "
 "tenterà di analizzarla facendo un confronto con il nostro catalogo. In "
 "questo caso, tutti i filtri verranno ignorati."
@@ -546,8 +547,9 @@ msgid ""
 msgstr ""
 "Qualora la copia conservata dell'opera provenga da una prestampa, da un "
 "manoscritto d'autore o da una versione alternativa dell'opera, verrà "
-"indicato nel link al documento. Puoi ottenere i dettagli e visualizzare "
-"tutte le versioni cliccando sul link del titolo principale."
+"indicato nel collegamento al documento. Puoi ottenere i dettagli e "
+"visualizzare tutte le versioni cliccando sul collegamento del titolo "
+"principale"
 
 #: fatcat_scholar/templates/help.html:126
 msgid ""
@@ -565,8 +567,7 @@ msgid ""
 "Access may be limited to controlled lending"
 msgstr ""
 "In via sperimentale possono essere linkate alcune copie digitalizzate di "
-"opere su microfilm. L'accesso può essere limitato al prestito (\"controlled "
-"lending\")"
+"opere su microfilm. L'accesso può essere limitato al prestito controllato"
 
 #: fatcat_scholar/templates/help.html:134
 msgid ""
@@ -574,9 +575,9 @@ msgid ""
 "record\" of a research publication, but content is not always accessible to "
 "the general public"
 msgstr ""
-"La pagina dell'editore è la fonte autoritativa per la \"versione del "
-"document\" di una pubblicazione di ricerca, ma il contenuto non è sempre "
-"accessibile al pubblico"
+"La pagina dell'editore è la fonte autoritativa per la «versione del document»"
+" di una pubblicazione di ricerca, ma il contenuto non è sempre accessibile "
+"al pubblico"
 
 #: fatcat_scholar/templates/help.html:138
 msgid ""
@@ -584,10 +585,9 @@ msgid ""
 "\" or \"Diamond\" OA), and the publisher is expected to provide access to "
 "all readers, the button has an orange \"unlocked\" icon"
 msgstr ""
-"Quando il lavoro proviene da una pubblicazione Open Access (talvolta "
-"conosciuta come \"Gold\" o \"Diamond\" OA), l'editore deve fornirne "
-"l'accesso a tutti i lettori, il pulsante ha un'icona arancione \"lucchetto "
-"aperto\""
+"Quando il lavoro proviene da una pubblicazione in accesso libero (talvolta "
+"conosciuta come Gold o Diamond OA), l'editore deve fornirne l'accesso a "
+"tutti i lettori, il pulsante ha un'icona arancione «lucchetto aperto»"
 
 #: fatcat_scholar/templates/help.html:142
 msgid ""
@@ -804,15 +804,15 @@ msgstr "per titolo, autore, parole chiave..."
 
 #: fatcat_scholar/templates/home.html:23
 msgid "Search Millions of Research Papers"
-msgstr "Cerca fra milioni di Research Papers"
+msgstr "Cerca fra milioni di articoli di ricerca"
 
 #: fatcat_scholar/templates/home.html:24
 msgid ""
 "This fulltext search index includes over 25 million research articles and "
 "other scholarly documents preserved in the Internet Archive."
 msgstr ""
-"Questo motore di ricerca fulltext include oltre 25 milioni di papers e altri "
-"documenti accademici conservati nell'Internet Archive."
+"Questo motore di ricerca fulltext include oltre 25 milioni di articoli e "
+"altri documenti accademici conservati nell'Internet Archive."
 
 #: fatcat_scholar/templates/home.html:24
 msgid ""
@@ -821,8 +821,8 @@ msgid ""
 "from the World Wide Web."
 msgstr ""
 "La collezione spazia da copie digitalizzate di riviste del XVIII secolo fino "
-"ai più recenti atti di conferenze Open Access e alle pre-stampe estratte dal "
-"Web."
+"ai più recenti atti di conferenze in accesso libero e alle pre-stampe "
+"estratte dal Web."
 
 #: fatcat_scholar/templates/home.html:24
 msgid "More &raquo;"

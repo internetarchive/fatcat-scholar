@@ -7,13 +7,14 @@
 # Bryan Newbold <bnewbold@robocracy.org>, 2020, 2021.
 # Milo Ivir <mail@milotype.de>, 2020.
 # nautilusx <translate@disroot.org>, 2021.
+# J. Lavoie <j.lavoie@net-c.ca>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-03-25 11:07-0700\n"
-"PO-Revision-Date: 2021-04-06 21:26+0000\n"
-"Last-Translator: nautilusx <translate@disroot.org>\n"
+"PO-Revision-Date: 2021-04-13 00:26+0000\n"
+"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/de/>\n"
 "Language: de\n"
@@ -82,7 +83,7 @@ msgstr "Mikrofilm"
 
 #: fatcat_scholar/search.py:71 fatcat_scholar/templates/search_macros.html:4
 msgid "Open Access"
-msgstr "Open Access"
+msgstr "Offener Zugang"
 
 #: fatcat_scholar/search.py:72
 msgid "Metadata"
@@ -269,7 +270,7 @@ msgstr "Übersetzungen hinzufügen"
 
 #: fatcat_scholar/templates/base.html:125
 msgid "by title, authors, keywords..."
-msgstr "nach Titel, Autoren, Schlüsselwörtern..."
+msgstr "nach Titel, Autoren, Schlüsselwörtern …"
 
 #: fatcat_scholar/templates/base.html:125
 msgid "search for papers"
@@ -401,7 +402,7 @@ msgid ""
 "indicated in the search results."
 msgstr ""
 "Wenn möglich, wird ein Lesezugriff zum Inhalt angeboten. Manchmal bietet "
-"dieser Zugriff auf einen \"Pre-Print\" oder eine andere Version der Arbeit, "
+"dieser Zugriff auf einen „Vorabdruck“ oder eine andere Version der Arbeit, "
 "und dies wird in den Suchergebnissen angegeben."
 
 #: fatcat_scholar/templates/help.html:28
@@ -484,8 +485,8 @@ msgid ""
 "attempt to parse the citation and do a match against our catalog of known "
 "works. When this happens, any filters are ignored."
 msgstr ""
-"Als experimentelle Funktion versucht der Dienst, wenn die Suchanfrage \"wie"
-"\" ein formales Zitat aussieht, wie es in der Bibliographie einer "
+"Als experimentelle Funktion versucht der Dienst, wenn die Suchanfrage „wie“ "
+"ein formales Zitat aussieht, wie es in der Bibliographie einer "
 "Forschungsarbeit zu finden ist, das Zitat zu analysieren und einen Abgleich "
 "mit unserem Katalog bekannter Werke durchzuführen. Wenn dies geschieht, "
 "werden alle Filter ignoriert."
@@ -578,9 +579,9 @@ msgid ""
 "record\" of a research publication, but content is not always accessible to "
 "the general public"
 msgstr ""
-"Eine Verlags-Landingpage ist die maßgebliche Quelle für die \"Version of "
-"Record\" einer Forschungspublikation, aber der Inhalt ist nicht immer für "
-"die Allgemeinheit zugänglich"
+"Eine Verlags-Landingpage ist die maßgebliche Quelle für die „Version of "
+"Record“ einer Forschungspublikation, aber der Inhalt ist nicht immer für die "
+"Allgemeinheit zugänglich"
 
 #: fatcat_scholar/templates/help.html:138
 msgid ""
@@ -589,9 +590,9 @@ msgid ""
 "all readers, the button has an orange \"unlocked\" icon"
 msgstr ""
 "Wenn das Werk aus einer Open-Access-Publikation stammt (manchmal auch als "
-"\"Gold\" oder \"Diamond\" OA bezeichnet) und vom Verlag erwartet wird, dass "
-"er allen Lesern Zugang gewährt, ist die Schaltfläche mit einem "
-"orangefarbenen \"Unlocked\"-Symbol versehen"
+"Gold oder Diamond OA bezeichnet) und vom Verlag erwartet wird, dass er allen "
+"Lesern Zugang gewährt, ist die Schaltfläche mit einem orangefarbenen "
+"Entsperrt-Symbol versehen"
 
 #: fatcat_scholar/templates/help.html:142
 msgid ""
@@ -805,7 +806,7 @@ msgstr "Internet Archive Scholar Logo (vaporwave)"
 
 #: fatcat_scholar/templates/home.html:15
 msgid "by title, author, keywords..."
-msgstr "nach Titel, Autor, Schlüsselwörtern..."
+msgstr "nach Titel, Autor, Schlüsselwörtern …"
 
 #: fatcat_scholar/templates/home.html:23
 msgid "Search Millions of Research Papers"
