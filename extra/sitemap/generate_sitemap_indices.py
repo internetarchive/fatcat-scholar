@@ -10,7 +10,7 @@ def index_entity(entity_type, output):
     print("""<?xml version="1.0" encoding="UTF-8"?>""", file=output)
     print("""<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">""", file=output)
 
-    for filename in glob.glob(f"sitemap-{entity_type}-*.txt.gz"):
+    for filename in glob.glob(f"sitemap-{entity_type}-*.txt"):
         print("  <sitemap>", file=output)
         print(f"    <loc>https://scholar.archive.org/{filename}</loc>", file=output)
         print(f"    <lastmod>{now}</lastmod>", file=output)

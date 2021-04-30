@@ -16,5 +16,3 @@ fatcat-cli search scholar 'doc_type:work (fulltext.access_type:ia_file OR fullte
     | tr '_' '/' \
     | awk '{print "https://scholar.archive.org/" $1}' \
     | split --lines 20000 - sitemap-works-$DATE- -d -a 5 --additional-suffix .txt
-
-gzip sitemap-works-*.txt
