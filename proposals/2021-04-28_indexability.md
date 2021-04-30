@@ -46,6 +46,8 @@ release will be linked, not earlier pre-print or accepted manuscript versions.
 This behavior may change at some point to include "green" access links from the
 "work" landing page.
 
+The `citation_pdf_url` tag should contain an absolute URL, not a relative URL.
+
 Alternatively, we could have landing pages only for "releases" (versions), like
 already exist on fatcat.wiki. This would make the decision about which files to
 link to simpler.
@@ -101,6 +103,8 @@ will include:
     /robots.txt - updated to include sitemap references
     /sitemap.xml - basic generic list of pages (homepage, about, userguide)
     /sitemap-index-works.xml - XML file pointing to many sub-sitemap files; includes lastmod metadata
-    /sitemap-works-YYYY-MM-DD-NNNNN.txt.gz - series of timestamped "simple" sitemaps (URL list files)
+    /sitemap-works-YYYY-MM-DD-NNNNN.txt - series of timestamped "simple" sitemaps (URL list files)
 
 Only works for which there is an appropriate fulltext access URL 
+
+The sitemap links from robots.txt should be absolute URLs, not relative URLs.

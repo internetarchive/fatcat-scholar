@@ -13,5 +13,5 @@ User-agent: *
 Allow: /search
 Crawl-delay: 5
 
-Sitemap: /sitemap.xml
-Sitemap: /sitemap-index-works.xml
+Sitemap: https://scholar.archive.org/sitemap.xml
+Sitemap: https://scholar.archive.org/sitemap-index-works.xml
