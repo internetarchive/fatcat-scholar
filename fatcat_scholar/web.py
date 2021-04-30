@@ -47,6 +47,7 @@ I18N_LANG_TRANSLATIONS = [
     "fr",
     "hr",
     "it",
+    "ko",
     "nb",
     "nl",
     "pt",
