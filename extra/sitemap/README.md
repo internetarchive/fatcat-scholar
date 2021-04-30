@@ -8,7 +8,8 @@ installed. Run these commands on a production machine.
     export DATE=`date --iso-8601`
     /srv/fatcat_scholar/src/extra/sitemap/work_urls_query.sh $DATE
     rm *.txt.gz
-    /srv/fatcat/src/extra/sitemap/generate_sitemap_indices.py
+    gzip sitemap-*.txt
+    /srv/fatcat_scholar/src/extra/sitemap/generate_sitemap_indices.py
 
 ## Background
 
