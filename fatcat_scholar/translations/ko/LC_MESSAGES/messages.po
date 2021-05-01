@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
 # Bryan Newbold <bnewbold@robocracy.org>, 2021.
+# YiReun <zleonoti@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-03-25 11:07-0700\n"
-"PO-Revision-Date: 2021-04-30 19:53+0000\n"
-"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"PO-Revision-Date: 2021-05-02 08:31+0000\n"
+"Last-Translator: YiReun <zleonoti@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/ko/>\n"
 "Language: ko\n"
@@ -26,23 +27,23 @@ msgstr "배포 날짜"
 
 #: fatcat_scholar/search.py:46
 msgid "All Time"
-msgstr "항상"
+msgstr "모든 기간"
 
 #: fatcat_scholar/search.py:47
 msgid "Past Week"
-msgstr "지난 주"
+msgstr "지난주"
 
 #: fatcat_scholar/search.py:48
 msgid "Past Year"
-msgstr "지난 해"
+msgstr "작년"
 
 #: fatcat_scholar/search.py:49
 msgid "Since 2000"
-msgstr "2000 년부터"
+msgstr "2000년부터"
 
 #: fatcat_scholar/search.py:50
 msgid "Before 1925"
-msgstr "1925 년 이전"
+msgstr "1925년 이전"
 
 #: fatcat_scholar/search.py:54
 msgid "Resource Type"
@@ -50,7 +51,7 @@ msgstr "자원 유형"
 
 #: fatcat_scholar/search.py:58
 msgid "Papers"
-msgstr "서류"
+msgstr "논문"
 
 #: fatcat_scholar/search.py:59
 msgid "Reports"
@@ -66,11 +67,11 @@ msgstr "모두"
 
 #: fatcat_scholar/search.py:65
 msgid "Availability"
-msgstr "가용성"
+msgstr "사용 가능 형태"
 
 #: fatcat_scholar/search.py:69
 msgid "Fulltext"
-msgstr "Fulltext"
+msgstr "전문"
 
 #: fatcat_scholar/search.py:70
 msgid "Microfilm"
@@ -82,7 +83,7 @@ msgstr "오픈 액세스"
 
 #: fatcat_scholar/search.py:72
 msgid "Metadata"
-msgstr "Metadata"
+msgstr "메타데이터"
 
 #: fatcat_scholar/search.py:76
 msgid "Sort Order"
@@ -94,11 +95,11 @@ msgstr "관련성"
 
 #: fatcat_scholar/search.py:81
 msgid "Recent First"
-msgstr "최신 순으로"
+msgstr "최신순"
 
 #: fatcat_scholar/search.py:82
 msgid "Oldest First"
-msgstr "옛 것부터"
+msgstr "과거순"
 
 #: fatcat_scholar/templates/about.html:4
 #, python-format
@@ -190,10 +191,10 @@ msgid ""
 "interested\n"
 "or would like to see specific datasets made available, please contact us."
 msgstr ""
-"연구자에게 텍스트 및 데이터에 대한 전체 코퍼스에 대한 액세스 권한을 제공 할 예정입니다.\n"
-"채굴 목적. 파생 된 데이터 세트는 분석을 위해 공개적으로 게시 될 수도 있습니다.\n"
-"예를 들어 인용 그래프 또는 연도 별 N- 그램 빈도. 관심이 있다면\n"
-"또는 사용 가능한 특정 데이터 세트를 보려면 당사에 문의하십시오."
+"우리는 연구자에게 모든 어구에 대한 문자와, 마이닝을 위한 데이터에 대한 접근 권한을 제공하고자 합니다. \n"
+"인용 그래프나 연도별 N-그램 빈도와 같은 파생된 데이터세트는 \n"
+"분석을 위해 공개적으로 게시될 수도 있습니다. \n"
+"관심이 있거나 사용 가능한 특정 데이터 세트를 확인하고자 한다면 당사에 문의하십시오."
 
 #: fatcat_scholar/templates/about.html:42
 msgid ""
@@ -272,8 +273,7 @@ msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
 msgstr ""
-"우리는 미국 501 (c) (3) 비영리 도서관으로 인터넷 사이트 및 기타 문화 유물을 디지털 형식으로 글로벌 아카이브로 구축하고 "
-"있습니다."
+"우리는 미국 501(c)(3) 비영리 도서관으로, 인터넷 사이트 및 기타 문화 유물을 디지털 형식의 글로벌 아카이브로 구축하고 있습니다."
 
 #: fatcat_scholar/templates/base.html:163
 #, python-format
@@ -281,12 +281,12 @@ msgid ""
 "Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and"
 " %(archive_it)s."
 msgstr ""
-"다른 프로젝트로는 %(wayback)s, %(archive_org)s, %(openlibrary)s, %(archive_it)s가 "
+"다른 프로젝트로는 %(wayback)s, %(archive_org)s, %(openlibrary)s, %(archive_it)s이 "
 "있습니다."
 
 #: fatcat_scholar/templates/base.html:170
 msgid "About Us"
-msgstr "회사 소개"
+msgstr "소개"
 
 #: fatcat_scholar/templates/base.html:171
 msgid "Contact Us"
@@ -306,7 +306,7 @@ msgstr "개방형 인프라"
 
 #: fatcat_scholar/templates/base.html:181
 msgid "Editable Catalog (Fatcat)"
-msgstr "편집 가능한 카탈로그 (Fatcat)"
+msgstr "편집 가능한 카탈로그(Fatcat)"
 
 #: fatcat_scholar/templates/base.html:182
 msgid "Contribute"
@@ -370,8 +370,8 @@ msgid ""
 "natural sciences, humanities, biomedicine, art, history, industrial "
 "research, government reports, and more."
 msgstr ""
-"이 서비스는 인터넷 아카이브의 다양한 컬렉션에 보관 된 연구 출판물에 대한 <a href=\"https://en.wikipedia.org/"
-"wiki/Full-text_search\"> 전체 텍스트 검색 </a>을 제공합니다. 여기에는 자연 과학, 인문학, 생물 의학, 예술, "
+"이 서비스는 인터넷 아카이브의 다양한 컬렉션에 보관된 연구 출판물에 대한 <a href=\"https://en.wikipedia.org/"
+"wiki/Full-text_search\"> 전체 텍스트 검색</a>을 제공합니다. 여기에는 자연 과학, 인문학, 생물 의학, 예술, "
 "역사, 산업 연구, 정부 보고서 등의 콘텐츠가 포함됩니다."
 
 #: fatcat_scholar/templates/help.html:26
@@ -407,11 +407,11 @@ msgid ""
 "<code>journal:Science</code>, set filters like <code>lang:de</code>, and\n"
 "apply range queries like <code>year:&gt;1989 year:&lt;2000</code>."
 msgstr ""
-"기본 필터링 및 정렬 옵션 외에도이 검색은\n"
-"인터페이스를 통해 검색 상자에서 Lucene 쿼리 구문을 사용할 수도 있습니다. 당신은 할 수 있습니다\n"
-"다음과 같은 콜론 문을 사용하여 여러 메타 데이터 필드에 대한 용어 쿼리를 제한합니다.\n"
-"<code> journal : Science </code>, <code> lang : de </code>와 같은 필터 설정 및\n"
-"<code> year : &gt; 1989 year : &lt; 2000 </code>과 같은 범위 쿼리를 적용합니다."
+"기본 필터링 및 정렬 옵션 외에도 이 검색은인터페이스를 통해 \n"
+"검색 상자에서 Lucene 쿼리 구문을 사용할 수 있습니다. \n"
+"당신은 <code> journal : Science </code>, <code> lang : de </code>와 같은 필터 설정 및 \n"
+"범위 쿼리를 적용하는 <code> year : &gt; 1989 year : &lt; 2000</code>과 같은 콜론문을 사용하여 \n"
+"여러 메타 데이터 필드에 대한 용어 쿼리를 제한할 수 있습니다."
 
 #: fatcat_scholar/templates/help.html:38
 msgid ""
@@ -419,7 +419,7 @@ msgid ""
 "some point advanced users may run into limits on the size or complexity "
 "of queries."
 msgstr ""
-"이 구문은 비교적 복잡하고 강력한 쿼리를 허용하지만 어떤 시점에서 고급 사용자는 쿼리의 크기 나 복잡성에 제한이있을 수 있습니다."
+"이 구문은 비교적 복잡하고 강력한 쿼리를 허용하지만, 어떤 지점에서 고급 사용자는 쿼리의 크기 나 복잡성에 제한이 있을 수 있습니다."
 
 #: fatcat_scholar/templates/help.html:40
 msgid ""
@@ -473,28 +473,26 @@ msgstr ""
 "journal </code>와 같은 용어는 부정 할 수 있습니다."
 
 #: fatcat_scholar/templates/help.html:66
-#, fuzzy
 msgid ""
 "In-depth documentation of the query syntax is available <a "
 "href=\"https://www.elastic.co/guide/en/elasticsearch/reference/current"
 "/query-dsl-query-string-query.html#query-string-query-notes\">from the "
 "Elasticsearch project</a>."
 msgstr ""
-"쿼리 구문에 대한 심층 문서는 Elasticsearch 프로젝트 </a>에서 <a href=\"https://www.elastic.co/"
-"guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html"
-"#query-string-query-notes\"> 사용할 수 있습니다."
+"쿼리 구문에 대한 심층 문서는 <a href=\"https://www.elastic.co/guide/en/elasticsearch/"
+"reference/current/query-dsl-query-string-query.html#query-string-query-"
+"notes\">Elasticsearch 프로젝트</a>에서 확인할 수 있습니다."
 
 #: fatcat_scholar/templates/help.html:68
-#, fuzzy
 msgid ""
 "The complete current search document schema is available (as JSON) <a "
 "href=\"https://github.com/internetarchive/fatcat-"
 "scholar/blob/master/schema/scholar_fulltext.v01.json\">in the source "
 "code</a>."
 msgstr ""
-"전체 현재 검색 문서 스키마는 소스 코드 </a>에서 사용할 수 있습니다 (JSON 형식) <a href=\"https://github."
-"com/internetarchive/fatcat-scholar/blob/master/schema/scholar_fulltext.v01."
-"json\">."
+"전체 현재 검색 문서 스키마는 <a href=\"https://github.com/internetarchive/fatcat-scholar/"
+"blob/master/schema/scholar_fulltext.v01.json\">소스 코드</a>에서 사용할 수 있습니다(JSON "
+"형식)."
 
 #: fatcat_scholar/templates/help.html:105
 msgid "Search Results"
@@ -509,7 +507,8 @@ msgid ""
 "All Internet Archive preservation copy links have the same style and "
 "icon. Content from the Wayback Machine looks like this."
 msgstr ""
-"모든 인터넷 아카이브 보존 사본 링크는 동일한 스타일과 아이콘을 갖습니다. Wayback Machine의 콘텐츠는 다음과 같습니다."
+"모든 인터넷 아카이브 보존 사본 링크는 동일한 스타일과 아이콘을 갖습니다. Wayback Machine의 콘텐츠는 이와 같은 형태로 "
+"표시됩니다."
 
 #: fatcat_scholar/templates/help.html:122
 msgid ""
@@ -527,8 +526,7 @@ msgid ""
 "stored in general Internet Archive digital collections (as opposed to the"
 " web archive)"
 msgstr ""
-"일부 보존 된 콘텐츠, 특히 오래된 공용 도메인 저작물은 일반 인터넷 아카이브 디지털 컬렉션 (웹 아카이브와 반대)에 저장 될 수 "
-"있습니다)"
+"일부 보존된 콘텐츠, 특히 오래된 공용 도메인 저작물은 일반 인터넷 아카이브 디지털 콜렉션(웹 아카이브와 반대)에 저장 될 수 있습니다)"
 
 #: fatcat_scholar/templates/help.html:130
 msgid ""
@@ -771,7 +769,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/home.html:24
 msgid "More &raquo;"
-msgstr "더 많은 &raquo;"
+msgstr "더 보기 &raquo;"
 
 #: fatcat_scholar/templates/home.html:52 fatcat_scholar/templates/home.html:66
 #: fatcat_scholar/templates/home.html:80 fatcat_scholar/templates/home.html:94
@@ -976,7 +974,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/search_macros.html:374
 msgid "more &raquo;"
-msgstr "더 많은 &raquo;"
+msgstr "더 보기 &raquo;"
 
 #: fatcat_scholar/templates/search_macros.html:397
 msgid "tag definitions"
