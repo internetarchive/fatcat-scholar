@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-03-25 11:07-0700\n"
-"PO-Revision-Date: 2021-04-30 19:00+0000\n"
+"PO-Revision-Date: 2021-05-04 10:31+0000\n"
 "Last-Translator: Eugenia Russell <eugenia.russell2019@gmail.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/el/>\n"
@@ -153,7 +153,7 @@ msgstr ""
 #: fatcat_scholar/templates/about.html:27
 #: fatcat_scholar/templates/base.html:192
 msgid "Content Sources"
-msgstr ""
+msgstr "Πηγές περιεχομένου"
 
 #: fatcat_scholar/templates/about.html:29
 msgid ""
