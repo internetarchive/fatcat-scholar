@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-03-25 11:07-0700\n"
-"PO-Revision-Date: 2021-05-04 10:31+0000\n"
+"PO-Revision-Date: 2021-05-11 06:32+0000\n"
 "Last-Translator: Eugenia Russell <eugenia.russell2019@gmail.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/el/>\n"
@@ -136,12 +136,15 @@ msgstr ""
 #: fatcat_scholar/templates/about.html:20
 msgid "<b>digitized print materials</b> from paper and microform collections"
 msgstr ""
+"<b>ψηφιοποιημένο έντυπο υλικό</b> από έντυπες και μικρογραφικές συλλογές"
 
 #: fatcat_scholar/templates/about.html:21
 msgid ""
 "<b>general materials</b> from <a href=\"https://archive.org\">archive.org "
 "collections</a>, including collaborations with partners"
 msgstr ""
+"<b>γενικό υλικό</b> από <a href=\"https://archive.org\">συλλογές του archive."
+"org</a>, συμπεριλαμβανομένων συνεργασιών με εταίρους"
 
 #: fatcat_scholar/templates/about.html:24
 #, python-format
@@ -192,6 +195,8 @@ msgid ""
 "Read more in <a href=\"https://guide.fatcat.wiki/bulk_exports.html\">the "
 "Fatcat Guide</a>."
 msgstr ""
+"Διαβάστε περισσότερα στο <a href=\"https://guide.fatcat.wiki/bulk_exports."
+"html\">the Fatcat Guide</a>."
 
 #: fatcat_scholar/templates/about.html:47
 msgid "Contact Information"
@@ -203,6 +208,8 @@ msgid ""
 "The organizational contact information for the Internet Archive is listed at "
 "<a href=\"%(url)s\">%(url)s</a>."
 msgstr ""
+"Τα οργανωτικά στοιχεία επικοινωνίας για το Internet Archive παρατίθενται στη "
+"διεύθυνση <a href=\"%(url)s\">%(url)s</a>."
 
 #: fatcat_scholar/templates/about.html:52
 #, python-format
@@ -210,45 +217,52 @@ msgid ""
 "Queries about this search service and the fatcat catalog can be directed to "
 "<a href=\"mailto:%(email)s\">%(email)s</a>."
 msgstr ""
+"Ερωτήματα σχετικά με αυτή την υπηρεσία αναζήτησης και τον κατάλογο fatcat "
+"μπορούν να απευθύνονται στο <a href=\"mailto:%(email)s\">%(email)s</a>."
 
 #: fatcat_scholar/templates/about.html:54
 #, python-format
 msgid "There is a public chat channel at <a href=\"%(url)s\">%(url)s</a>."
 msgstr ""
+"Υπάρχει ένα δημόσιο κανάλι συνομιλίας στη διεύθυνση <a href=\"%(url)s\""
+">%(url)s</a>."
 
 #: fatcat_scholar/templates/base.html:12
 msgid "Internet Archive Scholar"
-msgstr ""
+msgstr "Internet Archive Scholar"
 
 #: fatcat_scholar/templates/base.html:82
 msgid "language selection menu"
-msgstr ""
+msgstr "μενού επιλογής γλώσσας"
 
 #: fatcat_scholar/templates/base.html:102
 msgid "Contribute to translations"
-msgstr ""
+msgstr "Συμβάλλετε στις μεταφράσεις"
 
 #: fatcat_scholar/templates/base.html:125
 msgid "by title, authors, keywords..."
-msgstr ""
+msgstr "με βάση τον τίτλο, τους συγγραφείς, τις λέξεις-κλειδιά..."
 
 #: fatcat_scholar/templates/base.html:125
 msgid "search for papers"
-msgstr ""
+msgstr "αναζήτηση εγγράφων"
 
 #: fatcat_scholar/templates/base.html:126 fatcat_scholar/templates/home.html:16
 msgid "Search"
-msgstr ""
+msgstr "Αναζήτηση"
 
 #: fatcat_scholar/templates/base.html:133
 msgid "User Guide"
-msgstr ""
+msgstr "Οδηγός χρήστη"
 
 #: fatcat_scholar/templates/base.html:161
 msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
 msgstr ""
+"Είμαστε μια μη κερδοσκοπική βιβλιοθήκη των ΗΠΑ 501(c)(3), η οποία δημιουργεί "
+"ένα παγκόσμιο αρχείο ιστότοπων στο Διαδίκτυο και άλλων πολιτιστικών "
+"αντικειμένων σε ψηφιακή μορφή."
 
 #: fatcat_scholar/templates/base.html:163
 #, python-format
@@ -256,79 +270,81 @@ msgid ""
 "Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and "
 "%(archive_it)s."
 msgstr ""
+"Άλλα έργα περιλαμβάνουν %(wayback)s, %(archive_org)s, %(openlibrary)s και "
+"%(archive_it)s."
 
 #: fatcat_scholar/templates/base.html:170
 msgid "About Us"
-msgstr ""
+msgstr "Σχετικά με εμάς"
 
 #: fatcat_scholar/templates/base.html:171
 msgid "Contact Us"
-msgstr ""
+msgstr "Επικοινωνήστε μαζί μας"
 
 #: fatcat_scholar/templates/base.html:172
 msgid "Policies"
-msgstr ""
+msgstr "Μανιφέστο"
 
 #: fatcat_scholar/templates/base.html:173
 msgid "Donate"
-msgstr ""
+msgstr "Δωρείστε"
 
 #: fatcat_scholar/templates/base.html:179
 msgid "Open Infrastructure"
-msgstr ""
+msgstr "Ανοιχτή υποδομή"
 
 #: fatcat_scholar/templates/base.html:181
 msgid "Editable Catalog (Fatcat)"
-msgstr ""
+msgstr "Κατάλογος με δυνατότητα επεξεργασίας (Fatcat)"
 
 #: fatcat_scholar/templates/base.html:182
 msgid "Contribute"
-msgstr ""
+msgstr "Συνεισφέρετε"
 
 #: fatcat_scholar/templates/base.html:183
 msgid "Search API"
-msgstr ""
+msgstr "Αναζήτηση API"
 
 #: fatcat_scholar/templates/base.html:184
 msgid "Service Status"
-msgstr ""
+msgstr "Κατάσταση υπηρεσίας"
 
 #: fatcat_scholar/templates/base.html:185
 msgid "Source Code"
-msgstr ""
+msgstr "Πηγαίος κώδικας"
 
 #: fatcat_scholar/templates/base.html:194
 msgid "Help"
-msgstr ""
+msgstr "Βοήθεια"
 
 #: fatcat_scholar/templates/error.html:12
 msgid "Not Found"
-msgstr ""
+msgstr "Δεν Βρέθηκε"
 
 #: fatcat_scholar/templates/error.html:14
 msgid "Access Forbidden"
-msgstr ""
+msgstr "Απαγορεύεται η πρόσβαση"
 
 #: fatcat_scholar/templates/error.html:16
 msgid "Request Error"
-msgstr ""
+msgstr "Σφάλμα αίτησης"
 
 #: fatcat_scholar/templates/error.html:18
 msgid "Internal Error"
-msgstr ""
+msgstr "Εσωτερικό σφάλμα"
 
 #: fatcat_scholar/templates/help.html:5
 #, python-format
 msgid "%(website_name)s Help"
-msgstr ""
+msgstr "%(website_name)s Βοήθεια"
 
 #: fatcat_scholar/templates/help.html:14
 msgid "Try It"
-msgstr ""
+msgstr "Δοκιμάστε το"
 
 #: fatcat_scholar/templates/help.html:22
 msgid "Scholar User Guide"
-msgstr ""
+msgstr "Οδηγός χρήσης Μελετητών"
 
 #: fatcat_scholar/templates/help.html:23
 #, python-format
@@ -917,4 +933,4 @@ msgstr ""
 
 #: fatcat_scholar/templates/search_macros.html:541
 msgid "Clear Filters"
-msgstr ""
+msgstr "Εκκαθάριση φίλτρων"
