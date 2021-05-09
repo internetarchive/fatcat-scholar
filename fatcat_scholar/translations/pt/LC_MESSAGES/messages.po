@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
 # Bryan Newbold <bnewbold@robocracy.org>, 2021.
+# ssantos <ssantos@web.de>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-03-25 11:07-0700\n"
-"PO-Revision-Date: 2021-03-26 18:29+0000\n"
-"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"PO-Revision-Date: 2021-05-11 06:32+0000\n"
+"Last-Translator: ssantos <ssantos@web.de>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/"
 "internetarchive/fatcat-scholar/pt/>\n"
 "Language: pt\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.6-dev\n"
+"X-Generator: Weblate 4.7-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 #: fatcat_scholar/search.py:42
@@ -427,7 +428,7 @@ msgid ""
 msgstr ""
 "Além das opções básicas de filtragem e ordenação, esta pesquisa\n"
 "também permite o uso da sintaxe da consulta Lucene na caixa de pesquisa. "
-"Você pode\n"
+"Pode\n"
 "restringir consultas de termo em múltiplos campos de metadados usando "
 "instruções de dois pontos como\n"
 "<code>journal:Science</code>, definir filtros como <code>lang:de</code>, e\n"
@@ -494,8 +495,8 @@ msgid ""
 "<code>doi:*</code>, and negate any term like <code>!type:article-journal</"
 "code>."
 msgstr ""
-"Você pode se restringir a registros onde o campo existe com um asterisco "
-"como <code>doi:*</code>, e negar qualquer termo como <code>!type:article-"
+"Pode restringir-se a registos onde o campo existe com um asterisco como "
+"<code>doi:*</code>, e negar qualquer termo como <code>!type:article-"
 "journal</code>."
 
 #: fatcat_scholar/templates/help.html:66
@@ -609,7 +610,7 @@ msgid ""
 "bibliographic metadata for the \"primary\" is being shown. Click the title "
 "to see other versions"
 msgstr ""
-"Existem múltiplas \"versões\" ou \"edições\" deste trabalho, e estão sendo "
+"Existem múltiplas \"versões\" ou \"edições\" deste trabalho, e estão a ser "
 "mostrados metadados bibliográficos para o \"primário\". Clique no título "
 "para ver outras versões"
 
@@ -749,7 +750,7 @@ msgid ""
 "This is a new service. Metadata is being improved and features have not been "
 "finalized."
 msgstr ""
-"Este é um novo serviço. Os metadados estão sendo melhorados e os recursos "
+"Este é um novo serviço. Os metadados estão a ser melhorados e os recursos "
 "não foram finalizados."
 
 #: fatcat_scholar/templates/help.html:250
@@ -784,9 +785,9 @@ msgid ""
 "sometimes pre-prints or author manuscripts are incorrectly associated with "
 "version-of-record metadata, or vice-versa."
 msgstr ""
-"Combinação errada do conteúdo do arquivo ou versão com os metadados do "
+"Combinação errada do conteúdo do ficheiro ou versão com os metadados do "
 "trabalho. Por exemplo, às vezes os manuscritos pré-impressos ou de autor são "
-"associados incorretamente com metadados de versão de registro, ou vice-versa."
+"associados incorretamente com metadados de versão de registo, ou vice-versa."
 
 #: fatcat_scholar/templates/home.html:10
 msgid "Internet Archive Scholar logo (vaporwave)"
@@ -892,7 +893,7 @@ msgstr "Versões múltiplas"
 
 #: fatcat_scholar/templates/search_macros.html:59
 msgid "fulltext PDF download"
-msgstr "download do texto completo em PDF"
+msgstr "descarrega do texto completo em PDF"
 
 #: fatcat_scholar/templates/search_macros.html:61
 msgid "read fulltext microfilm"
@@ -1003,7 +1004,7 @@ msgstr ""
 #: fatcat_scholar/templates/search_macros.html:296
 #, python-format
 msgid "The file type is %(mimetype)s."
-msgstr "O tipo de arquivo é %(mimetype)s."
+msgstr "O tipo de ficheiro é %(mimetype)s."
 
 #: fatcat_scholar/templates/search_macros.html:301
 msgid ""
