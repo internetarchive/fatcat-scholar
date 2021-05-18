@@ -53,5 +53,16 @@ or would like to see specific datasets made available, please contact us.{% endt
 
 {% trans url="https://gitter.im/internetarchive/fatcat" %}There is a public chat channel at <a href="{{ url }}">{{ url }}</a>.{% endtrans %}
 
+<a name="acknowledgements"></a>
+<h3>{% trans %}Support and Acknowledgements{% endtrans %}</h3>
+
+<p>
+{% trans grant_url="https://mellon.org/grants/grants-database/advanced-search/?amount-low=&amount-high=&year-start=&year-end=&city=&state=&country=&q=%22Ensuring+the+Persistent+Access%22&per_page=25", blog_url="http://blog.archive.org/2018/03/05/andrew-w-mellon-foundation-awards-grant-to-the-internet-archive-for-long-tail-journal-preservation/" %}
+Work on Internet Archive Scholar has received support from the Andrew W. Mellon Foundation through multiple phases of the <a href="{{ grant_url }}">"Ensuring the Persistent Access of Open Access Journal Literature"</a> project (see <a href="{{ blog_url }}">original announcement</a>).
+{% endtrans %}
+
+<p>{% trans fatcat_url="https://fatcat.wiki/about" %}
+See additional acknowledgements on <a href="{{ fatcat_url }}">fatcat.wiki</a>.
+{% endtrans %}
 
 {% endblock %}
