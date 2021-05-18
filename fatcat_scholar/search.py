@@ -338,7 +338,10 @@ def do_fulltext_search(
 
     # simplified version of basic_fulltext query, for highlighting
     highlight_query = Q(
-        "query_string", query=query.parsed_q or query.q, default_operator="AND", lenient=True,
+        "query_string",
+        query=query.parsed_q or query.q,
+        default_operator="AND",
+        lenient=True,
     )
     search = search.highlight(
         "abstracts.body",
