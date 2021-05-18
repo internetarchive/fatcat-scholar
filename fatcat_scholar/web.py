@@ -48,6 +48,7 @@ logger = logging.getLogger()
 I18N_LANG_TRANSLATIONS = [
     "ar",
     "de",
+    "el",
     "es",
     "fa",
     "fr",
