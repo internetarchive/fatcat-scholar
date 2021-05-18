@@ -88,3 +88,72 @@ def test_parse_accept_lang() -> None:
         parse_accept_lang("en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7", ["zh", "en", "de"])
         == "en"
     )
+
+
+def wayback_direct_url(url: str) -> str:
+    """
+    Re-writes a wayback replay URL to add the 'id_' suffix (or equivalent for direct file access)
+    """
+    if not "://web.archive.org" in url:
+        return url
+    segments = url.split("/")
+    if len(segments) < 6 or not segments[4].isdigit():
+        return url
+    segments[4] += "id_"
+    return "/".join(segments)
+
+
+def test_wayback_direct_url() -> None:
+    assert (
+        wayback_direct_url("http://fatcat.wiki/thing.pdf")
+        == "http://fatcat.wiki/thing.pdf"
+    )
+    assert (
+        wayback_direct_url("https://web.archive.org/web/*/http://fatcat.wiki/thing.pdf")
+        == "https://web.archive.org/web/*/http://fatcat.wiki/thing.pdf"
+    )
+    assert (
+        wayback_direct_url(
+            "https://web.archive.org/web/1234/http://fatcat.wiki/thing.pdf"
+        )
+        == "https://web.archive.org/web/1234id_/http://fatcat.wiki/thing.pdf"
+    )
+
+
+def make_access_redirect_url(access_type: str, access_url: str) -> str:
+    if access_type == "wayback" and "://web.archive.org/" in access_url:
+        segments = access_url.split("/")
+        dt = segments[4]
+        original_url = "/".join(segments[5:])
+        return f"https://scholar.archive.org/access/wayback/{dt}/{original_url}"
+    elif access_type == "ia_file" and "://archive.org/download/" in access_url:
+        suffix = "/".join(access_url.split("/")[4:])
+        return f"https://scholar.archive.org/access/ia_file/{suffix}"
+    else:
+        return access_url
+
+
+def test_make_access_redirect_url() -> None:
+    assert (
+        make_access_redirect_url(
+            "wayback", "https://web.archive.org/web/1234/http://fatcat.wiki/thing.pdf"
+        )
+        == "https://scholar.archive.org/access/wayback/1234/http://fatcat.wiki/thing.pdf"
+    )
+    assert (
+        make_access_redirect_url(
+            "wayback",
+            "https://web.archive.org/web/1234/http://fatcat.wiki/thing.pdf?param=asdf",
+        )
+        == "https://scholar.archive.org/access/wayback/1234/http://fatcat.wiki/thing.pdf?param=asdf"
+    )
+    assert (
+        make_access_redirect_url(
+            "ia_file", "https://archive.org/download/something/file.pdf"
+        )
+        == "https://scholar.archive.org/access/ia_file/something/file.pdf"
+    )
+    assert (
+        make_access_redirect_url("blah", "https://mit.edu/file.pdf")
+        == "https://mit.edu/file.pdf"
+    )

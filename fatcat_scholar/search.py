@@ -463,7 +463,7 @@ def get_es_scholar_doc(key: str) -> Optional[dict]:
     return doc
 
 
-def lookup_fulltext_pdf(sha1: str) -> Optional[dict]:
+def lookup_fulltext_pdf(sha1: str) -> Optional[ScholarFulltext]:
     """
     Fetch a document by fulltext file sha1, returning only the 'fulltext' sub-document.
     """

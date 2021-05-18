@@ -5,6 +5,7 @@ So far there are few endpoints, so we just put them all here!
 """
 
 import logging
+import urllib.parse
 from typing import Optional, Any, List, Dict
 
 from pydantic import BaseModel
@@ -25,7 +26,12 @@ from starlette_prometheus import metrics, PrometheusMiddleware
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from fatcat_scholar.config import settings, GIT_REVISION
-from fatcat_scholar.hacks import Jinja2Templates, parse_accept_lang
+from fatcat_scholar.hacks import (
+    Jinja2Templates,
+    parse_accept_lang,
+    wayback_direct_url,
+    make_access_redirect_url,
+)
 from fatcat_scholar.search import (
     process_query,
     FulltextQuery,
@@ -177,48 +183,43 @@ def get_work(work_ident: str = Query(..., min_length=20, max_length=20)) -> dict
     return doc
 
 
-def wayback_direct_url(url: str) -> str:
-    """
-    Re-writes a wayback replay URL to add the 'id_' suffix (or equivalent for direct file access)
-    """
-    if not "://web.archive.org" in url:
-        return url
-    segments = url.split("/")
-    if len(segments) < 6 or not segments[4].isdigit():
-        return url
-    segments[4] += "id_"
-    return "/".join(segments)
-
-
-def test_wayback_direct_url() -> None:
-    assert (
-        wayback_direct_url("http://fatcat.wiki/thing.pdf")
-        == "http://fatcat.wiki/thing.pdf"
-    )
-    assert (
-        wayback_direct_url("https://web.archive.org/web/*/http://fatcat.wiki/thing.pdf")
-        == "https://web.archive.org/web/*/http://fatcat.wiki/thing.pdf"
-    )
-    assert (
-        wayback_direct_url(
-            "https://web.archive.org/web/1234/http://fatcat.wiki/thing.pdf"
-        )
-        == "https://web.archive.org/web/1234id_/http://fatcat.wiki/thing.pdf"
-    )
-
-
 @api.get(
     "/access-redirect/{sha1}.pdf",
     operation_id="access_redirect_pdf",
     include_in_schema=False,
 )
 def access_redirect_pdf(sha1: str = Query(..., min_length=40, max_length=40)) -> Any:
+    """
+    NOTE: DEPRECATED
+    """
     fulltext = lookup_fulltext_pdf(sha1)
     if not fulltext or not fulltext.access_url:
         raise HTTPException(status_code=404, detail="PDF file not found")
     access_url = fulltext.access_url
     if fulltext.access_type == "wayback":
         access_url = wayback_direct_url(access_url)
+    return RedirectResponse(access_url, status_code=302)
+
+
+@api.get(
+    "/access/wayback/{timestamp}/{url:path}",
+    operation_id="access_redirect_wayback",
+    include_in_schema=False,
+)
+def access_redirect_wayback(timestamp: int, url: str, request: Request) -> Any:
+    original_url = "/".join(str(request.url).split("/")[6:])
+    access_url = f"https://web.archive.org/web/{timestamp}id_/{original_url}"
+    return RedirectResponse(access_url, status_code=302)
+
+
+@api.get(
+    "/access/ia_file/{item}/{file_path:path}",
+    operation_id="access_redirect_ia_file",
+    include_in_schema=False,
+)
+def access_redirect_ia_file(item: str, file_path: str, request: Request) -> Any:
+    original_path = urllib.parse.quote("/".join(str(request.url).split("/")[6:]))
+    access_url = f"https://archive.org/download/{item}/{original_path}"
     return RedirectResponse(access_url, status_code=302)
 
 
@@ -270,6 +271,7 @@ def load_i18n_templates() -> Any:
         # pass-through application settings to be available in templates
         templates.env.globals["settings"] = settings
         templates.env.globals["babel_numbers"] = babel.numbers
+        templates.env.globals["make_access_redirect_url"] = make_access_redirect_url
         d[lang_opt] = templates
     return d
 
@@ -413,6 +415,7 @@ async def favicon() -> Any:
     return FileResponse(
         "fatcat_scholar/static/ia-favicon.ico", media_type="image/x-icon"
     )
+
 
 @app.get("/sitemap.xml", include_in_schema=False)
 async def basic_sitemap() -> Any:

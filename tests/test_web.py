@@ -102,6 +102,7 @@ def test_basic_search(client: Any, mocker: Any) -> None:
     rv = client.get("/zh/search?q=blood")
     assert rv.status_code == 200
 
+
 def test_basic_work_landing_page(client: Any, mocker: Any) -> None:
 
     with open("tests/files/elastic_fulltext_get.json") as f:
@@ -122,7 +123,11 @@ def test_basic_work_landing_page(client: Any, mocker: Any) -> None:
     rv = client.get("/zh/work/2x5qvct2dnhrbctqa2q2uyut6a")
     assert rv.status_code == 200
 
+
 def test_basic_access_redirect(client: Any, mocker: Any) -> None:
+    """
+    NOTE: DEPRECATED
+    """
 
     with open("tests/files/elastic_fulltext_search.json") as f:
         elastic_resp = json.loads(f.read())
@@ -135,9 +140,42 @@ def test_basic_access_redirect(client: Any, mocker: Any) -> None:
         (200, {}, json.dumps(elastic_resp)),
     ]
 
-    rv = client.get("/access-redirect/f81f84e23c9ba5d364c70f01fa26e645d29c0427.pdf", allow_redirects=False)
+    rv = client.get(
+        "/access-redirect/f81f84e23c9ba5d364c70f01fa26e645d29c0427.pdf",
+        allow_redirects=False,
+    )
     assert rv.status_code == 302
-    assert rv.headers['Location'] == "https://web.archive.org/web/20200206164725id_/https://www.federalreserve.gov/econresdata/feds/2015/files/2015118pap.pdf"
+    assert (
+        rv.headers["Location"]
+        == "https://web.archive.org/web/20200206164725id_/https://www.federalreserve.gov/econresdata/feds/2015/files/2015118pap.pdf"
+    )
 
-    rv = client.get("/access-redirect/aaaaaaaaaaaaaaaaaaaaaa01fa26e645d29c0427.pdf", allow_redirects=False)
+    rv = client.get(
+        "/access-redirect/aaaaaaaaaaaaaaaaaaaaaa01fa26e645d29c0427.pdf",
+        allow_redirects=False,
+    )
     assert rv.status_code == 404
+
+
+def test_access_redirects(client: Any, mocker: Any) -> None:
+
+    # tricky "URL encoding in archive.org path" case
+    rv = client.get(
+        "/access/ia_file/crossref-pre-1909-scholarly-works/10.1016%252Fs0140-6736%252802%252912493-7.zip/10.1016%252Fs0140-6736%252802%252912928-x.pdf",
+        allow_redirects=False,
+    )
+    assert rv.status_code == 302
+    assert (
+        rv.headers["Location"]
+        == "https://archive.org/download/crossref-pre-1909-scholarly-works/10.1016%252Fs0140-6736%252802%252912493-7.zip/10.1016%252Fs0140-6736%252802%252912928-x.pdf"
+    )
+
+    rv = client.get(
+        "/access/wayback/20170814015956/https://epub.uni-regensburg.de/21901/1/lorenz73.pdf",
+        allow_redirects=False,
+    )
+    assert rv.status_code == 302
+    assert (
+        rv.headers["Location"]
+        == "https://web.archive.org/web/20170814015956id_/https://epub.uni-regensburg.de/21901/1/lorenz73.pdf"
+    )
