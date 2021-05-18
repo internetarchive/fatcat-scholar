@@ -6,7 +6,7 @@ installed. Run these commands on a production machine.
 
     cd /srv/fatcat_scholar/sitemap
     /srv/fatcat_scholar/src/extra/sitemap/work_urls_query.sh
-    /srv/fatcat_scholar/src/extra/sitemap/pdf_urls_query.sh
+    /srv/fatcat_scholar/src/extra/sitemap/access_urls_query.sh
     /srv/fatcat_scholar/src/extra/sitemap/generate_sitemap_indices.py
 
 ## Background

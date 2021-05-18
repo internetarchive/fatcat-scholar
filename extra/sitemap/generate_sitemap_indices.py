@@ -21,8 +21,8 @@ def index_entity(entity_type, output):
 def main():
     with open('sitemap-index-works.xml', 'w') as output:
         index_entity("works", output)
-    with open('sitemap-index-pdfs.xml', 'w') as output:
-        index_entity("pdfs", output)
+    with open('sitemap-index-access.xml', 'w') as output:
+        index_entity("access", output)
 
 if __name__=="__main__":
     main()

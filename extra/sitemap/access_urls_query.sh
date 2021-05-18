@@ -11,4 +11,4 @@ fatcat-cli search scholar 'doc_type:work (fulltext.access_type:ia_file OR fullte
     | jq '[.fulltext.access_type, .fulltext.access_url] | @tsv' -r \
     | rg -v '^null' \
     | ./transform_access_url.py \
-    | split --lines 20000 - sitemap-pdfs- -d -a 5 --additional-suffix .txt
+    | split --lines 20000 - sitemap-access- -d -a 5 --additional-suffix .txt
