@@ -209,7 +209,12 @@ def access_redirect_pdf(sha1: str = Query(..., min_length=40, max_length=40)) ->
 )
 def access_redirect_wayback(timestamp: int, url: str, request: Request) -> Any:
     original_url = "/".join(str(request.url).split("/")[6:])
-    access_url = f"https://web.archive.org/web/{timestamp}id_/{original_url}"
+    # the quote() call is necessary because the URL is un-encoded in the path parameter
+    # see also: https://github.com/encode/starlette/commit/f997938916d20e955478f60406ef9d293236a16d
+    access_url = urllib.parse.quote(
+        f"https://web.archive.org/web/{timestamp}id_/{original_url}",
+        safe=":/%#?=@[]!$&'()*+,;",
+    )
     return RedirectResponse(access_url, status_code=302)
 
 

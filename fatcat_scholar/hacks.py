@@ -118,6 +118,12 @@ def test_wayback_direct_url() -> None:
         )
         == "https://web.archive.org/web/1234id_/http://fatcat.wiki/thing.pdf"
     )
+    assert (
+        wayback_direct_url(
+            "https://web.archive.org/web/20170811115414/http://sudjms.net/issues/5-4/pdf/8)A%20comparison%20study%20of%20histochemical%20staining%20of%20various%20tissues%20after.pdf"
+        )
+        == "https://web.archive.org/web/20170811115414id_/http://sudjms.net/issues/5-4/pdf/8)A%20comparison%20study%20of%20histochemical%20staining%20of%20various%20tissues%20after.pdf"
+    )
 
 
 def make_access_redirect_url(access_type: str, access_url: str) -> str:
@@ -156,4 +162,11 @@ def test_make_access_redirect_url() -> None:
     assert (
         make_access_redirect_url("blah", "https://mit.edu/file.pdf")
         == "https://mit.edu/file.pdf"
+    )
+    assert (
+        make_access_redirect_url(
+            "wayback",
+            "https://web.archive.org/web/20170811115414/http://sudjms.net/issues/5-4/pdf/8)A%20comparison%20study%20of%20histochemical%20staining%20of%20various%20tissues%20after.pdf",
+        )
+        == "https://scholar.archive.org/access/wayback/20170811115414/http://sudjms.net/issues/5-4/pdf/8)A%20comparison%20study%20of%20histochemical%20staining%20of%20various%20tissues%20after.pdf"
     )

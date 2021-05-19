@@ -179,3 +179,14 @@ def test_access_redirects(client: Any, mocker: Any) -> None:
         rv.headers["Location"]
         == "https://web.archive.org/web/20170814015956id_/https://epub.uni-regensburg.de/21901/1/lorenz73.pdf"
     )
+
+    # spaces ("%20" vs "+")
+    rv = client.get(
+        "/access/wayback/20170811115414/http://sudjms.net/issues/5-4/pdf/8)A%20comparison%20study%20of%20histochemical%20staining%20of%20various%20tissues%20after.pdf",
+        allow_redirects=False,
+    )
+    assert rv.status_code == 302
+    assert (
+        rv.headers["Location"]
+        == "https://web.archive.org/web/20170811115414id_/http://sudjms.net/issues/5-4/pdf/8)A%20comparison%20study%20of%20histochemical%20staining%20of%20various%20tissues%20after.pdf"
+    )
