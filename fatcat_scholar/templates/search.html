@@ -43,7 +43,7 @@
   </details>
 
   {% if hits %}
-    <span class="hit-count" style="font-size: 1.5em;">{{ babel_numbers.format_number(hits.count_found, locale=locale) }}</span>
+    <span class="hit-count" style="font-size: 1.5em;">{{ babel_numbers.format_decimal(hits.count_found, locale=locale) }}</span>
       {% trans trimmed count=hits.count_found %}
         Hit
       {% pluralize %}
@@ -72,7 +72,7 @@
           {% set count_size = "2.0em" %}
         {% endif %}
         <span class="hit-count" style="display: block; font-size: {{ count_size }};">
-          {{ babel_numbers.format_number(hits.count_found, locale=locale) }}
+          {{ babel_numbers.format_decimal(hits.count_found, locale=locale) }}
         </span>
         {% trans trimmed count=hits.count_found %}
           Hit

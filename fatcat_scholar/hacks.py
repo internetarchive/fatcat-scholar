@@ -18,7 +18,7 @@ class Jinja2Templates:
     def get_env(
         self, directory: str, extensions: typing.List[str] = []
     ) -> "jinja2.Environment":
-        @jinja2.contextfunction
+        @jinja2.pass_context
         def url_for(context: dict, name: str, **path_params: typing.Any) -> str:
             request = context["request"]
             return request.url_for(name, **path_params)
