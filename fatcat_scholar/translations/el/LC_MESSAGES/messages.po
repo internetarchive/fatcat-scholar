@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-03-25 11:07-0700\n"
-"PO-Revision-Date: 2021-05-11 06:32+0000\n"
+"PO-Revision-Date: 2021-05-25 22:34+0000\n"
 "Last-Translator: Eugenia Russell <eugenia.russell2019@gmail.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/el/>\n"
@@ -404,7 +404,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:43
 msgid "Example Queries"
-msgstr ""
+msgstr "Παράδειγμα ερωτημάτων"
 
 #: fatcat_scholar/templates/help.html:45
 msgid "Search for digitized pages about a topic from specific years:"
@@ -420,7 +420,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:57
 msgid "Citation Queries"
-msgstr ""
+msgstr "Ερωτήσεις παραπομπών"
 
 #: fatcat_scholar/templates/help.html:58
 msgid ""
@@ -432,7 +432,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:62
 msgid "Metadata Fields"
-msgstr ""
+msgstr "Πεδία μεταδεδομένων"
 
 #: fatcat_scholar/templates/help.html:64
 msgid ""
@@ -458,11 +458,11 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:105
 msgid "Search Results"
-msgstr ""
+msgstr "Αποτελέσματα Αναζήτησης"
 
 #: fatcat_scholar/templates/help.html:108
 msgid "Access Links"
-msgstr ""
+msgstr "Σύνδεσμοι πρόσβασης"
 
 #: fatcat_scholar/templates/help.html:118
 msgid ""
@@ -590,11 +590,11 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:214
 msgid "PubMed/MEDLINE"
-msgstr ""
+msgstr "PubMed / MEDLINE"
 
 #: fatcat_scholar/templates/help.html:218
 msgid "PubMed Central"
-msgstr ""
+msgstr "PubMed Κεντρικό"
 
 #: fatcat_scholar/templates/help.html:222
 msgid "arXiv pre-print service"
