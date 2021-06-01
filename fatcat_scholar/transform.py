@@ -601,7 +601,7 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
     )
 
 
-def refs_from_grobid(release: ReleaseEntity, tei_dict: dict) -> Sequence[RefStructured]:
+def refs_from_grobid(release: ReleaseEntity, tei_dict: dict) -> List[RefStructured]:
     output = []
     for ref in tei_dict.get("citations") or []:
         ref_date = ref.get("date") or None
@@ -650,16 +650,26 @@ def refs_from_grobid(release: ReleaseEntity, tei_dict: dict) -> Sequence[RefStru
     return output
 
 
-def refs_from_release_refs(release: ReleaseEntity) -> Sequence[RefStructured]:
+def refs_from_release_refs(release: ReleaseEntity) -> List[RefStructured]:
     output = []
     for ref in release.refs:
         ref_source = "fatcat"
+
+        key = ref.key
+        if key and release.ext_ids.doi and key.startswith(release.ext_ids.doi):
+            key = key.replace(release.ext_ids.doi, "")
+        if key and key.startswith("ref-"):
+            key = key[4:]
+        if key and key.startswith("b"):
+            key = key[1:]
+
         if release.extra and release.extra.get("pubmed"):
             ref_source = "pubmed"
         elif release.extra and release.extra.get("crossref"):
             ref_source = "crossref"
         elif release.extra and release.extra.get("datacite"):
             ref_source = "datacite"
+
         extra = ref.extra or dict()
         authors = extra.get("authors") or []
         authors = [a for a in authors if type(a) == str]
@@ -687,9 +697,67 @@ def refs_from_release_refs(release: ReleaseEntity) -> Sequence[RefStructured]:
                 work_ident=release.work_id,
                 release_year=release.release_year,
                 index=ref.index,
-                key=ref.key,
+                key=key or None,
                 locator=ref.locator,
                 target_release_id=ref.target_release_id,
+                ref_source=ref_source,
+            )
+        )
+    return output
+
+
+def refs_from_crossref(
+    release: ReleaseEntity, crossref: Dict[str, Any]
+) -> List[RefStructured]:
+    # TODO: test coverage
+    record = crossref["record"]
+    if not record.get("reference"):
+        return []
+    output = []
+    for i, ref in enumerate(record.get("reference", [])):
+        ref_source = "crossref"
+        authors: Optional[List[str]] = None
+        if ref.get("author"):
+            authors = [
+                ref["author"],
+            ]
+        key = ref.get("key")
+        if key and key.startswith(record["DOI"]):
+            key = key.replace(record["DOI"] + "-", "")
+            key = key.replace(record["DOI"], "")
+        if key and key.startswith("ref-"):
+            key = key[4:]
+        ref_container_name = ref.get("journal-title")
+        if not ref_container_name:
+            ref_container_name = ref.get("volume-title")
+        date = ref.get("date")
+        year = None
+        if date and len(date) >= 4 and date[:4].isdigit():
+            year = int(date[:4])
+            if year < 1000 or year > 2100:
+                year = None
+        output.append(
+            RefStructured(
+                biblio=RefBiblio(
+                    unstructured=ref.get("unstructured"),
+                    title=ref.get("article-title"),
+                    subtitle=ref.get("subtitle"),
+                    contrib_raw_names=authors,
+                    year=year,
+                    container_name=ref_container_name,
+                    publisher=ref.get("publisher"),
+                    volume=ref.get("volume"),
+                    issue=ref.get("issue"),
+                    pages=ref.get("page"),
+                    doi=ref.get("DOI"),
+                ),
+                release_ident=release.ident,
+                work_ident=release.work_id,
+                release_year=release.release_year,
+                index=i,
+                key=key or None,
+                locator=ref.get("first-page"),
+                target_release_id=None,
                 ref_source=ref_source,
             )
         )
@@ -705,7 +773,6 @@ def refs_from_heavy(heavy: IntermediateBundle) -> Sequence[RefStructured]:
     if heavy.doc_type != DocType.work:
         return []
 
-    # first, identify source of refs: fatcat release metadata or GROBID
     assert heavy.biblio_release_ident
     primary_release = [
         r for r in heavy.releases if r.ident == heavy.biblio_release_ident
@@ -713,10 +780,17 @@ def refs_from_heavy(heavy: IntermediateBundle) -> Sequence[RefStructured]:
 
     refs: List[RefStructured] = []
 
+    fatcat_refs: List[RefStructured] = []
     if primary_release.refs:
-        # TODO: what about other releases?
-        refs.extend(refs_from_release_refs(primary_release))
+        fatcat_refs = refs_from_release_refs(primary_release)
+    else:
+        # if there are not refs for "primary" release, take any other refs we can find
+        for release in heavy.releases:
+            if release.refs:
+                fatcat_refs = refs_from_release_refs(release)
+                break
 
+    fulltext_refs: List[RefStructured] = []
     if heavy.grobid_fulltext:
         fulltext_release = [
             r
@@ -724,8 +798,42 @@ def refs_from_heavy(heavy: IntermediateBundle) -> Sequence[RefStructured]:
             if r.ident == heavy.grobid_fulltext["release_ident"]
         ][0]
         tei_dict = teixml2json(heavy.grobid_fulltext["tei_xml"])
-        refs.extend(refs_from_grobid(fulltext_release, tei_dict))
+        fulltext_refs = refs_from_grobid(fulltext_release, tei_dict)
 
+    crossref_refs: List[RefStructured] = []
+    if heavy.crossref:
+        crossref_release = [
+            r for r in heavy.releases if r.ident == heavy.crossref["release_ident"]
+        ][0]
+        crossref_refs = refs_from_crossref(heavy.crossref["record"], crossref_release)
+
+    # TODO: better logic for prioritizing/combining references from multiple sources?
+    # TODO: test coverage
+    if (
+        fatcat_refs
+        and crossref_refs
+        and all([r.ref_source == "crossref" for r in fatcat_refs])
+    ):
+        # priorize recent crossref over old-fatcat-imported-from-crossref (?)
+        fatcat_refs = []
+    elif (
+        fatcat_refs
+        and fulltext_refs
+        and all([r.ref_source == "grobid" for r in fatcat_refs])
+    ):
+        # prioritize newer GROBID fulltext extraction (?)
+        fatcat_refs = []
+
+    refs.extend(fatcat_refs)
+    refs.extend(crossref_refs)
+
+    # include fulltext refs if there are more than in both of the crossref and fatcat refs
+    if len(fulltext_refs) > len(fatcat_refs) and len(fulltext_refs) > len(
+        crossref_refs
+    ):
+        refs.extend(fulltext_refs)
+
+    # TODO: use GROBID to parse any refs which only have 'unstructured' (if they don't already come from GROBID)
     return refs
 
 
