@@ -733,19 +733,8 @@ def run_transform(infile: Sequence) -> None:
     for line in infile:
         obj = json.loads(line)
 
-        heavy = IntermediateBundle(
-            doc_type=DocType(obj["doc_type"]),
-            releases=[
-                entity_from_json(json.dumps(re), ReleaseEntity)
-                for re in obj["releases"]
-            ],
-            biblio_release_ident=obj.get("biblio_release_ident"),
-            grobid_fulltext=obj.get("grobid_fulltext"),
-            pdftotext_fulltext=obj.get("pdftotext_fulltext"),
-            pdf_meta=obj.get("pdf_meta"),
-            sim_fulltext=obj.get("sim_fulltext"),
-            html_fulltext=obj.get("html_fulltext"),
-        )
+        heavy = IntermediateBundle.from_json(obj)
+        assert heavy.doc_type
         es_doc = transform_heavy(heavy)
         if not es_doc:
             continue
@@ -756,19 +745,8 @@ def run_refs(infile: Sequence) -> None:
     for line in infile:
         obj = json.loads(line)
 
-        heavy = IntermediateBundle(
-            doc_type=DocType(obj["doc_type"]),
-            releases=[
-                entity_from_json(json.dumps(re), ReleaseEntity)
-                for re in obj["releases"]
-            ],
-            biblio_release_ident=obj.get("biblio_release_ident"),
-            grobid_fulltext=obj.get("grobid_fulltext"),
-            pdftotext_fulltext=obj.get("pdftotext_fulltext"),
-            pdf_meta=obj.get("pdf_meta"),
-            sim_fulltext=obj.get("sim_fulltext"),
-            html_fulltext=obj.get("html_fulltext"),
-        )
+        heavy = IntermediateBundle.from_json(obj)
+        assert heavy.doc_type
         refs = refs_from_heavy(heavy)
         for ref in refs:
             print(ref.json(exclude_none=True, sort_keys=True))

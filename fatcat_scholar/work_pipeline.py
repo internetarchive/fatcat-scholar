@@ -389,6 +389,7 @@ class WorkPipeline:
             doc_type=DocType.work,
             releases=releases,
             biblio_release_ident=pref_idents[0],
+            crossref=biblio_crossref,
             grobid_fulltext=grobid_fulltext,
             pdftotext_fulltext=pdftotext_fulltext,
             pdf_meta=pdf_meta,

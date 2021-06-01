@@ -5,6 +5,7 @@ auto-conversion of datetime objects.
 """
 
 import re
+import json
 import datetime
 from enum import Enum
 from typing import Optional, List, Any, Dict
@@ -18,7 +19,7 @@ from pydantic import BaseModel
 # pytype: enable=import-error
 
 from fatcat_openapi_client import ReleaseEntity, ReleaseContrib
-from fatcat_scholar.api_entities import entity_to_dict
+from fatcat_scholar.api_entities import entity_to_dict, entity_from_json
 from fatcat_scholar.biblio_hacks import doi_link_domain
 
 
@@ -31,6 +32,7 @@ class IntermediateBundle(BaseModel):
     doc_type: DocType
     releases: List[ReleaseEntity]
     biblio_release_ident: Optional[str]
+    crossref: Optional[Dict[str, Any]]
     grobid_fulltext: Optional[Dict[str, Any]]
     pdftotext_fulltext: Optional[Dict[str, Any]]
     pdf_meta: Optional[Dict[str, Any]]
@@ -44,6 +46,23 @@ class IntermediateBundle(BaseModel):
             ReleaseEntity: lambda re: entity_to_dict(re),
             datetime.datetime: lambda dt: dt.isoformat(),
         }
+
+    @classmethod
+    def from_json(cls, obj: Dict[Any, Any]) -> "IntermediateBundle":
+        return IntermediateBundle(
+            doc_type=DocType(obj.get("doc_type")),
+            releases=[
+                entity_from_json(json.dumps(re), ReleaseEntity)
+                for re in obj.get("releases", [])
+            ],
+            biblio_release_ident=obj.get("biblio_release_ident"),
+            crossref=obj.get("crossref"),
+            grobid_fulltext=obj.get("grobid_fulltext"),
+            pdftotext_fulltext=obj.get("pdftotext_fulltext"),
+            pdf_meta=obj.get("pdf_meta"),
+            sim_fulltext=obj.get("sim_fulltext"),
+            html_fulltext=obj.get("html_fulltext"),
+        )
 
 
 class AccessType(str, Enum):

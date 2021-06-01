@@ -123,19 +123,8 @@ class IndexDocsWorker(KafkaWorker):
 
         bulk_actions = []
         for obj in batch:
-            bundle = IntermediateBundle(
-                doc_type=DocType(obj["doc_type"]),
-                releases=[
-                    entity_from_json(json.dumps(re), ReleaseEntity)
-                    for re in obj["releases"]
-                ],
-                biblio_release_ident=obj.get("biblio_release_ident"),
-                grobid_fulltext=obj.get("grobid_fulltext"),
-                pdftotext_fulltext=obj.get("pdftotext_fulltext"),
-                pdf_meta=obj.get("pdf_meta"),
-                html_fulltext=obj.get("html_fulltext"),
-                sim_fulltext=obj.get("sim_fulltext"),
-            )
+            bundle = IntermediateBundle.from_json(obj)
+            assert bundle.get('doc_type')
             es_doc = transform_heavy(bundle)
             if not es_doc:
                 continue

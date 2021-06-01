@@ -122,6 +122,7 @@ class SimPipeline:
                 doc_type=DocType.sim_page,
                 releases=[],
                 biblio_release_ident=None,
+                crossref=None,
                 grobid_fulltext=None,
                 pdftotext_fulltext=None,
                 sim_fulltext=dict(
