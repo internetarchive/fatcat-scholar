@@ -218,9 +218,7 @@ class WorkPipeline:
             webcapture_ident=wc.ident,
         )
 
-    def fetch_crossref(
-        self, re: ReleaseEntity
-    ) -> Optional[Dict[str, Any]]:
+    def fetch_crossref(self, re: ReleaseEntity) -> Optional[Dict[str, Any]]:
         """
         Fetches (cached) crossref metadata JSON from sandcrawler-db via
         postgrest HTTP interface.
@@ -234,16 +232,18 @@ class WorkPipeline:
         if not re.ext_ids.doi:
             # can't do lookup without a DOI
             return None
-        if re.extra and (not re.extra.get('crossref')) and (re.extra.get('datacite') or re.extra.get('jalc')):
+        if (
+            re.extra
+            and (not re.extra.get("crossref"))
+            and (re.extra.get("datacite") or re.extra.get("jalc"))
+        ):
             # if this is definitely a Datacite or JALC DOI, can skip the Crossref cache lookup
             return None
         doi = re.ext_ids.doi.lower()
         crossref_meta = self.sandcrawler_db_client.get_crossref(doi)
         if not crossref_meta or not crossref_meta.get("record"):
             return None
-        return dict(
-            release_ident=re.ident, doi=doi, record=crossref_meta["record"],
-        )
+        return dict(release_ident=re.ident, doi=doi, record=crossref_meta["record"],)
 
     def lookup_sim(self, release: ReleaseEntity) -> Optional[SimIssueRow]:
         """

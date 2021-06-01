@@ -1,6 +1,5 @@
 import os
 import sys
-import json
 import argparse
 import datetime
 from typing import List, Any
@@ -10,7 +9,6 @@ import sentry_sdk
 import elasticsearch
 import elasticsearch.helpers
 import fatcat_openapi_client
-from fatcat_openapi_client import ReleaseEntity
 
 from fatcat_scholar.config import settings, GIT_REVISION
 from fatcat_scholar.issue_db import IssueDB
@@ -18,12 +16,8 @@ from fatcat_scholar.sandcrawler import (
     SandcrawlerPostgrestClient,
     SandcrawlerMinioClient,
 )
-from fatcat_scholar.schema import (
-    DocType,
-    IntermediateBundle,
-)
+from fatcat_scholar.schema import IntermediateBundle
 from fatcat_scholar.transform import transform_heavy
-from fatcat_scholar.api_entities import entity_from_json
 from fatcat_scholar.work_pipeline import WorkPipeline
 from fatcat_scholar.sim_pipeline import SimPipeline
 from fatcat_scholar.kafka import KafkaWorker
@@ -124,7 +118,7 @@ class IndexDocsWorker(KafkaWorker):
         bulk_actions = []
         for obj in batch:
             bundle = IntermediateBundle.from_json(obj)
-            assert bundle.get('doc_type')
+            assert bundle.doc_type
             es_doc = transform_heavy(bundle)
             if not es_doc:
                 continue
