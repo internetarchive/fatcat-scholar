@@ -69,6 +69,22 @@ def test_run_transform(mocker: Any) -> None:
         ],
     )
 
+    responses.add(
+        responses.GET,
+        "http://disabled-during-tests-bogus.xyz:3333/crossref?doi=eq.10.7717%2Fpeerj.4375",
+        status=200,
+        json=[
+            {
+                "doi": "10.7717/peerj.4375",
+                "indexed": "2020-07-07T02:15:52.98309+00:00",
+                "record": {
+                    "title": "something",
+                    "TODO_better_object": 3,
+                },
+            }
+        ],
+    )
+
     es_raw = mocker.patch("fatcat_scholar.work_pipeline.WorkPipeline.fetch_file_grobid")
     es_raw.side_effect = [
         {"tei_xml": "<xml>dummy", "release_ident": "asdf123", "file_ident": "xyq9876"},

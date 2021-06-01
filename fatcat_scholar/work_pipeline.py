@@ -218,6 +218,33 @@ class WorkPipeline:
             webcapture_ident=wc.ident,
         )
 
+    def fetch_crossref(
+        self, re: ReleaseEntity
+    ) -> Optional[Dict[str, Any]]:
+        """
+        Fetches (cached) crossref metadata JSON from sandcrawler-db via
+        postgrest HTTP interface.
+
+        Returns a JSON object on success, or None if not found.
+
+        release_ident: Optional[str]
+        doi: Optional[str]
+        record: Optional[str]
+        """
+        if not re.ext_ids.doi:
+            # can't do lookup without a DOI
+            return None
+        if re.extra and (not re.extra.get('crossref')) and (re.extra.get('datacite') or re.extra.get('jalc')):
+            # if this is definitely a Datacite or JALC DOI, can skip the Crossref cache lookup
+            return None
+        doi = re.ext_ids.doi.lower()
+        crossref_meta = self.sandcrawler_db_client.get_crossref(doi)
+        if not crossref_meta or not crossref_meta.get("record"):
+            return None
+        return dict(
+            release_ident=re.ident, doi=doi, record=crossref_meta["record"],
+        )
+
     def lookup_sim(self, release: ReleaseEntity) -> Optional[SimIssueRow]:
         """
         Checks in IssueDB to see if this release is likely to have a copy in a
@@ -383,6 +410,14 @@ class WorkPipeline:
                 print(str(e), file=sys.stderr)
                 continue
             if sim_fulltext:
+                break
+
+        # lookup best available crossref biblio metadata
+        biblio_crossref = None
+        for ident in pref_idents:
+            release = release_dict[ident]
+            biblio_crossref = self.fetch_crossref(release_dict[pref_idents[0]])
+            if biblio_crossref:
                 break
 
         return IntermediateBundle(
