@@ -664,11 +664,11 @@ def refs_from_release_refs(release: ReleaseEntity) -> List[RefStructured]:
             key = key[1:]
 
         if release.extra and release.extra.get("pubmed"):
-            ref_source = "pubmed"
+            ref_source = "fatcat-pubmed"
         elif release.extra and release.extra.get("crossref"):
-            ref_source = "crossref"
+            ref_source = "fatcat-crossref"
         elif release.extra and release.extra.get("datacite"):
-            ref_source = "datacite"
+            ref_source = "fatcat-datacite"
 
         extra = ref.extra or dict()
         authors = extra.get("authors") or []
@@ -812,14 +812,14 @@ def refs_from_heavy(heavy: IntermediateBundle) -> Sequence[RefStructured]:
     if (
         fatcat_refs
         and crossref_refs
-        and all([r.ref_source == "crossref" for r in fatcat_refs])
+        and all([r.ref_source in ["crossref", "fatcat-crossref"] for r in fatcat_refs])
     ):
         # priorize recent crossref over old-fatcat-imported-from-crossref (?)
         fatcat_refs = []
     elif (
         fatcat_refs
         and fulltext_refs
-        and all([r.ref_source == "grobid" for r in fatcat_refs])
+        and all([r.ref_source == ["grobid", "fatcat-grobid"] for r in fatcat_refs])
     ):
         # prioritize newer GROBID fulltext extraction (?)
         fatcat_refs = []
