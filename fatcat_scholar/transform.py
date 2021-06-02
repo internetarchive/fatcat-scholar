@@ -805,7 +805,7 @@ def refs_from_heavy(heavy: IntermediateBundle) -> Sequence[RefStructured]:
         crossref_release = [
             r for r in heavy.releases if r.ident == heavy.crossref["release_ident"]
         ][0]
-        crossref_refs = refs_from_crossref(heavy.crossref["record"], crossref_release)
+        crossref_refs = refs_from_crossref(crossref_release, heavy.crossref)
 
     # TODO: better logic for prioritizing/combining references from multiple sources?
     # TODO: test coverage
