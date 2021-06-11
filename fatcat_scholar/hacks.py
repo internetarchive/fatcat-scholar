@@ -126,15 +126,14 @@ def test_wayback_direct_url() -> None:
     )
 
 
-def make_access_redirect_url(access_type: str, access_url: str) -> str:
+def make_access_redirect_url(work_ident: str, access_type: str, access_url: str) -> str:
     if access_type == "wayback" and "://web.archive.org/" in access_url:
         segments = access_url.split("/")
-        dt = segments[4]
         original_url = "/".join(segments[5:])
-        return f"https://scholar.archive.org/access/wayback/{dt}/{original_url}"
+        return f"https://scholar.archive.org/work/{work_ident}/access/wayback/{original_url}"
     elif access_type == "ia_file" and "://archive.org/download/" in access_url:
         suffix = "/".join(access_url.split("/")[4:])
-        return f"https://scholar.archive.org/access/ia_file/{suffix}"
+        return f"https://scholar.archive.org/work/{work_ident}/access/ia_file/{suffix}"
     else:
         return access_url
 
@@ -142,31 +141,39 @@ def make_access_redirect_url(access_type: str, access_url: str) -> str:
 def test_make_access_redirect_url() -> None:
     assert (
         make_access_redirect_url(
-            "wayback", "https://web.archive.org/web/1234/http://fatcat.wiki/thing.pdf"
+            "lmobci36t5aelogzjsazuwxpie",
+            "wayback",
+            "https://web.archive.org/web/1234/http://fatcat.wiki/thing.pdf",
         )
-        == "https://scholar.archive.org/access/wayback/1234/http://fatcat.wiki/thing.pdf"
+        == "https://scholar.archive.org/work/lmobci36t5aelogzjsazuwxpie/access/wayback/http://fatcat.wiki/thing.pdf"
     )
     assert (
         make_access_redirect_url(
+            "lmobci36t5aelogzjsazuwxpie",
             "wayback",
             "https://web.archive.org/web/1234/http://fatcat.wiki/thing.pdf?param=asdf",
         )
-        == "https://scholar.archive.org/access/wayback/1234/http://fatcat.wiki/thing.pdf?param=asdf"
+        == "https://scholar.archive.org/work/lmobci36t5aelogzjsazuwxpie/access/wayback/http://fatcat.wiki/thing.pdf?param=asdf"
     )
     assert (
         make_access_redirect_url(
-            "ia_file", "https://archive.org/download/something/file.pdf"
+            "lmobci36t5aelogzjsazuwxpie",
+            "ia_file",
+            "https://archive.org/download/something/file.pdf",
         )
-        == "https://scholar.archive.org/access/ia_file/something/file.pdf"
+        == "https://scholar.archive.org/work/lmobci36t5aelogzjsazuwxpie/access/ia_file/something/file.pdf"
     )
     assert (
-        make_access_redirect_url("blah", "https://mit.edu/file.pdf")
+        make_access_redirect_url(
+            "lmobci36t5aelogzjsazuwxpie", "blah", "https://mit.edu/file.pdf"
+        )
         == "https://mit.edu/file.pdf"
     )
     assert (
         make_access_redirect_url(
+            "lmobci36t5aelogzjsazuwxpie",
             "wayback",
             "https://web.archive.org/web/20170811115414/http://sudjms.net/issues/5-4/pdf/8)A%20comparison%20study%20of%20histochemical%20staining%20of%20various%20tissues%20after.pdf",
         )
-        == "https://scholar.archive.org/access/wayback/20170811115414/http://sudjms.net/issues/5-4/pdf/8)A%20comparison%20study%20of%20histochemical%20staining%20of%20various%20tissues%20after.pdf"
+        == "https://scholar.archive.org/work/lmobci36t5aelogzjsazuwxpie/access/wayback/http://sudjms.net/issues/5-4/pdf/8)A%20comparison%20study%20of%20histochemical%20staining%20of%20various%20tissues%20after.pdf"
     )

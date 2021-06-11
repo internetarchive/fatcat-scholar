@@ -122,6 +122,7 @@ def test_basic_work_landing_page(client: Any, mocker: Any) -> None:
 
     rv = client.get("/zh/work/2x5qvct2dnhrbctqa2q2uyut6a")
     assert rv.status_code == 200
+    assert b"citation_pdf_url" in rv.content
 
 
 def test_basic_access_redirect(client: Any, mocker: Any) -> None:

@@ -30,9 +30,9 @@
 {% if work.biblio.doi %}
   <meta name="citation_doi" content="{{ work.biblio.doi }}">
 {% endif %}
-{% if work.fulltext.access_url and work.biblio.release_ident == work.fulltext.release_ident and work.fulltext.access_type in ['wayback', 'ia_file'] and work.fulltext.file_mimetype in ["application/pdf", None] and work.fulltext.file_sha1 %}
+{% if work.work_ident and work.fulltext.access_url and work.biblio.release_ident == work.fulltext.release_ident and work.fulltext.access_type in ['wayback', 'ia_file'] and work.fulltext.file_mimetype in ["application/pdf", None] and work.fulltext.file_sha1 %}
   <!-- single PDF access redirect URL -->
-  <meta name="citation_pdf_url" content="{{ make_access_redirect_url(work.fulltext.access_type, work.fulltext.access_url) }}">
+  <meta name="citation_pdf_url" content="{{ make_access_redirect_url(work.work_ident, work.fulltext.access_type, work.fulltext.access_url) }}">
   <!-- direct URL: {{ work.fulltext.access_url | safe }} -->
 {% endif %}
 
