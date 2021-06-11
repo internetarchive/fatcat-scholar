@@ -10,7 +10,7 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 # NOTE: filter out 12-digit access URLs (vs. 14-digit)
 fatcat-cli search scholar 'doc_type:work (fulltext.access_type:ia_file OR fulltext.access_type:wayback) (NOT biblio.arxiv_id:*) (NOT biblio.pmcid:*) (NOT biblio.publisher_type:big5) (year:<1926 OR tags:*)' --index-json --limit 0 \
     | pv -l \
-    | jq '[.fulltext.access_type, .fulltext.access_url] | @tsv' -r \
+    | jq '[.work_ident, .fulltext.access_type, .fulltext.access_url] | @tsv' -r \
     | rg -v '^null' \
     | rg -v 'web.archive.org/web/\d{12}/' \
     | $SCRIPT_DIR/transform_access_url.py \
