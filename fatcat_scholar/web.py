@@ -29,7 +29,6 @@ from fatcat_scholar.config import settings, GIT_REVISION
 from fatcat_scholar.hacks import (
     Jinja2Templates,
     parse_accept_lang,
-    wayback_direct_url,
     make_access_redirect_url,
 )
 from fatcat_scholar.search import (
@@ -38,7 +37,6 @@ from fatcat_scholar.search import (
     FulltextHits,
     es_scholar_index_alive,
     get_es_scholar_doc,
-    lookup_fulltext_pdf,
 )
 from fatcat_scholar.schema import ScholarDoc
 
@@ -185,48 +183,69 @@ def get_work(work_ident: str = Query(..., min_length=20, max_length=20)) -> dict
 
 
 @api.get(
-    "/access-redirect/{sha1}.pdf",
-    operation_id="access_redirect_pdf",
-    include_in_schema=False,
-)
-def access_redirect_pdf(sha1: str = Query(..., min_length=40, max_length=40)) -> Any:
-    """
-    NOTE: DEPRECATED
-    """
-    fulltext = lookup_fulltext_pdf(sha1)
-    if not fulltext or not fulltext.access_url:
-        raise HTTPException(status_code=404, detail="PDF file not found")
-    access_url = fulltext.access_url
-    if fulltext.access_type == "wayback":
-        access_url = wayback_direct_url(access_url)
-    return RedirectResponse(access_url, status_code=302)
-
-
-@api.get(
-    "/access/wayback/{timestamp}/{url:path}",
+    "/work/{work_ident}/access/wayback/{url:path}",
     operation_id="access_redirect_wayback",
     include_in_schema=False,
 )
-def access_redirect_wayback(timestamp: int, url: str, request: Request) -> Any:
-    original_url = "/".join(str(request.url).split("/")[6:])
+def access_redirect_wayback(
+    url: str,
+    request: Request,
+    work_ident: str = Query(..., min_length=20, max_length=20),
+) -> Any:
+    raw_original_url = "/".join(str(request.url).split("/")[7:])
     # the quote() call is necessary because the URL is un-encoded in the path parameter
     # see also: https://github.com/encode/starlette/commit/f997938916d20e955478f60406ef9d293236a16d
-    access_url = urllib.parse.quote(
-        f"https://web.archive.org/web/{timestamp}id_/{original_url}",
-        safe=":/%#?=@[]!$&'()*+,;",
-    )
-    return RedirectResponse(access_url, status_code=302)
+    original_url = urllib.parse.quote(raw_original_url, safe=":/%#?=@[]!$&'()*+,;",)
+    doc_dict = get_es_scholar_doc(f"work_{work_ident}")
+    if not doc_dict:
+        raise HTTPException(status_code=404, detail="work not found")
+    doc: ScholarDoc = doc_dict["_obj"]
+    # combine fulltext with all access options
+    access: List[Any] = []
+    if doc.fulltext:
+        access.append(doc.fulltext)
+    access.extend(doc.access or [])
+    for opt in access:
+        if (
+            opt.access_type == "wayback"
+            and opt.access_url
+            and "://web.archive.org/web/" in opt.access_url
+            and opt.access_url.endswith(original_url)
+        ):
+            timestamp = opt.access_url.split("/")[4]
+            if not (len(timestamp) == 14 and timestamp.isdigit()):
+                continue
+            access_url = f"https://web.archive.org/web/{timestamp}id_/{original_url}"
+            return RedirectResponse(access_url, status_code=302)
+    raise HTTPException(status_code=404, detail="access URL not found")
 
 
 @api.get(
-    "/access/ia_file/{item}/{file_path:path}",
+    "/work/{work_ident}/access/ia_file/{item}/{file_path:path}",
     operation_id="access_redirect_ia_file",
     include_in_schema=False,
 )
-def access_redirect_ia_file(item: str, file_path: str, request: Request) -> Any:
-    original_path = urllib.parse.quote("/".join(str(request.url).split("/")[6:]))
+def access_redirect_ia_file(
+    item: str,
+    file_path: str,
+    request: Request,
+    work_ident: str = Query(..., min_length=20, max_length=20),
+) -> Any:
+    original_path = urllib.parse.quote("/".join(str(request.url).split("/")[8:]))
     access_url = f"https://archive.org/download/{item}/{original_path}"
-    return RedirectResponse(access_url, status_code=302)
+    doc_dict = get_es_scholar_doc(f"work_{work_ident}")
+    if not doc_dict:
+        raise HTTPException(status_code=404, detail="work not found")
+    doc: ScholarDoc = doc_dict["_obj"]
+    # combine fulltext with all access options
+    access: List[Any] = []
+    if doc.fulltext:
+        access.append(doc.fulltext)
+    access.extend(doc.access or [])
+    for opt in access:
+        if opt.access_type == "ia_file" and opt.access_url == access_url:
+            return RedirectResponse(access_url, status_code=302)
+    raise HTTPException(status_code=404, detail="access URL not found")
 
 
 web = APIRouter()

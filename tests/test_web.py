@@ -125,11 +125,8 @@ def test_basic_work_landing_page(client: Any, mocker: Any) -> None:
 
 
 def test_basic_access_redirect(client: Any, mocker: Any) -> None:
-    """
-    NOTE: DEPRECATED
-    """
 
-    with open("tests/files/elastic_fulltext_search.json") as f:
+    with open("tests/files/elastic_fulltext_get.json") as f:
         elastic_resp = json.loads(f.read())
 
     es_raw = mocker.patch(
@@ -141,7 +138,7 @@ def test_basic_access_redirect(client: Any, mocker: Any) -> None:
     ]
 
     rv = client.get(
-        "/access-redirect/f81f84e23c9ba5d364c70f01fa26e645d29c0427.pdf",
+        "/work/2x5qvct2dnhrbctqa2q2uyut6a/access/wayback/https://www.federalreserve.gov/econresdata/feds/2015/files/2015118pap.pdf",
         allow_redirects=False,
     )
     assert rv.status_code == 302
@@ -150,18 +147,32 @@ def test_basic_access_redirect(client: Any, mocker: Any) -> None:
         == "https://web.archive.org/web/20200206164725id_/https://www.federalreserve.gov/econresdata/feds/2015/files/2015118pap.pdf"
     )
 
+    # check that URL is validated
     rv = client.get(
-        "/access-redirect/aaaaaaaaaaaaaaaaaaaaaa01fa26e645d29c0427.pdf",
+        "/work/2x5qvct2dnhrbctqa2q2uyut6a/access/wayback/https://www.federalreserve.gov/econresdata/feds/2015/files/2015118pap.pdf.DUMMY",
         allow_redirects=False,
     )
     assert rv.status_code == 404
 
 
-def test_access_redirects(client: Any, mocker: Any) -> None:
+def test_access_redirect_encoding(client: Any, mocker: Any) -> None:
+
+    with open("tests/files/elastic_get_work_a6gvpil4brdgzhqyaog3ftngqe.json") as f:
+        elastic_ia_resp = json.loads(f.read())
+    with open("tests/files/elastic_get_work_ao5l3ykgbvg2vfpqe2y5qold5y.json") as f:
+        elastic_wayback_resp = json.loads(f.read())
+
+    es_raw = mocker.patch(
+        "elasticsearch.connection.Urllib3HttpConnection.perform_request"
+    )
+    es_raw.side_effect = [
+        (200, {}, json.dumps(elastic_ia_resp)),
+        (200, {}, json.dumps(elastic_wayback_resp)),
+    ]
 
     # tricky "URL encoding in archive.org path" case
     rv = client.get(
-        "/access/ia_file/crossref-pre-1909-scholarly-works/10.1016%252Fs0140-6736%252802%252912493-7.zip/10.1016%252Fs0140-6736%252802%252912928-x.pdf",
+        "/work/a6gvpil4brdgzhqyaog3ftngqe/access/ia_file/crossref-pre-1909-scholarly-works/10.1016%252Fs0140-6736%252802%252912493-7.zip/10.1016%252Fs0140-6736%252802%252912928-x.pdf",
         allow_redirects=False,
     )
     assert rv.status_code == 302
@@ -170,19 +181,9 @@ def test_access_redirects(client: Any, mocker: Any) -> None:
         == "https://archive.org/download/crossref-pre-1909-scholarly-works/10.1016%252Fs0140-6736%252802%252912493-7.zip/10.1016%252Fs0140-6736%252802%252912928-x.pdf"
     )
 
-    rv = client.get(
-        "/access/wayback/20170814015956/https://epub.uni-regensburg.de/21901/1/lorenz73.pdf",
-        allow_redirects=False,
-    )
-    assert rv.status_code == 302
-    assert (
-        rv.headers["Location"]
-        == "https://web.archive.org/web/20170814015956id_/https://epub.uni-regensburg.de/21901/1/lorenz73.pdf"
-    )
-
     # spaces ("%20" vs "+")
     rv = client.get(
-        "/access/wayback/20170811115414/http://sudjms.net/issues/5-4/pdf/8)A%20comparison%20study%20of%20histochemical%20staining%20of%20various%20tissues%20after.pdf",
+        "/work/ao5l3ykgbvg2vfpqe2y5qold5y/access/wayback/http://sudjms.net/issues/5-4/pdf/8)A%20comparison%20study%20of%20histochemical%20staining%20of%20various%20tissues%20after.pdf",
         allow_redirects=False,
     )
     assert rv.status_code == 302

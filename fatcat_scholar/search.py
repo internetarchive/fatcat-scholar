@@ -21,7 +21,7 @@ from pydantic import BaseModel
 
 from fatcat_scholar.config import settings
 from fatcat_scholar.identifiers import *
-from fatcat_scholar.schema import ScholarDoc, ScholarFulltext
+from fatcat_scholar.schema import ScholarDoc
 from fatcat_scholar.query_parse import sniff_citation_query, pre_parse_query
 from fatcat_scholar.query_citation import try_fuzzy_match
 
@@ -464,26 +464,3 @@ def get_es_scholar_doc(key: str) -> Optional[dict]:
     except Exception:
         pass
     return doc
-
-
-def lookup_fulltext_pdf(sha1: str) -> Optional[ScholarFulltext]:
-    """
-    Fetch a document by fulltext file sha1, returning only the 'fulltext' sub-document.
-    """
-    sha1 = sha1.lower()
-    assert len(sha1) == 40 and sha1.isalnum()
-    hits = do_lookup_query(
-        f'fulltext.file_sha1:{sha1} fulltext.file_mimetype:"application/pdf" fulltext.access_url:*'
-    )
-    if not hits.results:
-        return None
-    fulltext = ScholarFulltext.parse_obj(hits.results[0]["fulltext"])
-    if not fulltext.access_type in ("ia_file", "wayback"):
-        return None
-    if fulltext.file_sha1 != sha1:
-        return None
-    if fulltext.file_mimetype != "application/pdf":
-        return None
-    if not fulltext.access_url:
-        return None
-    return fulltext
