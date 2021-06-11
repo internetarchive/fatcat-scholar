@@ -409,6 +409,9 @@ class WorkPipeline:
             except requests.exceptions.ReadTimeout as e:
                 print(str(e), file=sys.stderr)
                 continue
+            except requests.exceptions.ChunkedEncodingError as e:
+                print(str(e), file=sys.stderr)
+                continue
             if sim_fulltext:
                 break
 

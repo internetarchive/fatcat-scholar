@@ -211,6 +211,9 @@ class SimPipeline:
         except requests.exceptions.ReadTimeout as e:
             print(str(e), file=sys.stderr)
             return
+        except requests.exceptions.ChunkedEncodingError as e:
+            print(str(e), file=sys.stderr)
+            return
         if not full_issue:
             return
         pages = self.full_issue_to_pages(full_issue)
