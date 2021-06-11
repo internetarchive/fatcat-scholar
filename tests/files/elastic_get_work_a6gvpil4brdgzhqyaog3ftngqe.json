@@ -1,0 +1,82 @@
+{
+  "_index": "scholar_fulltext_v01_20210128",
+  "_type": "_doc",
+  "_id": "work_a6gvpil4brdgzhqyaog3ftngqe",
+  "_version": 1,
+  "_seq_no": 453845,
+  "_primary_term": 1,
+  "found": true,
+  "_source": {
+    "collapse_key": "a6gvpil4brdgzhqyaog3ftngqe",
+    "work_ident": "a6gvpil4brdgzhqyaog3ftngqe",
+    "access": [
+      {
+        "access_type": "ia_file",
+        "access_url": "https://archive.org/download/crossref-pre-1909-scholarly-works/10.1016%252Fs0140-6736%252802%252912493-7.zip/10.1016%252Fs0140-6736%252802%252912928-x.pdf",
+        "file_ident": "snaxmodbtzehlnnzxxfn4f4cwe",
+        "release_ident": "elxvji2qezgqlktksev72p7ddi"
+      }
+    ],
+    "abstracts": [],
+    "biblio": {
+      "affiliations": [],
+      "container_ident": "sn27gkxlkbhuzeexoqyapc756a",
+      "container_issnl": "0140-6736",
+      "container_name": "The Lancet",
+      "container_sherpa_color": "green",
+      "contrib_count": 0,
+      "contrib_names": [],
+      "doi": "10.1016/s0140-6736(02)12928-x",
+      "doi_prefix": "10.1016",
+      "doi_registrar": "crossref",
+      "first_page": "828",
+      "first_page_int": 828,
+      "issns": [
+        "0140-6736",
+        "1474-547X"
+      ],
+      "issue": "3321",
+      "issue_int": 3321,
+      "lang_code": "en",
+      "pages": "828",
+      "publisher": "Elsevier BV",
+      "publisher_type": "big5",
+      "release_ident": "elxvji2qezgqlktksev72p7ddi",
+      "release_stage": "published",
+      "release_type": "article-journal",
+      "release_year": 1887,
+      "title": "HARVEIAN SOCIETY",
+      "volume": "129",
+      "volume_int": 129
+    },
+    "fulltext": {
+      "access_type": "ia_file",
+      "file_sha1": "45ca3f186c09826bc11d6fa6439ec6c432ff32ee",
+      "size_bytes": 227934,
+      "file_ident": "snaxmodbtzehlnnzxxfn4f4cwe",
+      "access_url": "https://archive.org/download/crossref-pre-1909-scholarly-works/10.1016%252Fs0140-6736%252802%252912493-7.zip/10.1016%252Fs0140-6736%252802%252912928-x.pdf",
+      "release_ident": "elxvji2qezgqlktksev72p7ddi",
+      "thumbnail_url": "https://blobs.fatcat.wiki/thumbnail/pdf/45/ca/45ca3f186c09826bc11d6fa6439ec6c432ff32ee.180px.jpg"
+    },
+    "doc_type": "work",
+    "doc_index_ts": "2021-01-29T10:11:10.020080",
+    "key": "work_a6gvpil4brdgzhqyaog3ftngqe",
+    "releases": [
+      {
+        "container_ident": "sn27gkxlkbhuzeexoqyapc756a",
+        "container_issnl": "0140-6736",
+        "container_name": "The Lancet",
+        "doi": "10.1016/s0140-6736(02)12928-x",
+        "doi_prefix": "10.1016",
+        "doi_registrar": "crossref",
+        "ident": "elxvji2qezgqlktksev72p7ddi",
+        "release_stage": "published",
+        "release_type": "article-journal",
+        "release_year": 1887,
+        "revision": "ef497837-9594-4e91-8b68-95019a54b015",
+        "title": "HARVEIAN SOCIETY."
+      }
+    ],
+    "tags": []
+  }
+}

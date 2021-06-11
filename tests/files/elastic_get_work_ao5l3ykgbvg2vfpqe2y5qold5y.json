@@ -1,0 +1,92 @@
+{
+  "_index": "scholar_fulltext_v01_20210128",
+  "_type": "_doc",
+  "_id": "work_ao5l3ykgbvg2vfpqe2y5qold5y",
+  "_version": 1,
+  "_seq_no": 257511,
+  "_primary_term": 1,
+  "found": true,
+  "_source": {
+    "collapse_key": "ao5l3ykgbvg2vfpqe2y5qold5y",
+    "work_ident": "ao5l3ykgbvg2vfpqe2y5qold5y",
+    "access": [
+      {
+        "access_type": "wayback",
+        "access_url": "https://web.archive.org/web/20170811115414/http://sudjms.net/issues/5-4/pdf/8)A%20comparison%20study%20of%20histochemical%20staining%20of%20various%20tissues%20after.pdf",
+        "file_ident": "jyuvzs2mvvbnvdqnlzkdvjhdce",
+        "mimetype": "application/pdf",
+        "release_ident": "ngq3arml7raznndtaollrdeo3a"
+      }
+    ],
+    "abstracts": [
+      {
+        "body": "The potential problems related to the use of formalin in histopathology, such as health hazards, deterioration of nuclei acids are well-known. The aim of this study was to evaluate the utilization of a Carnoy's solution fixation in comparison with formalin on subsequent tissue sectioning and histochemical staining. Materials and Methods: Corresponding sections of 25 tissue biopsies of rabbit's different organs were fixed in Carnoy's solution and in 10% neutral buffered formalin. Samples were processed using the conventional method and then stained applying five histochemical methods. The degree of the quality of the staining was assessed for each method by scoring system (1-10) depending on comparison of the stained tissue sections with illustrated photomicrographs. Results: For the quality of cutting, the best quality was obtained by Formalin (mean = 4.76) then Carnoy's fixative (mean =3.84). The best quality of Haematoxylin and Eosin staining was obtained by formalin (mean =5.28) then Carnoy's (mean = 4.00). For Alcian blue and Perl's Prussian blue, the best staining qualities were obtained by Formalin (mean = 4.76 and 5.64 respectively) followed by Carnoy's (mean = 2.88 and 3.92 respectively). For periodic Acid Schiff's the best staining quality was obtained following Carnoy's fixation (mean = 4.52) then, the formalin (mean = 3.76). Conclusion: Although, Carnoy's fluid is a safe fixative and can rapidly penetrate the tissues, but it can't be a substitute for formalin."
+      }
+    ],
+    "biblio": {
+      "affiliations": [],
+      "container_ident": "dqwgsijflvfmnhe6ork5gro7wi",
+      "container_issnl": "1858-5051",
+      "container_name": "Sudan Journal of Medical Sciences",
+      "container_sherpa_color": "green",
+      "container_type": "journal",
+      "contrib_count": 2,
+      "contrib_names": [
+        "HG Ahmed",
+        "AI Mohammed",
+        "MOM Hussein"
+      ],
+      "doi": "10.4314/sjms.v5i4.64497",
+      "doi_prefix": "10.4314",
+      "doi_registrar": "crossref",
+      "issns": [
+        "1858-8530",
+        "1858-5051"
+      ],
+      "publisher": "African Journals Online (AJOL)",
+      "publisher_type": "longtail",
+      "release_date": "2011-03-16",
+      "release_ident": "ngq3arml7raznndtaollrdeo3a",
+      "release_stage": "published",
+      "release_type": "article-journal",
+      "release_year": 2011,
+      "title": "A comparison study of histochemical staining of various tissues after Carnoy's and formalin fixation"
+    },
+    "fulltext": {
+      "file_mimetype": "application/pdf",
+      "access_type": "wayback",
+      "file_sha1": "0d00372df39ef22aa75535f5e48ce88b5fd3e8ce",
+      "size_bytes": 1110732,
+      "file_ident": "jyuvzs2mvvbnvdqnlzkdvjhdce",
+      "access_url": "https://web.archive.org/web/20170811115414/http://sudjms.net/issues/5-4/pdf/8)A%20comparison%20study%20of%20histochemical%20staining%20of%20various%20tissues%20after.pdf",
+      "release_ident": "ngq3arml7raznndtaollrdeo3a",
+      "thumbnail_url": "https://blobs.fatcat.wiki/thumbnail/pdf/0d/00/0d00372df39ef22aa75535f5e48ce88b5fd3e8ce.180px.jpg"
+    },
+    "doc_type": "work",
+    "doc_index_ts": "2021-01-29T09:10:36.889348",
+    "key": "work_ao5l3ykgbvg2vfpqe2y5qold5y",
+    "releases": [
+      {
+        "container_ident": "dqwgsijflvfmnhe6ork5gro7wi",
+        "container_issnl": "1858-5051",
+        "container_name": "Sudan Journal of Medical Sciences",
+        "container_type": "journal",
+        "doi": "10.4314/sjms.v5i4.64497",
+        "doi_prefix": "10.4314",
+        "doi_registrar": "crossref",
+        "ident": "ngq3arml7raznndtaollrdeo3a",
+        "release_date": "2011-03-16",
+        "release_stage": "published",
+        "release_type": "article-journal",
+        "release_year": 2011,
+        "revision": "276b27d3-0bde-4787-b3b1-c01f3d775443",
+        "title": "A comparison study of histochemical staining of various tissues after Carnoy's and formalin fixation"
+      }
+    ],
+    "tags": [
+      "road",
+      "oa",
+      "doaj"
+    ]
+  }
+}
