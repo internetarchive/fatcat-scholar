@@ -1,5 +1,5 @@
 
-subject: work-in-progress
+subject: implemented
 
 Persistent Landing Pages, Access URLs, Sitemaps
 ===============================================
@@ -25,7 +25,6 @@ New URL endpoint:
 Work landing pages will summarize bibliographic metadata about the work, list
 versions ("releases") and list access options. The landing pages will include
 bibliographic metadata summarized in HTML tags for the "primary" release.
-
 
 In the future, these pages could be host to additional features or sub-pages
 (new endpoints), such as:
@@ -60,39 +59,35 @@ Landing pages will be rendered from a simple, single "GET" request to the same
 elasticsearch backend index; no new backing services (eg, api.fatcat.wiki) are
 introduced.
 
+
 # Access Redirect URLs
 
 Some academic search engines require a `citation_pdf_url` link from the same
 domain as the landing page, with an optional HTTP redirect.
 
-New URL endpoint:
+New URL endpoints:
 
-    /access-redirect/<sha1>.pdf
+    /work/<ident>/access/wayback/<original-url>
+    /work/<ident>/access/ia_file/<archive-item>/<file-path>
 
 Requests to such URLs will redirect (HTTP 302) to an *.archive.org access
 location of the exact file (by sha1), if known.
 
-It is likely that in the future `.xml` and `.epub` access redirect links would
-be added in the same format. Unclear what the scheme would be for HTML content
-(SHA-1 of the "primary" HTML document? or wayback timestamp and URL?).
-
-This URL structure was chosen to reduce confusion that the file might be served
-from scholar.archive.org itself ("redirect"); to indicate the filetype
-expected; and to encode information about which resource is being linked to
-("content addressible").
+These redirects are implemented by querying the same scholar elasticsearch
+backend index, finding fulltext access with the matching type and URL/path
+substring, and redirecting.
 
 
 ### Design Notes
 
-An alternative would have been to scope the URL below the work itself, eg:
+This particular access URL format came from extensive discussion with large
+indexing operators. Some of the properties are:
 
-    /work/<ident>/access-redirect/<sha1>.pdf
-
-Such URLs would be quite long.
-
-These redirects are implemented by querying the same scholar elasticsearch
-backend index, querying for fulltext access with the matching file SHA-1, and
-using the `access_url` returned.
+- links are to `scholar.archive.org`, the same domain as the landing page, even though the content is actually served (via redirect) from archive.org or web.archive.org
+- lookups (by work ident) are fast against scholar.archive.org elasticsearch
+- wayback "original URLs" are preserved in the URL itself
+- would be feasible to do a static (nginx) redirect if project is ever wound-down
+- wayback timestamps are not included in the URL, meaning that simple changes (recrawls) do not update the `citation_pdf_url` (this was a third-party concern)
 
 
 # Sitemap
@@ -103,8 +98,10 @@ will include:
     /robots.txt - updated to include sitemap references
     /sitemap.xml - basic generic list of pages (homepage, about, userguide)
     /sitemap-index-works.xml - XML file pointing to many sub-sitemap files; includes lastmod metadata
-    /sitemap-works-YYYY-MM-DD-NNNNN.txt - series of timestamped "simple" sitemaps (URL list files)
+    /sitemap-index-access.xml - XML file pointing to many sub-sitemap files; includes lastmod metadata
+    /sitemap-works-NNNNN.txt - series of "simple" sitemaps (URL list files), to landing pages
+    /sitemap-access-NNNNN.txt - series of "simple" sitemaps (URL list files), to access links
 
-Only works for which there is an appropriate fulltext access URL 
+Only works for which there is an appropriate fulltext access URL end up in the sitemaps.
 
 The sitemap links from robots.txt should be absolute URLs, not relative URLs.
