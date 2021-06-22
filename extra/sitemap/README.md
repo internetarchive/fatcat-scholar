@@ -9,6 +9,10 @@ installed. Run these commands on a production machine.
     /srv/fatcat_scholar/src/extra/sitemap/access_urls_query.sh
     /srv/fatcat_scholar/src/extra/sitemap/generate_sitemap_indices.py
 
+Then copy to alternate/replica machine:
+
+    scp *.txt *.xml $SCHOLARREPLICAHOST:/srv/fatcat_scholar/sitemap
+
 ## Background
 
 Google has a limit of 50k lines / 10 MByte for text sitemap files, and 50K
