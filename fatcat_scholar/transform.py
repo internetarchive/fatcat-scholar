@@ -481,7 +481,8 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
     else:
         raise NotImplementedError(f"doc_type: {heavy.doc_type}")
 
-    if heavy.grobid_fulltext:
+    # TODO: this crude filter should not be necessary once we upgrade to GROBID v0.6+
+    if heavy.grobid_fulltext and heavy.grobid_fulltext.get('file_ident') != 'gbbvrg2tpzan5hl3qcsfzh4vfq':
         fulltext_release = [
             r
             for r in heavy.releases
@@ -792,7 +793,8 @@ def refs_from_heavy(heavy: IntermediateBundle) -> Sequence[RefStructured]:
                 break
 
     fulltext_refs: List[RefStructured] = []
-    if heavy.grobid_fulltext:
+    # TODO: this crude filter should not be necessary once we upgrade to GROBID v0.6+
+    if heavy.grobid_fulltext and heavy.grobid_fulltext.get('file_ident') != 'gbbvrg2tpzan5hl3qcsfzh4vfq':
         fulltext_release = [
             r
             for r in heavy.releases
