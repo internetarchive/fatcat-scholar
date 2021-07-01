@@ -6,7 +6,7 @@ verify_ssl = true
 [packages]
 aiofiles = "*"
 babel = "*"
-bs4 = "*"
+beautifulsoup4 = "==4.*"
 confluent-kafka = "*"
 dynaconf = ">=3"
 elasticsearch = { version = ">=7.8.0,<8.0.0", extras = ["async"] }
