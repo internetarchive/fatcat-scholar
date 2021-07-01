@@ -15,3 +15,6 @@ Crawl-delay: 5
 
 Sitemap: https://scholar.archive.org/sitemap.xml
 Sitemap: https://scholar.archive.org/sitemap-index-works.xml
+
+# same info as sitemap-index-works.xml plus following citation_pdf_url
+#Sitemap: https://scholar.archive.org/sitemap-index-access.xml
