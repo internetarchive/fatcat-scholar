@@ -12,6 +12,7 @@ from fatcat_scholar.api_entities import *
 from fatcat_scholar.schema import *
 from fatcat_scholar.config import settings, GIT_REVISION
 from fatcat_scholar.grobid2json import teixml2json
+from fatcat_scholar.identifiers import clean_doi, clean_pmcid
 
 MAX_BODY_CHARS = 512 * 1024
 
@@ -631,9 +632,9 @@ def refs_from_grobid(release: ReleaseEntity, tei_dict: dict) -> List[RefStructur
                     volume=ref.get("volume"),
                     issue=ref.get("issue"),
                     pages=ref.get("pages"),
-                    doi=ref.get("doi"),
+                    doi=clean_doi(ref.get("doi")),
                     pmid=ref.get("pmid"),
-                    pmcid=ref.get("pmcid"),
+                    pmcid=clean_pmcid(ref.get("pmcid")),
                     arxiv_id=ref.get("arxiv_id"),
                     # isbn13: Optional[str]
                     url=clean_url_conservative(ref.get("url")),

@@ -24,16 +24,10 @@ def clean_doi(raw: Optional[str]) -> Optional[str]:
         return None
     if len(raw.split()) != 1:
         return None
-    if raw.startswith("doi:"):
-        raw = raw[4:]
-    if raw.startswith("http://"):
-        raw = raw[7:]
-    if raw.startswith("https://"):
-        raw = raw[8:]
-    if raw.startswith("doi.org/"):
-        raw = raw[8:]
-    if raw.startswith("dx.doi.org/"):
-        raw = raw[11:]
+    if not "10." in raw:
+        return None
+    if not raw.startswith("10."):
+        raw = raw[raw.find("10."):]
     if raw[7:9] == "//":
         raw = raw[:8] + raw[9:]
 
@@ -75,6 +69,8 @@ def test_clean_doi() -> None:
     assert (
         clean_doi("10.6002/ect.2020.häyry") == None
     )  # this example via pubmed (pmid:32519616)
+    # GROBID mangled DOI
+    assert clean_doi("21924DOI10.1234/asdf ") == "10.1234/asdf"
 
 
 def clean_pmcid(raw: Optional[str]) -> Optional[str]:
