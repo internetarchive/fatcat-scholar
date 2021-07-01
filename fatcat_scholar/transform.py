@@ -639,6 +639,7 @@ def refs_from_grobid(release: ReleaseEntity, tei_dict: dict) -> List[RefStructur
                 ),
                 release_ident=release.ident,
                 work_ident=release.work_id,
+                release_stage=release.release_stage,
                 release_year=release.release_year,
                 index=ref.get("index"),
                 key=ref.get("id"),

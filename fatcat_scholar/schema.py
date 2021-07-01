@@ -282,6 +282,7 @@ class RefStructured(BaseModel):
     biblio: RefBiblio
     release_ident: Optional[str]
     work_ident: Optional[str]
+    release_stage: Optional[str]
     release_year: Optional[int]
     index: Optional[int]
     key: Optional[str]
