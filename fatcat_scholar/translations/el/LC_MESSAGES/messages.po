@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-03-25 11:07-0700\n"
-"PO-Revision-Date: 2021-05-25 22:34+0000\n"
+"PO-Revision-Date: 2021-07-06 15:34+0000\n"
 "Last-Translator: Eugenia Russell <eugenia.russell2019@gmail.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/el/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.7-dev\n"
+"X-Generator: Weblate 4.8-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 #: fatcat_scholar/search.py:42
@@ -376,7 +376,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:30
 msgid "Query Syntax"
-msgstr ""
+msgstr "Σύνταξη Ερωτήματος"
 
 #: fatcat_scholar/templates/help.html:32
 msgid ""
@@ -416,7 +416,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:53
 msgid "Conference papers with an author name query:"
-msgstr ""
+msgstr "Εργασίες συνεδρίων με αναζήτηση ονόματος συγγραφέα:"
 
 #: fatcat_scholar/templates/help.html:57
 msgid "Citation Queries"
