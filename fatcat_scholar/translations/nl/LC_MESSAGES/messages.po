@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
 # Bryan Newbold <bnewbold@robocracy.org>, 2021.
+# privacysimp <contributions.pqy8k@aleeas.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-03-25 11:07-0700\n"
-"PO-Revision-Date: 2021-03-26 18:29+0000\n"
-"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"PO-Revision-Date: 2021-07-16 17:36+0000\n"
+"Last-Translator: privacysimp <contributions.pqy8k@aleeas.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/nl/>\n"
 "Language: nl\n"
@@ -17,12 +18,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.6-dev\n"
+"X-Generator: Weblate 4.7.2-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 #: fatcat_scholar/search.py:42
 msgid "Release Date"
-msgstr "Releasedatum"
+msgstr "Datum van Publicatie"
 
 #: fatcat_scholar/search.py:46
 msgid "All Time"
@@ -838,7 +839,7 @@ msgstr "Filters"
 msgid "Hit"
 msgid_plural "Hits"
 msgstr[0] "Hit"
-msgstr[1] ""
+msgstr[1] "Hits"
 
 #: fatcat_scholar/templates/search.html:53
 #: fatcat_scholar/templates/search.html:85
