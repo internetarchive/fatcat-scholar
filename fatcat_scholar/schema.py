@@ -270,11 +270,12 @@ class RefBiblio(BaseModel):
     volume: Optional[str]
     issue: Optional[str]
     pages: Optional[str]
+    version: Optional[str]
     doi: Optional[str]
     pmid: Optional[str]
     pmcid: Optional[str]
     arxiv_id: Optional[str]
-    isbn13: Optional[str]
+    isbn: Optional[str]
     url: Optional[str]
 
 
