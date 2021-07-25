@@ -603,6 +603,38 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
     )
 
 
+def clean_ref_key(key: Optional[str], doi: Optional[str] = None) -> Optional[str]:
+    if not key:
+        return None
+    key = key.strip()
+    if key and doi and key.startswith(doi):
+        key = key.replace(doi + "-", "")
+        key = key.replace(doi, "")
+    if key.startswith("10.") and 'SICI' in key and '-' in key:
+        key = key.split('-')[-1]
+    if key.startswith("10.") and '_' in key:
+        key = key.split('_')[-1]
+    if len(key) > 10 and "#" in key:
+        key = key.split('#')[-1]
+    if len(key) > 10 and "_" in key:
+        key = key.split('_')[-1]
+    if key and key.startswith("ref-"):
+        key = key[4:]
+    if key[0] in ['/', '_']:
+        key = key[1:]
+    return key
+
+def test_clean_ref_key() -> None:
+    test_pairs = [
+        ("ref-23", None, "23"),
+        ("_bib0040", None, "bib0040"),
+        ("                                20170224012016_R15", None, "R15"),
+        ("10.1002/(SICI)1099-1026(199905/06)14:3<195::AID-FFJ807>3.0.CO;2-C-BIB1", None, "BIB1"),
+        ("BFnrcardio201557_CR175", None, "CR175"),
+    ]
+    for raw, doi, expected in test_pairs:
+        assert clean_ref_key(raw, doi=doi) == expected
+
 def refs_from_grobid(release: ReleaseEntity, tei_dict: dict) -> List[RefStructured]:
     output = []
     for ref in tei_dict.get("citations") or []:
@@ -648,7 +680,7 @@ def refs_from_grobid(release: ReleaseEntity, tei_dict: dict) -> List[RefStructur
                 release_stage=release.release_stage,
                 release_year=release.release_year,
                 index=ref_index,
-                key=ref.get("id"),
+                key=clean_ref_key(ref.get("id")),
                 locator=None,
                 # target_release_id
                 ref_source="grobid",
@@ -661,14 +693,6 @@ def refs_from_release_refs(release: ReleaseEntity) -> List[RefStructured]:
     output = []
     for ref in release.refs:
         ref_source = "fatcat"
-
-        key = ref.key
-        if key and release.ext_ids.doi and key.startswith(release.ext_ids.doi):
-            key = key.replace(release.ext_ids.doi, "")
-        if key and key.startswith("ref-"):
-            key = key[4:]
-        if key and key.startswith("b"):
-            key = key[1:]
 
         if release.extra and release.extra.get("pubmed"):
             ref_source = "fatcat-pubmed"
@@ -709,7 +733,7 @@ def refs_from_release_refs(release: ReleaseEntity) -> List[RefStructured]:
                 release_stage=release.release_stage,
                 release_year=release.release_year,
                 index=ref_index,
-                key=key or None,
+                key=clean_ref_key(ref.key, doi=release.ext_ids.doi),
                 locator=ref.locator,
                 target_release_id=ref.target_release_id,
                 ref_source=ref_source,
@@ -733,12 +757,6 @@ def refs_from_crossref(
             authors = [
                 ref["author"],
             ]
-        key = ref.get("key")
-        if key and key.startswith(record["DOI"]):
-            key = key.replace(record["DOI"] + "-", "")
-            key = key.replace(record["DOI"], "")
-        if key and key.startswith("ref-"):
-            key = key[4:]
         ref_title = ref.get("article-title")
         ref_container_name = ref.get("journal-title")
         if not ref_container_name:
@@ -791,7 +809,7 @@ def refs_from_crossref(
                 release_stage=release.release_stage,
                 release_year=release.release_year,
                 index=i + 1, # 1-indexed
-                key=key or None,
+                key=clean_ref_key(ref.get("key"), doi=record.get("DOI")),
                 #locator,
                 target_release_id=None,
                 ref_source=ref_source,
