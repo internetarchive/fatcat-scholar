@@ -640,7 +640,7 @@ def refs_from_grobid(release: ReleaseEntity, tei_dict: dict) -> List[RefStructur
                     pmid=ref.get("pmid"),
                     pmcid=clean_pmcid(ref.get("pmcid")),
                     arxiv_id=ref.get("arxiv_id"),
-                    # isbn13: Optional[str]
+                    isbn=ref.get("isbn"),
                     url=clean_url_conservative(ref.get("url")),
                 ),
                 release_ident=release.ident,
@@ -701,11 +701,12 @@ def refs_from_release_refs(release: ReleaseEntity) -> List[RefStructured]:
                     pmid=extra.get("pmid"),
                     pmcid=extra.get("pmcid"),
                     arxiv_id=extra.get("arxiv_id"),
-                    isbn13=extra.get("isbn13"),
+                    isbn=extra.get("isbn13") or extra.get("isbn"),
                     url=clean_url_conservative(extra.get("url")),
                 ),
                 release_ident=release.ident,
                 work_ident=release.work_id,
+                release_stage=release.release_stage,
                 release_year=release.release_year,
                 index=ref_index,
                 key=key or None,
@@ -738,20 +739,41 @@ def refs_from_crossref(
             key = key.replace(record["DOI"], "")
         if key and key.startswith("ref-"):
             key = key[4:]
+        ref_title = ref.get("article-title")
         ref_container_name = ref.get("journal-title")
         if not ref_container_name:
+            ref_container_name = ref.get("container-title")
+
+        # volume-title is often a book title
+        if not ref_title:
+            ref_title = ref.get("volume-title")
+        elif not ref_container_name:
             ref_container_name = ref.get("volume-title")
+
+        # series-title is a bit weird in Crossref references. it is often
+        # passed alone and seems to be the article/book title miscategorized.
+        # other times it is a conference name.
+        series_title = ref.get("series-title")
+        if not ref_title:
+            ref_title = series_title
+        elif not ref_container_name:
+            ref_container_name = series_title
+
+        year = ref.get("year")
+        if year and year.isdigit():
+            year = int(year)
+        else:
+            year = None
         date = ref.get("date")
-        year = None
-        if date and len(date) >= 4 and date[:4].isdigit():
+        if date and not year and len(date) >= 4 and date[:4].isdigit():
             year = int(date[:4])
-            if year < 1000 or year > 2100:
-                year = None
+        if year and (year < 1000 or year > 2100):
+            year = None
         output.append(
             RefStructured(
                 biblio=RefBiblio(
                     unstructured=ref.get("unstructured"),
-                    title=ref.get("article-title"),
+                    title=ref_title,
                     subtitle=ref.get("subtitle"),
                     contrib_raw_names=authors,
                     year=year,
@@ -759,15 +781,18 @@ def refs_from_crossref(
                     publisher=ref.get("publisher"),
                     volume=ref.get("volume"),
                     issue=ref.get("issue"),
-                    pages=ref.get("page"),
+                    pages=ref.get("first-page"),
+                    version=ref.get("edition"),
                     doi=ref.get("DOI"),
+                    isbn=ref.get("ISBN"),
                 ),
                 release_ident=release.ident,
                 work_ident=release.work_id,
+                release_stage=release.release_stage,
                 release_year=release.release_year,
                 index=i + 1, # 1-indexed
                 key=key or None,
-                locator=ref.get("first-page"),
+                #locator,
                 target_release_id=None,
                 ref_source=ref_source,
             )

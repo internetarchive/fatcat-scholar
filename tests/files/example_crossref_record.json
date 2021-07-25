@@ -1,0 +1,225 @@
+{
+  "doi": "10.1515/jpm-2019-0016",
+  "record":
+{
+  "DOI": "10.1111/his.12200",
+  "ISSN": [
+    "0309-0167"
+  ],
+  "URL": "http://dx.doi.org/10.1111/his.12200",
+  "author": [
+    {
+      "affiliation": [],
+      "family": "Stewart",
+      "given": "Colin J R"
+    }
+  ],
+  "container-title": [
+    "Histopathology"
+  ],
+  "content-domain": {
+    "crossmark-restriction": false,
+    "domain": []
+  },
+  "created": {
+    "date-parts": [
+      [
+        2013,
+        6,
+        3
+      ]
+    ],
+    "date-time": "2013-06-03T16:37:56Z",
+    "timestamp": 1370277476000
+  },
+  "deposited": {
+    "date-parts": [
+      [
+        2017,
+        6,
+        21
+      ]
+    ],
+    "date-time": "2017-06-21T14:04:36Z",
+    "timestamp": 1498053876000
+  },
+  "indexed": {
+    "date-parts": [
+      [
+        2020,
+        7,
+        28
+      ]
+    ],
+    "date-time": "2020-07-28T14:37:55Z",
+    "timestamp": 1595947075455
+  },
+  "is-referenced-by-count": 0,
+  "issn-type": [
+    {
+      "type": "print",
+      "value": "0309-0167"
+    }
+  ],
+  "issued": {
+    "date-parts": [
+      [
+        2013,
+        7
+      ]
+    ]
+  },
+  "license": [
+    {
+      "URL": "http://doi.wiley.com/10.1002/tdm_license_1.1",
+      "content-version": "tdm",
+      "delay-in-days": 792,
+      "start": {
+        "date-parts": [
+          [
+            2015,
+            9,
+            1
+          ]
+        ],
+        "date-time": "2015-09-01T00:00:00Z",
+        "timestamp": 1441065600000
+      }
+    }
+  ],
+  "link": [
+    {
+      "URL": "https://api.wiley.com/onlinelibrary/tdm/v1/articles/10.1111%2Fhis.12200",
+      "content-type": "unspecified",
+      "content-version": "vor",
+      "intended-application": "text-mining"
+    }
+  ],
+  "member": "311",
+  "original-title": [],
+  "page": "n/a-n/a",
+  "prefix": "10.1111",
+  "published-online": {
+    "date-parts": [
+      [
+        2013,
+        7,
+        16
+      ]
+    ]
+  },
+  "published-print": {
+    "date-parts": [
+      [
+        2013,
+        7
+      ]
+    ]
+  },
+  "publisher": "Wiley",
+  "reference": [
+    {
+      "DOI": "10.5858/arpa.2012-0112-RA",
+      "article-title": "The separation of benign and malignant mesothelial proliferations",
+      "author": "Churg",
+      "doi-asserted-by": "crossref",
+      "first-page": "1217",
+      "journal-title": "Arch. Pathol. Lab. Med.",
+      "key": "10.1111/his.12200-BIB0001|his12200-cit-0001",
+      "volume": "136",
+      "year": "2012"
+    },
+    {
+      "DOI": "10.1136/jcp.2010.086074",
+      "article-title": "Peritoneal mesothelial hyperplasia associated with gynaecological disease: a potential diagnostic pitfall that is commonly associated with endometriosis",
+      "author": "Opraka",
+      "doi-asserted-by": "crossref",
+      "first-page": "313",
+      "journal-title": "J. Clin. Pathol.",
+      "key": "10.1111/his.12200-BIB0002|his12200-cit-0002",
+      "volume": "64",
+      "year": "2011"
+    },
+    {
+      "DOI": "10.1038/modpathol.2012.105",
+      "article-title": "Deciduoid mesothelioma: report of 21 cases with review of the literature",
+      "author": "Ordonez",
+      "doi-asserted-by": "crossref",
+      "first-page": "1481",
+      "journal-title": "Mod. Pathol.",
+      "key": "10.1111/his.12200-BIB0003|his12200-cit-0003",
+      "volume": "25",
+      "year": "2012"
+    },
+    {
+      "DOI": "10.1111/j.1525-1438.2006.00509.x",
+      "article-title": "Atypical reactive ovarian surface epithelium, a pitfall in pathologic assessment",
+      "author": "Aydin",
+      "doi-asserted-by": "crossref",
+      "first-page": "207",
+      "issue": "Suppl. 1",
+      "journal-title": "Int. J. Gynecol. Cancer",
+      "key": "10.1111/his.12200-BIB0004|his12200-cit-0004",
+      "volume": "16",
+      "year": "2006"
+    },
+    {
+      "DOI": "10.1097/PAP.0b013e3180ca7d7b",
+      "article-title": "The pathology of endometriosis: a survey of the many faces of a common disease emphasizing diagnostic pitfalls and unusual and newly appreciated aspects",
+      "author": "Clement",
+      "doi-asserted-by": "crossref",
+      "first-page": "241",
+      "journal-title": "Adv. Anat. Pathol.",
+      "key": "10.1111/his.12200-BIB0005|his12200-cit-0005",
+      "volume": "14",
+      "year": "2007"
+    },
+    {
+      "article-title": "Extramedullary hematopoiesis associated with organizing peritoneal hemorrhage: a report of 5 cases in patients presenting with primary gynecological disorders",
+      "author": "Mesbah Ardakani",
+      "journal-title": "Int. J. Gynecol. Pathol.",
+      "key": "10.1111/his.12200-BIB0006|his12200-cit-0006"
+    },
+    {
+      "key": "10.1016/B0-12-227090-8/00204-9_bib5",
+      "series-title": "Advances in Laser Remote Sensing – Selected Papers Presented at the 20th International Laser Radar Conference",
+      "year": "2001"
+    },
+    {
+      "key": "CIT0041",
+      "unstructured": "Linda Weiss,Creating Capitalism. Oxford: Blackwell, 1988. 272 pp. £29.95. ISBN 0 631 15733 6."
+    },
+    {
+      "author": "L Piegl",
+      "edition": "2",
+      "key": "576_CR3",
+      "unstructured": "Piegl L, Tiller W (1997) The NURBS Book, Monographs in Visual Communication, 2nd edn. Springer, Berlin",
+      "volume-title": "The NURBS Book, Monographs in Visual Communication",
+      "year": "1997"
+    }
+  ],
+  "reference-count": 6,
+  "references-count": 6,
+  "relation": {
+    "cites": []
+  },
+  "score": null,
+  "short-container-title": [
+    "Histopathology"
+  ],
+  "short-title": [],
+  "source": "Crossref",
+  "subject": [
+    "Pathology and Forensic Medicine",
+    "Histology",
+    "General Medicine"
+  ],
+  "subtitle": [],
+  "title": [
+    "Deciduoid mesothelial hyperplasia of the pelvic peritoneum"
+  ],
+  "type": "journal-article"
+},
+  "release_ident": "arzkbn5brjf2nitdy4fkiusc4q"
+}
+
