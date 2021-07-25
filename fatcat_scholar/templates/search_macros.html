@@ -329,7 +329,7 @@
   {% endif %}
 
   {% if paper.releases|length > 1 %}
-    {% for release in paper.releases if (release.ident != paper.biblio.release_ident and release.ident != paper.fulltext.release_ident) %}
+    {% for release in paper.releases if (release.ident != paper.biblio.release_ident and (not paper.fulltext or release.ident != paper.fulltext.release_ident)) %}
       {% if loop.first %}
         <h4 class="ui horizontal divider header">
           {# <i class="tag icon"></i> #}
