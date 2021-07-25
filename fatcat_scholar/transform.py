@@ -619,6 +619,10 @@ def refs_from_grobid(release: ReleaseEntity, tei_dict: dict) -> List[RefStructur
                 if a.get("name"):
                     assert isinstance(a["name"], str)
                     authors.append(a["name"])
+        ref_index = ref.get("index")
+        if ref_index is not None:
+            # transform from 0-indexed to 1-indexed
+            ref_index = ref_index + 1
         output.append(
             RefStructured(
                 biblio=RefBiblio(
@@ -643,7 +647,7 @@ def refs_from_grobid(release: ReleaseEntity, tei_dict: dict) -> List[RefStructur
                 work_ident=release.work_id,
                 release_stage=release.release_stage,
                 release_year=release.release_year,
-                index=ref.get("index"),
+                index=ref_index,
                 key=ref.get("id"),
                 locator=None,
                 # target_release_id
@@ -676,6 +680,10 @@ def refs_from_release_refs(release: ReleaseEntity) -> List[RefStructured]:
         extra = ref.extra or dict()
         authors = extra.get("authors") or []
         authors = [a for a in authors if type(a) == str]
+        ref_index = None
+        if ref.index is not None:
+            # transform from 0-indexed (release.refs) to 1-indexed (fatcat_refs)
+            ref_index = ref.index + 1
         output.append(
             RefStructured(
                 biblio=RefBiblio(
@@ -699,7 +707,7 @@ def refs_from_release_refs(release: ReleaseEntity) -> List[RefStructured]:
                 release_ident=release.ident,
                 work_ident=release.work_id,
                 release_year=release.release_year,
-                index=ref.index,
+                index=ref_index,
                 key=key or None,
                 locator=ref.locator,
                 target_release_id=ref.target_release_id,
@@ -757,7 +765,7 @@ def refs_from_crossref(
                 release_ident=release.ident,
                 work_ident=release.work_id,
                 release_year=release.release_year,
-                index=i,
+                index=i + 1, # 1-indexed
                 key=key or None,
                 locator=ref.get("first-page"),
                 target_release_id=None,

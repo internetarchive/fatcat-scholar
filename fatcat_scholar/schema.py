@@ -284,7 +284,7 @@ class RefStructured(BaseModel):
     work_ident: Optional[str]
     release_stage: Optional[str]
     release_year: Optional[int]
-    index: Optional[int]
+    index: Optional[int]  # 1-indexed
     key: Optional[str]
     locator: Optional[str]
     target_release_id: Optional[str]

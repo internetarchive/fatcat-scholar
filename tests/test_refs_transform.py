@@ -27,7 +27,7 @@ def test_transform_refs_grobid() -> None:
     assert ref.release_year == 1234
     assert ref.ref_source == "grobid"
     assert ref.key == "b12"
-    assert ref.index == 12
+    assert ref.index == 13
     assert ref.locator == None
     assert ref.biblio.contrib_raw_names is not None
     assert ref.biblio.contrib_raw_names[0] == "K Tasa"
