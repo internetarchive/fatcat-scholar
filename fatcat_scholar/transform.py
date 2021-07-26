@@ -798,8 +798,8 @@ def refs_from_crossref(
             ref_container_name = series_title
 
         year = ref.get("year")
-        if year and year.isdigit():
-            year = int(year)
+        if year:
+            year = clean_small_int(year)
         else:
             year = None
         date = ref.get("date")

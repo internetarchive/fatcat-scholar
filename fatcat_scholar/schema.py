@@ -301,9 +301,12 @@ class RefTarget(BaseModel):
 
 
 def clean_small_int(raw: Optional[str]) -> Optional[int]:
-    if not raw or not raw.isdigit():
+    if not raw or not raw.strip().isdigit():
         return None
-    val = int(raw)
+    try:
+        val = int(raw.strip())
+    except ValueError:
+        return None
     if abs(val) > 30000:
         return None
     return val
@@ -318,6 +321,7 @@ def test_clean_small_int() -> None:
     assert clean_small_int("1200003") == None
     assert clean_small_int("-123") == None
     assert clean_small_int("48844") == None
+    assert clean_small_int("1990²") == None
 
 
 def doi_split_prefix(doi: str) -> str:
