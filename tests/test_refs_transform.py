@@ -72,7 +72,7 @@ def test_transform_refs_crossref() -> None:
     assert refs[0].biblio.year == 2012
     assert refs[0].biblio.pages == "1217"
     assert refs[0].biblio.volume == "136"
-    assert refs[0].biblio.doi == "10.5858/arpa.2012-0112-RA"
+    assert refs[0].biblio.doi == "10.5858/arpa.2012-0112-ra"
     assert refs[0].biblio.unstructured is None
 
     assert refs[6].biblio.title == "Advances in Laser Remote Sensing – Selected Papers Presented at the 20th International Laser Radar Conference"
