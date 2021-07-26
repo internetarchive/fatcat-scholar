@@ -657,3 +657,66 @@ So added `--compress` and the `--tmpdir` (which needed to be created):
       | esbulk -verbose -size 100 -id key -w 4 -index scholar_fulltext_v01 -type _doc \
       2> /tmp/error.txt 1> /tmp/output.txt
 
+## 2021-06-06 Simple Iteration
+
+Some new paths, more parallelism, and more conservative file naming/handling,
+but otherwise not much changed from the 2020-12-30 run above.
+
+    export JOBDIR=/kubwa/scholar/2021-06-03
+    mkdir -p $JOBDIR
+    cd $JOBDIR
+    zcat /fast/release_export_expanded.json.gz | split --lines 8000000 - release_export_expanded.split_ -d --additional-suffix .json
+
+    cd /fast/fatcat-scholar
+    pipenv shell
+    export TMPDIR=/sandcrawler-db/tmp
+
+    # transform
+    set -u -o pipefail
+    for SHARD in {00..20}; do
+        cat $JOBDIR/release_export_expanded.split_$SHARD.json \
+            | parallel -j8 --line-buffer --compress --tmpdir $TMPDIR --round-robin --pipe python -m fatcat_scholar.work_pipeline run_releases \
+            | pv -l \
+            | pigz \
+            > $JOBDIR/fatcat_scholar_work_fulltext.split_$SHARD.json.gz.WIP \
+            && mv $JOBDIR/fatcat_scholar_work_fulltext.split_$SHARD.json.gz.WIP $JOBDIR/fatcat_scholar_work_fulltext.split_$SHARD.json.gz
+    done
+
+    # dump refs
+    set -u -o pipefail
+    for SHARD in {00..20}; do
+        zcat $JOBDIR/fatcat_scholar_work_fulltext.split_$SHARD.json.gz \
+            | pv -l \
+            | parallel -j8 --linebuffer --compress --tmpdir $TMPDIR --round-robin --pipe python -m fatcat_scholar.transform run_refs \
+            | pigz \
+            > $JOBDIR/fatcat_scholar_work_fulltext.split_$SHARD.refs.json.gz.WIP \
+            && mv $JOBDIR/fatcat_scholar_work_fulltext.split_$SHARD.refs.json.gz.WIP $JOBDIR/fatcat_scholar_work_fulltext.split_$SHARD.refs.json.gz
+    done
+
+Ran in to a problem with a single (!) bad TEI-XML document, due to bad text
+encoding:
+
+    xml.etree.ElementTree.ParseError: not well-formed (invalid token): line 40, column 1122
+
+Root cause was an issue in GROBID, which seems to have been fixed in more
+recent versions of GROBID. Patched to continue, and separately commited patch
+to fatcat-scholar code base.
+
+Ran several retries, manually.
+
+Upload to petabox:
+
+    export BASENAME=scholar_corpus_bundle_2021-06-03
+    for SHARD in {00..20}; do
+        ia upload ${BASENAME}_split-${SHARD} $JOBDIR/README.md $JOBDIR/fatcat_scholar_work_fulltext.split_${SHARD}.json.gz -m collection:"scholarly-tdm" --checksum
+    done
+
+    ia upload scholar_corpus_refs_2021-06-03 fatcat_scholar_work_fulltext.split_*.refs.json.gz -m collection:"scholarly-tdm" --checksum
+
+
+### Performance Notes (on 2021-06-06 run)
+
+Recently added crossref refs via sandcrawler-db postgrest lookup. Seem to still
+be getting around 40/sec works per second, with a single thread, similar to
+previous performance, so not a significant slow down.
+
