@@ -483,7 +483,10 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
         raise NotImplementedError(f"doc_type: {heavy.doc_type}")
 
     # TODO: this crude filter should not be necessary once we upgrade to GROBID v0.6+
-    if heavy.grobid_fulltext and heavy.grobid_fulltext.get('file_ident') != 'gbbvrg2tpzan5hl3qcsfzh4vfq':
+    if (
+        heavy.grobid_fulltext
+        and heavy.grobid_fulltext.get("file_ident") != "gbbvrg2tpzan5hl3qcsfzh4vfq"
+    ):
         fulltext_release = [
             r
             for r in heavy.releases
@@ -825,9 +828,9 @@ def refs_from_crossref(
                 work_ident=release.work_id,
                 release_stage=release.release_stage,
                 release_year=release.release_year,
-                index=i + 1, # 1-indexed
+                index=i + 1,  # 1-indexed
                 key=clean_ref_key(ref.get("key"), doi=record.get("DOI")),
-                #locator,
+                # locator,
                 target_release_id=None,
                 ref_source=ref_source,
             )
@@ -863,7 +866,10 @@ def refs_from_heavy(heavy: IntermediateBundle) -> Sequence[RefStructured]:
 
     fulltext_refs: List[RefStructured] = []
     # TODO: this crude filter should not be necessary once we upgrade to GROBID v0.6+
-    if heavy.grobid_fulltext and heavy.grobid_fulltext.get('file_ident') != 'gbbvrg2tpzan5hl3qcsfzh4vfq':
+    if (
+        heavy.grobid_fulltext
+        and heavy.grobid_fulltext.get("file_ident") != "gbbvrg2tpzan5hl3qcsfzh4vfq"
+    ):
         fulltext_release = [
             r
             for r in heavy.releases
