@@ -610,30 +610,47 @@ def clean_ref_key(key: Optional[str], doi: Optional[str] = None) -> Optional[str
     if key and doi and key.startswith(doi):
         key = key.replace(doi + "-", "")
         key = key.replace(doi, "")
-    if key.startswith("10.") and 'SICI' in key and '-' in key:
-        key = key.split('-')[-1]
-    if key.startswith("10.") and '_' in key:
-        key = key.split('_')[-1]
+    if key.startswith("10.") and "SICI" in key and "-" in key:
+        subkey = key.split("-")[-1]
+        if subkey:
+            key = subkey
+    if key.startswith("10.") and "_" in key:
+        subkey = key.split("_")[-1]
+        if subkey:
+            key = subkey
     if len(key) > 10 and "#" in key:
-        key = key.split('#')[-1]
+        subkey = key.split("#")[-1]
+        if subkey:
+            key = subkey
     if len(key) > 10 and "_" in key:
-        key = key.split('_')[-1]
+        subkey = key.split("_")[-1]
+        if subkey:
+            key = subkey
     if key and key.startswith("ref-"):
         key = key[4:]
-    if key[0] in ['/', '_']:
+    if len(key) >= 2 and key[0] in ["/", "_"]:
         key = key[1:]
+    if not key:
+        return None
     return key
+
 
 def test_clean_ref_key() -> None:
     test_pairs = [
         ("ref-23", None, "23"),
         ("_bib0040", None, "bib0040"),
         ("                                20170224012016_R15", None, "R15"),
-        ("10.1002/(SICI)1099-1026(199905/06)14:3<195::AID-FFJ807>3.0.CO;2-C-BIB1", None, "BIB1"),
+        (
+            "10.1002/(SICI)1099-1026(199905/06)14:3<195::AID-FFJ807>3.0.CO;2-C-BIB1",
+            None,
+            "BIB1",
+        ),
         ("BFnrcardio201557_CR175", None, "CR175"),
+        ("2019121710443552100_", None, "2019121710443552100_"),
     ]
     for raw, doi, expected in test_pairs:
         assert clean_ref_key(raw, doi=doi) == expected
+
 
 def refs_from_grobid(release: ReleaseEntity, tei_dict: dict) -> List[RefStructured]:
     output = []
