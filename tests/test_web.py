@@ -3,6 +3,7 @@ from typing import Any
 
 import pytest
 from fastapi.testclient import TestClient
+import fatcat_openapi_client
 
 from fatcat_scholar.web import app
 
@@ -148,12 +149,112 @@ def test_basic_access_redirect(client: Any, mocker: Any) -> None:
         == "https://web.archive.org/web/20200206164725id_/https://www.federalreserve.gov/econresdata/feds/2015/files/2015118pap.pdf"
     )
 
-    # check that URL is validated
+    # check that URL is validated (force fatcat API fallback to fail)
+    fatcat_api_raw = mocker.patch("fatcat_openapi_client.ApiClient.call_api")
+    fatcat_api_raw.side_effect = [
+        fatcat_openapi_client.ApiException(status=404, reason="dummy")
+    ]
     rv = client.get(
         "/work/2x5qvct2dnhrbctqa2q2uyut6a/access/wayback/https://www.federalreserve.gov/econresdata/feds/2015/files/2015118pap.pdf.DUMMY",
         allow_redirects=False,
     )
     assert rv.status_code == 404
+
+
+def test_access_redirect_fallback(client: Any, mocker: Any) -> None:
+
+    with open("tests/files/elastic_fulltext_get.json") as f:
+        elastic_resp = json.loads(f.read())
+
+    es_raw = mocker.patch(
+        "elasticsearch.connection.Urllib3HttpConnection.perform_request"
+    )
+    es_raw.side_effect = [
+        (200, {}, json.dumps(elastic_resp)),
+        (200, {}, json.dumps(elastic_resp)),
+        (200, {}, json.dumps(elastic_resp)),
+        (200, {}, json.dumps(elastic_resp)),
+    ]
+    fatcat_get_work_raw = mocker.patch("fatcat_openapi_client.DefaultApi.get_work")
+    fatcat_get_work_raw.side_effect = [
+        fatcat_openapi_client.WorkEntity(
+            state="active", ident="wwwwwwwwwwwwwwwwwwwwwwwwww",
+        )
+    ] * 4
+    fatcat_get_work_releases_raw = mocker.patch(
+        "fatcat_openapi_client.DefaultApi.get_work_releases"
+    )
+    fatcat_get_work_releases_raw.side_effect = [
+        [
+            fatcat_openapi_client.ReleaseEntity(
+                ident="rrrrrrrrrrrrrrrrrrrrrrrrrr",
+                ext_ids=fatcat_openapi_client.ReleaseExtIds(),
+            ),
+        ]
+    ] * 4
+    fatcat_get_release_raw = mocker.patch(
+        "fatcat_openapi_client.DefaultApi.get_release"
+    )
+    fatcat_get_release_raw.side_effect = [
+        fatcat_openapi_client.ReleaseEntity(
+            state="active",
+            ident="rrrrrrrrrrrrrrrrrrrrrrrrrr",
+            ext_ids=fatcat_openapi_client.ReleaseExtIds(),
+            files=[
+                fatcat_openapi_client.FileEntity(
+                    ident="ffffffffffffffffffffffffff",
+                    urls=[
+                        fatcat_openapi_client.FileUrl(
+                            rel="web", url="https://blarg.example.com",
+                        ),
+                        fatcat_openapi_client.FileUrl(
+                            rel="webarchive",
+                            url="https://web.archive.org/web/12345/https://example.com",
+                        ),
+                        fatcat_openapi_client.FileUrl(
+                            rel="archive",
+                            url="https://archive.org/download/some/thing.pdf",
+                        ),
+                    ],
+                ),
+            ],
+        )
+    ] * 4
+
+    # redirects should work after API lookup, for both wayback and archive.org
+    rv = client.get(
+        "/work/2x5qvct2dnhrbctqa2q2uyut6a/access/wayback/https://example.com",
+        allow_redirects=False,
+    )
+    assert rv.status_code == 302
+    assert (
+        rv.headers["Location"]
+        == "https://web.archive.org/web/12345id_/https://example.com"
+    )
+
+    rv = client.get(
+        "/work/2x5qvct2dnhrbctqa2q2uyut6a/access/ia_file/some/thing.pdf",
+        allow_redirects=False,
+    )
+    assert rv.status_code == 302
+    assert rv.headers["Location"] == "https://archive.org/download/some/thing.pdf"
+
+    # wrong URLs should still not work, but display a page with helpful links
+    rv = client.get(
+        "/work/2x5qvct2dnhrbctqa2q2uyut6a/access/wayback/https://www.federalreserve.gov/econresdata/feds/2015/files/2015118pap.pdf.DUMMY",
+        allow_redirects=False,
+    )
+    assert rv.status_code == 404
+    assert b"Access Location Not Found" in rv.content
+    assert b"web.archive.org/web/*/https://www.federalreserve.gov" in rv.content
+
+    rv = client.get(
+        "/work/2x5qvct2dnhrbctqa2q2uyut6a/access/ia_file/some/thing.else.pdf",
+        allow_redirects=False,
+    )
+    assert rv.status_code == 404
+    assert b"Access Location Not Found" in rv.content
+    assert b"archive.org/download/some/thing.else.pdf" in rv.content
 
 
 def test_access_redirect_encoding(client: Any, mocker: Any) -> None:

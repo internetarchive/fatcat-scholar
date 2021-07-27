@@ -20,6 +20,7 @@ from fastapi.responses import (
     RedirectResponse,
 )
 from fastapi.middleware.cors import CORSMiddleware
+import fatcat_openapi_client
 import sentry_sdk
 from sentry_sdk.integrations.asgi import SentryAsgiMiddleware
 from starlette_prometheus import metrics, PrometheusMiddleware
@@ -180,72 +181,6 @@ def get_work(work_ident: str = Query(..., min_length=20, max_length=20)) -> dict
         raise HTTPException(status_code=404, detail="work not found")
     doc.pop("_obj", None)
     return doc
-
-
-@api.get(
-    "/work/{work_ident}/access/wayback/{url:path}",
-    operation_id="access_redirect_wayback",
-    include_in_schema=False,
-)
-def access_redirect_wayback(
-    url: str,
-    request: Request,
-    work_ident: str = Query(..., min_length=20, max_length=20),
-) -> Any:
-    raw_original_url = "/".join(str(request.url).split("/")[7:])
-    # the quote() call is necessary because the URL is un-encoded in the path parameter
-    # see also: https://github.com/encode/starlette/commit/f997938916d20e955478f60406ef9d293236a16d
-    original_url = urllib.parse.quote(raw_original_url, safe=":/%#?=@[]!$&'()*+,;",)
-    doc_dict = get_es_scholar_doc(f"work_{work_ident}")
-    if not doc_dict:
-        raise HTTPException(status_code=404, detail="work not found")
-    doc: ScholarDoc = doc_dict["_obj"]
-    # combine fulltext with all access options
-    access: List[Any] = []
-    if doc.fulltext:
-        access.append(doc.fulltext)
-    access.extend(doc.access or [])
-    for opt in access:
-        if (
-            opt.access_type == "wayback"
-            and opt.access_url
-            and "://web.archive.org/web/" in opt.access_url
-            and opt.access_url.endswith(original_url)
-        ):
-            timestamp = opt.access_url.split("/")[4]
-            if not (len(timestamp) == 14 and timestamp.isdigit()):
-                continue
-            access_url = f"https://web.archive.org/web/{timestamp}id_/{original_url}"
-            return RedirectResponse(access_url, status_code=302)
-    raise HTTPException(status_code=404, detail="access URL not found")
-
-
-@api.get(
-    "/work/{work_ident}/access/ia_file/{item}/{file_path:path}",
-    operation_id="access_redirect_ia_file",
-    include_in_schema=False,
-)
-def access_redirect_ia_file(
-    item: str,
-    file_path: str,
-    request: Request,
-    work_ident: str = Query(..., min_length=20, max_length=20),
-) -> Any:
-    original_path = urllib.parse.quote("/".join(str(request.url).split("/")[8:]))
-    access_url = f"https://archive.org/download/{item}/{original_path}"
-    doc_dict = get_es_scholar_doc(f"work_{work_ident}")
-    if not doc_dict:
-        raise HTTPException(status_code=404, detail="work not found")
-    doc: ScholarDoc = doc_dict["_obj"]
-    # combine fulltext with all access options
-    access: List[Any] = []
-    if doc.fulltext:
-        access.append(doc.fulltext)
-    access.extend(doc.access or [])
-    for opt in access:
-        if opt.access_type == "ia_file" and opt.access_url == access_url:
-            return RedirectResponse(access_url, status_code=302)
-    raise HTTPException(status_code=404, detail="access URL not found")
 
 
 web = APIRouter()
@@ -410,6 +345,165 @@ def web_work(
             "doc": doc,
             "work": doc["_obj"],
         },
+    )
+
+
+def access_redirect_fallback(
+    request: Request,
+    work_ident: str,
+    original_url: Optional[str] = None,
+    archiveorg_path: Optional[str] = None,
+) -> Any:
+    """
+    The purpose of this helper is to catch access redirects which would
+    otherwise return a 404, and "try harder" to find a redirect.
+    """
+    # lookup against the live fatcat API, instead of scholar ES index
+    api_conf = fatcat_openapi_client.Configuration()
+    api_conf.host = settings.FATCAT_API_HOST
+    api_client = fatcat_openapi_client.DefaultApi(
+        fatcat_openapi_client.ApiClient(api_conf)
+    )
+
+    # fetch list of releases for this work from current fatcat catalog. note
+    # that these releases are not expanded (don't include file entities)
+    try:
+        # fetch work entity itself to fail fast (true 404) and handle redirects
+        work_entity = api_client.get_work(work_ident)
+        logger.warning(
+            f"access_redirect_fallback: work_{work_ident} state={work_entity.state} redirect={work_entity.redirect}"
+        )
+        if work_entity.redirect:
+            work_ident = work_entity.redirect
+        partial_releases = api_client.get_work_releases(
+            ident=work_ident, hide="abstracts,references",
+        )
+    except fatcat_openapi_client.ApiException as ae:
+        raise HTTPException(
+            status_code=ae.status,
+            detail=f"Fatcat API call failed for work_{work_ident}",
+        )
+
+    # for each release, check for any archive.org access option with the given context
+    for partial in partial_releases:
+        release = api_client.get_release(
+            partial.ident,
+            expand="files",
+            # TODO: expand="files,filesets,webcaptures",
+            hide="abstracts,references",
+        )
+        if not release.files:
+            continue
+        for fe in release.files:
+            for url_pair in fe.urls:
+                access_url = url_pair.url
+                if (
+                    original_url
+                    and "://web.archive.org/web/" in access_url
+                    and access_url.endswith(original_url)
+                ):
+                    # TODO: test/verify this
+                    timestamp = access_url.split("/")[4]
+                    # if not (len(timestamp) == 14 and timestamp.isdigit()):
+                    #    continue
+                    replay_url = (
+                        f"https://web.archive.org/web/{timestamp}id_/{original_url}"
+                    )
+                    return RedirectResponse(replay_url, status_code=302)
+                elif (
+                    archiveorg_path
+                    and "://archive.org/" in access_url
+                    and archiveorg_path in access_url
+                ):
+                    return RedirectResponse(access_url, status_code=302)
+
+    # give up and show an error page
+    lang = LangPrefix(request)
+    return i18n_templates[lang.code].TemplateResponse(
+        "access_404.html",
+        {
+            "request": request,
+            "locale": lang.code,
+            "lang_prefix": lang.prefix,
+            "work_ident": work_ident,
+            "original_url": original_url,
+            "archiveorg_path": archiveorg_path,
+        },
+        status_code=404,
+    )
+
+
+@web.get(
+    "/work/{work_ident}/access/wayback/{url:path}",
+    operation_id="access_redirect_wayback",
+    include_in_schema=False,
+)
+def access_redirect_wayback(
+    url: str,
+    request: Request,
+    work_ident: str = Query(..., min_length=20, max_length=20),
+) -> Any:
+    raw_original_url = "/".join(str(request.url).split("/")[7:])
+    # the quote() call is necessary because the URL is un-encoded in the path parameter
+    # see also: https://github.com/encode/starlette/commit/f997938916d20e955478f60406ef9d293236a16d
+    original_url = urllib.parse.quote(raw_original_url, safe=":/%#?=@[]!$&'()*+,;",)
+    doc_dict = get_es_scholar_doc(f"work_{work_ident}")
+    if not doc_dict:
+        return access_redirect_fallback(
+            request, work_ident=work_ident, original_url=original_url
+        )
+    doc: ScholarDoc = doc_dict["_obj"]
+    # combine fulltext with all access options
+    access: List[Any] = []
+    if doc.fulltext:
+        access.append(doc.fulltext)
+    access.extend(doc.access or [])
+    for opt in access:
+        if (
+            opt.access_type == "wayback"
+            and opt.access_url
+            and "://web.archive.org/web/" in opt.access_url
+            and opt.access_url.endswith(original_url)
+        ):
+            timestamp = opt.access_url.split("/")[4]
+            if not (len(timestamp) == 14 and timestamp.isdigit()):
+                continue
+            access_url = f"https://web.archive.org/web/{timestamp}id_/{original_url}"
+            return RedirectResponse(access_url, status_code=302)
+    return access_redirect_fallback(
+        request, work_ident=work_ident, original_url=original_url
+    )
+
+
+@web.get(
+    "/work/{work_ident}/access/ia_file/{item}/{file_path:path}",
+    operation_id="access_redirect_ia_file",
+    include_in_schema=False,
+)
+def access_redirect_ia_file(
+    item: str,
+    file_path: str,
+    request: Request,
+    work_ident: str = Query(..., min_length=20, max_length=20),
+) -> Any:
+    original_path = urllib.parse.quote("/".join(str(request.url).split("/")[8:]))
+    access_url = f"https://archive.org/download/{item}/{original_path}"
+    doc_dict = get_es_scholar_doc(f"work_{work_ident}")
+    if not doc_dict:
+        return access_redirect_fallback(
+            request, work_ident=work_ident, archiveorg_path=f"/{item}/{original_path}"
+        )
+    doc: ScholarDoc = doc_dict["_obj"]
+    # combine fulltext with all access options
+    access: List[Any] = []
+    if doc.fulltext:
+        access.append(doc.fulltext)
+    access.extend(doc.access or [])
+    for opt in access:
+        if opt.access_type == "ia_file" and opt.access_url == access_url:
+            return RedirectResponse(access_url, status_code=302)
+    return access_redirect_fallback(
+        request, work_ident=work_ident, archiveorg_path=f"/{item}/{original_path}"
     )
 
 

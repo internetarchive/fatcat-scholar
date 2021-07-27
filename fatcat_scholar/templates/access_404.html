@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}
+404 - {{ super() }}
+{% endblock %}
+
+{% block main %}
+<div class="ui icon error message">
+  <div class="content">
+    <div class="header">{% trans %}404: Access Location Not Found{% endtrans %}</div>
+    <p>{% trans %}We could not find a valid redirect for the URL you tried. Sorry about that!{% endtrans %}
+    <p>{% trans %}There may be a typo, truncation, or encoding error. Or, the resource may have been removed from our catalog.{% endtrans %}
+    <p>{% trans %}Some places you can visit try to hunt down this resource (or a replacement) include:{% endtrans %}
+    <ul>
+      {% if original_url %}
+        <li>{% trans %}Original web url:{% endtrans %}
+          <br>
+          <code style="word-break: break-all;"><a href="{{ original_url }}">{{ original_url }}</a></code>
+        </li>
+        <li><a href="https://web.archive.org/web/*/{{ original_url }}">{% trans %}Wayback Machine calendar page (all captures){% endtrans %}</a>
+      {% endif %}
+      {% if archiveorg_path %}
+        <li>{% trans %}archive.org download link for the item:{% endtrans %}
+          {% set archiveorg_url="https://archive.org/download" + archiveorg_path %}
+          <br>
+          <code style="word-break: break-all;"><a href="{{ archiveorg_url }}">{{ archiveorg_url }}</a></code>
+      {% endif %}
+      {% if work_ident %}
+        <li><a href="/work/{{ work_ident }}">{% trans %}Scholar landing page{% endtrans %}</a>
+        <li><a href="https://fatcat.wiki/work/{{ work_ident }}">{% trans %}Fatcat catalog page{% endtrans %}</a>
+      {% endif %}
+    </ul>
+  </div>
+</div>
+{% endblock %}
