@@ -50,14 +50,14 @@ KAFKA_BROKERS = ["localhost"]
 
 [development-qa]
 SCHOLAR_ENV = "dev"
-ELASTICSEARCH_QUERY_BASE = "http://scholar-svc500.fatcat.wiki:9292"
-ELASTICSEARCH_PUBLIC_URL = "http://scholar-svc500.fatcat.wiki:9292"
+ELASTICSEARCH_QUERY_BASE = "https://search.fatcat.wiki"
+ELASTICSEARCH_PUBLIC_URL = "https://search.fatcat.wiki"
 
 [qa]
 SCHOLAR_ENV = "qa"
-ELASTICSEARCH_QUERY_BASE = "http://scholar-svc500.fatcat.wiki:9292"
+ELASTICSEARCH_QUERY_BASE = "https://search.fatcat.wiki"
 ELASTICSEARCH_WRITE_BASE = "http://localhost:9200"
-ELASTICSEARCH_PUBLIC_URL = "http://scholar-svc500.fatcat.wiki:9292"
+ELASTICSEARCH_PUBLIC_URL = "https://search.fatcat.wiki"
 KAFKA_BROKERS = ["wbgrp-svc263.us.archive.org"]
 
 [prod]
@@ -67,7 +67,7 @@ ELASTICSEARCH_QUERY_BASE = "http://localhost:9292"
 ELASTICSEARCH_QUERY_FULLTEXT_INDEX = "scholar_fulltext"
 ELASTICSEARCH_WRITE_BASE = "http://localhost:9200"
 ELASTICSEARCH_WRITE_FULLTEXT_INDEX = "scholar_fulltext_v01_20210128"
-ELASTICSEARCH_PUBLIC_URL = "http://scholar-svc500.fatcat.wiki:9292"
+ELASTICSEARCH_PUBLIC_URL = "https://search.fatcat.wiki"
 KAFKA_BROKERS = ["wbgrp-svc263.us.archive.org"]
 ENABLE_GOATCOUNTER = true
 GOATCOUNTER_ENDPOINT = "/goatcounter/count"
