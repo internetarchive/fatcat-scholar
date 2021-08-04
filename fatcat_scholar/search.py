@@ -377,6 +377,9 @@ def do_fulltext_search(
     search = search.params(track_total_hits=True)
     search = search[offset : (offset + limit)]
 
+    if settings.ELASTICSEARCH_QUERY_PREFERENCE:
+        search = search.params(preference=settings.ELASTICSEARCH_QUERY_PREFERENCE)
+
     query_start = datetime.datetime.now()
     try:
         resp = search.execute()
