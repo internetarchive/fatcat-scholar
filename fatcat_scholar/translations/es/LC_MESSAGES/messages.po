@@ -4,13 +4,14 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # Bryan Newbold <bnewbold@robocracy.org>, 2020, 2021.
 # badlop <badlop@process-one.net>, 2021.
+# Adolfo Jayme Barrientos <fitojb@ubuntu.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-03-25 11:07-0700\n"
-"PO-Revision-Date: 2021-03-26 18:29+0000\n"
-"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"PO-Revision-Date: 2021-08-08 04:32+0000\n"
+"Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/es/>\n"
 "Language: es\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.6-dev\n"
+"X-Generator: Weblate 4.8-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:42
@@ -39,7 +40,7 @@ msgstr "El año pasado"
 
 #: fatcat_scholar/search.py:49
 msgid "Since 2000"
-msgstr "Desde el año 2000"
+msgstr "Desde 2000"
 
 #: fatcat_scholar/search.py:50
 msgid "Before 1925"
@@ -47,7 +48,7 @@ msgstr "Antes de 1925"
 
 #: fatcat_scholar/search.py:54
 msgid "Resource Type"
-msgstr "Tipo de fondo"
+msgstr "Tipo de recurso"
 
 #: fatcat_scholar/search.py:58
 msgid "Papers"
@@ -55,11 +56,11 @@ msgstr "Artículos"
 
 #: fatcat_scholar/search.py:59
 msgid "Reports"
-msgstr "Reportes"
+msgstr "Informes"
 
 #: fatcat_scholar/search.py:60
 msgid "Datasets"
-msgstr "Juegos de datos"
+msgstr "Conjuntos de datos"
 
 #: fatcat_scholar/search.py:61
 msgid "Everything"
@@ -95,7 +96,7 @@ msgstr "Relevancia"
 
 #: fatcat_scholar/search.py:81
 msgid "Recent First"
-msgstr "El reciente primer"
+msgstr "Recientes primero"
 
 #: fatcat_scholar/search.py:82
 msgid "Oldest First"
@@ -104,11 +105,11 @@ msgstr "Los más antiguos primero"
 #: fatcat_scholar/templates/about.html:4
 #, python-format
 msgid "About %(website_name)s"
-msgstr "Sobre %(website_name)s"
+msgstr "Acerca de %(website_name)s"
 
 #: fatcat_scholar/templates/about.html:8
 msgid "About Internet Archive Scholar"
-msgstr "Sobre Archivo de Internet Académico"
+msgstr "Acerca de Internet Archive Académico"
 
 #: fatcat_scholar/templates/about.html:10
 #, python-format
@@ -116,8 +117,8 @@ msgid ""
 "See also: <a href=\"%(lang_prefix)s/help\">User Guide</a> which lists some "
 "bugs and known issues"
 msgstr ""
-"Véase también: <a href=\"%(lang_prefix)s/help\">Guía del usuario</a> que "
-"enumera algunos errores y problemas conocidos"
+"Consulte también la <a href=\"%(lang_prefix)s/help\">guía de uso</a>, que "
+"enumera algunos defectos y problemas conocidos"
 
 #: fatcat_scholar/templates/about.html:14
 #: fatcat_scholar/templates/base.html:191
@@ -134,9 +135,9 @@ msgid ""
 "\">The Wayback Machine</a> and <a href=\"https://archive-it.org\">Archive-"
 "It</a> partner collections"
 msgstr ""
-"<b>contenido web público</b> conservado en <a href=\"https://web.archive.org"
-"\">The Wayback Machine</a> y <a href=\"https://archive-it.org\">Archive-It</"
-"a> colecciones asociadas"
+"<b>contenido web público</b> tal como se conserva en las colecciones de "
+"socios <a href=\"https://web.archive.org\">The Wayback Machine</a> y <a href="
+"\"https://archive-it.org\">Archive-It</a>"
 
 #: fatcat_scholar/templates/about.html:20
 msgid "<b>digitized print materials</b> from paper and microform collections"
