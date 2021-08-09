@@ -4,13 +4,14 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # Bryan Newbold <bnewbold@robocracy.org>, 2021.
 # Eugenia Russell <eugenia.russell2019@gmail.com>, 2021.
+# Georgios Pitsiladis <g.v.pitsiladis@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-03-25 11:07-0700\n"
-"PO-Revision-Date: 2021-07-06 15:34+0000\n"
-"Last-Translator: Eugenia Russell <eugenia.russell2019@gmail.com>\n"
+"PO-Revision-Date: 2021-08-02 12:32+0000\n"
+"Last-Translator: Georgios Pitsiladis <g.v.pitsiladis@gmail.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/el/>\n"
 "Language: el\n"
@@ -116,6 +117,8 @@ msgid ""
 "See also: <a href=\"%(lang_prefix)s/help\">User Guide</a> which lists some "
 "bugs and known issues"
 msgstr ""
+"Δείτε επίσης:<a href=\"%(lang_prefix)s/help\">Οδηγός Χρήστη</a> που "
+"απαριθμεί κάποια σφάλματα και γνωστά προβλήματα"
 
 #: fatcat_scholar/templates/about.html:14
 #: fatcat_scholar/templates/base.html:191
