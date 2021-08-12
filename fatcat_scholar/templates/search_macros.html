@@ -65,7 +65,7 @@
   {% if other_version %}
     {% set access_alt = access_alt + " [" + other_version + "]" %}
   {% endif %}
-  <a target="_blank" rel="noopener" href="{{ access.access_url}}" title="{{ access_alt }}" {% if settings.ENABLE_GOATCOUNTER %}data-goatcounter-click="serp-fulltext"{% endif %}>
+  <a target="_blank" rel="noopener" href="{{ access.access_url}}" title="{{ access_alt }}" {% if settings.ENABLE_GOATCOUNTER %}data-goatcounter-click="serp-fulltext" data-goatcounter-title="serp-fulltext"{% endif %}>
     <button class="ui simple right pointing dropdown compact black labeled icon button serp-button">
       <i class="icon ia-icon"></i>
       {% if access.access_type == "wayback" %}
@@ -240,7 +240,7 @@
     <div class="ui items">
       <div class="item">
         <div class="image">
-          <a target="_blank" rel="noopener" href="{{ paper.fulltext.access_url }}" title="{{ _('fulltext access') }}" {% if settings.ENABLE_GOATCOUNTER %}data-goatcounter-click="serp-fulltext"{% endif %}>
+          <a target="_blank" rel="noopener" href="{{ paper.fulltext.access_url }}" title="{{ _('fulltext access') }}" {% if settings.ENABLE_GOATCOUNTER %}data-goatcounter-click="serp-fulltext" data-goatcounter-title="serp-fulltext"{% endif %}>
           {% if paper.fulltext.thumbnail_url %}
             <div class="ui serp card">
               <img class="ui" src="{{ paper.fulltext.thumbnail_url }}" alt="fulltext thumbnail" loading="lazy">
@@ -254,7 +254,7 @@
         </div>
         <div class="content">
           <div class="header">
-            <a rel="noopener" href="{{ paper.fulltext.access_url }}" {% if settings.ENABLE_GOATCOUNTER %}data-goatcounter-click="serp-fulltext"{% endif %}>
+            <a rel="noopener" href="{{ paper.fulltext.access_url }}" {% if settings.ENABLE_GOATCOUNTER %}data-goatcounter-click="serp-fulltext" data-goatcounter-title="serp-fulltext"{% endif %}>
             {% if paper.fulltext.access_type == "wayback" %}
               {% trans %}Web Archive Capture{% endtrans %}
             {% elif paper.fulltext.access_type == "ia_file" %}
@@ -277,7 +277,7 @@
             </a>
           </div>
           <div class="meta">
-            <a rel="noopener" href="{{ paper.fulltext.access_url}}" {% if settings.ENABLE_GOATCOUNTER %}data-goatcounter-click="serp-fulltext"{% endif %}>
+            <a rel="noopener" href="{{ paper.fulltext.access_url}}" {% if settings.ENABLE_GOATCOUNTER %}data-goatcounter-click="serp-fulltext" data-goatcounter-title="serp-fulltext"{% endif %}>
               {{ paper.fulltext.access_url }}
             </a>
           </div>
