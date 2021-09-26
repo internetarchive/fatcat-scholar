@@ -6,13 +6,14 @@
 # gio <gdamiola@gmail.com>, 2021.
 # Alessandro Mandelli <mandelli.alessandro@ngi.it>, 2021.
 # J. Lavoie <j.lavoie@net-c.ca>, 2021.
+# Mauro Piccotti <mauro.piccotti@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-03-25 11:07-0700\n"
-"PO-Revision-Date: 2021-04-13 00:26+0000\n"
-"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
+"PO-Revision-Date: 2021-09-27 14:50+0000\n"
+"Last-Translator: Mauro Piccotti <mauro.piccotti@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/it/>\n"
 "Language: it\n"
@@ -20,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.6-dev\n"
+"X-Generator: Weblate 4.9-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 #: fatcat_scholar/search.py:42
@@ -716,11 +717,11 @@ msgstr "PubMed Central"
 
 #: fatcat_scholar/templates/help.html:222
 msgid "arXiv pre-print service"
-msgstr "arXiv pre-print service"
+msgstr "Servizio di pre-stampa arXiv"
 
 #: fatcat_scholar/templates/help.html:226
 msgid "The DBLP Computer Science Bibliography"
-msgstr "The DBLP Computer Science Bibliography"
+msgstr "La bibliografia di informatica di DBLP"
 
 #: fatcat_scholar/templates/help.html:230
 msgid ""
@@ -739,7 +740,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:240
 msgid "Work In Progress"
-msgstr "Work In Progress"
+msgstr "Lavoro in corso"
 
 #: fatcat_scholar/templates/help.html:244 fatcat_scholar/templates/home.html:37
 msgid ""
@@ -831,7 +832,7 @@ msgstr "Continua &raquo;"
 #: fatcat_scholar/templates/home.html:52 fatcat_scholar/templates/home.html:66
 #: fatcat_scholar/templates/home.html:80 fatcat_scholar/templates/home.html:94
 msgid "PDF thumbnail"
-msgstr "PDF thumbnail"
+msgstr "Anteprima PDF"
 
 #: fatcat_scholar/templates/search.html:35
 msgid "Filters"
@@ -938,7 +939,7 @@ msgstr "[XML]"
 
 #: fatcat_scholar/templates/search_macros.html:95
 msgid "fulltext thumbnail"
-msgstr "fulltext thumbnail"
+msgstr "anteprima del testo completo"
 
 #: fatcat_scholar/templates/search_macros.html:111
 msgid "Publisher / doi.org"
@@ -969,7 +970,7 @@ msgstr "Testo completo conservato"
 
 #: fatcat_scholar/templates/search_macros.html:259
 msgid "Web Archive Capture"
-msgstr "Web Archive Capture"
+msgstr "Cattura di archivi Web"
 
 #: fatcat_scholar/templates/search_macros.html:263
 msgid "Digitized Microfilm"
