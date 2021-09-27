@@ -8,10 +8,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-08-12 16:37-0700\n"
-"PO-Revision-Date: 2021-03-26 18:29+0000\n"
-"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"PO-Revision-Date: 2021-09-28 15:36+0000\n"
+"Last-Translator: Eric <spice2wolf@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "internetarchive/fatcat-scholar/zh_Hans/>\n"
 "Language: zh\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.6-dev\n"
+"X-Generator: Weblate 4.9-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:44
@@ -242,7 +242,7 @@ msgstr "在<a href=\"%(url)s\">%(url)s</a>有一个公共聊天频道。"
 
 #: fatcat_scholar/templates/about.html:57
 msgid "Support and Acknowledgements"
-msgstr ""
+msgstr "支持和致谢"
 
 #: fatcat_scholar/templates/about.html:60
 #, python-format
@@ -253,6 +253,9 @@ msgid ""
 "\"Ensuring the Persistent Access of Open Access Journal Literature\"</a> "
 "project (see <a href=\"%(blog_url)s\">original announcement</a>).\n"
 msgstr ""
+"\n"
+"安德鲁W·梅隆基金会通过 <a href=\"%(grant_url)s\">“确保开放获取期刊文献的持续获取“</a> 项目的多个阶段支持了 "
+"Internet Archive 学术的工作 (见 <a href=\"%(blog_url)s\">原始声明</a>)。\n"
 
 #: fatcat_scholar/templates/about.html:64
 #, python-format
@@ -261,51 +264,49 @@ msgid ""
 "See additional acknowledgements on <a href=\"%(fatcat_url)s\">fatcat.wiki</"
 "a>.\n"
 msgstr ""
+"\n"
+"查看其它致谢，请前往 <a href=\"%(fatcat_url)s\">fatcat.wiki</a>。\n"
 
 #: fatcat_scholar/templates/access_404.html:10
 msgid "404: Access Location Not Found"
-msgstr ""
+msgstr "404：未找到访问位置"
 
 #: fatcat_scholar/templates/access_404.html:11
 msgid ""
 "We could not find a valid redirect for the URL you tried. Sorry about that!"
-msgstr ""
+msgstr "我们找不到您尝试的 URL 的有效重定向。我们对此很抱歉！"
 
 #: fatcat_scholar/templates/access_404.html:12
 msgid ""
 "There may be a typo, truncation, or encoding error. Or, the resource may "
 "have been removed from our catalog."
-msgstr ""
+msgstr "可能存在拼写错误、截断或编码错误。 或者，该资源可能已从我们的目录中删除。"
 
 #: fatcat_scholar/templates/access_404.html:13
 msgid ""
 "Some places you can visit try to hunt down this resource (or a replacement) "
 "include:"
-msgstr ""
+msgstr "您可以访问以下地方尝试寻找此资源（或替代资源）："
 
 #: fatcat_scholar/templates/access_404.html:16
 msgid "Original web url:"
-msgstr ""
+msgstr "原始网址："
 
 #: fatcat_scholar/templates/access_404.html:20
 msgid "Wayback Machine calendar page (all captures)"
-msgstr ""
+msgstr "Wayback Machine 日历页面（所有截图）"
 
 #: fatcat_scholar/templates/access_404.html:23
 msgid "archive.org download link for the item:"
-msgstr ""
+msgstr "该项目的 archive.org 下载链接："
 
 #: fatcat_scholar/templates/access_404.html:29
-#, fuzzy
-#| msgid "access fatcat landing page"
 msgid "Scholar landing page"
-msgstr "访问Fatcat登录页面"
+msgstr "学术登录页面"
 
 #: fatcat_scholar/templates/access_404.html:30
-#, fuzzy
-#| msgid "access fatcat landing page"
 msgid "Fatcat catalog page"
-msgstr "访问Fatcat登录页面"
+msgstr "Fatcat 目录页"
 
 #: fatcat_scholar/templates/base.html:12
 msgid "Internet Archive Scholar"
