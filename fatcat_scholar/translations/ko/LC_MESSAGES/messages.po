@@ -7,97 +7,97 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
-"POT-Creation-Date: 2021-03-25 11:07-0700\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2021-08-12 16:37-0700\n"
 "PO-Revision-Date: 2021-05-11 06:32+0000\n"
 "Last-Translator: YiReun <zleonoti@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 4.7-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
-#: fatcat_scholar/search.py:42
+#: fatcat_scholar/search.py:44
 msgid "Release Date"
 msgstr "배포 날짜"
 
-#: fatcat_scholar/search.py:46
+#: fatcat_scholar/search.py:48
 msgid "All Time"
 msgstr "모든 기간"
 
-#: fatcat_scholar/search.py:47
+#: fatcat_scholar/search.py:49
 msgid "Past Week"
 msgstr "지난주"
 
-#: fatcat_scholar/search.py:48
+#: fatcat_scholar/search.py:50
 msgid "Past Year"
 msgstr "작년"
 
-#: fatcat_scholar/search.py:49
+#: fatcat_scholar/search.py:51
 msgid "Since 2000"
 msgstr "2000년부터"
 
-#: fatcat_scholar/search.py:50
+#: fatcat_scholar/search.py:52
 msgid "Before 1925"
 msgstr "1925년 이전"
 
-#: fatcat_scholar/search.py:54
+#: fatcat_scholar/search.py:56
 msgid "Resource Type"
 msgstr "자원 유형"
 
-#: fatcat_scholar/search.py:58
+#: fatcat_scholar/search.py:60
 msgid "Papers"
 msgstr "논문"
 
-#: fatcat_scholar/search.py:59
+#: fatcat_scholar/search.py:61
 msgid "Reports"
 msgstr "보고서"
 
-#: fatcat_scholar/search.py:60
+#: fatcat_scholar/search.py:62
 msgid "Datasets"
 msgstr "데이터 세트"
 
-#: fatcat_scholar/search.py:61
+#: fatcat_scholar/search.py:63
 msgid "Everything"
 msgstr "모두"
 
-#: fatcat_scholar/search.py:65
+#: fatcat_scholar/search.py:67
 msgid "Availability"
 msgstr "사용 가능 형태"
 
-#: fatcat_scholar/search.py:69
+#: fatcat_scholar/search.py:71
 msgid "Fulltext"
 msgstr "전문"
 
-#: fatcat_scholar/search.py:70
+#: fatcat_scholar/search.py:72
 msgid "Microfilm"
 msgstr "마이크로 필름"
 
-#: fatcat_scholar/search.py:71 fatcat_scholar/templates/search_macros.html:4
+#: fatcat_scholar/search.py:73 fatcat_scholar/templates/search_macros.html:4
 msgid "Open Access"
 msgstr "오픈 액세스"
 
-#: fatcat_scholar/search.py:72
+#: fatcat_scholar/search.py:74
 msgid "Metadata"
 msgstr "메타데이터"
 
-#: fatcat_scholar/search.py:76
+#: fatcat_scholar/search.py:78
 msgid "Sort Order"
 msgstr "정렬 순서"
 
-#: fatcat_scholar/search.py:80
+#: fatcat_scholar/search.py:82
 msgid "Relevancy"
 msgstr "관련성"
 
-#: fatcat_scholar/search.py:81
+#: fatcat_scholar/search.py:83
 msgid "Recent First"
 msgstr "최신순"
 
-#: fatcat_scholar/search.py:82
+#: fatcat_scholar/search.py:84
 msgid "Oldest First"
 msgstr "과거순"
 
@@ -113,12 +113,14 @@ msgstr "인터넷 아카이브 학자 정보"
 #: fatcat_scholar/templates/about.html:10
 #, python-format
 msgid ""
-"See also: <a href=\"%(lang_prefix)s/help\">User Guide</a> which lists "
-"some bugs and known issues"
-msgstr "참조 : <a href=\"%(lang_prefix)s/help\"> 사용자 가이드 </a> 일부 버그 및 알려진 문제 목록"
+"See also: <a href=\"%(lang_prefix)s/help\">User Guide</a> which lists some "
+"bugs and known issues"
+msgstr ""
+"참조 : <a href=\"%(lang_prefix)s/help\"> 사용자 가이드 </a> 일부 버그 및 알려"
+"진 문제 목록"
 
 #: fatcat_scholar/templates/about.html:14
-#: fatcat_scholar/templates/base.html:191
+#: fatcat_scholar/templates/base.html:196
 msgid "How It Works"
 msgstr "작동 원리"
 
@@ -128,12 +130,13 @@ msgstr "이 검색 색인의 콘텐츠는 다음 세 가지 형식 중 하나로
 
 #: fatcat_scholar/templates/about.html:19
 msgid ""
-"<b>public web content</b> as preserved in <a "
-"href=\"https://web.archive.org\">The Wayback Machine</a> and <a "
-"href=\"https://archive-it.org\">Archive-It</a> partner collections"
+"<b>public web content</b> as preserved in <a href=\"https://web.archive.org"
+"\">The Wayback Machine</a> and <a href=\"https://archive-it.org\">Archive-"
+"It</a> partner collections"
 msgstr ""
-"<b> 공개 웹 콘텐츠 </b> <a href=\"https://web.archive.org\"> The Wayback Machine </"
-"a> 및 <a href=\"https://archive-it.org\"> Archive-It </a> 파트너 컬렉션에 보존 됨"
+"<b> 공개 웹 콘텐츠 </b> <a href=\"https://web.archive.org\"> The Wayback "
+"Machine </a> 및 <a href=\"https://archive-it.org\"> Archive-It </a> 파트너 컬"
+"렉션에 보존 됨"
 
 #: fatcat_scholar/templates/about.html:20
 msgid "<b>digitized print materials</b> from paper and microform collections"
@@ -141,24 +144,23 @@ msgstr "<b> 종이 및 마이크로 폼 컬렉션의 디지털 인쇄 자료 </b
 
 #: fatcat_scholar/templates/about.html:21
 msgid ""
-"<b>general materials</b> from <a href=\"https://archive.org\">archive.org"
-" collections</a>, including collaborations with partners"
+"<b>general materials</b> from <a href=\"https://archive.org\">archive.org "
+"collections</a>, including collaborations with partners"
 msgstr ""
-"<b>일반 소재</b> <a href=\"https://archive.org\">archive.org 컬렉션</a>에서 파트너와의 "
-"콜라보레이션을 포함"
+"<b>일반 소재</b> <a href=\"https://archive.org\">archive.org 컬렉션</a>에서 "
+"파트너와의 콜라보레이션을 포함"
 
 #: fatcat_scholar/templates/about.html:24
 #, python-format
 msgid ""
-"This <a href=\"%(url)s\">2019 FORCE11 conference presentation</a> gives "
-"an overview of the technical infrastructure and goals of the project "
-"overall."
+"This <a href=\"%(url)s\">2019 FORCE11 conference presentation</a> gives an "
+"overview of the technical infrastructure and goals of the project overall."
 msgstr ""
-"이 <a href=\"%(url)s\"> 2019 FORCE11 컨퍼런스 프레젠테이션 </a>은 전체 프로젝트의 기술적 인프라와 목표에 "
-"대한 개요를 제공합니다."
+"이 <a href=\"%(url)s\"> 2019 FORCE11 컨퍼런스 프레젠테이션 </a>은 전체 프로젝"
+"트의 기술적 인프라와 목표에 대한 개요를 제공합니다."
 
 #: fatcat_scholar/templates/about.html:27
-#: fatcat_scholar/templates/base.html:192
+#: fatcat_scholar/templates/base.html:197
 msgid "Content Sources"
 msgstr "콘텐츠 소스"
 
@@ -166,54 +168,55 @@ msgstr "콘텐츠 소스"
 msgid ""
 "Metadata comes from <a href=\"https://fatcat.wiki\">fatcat.wiki</a>, an "
 "open\n"
-"user-editable catalog of scholarly work. It should be possible to track "
-"and\n"
+"user-editable catalog of scholarly work. It should be possible to track and\n"
 "attribute the provenance of content and metadata in all cases. Please\n"
 "<a href=\"#contact\">contact us</a> if you have questions."
 msgstr ""
-"메타 데이터는 <a href=\"https://fatcat.wiki\"> fatcat.wiki </a>에서 가져옵니다.\n"
+"메타 데이터는 <a href=\"https://fatcat.wiki\"> fatcat.wiki </a>에서 가져옵니"
+"다.\n"
 "사용자가 편집 할 수있는 학술 작품 카탈로그. 추적 및\n"
 "모든 경우에 콘텐츠 및 메타 데이터의 출처를 설명합니다. 부디\n"
 "질문이 있으면 <a href=\"#contact\"> Google에 문의 </a>하세요."
 
 #: fatcat_scholar/templates/about.html:35
-#: fatcat_scholar/templates/base.html:193
+#: fatcat_scholar/templates/base.html:198
 msgid "Text and Data Mining"
 msgstr "텍스트 및 데이터 마이닝"
 
 #: fatcat_scholar/templates/about.html:37
 msgid ""
-"We intend to provide researcher access to the full corpus for text and "
-"data\n"
-"mining purposes. Derived datasets may also be posted publicly for "
-"analysis, for\n"
+"We intend to provide researcher access to the full corpus for text and data\n"
+"mining purposes. Derived datasets may also be posted publicly for analysis, "
+"for\n"
 "example a citation graph or N-gram frequencies by year. If you are "
 "interested\n"
 "or would like to see specific datasets made available, please contact us."
 msgstr ""
-"우리는 연구자에게 모든 어구에 대한 문자와, 마이닝을 위한 데이터에 대한 접근 권한을 제공하고자 합니다. \n"
+"우리는 연구자에게 모든 어구에 대한 문자와, 마이닝을 위한 데이터에 대한 접근 "
+"권한을 제공하고자 합니다. \n"
 "인용 그래프나 연도별 N-그램 빈도와 같은 파생된 데이터세트는 \n"
 "분석을 위해 공개적으로 게시될 수도 있습니다. \n"
-"관심이 있거나 사용 가능한 특정 데이터 세트를 확인하고자 한다면 당사에 문의하십시오."
+"관심이 있거나 사용 가능한 특정 데이터 세트를 확인하고자 한다면 당사에 문의하"
+"십시오."
 
 #: fatcat_scholar/templates/about.html:42
 msgid ""
-"Currently snapshots of the full fatcat metadata corpus and upstream "
-"metadata sources are uploaded periodically to the <a "
-"href=\"https://archive.org/details/ia_biblio_metadata\">Bulk "
-"Bibliographic Metadata</a> collection on archive.org."
+"Currently snapshots of the full fatcat metadata corpus and upstream metadata "
+"sources are uploaded periodically to the <a href=\"https://archive.org/"
+"details/ia_biblio_metadata\">Bulk Bibliographic Metadata</a> collection on "
+"archive.org."
 msgstr ""
-"현재 전체 fatcat 메타 데이터 코퍼스 및 업스트림 메타 데이터 소스의 스냅 샷은 archive.org의 <a href=\"https"
-"://archive.org/details/ia_biblio_metadata\"> Bulk Bibliographic Metadata </"
-"a> 컬렉션에 정기적으로 업로드됩니다."
+"현재 전체 fatcat 메타 데이터 코퍼스 및 업스트림 메타 데이터 소스의 스냅 샷은 "
+"archive.org의 <a href=\"https://archive.org/details/ia_biblio_metadata\"> "
+"Bulk Bibliographic Metadata </a> 컬렉션에 정기적으로 업로드됩니다."
 
 #: fatcat_scholar/templates/about.html:44
 msgid ""
 "Read more in <a href=\"https://guide.fatcat.wiki/bulk_exports.html\">the "
 "Fatcat Guide</a>."
 msgstr ""
-"자세한 내용은 <a href=\"https://guide.fatcat.wiki/bulk_exports.html\"> Fatcat 가이드 "
-"</a>를 참조하세요."
+"자세한 내용은 <a href=\"https://guide.fatcat.wiki/bulk_exports.html\"> "
+"Fatcat 가이드 </a>를 참조하세요."
 
 #: fatcat_scholar/templates/about.html:47
 msgid "Contact Information"
@@ -222,23 +225,88 @@ msgstr "연락 정보"
 #: fatcat_scholar/templates/about.html:50
 #, python-format
 msgid ""
-"The organizational contact information for the Internet Archive is listed"
-" at <a href=\"%(url)s\">%(url)s</a>."
-msgstr "인터넷 아카이브의 조직 연락처 정보는 <a href=\"%(url)s\"> %(url)s </a>에 나열되어 있습니다."
+"The organizational contact information for the Internet Archive is listed at "
+"<a href=\"%(url)s\">%(url)s</a>."
+msgstr ""
+"인터넷 아카이브의 조직 연락처 정보는 <a href=\"%(url)s\"> %(url)s </a>에 나열"
+"되어 있습니다."
 
 #: fatcat_scholar/templates/about.html:52
 #, python-format
 msgid ""
-"Queries about this search service and the fatcat catalog can be directed "
-"to <a href=\"mailto:%(email)s\">%(email)s</a>."
+"Queries about this search service and the fatcat catalog can be directed to "
+"<a href=\"mailto:%(email)s\">%(email)s</a>."
 msgstr ""
-"이 검색 서비스 및 fatcat 카탈로그에 대한 쿼리는 <a href=\"mailto:%(email)s\"> %(email)s </a>로 "
-"이동할 수 있습니다."
+"이 검색 서비스 및 fatcat 카탈로그에 대한 쿼리는 <a href=\"mailto:%(email)s"
+"\"> %(email)s </a>로 이동할 수 있습니다."
 
 #: fatcat_scholar/templates/about.html:54
 #, python-format
 msgid "There is a public chat channel at <a href=\"%(url)s\">%(url)s</a>."
 msgstr "<a href=\"%(url)s\"> %(url)s </a>에 공개 채팅 채널이 있습니다."
+
+#: fatcat_scholar/templates/about.html:57
+msgid "Support and Acknowledgements"
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:60
+#, python-format
+msgid ""
+"\n"
+"Work on Internet Archive Scholar has received support from the Andrew W. "
+"Mellon Foundation through multiple phases of the <a href=\"%(grant_url)s\">"
+"\"Ensuring the Persistent Access of Open Access Journal Literature\"</a> "
+"project (see <a href=\"%(blog_url)s\">original announcement</a>).\n"
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:64
+#, python-format
+msgid ""
+"\n"
+"See additional acknowledgements on <a href=\"%(fatcat_url)s\">fatcat.wiki</"
+"a>.\n"
+msgstr ""
+
+#: fatcat_scholar/templates/access_404.html:10
+msgid "404: Access Location Not Found"
+msgstr ""
+
+#: fatcat_scholar/templates/access_404.html:11
+msgid ""
+"We could not find a valid redirect for the URL you tried. Sorry about that!"
+msgstr ""
+
+#: fatcat_scholar/templates/access_404.html:12
+msgid ""
+"There may be a typo, truncation, or encoding error. Or, the resource may "
+"have been removed from our catalog."
+msgstr ""
+
+#: fatcat_scholar/templates/access_404.html:13
+msgid ""
+"Some places you can visit try to hunt down this resource (or a replacement) "
+"include:"
+msgstr ""
+
+#: fatcat_scholar/templates/access_404.html:16
+msgid "Original web url:"
+msgstr ""
+
+#: fatcat_scholar/templates/access_404.html:20
+msgid "Wayback Machine calendar page (all captures)"
+msgstr ""
+
+#: fatcat_scholar/templates/access_404.html:23
+msgid "archive.org download link for the item:"
+msgstr ""
+
+#: fatcat_scholar/templates/access_404.html:29
+msgid "Scholar landing page"
+msgstr ""
+
+#: fatcat_scholar/templates/access_404.html:30
+msgid "Fatcat catalog page"
+msgstr ""
 
 #: fatcat_scholar/templates/base.html:12
 msgid "Internet Archive Scholar"
@@ -248,83 +316,84 @@ msgstr "인터넷 아카이브 학자"
 msgid "language selection menu"
 msgstr "언어 선택 메뉴"
 
-#: fatcat_scholar/templates/base.html:102
+#: fatcat_scholar/templates/base.html:104
 msgid "Contribute to translations"
 msgstr "번역에 기여"
 
-#: fatcat_scholar/templates/base.html:125
+#: fatcat_scholar/templates/base.html:127
 msgid "by title, authors, keywords..."
 msgstr "제목, 저자, 키워드 ..."
 
-#: fatcat_scholar/templates/base.html:125
+#: fatcat_scholar/templates/base.html:127
 msgid "search for papers"
 msgstr "논문 검색"
 
-#: fatcat_scholar/templates/base.html:126 fatcat_scholar/templates/home.html:16
+#: fatcat_scholar/templates/base.html:128 fatcat_scholar/templates/home.html:16
 msgid "Search"
 msgstr "검색"
 
-#: fatcat_scholar/templates/base.html:133
+#: fatcat_scholar/templates/base.html:138
 msgid "User Guide"
 msgstr "사용자 가이드"
 
-#: fatcat_scholar/templates/base.html:161
+#: fatcat_scholar/templates/base.html:166
 msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
 msgstr ""
-"우리는 미국 501(c)(3) 비영리 도서관으로, 인터넷 사이트 및 기타 문화 유물을 디지털 형식의 글로벌 아카이브로 구축하고 있습니다."
+"우리는 미국 501(c)(3) 비영리 도서관으로, 인터넷 사이트 및 기타 문화 유물을 디"
+"지털 형식의 글로벌 아카이브로 구축하고 있습니다."
 
-#: fatcat_scholar/templates/base.html:163
+#: fatcat_scholar/templates/base.html:168
 #, python-format
 msgid ""
-"Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and"
-" %(archive_it)s."
+"Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and "
+"%(archive_it)s."
 msgstr ""
-"다른 프로젝트로는 %(wayback)s, %(archive_org)s, %(openlibrary)s, %(archive_it)s이 "
-"있습니다."
+"다른 프로젝트로는 %(wayback)s, %(archive_org)s, %(openlibrary)s, "
+"%(archive_it)s이 있습니다."
 
-#: fatcat_scholar/templates/base.html:170
+#: fatcat_scholar/templates/base.html:175
 msgid "About Us"
 msgstr "소개"
 
-#: fatcat_scholar/templates/base.html:171
+#: fatcat_scholar/templates/base.html:176
 msgid "Contact Us"
 msgstr "연락처"
 
-#: fatcat_scholar/templates/base.html:172
+#: fatcat_scholar/templates/base.html:177
 msgid "Policies"
 msgstr "정책"
 
-#: fatcat_scholar/templates/base.html:173
+#: fatcat_scholar/templates/base.html:178
 msgid "Donate"
 msgstr "기부"
 
-#: fatcat_scholar/templates/base.html:179
+#: fatcat_scholar/templates/base.html:184
 msgid "Open Infrastructure"
 msgstr "개방형 인프라"
 
-#: fatcat_scholar/templates/base.html:181
+#: fatcat_scholar/templates/base.html:186
 msgid "Editable Catalog (Fatcat)"
 msgstr "편집 가능한 카탈로그(Fatcat)"
 
-#: fatcat_scholar/templates/base.html:182
+#: fatcat_scholar/templates/base.html:187
 msgid "Contribute"
 msgstr "기여"
 
-#: fatcat_scholar/templates/base.html:183
+#: fatcat_scholar/templates/base.html:188
 msgid "Search API"
 msgstr "검색 API"
 
-#: fatcat_scholar/templates/base.html:184
+#: fatcat_scholar/templates/base.html:189
 msgid "Service Status"
 msgstr "서비스 상태"
 
-#: fatcat_scholar/templates/base.html:185
+#: fatcat_scholar/templates/base.html:190
 msgid "Source Code"
 msgstr "소스 코드"
 
-#: fatcat_scholar/templates/base.html:194
+#: fatcat_scholar/templates/base.html:199
 msgid "Help"
 msgstr "도움"
 
@@ -365,14 +434,15 @@ msgstr "참조 : <a href=\"%(lang_prefix)s/about\"> 학술 검색 정보 </a>"
 #: fatcat_scholar/templates/help.html:25
 msgid ""
 "This service provides <a href=\"https://en.wikipedia.org/wiki/Full-"
-"text_search\">fulltext searching</a> over research publications archived "
-"in Internet Archive's various collections. It includes content from the "
-"natural sciences, humanities, biomedicine, art, history, industrial "
-"research, government reports, and more."
+"text_search\">fulltext searching</a> over research publications archived in "
+"Internet Archive's various collections. It includes content from the natural "
+"sciences, humanities, biomedicine, art, history, industrial research, "
+"government reports, and more."
 msgstr ""
-"이 서비스는 인터넷 아카이브의 다양한 컬렉션에 보관된 연구 출판물에 대한 <a href=\"https://en.wikipedia.org/"
-"wiki/Full-text_search\"> 전체 텍스트 검색</a>을 제공합니다. 여기에는 자연 과학, 인문학, 생물 의학, 예술, "
-"역사, 산업 연구, 정부 보고서 등의 콘텐츠가 포함됩니다."
+"이 서비스는 인터넷 아카이브의 다양한 컬렉션에 보관된 연구 출판물에 대한 <a "
+"href=\"https://en.wikipedia.org/wiki/Full-text_search\"> 전체 텍스트 검색</a>"
+"을 제공합니다. 여기에는 자연 과학, 인문학, 생물 의학, 예술, 역사, 산업 연구, "
+"정부 보고서 등의 콘텐츠가 포함됩니다."
 
 #: fatcat_scholar/templates/help.html:26
 msgid ""
@@ -380,18 +450,18 @@ msgid ""
 "access is to a \"pre-print\" or other version of the work, and this is "
 "indicated in the search results."
 msgstr ""
-"가능한 경우 콘텐츠에 대한 독자 액세스가 제공됩니다. 때때로이 액세스는 \"사전 인쇄\"또는 다른 버전의 저작물에 대한 것이며 검색 "
-"결과에 표시됩니다."
+"가능한 경우 콘텐츠에 대한 독자 액세스가 제공됩니다. 때때로이 액세스는 \"사전 "
+"인쇄\"또는 다른 버전의 저작물에 대한 것이며 검색 결과에 표시됩니다."
 
 #: fatcat_scholar/templates/help.html:28
 msgid ""
-"In other cases, depending on search filters, results are included for "
-"which there is only a bibliographic catalog entry. It may still be "
-"possible to obtain access through a public library or from the publisher "
-"directly."
+"In other cases, depending on search filters, results are included for which "
+"there is only a bibliographic catalog entry. It may still be possible to "
+"obtain access through a public library or from the publisher directly."
 msgstr ""
-"다른 경우에는 검색 필터에 따라 서지 카탈로그 항목 만있는 결과가 포함됩니다. 여전히 공공 도서관을 통해 또는 출판사로부터 직접 액세스 "
-"권한을 얻을 수 있습니다."
+"다른 경우에는 검색 필터에 따라 서지 카탈로그 항목 만있는 결과가 포함됩니다. "
+"여전히 공공 도서관을 통해 또는 출판사로부터 직접 액세스 권한을 얻을 수 있습니"
+"다."
 
 #: fatcat_scholar/templates/help.html:30
 msgid "Query Syntax"
@@ -400,8 +470,8 @@ msgstr "쿼리 구문"
 #: fatcat_scholar/templates/help.html:32
 msgid ""
 "In addition to the basic filtering and sorting options, this search\n"
-"interface also allows the use of Lucene query syntax in the search box. "
-"You can\n"
+"interface also allows the use of Lucene query syntax in the search box. You "
+"can\n"
 "restrict term queries on multiple metadata fields using colon statements "
 "like\n"
 "<code>journal:Science</code>, set filters like <code>lang:de</code>, and\n"
@@ -409,25 +479,28 @@ msgid ""
 msgstr ""
 "기본 필터링 및 정렬 옵션 외에도 이 검색은인터페이스를 통해 \n"
 "검색 상자에서 Lucene 쿼리 구문을 사용할 수 있습니다. \n"
-"당신은 <code> journal : Science </code>, <code> lang : de </code>와 같은 필터 설정 및 \n"
-"범위 쿼리를 적용하는 <code> year : &gt; 1989 year : &lt; 2000</code>과 같은 콜론문을 사용하여 \n"
+"당신은 <code> journal : Science </code>, <code> lang : de </code>와 같은 필"
+"터 설정 및 \n"
+"범위 쿼리를 적용하는 <code> year : &gt; 1989 year : &lt; 2000</code>과 같은 "
+"콜론문을 사용하여 \n"
 "여러 메타 데이터 필드에 대한 용어 쿼리를 제한할 수 있습니다."
 
 #: fatcat_scholar/templates/help.html:38
 msgid ""
 "While this syntax allows for relatively complex and powerful queries, at "
-"some point advanced users may run into limits on the size or complexity "
-"of queries."
+"some point advanced users may run into limits on the size or complexity of "
+"queries."
 msgstr ""
-"이 구문은 비교적 복잡하고 강력한 쿼리를 허용하지만, 어떤 지점에서 고급 사용자는 쿼리의 크기 나 복잡성에 제한이 있을 수 있습니다."
+"이 구문은 비교적 복잡하고 강력한 쿼리를 허용하지만, 어떤 지점에서 고급 사용자"
+"는 쿼리의 크기 나 복잡성에 제한이 있을 수 있습니다."
 
 #: fatcat_scholar/templates/help.html:40
 msgid ""
-"For the time being we recommend systems like <a "
-"href=\"https://lens.org\">lens.org</a> for a more powerful interface."
+"For the time being we recommend systems like <a href=\"https://lens.org"
+"\">lens.org</a> for a more powerful interface."
 msgstr ""
-"당분간은보다 강력한 인터페이스를 위해 <a href=\"https://lens.org\"> lens.org </a>와 같은 시스템을 "
-"권장합니다."
+"당분간은보다 강력한 인터페이스를 위해 <a href=\"https://lens.org\"> lens.org "
+"</a>와 같은 시스템을 권장합니다."
 
 #: fatcat_scholar/templates/help.html:43
 msgid "Example Queries"
@@ -452,12 +525,13 @@ msgstr "인용 쿼리"
 #: fatcat_scholar/templates/help.html:58
 msgid ""
 "As an experimental feature, if the search query \"looks like\" a formal "
-"citation, as found in the bibliography of a research paper, the service "
-"will attempt to parse the citation and do a match against our catalog of "
-"known works. When this happens, any filters are ignored."
+"citation, as found in the bibliography of a research paper, the service will "
+"attempt to parse the citation and do a match against our catalog of known "
+"works. When this happens, any filters are ignored."
 msgstr ""
-"실험적인 기능으로 검색어가 연구 논문의 참고 문헌에서 발견 된 것처럼 공식 인용과 \"같아 보이는\"경우 서비스는 인용을 구문 분석하고 "
-"알려진 작업 카탈로그와 일치하도록 시도합니다. 이 경우 모든 필터가 무시됩니다."
+"실험적인 기능으로 검색어가 연구 논문의 참고 문헌에서 발견 된 것처럼 공식 인용"
+"과 \"같아 보이는\"경우 서비스는 인용을 구문 분석하고 알려진 작업 카탈로그와 "
+"일치하도록 시도합니다. 이 경우 모든 필터가 무시됩니다."
 
 #: fatcat_scholar/templates/help.html:62
 msgid "Metadata Fields"
@@ -466,33 +540,32 @@ msgstr "메타 데이터 필드"
 #: fatcat_scholar/templates/help.html:64
 msgid ""
 "You can restrict to records where the field exists with an asterisk like "
-"<code>doi:*</code>, and negate any term like <code>!type:article-"
-"journal</code>."
+"<code>doi:*</code>, and negate any term like <code>!type:article-journal</"
+"code>."
 msgstr ""
-"<code> doi : * </code>와 같은 별표가있는 필드가있는 레코드로 제한하고 <code>! type : article-"
-"journal </code>와 같은 용어는 부정 할 수 있습니다."
+"<code> doi : * </code>와 같은 별표가있는 필드가있는 레코드로 제한하고 "
+"<code>! type : article-journal </code>와 같은 용어는 부정 할 수 있습니다."
 
 #: fatcat_scholar/templates/help.html:66
 msgid ""
-"In-depth documentation of the query syntax is available <a "
-"href=\"https://www.elastic.co/guide/en/elasticsearch/reference/current"
-"/query-dsl-query-string-query.html#query-string-query-notes\">from the "
-"Elasticsearch project</a>."
+"In-depth documentation of the query syntax is available <a href=\"https://"
+"www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-"
+"string-query.html#query-string-query-notes\">from the Elasticsearch project</"
+"a>."
 msgstr ""
-"쿼리 구문에 대한 심층 문서는 <a href=\"https://www.elastic.co/guide/en/elasticsearch/"
-"reference/current/query-dsl-query-string-query.html#query-string-query-"
-"notes\">Elasticsearch 프로젝트</a>에서 확인할 수 있습니다."
+"쿼리 구문에 대한 심층 문서는 <a href=\"https://www.elastic.co/guide/en/"
+"elasticsearch/reference/current/query-dsl-query-string-query.html#query-"
+"string-query-notes\">Elasticsearch 프로젝트</a>에서 확인할 수 있습니다."
 
 #: fatcat_scholar/templates/help.html:68
 msgid ""
-"The complete current search document schema is available (as JSON) <a "
-"href=\"https://github.com/internetarchive/fatcat-"
-"scholar/blob/master/schema/scholar_fulltext.v01.json\">in the source "
-"code</a>."
+"The complete current search document schema is available (as JSON) <a href="
+"\"https://github.com/internetarchive/fatcat-scholar/blob/master/schema/"
+"scholar_fulltext.v01.json\">in the source code</a>."
 msgstr ""
-"전체 현재 검색 문서 스키마는 <a href=\"https://github.com/internetarchive/fatcat-scholar/"
-"blob/master/schema/scholar_fulltext.v01.json\">소스 코드</a>에서 사용할 수 있습니다(JSON "
-"형식)."
+"전체 현재 검색 문서 스키마는 <a href=\"https://github.com/internetarchive/"
+"fatcat-scholar/blob/master/schema/scholar_fulltext.v01.json\">소스 코드</a>에"
+"서 사용할 수 있습니다(JSON 형식)."
 
 #: fatcat_scholar/templates/help.html:105
 msgid "Search Results"
@@ -504,165 +577,171 @@ msgstr "액세스 링크"
 
 #: fatcat_scholar/templates/help.html:118
 msgid ""
-"All Internet Archive preservation copy links have the same style and "
-"icon. Content from the Wayback Machine looks like this."
+"All Internet Archive preservation copy links have the same style and icon. "
+"Content from the Wayback Machine looks like this."
 msgstr ""
-"모든 인터넷 아카이브 보존 사본 링크는 동일한 스타일과 아이콘을 갖습니다. Wayback Machine의 콘텐츠는 이와 같은 형태로 "
-"표시됩니다."
+"모든 인터넷 아카이브 보존 사본 링크는 동일한 스타일과 아이콘을 갖습니다. "
+"Wayback Machine의 콘텐츠는 이와 같은 형태로 표시됩니다."
 
 #: fatcat_scholar/templates/help.html:122
 msgid ""
-"If the preserved copy of the work is from a pre-print, author manuscript,"
-" or other alternative version of the work, the access link has an "
-"indicator. You can get details and view all versions by clicking on the "
-"primary title link"
+"If the preserved copy of the work is from a pre-print, author manuscript, or "
+"other alternative version of the work, the access link has an indicator. You "
+"can get details and view all versions by clicking on the primary title link"
 msgstr ""
-"저작물의 보존 사본이 사전 인쇄, 저자 원고 또는 기타 대체 버전의 저작물 인 경우 액세스 링크에 표시기가 있습니다. 기본 제목 링크를 "
-"클릭하면 세부 정보를 얻고 모든 버전을 볼 수 있습니다"
+"저작물의 보존 사본이 사전 인쇄, 저자 원고 또는 기타 대체 버전의 저작물 인 경"
+"우 액세스 링크에 표시기가 있습니다. 기본 제목 링크를 클릭하면 세부 정보를 얻"
+"고 모든 버전을 볼 수 있습니다"
 
 #: fatcat_scholar/templates/help.html:126
 msgid ""
 "Some preserved content, particularly older Public Domain works, may be "
-"stored in general Internet Archive digital collections (as opposed to the"
-" web archive)"
+"stored in general Internet Archive digital collections (as opposed to the "
+"web archive)"
 msgstr ""
-"일부 보존된 콘텐츠, 특히 오래된 공용 도메인 저작물은 일반 인터넷 아카이브 디지털 콜렉션(웹 아카이브와 반대)에 저장 될 수 있습니다)"
+"일부 보존된 콘텐츠, 특히 오래된 공용 도메인 저작물은 일반 인터넷 아카이브 디"
+"지털 콜렉션(웹 아카이브와 반대)에 저장 될 수 있습니다)"
 
 #: fatcat_scholar/templates/help.html:130
 msgid ""
 "Digitized copies of works on microfilm may be linked to experimentally. "
 "Access may be limited to controlled lending"
-msgstr "마이크로 필름 작품의 디지털화 사본은 실험적으로 연결될 수 있습니다. 액세스가 통제 된 대출로 제한 될 수 있습니다"
+msgstr ""
+"마이크로 필름 작품의 디지털화 사본은 실험적으로 연결될 수 있습니다. 액세스가 "
+"통제 된 대출로 제한 될 수 있습니다"
 
 #: fatcat_scholar/templates/help.html:134
 msgid ""
-"A publisher landing page is the authoritative source for the \"version of"
-" record\" of a research publication, but content is not always accessible"
-" to the general public"
+"A publisher landing page is the authoritative source for the \"version of "
+"record\" of a research publication, but content is not always accessible to "
+"the general public"
 msgstr ""
-"출판사 랜딩 페이지는 연구 출판물의 \"기록 버전\"에 대한 권위있는 출처이지만 일반 대중이 콘텐츠에 항상 액세스 할 수있는 것은 아닙니다"
+"출판사 랜딩 페이지는 연구 출판물의 \"기록 버전\"에 대한 권위있는 출처이지만 "
+"일반 대중이 콘텐츠에 항상 액세스 할 수있는 것은 아닙니다"
 
 #: fatcat_scholar/templates/help.html:138
 msgid ""
-"When the work is from an Open Access publication (sometimes known as "
-"\"Gold\" or \"Diamond\" OA), and the publisher is expected to provide "
-"access to all readers, the button has an orange \"unlocked\" icon"
+"When the work is from an Open Access publication (sometimes known as \"Gold"
+"\" or \"Diamond\" OA), and the publisher is expected to provide access to "
+"all readers, the button has an orange \"unlocked\" icon"
 msgstr ""
-"작업이 Open Access 출판물 ( \"Gold\"또는 \"Diamond\"OA라고도 함)에서 가져온 것이며 출판사가 모든 독자에게 "
-"액세스 권한을 제공 할 것으로 예상되는 경우 단추에 주황색 \"잠금 해제\"아이콘이 있습니다"
+"작업이 Open Access 출판물 ( \"Gold\"또는 \"Diamond\"OA라고도 함)에서 가져온 "
+"것이며 출판사가 모든 독자에게 액세스 권한을 제공 할 것으로 예상되는 경우 단추"
+"에 주황색 \"잠금 해제\"아이콘이 있습니다"
 
 #: fatcat_scholar/templates/help.html:142
 msgid ""
 "If the work is archived in full on a reliable, open platform, we will "
 "sometimes provide additional links"
-msgstr "작업이 신뢰할 수있는 개방형 플랫폼에 전체적으로 보관되는 경우 때때로 추가 링크를 제공합니다"
+msgstr ""
+"작업이 신뢰할 수있는 개방형 플랫폼에 전체적으로 보관되는 경우 때때로 추가 링"
+"크를 제공합니다"
 
 #: fatcat_scholar/templates/help.html:150
 msgid ""
-"Search results may have tag labels which provide additional context about"
-" the work. For example, indexes the journal is included in, or open "
-"platform technology used for publications."
+"Search results may have tag labels which provide additional context about "
+"the work. For example, indexes the journal is included in, or open platform "
+"technology used for publications."
 msgstr ""
-"검색 결과에는 작업에 대한 추가 컨텍스트를 제공하는 태그 레이블이있을 수 있습니다. 예를 들어, 저널이 포함 된 색인 또는 출판에 "
-"사용되는 개방형 플랫폼 기술입니다."
+"검색 결과에는 작업에 대한 추가 컨텍스트를 제공하는 태그 레이블이있을 수 있습"
+"니다. 예를 들어, 저널이 포함 된 색인 또는 출판에 사용되는 개방형 플랫폼 기술"
+"입니다."
 
 #: fatcat_scholar/templates/help.html:160
 msgid ""
-"There are multiple released \"versions\" or \"editions\" of this work, "
-"and bibliographic metadata for the \"primary\" is being shown. Click the "
-"title to see other versions"
+"There are multiple released \"versions\" or \"editions\" of this work, and "
+"bibliographic metadata for the \"primary\" is being shown. Click the title "
+"to see other versions"
 msgstr ""
-"이 작품의 여러 \"버전\"또는 \"에디션\"이 출시되었으며 \"기본\"에 대한 서지 메타 데이터가 표시됩니다. 다른 버전을 보려면 "
-"제목을 클릭하십시오"
+"이 작품의 여러 \"버전\"또는 \"에디션\"이 출시되었으며 \"기본\"에 대한 서지 메"
+"타 데이터가 표시됩니다. 다른 버전을 보려면 제목을 클릭하십시오"
 
 #: fatcat_scholar/templates/help.html:164
 msgid ""
 "The primary language of this work is different from the search interface "
-"language. The <a "
-"href=\"https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes\">ISO two-"
-"letter language code</a> is indicated"
+"language. The <a href=\"https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes"
+"\">ISO two-letter language code</a> is indicated"
 msgstr ""
-"이 작품의 기본 언어는 검색 인터페이스 언어와 다릅니다. <a href=\"https://en.wikipedia.org/wiki/"
-"List_of_ISO_639-1_codes\"> ISO 2 자리 언어 코드 </a>가 표시됩니다"
+"이 작품의 기본 언어는 검색 인터페이스 언어와 다릅니다. <a href=\"https://en."
+"wikipedia.org/wiki/List_of_ISO_639-1_codes\"> ISO 2 자리 언어 코드 </a>가 표"
+"시됩니다"
 
 #: fatcat_scholar/templates/help.html:168
 msgid ""
 "Published in a <a href=\"https://doaj.org\">Directory of Open Access "
 "Journals</a> publication, which implies that this is an Open Access work"
 msgstr ""
-"<a href=\"https://doaj.org\"> 오픈 액세스 저널 디렉토리 </a> 간행물에 게시되었습니다. 이는 이것이 오픈 "
-"액세스 작업임을 의미합니다"
+"<a href=\"https://doaj.org\"> 오픈 액세스 저널 디렉토리 </a> 간행물에 게시되"
+"었습니다. 이는 이것이 오픈 액세스 작업임을 의미합니다"
 
 #: fatcat_scholar/templates/help.html:172
 msgid ""
-"Publication indexed in <a href=\"https://www.ebsco.com/open-access"
-"/szczepanski-list\">Szczepanski's List of Open Access Journals</a>, which"
-" implies that this is an Open Access work"
+"Publication indexed in <a href=\"https://www.ebsco.com/open-access/"
+"szczepanski-list\">Szczepanski's List of Open Access Journals</a>, which "
+"implies that this is an Open Access work"
 msgstr ""
-"<a href=\"https://www.ebsco.com/open-access/szczepanski-list\"> Szczepanski의 "
-"Open Access Journals 목록 </a>에 색인 된 간행물, 이는 이것이 Open Access 작품임을 의미합니다"
+"<a href=\"https://www.ebsco.com/open-access/szczepanski-list\"> Szczepanski"
+"의 Open Access Journals 목록 </a>에 색인 된 간행물, 이는 이것이 Open Access "
+"작품임을 의미합니다"
 
 #: fatcat_scholar/templates/help.html:176
 msgid ""
-"The work is believed to be <a "
-"href=\"https://en.wikipedia.org/wiki/Open_access\">\"Open Access\"</a> "
-"for any other reason"
+"The work is believed to be <a href=\"https://en.wikipedia.org/wiki/"
+"Open_access\">\"Open Access\"</a> for any other reason"
 msgstr ""
-"이 작업은 다른 이유로 <a href=\"https://en.wikipedia.org/wiki/Open_access\"> \"오픈 "
-"액세스\"</a>로 간주됩니다"
+"이 작업은 다른 이유로 <a href=\"https://en.wikipedia.org/wiki/Open_access\"> "
+"\"오픈 액세스\"</a>로 간주됩니다"
 
 #: fatcat_scholar/templates/help.html:180
 msgid ""
-"Published on a <a "
-"href=\"https://en.wikipedia.org/wiki/SciELO\">SciELO</a> national "
-"platform"
+"Published on a <a href=\"https://en.wikipedia.org/wiki/SciELO\">SciELO</a> "
+"national platform"
 msgstr ""
-"<a href=\"https://en.wikipedia.org/wiki/SciELO\"> SciELO </a> 국가 플랫폼에 게시"
+"<a href=\"https://en.wikipedia.org/wiki/SciELO\"> SciELO </a> 국가 플랫폼에 "
+"게시"
 
 #: fatcat_scholar/templates/help.html:184
 msgid ""
-"Published using <a "
-"href=\"https://en.wikipedia.org/wiki/Open_Journal_Systems\">Open Journal "
-"Systems</a> software"
+"Published using <a href=\"https://en.wikipedia.org/wiki/Open_Journal_Systems"
+"\">Open Journal Systems</a> software"
 msgstr ""
 "<a href=\"https://en.wikipedia.org/wiki/Open_Journal_Systems\"> Open Journal "
 "Systems </a> 소프트웨어를 사용하여 게시"
 
 #: fatcat_scholar/templates/help.html:188
 msgid ""
-"Published using <a "
-"href=\"https://en.wikipedia.org/wiki/Wordpress\">WordPress</a> software"
+"Published using <a href=\"https://en.wikipedia.org/wiki/Wordpress"
+"\">WordPress</a> software"
 msgstr ""
-"<a href=\"https://en.wikipedia.org/wiki/Wordpress\"> WordPress </a> 소프트웨어를 "
-"사용하여 게시"
+"<a href=\"https://en.wikipedia.org/wiki/Wordpress\"> WordPress </a> 소프트웨"
+"어를 사용하여 게시"
 
 #: fatcat_scholar/templates/help.html:192
 msgid ""
-"Preserved and/or hosted on the <a "
-"href=\"https://en.wikipedia.org/wiki/JSTOR\">JSTOR</a> digital "
-"preservation platform"
+"Preserved and/or hosted on the <a href=\"https://en.wikipedia.org/wiki/JSTOR"
+"\">JSTOR</a> digital preservation platform"
 msgstr ""
-"<a href=\"https://en.wikipedia.org/wiki/JSTOR\"> JSTOR </a> 디지털 보존 플랫폼에서 보존 "
-"및 / 또는 호스팅"
+"<a href=\"https://en.wikipedia.org/wiki/JSTOR\"> JSTOR </a> 디지털 보존 플랫"
+"폼에서 보존 및 / 또는 호스팅"
 
 #: fatcat_scholar/templates/help.html:200
 msgid ""
 "Underneath search results, and alternate version listings, are any known "
-"\"persistent identifiers\" that uniquely identify the specific version of"
-" the work. These are usually hyperlinks."
+"\"persistent identifiers\" that uniquely identify the specific version of "
+"the work. These are usually hyperlinks."
 msgstr ""
-"검색 결과 및 대체 버전 목록 아래에는 저작물의 특정 버전을 고유하게 식별하는 알려진 \"영구 식별자\"가 있습니다. 일반적으로 하이퍼 "
-"링크입니다."
+"검색 결과 및 대체 버전 목록 아래에는 저작물의 특정 버전을 고유하게 식별하는 "
+"알려진 \"영구 식별자\"가 있습니다. 일반적으로 하이퍼 링크입니다."
 
 #: fatcat_scholar/templates/help.html:210
 msgid ""
-"<a "
-"href=\"https://en.wikipedia.org/wiki/Digital_object_identifier\">Digital "
-"Object Identifier (DOI)</a>, provides a redirect to the publisher's "
-"landing page"
+"<a href=\"https://en.wikipedia.org/wiki/Digital_object_identifier\">Digital "
+"Object Identifier (DOI)</a>, provides a redirect to the publisher's landing "
+"page"
 msgstr ""
-"<a href=\"https://en.wikipedia.org/wiki/Digital_object_identifier\"> DOI ("
-"Digital Object Identifier) </a>는 게시자의 방문 페이지로의 리디렉션을 제공합니다"
+"<a href=\"https://en.wikipedia.org/wiki/Digital_object_identifier\"> DOI "
+"(Digital Object Identifier) </a>는 게시자의 방문 페이지로의 리디렉션을 제공합"
+"니다"
 
 #: fatcat_scholar/templates/help.html:214
 msgid "PubMed/MEDLINE"
@@ -681,7 +760,8 @@ msgid "The DBLP Computer Science Bibliography"
 msgstr "DBLP 컴퓨터 과학 참고 문헌"
 
 #: fatcat_scholar/templates/help.html:230
-msgid "Article-level identifier for works in DOAJ, particularly those with no DOI"
+msgid ""
+"Article-level identifier for works in DOAJ, particularly those with no DOI"
 msgstr "DOAJ의 저작물, 특히 DOI가없는 저작물에 대한 기사 수준 식별자"
 
 #: fatcat_scholar/templates/help.html:234
@@ -689,8 +769,8 @@ msgid ""
 "<a href=\"https://fatcat.wiki\">fatcat.wiki</a> \"release\" identifier. "
 "Scholar is built on top of the fatcat catalog"
 msgstr ""
-"<a href=\"https://fatcat.wiki\">fatcat.wiki</a> \"릴리스\"식별자. Scholar는 fatcat "
-"카탈로그 위에 구축되었습니다"
+"<a href=\"https://fatcat.wiki\">fatcat.wiki</a> \"릴리스\"식별자. Scholar는 "
+"fatcat 카탈로그 위에 구축되었습니다"
 
 #: fatcat_scholar/templates/help.html:240
 msgid "Work In Progress"
@@ -698,15 +778,19 @@ msgstr "진행중인 작업"
 
 #: fatcat_scholar/templates/help.html:244 fatcat_scholar/templates/home.html:37
 msgid ""
-"This service is in \"alpha\". It has several bugs, experiences downtime, "
-"and has not been officially announced."
-msgstr "이 서비스는 \"알파\"입니다. 몇 가지 버그가 있고 다운 타임이 발생하며 공식적으로 발표되지 않았습니다."
+"This service is in \"alpha\". It has several bugs, experiences downtime, and "
+"has not been officially announced."
+msgstr ""
+"이 서비스는 \"알파\"입니다. 몇 가지 버그가 있고 다운 타임이 발생하며 공식적으"
+"로 발표되지 않았습니다."
 
 #: fatcat_scholar/templates/help.html:246 fatcat_scholar/templates/home.html:39
 msgid ""
-"This is a new service. Metadata is being improved and features have not "
-"been finalized."
-msgstr "이것은 새로운 서비스입니다. 메타 데이터가 개선되고 있으며 기능이 완성되지 않았습니다."
+"This is a new service. Metadata is being improved and features have not been "
+"finalized."
+msgstr ""
+"이것은 새로운 서비스입니다. 메타 데이터가 개선되고 있으며 기능이 완성되지 않"
+"았습니다."
 
 #: fatcat_scholar/templates/help.html:250
 msgid "This project is currently a <i>prototype</i>"
@@ -720,25 +804,28 @@ msgstr "몇 가지 알려진 버그 및 문제 :"
 msgid ""
 "Poor metadata quality for conference proceedings. Many are labeled "
 "\"unpublished\" and are not associated with the conference."
-msgstr "회의 절차에 대한 메타 데이터 품질이 떨어집니다. 대부분은 \"미 게시\"로 표시되며 컨퍼런스와 관련이 없습니다."
+msgstr ""
+"회의 절차에 대한 메타 데이터 품질이 떨어집니다. 대부분은 \"미 게시\"로 표시되"
+"며 컨퍼런스와 관련이 없습니다."
 
 #: fatcat_scholar/templates/help.html:257
 msgid ""
-"Duplicate versions of same work. For example, different versions of the "
-"same paper or dataset. We are working on basic entity-deduplication in "
-"the fatcat catalog."
+"Duplicate versions of same work. For example, different versions of the same "
+"paper or dataset. We are working on basic entity-deduplication in the fatcat "
+"catalog."
 msgstr ""
-"같은 작품의 중복 버전. 예를 들어, 동일한 종이 또는 데이터 세트의 다른 버전. 우리는 fatcat 카탈로그에서 기본적인 엔티티 중복 "
-"제거 작업을하고 있습니다."
+"같은 작품의 중복 버전. 예를 들어, 동일한 종이 또는 데이터 세트의 다른 버전. "
+"우리는 fatcat 카탈로그에서 기본적인 엔티티 중복 제거 작업을하고 있습니다."
 
 #: fatcat_scholar/templates/help.html:258
 msgid ""
 "Mis-matching of file content or version with work metadata. For example, "
-"sometimes pre-prints or author manuscripts are incorrectly associated "
-"with version-of-record metadata, or vice-versa."
+"sometimes pre-prints or author manuscripts are incorrectly associated with "
+"version-of-record metadata, or vice-versa."
 msgstr ""
-"작업 메타 데이터와 파일 콘텐츠 또는 버전이 일치하지 않습니다. 예를 들어, 때때로 사전 인쇄 또는 저자 원고가 레코드 버전 메타 "
-"데이터와 잘못 연결되거나 그 반대의 경우도 마찬가지입니다."
+"작업 메타 데이터와 파일 콘텐츠 또는 버전이 일치하지 않습니다. 예를 들어, 때때"
+"로 사전 인쇄 또는 저자 원고가 레코드 버전 메타 데이터와 잘못 연결되거나 그 반"
+"대의 경우도 마찬가지입니다."
 
 #: fatcat_scholar/templates/home.html:10
 msgid "Internet Archive Scholar logo (vaporwave)"
@@ -754,18 +841,20 @@ msgstr "수백만 개의 연구 논문 검색"
 
 #: fatcat_scholar/templates/home.html:24
 msgid ""
-"This fulltext search index includes over 25 million research articles and"
-" other scholarly documents preserved in the Internet Archive."
-msgstr "이 전체 텍스트 검색 색인에는 인터넷 아카이브에 보존된 2천 5백만 개 이상의 연구 기사 및 기타 학술 문서가 포함됩니다."
+"This fulltext search index includes over 25 million research articles and "
+"other scholarly documents preserved in the Internet Archive."
+msgstr ""
+"이 전체 텍스트 검색 색인에는 인터넷 아카이브에 보존된 2천 5백만 개 이상의 연"
+"구 기사 및 기타 학술 문서가 포함됩니다."
 
 #: fatcat_scholar/templates/home.html:24
 msgid ""
-"The collection spans from digitized copies of eighteenth century journals"
-" through the latest Open Access conference proceedings and pre-prints "
-"crawled from the World Wide Web."
+"The collection spans from digitized copies of eighteenth century journals "
+"through the latest Open Access conference proceedings and pre-prints crawled "
+"from the World Wide Web."
 msgstr ""
-"콜렉션은 18세기 저널의 디지털화된 사본에서 최신 오픈 액세스 컨퍼런스 기록, 월드 와이드 웹에서 크롤링된 출판 전 자료에 이르기까지 "
-"다양합니다."
+"콜렉션은 18세기 저널의 디지털화된 사본에서 최신 오픈 액세스 컨퍼런스 기록, 월"
+"드 와이드 웹에서 크롤링된 출판 전 자료에 이르기까지 다양합니다."
 
 #: fatcat_scholar/templates/home.html:24
 msgid "More &raquo;"
@@ -802,9 +891,11 @@ msgstr "검색어 오류"
 
 #: fatcat_scholar/templates/search.html:116
 msgid ""
-"Query parsing is currently very naive. Sometimes you can fix this problem"
-" by adding quotes around terms or entire phrases."
-msgstr "쿼리 구문 분석은 현재 매우 순진합니다. 때로는 용어 또는 전체 구문 주위에 따옴표를 추가하여이 문제를 해결할 수 있습니다."
+"Query parsing is currently very naive. Sometimes you can fix this problem by "
+"adding quotes around terms or entire phrases."
+msgstr ""
+"쿼리 구문 분석은 현재 매우 순진합니다. 때로는 용어 또는 전체 구문 주위에 따옴"
+"표를 추가하여이 문제를 해결할 수 있습니다."
 
 #: fatcat_scholar/templates/search.html:148
 msgid "We didn't find any documents matching your query"
@@ -917,14 +1008,14 @@ msgstr "디지털화 된 마이크로 필름"
 #: fatcat_scholar/templates/search_macros.html:288
 #, python-format
 msgid ""
-"A copy of this work was available on the public web and has been "
-"preserved in the Wayback Machine. The capture dates from "
-"%(capture_year)s; you can also visit <a rel=\"external noopener\" "
-"href=\"%(original_url)s\">the original URL</a>."
+"A copy of this work was available on the public web and has been preserved "
+"in the Wayback Machine. The capture dates from %(capture_year)s; you can "
+"also visit <a rel=\"external noopener\" href=\"%(original_url)s\">the "
+"original URL</a>."
 msgstr ""
-"이 작업의 사본은 공개 웹에서 사용할 수 있으며 Wayback Machine에 보존되었습니다. 캡처 날짜는 %(capture_year)s;"
-" <a rel=\"external noopener\" href=\"%(original_url)s\"> 원래 URL </a>을 방문 할 "
-"수도 있습니다."
+"이 작업의 사본은 공개 웹에서 사용할 수 있으며 Wayback Machine에 보존되었습니"
+"다. 캡처 날짜는 %(capture_year)s; <a rel=\"external noopener\" href="
+"\"%(original_url)s\"> 원래 URL </a>을 방문 할 수도 있습니다."
 
 #: fatcat_scholar/templates/search_macros.html:290
 msgid ""
@@ -934,9 +1025,11 @@ msgstr "인터넷 아카이브는 일반 컬렉션에이 작업의 보존 사본
 
 #: fatcat_scholar/templates/search_macros.html:292
 msgid ""
-"The Internet Archive has digitized a microfilm copy of this work. It may "
-"be possible to borrow a copy for reading."
-msgstr "인터넷 아카이브는이 작품의 마이크로 필름 사본을 디지털화했습니다. 독서 용 사본을 빌릴 수도 있습니다."
+"The Internet Archive has digitized a microfilm copy of this work. It may be "
+"possible to borrow a copy for reading."
+msgstr ""
+"인터넷 아카이브는이 작품의 마이크로 필름 사본을 디지털화했습니다. 독서 용 사"
+"본을 빌릴 수도 있습니다."
 
 #: fatcat_scholar/templates/search_macros.html:296
 #, python-format
@@ -945,9 +1038,11 @@ msgstr "파일 형식은 %(mimetype)s입니다."
 
 #: fatcat_scholar/templates/search_macros.html:301
 msgid ""
-"Note that this fulltext copy is not of the \"primary\" version of this "
-"work. The version it corresponds to is:"
-msgstr "이 전체 텍스트 사본은이 저작물의 \"기본\"버전이 아닙니다. 해당하는 버전은 다음과 같습니다:"
+"Note that this fulltext copy is not of the \"primary\" version of this work. "
+"The version it corresponds to is:"
+msgstr ""
+"이 전체 텍스트 사본은이 저작물의 \"기본\"버전이 아닙니다. 해당하는 버전은 다"
+"음과 같습니다:"
 
 #: fatcat_scholar/templates/search_macros.html:314
 msgid "Additional access options for the primary version of this work:"
@@ -956,70 +1051,70 @@ msgstr "이 작품의 기본 버전에 대한 추가 액세스 옵션 :"
 #: fatcat_scholar/templates/search_macros.html:324
 msgid ""
 "We don't yet know of a public preservation copy of this work. You may be "
-"able to obtain a copy of this work to read from the publisher, platforms,"
-" or institutional libraries."
+"able to obtain a copy of this work to read from the publisher, platforms, or "
+"institutional libraries."
 msgstr ""
-"우리는 아직이 작품의 공공 보존 사본을 알지 못합니다. 출판사, 플랫폼 또는 기관 도서관에서 읽을 수 있도록이 저작물의 사본을 얻을 수 "
-"있습니다."
+"우리는 아직이 작품의 공공 보존 사본을 알지 못합니다. 출판사, 플랫폼 또는 기"
+"관 도서관에서 읽을 수 있도록이 저작물의 사본을 얻을 수 있습니다."
 
 #: fatcat_scholar/templates/search_macros.html:327
 #, python-format
 msgid ""
-"If you know of a legal, public version that we should archive, please let"
-" us know via <a rel=\"noopener\" href=\"%(save_paper_now_url)s\">\"Save "
-"Paper Now\"</a>."
+"If you know of a legal, public version that we should archive, please let us "
+"know via <a rel=\"noopener\" href=\"%(save_paper_now_url)s\">\"Save Paper Now"
+"\"</a>."
 msgstr ""
-"보관해야하는 합법적 인 공개 버전을 알고있는 경우 <a rel=\"noopener\" href=\"%(save_paper_now_url)"
-"s\"> \"지금 용지 저장\"</a>을 통해 알려주십시오."
+"보관해야하는 합법적 인 공개 버전을 알고있는 경우 <a rel=\"noopener\" href="
+"\"%(save_paper_now_url)s\"> \"지금 용지 저장\"</a>을 통해 알려주십시오."
 
 #: fatcat_scholar/templates/search_macros.html:374
 msgid "more &raquo;"
 msgstr "더 보기 &raquo;"
 
-#: fatcat_scholar/templates/search_macros.html:397
+#: fatcat_scholar/templates/search_macros.html:396
 msgid "tag definitions"
 msgstr "태그 정의"
 
-#: fatcat_scholar/templates/search_macros.html:424
+#: fatcat_scholar/templates/search_macros.html:423
 msgid "not primary version"
 msgstr "기본 버전이 아닙니다"
 
-#: fatcat_scholar/templates/search_macros.html:441
+#: fatcat_scholar/templates/search_macros.html:440
 #, python-format
 msgid "Same Issue (%(count)s)"
 msgstr "같은 호 (%(count)s)"
 
-#: fatcat_scholar/templates/search_macros.html:452
+#: fatcat_scholar/templates/search_macros.html:451
 msgid "cite this work"
 msgstr "이 작품을 인용"
 
-#: fatcat_scholar/templates/search_macros.html:457
+#: fatcat_scholar/templates/search_macros.html:456
 msgid "Citation"
 msgstr "소환"
 
-#: fatcat_scholar/templates/search_macros.html:471
+#: fatcat_scholar/templates/search_macros.html:470
 msgid "edit metadata on fatcat wiki"
 msgstr "fatcat 위키에서 메타 데이터 편집"
 
-#: fatcat_scholar/templates/search_macros.html:477
+#: fatcat_scholar/templates/search_macros.html:476
 msgid "permalink to this record"
 msgstr "이 기록에 대한 영구 링크"
 
-#: fatcat_scholar/templates/search_macros.html:493
-#: fatcat_scholar/templates/search_macros.html:496
+#: fatcat_scholar/templates/search_macros.html:492
+#: fatcat_scholar/templates/search_macros.html:495
 msgid "&laquo; Previous"
 msgstr "&laquo; 이전"
 
-#: fatcat_scholar/templates/search_macros.html:501
-#: fatcat_scholar/templates/search_macros.html:504
+#: fatcat_scholar/templates/search_macros.html:500
+#: fatcat_scholar/templates/search_macros.html:503
 msgid "Next &raquo;"
 msgstr "다음 &raquo;"
 
-#: fatcat_scholar/templates/search_macros.html:508
+#: fatcat_scholar/templates/search_macros.html:507
 #, python-format
 msgid "Showing results %(start)s &mdash; %(end)s out of %(total)s results"
 msgstr "결과 표시 %(start)s &mdash; %(end)s / %(total)s 결과"
 
-#: fatcat_scholar/templates/search_macros.html:541
+#: fatcat_scholar/templates/search_macros.html:540
 msgid "Clear Filters"
 msgstr "필터 지우기"

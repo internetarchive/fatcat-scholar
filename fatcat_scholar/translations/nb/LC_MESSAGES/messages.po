@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-25 11:07-0700\n"
+"POT-Creation-Date: 2021-08-12 16:37-0700\n"
 "PO-Revision-Date: 2021-02-09 03:50+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
@@ -21,83 +21,83 @@ msgstr ""
 "X-Generator: Weblate 4.5-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
-#: fatcat_scholar/search.py:42
+#: fatcat_scholar/search.py:44
 msgid "Release Date"
 msgstr "Utgivelsesdato"
 
-#: fatcat_scholar/search.py:46
+#: fatcat_scholar/search.py:48
 msgid "All Time"
 msgstr "Siden begynnelsen"
 
-#: fatcat_scholar/search.py:47
+#: fatcat_scholar/search.py:49
 msgid "Past Week"
 msgstr "Siste uke"
 
-#: fatcat_scholar/search.py:48
+#: fatcat_scholar/search.py:50
 msgid "Past Year"
 msgstr "Siste år"
 
-#: fatcat_scholar/search.py:49
+#: fatcat_scholar/search.py:51
 msgid "Since 2000"
 msgstr "Siden 2000"
 
-#: fatcat_scholar/search.py:50
+#: fatcat_scholar/search.py:52
 msgid "Before 1925"
 msgstr "Før 1925"
 
-#: fatcat_scholar/search.py:54
+#: fatcat_scholar/search.py:56
 msgid "Resource Type"
 msgstr "Ressurstype"
 
-#: fatcat_scholar/search.py:58
+#: fatcat_scholar/search.py:60
 msgid "Papers"
 msgstr "Publiseringer"
 
-#: fatcat_scholar/search.py:59
+#: fatcat_scholar/search.py:61
 msgid "Reports"
 msgstr "Rapporter"
 
-#: fatcat_scholar/search.py:60
+#: fatcat_scholar/search.py:62
 msgid "Datasets"
 msgstr "Datasett"
 
-#: fatcat_scholar/search.py:61
+#: fatcat_scholar/search.py:63
 msgid "Everything"
 msgstr "Alt"
 
-#: fatcat_scholar/search.py:65
+#: fatcat_scholar/search.py:67
 msgid "Availability"
 msgstr "Tilgjengelighet"
 
-#: fatcat_scholar/search.py:69
+#: fatcat_scholar/search.py:71
 msgid "Fulltext"
 msgstr "Fulltekst"
 
-#: fatcat_scholar/search.py:70
+#: fatcat_scholar/search.py:72
 msgid "Microfilm"
 msgstr "Mikrofilm"
 
-#: fatcat_scholar/search.py:71 fatcat_scholar/templates/search_macros.html:4
+#: fatcat_scholar/search.py:73 fatcat_scholar/templates/search_macros.html:4
 msgid "Open Access"
 msgstr "Åpen tilgang"
 
-#: fatcat_scholar/search.py:72
+#: fatcat_scholar/search.py:74
 msgid "Metadata"
 msgstr "Metadata"
 
-#: fatcat_scholar/search.py:76
+#: fatcat_scholar/search.py:78
 msgid "Sort Order"
 msgstr "Sorteringsrekkefølge"
 
-#: fatcat_scholar/search.py:80
+#: fatcat_scholar/search.py:82
 msgid "Relevancy"
 msgstr "Relevans"
 
-#: fatcat_scholar/search.py:81
+#: fatcat_scholar/search.py:83
 msgid "Recent First"
 msgstr "Nyligste først"
 
-#: fatcat_scholar/search.py:82
+#: fatcat_scholar/search.py:84
 msgid "Oldest First"
 msgstr "Eldste først"
 
@@ -120,7 +120,7 @@ msgid ""
 msgstr ""
 
 #: fatcat_scholar/templates/about.html:14
-#: fatcat_scholar/templates/base.html:191
+#: fatcat_scholar/templates/base.html:196
 msgid "How It Works"
 msgstr "Hvordan det fungerer"
 
@@ -153,7 +153,7 @@ msgid ""
 msgstr ""
 
 #: fatcat_scholar/templates/about.html:27
-#: fatcat_scholar/templates/base.html:192
+#: fatcat_scholar/templates/base.html:197
 msgid "Content Sources"
 msgstr "Innholdskilder"
 
@@ -167,7 +167,7 @@ msgid ""
 msgstr ""
 
 #: fatcat_scholar/templates/about.html:35
-#: fatcat_scholar/templates/base.html:193
+#: fatcat_scholar/templates/base.html:198
 msgid "Text and Data Mining"
 msgstr "Tekst og datautvinning"
 
@@ -218,6 +218,69 @@ msgstr ""
 msgid "There is a public chat channel at <a href=\"%(url)s\">%(url)s</a>."
 msgstr ""
 
+#: fatcat_scholar/templates/about.html:57
+msgid "Support and Acknowledgements"
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:60
+#, python-format
+msgid ""
+"\n"
+"Work on Internet Archive Scholar has received support from the Andrew W. "
+"Mellon Foundation through multiple phases of the <a href=\"%(grant_url)s\">"
+"\"Ensuring the Persistent Access of Open Access Journal Literature\"</a> "
+"project (see <a href=\"%(blog_url)s\">original announcement</a>).\n"
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:64
+#, python-format
+msgid ""
+"\n"
+"See additional acknowledgements on <a href=\"%(fatcat_url)s\">fatcat.wiki</"
+"a>.\n"
+msgstr ""
+
+#: fatcat_scholar/templates/access_404.html:10
+msgid "404: Access Location Not Found"
+msgstr ""
+
+#: fatcat_scholar/templates/access_404.html:11
+msgid ""
+"We could not find a valid redirect for the URL you tried. Sorry about that!"
+msgstr ""
+
+#: fatcat_scholar/templates/access_404.html:12
+msgid ""
+"There may be a typo, truncation, or encoding error. Or, the resource may "
+"have been removed from our catalog."
+msgstr ""
+
+#: fatcat_scholar/templates/access_404.html:13
+msgid ""
+"Some places you can visit try to hunt down this resource (or a replacement) "
+"include:"
+msgstr ""
+
+#: fatcat_scholar/templates/access_404.html:16
+msgid "Original web url:"
+msgstr ""
+
+#: fatcat_scholar/templates/access_404.html:20
+msgid "Wayback Machine calendar page (all captures)"
+msgstr ""
+
+#: fatcat_scholar/templates/access_404.html:23
+msgid "archive.org download link for the item:"
+msgstr ""
+
+#: fatcat_scholar/templates/access_404.html:29
+msgid "Scholar landing page"
+msgstr ""
+
+#: fatcat_scholar/templates/access_404.html:30
+msgid "Fatcat catalog page"
+msgstr ""
+
 #: fatcat_scholar/templates/base.html:12
 #, fuzzy
 #| msgid "Internet Archive Scholar logo (vaporwave)"
@@ -228,28 +291,28 @@ msgstr "Internet Archive Scholar-logo (vaporwave)"
 msgid "language selection menu"
 msgstr "Språkvalgsmeny"
 
-#: fatcat_scholar/templates/base.html:102
+#: fatcat_scholar/templates/base.html:104
 msgid "Contribute to translations"
 msgstr "Bidra til oversettelsene"
 
-#: fatcat_scholar/templates/base.html:125
+#: fatcat_scholar/templates/base.html:127
 #, fuzzy
 msgid "by title, authors, keywords..."
 msgstr "etter tittel, forfattere, nøkkelord…"
 
-#: fatcat_scholar/templates/base.html:125
+#: fatcat_scholar/templates/base.html:127
 msgid "search for papers"
 msgstr "søk etter publiseringer"
 
-#: fatcat_scholar/templates/base.html:126 fatcat_scholar/templates/home.html:16
+#: fatcat_scholar/templates/base.html:128 fatcat_scholar/templates/home.html:16
 msgid "Search"
 msgstr "Søk"
 
-#: fatcat_scholar/templates/base.html:133
+#: fatcat_scholar/templates/base.html:138
 msgid "User Guide"
 msgstr "Brukerveiledning"
 
-#: fatcat_scholar/templates/base.html:161
+#: fatcat_scholar/templates/base.html:166
 msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
@@ -257,7 +320,7 @@ msgstr ""
 "Vi er et veldedig US-501(c)(3)-bibliotek, som bygger et verdensomspennende "
 "arkiv av internettsider og andre kulturelle gjenstander i digital form."
 
-#: fatcat_scholar/templates/base.html:163
+#: fatcat_scholar/templates/base.html:168
 #, python-format
 msgid ""
 "Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and "
@@ -266,47 +329,47 @@ msgstr ""
 "Andre prosjekter inkluderer %(wayback)s, %(archive_org)s, %(openlibrary)s, "
 "og %(archive_it)s."
 
-#: fatcat_scholar/templates/base.html:170
+#: fatcat_scholar/templates/base.html:175
 msgid "About Us"
 msgstr "Om oss"
 
-#: fatcat_scholar/templates/base.html:171
+#: fatcat_scholar/templates/base.html:176
 msgid "Contact Us"
 msgstr "Kontakt oss"
 
-#: fatcat_scholar/templates/base.html:172
+#: fatcat_scholar/templates/base.html:177
 msgid "Policies"
 msgstr "Praksiser"
 
-#: fatcat_scholar/templates/base.html:173
+#: fatcat_scholar/templates/base.html:178
 msgid "Donate"
 msgstr "Doner"
 
-#: fatcat_scholar/templates/base.html:179
+#: fatcat_scholar/templates/base.html:184
 msgid "Open Infrastructure"
 msgstr "Åpen infrastruktur"
 
-#: fatcat_scholar/templates/base.html:181
+#: fatcat_scholar/templates/base.html:186
 msgid "Editable Catalog (Fatcat)"
 msgstr "Redigerbar katalog (Fatcat)"
 
-#: fatcat_scholar/templates/base.html:182
+#: fatcat_scholar/templates/base.html:187
 msgid "Contribute"
 msgstr "Bidra"
 
-#: fatcat_scholar/templates/base.html:183
+#: fatcat_scholar/templates/base.html:188
 msgid "Search API"
 msgstr "Søke-API"
 
-#: fatcat_scholar/templates/base.html:184
+#: fatcat_scholar/templates/base.html:189
 msgid "Service Status"
 msgstr "Tjenestestatus"
 
-#: fatcat_scholar/templates/base.html:185
+#: fatcat_scholar/templates/base.html:190
 msgid "Source Code"
 msgstr "Kildekode"
 
-#: fatcat_scholar/templates/base.html:194
+#: fatcat_scholar/templates/base.html:199
 msgid "Help"
 msgstr "Hjelp"
 
@@ -935,57 +998,57 @@ msgstr ""
 msgid "more &raquo;"
 msgstr "mer"
 
-#: fatcat_scholar/templates/search_macros.html:397
+#: fatcat_scholar/templates/search_macros.html:396
 msgid "tag definitions"
 msgstr "etikett-definisjoner"
 
-#: fatcat_scholar/templates/search_macros.html:424
+#: fatcat_scholar/templates/search_macros.html:423
 #, fuzzy
 msgid "not primary version"
 msgstr "ikke hovedversjonen"
 
-#: fatcat_scholar/templates/search_macros.html:441
+#: fatcat_scholar/templates/search_macros.html:440
 #, python-format
 msgid "Same Issue (%(count)s)"
 msgstr "Samme problem (%(count)s)"
 
-#: fatcat_scholar/templates/search_macros.html:452
+#: fatcat_scholar/templates/search_macros.html:451
 msgid "cite this work"
 msgstr "siter dette verket"
 
-#: fatcat_scholar/templates/search_macros.html:457
+#: fatcat_scholar/templates/search_macros.html:456
 msgid "Citation"
 msgstr "Sitering"
 
-#: fatcat_scholar/templates/search_macros.html:471
+#: fatcat_scholar/templates/search_macros.html:470
 msgid "edit metadata on fatcat wiki"
 msgstr "rediger metadata på fatcat-wiki-en"
 
-#: fatcat_scholar/templates/search_macros.html:477
+#: fatcat_scholar/templates/search_macros.html:476
 #, fuzzy
 msgid "permalink to this record"
 msgstr "permanent lenke til denne oppføringen"
 
-#: fatcat_scholar/templates/search_macros.html:493
-#: fatcat_scholar/templates/search_macros.html:496
+#: fatcat_scholar/templates/search_macros.html:492
+#: fatcat_scholar/templates/search_macros.html:495
 #, fuzzy
 #| msgid "Previous"
 msgid "&laquo; Previous"
 msgstr "Forrige"
 
-#: fatcat_scholar/templates/search_macros.html:501
-#: fatcat_scholar/templates/search_macros.html:504
+#: fatcat_scholar/templates/search_macros.html:500
+#: fatcat_scholar/templates/search_macros.html:503
 #, fuzzy
 #| msgid "More &raquo;"
 msgid "Next &raquo;"
 msgstr "Mer"
 
-#: fatcat_scholar/templates/search_macros.html:508
+#: fatcat_scholar/templates/search_macros.html:507
 #, fuzzy, python-format
 msgid "Showing results %(start)s &mdash; %(end)s out of %(total)s results"
 msgstr "Viser resultater %(start)s &mdash; %(end)s av %(total)s resultater"
 
-#: fatcat_scholar/templates/search_macros.html:541
+#: fatcat_scholar/templates/search_macros.html:540
 #, fuzzy
 #| msgid "Filters"
 msgid "Clear Filters"
