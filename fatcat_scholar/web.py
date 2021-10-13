@@ -406,6 +406,7 @@ def access_redirect_fallback(
                     timestamp = access_url.split("/")[4]
                     # if not (len(timestamp) == 14 and timestamp.isdigit()):
                     #    continue
+                    # TODO: only add 'id_' for PDF replay
                     replay_url = (
                         f"https://web.archive.org/web/{timestamp}id_/{original_url}"
                     )
@@ -468,6 +469,7 @@ def access_redirect_wayback(
             timestamp = opt.access_url.split("/")[4]
             if not (len(timestamp) == 14 and timestamp.isdigit()):
                 continue
+            # TODO: only add id_ for PDF replay
             access_url = f"https://web.archive.org/web/{timestamp}id_/{original_url}"
             return RedirectResponse(access_url, status_code=302)
     return access_redirect_fallback(
