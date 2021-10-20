@@ -7,9 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-08-12 16:37-0700\n"
-"PO-Revision-Date: 2021-07-02 12:34+0000\n"
+"PO-Revision-Date: 2021-10-21 19:38+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/hr/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.8-dev\n"
+"X-Generator: Weblate 4.9-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:44
@@ -254,7 +254,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/about.html:57
 msgid "Support and Acknowledgements"
-msgstr ""
+msgstr "Podrška i priznanja"
 
 #: fatcat_scholar/templates/about.html:60
 #, python-format
@@ -273,51 +273,55 @@ msgid ""
 "See additional acknowledgements on <a href=\"%(fatcat_url)s\">fatcat.wiki</"
 "a>.\n"
 msgstr ""
+"\n"
+"Pogledaj dodatna priznanja na <a href=\"%(fatcat_url)s\">fatcat.wiki</a>.\n"
 
 #: fatcat_scholar/templates/access_404.html:10
 msgid "404: Access Location Not Found"
-msgstr ""
+msgstr "404: Mjesto pristupa nije pronađeno"
 
 #: fatcat_scholar/templates/access_404.html:11
 msgid ""
 "We could not find a valid redirect for the URL you tried. Sorry about that!"
 msgstr ""
+"Nismo mogli pronaći valjano preusmjeravanje za traženi URL. Žao nam je zbog "
+"toga!"
 
 #: fatcat_scholar/templates/access_404.html:12
 msgid ""
 "There may be a typo, truncation, or encoding error. Or, the resource may "
 "have been removed from our catalog."
 msgstr ""
+"Možda postoji greška pri upisu, skraćivanju ili kodiranju. A možda je resurs "
+"uklonjen iz našeg kataloga."
 
 #: fatcat_scholar/templates/access_404.html:13
 msgid ""
 "Some places you can visit try to hunt down this resource (or a replacement) "
 "include:"
 msgstr ""
+"Neka mjesta koja možeš posjetiti pokušavaju pronaći ovaj resurs (ili zamjenu)"
+" uključuju:"
 
 #: fatcat_scholar/templates/access_404.html:16
 msgid "Original web url:"
-msgstr ""
+msgstr "Izvorna web URL-adresa:"
 
 #: fatcat_scholar/templates/access_404.html:20
 msgid "Wayback Machine calendar page (all captures)"
-msgstr ""
+msgstr "Stranica Wayback Machine kalendara (sve snimke)"
 
 #: fatcat_scholar/templates/access_404.html:23
 msgid "archive.org download link for the item:"
-msgstr ""
+msgstr "archive.org poveznica za preuzimanje elementa:"
 
 #: fatcat_scholar/templates/access_404.html:29
-#, fuzzy
-#| msgid "access fatcat landing page"
 msgid "Scholar landing page"
-msgstr "pristup fatcat stranici"
+msgstr "Početna Scholar stranica"
 
 #: fatcat_scholar/templates/access_404.html:30
-#, fuzzy
-#| msgid "access fatcat landing page"
 msgid "Fatcat catalog page"
-msgstr "pristup fatcat stranici"
+msgstr "Stranica Fatcat kataloga"
 
 #: fatcat_scholar/templates/base.html:12
 msgid "Internet Archive Scholar"
@@ -441,8 +445,8 @@ msgstr "Korisnički priručnik za Scholar"
 #, python-format
 msgid "See also: <a href=\"%(lang_prefix)s/about\">About Scholarly Search</a>"
 msgstr ""
-"Također pogledaj: <a href=\"%(lang_prefix)s/about\">Pretraživanje "
-"znanstvenih radova</a>"
+"Također pogledaj: <a href=\"%(lang_prefix)s/about\">O pretrazi znanstvenih "
+"radova</a>"
 
 #: fatcat_scholar/templates/help.html:25
 msgid ""
