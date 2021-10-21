@@ -5,13 +5,14 @@
 # Artem <KovalevArtem.ru@gmail.com>, 2020, 2021.
 # Bryan Newbold <bnewbold@robocracy.org>, 2020, 2021.
 # Nikita Epifanov <nikgreens@protonmail.com>, 2021.
+# Artem <Localizer_in_Russian@protonmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-08-12 16:37-0700\n"
-"PO-Revision-Date: 2021-03-26 18:29+0000\n"
-"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"PO-Revision-Date: 2021-10-22 20:42+0000\n"
+"Last-Translator: Artem <Localizer_in_Russian@protonmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/ru/>\n"
 "Language: ru\n"
@@ -20,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.6-dev\n"
+"X-Generator: Weblate 4.9-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:44
@@ -253,7 +254,7 @@ msgstr "На <a href=\"%(url)s\"> %(url)s </a> есть общедоступны
 
 #: fatcat_scholar/templates/about.html:57
 msgid "Support and Acknowledgements"
-msgstr ""
+msgstr "Поддержка и благодарности"
 
 #: fatcat_scholar/templates/about.html:60
 #, python-format
