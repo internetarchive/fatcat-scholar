@@ -10,9 +10,7 @@ timeout and try/except! In the future, perhaps should be async so it can run in
 parallel with "regular" query?
 """
 
-import io
 import sys
-import xml.etree.ElementTree as ET
 from typing import Any, Optional, Tuple
 
 import fuzzycat.common
@@ -20,9 +18,9 @@ import fuzzycat.verify
 import requests
 from fatcat_openapi_client import ReleaseContrib, ReleaseEntity, ReleaseExtIds
 from fuzzycat.matching import match_release_fuzzy
+from grobid_tei_xml import parse_citations_xml
 
 from fatcat_scholar.api_entities import entity_to_dict
-from fatcat_scholar.grobid2json import biblio_info
 
 
 def grobid_process_citation(
@@ -47,11 +45,10 @@ def grobid_process_citation(
 
 
 def transform_grobid(raw_xml: str) -> Optional[dict]:
-    # first, remove any xmlns stuff
-    raw_xml = raw_xml.replace('xmlns="http://www.tei-c.org/ns/1.0"', "")
-    tree = ET.parse(io.StringIO(raw_xml))
-    root = tree.getroot()
-    ref = biblio_info(root, ns="")
+    ref_list = parse_citations_xml(raw_xml)
+    if not ref_list:
+        return None
+    ref = ref_list[0]
     if not any(ref.values()):
         return None
     return ref

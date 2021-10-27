@@ -8,9 +8,9 @@ from typing import Any, Dict, List, Optional, Sequence
 
 import sentry_sdk
 from fatcat_openapi_client import FileEntity, ReleaseEntity, WebcaptureEntity
+from grobid_tei_xml import parse_document_xml
 
 from fatcat_scholar.config import GIT_REVISION, settings
-from fatcat_scholar.grobid2json import teixml2json
 from fatcat_scholar.identifiers import clean_doi, clean_pmcid
 from fatcat_scholar.schema import (
     AccessType,
@@ -521,7 +521,8 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
             if f.ident == heavy.grobid_fulltext["file_ident"]
         ][0]
         try:
-            tei_dict: Optional[dict] = teixml2json(heavy.grobid_fulltext["tei_xml"])
+            tei_doc = parse_document_xml(heavy.grobid_fulltext["tei_xml"])
+            tei_dict = tei_doc.to_legacy_dict()
         except xml.etree.ElementTree.ParseError:
             tei_dict = None
         if tei_dict:
@@ -900,7 +901,8 @@ def refs_from_heavy(heavy: IntermediateBundle) -> Sequence[RefStructured]:
             for r in heavy.releases
             if r.ident == heavy.grobid_fulltext["release_ident"]
         ][0]
-        tei_dict = teixml2json(heavy.grobid_fulltext["tei_xml"])
+        tei_doc = parse_document_xml(heavy.grobid_fulltext["tei_xml"])
+        tei_dict = tei_doc.to_legacy_dict()
         fulltext_refs = refs_from_grobid(fulltext_release, tei_dict)
 
     crossref_refs: List[RefStructured] = []

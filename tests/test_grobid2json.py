@@ -1,12 +1,17 @@
-from fatcat_scholar.grobid2json import teixml2json
+from grobid_tei_xml import parse_document_xml
 
 
-def test_grobid_teixml2json() -> None:
+def test_grobid_parse() -> None:
+    """
+    This function formerly tested the grobid2json file in this project. Now it
+    tests backwards-compatibility of the grobid_tei_xml library.
+    """
 
     with open("tests/files/example_grobid.tei.xml", "r") as f:
         blob = f.read()
 
-    obj = teixml2json(blob, True)
+    doc = parse_document_xml(blob)
+    obj = doc.to_legacy_dict()
 
     assert (
         obj["title"]

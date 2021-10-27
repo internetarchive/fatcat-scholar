@@ -1,8 +1,8 @@
 import json
 
 from fatcat_openapi_client import ReleaseEntity
+from grobid_tei_xml import parse_document_xml
 
-from fatcat_scholar.grobid2json import teixml2json
 from fatcat_scholar.transform import refs_from_crossref, refs_from_grobid
 
 
@@ -19,7 +19,8 @@ def test_transform_refs_grobid() -> None:
         ext_ids={},
     )
 
-    tei_dict = teixml2json(blob, True)
+    tei_doc = parse_document_xml(blob)
+    tei_dict = tei_doc.to_legacy_dict()
     refs = refs_from_grobid(dummy_release, tei_dict)
 
     ref = refs[12]
