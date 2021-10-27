@@ -16,12 +16,17 @@ dep: ## Install dependencies using pipenv
 .PHONY: lint
 lint: ## Run lints (eg, flake8, mypy)
 	pipenv run flake8 fatcat_scholar/ tests/ --exit-zero
+	pipenv run isort -q -c fatcat_scholar/ tests/ || true
 	pipenv run mypy fatcat_scholar/ tests/ --ignore-missing-imports
-	#pipenv run pytype fatcat_scholar/
+
+.PHONY: pytype
+pytype: ## Run slow pytype type check (not part of dev deps)
+	pipenv run pytype fatcat_scholar/
 
 .PHONY: fmt
 fmt: ## Run code formating on all source code
-	pipenv run black fatcat_scholar/ tests/
+	pipenv run isort --atomic fatcat_scholar/ tests/
+	pipenv run black --line-length 88 fatcat_scholar/ tests/
 
 .PHONY: test
 test: ## Run all tests and lints
