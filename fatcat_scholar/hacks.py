@@ -68,8 +68,8 @@ def parse_accept_lang(header: str, options: typing.List[str]) -> typing.Optional
 
 
 def test_parse_accept_lang() -> None:
-    assert parse_accept_lang("", []) == None
-    assert parse_accept_lang("en,de", []) == None
+    assert parse_accept_lang("", []) is None
+    assert parse_accept_lang("en,de", []) is None
     assert parse_accept_lang("en,de", ["en"]) == "en"
     assert parse_accept_lang("en-GB,de", ["en"]) == "en"
     assert parse_accept_lang("zh_Hans_CN", ["en", "zh"]) == "zh"
@@ -94,7 +94,7 @@ def wayback_direct_url(url: str) -> str:
     """
     Re-writes a wayback replay URL to add the 'id_' suffix (or equivalent for direct file access)
     """
-    if not "://web.archive.org" in url:
+    if "://web.archive.org" not in url:
         return url
     segments = url.split("/")
     if len(segments) < 6 or not segments[4].isdigit():

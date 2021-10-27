@@ -28,7 +28,7 @@ def parse_pages(raw: str) -> Tuple[Optional[int], Optional[int]]:
     if not first_raw.isdigit():
         return (None, None)
     first = int(first_raw)
-    if not "-" in raw:
+    if "-" not in raw:
         return (first, first)
     last_raw = raw.split("-")[-1]
     if not last_raw.isdigit():
@@ -301,7 +301,7 @@ class WorkPipeline:
 
         leaf_index = dict()
         leaf_list = []
-        if not "page_numbers" in issue_meta:
+        if "page_numbers" not in issue_meta:
             # TODO: warn
             return None
         for entry in issue_meta["page_numbers"].get("pages", []):

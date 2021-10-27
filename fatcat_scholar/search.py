@@ -232,7 +232,7 @@ def process_query(query: FulltextQuery) -> FulltextHits:
         return do_fulltext_search(query)
 
     # try handling raw identifier queries
-    if len(query.q.strip().split()) == 1 and not '"' in query.q:
+    if len(query.q.strip().split()) == 1 and '"' not in query.q:
         doi = clean_doi(query.q)
         if doi:
             return do_lookup_query(f'doi:"{doi}"')

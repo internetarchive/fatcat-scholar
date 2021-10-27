@@ -64,7 +64,7 @@ def test_biblio_metadata_hacks() -> None:
 
     biblio.release_year = 2030
     out = biblio_metadata_hacks(biblio)
-    assert out.release_year == None
+    assert out.release_year is None
 
     biblio.doi_prefix = "10.1101"
     biblio.container_name = None

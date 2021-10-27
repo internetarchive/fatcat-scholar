@@ -30,7 +30,7 @@ def test_transform_refs_grobid() -> None:
     assert ref.ref_source == "grobid"
     assert ref.key == "b12"
     assert ref.index == 13
-    assert ref.locator == None
+    assert ref.locator is None
     assert ref.biblio.contrib_raw_names is not None
     assert ref.biblio.contrib_raw_names[0] == "K Tasa"
     assert ref.biblio.container_name == "Quality Management in Health Care"
