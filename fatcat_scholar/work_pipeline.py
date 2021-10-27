@@ -122,7 +122,9 @@ class WorkPipeline:
             print(f"seaweedfs failure: sha1hex={fe.sha1}", file=sys.stderr)
             return None
         return dict(
-            tei_xml=grobid_xml, release_ident=release_ident, file_ident=fe.ident,
+            tei_xml=grobid_xml,
+            release_ident=release_ident,
+            file_ident=fe.ident,
         )
 
     def fetch_pdf_meta(
@@ -144,7 +146,9 @@ class WorkPipeline:
         if not pdf_meta or pdf_meta["status"] != "success":
             return None
         return dict(
-            pdf_meta=pdf_meta, release_ident=release_ident, file_ident=fe.ident,
+            pdf_meta=pdf_meta,
+            release_ident=release_ident,
+            file_ident=fe.ident,
         )
 
     def fetch_file_pdftotext(self, fe: FileEntity, release_ident: str) -> Optional[Any]:
@@ -173,11 +177,15 @@ class WorkPipeline:
             print(f"seaweedfs failure: sha1hex={fe.sha1}", file=sys.stderr)
             return None
         return dict(
-            raw_text=raw_text, release_ident=release_ident, file_ident=fe.ident,
+            raw_text=raw_text,
+            release_ident=release_ident,
+            file_ident=fe.ident,
         )
 
     def fetch_webcapture_html_fulltext(
-        self, wc: WebcaptureEntity, release_ident: str,
+        self,
+        wc: WebcaptureEntity,
+        release_ident: str,
     ) -> Optional[Dict[str, Any]]:
 
         primary_resources = [cdx for cdx in wc.cdx if cdx.url == wc.original_url]
@@ -240,7 +248,11 @@ class WorkPipeline:
         crossref_meta = self.sandcrawler_db_client.get_crossref(doi)
         if not crossref_meta or not crossref_meta.get("record"):
             return None
-        return dict(release_ident=re.ident, doi=doi, record=crossref_meta["record"],)
+        return dict(
+            release_ident=re.ident,
+            doi=doi,
+            record=crossref_meta["record"],
+        )
 
     def lookup_sim(self, release: ReleaseEntity) -> Optional[SimIssueRow]:
         """

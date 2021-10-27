@@ -156,9 +156,21 @@ def apply_filters(search: Search, query: FulltextQuery) -> Search:
             "terms", type=["article-journal", "paper-conference", "chapter", "article"]
         )
     elif query.filter_type == "reports":
-        search = search.filter("terms", type=["report", "standard",])
+        search = search.filter(
+            "terms",
+            type=[
+                "report",
+                "standard",
+            ],
+        )
     elif query.filter_type == "datasets":
-        search = search.filter("terms", type=["dataset", "software",])
+        search = search.filter(
+            "terms",
+            type=[
+                "dataset",
+                "software",
+            ],
+        )
     elif query.filter_type == "everything":
         pass
     else:
@@ -291,7 +303,10 @@ def do_fulltext_search(
         search = search.extra(
             collapse={
                 "field": "collapse_key",
-                "inner_hits": {"name": "more_pages", "size": 0,},
+                "inner_hits": {
+                    "name": "more_pages",
+                    "size": 0,
+                },
             }
         )
 
@@ -309,7 +324,11 @@ def do_fulltext_search(
         allow_leading_wildcard=False,
         lenient=True,
         quote_field_suffix=".exact",
-        fields=["title^4", "biblio_all^3", "everything",],
+        fields=[
+            "title^4",
+            "biblio_all^3",
+            "everything",
+        ],
     )
     has_fulltext = Q("terms", **{"access_type": ["ia_sim", "ia_file", "wayback"]})
     poor_metadata = Q(
@@ -334,7 +353,10 @@ def do_fulltext_search(
         search = search.sort("_doc")
     else:
         search = search.query(
-            "boosting", positive=base_query, negative=poor_metadata, negative_boost=0.5,
+            "boosting",
+            positive=base_query,
+            negative=poor_metadata,
+            negative_boost=0.5,
         )
 
     # simplified version of basic_fulltext query, for highlighting

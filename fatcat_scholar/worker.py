@@ -47,7 +47,8 @@ class FetchDocsWorker(KafkaWorker):
         key = msg["key"]
         if key.startswith("work_") and msg.get("work_ident"):
             stubs = self.fatcat_api.get_work_releases(
-                ident=msg["work_ident"], hide="abstracts,references",
+                ident=msg["work_ident"],
+                hide="abstracts,references",
             )
             full_releases = []
             for r in stubs:
@@ -171,10 +172,14 @@ def main() -> None:
         type=str,
     )
 
-    sub = subparsers.add_parser("fetch-docs-worker",)
+    sub = subparsers.add_parser(
+        "fetch-docs-worker",
+    )
     sub.set_defaults(worker="fetch-docs-worker")
 
-    sub = subparsers.add_parser("index-docs-worker",)
+    sub = subparsers.add_parser(
+        "index-docs-worker",
+    )
     sub.set_defaults(worker="index-docs-worker")
 
     args = parser.parse_args()

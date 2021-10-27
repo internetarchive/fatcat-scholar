@@ -77,7 +77,10 @@ def test_run_transform(mocker: Any) -> None:
             {
                 "doi": "10.7717/peerj.4375",
                 "indexed": "2020-07-07T02:15:52.98309+00:00",
-                "record": {"title": "something", "TODO_better_object": 3,},
+                "record": {
+                    "title": "something",
+                    "TODO_better_object": 3,
+                },
             }
         ],
     )

@@ -23,7 +23,6 @@ from fatcat_scholar.biblio_hacks import doi_link_domain
 # pytype: enable=import-error
 
 
-
 class DocType(str, Enum):
     work = "work"
     sim_page = "sim_page"

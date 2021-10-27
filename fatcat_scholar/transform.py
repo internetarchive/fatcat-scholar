@@ -246,13 +246,18 @@ def es_fulltext_from_pdftotext(
     if raw_text and len(raw_text) > MAX_BODY_CHARS:
         raw_text = raw_text[:MAX_BODY_CHARS]
     ret = ScholarFulltext(
-        lang_code=re.language, body=raw_text, acknowledgement=None, annex=None,
+        lang_code=re.language,
+        body=raw_text,
+        acknowledgement=None,
+        annex=None,
     )
     return _add_file_release_meta(ret, pdf_meta, re, fe)
 
 
 def es_fulltext_from_html(
-    html_fulltext: Dict[str, Any], re: ReleaseEntity, wc: WebcaptureEntity,
+    html_fulltext: Dict[str, Any],
+    re: ReleaseEntity,
+    wc: WebcaptureEntity,
 ) -> Optional[ScholarFulltext]:
 
     if not wc.archive_urls or not html_fulltext.get("tei_xml"):
@@ -546,7 +551,9 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
             if f.ident == heavy.html_fulltext["webcapture_ident"]
         ][0]
         html_fulltext = es_fulltext_from_html(
-            heavy.html_fulltext, fulltext_release, fulltext_webcapture,
+            heavy.html_fulltext,
+            fulltext_release,
+            fulltext_webcapture,
         )
         if exclude_web_fulltext and html_fulltext:
             fulltext = html_fulltext.remove_access()

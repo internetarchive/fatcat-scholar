@@ -79,7 +79,8 @@ class LangPrefix:
         # first try to parse a language code from header
         try:
             accept_code = parse_accept_lang(
-                request.headers.get("accept-language", ""), I18N_LANG_OPTIONS,
+                request.headers.get("accept-language", ""),
+                I18N_LANG_OPTIONS,
             )
             if accept_code:
                 self.code = accept_code
@@ -215,14 +216,18 @@ def load_i18n_templates() -> Any:
     d = dict()
     for lang_opt in I18N_LANG_OPTIONS:
         translations = babel.support.Translations.load(
-            dirname="fatcat_scholar/translations", locales=[lang_opt],
+            dirname="fatcat_scholar/translations",
+            locales=[lang_opt],
         )
         templates = Jinja2Templates(
-            directory="fatcat_scholar/templates", extensions=["jinja2.ext.i18n"],
+            directory="fatcat_scholar/templates",
+            extensions=["jinja2.ext.i18n"],
         )
         templates.env.install_gettext_translations(translations, newstyle=True)  # type: ignore
         templates.env.install_gettext_callables(  # type: ignore
-            locale_gettext(translations), locale_ngettext(translations), newstyle=True,
+            locale_gettext(translations),
+            locale_ngettext(translations),
+            newstyle=True,
         )
         # remove a lot of whitespace in HTML output with these configs
         templates.env.trim_blocks = True
@@ -375,7 +380,8 @@ def access_redirect_fallback(
         if work_entity.redirect:
             work_ident = work_entity.redirect
         partial_releases = api_client.get_work_releases(
-            ident=work_ident, hide="abstracts,references",
+            ident=work_ident,
+            hide="abstracts,references",
         )
     except fatcat_openapi_client.ApiException as ae:
         raise HTTPException(
@@ -446,7 +452,10 @@ def access_redirect_wayback(
     raw_original_url = "/".join(str(request.url).split("/")[7:])
     # the quote() call is necessary because the URL is un-encoded in the path parameter
     # see also: https://github.com/encode/starlette/commit/f997938916d20e955478f60406ef9d293236a16d
-    original_url = urllib.parse.quote(raw_original_url, safe=":/%#?=@[]!$&'()*+,;",)
+    original_url = urllib.parse.quote(
+        raw_original_url,
+        safe=":/%#?=@[]!$&'()*+,;",
+    )
     doc_dict = get_es_scholar_doc(f"work_{work_ident}")
     if not doc_dict:
         return access_redirect_fallback(
@@ -580,7 +589,10 @@ async def http_exception_handler(request: Request, exc: StarletteHTTPException) 
         resp: Dict[str, Any] = {"status_code": exc.status_code}
         if exc.detail:
             resp["detail"] = exc.detail
-        return JSONResponse(status_code=exc.status_code, content=resp,)
+        return JSONResponse(
+            status_code=exc.status_code,
+            content=resp,
+        )
 
 
 # configure middleware

@@ -178,7 +178,8 @@ def test_access_redirect_fallback(client: Any, mocker: Any) -> None:
     fatcat_get_work_raw = mocker.patch("fatcat_openapi_client.DefaultApi.get_work")
     fatcat_get_work_raw.side_effect = [
         fatcat_openapi_client.WorkEntity(
-            state="active", ident="wwwwwwwwwwwwwwwwwwwwwwwwww",
+            state="active",
+            ident="wwwwwwwwwwwwwwwwwwwwwwwwww",
         )
     ] * 4
     fatcat_get_work_releases_raw = mocker.patch(
@@ -205,7 +206,8 @@ def test_access_redirect_fallback(client: Any, mocker: Any) -> None:
                     ident="ffffffffffffffffffffffffff",
                     urls=[
                         fatcat_openapi_client.FileUrl(
-                            rel="web", url="https://blarg.example.com",
+                            rel="web",
+                            url="https://blarg.example.com",
                         ),
                         fatcat_openapi_client.FileUrl(
                             rel="webarchive",

@@ -84,7 +84,9 @@ def run_query_fatcat(query: str, fulltext_only: bool, json_output: Any) -> None:
         )
         resp.raise_for_status()
         row = dict(
-            fatcat_hit=hit.meta._d_, release_id=release_id, fatcat_release=resp.json(),
+            fatcat_hit=hit.meta._d_,
+            release_id=release_id,
+            fatcat_release=resp.json(),
         )
         print(json.dumps(row, sort_keys=True), file=json_output)
 
@@ -100,7 +102,9 @@ def main() -> None:
         formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
     parser.add_argument(
-        "query", help="base query string to use", type=str,
+        "query",
+        help="base query string to use",
+        type=str,
     )
     parser.add_argument(
         "--fulltext-only",

@@ -69,7 +69,10 @@ class SandcrawlerMinioClient:
             secret_key=os.environ['MINIO_SECRET_KEY'],
         """
         self.mc = minio.Minio(
-            host_url, access_key=access_key, secret_key=secret_key, secure=False,
+            host_url,
+            access_key=access_key,
+            secret_key=secret_key,
+            secure=False,
         )
         self.default_bucket = default_bucket
 
@@ -80,7 +83,12 @@ class SandcrawlerMinioClient:
             prefix = ""
         assert len(sha1hex) == 40
         obj_path = "{}{}/{}/{}/{}{}".format(
-            prefix, folder, sha1hex[0:2], sha1hex[2:4], sha1hex, extension,
+            prefix,
+            folder,
+            sha1hex[0:2],
+            sha1hex[2:4],
+            sha1hex,
+            extension,
         )
         return obj_path
 
@@ -101,6 +109,9 @@ class SandcrawlerMinioClient:
         if not bucket:
             bucket = self.default_bucket
         assert bucket
-        blob = self.mc.get_object(bucket, obj_path,)
+        blob = self.mc.get_object(
+            bucket,
+            obj_path,
+        )
         # TODO: optionally verify SHA-1?
         return blob.data
