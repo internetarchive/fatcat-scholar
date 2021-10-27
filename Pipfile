@@ -9,7 +9,9 @@ babel = "*"
 beautifulsoup4 = "==4.*"
 confluent-kafka = "*"
 dynaconf = ">=3"
-elasticsearch = { version = ">=7.8.0,<8.0.0", extras = ["async"] }
+# <7.14 pin is because of elasticsearch.exceptions.UnsupportedProductError
+# https://github.com/elastic/elasticsearch-py/issues/1639
+elasticsearch = { version = ">=7.8.0,<7.14.0", extras = ["async"] }
 elasticsearch-dsl = ">=7.0.0,<8.0.0"
 fastapi = "*"
 fatcat-openapi-client = ">=0.3.3"
