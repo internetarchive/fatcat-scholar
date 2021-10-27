@@ -1,6 +1,6 @@
-from io import StringIO
-from typing import List, Dict, Optional
 import xml.etree.ElementTree as ET
+from io import StringIO
+from typing import Dict, List, Optional
 
 
 def djvu_extract_leaf_texts(

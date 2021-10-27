@@ -1,26 +1,26 @@
-import os
-import sys
 import argparse
 import datetime
-from typing import List, Any
+import os
+import sys
+from typing import Any, List
 
-import requests
-import sentry_sdk
 import elasticsearch
 import elasticsearch.helpers
 import fatcat_openapi_client
+import requests
+import sentry_sdk
 
-from fatcat_scholar.config import settings, GIT_REVISION
+from fatcat_scholar.config import GIT_REVISION, settings
 from fatcat_scholar.issue_db import IssueDB
+from fatcat_scholar.kafka import KafkaWorker
 from fatcat_scholar.sandcrawler import (
-    SandcrawlerPostgrestClient,
     SandcrawlerMinioClient,
+    SandcrawlerPostgrestClient,
 )
 from fatcat_scholar.schema import IntermediateBundle
+from fatcat_scholar.sim_pipeline import SimPipeline
 from fatcat_scholar.transform import transform_heavy
 from fatcat_scholar.work_pipeline import WorkPipeline
-from fatcat_scholar.sim_pipeline import SimPipeline
-from fatcat_scholar.kafka import KafkaWorker
 
 
 class FetchDocsWorker(KafkaWorker):

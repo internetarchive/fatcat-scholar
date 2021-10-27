@@ -1,7 +1,7 @@
 from fatcat_openapi_client import ReleaseEntity
 
-from fatcat_scholar.schema import *
 from fatcat_scholar.api_entities import *
+from fatcat_scholar.schema import *
 from fatcat_scholar.transform import *
 
 

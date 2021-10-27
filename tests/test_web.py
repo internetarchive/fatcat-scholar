@@ -1,9 +1,9 @@
 import json
 from typing import Any
 
+import fatcat_openapi_client
 import pytest
 from fastapi.testclient import TestClient
-import fatcat_openapi_client
 
 from fatcat_scholar.web import app
 

@@ -1,8 +1,9 @@
 import json
+
 from fatcat_openapi_client import ReleaseEntity
 
 from fatcat_scholar.grobid2json import teixml2json
-from fatcat_scholar.transform import refs_from_grobid, refs_from_crossref
+from fatcat_scholar.transform import refs_from_crossref, refs_from_grobid
 
 
 def test_transform_refs_grobid() -> None:

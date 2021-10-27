@@ -3,27 +3,28 @@ Helpers to make elasticsearch queries.
 """
 
 import copy
-import logging
 import datetime
+import logging
 from gettext import gettext
-from typing import List, Optional, Any
+from typing import Any, List, Optional
 
-import sentry_sdk
 import elasticsearch
-from elasticsearch_dsl import Search, Q
-from elasticsearch_dsl.response import Response
 import fatcat_openapi_client
+import sentry_sdk
+from elasticsearch_dsl import Q, Search
+from elasticsearch_dsl.response import Response
 
 # pytype: disable=import-error
 from pydantic import BaseModel
 
-# pytype: enable=import-error
-
 from fatcat_scholar.config import settings
 from fatcat_scholar.identifiers import *
-from fatcat_scholar.schema import ScholarDoc
-from fatcat_scholar.query_parse import sniff_citation_query, pre_parse_query
 from fatcat_scholar.query_citation import try_fuzzy_match
+from fatcat_scholar.query_parse import pre_parse_query, sniff_citation_query
+from fatcat_scholar.schema import ScholarDoc
+
+# pytype: enable=import-error
+
 
 # i18n note: the use of gettext below doesn't actually do the translation here,
 # it just ensures that the strings are caught by babel for translation later

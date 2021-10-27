@@ -6,41 +6,40 @@ So far there are few endpoints, so we just put them all here!
 
 import logging
 import urllib.parse
-from typing import Optional, Any, List, Dict
+from typing import Any, Dict, List, Optional
 
-from pydantic import BaseModel
 import babel.numbers
 import babel.support
-from fastapi import FastAPI, APIRouter, Request, Depends, Response, HTTPException, Query
-from fastapi.staticfiles import StaticFiles
-from fastapi.responses import (
-    PlainTextResponse,
-    JSONResponse,
-    FileResponse,
-    RedirectResponse,
-)
-from fastapi.middleware.cors import CORSMiddleware
 import fatcat_openapi_client
 import sentry_sdk
+from fastapi import APIRouter, Depends, FastAPI, HTTPException, Query, Request, Response
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import (
+    FileResponse,
+    JSONResponse,
+    PlainTextResponse,
+    RedirectResponse,
+)
+from fastapi.staticfiles import StaticFiles
+from pydantic import BaseModel
 from sentry_sdk.integrations.asgi import SentryAsgiMiddleware
-from starlette_prometheus import metrics, PrometheusMiddleware
 from starlette.exceptions import HTTPException as StarletteHTTPException
+from starlette_prometheus import PrometheusMiddleware, metrics
 
-from fatcat_scholar.config import settings, GIT_REVISION
+from fatcat_scholar.config import GIT_REVISION, settings
 from fatcat_scholar.hacks import (
     Jinja2Templates,
-    parse_accept_lang,
     make_access_redirect_url,
-)
-from fatcat_scholar.search import (
-    process_query,
-    FulltextQuery,
-    FulltextHits,
-    es_scholar_index_alive,
-    get_es_scholar_doc,
+    parse_accept_lang,
 )
 from fatcat_scholar.schema import ScholarDoc
-
+from fatcat_scholar.search import (
+    FulltextHits,
+    FulltextQuery,
+    es_scholar_index_alive,
+    get_es_scholar_doc,
+    process_query,
+)
 
 logger = logging.getLogger()
 

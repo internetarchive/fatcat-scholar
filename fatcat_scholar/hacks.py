@@ -1,6 +1,6 @@
 import typing
-import jinja2
 
+import jinja2
 from starlette.background import BackgroundTask
 from starlette.templating import _TemplateResponse
 

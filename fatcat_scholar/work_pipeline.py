@@ -1,29 +1,26 @@
-import os
-import io
-import sys
 import argparse
-from typing import List, Dict, Tuple, Optional, Any, Sequence
-import urllib3.exceptions
+import io
+import os
+import sys
+from typing import Any, Dict, List, Optional, Sequence, Tuple
 
+import internetarchive
 import minio
 import requests
 import sentry_sdk
-import internetarchive
-from fatcat_openapi_client import ReleaseEntity, FileEntity, WebcaptureEntity
+import urllib3.exceptions
+from fatcat_openapi_client import FileEntity, ReleaseEntity, WebcaptureEntity
 
 from fatcat_scholar.api_entities import *
-from fatcat_scholar.config import settings, GIT_REVISION
+from fatcat_scholar.config import GIT_REVISION, settings
 from fatcat_scholar.djvu import djvu_extract_leaf_texts
-from fatcat_scholar.sandcrawler import (
-    SandcrawlerPostgrestClient,
-    SandcrawlerMinioClient,
-)
 from fatcat_scholar.issue_db import IssueDB, SimIssueRow, SimPubRow
-from fatcat_scholar.schema import (
-    DocType,
-    IntermediateBundle,
+from fatcat_scholar.sandcrawler import (
+    SandcrawlerMinioClient,
+    SandcrawlerPostgrestClient,
 )
-from fatcat_scholar.sim_pipeline import truncate_pub_meta, truncate_issue_meta
+from fatcat_scholar.schema import DocType, IntermediateBundle
+from fatcat_scholar.sim_pipeline import truncate_issue_meta, truncate_pub_meta
 
 
 def parse_pages(raw: str) -> Tuple[Optional[int], Optional[int]]:

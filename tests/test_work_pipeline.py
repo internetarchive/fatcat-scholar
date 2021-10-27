@@ -1,12 +1,12 @@
 import responses
 
+from fatcat_scholar.config import settings
 from fatcat_scholar.issue_db import IssueDB
 from fatcat_scholar.sandcrawler import (
-    SandcrawlerPostgrestClient,
     SandcrawlerMinioClient,
+    SandcrawlerPostgrestClient,
 )
 from fatcat_scholar.work_pipeline import *
-from fatcat_scholar.config import settings
 
 
 @responses.activate

@@ -1,11 +1,12 @@
-import sys
+import argparse
 import json
 import sqlite3
-import argparse
+import sys
 from dataclasses import dataclass
-from typing import List, Dict, Optional, Any, Sequence, Tuple
-import fatcat_openapi_client
+from typing import Any, Dict, List, Optional, Sequence, Tuple
+
 import elasticsearch
+import fatcat_openapi_client
 from elasticsearch_dsl import Search
 
 from fatcat_scholar.config import settings

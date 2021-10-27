@@ -1,14 +1,14 @@
+import argparse
+import json
 import os
 import sys
-import json
-import argparse
-from typing import List, Any
+from typing import Any, List
 
+import elasticsearch
 import requests
+from elasticsearch_dsl import Q, Search
 from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry  # pylint: disable=import-error
-import elasticsearch
-from elasticsearch_dsl import Search, Q
 
 
 def requests_retry_session(

@@ -1,10 +1,10 @@
-import sys
 import json
 import signal
+import sys
 from collections import Counter
-from typing import List, Any
+from typing import Any, List
 
-from confluent_kafka import Consumer, Producer, KafkaException
+from confluent_kafka import Consumer, KafkaException, Producer
 
 
 class KafkaWorker:

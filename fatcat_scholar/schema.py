@@ -4,23 +4,24 @@ get serialization for free with those. This is useful for things like
 auto-conversion of datetime objects.
 """
 
-import re
-import json
 import datetime
+import json
+import re
 from enum import Enum
-from typing import Optional, List, Any, Dict
+from typing import Any, Dict, List, Optional
 
 import ftfy
 from bs4 import BeautifulSoup
+from fatcat_openapi_client import ReleaseContrib, ReleaseEntity
 
 # pytype: disable=import-error
 from pydantic import BaseModel
 
+from fatcat_scholar.api_entities import entity_from_json, entity_to_dict
+from fatcat_scholar.biblio_hacks import doi_link_domain
+
 # pytype: enable=import-error
 
-from fatcat_openapi_client import ReleaseEntity, ReleaseContrib
-from fatcat_scholar.api_entities import entity_to_dict, entity_from_json
-from fatcat_scholar.biblio_hacks import doi_link_domain
 
 
 class DocType(str, Enum):

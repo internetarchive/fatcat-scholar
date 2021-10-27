@@ -12,16 +12,16 @@ parallel with "regular" query?
 
 import io
 import sys
-from typing import Optional, Any, Tuple
 import xml.etree.ElementTree as ET
+from typing import Any, Optional, Tuple
 
-import requests
-from fatcat_openapi_client import ReleaseEntity, ReleaseExtIds, ReleaseContrib
-from fatcat_scholar.api_entities import entity_to_dict
-from fuzzycat.matching import match_release_fuzzy
 import fuzzycat.common
 import fuzzycat.verify
+import requests
+from fatcat_openapi_client import ReleaseContrib, ReleaseEntity, ReleaseExtIds
+from fuzzycat.matching import match_release_fuzzy
 
+from fatcat_scholar.api_entities import entity_to_dict
 from fatcat_scholar.grobid2json import biblio_info
 
 
@@ -172,6 +172,7 @@ if __name__ == "__main__":
     Demo showing how to integrate the above functions together.
     """
     import os
+
     import elasticsearch
     import fatcat_openapi_client
 

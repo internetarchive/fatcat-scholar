@@ -1,8 +1,8 @@
 import elasticsearch
 import fatcat_openapi_client
 
-from fatcat_scholar.issue_db import IssueDB
 from fatcat_scholar.config import settings
+from fatcat_scholar.issue_db import IssueDB
 
 
 def test_issue_db_basics() -> None:

@@ -1,21 +1,18 @@
-import io
-import sys
-import sqlite3
 import argparse
-from typing import List, Dict, Optional, Any
-import urllib3.exceptions
+import io
+import sqlite3
+import sys
+from typing import Any, Dict, List, Optional
 
+import internetarchive
 import requests
 import sentry_sdk
-import internetarchive
+import urllib3.exceptions
 
-from fatcat_scholar.config import settings, GIT_REVISION
+from fatcat_scholar.config import GIT_REVISION, settings
 from fatcat_scholar.djvu import djvu_extract_leaf_texts
 from fatcat_scholar.issue_db import IssueDB
-from fatcat_scholar.schema import (
-    DocType,
-    IntermediateBundle,
-)
+from fatcat_scholar.schema import DocType, IntermediateBundle
 
 
 def truncate_pub_meta(full: Dict[str, Any]) -> Dict[str, Any]:

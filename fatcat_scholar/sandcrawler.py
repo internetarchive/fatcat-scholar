@@ -1,6 +1,7 @@
+from typing import Any, Dict, Optional
+
 import minio
 import requests
-from typing import Dict, Optional, Any
 
 
 class SandcrawlerPostgrestClient:

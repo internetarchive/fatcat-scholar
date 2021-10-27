@@ -1,5 +1,5 @@
-import json
 import collections
+import json
 from typing import Any, Optional
 
 from fatcat_openapi_client import ApiClient
