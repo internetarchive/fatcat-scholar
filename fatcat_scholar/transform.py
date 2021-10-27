@@ -1,5 +1,6 @@
 import argparse
 import datetime
+import json
 import sys
 import xml.etree.ElementTree
 import xml.etree.ElementTree as ET
@@ -8,11 +9,28 @@ from typing import Any, Dict, List, Optional, Sequence
 import sentry_sdk
 from fatcat_openapi_client import FileEntity, ReleaseEntity, WebcaptureEntity
 
-from fatcat_scholar.api_entities import *
 from fatcat_scholar.config import GIT_REVISION, settings
 from fatcat_scholar.grobid2json import teixml2json
 from fatcat_scholar.identifiers import clean_doi, clean_pmcid
-from fatcat_scholar.schema import *
+from fatcat_scholar.schema import (
+    AccessType,
+    DocType,
+    IntermediateBundle,
+    RefBiblio,
+    RefStructured,
+    ScholarAbstract,
+    ScholarAccess,
+    ScholarBiblio,
+    ScholarDoc,
+    ScholarFulltext,
+    ScholarSim,
+    clean_small_int,
+    clean_url_conservative,
+    es_abstracts_from_grobid,
+    es_abstracts_from_release,
+    es_biblio_from_release,
+    es_release_from_release,
+)
 
 MAX_BODY_CHARS = 512 * 1024
 

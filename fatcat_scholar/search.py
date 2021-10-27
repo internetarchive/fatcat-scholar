@@ -18,7 +18,7 @@ from elasticsearch_dsl.response import Response
 from pydantic import BaseModel
 
 from fatcat_scholar.config import settings
-from fatcat_scholar.identifiers import *
+from fatcat_scholar.identifiers import clean_doi, clean_pmcid
 from fatcat_scholar.query_citation import try_fuzzy_match
 from fatcat_scholar.query_parse import pre_parse_query, sniff_citation_query
 from fatcat_scholar.schema import ScholarDoc

@@ -11,7 +11,7 @@ import sentry_sdk
 import urllib3.exceptions
 from fatcat_openapi_client import FileEntity, ReleaseEntity, WebcaptureEntity
 
-from fatcat_scholar.api_entities import *
+from fatcat_scholar.api_entities import entity_from_json
 from fatcat_scholar.config import GIT_REVISION, settings
 from fatcat_scholar.djvu import djvu_extract_leaf_texts
 from fatcat_scholar.issue_db import IssueDB, SimIssueRow, SimPubRow
