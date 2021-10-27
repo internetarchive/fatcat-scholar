@@ -47,8 +47,8 @@ class IntermediateBundle(BaseModel):
             datetime.datetime: lambda dt: dt.isoformat(),
         }
 
-    @classmethod
-    def from_json(cls, obj: Dict[Any, Any]) -> "IntermediateBundle":
+    @staticmethod
+    def from_json(obj: Dict[Any, Any]) -> "IntermediateBundle":
         return IntermediateBundle(
             doc_type=DocType(obj.get("doc_type")),
             releases=[

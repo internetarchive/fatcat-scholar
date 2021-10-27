@@ -38,8 +38,8 @@ class SimPubRow:
             self.wikidata_qid,
         )
 
-    @classmethod
-    def from_tuple(cls, row: Any) -> "SimPubRow":
+    @staticmethod
+    def from_tuple(row: Any) -> "SimPubRow":
         return SimPubRow(
             sim_pubid=row[0],
             pub_collection=row[1],
@@ -82,8 +82,8 @@ class SimIssueRow:
             self.release_count,
         )
 
-    @classmethod
-    def from_tuple(cls, row: Any) -> "SimIssueRow":
+    @staticmethod
+    def from_tuple(row: Any) -> "SimIssueRow":
         return SimIssueRow(
             issue_item=row[0],
             sim_pubid=row[1],
