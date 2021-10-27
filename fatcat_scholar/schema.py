@@ -435,7 +435,7 @@ def clean_str(raw: Optional[str], strip_trailing_period: bool = False) -> Option
     return text
 
 
-def scrub_text(raw: str, mimetype: str = None) -> Optional[str]:
+def scrub_text(raw: str) -> Optional[str]:
     """
     This function takes a mimetype-hinted string and tries to reduce it to a
     simple token-and-punctuation scheme with any and all markup removed. Eg,
