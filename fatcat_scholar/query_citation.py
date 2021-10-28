@@ -11,14 +11,14 @@ parallel with "regular" query?
 """
 
 import sys
-from typing import Any, List, Optional, Tuple
+from typing import Any, Optional, Tuple
 
 import fuzzycat.common
 import fuzzycat.verify
 import requests
 from fatcat_openapi_client import ReleaseContrib, ReleaseEntity, ReleaseExtIds
 from fuzzycat.matching import match_release_fuzzy
-from grobid_tei_xml import GrobidBiblio, parse_citations_xml
+from grobid_tei_xml import GrobidBiblio, parse_citation_xml
 
 from fatcat_scholar.api_entities import entity_to_dict
 
@@ -42,14 +42,6 @@ def grobid_process_citation(
         print(f"GROBID request (HTTP POST) failed: {grobid_response}", file=sys.stderr)
         return None
     return grobid_response.text
-
-
-def transform_grobid(raw_xml: str) -> Optional[GrobidBiblio]:
-    ref_list: List[GrobidBiblio] = parse_citations_xml(raw_xml)
-    # check for unmatched or empty references
-    if not ref_list or not ref_list[0].to_dict():
-        return None
-    return ref_list[0]
 
 
 def ref_to_release(ref: GrobidBiblio) -> ReleaseEntity:
@@ -152,7 +144,7 @@ def try_fuzzy_match(
     resp = grobid_process_citation(citation, grobid_host=grobid_host, timeout=3.0)
     if not resp:
         return None
-    ref = transform_grobid(resp)
+    ref = parse_citation_xml(resp)
     if not ref:
         return None
     release = ref_to_release(ref)
@@ -180,7 +172,7 @@ if __name__ == "__main__":
     print(resp)
     if not resp:
         sys.exit(0)
-    ref = transform_grobid(resp)
+    ref = parse_citation_xml(resp)
     print(ref)
     if not ref:
         sys.exit(0)
