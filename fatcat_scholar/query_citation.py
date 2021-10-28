@@ -11,14 +11,14 @@ parallel with "regular" query?
 """
 
 import sys
-from typing import Any, Optional, Tuple
+from typing import Any, List, Optional, Tuple
 
 import fuzzycat.common
 import fuzzycat.verify
 import requests
 from fatcat_openapi_client import ReleaseContrib, ReleaseEntity, ReleaseExtIds
 from fuzzycat.matching import match_release_fuzzy
-from grobid_tei_xml import parse_citations_xml
+from grobid_tei_xml import GrobidBiblio, parse_citations_xml
 
 from fatcat_scholar.api_entities import entity_to_dict
 
@@ -44,44 +44,42 @@ def grobid_process_citation(
     return grobid_response.text
 
 
-def transform_grobid(raw_xml: str) -> Optional[dict]:
-    ref_list = parse_citations_xml(raw_xml)
-    if not ref_list:
+def transform_grobid(raw_xml: str) -> Optional[GrobidBiblio]:
+    ref_list: List[GrobidBiblio] = parse_citations_xml(raw_xml)
+    # check for unmatched or empty references
+    if not ref_list or not ref_list[0].to_dict():
         return None
-    ref = ref_list[0]
-    if not any(ref.values()):
-        return None
-    return ref
+    return ref_list[0]
 
 
-def ref_to_release(ref: dict) -> ReleaseEntity:
+def ref_to_release(ref: GrobidBiblio) -> ReleaseEntity:
     contribs = []
-    for author in ref.get("authors") or []:
+    for author in ref.authors or []:
         contribs.append(
             ReleaseContrib(
-                raw_name=author.get("name"),
-                given_name=author.get("given_name"),
-                surname=author.get("surname"),
+                raw_name=author.full_name,
+                given_name=author.given_name,
+                surname=author.surname,
             )
         )
     release = ReleaseEntity(
-        title=ref.get("title"),
+        title=ref.title,
         contribs=contribs,
-        volume=ref.get("volume"),
-        issue=ref.get("issue"),
-        pages=ref.get("pages"),
+        volume=ref.volume,
+        issue=ref.issue,
+        pages=ref.pages,
         ext_ids=ReleaseExtIds(
-            doi=ref.get("doi"),
-            pmid=ref.get("pmid"),
-            pmcid=ref.get("pmcid"),
-            arxiv=ref.get("arxiv_id"),
+            doi=ref.doi,
+            pmid=ref.pmid,
+            pmcid=ref.pmcid,
+            arxiv=ref.arxiv_id,
         ),
     )
-    if ref.get("journal"):
-        release.extra = {"container_name": ref.get("journal")}
-    if ref.get("date"):
-        if len(ref["date"]) == 4 and ref["date"].isdigit():
-            release.release_year = int(ref["date"])
+    if ref.journal:
+        release.extra = {"container_name": ref.journal}
+    if ref.date:
+        if len(ref.date) == 4 and ref.date.isdigit():
+            release.release_year = int(ref.date)
     return release
 
 

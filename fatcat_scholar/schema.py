@@ -13,6 +13,7 @@ from typing import Any, Dict, List, Optional
 import ftfy
 from bs4 import BeautifulSoup
 from fatcat_openapi_client import ReleaseContrib, ReleaseEntity
+from grobid_tei_xml import GrobidDocument
 
 # pytype: disable=import-error
 from pydantic import BaseModel
@@ -494,12 +495,12 @@ def contrib_affiliation(contrib: ReleaseContrib) -> Optional[str]:
     return None
 
 
-def es_abstracts_from_grobid(tei_dict: dict) -> List[ScholarAbstract]:
+def es_abstracts_from_grobid(tei_doc: GrobidDocument) -> List[ScholarAbstract]:
 
-    if tei_dict.get("abstract"):
-        body = scrub_text(tei_dict["abstract"])
+    if tei_doc.abstract:
+        body = scrub_text(tei_doc.abstract)
         if body:
-            return [ScholarAbstract(lang_code=tei_dict.get("lang"), body=body)]
+            return [ScholarAbstract(lang_code=tei_doc.language_code, body=body)]
     return []
 
 

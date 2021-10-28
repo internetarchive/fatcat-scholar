@@ -8,7 +8,7 @@ from typing import Any, Dict, List, Optional, Sequence
 
 import sentry_sdk
 from fatcat_openapi_client import FileEntity, ReleaseEntity, WebcaptureEntity
-from grobid_tei_xml import parse_document_xml
+from grobid_tei_xml import GrobidBiblio, GrobidDocument, parse_document_xml
 
 from fatcat_scholar.config import GIT_REVISION, settings
 from fatcat_scholar.identifiers import clean_doi, clean_pmcid
@@ -241,18 +241,18 @@ def _add_file_release_meta(
 
 
 def es_fulltext_from_grobid(
-    tei_dict: dict, pdf_meta: Optional[dict], re: ReleaseEntity, fe: FileEntity
+    tei_doc: GrobidDocument, pdf_meta: Optional[dict], re: ReleaseEntity, fe: FileEntity
 ) -> Optional[ScholarFulltext]:
-    if not tei_dict.get("body"):
+    if not tei_doc.body:
         return None
-    body = tei_dict.get("body")
+    body = tei_doc.body
     if body and len(body) > MAX_BODY_CHARS:
         body = body[:MAX_BODY_CHARS]
     ret = ScholarFulltext(
-        lang_code=tei_dict.get("lang"),
+        lang_code=tei_doc.language_code,
         body=body,
-        acknowledgement=tei_dict.get("acknowledgement"),
-        annex=tei_dict.get("annex"),
+        acknowledgement=tei_doc.acknowledgement,
+        annex=tei_doc.annex,
     )
     return _add_file_release_meta(ret, pdf_meta, re, fe)
 
@@ -521,15 +521,16 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
             if f.ident == heavy.grobid_fulltext["file_ident"]
         ][0]
         try:
-            tei_doc = parse_document_xml(heavy.grobid_fulltext["tei_xml"])
-            tei_dict = tei_doc.to_legacy_dict()
+            tei_doc: Optional[GrobidDocument] = parse_document_xml(
+                heavy.grobid_fulltext["tei_xml"]
+            )
         except xml.etree.ElementTree.ParseError:
-            tei_dict = None
-        if tei_dict:
+            tei_doc = None
+        if tei_doc:
             if not abstracts:
-                abstracts = es_abstracts_from_grobid(tei_dict)
+                abstracts = es_abstracts_from_grobid(tei_doc)
             grobid_fulltext = es_fulltext_from_grobid(
-                tei_dict, heavy.pdf_meta, fulltext_release, fulltext_file
+                tei_doc, heavy.pdf_meta, fulltext_release, fulltext_file
             )
             if exclude_web_fulltext and grobid_fulltext:
                 if not fulltext:
@@ -681,52 +682,50 @@ def test_clean_ref_key() -> None:
         assert clean_ref_key(raw, doi=doi) == expected
 
 
-def refs_from_grobid(release: ReleaseEntity, tei_dict: dict) -> List[RefStructured]:
+def refs_from_grobid(
+    release: ReleaseEntity, tei_doc: GrobidDocument
+) -> List[RefStructured]:
     output = []
-    for ref in tei_dict.get("citations") or []:
-        ref_date = ref.get("date") or None
+    ref: GrobidBiblio
+    for ref in tei_doc.citations or []:
+        ref_date = ref.date or None
         ref_year: Optional[int] = None
         if ref_date and len(ref_date) >= 4 and ref_date[:4].isdigit():
             ref_year = int(ref_date[:4])
-        ref_authors = ref.get("authors") or []
         authors: List[str] = []
-        for a in ref_authors:
-            if isinstance(a, str):
-                authors.append(a)
-            elif isinstance(a, dict):
-                if a.get("name"):
-                    assert isinstance(a["name"], str)
-                    authors.append(a["name"])
-        ref_index = ref.get("index")
+        for a in ref.authors or []:
+            if a.full_name:
+                assert isinstance(a.full_name, str)
+                authors.append(a.full_name)
+        ref_index = ref.index
         if ref_index is not None:
             # transform from 0-indexed to 1-indexed
             ref_index = ref_index + 1
         output.append(
             RefStructured(
                 biblio=RefBiblio(
-                    unstructured=ref.get("unstructured"),
-                    title=ref.get("title"),
+                    unstructured=ref.unstructured,
+                    title=ref.title,
                     # subtitle
                     contrib_raw_names=authors or None,
                     year=ref_year,
-                    container_name=ref.get("journal"),
-                    publisher=ref.get("publisher"),
-                    volume=ref.get("volume"),
-                    issue=ref.get("issue"),
-                    pages=ref.get("pages"),
-                    doi=clean_doi(ref.get("doi")),
-                    pmid=ref.get("pmid"),
-                    pmcid=clean_pmcid(ref.get("pmcid")),
-                    arxiv_id=ref.get("arxiv_id"),
-                    isbn=ref.get("isbn"),
-                    url=clean_url_conservative(ref.get("url")),
+                    container_name=ref.journal,
+                    publisher=ref.publisher,
+                    volume=ref.volume,
+                    issue=ref.issue,
+                    pages=ref.pages,
+                    doi=clean_doi(ref.doi),
+                    pmid=ref.pmid,
+                    pmcid=clean_pmcid(ref.pmcid),
+                    arxiv_id=ref.arxiv_id,
+                    url=clean_url_conservative(ref.url),
                 ),
                 release_ident=release.ident,
                 work_ident=release.work_id,
                 release_stage=release.release_stage,
                 release_year=release.release_year,
                 index=ref_index,
-                key=clean_ref_key(ref.get("id")),
+                key=clean_ref_key(ref.id),
                 locator=None,
                 # target_release_id
                 ref_source="grobid",
@@ -902,8 +901,7 @@ def refs_from_heavy(heavy: IntermediateBundle) -> Sequence[RefStructured]:
             if r.ident == heavy.grobid_fulltext["release_ident"]
         ][0]
         tei_doc = parse_document_xml(heavy.grobid_fulltext["tei_xml"])
-        tei_dict = tei_doc.to_legacy_dict()
-        fulltext_refs = refs_from_grobid(fulltext_release, tei_dict)
+        fulltext_refs = refs_from_grobid(fulltext_release, tei_doc)
 
     crossref_refs: List[RefStructured] = []
     if heavy.crossref:

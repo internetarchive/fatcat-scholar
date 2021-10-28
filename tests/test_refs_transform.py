@@ -20,8 +20,7 @@ def test_transform_refs_grobid() -> None:
     )
 
     tei_doc = parse_document_xml(blob)
-    tei_dict = tei_doc.to_legacy_dict()
-    refs = refs_from_grobid(dummy_release, tei_dict)
+    refs = refs_from_grobid(dummy_release, tei_doc)
 
     ref = refs[12]
     assert ref.release_ident == "releasedummy22222222222222"
