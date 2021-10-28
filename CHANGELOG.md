@@ -24,6 +24,7 @@ See also:
 ### Changed
 
 - parsed queries do not clobber user input (search box)
+- internals: switch from `grobid2json` file `grobid_tei_xml` library
 
 ### Fixed
 
