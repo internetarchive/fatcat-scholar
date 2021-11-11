@@ -40,9 +40,7 @@ class SandcrawlerPostgrestClient:
             return None
 
     def get_crossref(self, doi: str) -> Optional[Dict[str, Any]]:
-        resp = requests.get(
-            self.api_url + "/crossref_with_refs", params=dict(doi="eq." + doi)
-        )
+        resp = requests.get(self.api_url + "/crossref", params=dict(doi="eq." + doi))
         resp.raise_for_status()
         resp_json = resp.json()
         if resp_json:

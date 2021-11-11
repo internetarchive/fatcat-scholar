@@ -73,7 +73,7 @@ def test_run_transform(mocker: Any) -> None:
 
     responses.add(
         responses.GET,
-        "http://disabled-during-tests-bogus.xyz:3333/crossref_with_refs?doi=eq.10.7717%2Fpeerj.4375",
+        "http://disabled-during-tests-bogus.xyz:3333/crossref?doi=eq.10.7717%2Fpeerj.4375",
         status=200,
         json=[
             {
@@ -83,7 +83,6 @@ def test_run_transform(mocker: Any) -> None:
                     "title": "something",
                     "TODO_better_object": 3,
                 },
-                "refs_json": [],
             }
         ],
     )
