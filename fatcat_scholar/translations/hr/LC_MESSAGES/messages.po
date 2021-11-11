@@ -7,9 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-11-10 16:37-0800\n"
-"PO-Revision-Date: 2021-11-11 00:30+0000\n"
+"PO-Revision-Date: 2021-11-12 17:52+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/hr/>\n"
@@ -257,25 +257,18 @@ msgid "Support and Acknowledgements"
 msgstr "Podrška i priznanja"
 
 #: fatcat_scholar/templates/about.html:60
-#, fuzzy, python-format
-#| msgid ""
-#| "\n"
-#| "Work on Internet Archive Scholar has received support from the Andrew W. "
-#| "Mellon Foundation through multiple phases of the <a href=\"%(grant_url)s"
-#| "\">\"Ensuring the Persistent Access of Open Access Journal Literature\"</"
-#| "a> project (see <a href=\"%(blog_url)s\">original announcement</a>).\n"
+#, python-format
 msgid ""
 "Work on Internet Archive Scholar has received support from the Andrew W. "
 "Mellon Foundation through multiple phases of the <a href=\"%(grant_url)s\">"
 "\"Ensuring the Persistent Access of Open Access Journal Literature\"</a> "
 "project (see <a href=\"%(blog_url)s\">original announcement</a>)."
 msgstr ""
-"\n"
-"Rad na Internet Archive Scholar dobio je podršku od Zaklade Andrew W. Mellon "
-"u više faza projekta <a href=\"%(grant_url)s\"> \"Ensuring the Persistent "
-"Access of Open Access Journal Literature\"</a> (Osiguravanje trajnog "
-"pristupa literaturi časopisa otvorenog pristupa) (pogledaj <a href="
-"\"%(blog_url)s\">izvornu najavu</a>).\n"
+"Rad na Internet Archive Scholar dobio je podršku od zaklade Andrew W. Mellon "
+"u više faza projekta <a href=\"%(grant_url)s\">„Ensuring the Persistent "
+"Access of Open Access Journal Literature“</a> (Osiguravanje trajnog pristupa "
+"literaturi časopisa otvorenog pristupa) (pogledaj <a href=\"%(blog_url)s\""
+">izvornu najavu</a>)."
 
 #: fatcat_scholar/templates/about.html:62
 #, python-format
@@ -671,7 +664,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:148
 msgid "Tags"
-msgstr ""
+msgstr "Oznake"
 
 #: fatcat_scholar/templates/help.html:150
 msgid ""
@@ -763,7 +756,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:198
 msgid "Persistent Identifiers"
-msgstr ""
+msgstr "Trajni identifikatori"
 
 #: fatcat_scholar/templates/help.html:200
 msgid ""
