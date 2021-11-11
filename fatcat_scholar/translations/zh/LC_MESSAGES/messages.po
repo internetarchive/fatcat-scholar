@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
-"POT-Creation-Date: 2021-08-12 16:37-0700\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2021-11-10 16:26-0800\n"
 "PO-Revision-Date: 2021-09-28 15:36+0000\n"
 "Last-Translator: Eric <spice2wolf@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -22,83 +22,83 @@ msgstr ""
 "X-Generator: Weblate 4.9-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
-#: fatcat_scholar/search.py:44
+#: fatcat_scholar/search.py:45
 msgid "Release Date"
 msgstr "发布日期"
 
-#: fatcat_scholar/search.py:48
+#: fatcat_scholar/search.py:49
 msgid "All Time"
 msgstr "整天"
 
-#: fatcat_scholar/search.py:49
+#: fatcat_scholar/search.py:50
 msgid "Past Week"
 msgstr "上周"
 
-#: fatcat_scholar/search.py:50
+#: fatcat_scholar/search.py:51
 msgid "Past Year"
 msgstr "过去一年"
 
-#: fatcat_scholar/search.py:51
+#: fatcat_scholar/search.py:52
 msgid "Since 2000"
 msgstr "自2000年以来"
 
-#: fatcat_scholar/search.py:52
+#: fatcat_scholar/search.py:53
 msgid "Before 1925"
 msgstr "1925年之前"
 
-#: fatcat_scholar/search.py:56
+#: fatcat_scholar/search.py:57
 msgid "Resource Type"
 msgstr "资源类型"
 
-#: fatcat_scholar/search.py:60
+#: fatcat_scholar/search.py:61
 msgid "Papers"
 msgstr "文件"
 
-#: fatcat_scholar/search.py:61
+#: fatcat_scholar/search.py:62
 msgid "Reports"
 msgstr "报告书"
 
-#: fatcat_scholar/search.py:62
+#: fatcat_scholar/search.py:63
 msgid "Datasets"
 msgstr "数据集"
 
-#: fatcat_scholar/search.py:63
+#: fatcat_scholar/search.py:64
 msgid "Everything"
 msgstr "一切"
 
-#: fatcat_scholar/search.py:67
+#: fatcat_scholar/search.py:68
 msgid "Availability"
 msgstr "可用性"
 
-#: fatcat_scholar/search.py:71
+#: fatcat_scholar/search.py:72
 msgid "Fulltext"
 msgstr "全文"
 
-#: fatcat_scholar/search.py:72
+#: fatcat_scholar/search.py:73
 msgid "Microfilm"
 msgstr "缩微胶卷"
 
-#: fatcat_scholar/search.py:73 fatcat_scholar/templates/search_macros.html:4
+#: fatcat_scholar/search.py:74 fatcat_scholar/templates/search_macros.html:4
 msgid "Open Access"
 msgstr "开放存取"
 
-#: fatcat_scholar/search.py:74
+#: fatcat_scholar/search.py:75
 msgid "Metadata"
 msgstr "元数据"
 
-#: fatcat_scholar/search.py:78
+#: fatcat_scholar/search.py:79
 msgid "Sort Order"
 msgstr "排序"
 
-#: fatcat_scholar/search.py:82
+#: fatcat_scholar/search.py:83
 msgid "Relevancy"
 msgstr "关联"
 
-#: fatcat_scholar/search.py:83
+#: fatcat_scholar/search.py:84
 msgid "Recent First"
 msgstr "最近第一"
 
-#: fatcat_scholar/search.py:84
+#: fatcat_scholar/search.py:85
 msgid "Oldest First"
 msgstr "最早的优先"
 
@@ -121,7 +121,7 @@ msgstr ""
 "题"
 
 #: fatcat_scholar/templates/about.html:14
-#: fatcat_scholar/templates/base.html:196
+#: fatcat_scholar/templates/base.html:197
 msgid "How It Works"
 msgstr "怎么运行的"
 
@@ -160,7 +160,7 @@ msgstr ""
 "和目标。"
 
 #: fatcat_scholar/templates/about.html:27
-#: fatcat_scholar/templates/base.html:197
+#: fatcat_scholar/templates/base.html:198
 msgid "Content Sources"
 msgstr "内容来源"
 
@@ -178,7 +178,7 @@ msgstr ""
 "<a href=\"#contact\">如有疑问请联系我们</a>。"
 
 #: fatcat_scholar/templates/about.html:35
-#: fatcat_scholar/templates/base.html:198
+#: fatcat_scholar/templates/base.html:199
 msgid "Text and Data Mining"
 msgstr "文本和数据挖掘"
 
@@ -254,8 +254,9 @@ msgid ""
 "project (see <a href=\"%(blog_url)s\">original announcement</a>).\n"
 msgstr ""
 "\n"
-"安德鲁W·梅隆基金会通过 <a href=\"%(grant_url)s\">“确保开放获取期刊文献的持续获取“</a> 项目的多个阶段支持了 "
-"Internet Archive 学术的工作 (见 <a href=\"%(blog_url)s\">原始声明</a>)。\n"
+"安德鲁W·梅隆基金会通过 <a href=\"%(grant_url)s\">“确保开放获取期刊文献的持续"
+"获取“</a> 项目的多个阶段支持了 Internet Archive 学术的工作 (见 <a href="
+"\"%(blog_url)s\">原始声明</a>)。\n"
 
 #: fatcat_scholar/templates/about.html:64
 #, python-format
@@ -280,7 +281,8 @@ msgstr "我们找不到您尝试的 URL 的有效重定向。我们对此很抱�
 msgid ""
 "There may be a typo, truncation, or encoding error. Or, the resource may "
 "have been removed from our catalog."
-msgstr "可能存在拼写错误、截断或编码错误。 或者，该资源可能已从我们的目录中删除。"
+msgstr ""
+"可能存在拼写错误、截断或编码错误。 或者，该资源可能已从我们的目录中删除。"
 
 #: fatcat_scholar/templates/access_404.html:13
 msgid ""
@@ -308,35 +310,35 @@ msgstr "学术登录页面"
 msgid "Fatcat catalog page"
 msgstr "Fatcat 目录页"
 
-#: fatcat_scholar/templates/base.html:12
+#: fatcat_scholar/templates/base.html:13
 msgid "Internet Archive Scholar"
 msgstr "互联网档案学术"
 
-#: fatcat_scholar/templates/base.html:82
+#: fatcat_scholar/templates/base.html:83
 msgid "language selection menu"
 msgstr "语言选择菜单"
 
-#: fatcat_scholar/templates/base.html:104
+#: fatcat_scholar/templates/base.html:105
 msgid "Contribute to translations"
 msgstr "贡献翻译"
 
-#: fatcat_scholar/templates/base.html:127
+#: fatcat_scholar/templates/base.html:128
 msgid "by title, authors, keywords..."
 msgstr "按标题、作者、关键词... ..."
 
-#: fatcat_scholar/templates/base.html:127
+#: fatcat_scholar/templates/base.html:128
 msgid "search for papers"
 msgstr "搜索论文"
 
-#: fatcat_scholar/templates/base.html:128 fatcat_scholar/templates/home.html:16
+#: fatcat_scholar/templates/base.html:129 fatcat_scholar/templates/home.html:16
 msgid "Search"
 msgstr "搜索"
 
-#: fatcat_scholar/templates/base.html:138
+#: fatcat_scholar/templates/base.html:139
 msgid "User Guide"
 msgstr "用户指南"
 
-#: fatcat_scholar/templates/base.html:166
+#: fatcat_scholar/templates/base.html:167
 msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
@@ -344,7 +346,7 @@ msgstr ""
 "我们是一家美国的501(c)(3)非营利图书馆，旨在以数字形式建立一个互联网站点和其他"
 "文化文物的全球档案馆。"
 
-#: fatcat_scholar/templates/base.html:168
+#: fatcat_scholar/templates/base.html:169
 #, python-format
 msgid ""
 "Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and "
@@ -352,47 +354,47 @@ msgid ""
 msgstr ""
 "其他项目包括%(wayback)s、%(archive_org)s、%(openlibrary)s和%(archive_it)s。"
 
-#: fatcat_scholar/templates/base.html:175
+#: fatcat_scholar/templates/base.html:176
 msgid "About Us"
 msgstr "关于我们"
 
-#: fatcat_scholar/templates/base.html:176
+#: fatcat_scholar/templates/base.html:177
 msgid "Contact Us"
 msgstr "联系我们"
 
-#: fatcat_scholar/templates/base.html:177
+#: fatcat_scholar/templates/base.html:178
 msgid "Policies"
 msgstr "策略"
 
-#: fatcat_scholar/templates/base.html:178
+#: fatcat_scholar/templates/base.html:179
 msgid "Donate"
 msgstr "捐赠"
 
-#: fatcat_scholar/templates/base.html:184
+#: fatcat_scholar/templates/base.html:185
 msgid "Open Infrastructure"
 msgstr "开放基础架构"
 
-#: fatcat_scholar/templates/base.html:186
+#: fatcat_scholar/templates/base.html:187
 msgid "Editable Catalog (Fatcat)"
 msgstr "可编辑目录 (Fatcat)"
 
-#: fatcat_scholar/templates/base.html:187
+#: fatcat_scholar/templates/base.html:188
 msgid "Contribute"
 msgstr "贡献"
 
-#: fatcat_scholar/templates/base.html:188
+#: fatcat_scholar/templates/base.html:189
 msgid "Search API"
 msgstr "搜索 API"
 
-#: fatcat_scholar/templates/base.html:189
+#: fatcat_scholar/templates/base.html:190
 msgid "Service Status"
 msgstr "服务状态"
 
-#: fatcat_scholar/templates/base.html:190
+#: fatcat_scholar/templates/base.html:191
 msgid "Source Code"
 msgstr "源代码"
 
-#: fatcat_scholar/templates/base.html:199
+#: fatcat_scholar/templates/base.html:200
 msgid "Help"
 msgstr "说明"
 
@@ -626,6 +628,10 @@ msgid ""
 "sometimes provide additional links"
 msgstr "如果作品是在可靠的开放平台上完整归档的，则有时我们会提供其他链接"
 
+#: fatcat_scholar/templates/help.html:148
+msgid "Tags"
+msgstr ""
+
 #: fatcat_scholar/templates/help.html:150
 msgid ""
 "Search results may have tag labels which provide additional context about "
@@ -708,6 +714,10 @@ msgid ""
 msgstr ""
 "在<a href=\"https://en.wikipedia.org/wiki/JSTOR\"> JSTOR </a>数字保存平台上保"
 "存和/或托管"
+
+#: fatcat_scholar/templates/help.html:198
+msgid "Persistent Identifiers"
+msgstr ""
 
 #: fatcat_scholar/templates/help.html:200
 msgid ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-08-12 16:37-0700\n"
+"POT-Creation-Date: 2021-11-10 16:26-0800\n"
 "PO-Revision-Date: 2021-07-16 17:36+0000\n"
 "Last-Translator: privacysimp <contributions.pqy8k@aleeas.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/internetarchive/"
@@ -21,83 +21,83 @@ msgstr ""
 "X-Generator: Weblate 4.7.2-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
-#: fatcat_scholar/search.py:44
+#: fatcat_scholar/search.py:45
 msgid "Release Date"
 msgstr "Datum van Publicatie"
 
-#: fatcat_scholar/search.py:48
+#: fatcat_scholar/search.py:49
 msgid "All Time"
 msgstr "Alle Tijden"
 
-#: fatcat_scholar/search.py:49
+#: fatcat_scholar/search.py:50
 msgid "Past Week"
 msgstr "Afgelopen week"
 
-#: fatcat_scholar/search.py:50
+#: fatcat_scholar/search.py:51
 msgid "Past Year"
 msgstr "Afgelopen Jaar"
 
-#: fatcat_scholar/search.py:51
+#: fatcat_scholar/search.py:52
 msgid "Since 2000"
 msgstr "Sinds 2000"
 
-#: fatcat_scholar/search.py:52
+#: fatcat_scholar/search.py:53
 msgid "Before 1925"
 msgstr "Vóór 1925"
 
-#: fatcat_scholar/search.py:56
+#: fatcat_scholar/search.py:57
 msgid "Resource Type"
 msgstr "Type bron"
 
-#: fatcat_scholar/search.py:60
+#: fatcat_scholar/search.py:61
 msgid "Papers"
 msgstr "Papieren"
 
-#: fatcat_scholar/search.py:61
+#: fatcat_scholar/search.py:62
 msgid "Reports"
 msgstr "Rapporten"
 
-#: fatcat_scholar/search.py:62
+#: fatcat_scholar/search.py:63
 msgid "Datasets"
 msgstr "Datasets"
 
-#: fatcat_scholar/search.py:63
+#: fatcat_scholar/search.py:64
 msgid "Everything"
 msgstr "Alles"
 
-#: fatcat_scholar/search.py:67
+#: fatcat_scholar/search.py:68
 msgid "Availability"
 msgstr "Beschikbaar"
 
-#: fatcat_scholar/search.py:71
+#: fatcat_scholar/search.py:72
 msgid "Fulltext"
 msgstr "Volledige tekst"
 
-#: fatcat_scholar/search.py:72
+#: fatcat_scholar/search.py:73
 msgid "Microfilm"
 msgstr "Microfilm"
 
-#: fatcat_scholar/search.py:73 fatcat_scholar/templates/search_macros.html:4
+#: fatcat_scholar/search.py:74 fatcat_scholar/templates/search_macros.html:4
 msgid "Open Access"
 msgstr "Open toegang"
 
-#: fatcat_scholar/search.py:74
+#: fatcat_scholar/search.py:75
 msgid "Metadata"
 msgstr "Metagegevens"
 
-#: fatcat_scholar/search.py:78
+#: fatcat_scholar/search.py:79
 msgid "Sort Order"
 msgstr "Sorteervolgorde"
 
-#: fatcat_scholar/search.py:82
+#: fatcat_scholar/search.py:83
 msgid "Relevancy"
 msgstr "Relevantie"
 
-#: fatcat_scholar/search.py:83
+#: fatcat_scholar/search.py:84
 msgid "Recent First"
 msgstr "Recente Eerste"
 
-#: fatcat_scholar/search.py:84
+#: fatcat_scholar/search.py:85
 msgid "Oldest First"
 msgstr "Oudste eerst"
 
@@ -120,7 +120,7 @@ msgstr ""
 "enkele bugs en bekende problemen opsomt"
 
 #: fatcat_scholar/templates/about.html:14
-#: fatcat_scholar/templates/base.html:196
+#: fatcat_scholar/templates/base.html:197
 msgid "How It Works"
 msgstr "Hoe het werkt"
 
@@ -161,7 +161,7 @@ msgstr ""
 "het project."
 
 #: fatcat_scholar/templates/about.html:27
-#: fatcat_scholar/templates/base.html:197
+#: fatcat_scholar/templates/base.html:198
 msgid "Content Sources"
 msgstr "Inhoud Bronnen"
 
@@ -182,7 +182,7 @@ msgstr ""
 "<a href=\"#contact\">contact met ons op</a> als u vragen heeft."
 
 #: fatcat_scholar/templates/about.html:35
-#: fatcat_scholar/templates/base.html:198
+#: fatcat_scholar/templates/base.html:199
 msgid "Text and Data Mining"
 msgstr "Tekst- en datamining"
 
@@ -314,35 +314,35 @@ msgstr ""
 msgid "Fatcat catalog page"
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:12
+#: fatcat_scholar/templates/base.html:13
 msgid "Internet Archive Scholar"
 msgstr "Internet Archief Wetenschapper"
 
-#: fatcat_scholar/templates/base.html:82
+#: fatcat_scholar/templates/base.html:83
 msgid "language selection menu"
 msgstr "taalselectiemenu"
 
-#: fatcat_scholar/templates/base.html:104
+#: fatcat_scholar/templates/base.html:105
 msgid "Contribute to translations"
 msgstr "Bijdragen aan vertalingen"
 
-#: fatcat_scholar/templates/base.html:127
+#: fatcat_scholar/templates/base.html:128
 msgid "by title, authors, keywords..."
 msgstr "op titel, auteurs, trefwoorden..."
 
-#: fatcat_scholar/templates/base.html:127
+#: fatcat_scholar/templates/base.html:128
 msgid "search for papers"
 msgstr "naar documenten zoeken"
 
-#: fatcat_scholar/templates/base.html:128 fatcat_scholar/templates/home.html:16
+#: fatcat_scholar/templates/base.html:129 fatcat_scholar/templates/home.html:16
 msgid "Search"
 msgstr "Zoeken"
 
-#: fatcat_scholar/templates/base.html:138
+#: fatcat_scholar/templates/base.html:139
 msgid "User Guide"
 msgstr "Gebruikershandleiding"
 
-#: fatcat_scholar/templates/base.html:166
+#: fatcat_scholar/templates/base.html:167
 msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
@@ -351,7 +351,7 @@ msgstr ""
 "wereldwijd archief aanlegt van internetsites en andere culturele artefacten "
 "in digitale vorm."
 
-#: fatcat_scholar/templates/base.html:168
+#: fatcat_scholar/templates/base.html:169
 #, python-format
 msgid ""
 "Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and "
@@ -360,47 +360,47 @@ msgstr ""
 "Andere projecten zijn %(wayback)s, %(archive_org)s, %(openlibrary)s, en "
 "%(archive_it)s."
 
-#: fatcat_scholar/templates/base.html:175
+#: fatcat_scholar/templates/base.html:176
 msgid "About Us"
 msgstr "Over ons"
 
-#: fatcat_scholar/templates/base.html:176
+#: fatcat_scholar/templates/base.html:177
 msgid "Contact Us"
 msgstr "Contact"
 
-#: fatcat_scholar/templates/base.html:177
+#: fatcat_scholar/templates/base.html:178
 msgid "Policies"
 msgstr "Beleidsregels"
 
-#: fatcat_scholar/templates/base.html:178
+#: fatcat_scholar/templates/base.html:179
 msgid "Donate"
 msgstr "Doneer"
 
-#: fatcat_scholar/templates/base.html:184
+#: fatcat_scholar/templates/base.html:185
 msgid "Open Infrastructure"
 msgstr "Open infrastructuur"
 
-#: fatcat_scholar/templates/base.html:186
+#: fatcat_scholar/templates/base.html:187
 msgid "Editable Catalog (Fatcat)"
 msgstr "Bewerkbare catalogus (Fatcat)"
 
-#: fatcat_scholar/templates/base.html:187
+#: fatcat_scholar/templates/base.html:188
 msgid "Contribute"
 msgstr "Draag bij"
 
-#: fatcat_scholar/templates/base.html:188
+#: fatcat_scholar/templates/base.html:189
 msgid "Search API"
 msgstr "Zoek API"
 
-#: fatcat_scholar/templates/base.html:189
+#: fatcat_scholar/templates/base.html:190
 msgid "Service Status"
 msgstr "Dienststatus"
 
-#: fatcat_scholar/templates/base.html:190
+#: fatcat_scholar/templates/base.html:191
 msgid "Source Code"
 msgstr "Broncode"
 
-#: fatcat_scholar/templates/base.html:199
+#: fatcat_scholar/templates/base.html:200
 msgid "Help"
 msgstr "Hulp"
 
@@ -659,6 +659,10 @@ msgstr ""
 "Als het werk volledig gearchiveerd is op een betrouwbaar, open platform, "
 "zullen wij soms extra links geven"
 
+#: fatcat_scholar/templates/help.html:148
+msgid "Tags"
+msgstr ""
+
 #: fatcat_scholar/templates/help.html:150
 msgid ""
 "Search results may have tag labels which provide additional context about "
@@ -746,6 +750,10 @@ msgid ""
 msgstr ""
 "Bewaard en/of gehost op het <a href=\"https://en.wikipedia.org/wiki/JSTOR"
 "\">JSTOR</a> platform voor digitale bewaring"
+
+#: fatcat_scholar/templates/help.html:198
+msgid "Persistent Identifiers"
+msgstr ""
 
 #: fatcat_scholar/templates/help.html:200
 msgid ""
