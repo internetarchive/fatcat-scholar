@@ -12,3 +12,5 @@ notes=FIXME,XXX,DELETEME
 
 [TYPECHECK]
 ignored-modules=responses
+# No name 'BaseModel' in module 'pydantic' (no-name-in-module) (etc)
+extension-pkg-allow-list=pydantic
