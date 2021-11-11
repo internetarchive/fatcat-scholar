@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-11-10 16:26-0800\n"
+"POT-Creation-Date: 2021-11-10 16:37-0800\n"
 "PO-Revision-Date: 2021-04-13 00:26+0000\n"
 "Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/internetarchive/"
@@ -267,14 +267,13 @@ msgstr ""
 #: fatcat_scholar/templates/about.html:60
 #, python-format
 msgid ""
-"\n"
 "Work on Internet Archive Scholar has received support from the Andrew W. "
 "Mellon Foundation through multiple phases of the <a href=\"%(grant_url)s\">"
 "\"Ensuring the Persistent Access of Open Access Journal Literature\"</a> "
-"project (see <a href=\"%(blog_url)s\">original announcement</a>).\n"
+"project (see <a href=\"%(blog_url)s\">original announcement</a>)."
 msgstr ""
 
-#: fatcat_scholar/templates/about.html:64
+#: fatcat_scholar/templates/about.html:62
 #, python-format
 msgid ""
 "\n"

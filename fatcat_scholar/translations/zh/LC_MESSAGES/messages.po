@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
-"POT-Creation-Date: 2021-11-10 16:26-0800\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2021-11-10 16:37-0800\n"
 "PO-Revision-Date: 2021-11-11 00:38+0000\n"
 "Last-Translator: Eric <spice2wolf@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -245,20 +245,25 @@ msgid "Support and Acknowledgements"
 msgstr "支持和致谢"
 
 #: fatcat_scholar/templates/about.html:60
-#, python-format
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| "Work on Internet Archive Scholar has received support from the Andrew W. "
+#| "Mellon Foundation through multiple phases of the <a href=\"%(grant_url)s"
+#| "\">\"Ensuring the Persistent Access of Open Access Journal Literature\"</"
+#| "a> project (see <a href=\"%(blog_url)s\">original announcement</a>).\n"
 msgid ""
-"\n"
 "Work on Internet Archive Scholar has received support from the Andrew W. "
 "Mellon Foundation through multiple phases of the <a href=\"%(grant_url)s\">"
 "\"Ensuring the Persistent Access of Open Access Journal Literature\"</a> "
-"project (see <a href=\"%(blog_url)s\">original announcement</a>).\n"
+"project (see <a href=\"%(blog_url)s\">original announcement</a>)."
 msgstr ""
 "\n"
 "安德鲁W·梅隆基金会通过 <a href=\"%(grant_url)s\">“确保开放获取期刊文献的持续"
 "获取“</a> 项目的多个阶段支持了 Internet Archive 学术的工作 (见 <a href="
 "\"%(blog_url)s\">原始声明</a>)。\n"
 
-#: fatcat_scholar/templates/about.html:64
+#: fatcat_scholar/templates/about.html:62
 #, python-format
 msgid ""
 "\n"
