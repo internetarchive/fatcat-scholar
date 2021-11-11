@@ -252,6 +252,7 @@ class WorkPipeline:
             release_ident=re.ident,
             doi=doi,
             record=crossref_meta["record"],
+            grobid_refs=crossref_meta["refs_json"],
         )
 
     def lookup_sim(self, release: ReleaseEntity) -> Optional[SimIssueRow]:
