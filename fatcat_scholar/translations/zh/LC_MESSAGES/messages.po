@@ -8,9 +8,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-11-10 16:26-0800\n"
-"PO-Revision-Date: 2021-09-28 15:36+0000\n"
+"PO-Revision-Date: 2021-11-11 00:38+0000\n"
 "Last-Translator: Eric <spice2wolf@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "internetarchive/fatcat-scholar/zh_Hans/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.9-dev\n"
+"X-Generator: Weblate 4.9.1-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:45
@@ -630,7 +630,7 @@ msgstr "如果作品是在可靠的开放平台上完整归档的，则有时我
 
 #: fatcat_scholar/templates/help.html:148
 msgid "Tags"
-msgstr ""
+msgstr "标签"
 
 #: fatcat_scholar/templates/help.html:150
 msgid ""
@@ -717,7 +717,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:198
 msgid "Persistent Identifiers"
-msgstr ""
+msgstr "持久标识符"
 
 #: fatcat_scholar/templates/help.html:200
 msgid ""
