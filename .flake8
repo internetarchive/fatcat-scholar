@@ -9,7 +9,7 @@ select = C,E,F,W,ANN
 ignore = ANN003,ANN101,ANN204,E265,E266,E501,W503,E203
 per-file-ignores =
     fatcat_scholar/__init__.py: F401
-    tests/*.py: ANN201,ANN001,F403,F405
+    tests/*.py: ANN201,ANN001
 exclude = .git,__pycache__,.venv
 max-line-length = 88
 max-complexity = 30

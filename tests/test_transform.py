@@ -1,8 +1,16 @@
+import json
+
 from fatcat_openapi_client import ReleaseEntity
 
-from fatcat_scholar.api_entities import *
-from fatcat_scholar.schema import *
-from fatcat_scholar.transform import *
+from fatcat_scholar.api_entities import entity_from_json
+from fatcat_scholar.schema import ScholarBiblio
+from fatcat_scholar.transform import (
+    biblio_metadata_hacks,
+    es_biblio_from_release,
+    es_release_from_release,
+    run_refs,
+    run_transform,
+)
 
 
 def test_es_release_from_release() -> None:
