@@ -8,9 +8,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-11-12 18:07-0800\n"
-"PO-Revision-Date: 2021-11-11 08:06+0000\n"
+"PO-Revision-Date: 2021-11-14 02:51+0000\n"
 "Last-Translator: Eric <spice2wolf@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "internetarchive/fatcat-scholar/zh_Hans/>\n"
@@ -257,17 +257,11 @@ msgstr ""
 "\"%(blog_url)s\">原始声明</a>)。"
 
 #: fatcat_scholar/templates/about.html:62
-#, fuzzy, python-format
-#| msgid ""
-#| "\n"
-#| "See additional acknowledgements on <a href=\"%(fatcat_url)s\">fatcat."
-#| "wiki</a>.\n"
+#, python-format
 msgid ""
 "See additional acknowledgements on <a href=\"%(fatcat_url)s\">fatcat.wiki</"
 "a>."
-msgstr ""
-"\n"
-"查看其它致谢，请前往 <a href=\"%(fatcat_url)s\">fatcat.wiki</a>。\n"
+msgstr "查看其它致谢，请前往 <a href=\"%(fatcat_url)s\">fatcat.wiki</a>。"
 
 #: fatcat_scholar/templates/access_404.html:10
 msgid "404: Access Location Not Found"
