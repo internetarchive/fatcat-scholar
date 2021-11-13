@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-11-10 16:37-0800\n"
+"POT-Creation-Date: 2021-11-12 18:07-0800\n"
 "PO-Revision-Date: 2021-07-16 17:36+0000\n"
 "Last-Translator: privacysimp <contributions.pqy8k@aleeas.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/internetarchive/"
@@ -267,9 +267,8 @@ msgstr ""
 #: fatcat_scholar/templates/about.html:62
 #, python-format
 msgid ""
-"\n"
 "See additional acknowledgements on <a href=\"%(fatcat_url)s\">fatcat.wiki</"
-"a>.\n"
+"a>."
 msgstr ""
 
 #: fatcat_scholar/templates/access_404.html:10
