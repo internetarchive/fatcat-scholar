@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-11-12 18:07-0800\n"
-"PO-Revision-Date: 2021-03-26 18:29+0000\n"
+"PO-Revision-Date: 2021-11-15 21:35+0000\n"
 "Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/ar/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=0 && n%100<=2 ? 4 : 5);\n"
-"X-Generator: Weblate 4.6-dev\n"
+"X-Generator: Weblate 4.9.1-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:45
@@ -247,7 +247,7 @@ msgstr "توجد قناة دردشة عامة على <a href=\"%(url)s\"> %(url)
 
 #: fatcat_scholar/templates/about.html:57
 msgid "Support and Acknowledgements"
-msgstr ""
+msgstr "الدعم والشكر والتقدير"
 
 #: fatcat_scholar/templates/about.html:60
 #, python-format
@@ -267,12 +267,13 @@ msgstr ""
 
 #: fatcat_scholar/templates/access_404.html:10
 msgid "404: Access Location Not Found"
-msgstr ""
+msgstr "404: لم يتم العثور على موقع الوصول"
 
 #: fatcat_scholar/templates/access_404.html:11
 msgid ""
 "We could not find a valid redirect for the URL you tried. Sorry about that!"
 msgstr ""
+"لم نتمكن من العثور على إعادة توجيه صالحة لعنوان URL الذي جربته. اسف بشأن ذلك!"
 
 #: fatcat_scholar/templates/access_404.html:12
 msgid ""
@@ -639,7 +640,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:148
 msgid "Tags"
-msgstr ""
+msgstr "العلامات"
 
 #: fatcat_scholar/templates/help.html:150
 msgid ""
@@ -731,7 +732,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:198
 msgid "Persistent Identifiers"
-msgstr ""
+msgstr "المعرفات الثابتة"
 
 #: fatcat_scholar/templates/help.html:200
 msgid ""
