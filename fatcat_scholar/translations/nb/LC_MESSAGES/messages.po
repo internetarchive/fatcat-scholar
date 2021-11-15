@@ -4,13 +4,14 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # Allan Nordhøy <epost@anotheragency.no>, 2020, 2021.
 # Thomas jensen <vpnhd@protonmail.ch>, 2020.
+# Bryan Newbold <bnewbold@robocracy.org>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-11-12 18:07-0800\n"
-"PO-Revision-Date: 2021-02-09 03:50+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2021-11-15 21:35+0000\n"
+"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
 "internetarchive/fatcat-scholar/nb_NO/>\n"
 "Language: nb\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.5-dev\n"
+"X-Generator: Weblate 4.9.1-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:45
@@ -473,7 +474,6 @@ msgid "Search for papers in Chinese matching a term:"
 msgstr "Søk etter publiseringer på Kinesisk som samsvarer med et søk:"
 
 #: fatcat_scholar/templates/help.html:53
-#, fuzzy
 msgid "Conference papers with an author name query:"
 msgstr "Konferansepubliseringer med forfatternavns-spørring:"
 
@@ -753,7 +753,6 @@ msgid "Internet Archive Scholar logo (vaporwave)"
 msgstr "Internet Archive Scholar-logo (vaporwave)"
 
 #: fatcat_scholar/templates/home.html:15
-#, fuzzy
 msgid "by title, author, keywords..."
 msgstr "etter tittel, forfatter, nøkkelord…"
 
