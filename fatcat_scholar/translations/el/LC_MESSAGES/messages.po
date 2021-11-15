@@ -8,10 +8,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-11-12 18:07-0800\n"
-"PO-Revision-Date: 2021-08-02 12:32+0000\n"
-"Last-Translator: Georgios Pitsiladis <g.v.pitsiladis@gmail.com>\n"
+"PO-Revision-Date: 2021-11-15 21:35+0000\n"
+"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/el/>\n"
 "Language: el\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.8-dev\n"
+"X-Generator: Weblate 4.9.1-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 #: fatcat_scholar/search.py:45
@@ -155,6 +155,8 @@ msgid ""
 "This <a href=\"%(url)s\">2019 FORCE11 conference presentation</a> gives an "
 "overview of the technical infrastructure and goals of the project overall."
 msgstr ""
+"Αυτή η <a href=\"%(url)s\">παρουσίαση συνεδρίου FORCE11 από το 2019</a> "
+"κάνει μια επισκόπηση των τεχνικών υποδομών και στόχων του έργου γενικά."
 
 #: fatcat_scholar/templates/about.html:27
 #: fatcat_scholar/templates/base.html:198
@@ -169,6 +171,11 @@ msgid ""
 "attribute the provenance of content and metadata in all cases. Please\n"
 "<a href=\"#contact\">contact us</a> if you have questions."
 msgstr ""
+"Τα μεταδεδομένα προέρχονται από το <a href=\"https://fatcat.wiki\">fatcat."
+"wiki</a>, έναν ανοιχτό κι επεξεργάσιμο από τους χρήστες κατάλογο ακαδημαϊκής "
+"εργασίας. Θα πρέπει να είναι δυνατή η καταγραφή και απόδοση του περιεχομένου "
+"και των μεταδεδομένων σε όλες τις περιπτώσεις. Παρακαλούμε να <a href=\"#"
+"contact\">επικοινωνήσετε με εμάς</a> εάν έχετε απορίες."
 
 #: fatcat_scholar/templates/about.html:35
 #: fatcat_scholar/templates/base.html:199
@@ -184,6 +191,12 @@ msgid ""
 "interested\n"
 "or would like to see specific datasets made available, please contact us."
 msgstr ""
+"Σκοπεύουμε να παρέχουμε πρόσβαση ερευνητών στο συνολικό έργο για σκοπούς "
+"εξορύξεως κειμένου και δεδομένων. Οι προερχόμενες εξ αυτού σειρές δεδομένων "
+"μπορούν επίσης να αναρτηθούν δημοσίως για ανάλυση, παραδείγματος χάριν μία "
+"γράφημα παραπομπής ή συχνότητες ν-γράμματος ανά έτος. Εάν ενδιαφέρεστε ή αν "
+"θα θέλατε να δείτε συγκεκριμένες σειρές δεδομένων να γίνουν διαθέσιμες, "
+"επικοινωνήστε μαζί μας."
 
 #: fatcat_scholar/templates/about.html:42
 msgid ""
@@ -192,14 +205,18 @@ msgid ""
 "details/ia_biblio_metadata\">Bulk Bibliographic Metadata</a> collection on "
 "archive.org."
 msgstr ""
+"Προς το παρόν, στιγμιότυπα του πλήρους συνολικού έργου μεταδεδομένων φάτκατ "
+"και οι προς τα ανάντη πηγές μεταδεδομένων μεταφορτώνονται περιοδικώς στη "
+"συλλογή <a href=\"https://archive.org/details/ia_biblio_metadata\""
+">Ασυσκευάστων Βιβλιογραφικών Μεταδεδομένων</a> στο archive.org."
 
 #: fatcat_scholar/templates/about.html:44
 msgid ""
 "Read more in <a href=\"https://guide.fatcat.wiki/bulk_exports.html\">the "
 "Fatcat Guide</a>."
 msgstr ""
-"Διαβάστε περισσότερα στο <a href=\"https://guide.fatcat.wiki/bulk_exports."
-"html\">the Fatcat Guide</a>."
+"Διαβάστε περισσότερα στον <a href=\"https://guide.fatcat.wiki/bulk_exports."
+"html\">Οδηγό του Φάτκατ</a>."
 
 #: fatcat_scholar/templates/about.html:47
 msgid "Contact Information"
@@ -293,7 +310,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/base.html:13
 msgid "Internet Archive Scholar"
-msgstr "Internet Archive Scholar"
+msgstr "Αρχείο του Διαδικτύου για Μελετητές"
 
 #: fatcat_scholar/templates/base.html:83
 msgid "language selection menu"
@@ -305,7 +322,7 @@ msgstr "Συμβάλλετε στις μεταφράσεις"
 
 #: fatcat_scholar/templates/base.html:128
 msgid "by title, authors, keywords..."
-msgstr "με βάση τον τίτλο, τους συγγραφείς, τις λέξεις-κλειδιά..."
+msgstr "βάσει τίτλων, συγγραφέων, λέξεις-κλειδών..."
 
 #: fatcat_scholar/templates/base.html:128
 msgid "search for papers"
@@ -317,7 +334,7 @@ msgstr "Αναζήτηση"
 
 #: fatcat_scholar/templates/base.html:139
 msgid "User Guide"
-msgstr "Οδηγός χρήστη"
+msgstr "Οδηγός Χρήστη"
 
 #: fatcat_scholar/templates/base.html:167
 msgid ""
@@ -325,7 +342,7 @@ msgid ""
 "Internet sites and other cultural artifacts in digital form."
 msgstr ""
 "Είμαστε μια μη κερδοσκοπική βιβλιοθήκη των ΗΠΑ 501(c)(3), η οποία δημιουργεί "
-"ένα παγκόσμιο αρχείο ιστότοπων στο Διαδίκτυο και άλλων πολιτιστικών "
+"ένα παγκόσμιο αρχείο ιστοτόπων στο Διαδίκτυο και άλλων πολιτιστικών "
 "αντικειμένων σε ψηφιακή μορφή."
 
 #: fatcat_scholar/templates/base.html:169
@@ -334,32 +351,32 @@ msgid ""
 "Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and "
 "%(archive_it)s."
 msgstr ""
-"Άλλα έργα περιλαμβάνουν %(wayback)s, %(archive_org)s, %(openlibrary)s και "
-"%(archive_it)s."
+"Άλλα έργα περιλαμβάνουν τα %(wayback)s, %(archive_org)s, %(openlibrary)s και "
+"το %(archive_it)s."
 
 #: fatcat_scholar/templates/base.html:176
 msgid "About Us"
-msgstr "Σχετικά με εμάς"
+msgstr "Σχετικά Με Εμάς"
 
 #: fatcat_scholar/templates/base.html:177
 msgid "Contact Us"
-msgstr "Επικοινωνήστε μαζί μας"
+msgstr "Επικοινωνήστε Μαζί Μας"
 
 #: fatcat_scholar/templates/base.html:178
 msgid "Policies"
-msgstr "Μανιφέστο"
+msgstr "Πολιτική"
 
 #: fatcat_scholar/templates/base.html:179
 msgid "Donate"
-msgstr "Δωρείστε"
+msgstr "Κάντε μια δωρεά"
 
 #: fatcat_scholar/templates/base.html:185
 msgid "Open Infrastructure"
-msgstr "Ανοιχτή υποδομή"
+msgstr "Ανοιχτή Υποδομή"
 
 #: fatcat_scholar/templates/base.html:187
 msgid "Editable Catalog (Fatcat)"
-msgstr "Κατάλογος με δυνατότητα επεξεργασίας (Fatcat)"
+msgstr "Κατάλογος με δυνατότητα επεξεργασίας (Φάτκατ)"
 
 #: fatcat_scholar/templates/base.html:188
 msgid "Contribute"
@@ -367,15 +384,15 @@ msgstr "Συνεισφέρετε"
 
 #: fatcat_scholar/templates/base.html:189
 msgid "Search API"
-msgstr "Αναζήτηση API"
+msgstr "Αναζήτηση Διεπαφής Προγραμματισμού Εφαρμογών"
 
 #: fatcat_scholar/templates/base.html:190
 msgid "Service Status"
-msgstr "Κατάσταση υπηρεσίας"
+msgstr "Κατάσταση Υπηρεσίας"
 
 #: fatcat_scholar/templates/base.html:191
 msgid "Source Code"
-msgstr "Πηγαίος κώδικας"
+msgstr "Πηγαίος Κώδικας"
 
 #: fatcat_scholar/templates/base.html:200
 msgid "Help"
@@ -387,15 +404,15 @@ msgstr "Δεν Βρέθηκε"
 
 #: fatcat_scholar/templates/error.html:14
 msgid "Access Forbidden"
-msgstr "Απαγορεύεται η πρόσβαση"
+msgstr "Απαγορεύεται Η Πρόσβαση"
 
 #: fatcat_scholar/templates/error.html:16
 msgid "Request Error"
-msgstr "Σφάλμα αίτησης"
+msgstr "Σφάλμα Αίτησης"
 
 #: fatcat_scholar/templates/error.html:18
 msgid "Internal Error"
-msgstr "Εσωτερικό σφάλμα"
+msgstr "Εσωτερικό Σφάλμα"
 
 #: fatcat_scholar/templates/help.html:5
 #, python-format
@@ -404,16 +421,18 @@ msgstr "%(website_name)s Βοήθεια"
 
 #: fatcat_scholar/templates/help.html:14
 msgid "Try It"
-msgstr "Δοκιμάστε το"
+msgstr "Δοκιμάστε Το"
 
 #: fatcat_scholar/templates/help.html:22
 msgid "Scholar User Guide"
-msgstr "Οδηγός χρήσης Μελετητών"
+msgstr "Οδηγός χρήσης Ακαδημαϊκών"
 
 #: fatcat_scholar/templates/help.html:23
 #, python-format
 msgid "See also: <a href=\"%(lang_prefix)s/about\">About Scholarly Search</a>"
 msgstr ""
+"Δείτε επίσης:<a href=\"%(lang_prefix)s/about\">Σχετικά με την Αναζήτηση "
+"Ακαδημαϊκών</a>"
 
 #: fatcat_scholar/templates/help.html:25
 msgid ""
@@ -423,6 +442,11 @@ msgid ""
 "sciences, humanities, biomedicine, art, history, industrial research, "
 "government reports, and more."
 msgstr ""
+"Η υπηρεσία παρέχει<a href=\"https://en.wikipedia.org/wiki/Full-text_search\""
+">αναζήτηση πλήρους κειμένου</a> σε δημοσιευμένες έρευνες αρχειοθετημένες "
+"στις διάφορες συλλογές του Αρχείου του Διαδικτύου. Αυτό περιλαμβάνει "
+"περιεχόμενο φυσικών επιστημών, ανθρωπιστικών επιστημών, βιοϊατρικό, τέχνης, "
+"ιστορικό, βιομηχανικής έρευνας, κυβερνητικών αναφορών κ.ά."
 
 #: fatcat_scholar/templates/help.html:26
 msgid ""
@@ -430,6 +454,9 @@ msgid ""
 "access is to a \"pre-print\" or other version of the work, and this is "
 "indicated in the search results."
 msgstr ""
+"Πρόσβαση αναγνωστών στο περιεχόμενο παρέχεται όποτε είναι δυνατόν. Κάποιες "
+"φορές αυτή η πρόβαση είναι σε μια «προτύπωση» ή άλλη έκδοση του έργου και "
+"αυτό επισημαίνεται στα αποτελέσματα αναζήτησης."
 
 #: fatcat_scholar/templates/help.html:28
 msgid ""
@@ -437,6 +464,10 @@ msgid ""
 "there is only a bibliographic catalog entry. It may still be possible to "
 "obtain access through a public library or from the publisher directly."
 msgstr ""
+"Σε άλλες περιπτώσεις, ανάλογα με τα φίλτρα αναζήτησης, τα αποτελέσματα "
+"περιλαμβάνονται μόνο γι' αυτά που έχουν καταχώριση βιβλιογραφικού καταλόγου. "
+"Μπορεί ακόμα να είναι δυνατόν να αποκτηθεί πρόσβαση διά δημοσίας βιβλιοθήκης "
+"ή από τον εκδότη ευθέως."
 
 #: fatcat_scholar/templates/help.html:30
 msgid "Query Syntax"
@@ -452,6 +483,13 @@ msgid ""
 "<code>journal:Science</code>, set filters like <code>lang:de</code>, and\n"
 "apply range queries like <code>year:&gt;1989 year:&lt;2000</code>."
 msgstr ""
+"Επιπροσθέτως με το βασικό φιλτράρισμα και τις επιλογές ταξινόμησης, αυτό το "
+"σύστημα διεπαφής αναζήτησης επίσης σας επιτρέπει την χρήση σύνταξης "
+"ερωτήματος Λουσήν (Lucene) στο πεδίο αναζήτησης. Μπορείτε να περιορίσετε "
+"όρους-ερωτήματα σε πολλαπλά πεδία μεταδεδομένων χρησιμοποιώντας προτάσεις "
+"άνω και κάτω τελειών όπως <code>journal:Science:</code>, την ρύθμιση φίλτρων "
+"όπως <code>lang:gr</code> και την εφαρμογή κυμαινόμενων ερωτημάτων όπως "
+"<code>year:&gt;1989 year:&lt;200</code>."
 
 #: fatcat_scholar/templates/help.html:38
 msgid ""
@@ -459,32 +497,39 @@ msgid ""
 "some point advanced users may run into limits on the size or complexity of "
 "queries."
 msgstr ""
+"Παρότι αυτή η σύνταξη επιτρέπει σχετικά περίπλοκες και ισχυρές ερωτήσεις, σε "
+"κάποιο σημείο οι προχωρημένοι χρήστες ίσως να έρθουν αντιμέτωποι με όρια "
+"μεγέθους και πολυπλοκότητας των ερωτημάτων."
 
 #: fatcat_scholar/templates/help.html:40
 msgid ""
 "For the time being we recommend systems like <a href=\"https://lens.org"
 "\">lens.org</a> for a more powerful interface."
 msgstr ""
+"Προς το παρόν συστήνουμε συστήματα όπως το<a href=\"https://lens.org\">lens."
+"org</a> για μία πιο δυνατή διεπαφή."
 
 #: fatcat_scholar/templates/help.html:43
 msgid "Example Queries"
-msgstr "Παράδειγμα ερωτημάτων"
+msgstr "Παραδειγματικά Ερωτήματα"
 
 #: fatcat_scholar/templates/help.html:45
 msgid "Search for digitized pages about a topic from specific years:"
 msgstr ""
+"Αναζήτηση για ψηφιοποιημένες σελίδες σχετικά με ένα θέμα εντός συγκεκριμένων "
+"ετών:"
 
 #: fatcat_scholar/templates/help.html:49
 msgid "Search for papers in Chinese matching a term:"
-msgstr ""
+msgstr "Αναζήτηση για έγγραφα στα Κινέζικα που ταιριάζουν με τον όρο:"
 
 #: fatcat_scholar/templates/help.html:53
 msgid "Conference papers with an author name query:"
-msgstr "Εργασίες συνεδρίων με αναζήτηση ονόματος συγγραφέα:"
+msgstr "Έγγραφα συνεδρίων με ένα ερώτημα ονόματος συγγραφέως:"
 
 #: fatcat_scholar/templates/help.html:57
 msgid "Citation Queries"
-msgstr "Ερωτήσεις παραπομπών"
+msgstr "Παραπεμπτικά Ερωτήματα"
 
 #: fatcat_scholar/templates/help.html:58
 msgid ""
@@ -493,10 +538,15 @@ msgid ""
 "attempt to parse the citation and do a match against our catalog of known "
 "works. When this happens, any filters are ignored."
 msgstr ""
+"Ως ένα πειραματικό χαρακτηριστικό, αν το ερώτημα της αναζήτησης «μοιάζει» με "
+"μια επίσημη παραπομπή, όπως βρίσκεται στην βιβλιογραφία ενός εγγράφου "
+"έρευνας, η υπηρεσία θα επιχειρήσει να αναλύσει την παραπομπή και να "
+"πραγματοποιήσει την αντιστοίχιση έναντι του καταλόγου μας γνωστών έργων. "
+"Όταν συμβαίνει αυτό, όποια φίλτρα υπάρχουν αγνοούνται."
 
 #: fatcat_scholar/templates/help.html:62
 msgid "Metadata Fields"
-msgstr "Πεδία μεταδεδομένων"
+msgstr "Πεδία Μεταδεδομένων"
 
 #: fatcat_scholar/templates/help.html:64
 msgid ""
@@ -504,6 +554,9 @@ msgid ""
 "<code>doi:*</code>, and negate any term like <code>!type:article-journal</"
 "code>."
 msgstr ""
+"Μπορείτε να περιοριστείτε σε καταχωρήσεις όπου το πεδίο υπάρχει με έναν "
+"αστερίσκο κάνοντας π.χ. <code>doi:*</code> και να ανατρέψετε οποιονδήποτε "
+"όρο κάνοντας π.χ. <code>!type:article-journal</code>."
 
 #: fatcat_scholar/templates/help.html:66
 msgid ""
@@ -512,6 +565,10 @@ msgid ""
 "string-query.html#query-string-query-notes\">from the Elasticsearch project</"
 "a>."
 msgstr ""
+"Αναλυτικές οδηγίες της σύνταξης των ερωτημάτων είναι διαθέσιμη <a href="
+"\"https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-"
+"query-string-query.html#query-string-query-notes\">από το έργο Ελάστικσερτς "
+"(Elasticsearch)</a>."
 
 #: fatcat_scholar/templates/help.html:68
 msgid ""
@@ -519,6 +576,9 @@ msgid ""
 "\"https://github.com/internetarchive/fatcat-scholar/blob/master/schema/"
 "scholar_fulltext.v01.json\">in the source code</a>."
 msgstr ""
+"Το πλήρες τρέχον σχήμα εγγράφου αναζήτησης είναι διαθέσιμο (ως JSON) <a href="
+"\"https://github.com/internetarchive/fatcat-scholar/blob/master/schema/"
+"scholar_fulltext.v01.json\"> στον πηγαίο κώδικα</a>."
 
 #: fatcat_scholar/templates/help.html:105
 msgid "Search Results"
@@ -526,13 +586,15 @@ msgstr "Αποτελέσματα Αναζήτησης"
 
 #: fatcat_scholar/templates/help.html:108
 msgid "Access Links"
-msgstr "Σύνδεσμοι πρόσβασης"
+msgstr "Σύνδεσμοι Πρόσβασης"
 
 #: fatcat_scholar/templates/help.html:118
 msgid ""
 "All Internet Archive preservation copy links have the same style and icon. "
 "Content from the Wayback Machine looks like this."
 msgstr ""
+"Όλοι οι διατηρητέοι σύνδεσμοι αντιγραφής του Αρχείου του Διαδικτύου έχουν το "
+"ίδιο ύφος και εικονίδιο. Περιεχόμενο από τη Μηχανή Γουέιμπακ μοιάζει έτσι."
 
 #: fatcat_scholar/templates/help.html:122
 msgid ""
@@ -540,6 +602,10 @@ msgid ""
 "other alternative version of the work, the access link has an indicator. You "
 "can get details and view all versions by clicking on the primary title link"
 msgstr ""
+"Εάν το διατηρητέο αντίγραφο του έργου είναι από μία προτύπωση, ένα "
+"χειρόγραφο συγγραφέως, ή άλλης εναλλακτικής έκδοσης του έργου, ο σύνδεσμος "
+"πρόσβασης έχει έναν δείκτη. Μπορείτε να δείτε λεπτομέρειες και να προβάλετε "
+"όλες τις εκδόσεις πατώντας στον πρωτεύοντα τίτλο-σύνδεσμο"
 
 #: fatcat_scholar/templates/help.html:126
 msgid ""
@@ -547,12 +613,17 @@ msgid ""
 "stored in general Internet Archive digital collections (as opposed to the "
 "web archive)"
 msgstr ""
+"Κάποιο διατηρητέο περιεχόμενο, ιδιαίτερα παλιότερα έργα κοινού κτήματος, "
+"μπορεί να είναι αποθηκευμένα σε γενικές ψηφιακές συλλογές του Αρχείου του "
+"Διαδικτύου (σε αντίθεση με το αρχείο του ιστού)"
 
 #: fatcat_scholar/templates/help.html:130
 msgid ""
 "Digitized copies of works on microfilm may be linked to experimentally. "
 "Access may be limited to controlled lending"
 msgstr ""
+"Ψηφιοποιημένα αντίγραφα έργων σε μικροταινία μπορεί να είναι συνδεδεμένο στα "
+"πειραματικά. Η πρόσβαση μπορεί να είναι περιορισμένη σε ελεγχόμενο δανεισμό"
 
 #: fatcat_scholar/templates/help.html:134
 msgid ""
@@ -560,6 +631,9 @@ msgid ""
 "record\" of a research publication, but content is not always accessible to "
 "the general public"
 msgstr ""
+"Μια σελίδα προορισμού εκδότη είναι η αξιόπιστη πηγή για την «έκδοση της "
+"καταχώρισης» μιας δημοσίευσης έρευνας, αλλά το περιεχόμενο μπορεί να μην "
+"είναι πάντα προσβάσιμο στο ευρύ κοινό"
 
 #: fatcat_scholar/templates/help.html:138
 msgid ""
