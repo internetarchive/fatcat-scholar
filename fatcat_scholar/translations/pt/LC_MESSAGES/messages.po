@@ -7,10 +7,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-11-12 18:07-0800\n"
-"PO-Revision-Date: 2021-05-11 06:32+0000\n"
-"Last-Translator: ssantos <ssantos@web.de>\n"
+"PO-Revision-Date: 2021-11-15 21:35+0000\n"
+"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/"
 "internetarchive/fatcat-scholar/pt/>\n"
 "Language: pt\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.7-dev\n"
+"X-Generator: Weblate 4.9.1-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 #: fatcat_scholar/search.py:45
@@ -59,7 +59,7 @@ msgstr "Relatórios"
 
 #: fatcat_scholar/search.py:63
 msgid "Datasets"
-msgstr "Datasets"
+msgstr "Sets de dados"
 
 #: fatcat_scholar/search.py:64
 msgid "Everything"
@@ -254,7 +254,7 @@ msgstr "Há um canal de chat público em <a href=\"%(url)s\">%(url)s</a>."
 
 #: fatcat_scholar/templates/about.html:57
 msgid "Support and Acknowledgements"
-msgstr ""
+msgstr "Suporte e Reconhecimentos"
 
 #: fatcat_scholar/templates/about.html:60
 #, python-format
@@ -906,8 +906,8 @@ msgstr "Filtros"
 #: fatcat_scholar/templates/search.html:77
 msgid "Hit"
 msgid_plural "Hits"
-msgstr[0] "Acesse"
-msgstr[1] ""
+msgstr[0] "Resultado"
+msgstr[1] "Resultados"
 
 #: fatcat_scholar/templates/search.html:53
 #: fatcat_scholar/templates/search.html:85
