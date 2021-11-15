@@ -7,10 +7,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-11-12 18:07-0800\n"
-"PO-Revision-Date: 2021-11-12 17:52+0000\n"
-"Last-Translator: Milo Ivir <mail@milotype.de>\n"
+"PO-Revision-Date: 2021-11-15 21:35+0000\n"
+"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/hr/>\n"
 "Language: hr\n"
@@ -271,17 +271,12 @@ msgstr ""
 "\">izvornu najavu</a>)."
 
 #: fatcat_scholar/templates/about.html:62
-#, fuzzy, python-format
-#| msgid ""
-#| "\n"
-#| "See additional acknowledgements on <a href=\"%(fatcat_url)s\">fatcat."
-#| "wiki</a>.\n"
+#, python-format
 msgid ""
 "See additional acknowledgements on <a href=\"%(fatcat_url)s\">fatcat.wiki</"
 "a>."
 msgstr ""
-"\n"
-"Pogledaj dodatna priznanja na <a href=\"%(fatcat_url)s\">fatcat.wiki</a>.\n"
+"Pogledaj dodatna priznanja na <a href=\"%(fatcat_url)s\">fatcat.wiki</a>."
 
 #: fatcat_scholar/templates/access_404.html:10
 msgid "404: Access Location Not Found"
