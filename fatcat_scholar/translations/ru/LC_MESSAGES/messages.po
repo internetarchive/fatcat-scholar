@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-11-12 18:07-0800\n"
-"PO-Revision-Date: 2021-11-15 21:35+0000\n"
-"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"PO-Revision-Date: 2021-11-17 20:52+0000\n"
+"Last-Translator: Artem <Localizer_in_Russian@protonmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/ru/>\n"
 "Language: ru\n"
@@ -654,7 +654,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:148
 msgid "Tags"
-msgstr ""
+msgstr "Теги"
 
 #: fatcat_scholar/templates/help.html:150
 msgid ""
@@ -746,7 +746,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:198
 msgid "Persistent Identifiers"
-msgstr ""
+msgstr "Постоянные идентификаторы"
 
 #: fatcat_scholar/templates/help.html:200
 msgid ""
