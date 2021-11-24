@@ -24,7 +24,7 @@ pytype: ## Run slow pytype type check (not part of dev deps)
 	pipenv run pytype fatcat_scholar/
 
 .PHONY: fmt
-fmt: ## Run code formating on all source code
+fmt: ## Run code formatting on all source code
 	pipenv run isort --atomic fatcat_scholar/ tests/
 	pipenv run black --line-length 88 fatcat_scholar/ tests/
 

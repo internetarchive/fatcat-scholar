@@ -530,7 +530,7 @@ app.include_router(web)
 for lang_option in I18N_LANG_OPTIONS:
     app.include_router(web, prefix=f"/{lang_option}")
 
-# Becasue we are mounting 'api' after 'web', the web routes will take
+# Because we are mounting 'api' after 'web', the web routes will take
 # precedence. Requests get passed through the API handlers based on content
 # negotiation. This is counter-intuitive here in the code, but does seem to
 # work, and results in the OpenAPI docs looking correct.

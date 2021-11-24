@@ -411,7 +411,7 @@ with highlighter. to allow query and highlight fields to be separate? or
 perhaps even a separate highlighter query. query "everything", highlight
 specific fields.
 
-scoring/boosting large reponses (more than a few hundred thousand hits) seems
+scoring/boosting large responses (more than a few hundred thousand hits) seems
 expensive. this include the trivial '*' query.
 
 some fulltext phrase queries seem to always be expensive. look in to phrase
@@ -699,7 +699,7 @@ encoding:
     xml.etree.ElementTree.ParseError: not well-formed (invalid token): line 40, column 1122
 
 Root cause was an issue in GROBID, which seems to have been fixed in more
-recent versions of GROBID. Patched to continue, and separately commited patch
+recent versions of GROBID. Patched to continue, and separately committed patch
 to fatcat-scholar code base.
 
 Ran several retries, manually.

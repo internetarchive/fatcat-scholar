@@ -93,7 +93,7 @@ def fuzzy_match(
     - WEAK
     - AMBIGUOUS
 
-    Eg, if there is any EXACT match that is always returned; an AMBIGIOUS
+    Eg, if there is any EXACT match that is always returned; an AMBIGUOUS
     result is only returned if all the candidate matches were ambiguous.
 
     TODO: actually do something with timeout
