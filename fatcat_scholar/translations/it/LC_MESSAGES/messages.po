@@ -7,13 +7,14 @@
 # Alessandro Mandelli <mandelli.alessandro@ngi.it>, 2021.
 # J. Lavoie <j.lavoie@net-c.ca>, 2021.
 # Mauro Piccotti <mauro.piccotti@gmail.com>, 2021.
+# Alfonso Scarpino <alfonso.scarpino@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2021-11-12 18:07-0800\n"
-"PO-Revision-Date: 2021-09-27 14:50+0000\n"
-"Last-Translator: Mauro Piccotti <mauro.piccotti@gmail.com>\n"
+"PO-Revision-Date: 2021-11-27 15:52+0000\n"
+"Last-Translator: Alfonso Scarpino <alfonso.scarpino@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/it/>\n"
 "Language: it\n"
@@ -21,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.9-dev\n"
+"X-Generator: Weblate 4.10-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 #: fatcat_scholar/search.py:45
@@ -256,7 +257,7 @@ msgstr "C'è chat pubblica su <a href=\"%(url)s\">%(url)s</a>."
 
 #: fatcat_scholar/templates/about.html:57
 msgid "Support and Acknowledgements"
-msgstr ""
+msgstr "Supporto e riconoscimenti"
 
 #: fatcat_scholar/templates/about.html:60
 #, python-format
@@ -266,6 +267,10 @@ msgid ""
 "\"Ensuring the Persistent Access of Open Access Journal Literature\"</a> "
 "project (see <a href=\"%(blog_url)s\">original announcement</a>)."
 msgstr ""
+"Il lavoro su Internet Archive Scholar ha ricevuto il supporto della Andrew "
+"W. Mellon Foundation attraverso più fasi del progetto <a href=\"%(grant_url)"
+"s\">\"Ensuring the Persistent Access of Open Access Journal Literature\"</a> "
+"(vedi <a href=\"%(blog_url)s\">annuncio originale</a>)."
 
 #: fatcat_scholar/templates/about.html:62
 #, python-format
@@ -273,47 +278,54 @@ msgid ""
 "See additional acknowledgements on <a href=\"%(fatcat_url)s\">fatcat.wiki</"
 "a>."
 msgstr ""
+"Vedi ulteriori riconoscimenti su <a href=\"%(fatcat_url)s\">fatcat.wiki</a>."
 
 #: fatcat_scholar/templates/access_404.html:10
 msgid "404: Access Location Not Found"
-msgstr ""
+msgstr "404: Posizione di accesso non trovata"
 
 #: fatcat_scholar/templates/access_404.html:11
 msgid ""
 "We could not find a valid redirect for the URL you tried. Sorry about that!"
 msgstr ""
+"Non abbiamo trovato un reindirizzamento valido per l'URL che hai provato. Ci "
+"dispiace!"
 
 #: fatcat_scholar/templates/access_404.html:12
 msgid ""
 "There may be a typo, truncation, or encoding error. Or, the resource may "
 "have been removed from our catalog."
 msgstr ""
+"Potrebbe esserci un errore di battitura, troncamento o codifica. In "
+"alternativa, la risorsa potrebbe essere stata rimossa dal nostro catalogo."
 
 #: fatcat_scholar/templates/access_404.html:13
 msgid ""
 "Some places you can visit try to hunt down this resource (or a replacement) "
 "include:"
 msgstr ""
+"Alcuni posti che puoi visitare per cercare di trovare questa risorsa (o un "
+"sostituto) includono:"
 
 #: fatcat_scholar/templates/access_404.html:16
 msgid "Original web url:"
-msgstr ""
+msgstr "URL web originale:"
 
 #: fatcat_scholar/templates/access_404.html:20
 msgid "Wayback Machine calendar page (all captures)"
-msgstr ""
+msgstr "Pagina del calendario di Wayback Machine (tutte le acquisizioni)"
 
 #: fatcat_scholar/templates/access_404.html:23
 msgid "archive.org download link for the item:"
-msgstr ""
+msgstr "link di download di archive.org per l'elemento:"
 
 #: fatcat_scholar/templates/access_404.html:29
 msgid "Scholar landing page"
-msgstr ""
+msgstr "Pagina di destinazione di Scholar"
 
 #: fatcat_scholar/templates/access_404.html:30
 msgid "Fatcat catalog page"
-msgstr ""
+msgstr "Pagina del catalogo Fatcat"
 
 #: fatcat_scholar/templates/base.html:13
 msgid "Internet Archive Scholar"
@@ -661,7 +673,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:148
 msgid "Tags"
-msgstr ""
+msgstr "Tag"
 
 #: fatcat_scholar/templates/help.html:150
 msgid ""
@@ -754,7 +766,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:198
 msgid "Persistent Identifiers"
-msgstr ""
+msgstr "Identificatori persistenti"
 
 #: fatcat_scholar/templates/help.html:200
 msgid ""
