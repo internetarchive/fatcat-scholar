@@ -525,7 +525,7 @@ def es_biblio_from_release(release: ReleaseEntity) -> ScholarBiblio:
     if release.container:
         publisher = release.publisher or release.container.publisher
         container_name = container_name or release.container.name
-        container_ident = release.container.ident
+        container_ident = release.container.redirect or release.container.ident
         container_type = release.container.container_type
         container_issnl = release.container.issnl
         issns = []
@@ -625,7 +625,7 @@ def es_release_from_release(release: ReleaseEntity) -> ScholarRelease:
 
     if release.container:
         container_name = release.container.name
-        container_ident = release.container.ident
+        container_ident = release.container.redirect or release.container.ident
         container_issnl = release.container.issnl
         container_type = release.container.container_type
     else:

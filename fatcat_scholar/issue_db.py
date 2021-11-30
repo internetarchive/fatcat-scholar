@@ -274,7 +274,7 @@ class IssueDB:
                 pub_type=meta.get("pub_type"),
                 publisher=meta.get("publisher"),
                 container_issnl=container and container.issnl,
-                container_ident=container and container.ident,
+                container_ident=container and (container.redirect or container.ident),
                 wikidata_qid=container and container.wikidata_qid,
             )
             if isinstance(row.publisher, list):
