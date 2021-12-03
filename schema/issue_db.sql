@@ -26,10 +26,10 @@ CREATE TABLE IF NOT EXISTS sim_issue (
 -- intent here is to capture how many releases are just not getting matched due
 -- to missing issue metadata
 CREATE TABLE IF NOT EXISTS release_counts (
-    sim_pubid TEXT NOT NULL PRIMARY KEY,
-    year TEXT,
-    volume TEXT,
-    year_in_sim BOOLEAN,
-    release_count INTEGER,
+    sim_pubid TEXT NOT NULL,
+    year TEXT NOT NULL,
+    volume TEXT NOT NULL,
+    release_count INTEGER NOT NULL,
+    PRIMARY KEY(sim_pubid, year, volume),
     FOREIGN KEY(sim_pubid) REFERENCES sim_pub(sim_pubid)
 );

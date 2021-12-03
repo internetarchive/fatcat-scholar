@@ -99,7 +99,6 @@ class SimIssueRow:
 @dataclass
 class ReleaseCountsRow:
     sim_pubid: str
-    year_in_sim: bool
     release_count: int
     year: Optional[int]
     volume: Optional[str]
@@ -109,7 +108,6 @@ class ReleaseCountsRow:
             self.sim_pubid,
             self.year,
             self.volume,
-            self.year_in_sim,
             self.release_count,
         )
 
@@ -190,7 +188,7 @@ class IssueDB:
         if not cur:
             cur = self.db.cursor()
         cur.execute(
-            "INSERT OR REPLACE INTO release_counts VALUES (?,?,?,?,?)", counts.tuple()
+            "INSERT OR REPLACE INTO release_counts VALUES (?,?,?,?)", counts.tuple()
         )
 
     def pubid2container(self, sim_pubid: str) -> Optional[str]:
@@ -368,7 +366,6 @@ class IssueDB:
             for agg in aggs:
                 row = ReleaseCountsRow(
                     sim_pubid=sim_pubid,
-                    year_in_sim=False,  # TODO
                     release_count=agg["count"],
                     year=agg["year"],
                     volume=agg["volume"],
