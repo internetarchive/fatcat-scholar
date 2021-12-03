@@ -74,20 +74,20 @@ recompile-i18n: extract-i18n  ## Re-extract and compile all translation files (b
 
 data/$(TODAY)/sim_collections.tsv:
 	mkdir -p data/$(TODAY)
-	pipenv run ia search "collection:periodicals collection:sim_microfilm mediatype:collection" --itemlist | rg "^pub_" > $@.wip
+	pipenv run ia search 'collection:periodicals collection:sim_microfilm mediatype:collection (pub_type:"Scholarly Journals" OR pub_type:"Historical Journals" OR pub_type:"Law Journals")' --itemlist | rg "^pub_" | pv -l > $@.wip
 	mv $@.wip $@
 
 data/$(TODAY)/sim_items.tsv:
 	mkdir -p data/$(TODAY)
-	pipenv run ia search "collection:periodicals collection:sim_microfilm mediatype:texts !noindex:true !pub_type:Magazines" --itemlist | rg "^sim_" | pv -l > $@.wip
+	pipenv run ia search 'collection:periodicals collection:sim_microfilm mediatype:texts !noindex:true (pub_type:"Scholarly Journals" OR pub_type:"Historical Journals" OR pub_type:"Law Journals")' --itemlist | rg "^sim_" | pv -l > $@.wip
 	mv $@.wip $@
 
 data/$(TODAY)/sim_collections.json: data/$(TODAY)/sim_collections.tsv
-	cat data/$(TODAY)/sim_collections.tsv | pipenv run parallel -j4 ia metadata {} | jq . -c | pv -l > $@.wip
+	cat data/$(TODAY)/sim_collections.tsv | pipenv run parallel -j20 ia metadata {} | jq . -c | pv -l > $@.wip
 	mv $@.wip $@
 
 data/$(TODAY)/sim_items.json: data/$(TODAY)/sim_items.tsv
-	cat data/$(TODAY)/sim_items.tsv | pipenv run parallel -j8 ia metadata {} | jq -c 'del(.histograms, .rotations)' | pv -l > $@.wip
+	cat data/$(TODAY)/sim_items.tsv | pipenv run parallel -j20 ia metadata {} | jq -c 'del(.histograms, .rotations)' | pv -l > $@.wip
 	mv $@.wip $@
 
 data/$(TODAY)/issue_db.sqlite: data/$(TODAY)/sim_collections.json data/$(TODAY)/sim_items.json
