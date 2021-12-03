@@ -260,7 +260,7 @@ class IssueDB:
             container: Optional[fatcat_openapi_client.ContainerEntity] = None
             if meta.get("issn") and len(meta["issn"]) == 9:
                 try:
-                    container = api.lookup_container(issnl=meta["issn"])
+                    container = api.lookup_container(issn=meta["issn"])
                 except fatcat_openapi_client.ApiException as ae:
                     if ae.status != 404:
                         raise ae
