@@ -162,7 +162,7 @@ class SimPipeline:
         self.issue_db.db.row_factory = sqlite3.Row
         cur = self.issue_db.db.cursor()
         for row in cur.execute(
-            "SELECT * FROM sim_issue LEFT JOIN sim_pub ON sim_issue.sim_pubid = sim_pub.sim_pubid WHERE sim_issue.release_count < 3"
+            "SELECT * FROM sim_issue LEFT JOIN sim_pub ON sim_issue.sim_pubid = sim_pub.sim_pubid WHERE sim_issue.release_count < 3 sim_issue.release_count IS NULL"
         ):
             if should_skip_item(row["issue_item"]):
                 continue
@@ -199,7 +199,7 @@ class SimPipeline:
         self.issue_db.db.row_factory = sqlite3.Row
         cur = self.issue_db.db.cursor()
         for row in cur.execute(
-            f"SELECT * FROM sim_issue LEFT JOIN sim_pub ON sim_issue.sim_pubid = sim_pub.sim_pubid WHERE sim_issue.release_count < {max_release_count}"
+            f"SELECT * FROM sim_issue LEFT JOIN sim_pub ON sim_issue.sim_pubid = sim_pub.sim_pubid WHERE sim_issue.release_count < {max_release_count} OR sim_issue.release_count IS NULL"
         ):
             if should_skip_item(row["issue_item"]):
                 continue
