@@ -23,6 +23,7 @@ def truncate_pub_meta(full: Dict[str, Any]) -> Dict[str, Any]:
     """
     full.pop("files")
     if "ulrichs" in full and full["ulrichs"]:
+        full["ulrichs"] = [full["ulrichs"][0],]
         full["ulrichs"][0].pop("reviews_mfl")
         full["ulrichs"][0].pop("editorial_description")
 
