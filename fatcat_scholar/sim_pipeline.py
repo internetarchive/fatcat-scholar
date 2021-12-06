@@ -44,6 +44,22 @@ def truncate_issue_meta(full: Dict[str, Any]) -> Dict[str, Any]:
     return full
 
 
+def should_skip_item(item_name: str) -> bool:
+    for suffix in [
+        "_contents",
+        "_contents_0",
+        "_index",
+        "_index_0",
+        "_index_1",
+        "_cumulative-index",
+        "_index-contents",
+        "_table-of-contents",
+    ]:
+        if item_name.endswith(suffix):
+            return True
+    return False
+
+
 class SimPipeline:
     def __init__(self, issue_db: IssueDB):
         self.issue_db: IssueDB = issue_db
@@ -68,7 +84,7 @@ class SimPipeline:
         leaf_index = dict()
         leaf_list = []
         if "page_numbers" not in issue_meta:
-            # TODO: warn
+            print(f"issue without page_numbers: {issue_item}", file=sys.stderr)
             return None
         for entry in issue_meta["page_numbers"].get("pages", []):
             page_num = entry["pageNumber"]
@@ -79,6 +95,7 @@ class SimPipeline:
             leaf_list.append(entry["leafNum"])
 
         if not leaf_list:
+            print(f"issue without leaf numbers: {issue_item}", file=sys.stderr)
             return None
 
         page_texts: List[Dict[str, Any]] = []
@@ -147,12 +164,9 @@ class SimPipeline:
         for row in cur.execute(
             "SELECT * FROM sim_issue LEFT JOIN sim_pub ON sim_issue.sim_pubid = sim_pub.sim_pubid WHERE sim_issue.release_count < 3"
         ):
-            # filter out "contents" and "index" items
-            # TODO: more filters; also redundant with IssueDB code?
-            if row["issue_item"].endswith("_contents") or row["issue_item"].endswith(
-                "_index"
-            ):
+            if should_skip_item(row["issue_item"]):
                 continue
+
             try:
                 full_issue = self.fetch_sim_issue(
                     row["issue_item"], row["pub_collection"]
@@ -187,11 +201,7 @@ class SimPipeline:
         for row in cur.execute(
             f"SELECT * FROM sim_issue LEFT JOIN sim_pub ON sim_issue.sim_pubid = sim_pub.sim_pubid WHERE sim_issue.release_count < {max_release_count}"
         ):
-            # filter out "contents" and "index" items
-            # TODO: more filters; also redundant with IssueDB code?
-            if row["issue_item"].endswith("_contents") or row["issue_item"].endswith(
-                "_index"
-            ):
+            if should_skip_item(row["issue_item"]):
                 continue
             print(f"{row['issue_item']}\t{row['pub_collection']}")
 
