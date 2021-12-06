@@ -213,10 +213,13 @@ class SimPipeline:
         """
         try:
             full_issue = self.fetch_sim_issue(issue_item, pub_collection)
-        except requests.exceptions.ConnectionError as e:
-            print(str(e), file=sys.stderr)
-            return
-        except requests.exceptions.ReadTimeout as e:
+        except (
+            requests.exceptions.ConnectionError,
+            requests.exceptions.Timeout,
+            requests.exceptions.RetryError,
+            requests.exceptions.ChunkedEncodingError,
+            urllib3.exceptions.MaxRetryError,
+        ) as e:
             print(str(e), file=sys.stderr)
             return
         except requests.exceptions.ChunkedEncodingError as e:

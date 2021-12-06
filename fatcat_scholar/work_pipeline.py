@@ -412,13 +412,11 @@ class WorkPipeline:
                 sim_fulltext = self.fetch_sim(
                     sim_issue, sim_pub, release.pages, release.ident
                 )
-            except requests.exceptions.ConnectionError as e:
-                print(str(e), file=sys.stderr)
-                continue
-            except requests.exceptions.ReadTimeout as e:
-                print(str(e), file=sys.stderr)
-                continue
-            except requests.exceptions.ChunkedEncodingError as e:
+            except (
+                requests.exceptions.ConnectionError,
+                requests.exceptions.ReadTimeout,
+                requests.exceptions.ChunkedEncodingError,
+            ) as e:
                 print(str(e), file=sys.stderr)
                 continue
             if sim_fulltext:
