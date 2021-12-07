@@ -276,13 +276,14 @@ class WorkPipeline:
             # if this is definitely a Datacite or JALC DOI, can skip the Crossref cache lookup
             return None
         doi = re.ext_ids.doi.lower()
-        crossref_meta = self.sandcrawler_db_client.get_crossref(doi)
+        crossref_meta = self.sandcrawler_db_client.get_crossref_with_refs(doi)
         if not crossref_meta or not crossref_meta.get("record"):
             return None
         return dict(
             release_ident=re.ident,
             doi=doi,
             record=crossref_meta["record"],
+            grobid_refs=crossref_meta["refs_json"] or [],
         )
 
     def lookup_sim(self, release: ReleaseEntity) -> Optional[SimIssueRow]:
