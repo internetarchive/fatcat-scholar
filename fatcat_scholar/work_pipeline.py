@@ -19,11 +19,20 @@ from fatcat_scholar.sandcrawler import (
     SandcrawlerMinioClient,
     SandcrawlerPostgrestClient,
 )
-from fatcat_scholar.schema import DocType, IntermediateBundle
+from fatcat_scholar.schema import DocType, IntermediateBundle, clean_str
 from fatcat_scholar.sim_pipeline import truncate_issue_meta, truncate_pub_meta
 
 
 def parse_pages(raw: str) -> Tuple[Optional[int], Optional[int]]:
+    """
+    Takes a string representing page numbers, and tries to turn it into a span
+    of page numbers as integers.
+
+    Handles common syntax like "466-7" to mean "466 to 467".
+
+    If there is only a single page number, returns the first page as the last
+    page as well.
+    """
     first_raw = raw.split("-")[0]
     if not first_raw.isdigit():
         return (None, None)
@@ -228,11 +237,13 @@ class WorkPipeline:
         Fetches (cached) crossref metadata JSON from sandcrawler-db via
         postgrest HTTP interface.
 
-        Returns a JSON object on success, or None if not found.
+        Returns a dict object on success, or None if not found.
 
-        release_ident: Optional[str]
-        doi: Optional[str]
-        record: Optional[str]
+        Dict keys:
+
+            release_ident: Optional[str]
+            doi: Optional[str]
+            record: Optional[str]
         """
         if not re.ext_ids.doi:
             # can't do lookup without a DOI
@@ -280,15 +291,19 @@ class WorkPipeline:
         release_ident: str,
     ) -> Optional[Any]:
         """
-        issue_item
-        pages: str
-        page_texts: list
-            page_num
-            leaf_num
-            raw_text
-        release_ident: Optional[str]
-        pub_item_metadata
-        issue_item_metadata
+        Returns a dict with keys:
+
+            issue_item
+            pages: str
+            page_texts: list
+                page_num
+                leaf_num
+                raw_text
+            release_ident: Optional[str]
+            pub_item_metadata
+            issue_item_metadata
+
+        Or None if not found.
         """
 
         first_page, last_page = parse_pages(pages)
