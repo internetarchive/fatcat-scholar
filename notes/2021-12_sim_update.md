@@ -316,4 +316,8 @@ Ok, start the dump again:
         | pv -l \
         | pigz \
         > /kubwa/scholar/2021-12-01/sim_intermediate.2021-12-01.json.gz
+    # 43.5M 34:20:45 [ 351 /s]
 
+Huh. Why is this still only 43 out of 75 million pages? Because of blank pages,
+or something else? Should add counters to indexing process, write out a
+per-issue log of counts and status. But good progress for now, I guess.
