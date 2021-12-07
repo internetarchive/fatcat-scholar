@@ -89,6 +89,26 @@ def fulltext_pref_list(releases: List[ReleaseEntity]) -> List[str]:
     return [r.ident for r in releases_sorted]
 
 
+def enrich_release_from_crossref(
+    release: ReleaseEntity, record: Dict[str, Any]
+) -> ReleaseEntity:
+    """
+    Hack to copy some SIM-relevant fields from Crossref record to release entity.
+
+    We should really update fatcat catalog itself with these fields, instead of
+    doing the update here in the scholar pipeline, but that is a more delicate
+    update, and we expect this to help make SIM matches faster (late 2021/early
+    2022).
+    """
+    if release.volume is None and record.get("volume"):
+        release.volume = clean_str(record["volume"])
+    if release.issue is None and record.get("issue"):
+        release.issue = clean_str(record["issue"])
+    if release.pages is None and record.get("pages"):
+        release.pages = clean_str(record["page"])
+    return release
+
+
 class WorkPipeline:
     def __init__(
         self,
@@ -270,10 +290,16 @@ class WorkPipeline:
         Checks in IssueDB to see if this release is likely to have a copy in a
         SIM issue item.
 
-        volume
-        issue
+        Releases must have all of these fields to be considered:
+
+        - container_id
+        - volume
+        - issue
+        - pages
         """
-        if not (release.container_id and release.volume and release.issue):
+        if not (
+            release.container_id and release.volume and release.issue and release.pages
+        ):
             return None
         sim_pubid = self.issue_db.container2pubid(release.container_id)
         if not sim_pubid:
@@ -375,6 +401,19 @@ class WorkPipeline:
 
         # print(f"pref_idents={pref_idents}", file=sys.stderr)
 
+        # lookup best available crossref biblio metadata
+        biblio_crossref = None
+        for ident in pref_idents:
+            release = release_dict[ident]
+            biblio_crossref = self.fetch_crossref(release)
+            if biblio_crossref:
+                assert biblio_crossref["release_ident"] == release.ident == ident
+                # HACK: copy some fields from crossref to release
+                release_dict[ident] = enrich_release_from_crossref(
+                    release, biblio_crossref["record"]
+                )
+                break
+
         # find best accessible fatcat file
         grobid_fulltext: Optional[Any] = None
         pdf_meta: Optional[Any] = None
@@ -422,7 +461,7 @@ class WorkPipeline:
             sim_pub = self.issue_db.lookup_pub(sim_issue.sim_pubid)
             if not sim_pub:
                 continue
-            # XXX: control flow tweak?
+            sim_fulltext = None
             try:
                 sim_fulltext = self.fetch_sim(
                     sim_issue, sim_pub, release.pages, release.ident
@@ -435,14 +474,6 @@ class WorkPipeline:
                 print(str(e), file=sys.stderr)
                 continue
             if sim_fulltext:
-                break
-
-        # lookup best available crossref biblio metadata
-        biblio_crossref = None
-        for ident in pref_idents:
-            release = release_dict[ident]
-            biblio_crossref = self.fetch_crossref(release_dict[pref_idents[0]])
-            if biblio_crossref:
                 break
 
         return IntermediateBundle(
