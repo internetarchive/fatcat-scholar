@@ -697,6 +697,7 @@ def refs_from_grobid(
             if a.full_name:
                 assert isinstance(a.full_name, str)
                 authors.append(a.full_name)
+            # TODO: else wheat?
         ref_index = ref.index
         if ref_index is not None:
             # transform from 0-indexed to 1-indexed
@@ -794,10 +795,57 @@ def refs_from_crossref(
     record = crossref["record"]
     if not record.get("reference"):
         return []
+    grobid_refs = dict()
+    for ref in crossref.get("grobid_refs") or []:
+        # TODO: some kind of check whether we should include this, based on
+        # source date or similar?
+        grobid_refs[ref["id"]] = ref
     output = []
     for i, ref in enumerate(record.get("reference", [])):
-        ref_source = "crossref"
-        authors: Optional[List[str]] = None
+        if ref.get("unstructured") and ref["key"] in grobid_refs:
+            # use the GROBID-parsed ref instead of the crossref ref itself
+            # the schema is that of GrobidBiblio
+            grobid_ref = grobid_refs[ref["key"]]
+            ref_date = grobid_ref.get("date")
+            ref_year: Optional[int] = None
+            if ref_date and len(ref_date) >= 4 and ref_date[:4].isdigit():
+                ref_year = int(ref_date[:4])
+            authors: List[str] = []
+            for a in grobid_ref.get("authors") or []:
+                if a.get("full_name"):
+                    authors.append(a["full_name"])
+            output.append(
+                RefStructured(
+                    biblio=RefBiblio(
+                        title=grobid_ref.get("title"),
+                        # subtitle
+                        contrib_raw_names=authors or None,
+                        year=ref_year,
+                        container_name=grobid_ref.get("journal"),
+                        publisher=grobid_ref.get("publisher"),
+                        volume=grobid_ref.get("volume"),
+                        issue=grobid_ref.get("issue"),
+                        pages=grobid_ref.get("pages"),
+                        doi=clean_doi(grobid_ref.get("doi")),
+                        pmid=grobid_ref.get("pmid"),
+                        pmcid=clean_pmcid(grobid_ref.get("pmcid")),
+                        arxiv_id=grobid_ref.get("arxiv_id"),
+                        url=clean_url_conservative(grobid_ref.get("url")),
+                    ),
+                    release_ident=release.ident,
+                    work_ident=release.work_id,
+                    release_stage=release.release_stage,
+                    release_year=release.release_year,
+                    index=i + 1,  # 1-indexed
+                    key=clean_ref_key(ref.get("key"), doi=record.get("DOI")),
+                    # locator,
+                    target_release_id=None,
+                    ref_source="crossref-grobid",
+                )
+            )
+            continue
+
+        authors = []
         if ref.get("author"):
             authors = [
                 ref["author"],
@@ -838,7 +886,7 @@ def refs_from_crossref(
                     unstructured=ref.get("unstructured"),
                     title=ref_title,
                     subtitle=ref.get("subtitle"),
-                    contrib_raw_names=authors,
+                    contrib_raw_names=authors or None,
                     year=year,
                     container_name=ref_container_name,
                     publisher=ref.get("publisher"),
@@ -857,7 +905,7 @@ def refs_from_crossref(
                 key=clean_ref_key(ref.get("key"), doi=record.get("DOI")),
                 # locator,
                 target_release_id=None,
-                ref_source=ref_source,
+                ref_source="crossref",
             )
         )
     return output
