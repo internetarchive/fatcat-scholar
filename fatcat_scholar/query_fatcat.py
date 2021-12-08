@@ -2,35 +2,12 @@ import argparse
 import json
 import os
 import sys
-from typing import Any, List
+from typing import Any
 
 import elasticsearch
-import requests
 from elasticsearch_dsl import Q, Search
-from requests.adapters import HTTPAdapter
-from requests.packages.urllib3.util.retry import Retry  # pylint: disable=import-error
 
-
-def requests_retry_session(
-    retries: int = 2,
-    backoff_factor: int = 3,
-    status_forcelist: List[int] = [500, 502, 504],
-) -> requests.Session:
-    """
-    From: https://www.peterbe.com/plog/best-practice-with-retries-with-requests
-    """
-    session = requests.Session()
-    retry = Retry(
-        total=retries,
-        read=retries,
-        connect=retries,
-        backoff_factor=backoff_factor,
-        status_forcelist=status_forcelist,
-    )
-    adapter = HTTPAdapter(max_retries=retry)
-    session.mount("http://", adapter)
-    session.mount("https://", adapter)
-    return session
+from fatcat_scholar.sandcrawler import requests_retry_session
 
 
 def run_query_fatcat(query: str, fulltext_only: bool, json_output: Any) -> None:

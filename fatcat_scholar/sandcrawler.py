@@ -1,15 +1,42 @@
-from typing import Any, Dict, Optional
+from typing import Any, Dict, List, Optional
 
 import minio
 import requests
+from requests.adapters import HTTPAdapter
+from requests.packages.urllib3.util.retry import Retry  # pylint: disable=import-error
+
+
+def requests_retry_session(
+    retries: int = 2,
+    backoff_factor: int = 3,
+    status_forcelist: List[int] = [500, 502, 504],
+) -> requests.Session:
+    """
+    From: https://www.peterbe.com/plog/best-practice-with-retries-with-requests
+    """
+    session = requests.Session()
+    retry = Retry(
+        total=retries,
+        read=retries,
+        connect=retries,
+        backoff_factor=backoff_factor,
+        status_forcelist=status_forcelist,
+    )
+    adapter = HTTPAdapter(max_retries=retry)
+    session.mount("http://", adapter)
+    session.mount("https://", adapter)
+    return session
 
 
 class SandcrawlerPostgrestClient:
     def __init__(self, api_url: str):
         self.api_url = api_url
+        self.session = requests_retry_session()
 
     def get_grobid(self, sha1: str) -> Optional[Dict[str, Any]]:
-        resp = requests.get(self.api_url + "/grobid", params=dict(sha1hex="eq." + sha1))
+        resp = self.session.get(
+            self.api_url + "/grobid", params=dict(sha1hex="eq." + sha1)
+        )
         resp.raise_for_status()
         resp_json = resp.json()
         if resp_json:
@@ -18,7 +45,7 @@ class SandcrawlerPostgrestClient:
             return None
 
     def get_pdf_meta(self, sha1: str) -> Optional[Dict[str, Any]]:
-        resp = requests.get(
+        resp = self.session.get(
             self.api_url + "/pdf_meta", params=dict(sha1hex="eq." + sha1)
         )
         resp.raise_for_status()
@@ -29,7 +56,7 @@ class SandcrawlerPostgrestClient:
             return None
 
     def get_html_meta(self, sha1: str) -> Optional[Dict[str, Any]]:
-        resp = requests.get(
+        resp = self.session.get(
             self.api_url + "/html_meta", params=dict(sha1hex="eq." + sha1)
         )
         resp.raise_for_status()
@@ -40,7 +67,7 @@ class SandcrawlerPostgrestClient:
             return None
 
     def get_crossref_with_refs(self, doi: str) -> Optional[Dict[str, Any]]:
-        resp = requests.get(
+        resp = self.session.get(
             self.api_url + "/crossref_with_refs", params=dict(doi="eq." + doi)
         )
         resp.raise_for_status()
