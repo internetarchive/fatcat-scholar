@@ -28,7 +28,7 @@
   font-family: 'Lato';
   font-style: italic;
   font-weight: 400;
-  src: url('font./fonts/lato-v17-latin-italic.eot'); /* IE9 Compat Modes */
+  src: url('./fonts/lato-v17-latin-italic.eot'); /* IE9 Compat Modes */
   src: local('Lato Italic'), local('Lato-Italic'),
        url('./fonts/lato-v17-latin-italic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
        url('./fonts/lato-v17-latin-italic.woff2') format('woff2'), /* Super Modern Browsers */
