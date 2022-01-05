@@ -441,7 +441,7 @@ def check_exclude_web(biblio: ScholarBiblio) -> bool:
     Returns a flag that fulltext web archive options to a work should not be
     linked to from web interface
     """
-    if biblio.release_year and biblio.release_year <= 1925:
+    if biblio.release_year and biblio.release_year <= 1926:
         return False
     if (
         biblio.container_ident

@@ -50,7 +50,7 @@ class FulltextQuery(BaseModel):
             {"label": gettext("Past Week"), "slug": "past_week"},
             {"label": gettext("Past Year"), "slug": "past_year"},
             {"label": gettext("Since 2000"), "slug": "since_2000"},
-            {"label": gettext("Before 1925"), "slug": "before_1925"},
+            {"label": gettext("Before 1927"), "slug": "before_1927"},
         ],
     }
     type_options: Any = {
@@ -198,8 +198,9 @@ def apply_filters(search: Search, query: FulltextQuery) -> Search:
     elif query.filter_time == "since_2000":
         this_year = datetime.date.today().year
         search = search.filter("range", year=dict(gte=2000, lte=this_year))
-    elif query.filter_time == "before_1925":
-        search = search.filter("range", year=dict(lt=1925))
+    elif query.filter_time == "before_1925" or query.filter_time == "before_1927":
+        # 1925 value retained for backwards compatibility in URLs
+        search = search.filter("range", year=dict(lte=1927))
     elif query.filter_time == "all_time" or query.filter_time is None:
         pass
     else:
