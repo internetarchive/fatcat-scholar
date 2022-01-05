@@ -799,7 +799,13 @@ def refs_from_crossref(
     for ref in crossref.get("grobid_refs") or []:
         # TODO: some kind of check whether we should include this, based on
         # source date or similar?
-        grobid_refs[ref["id"]] = ref
+        if ref.get("id"):
+            grobid_refs[ref["id"]] = ref
+        else:
+            print(
+                f"WARN: missing grobid ref for doi:{release.ext_ids.doi}",
+                file=sys.stderr,
+            )
     output = []
     for i, ref in enumerate(record.get("reference", [])):
         if ref.get("unstructured") and ref["key"] in grobid_refs:
