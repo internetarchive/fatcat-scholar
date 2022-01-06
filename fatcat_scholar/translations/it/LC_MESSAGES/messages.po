@@ -11,8 +11,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
-"POT-Creation-Date: 2021-11-12 18:07-0800\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2022-01-05 09:04-0800\n"
 "PO-Revision-Date: 2021-11-27 15:52+0000\n"
 "Last-Translator: Alfonso Scarpino <alfonso.scarpino@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/internetarchive/"
@@ -46,7 +46,9 @@ msgid "Since 2000"
 msgstr "Dal 2000"
 
 #: fatcat_scholar/search.py:53
-msgid "Before 1925"
+#, fuzzy
+#| msgid "Before 1925"
+msgid "Before 1927"
 msgstr "Prima del 1925"
 
 #: fatcat_scholar/search.py:57
@@ -268,8 +270,8 @@ msgid ""
 "project (see <a href=\"%(blog_url)s\">original announcement</a>)."
 msgstr ""
 "Il lavoro su Internet Archive Scholar ha ricevuto il supporto della Andrew "
-"W. Mellon Foundation attraverso più fasi del progetto <a href=\"%(grant_url)"
-"s\">\"Ensuring the Persistent Access of Open Access Journal Literature\"</a> "
+"W. Mellon Foundation attraverso più fasi del progetto <a href=\"%(grant_url)s"
+"\">\"Ensuring the Persistent Access of Open Access Journal Literature\"</a> "
 "(vedi <a href=\"%(blog_url)s\">annuncio originale</a>)."
 
 #: fatcat_scholar/templates/about.html:62

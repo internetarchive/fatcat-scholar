@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
-"POT-Creation-Date: 2021-11-12 18:07-0800\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2022-01-05 09:04-0800\n"
 "PO-Revision-Date: 2021-11-15 21:35+0000\n"
 "Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/internetarchive/"
@@ -43,7 +43,9 @@ msgid "Since 2000"
 msgstr "Από το 2000"
 
 #: fatcat_scholar/search.py:53
-msgid "Before 1925"
+#, fuzzy
+#| msgid "Before 1925"
+msgid "Before 1927"
 msgstr "Πριν το 1995"
 
 #: fatcat_scholar/search.py:57
@@ -174,8 +176,8 @@ msgstr ""
 "Τα μεταδεδομένα προέρχονται από το <a href=\"https://fatcat.wiki\">fatcat."
 "wiki</a>, έναν ανοιχτό κι επεξεργάσιμο από τους χρήστες κατάλογο ακαδημαϊκής "
 "εργασίας. Θα πρέπει να είναι δυνατή η καταγραφή και απόδοση του περιεχομένου "
-"και των μεταδεδομένων σε όλες τις περιπτώσεις. Παρακαλούμε να <a href=\"#"
-"contact\">επικοινωνήσετε με εμάς</a> εάν έχετε απορίες."
+"και των μεταδεδομένων σε όλες τις περιπτώσεις. Παρακαλούμε να <a href="
+"\"#contact\">επικοινωνήσετε με εμάς</a> εάν έχετε απορίες."
 
 #: fatcat_scholar/templates/about.html:35
 #: fatcat_scholar/templates/base.html:199
@@ -207,8 +209,8 @@ msgid ""
 msgstr ""
 "Προς το παρόν, στιγμιότυπα του πλήρους συνολικού έργου μεταδεδομένων φάτκατ "
 "και οι προς τα ανάντη πηγές μεταδεδομένων μεταφορτώνονται περιοδικώς στη "
-"συλλογή <a href=\"https://archive.org/details/ia_biblio_metadata\""
-">Ασυσκευάστων Βιβλιογραφικών Μεταδεδομένων</a> στο archive.org."
+"συλλογή <a href=\"https://archive.org/details/ia_biblio_metadata"
+"\">Ασυσκευάστων Βιβλιογραφικών Μεταδεδομένων</a> στο archive.org."
 
 #: fatcat_scholar/templates/about.html:44
 msgid ""
@@ -442,8 +444,8 @@ msgid ""
 "sciences, humanities, biomedicine, art, history, industrial research, "
 "government reports, and more."
 msgstr ""
-"Η υπηρεσία παρέχει<a href=\"https://en.wikipedia.org/wiki/Full-text_search\""
-">αναζήτηση πλήρους κειμένου</a> σε δημοσιευμένες έρευνες αρχειοθετημένες "
+"Η υπηρεσία παρέχει<a href=\"https://en.wikipedia.org/wiki/Full-text_search"
+"\">αναζήτηση πλήρους κειμένου</a> σε δημοσιευμένες έρευνες αρχειοθετημένες "
 "στις διάφορες συλλογές του Αρχείου του Διαδικτύου. Αυτό περιλαμβάνει "
 "περιεχόμενο φυσικών επιστημών, ανθρωπιστικών επιστημών, βιοϊατρικό, τέχνης, "
 "ιστορικό, βιομηχανικής έρευνας, κυβερνητικών αναφορών κ.ά."

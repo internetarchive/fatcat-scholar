@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-11-12 18:07-0800\n"
+"POT-Creation-Date: 2022-01-05 09:04-0800\n"
 "PO-Revision-Date: 2021-07-16 17:36+0000\n"
 "Last-Translator: privacysimp <contributions.pqy8k@aleeas.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/internetarchive/"
@@ -42,7 +42,9 @@ msgid "Since 2000"
 msgstr "Sinds 2000"
 
 #: fatcat_scholar/search.py:53
-msgid "Before 1925"
+#, fuzzy
+#| msgid "Before 1925"
+msgid "Before 1927"
 msgstr "Vóór 1925"
 
 #: fatcat_scholar/search.py:57
