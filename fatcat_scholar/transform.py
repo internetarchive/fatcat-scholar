@@ -169,6 +169,10 @@ def es_biblio_from_sim(sim: Dict[str, Any]) -> ScholarBiblio:
         language = language[0]
     lang_code = SIM_LANG_MAP.get(language)
 
+    publisher = issue_meta.get("publisher") or pub_meta.get("publisher")
+    if isinstance(publisher, list):
+        publisher = publisher[0]
+
     return ScholarBiblio(
         # release_ident=release.ident,
         title=None,
@@ -192,7 +196,7 @@ def es_biblio_from_sim(sim: Dict[str, Any]) -> ScholarBiblio:
         # number=None,
         # no external identifiers
         # license_slug=release.license_slug,
-        publisher=issue_meta.get("publisher") or pub_meta.get("publisher"),
+        publisher=publisher,
         container_name=container_name,
         container_original_name=None,
         container_ident=None,  # TODO
