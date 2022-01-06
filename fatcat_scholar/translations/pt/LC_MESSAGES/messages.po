@@ -4,13 +4,14 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
 # Bryan Newbold <bnewbold@robocracy.org>, 2021.
 # ssantos <ssantos@web.de>, 2021.
+# Gabriel Gian <gabrielgian@live.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2022-01-05 09:04-0800\n"
-"PO-Revision-Date: 2021-11-15 21:35+0000\n"
-"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"PO-Revision-Date: 2022-01-08 00:52+0000\n"
+"Last-Translator: Gabriel Gian <gabrielgian@live.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/"
 "internetarchive/fatcat-scholar/pt/>\n"
 "Language: pt\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.9.1-dev\n"
+"X-Generator: Weblate 4.10.1\n"
 "Generated-By: Babel 2.6.0\n"
 
 #: fatcat_scholar/search.py:45
@@ -276,44 +277,50 @@ msgstr ""
 
 #: fatcat_scholar/templates/access_404.html:10
 msgid "404: Access Location Not Found"
-msgstr ""
+msgstr "404: Localização de Acesso Não Encontrada"
 
 #: fatcat_scholar/templates/access_404.html:11
 msgid ""
 "We could not find a valid redirect for the URL you tried. Sorry about that!"
 msgstr ""
+"Não conseguimos encontrar um redirecionamento válido para o URL que você "
+"tentou acessar. Desculpe!"
 
 #: fatcat_scholar/templates/access_404.html:12
 msgid ""
 "There may be a typo, truncation, or encoding error. Or, the resource may "
 "have been removed from our catalog."
 msgstr ""
+"Pode haver um erro ortográfico, corte ou erro de codificação. Ou então, o "
+"item pode ter sido removido do nosso catálogo."
 
 #: fatcat_scholar/templates/access_404.html:13
 msgid ""
 "Some places you can visit try to hunt down this resource (or a replacement) "
 "include:"
 msgstr ""
+"Alguns locais que você pode visitar para caçar este item (ou um substituto) "
+"incluem:"
 
 #: fatcat_scholar/templates/access_404.html:16
 msgid "Original web url:"
-msgstr ""
+msgstr "URL da web original:"
 
 #: fatcat_scholar/templates/access_404.html:20
 msgid "Wayback Machine calendar page (all captures)"
-msgstr ""
+msgstr "Página de calendário da Wayback Machine (todas as capturas)"
 
 #: fatcat_scholar/templates/access_404.html:23
 msgid "archive.org download link for the item:"
-msgstr ""
+msgstr "link de download do archive.org para o item:"
 
 #: fatcat_scholar/templates/access_404.html:29
 msgid "Scholar landing page"
-msgstr ""
+msgstr "Página inicial do Scholar"
 
 #: fatcat_scholar/templates/access_404.html:30
 msgid "Fatcat catalog page"
-msgstr ""
+msgstr "Página de catálogo do Fatcat"
 
 #: fatcat_scholar/templates/base.html:13
 msgid "Internet Archive Scholar"
@@ -659,7 +666,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:148
 msgid "Tags"
-msgstr ""
+msgstr "Etiquetas"
 
 #: fatcat_scholar/templates/help.html:150
 msgid ""
@@ -751,7 +758,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:198
 msgid "Persistent Identifiers"
-msgstr ""
+msgstr "Identificadores persistentes"
 
 #: fatcat_scholar/templates/help.html:200
 msgid ""
