@@ -5,13 +5,14 @@
 # Bryan Newbold <bnewbold@robocracy.org>, 2020, 2021.
 # Eric <spice2wolf@gmail.com>, 2020, 2021.
 # Forbidden <10278743+f0rb1d@users.noreply.github.com>, 2020.
+# Eric <alchemillatruth@purelymail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2022-01-05 09:04-0800\n"
-"PO-Revision-Date: 2021-11-14 02:51+0000\n"
-"Last-Translator: Eric <spice2wolf@gmail.com>\n"
+"PO-Revision-Date: 2022-01-08 00:52+0000\n"
+"Last-Translator: Eric <alchemillatruth@purelymail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "internetarchive/fatcat-scholar/zh_Hans/>\n"
 "Language: zh\n"
@@ -19,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.9.1-dev\n"
+"X-Generator: Weblate 4.10.1\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:45
@@ -43,10 +44,8 @@ msgid "Since 2000"
 msgstr "自2000年以来"
 
 #: fatcat_scholar/search.py:53
-#, fuzzy
-#| msgid "Before 1925"
 msgid "Before 1927"
-msgstr "1925年之前"
+msgstr "1927 年之前"
 
 #: fatcat_scholar/search.py:57
 msgid "Resource Type"
