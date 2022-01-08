@@ -4,13 +4,13 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # Allan Nordhøy <epost@anotheragency.no>, 2020, 2021.
 # Thomas jensen <vpnhd@protonmail.ch>, 2020.
-# Bryan Newbold <bnewbold@robocracy.org>, 2021.
+# Bryan Newbold <bnewbold@robocracy.org>, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2022-01-05 09:04-0800\n"
-"PO-Revision-Date: 2021-11-15 21:35+0000\n"
+"PO-Revision-Date: 2022-01-09 01:55+0000\n"
 "Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
 "internetarchive/fatcat-scholar/nb_NO/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.9.1-dev\n"
+"X-Generator: Weblate 4.10.1\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:45
@@ -43,10 +43,8 @@ msgid "Since 2000"
 msgstr "Siden 2000"
 
 #: fatcat_scholar/search.py:53
-#, fuzzy
-#| msgid "Before 1925"
 msgid "Before 1927"
-msgstr "Før 1925"
+msgstr "Før 1927"
 
 #: fatcat_scholar/search.py:57
 msgid "Resource Type"
