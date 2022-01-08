@@ -2,7 +2,7 @@
 # Copyright (C) 2021 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
-# Bryan Newbold <bnewbold@robocracy.org>, 2021.
+# Bryan Newbold <bnewbold@robocracy.org>, 2021, 2022.
 # gio <gdamiola@gmail.com>, 2021.
 # Alessandro Mandelli <mandelli.alessandro@ngi.it>, 2021.
 # J. Lavoie <j.lavoie@net-c.ca>, 2021.
@@ -11,10 +11,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2022-01-05 09:04-0800\n"
-"PO-Revision-Date: 2021-11-27 15:52+0000\n"
-"Last-Translator: Alfonso Scarpino <alfonso.scarpino@gmail.com>\n"
+"PO-Revision-Date: 2022-01-09 01:55+0000\n"
+"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/it/>\n"
 "Language: it\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.10-dev\n"
+"X-Generator: Weblate 4.10.1\n"
 "Generated-By: Babel 2.6.0\n"
 
 #: fatcat_scholar/search.py:45
@@ -46,10 +46,8 @@ msgid "Since 2000"
 msgstr "Dal 2000"
 
 #: fatcat_scholar/search.py:53
-#, fuzzy
-#| msgid "Before 1925"
 msgid "Before 1927"
-msgstr "Prima del 1925"
+msgstr "Prima del 1927"
 
 #: fatcat_scholar/search.py:57
 msgid "Resource Type"
