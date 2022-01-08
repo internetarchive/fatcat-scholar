@@ -2,7 +2,7 @@
 # Copyright (C) 2021 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
-# Bryan Newbold <bnewbold@robocracy.org>, 2021.
+# Bryan Newbold <bnewbold@robocracy.org>, 2021, 2022.
 # ssantos <ssantos@web.de>, 2021.
 # Gabriel Gian <gabrielgian@live.com>, 2022.
 msgid ""
@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2022-01-05 09:04-0800\n"
-"PO-Revision-Date: 2022-01-08 00:52+0000\n"
-"Last-Translator: Gabriel Gian <gabrielgian@live.com>\n"
+"PO-Revision-Date: 2022-01-09 01:55+0000\n"
+"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/"
 "internetarchive/fatcat-scholar/pt/>\n"
 "Language: pt\n"
@@ -43,10 +43,8 @@ msgid "Since 2000"
 msgstr "Desde 2000"
 
 #: fatcat_scholar/search.py:53
-#, fuzzy
-#| msgid "Before 1925"
 msgid "Before 1927"
-msgstr "Antes de 1925"
+msgstr "Antes de 1927"
 
 #: fatcat_scholar/search.py:57
 msgid "Resource Type"
