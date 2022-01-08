@@ -3,16 +3,16 @@
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # Artem <KovalevArtem.ru@gmail.com>, 2020, 2021.
-# Bryan Newbold <bnewbold@robocracy.org>, 2020, 2021.
+# Bryan Newbold <bnewbold@robocracy.org>, 2020, 2021, 2022.
 # Nikita Epifanov <nikgreens@protonmail.com>, 2021.
 # Artem <Localizer_in_Russian@protonmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2022-01-05 09:04-0800\n"
-"PO-Revision-Date: 2021-11-17 20:52+0000\n"
-"Last-Translator: Artem <Localizer_in_Russian@protonmail.com>\n"
+"PO-Revision-Date: 2022-01-09 01:55+0000\n"
+"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/ru/>\n"
 "Language: ru\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.9.1-dev\n"
+"X-Generator: Weblate 4.10.1\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:45
@@ -45,10 +45,8 @@ msgid "Since 2000"
 msgstr "С 2000 года"
 
 #: fatcat_scholar/search.py:53
-#, fuzzy
-#| msgid "Before 1925"
 msgid "Before 1927"
-msgstr "До 1925 года"
+msgstr "До 1927 года"
 
 #: fatcat_scholar/search.py:57
 msgid "Resource Type"
