@@ -5,13 +5,14 @@
 # Allan Nordhøy <epost@anotheragency.no>, 2020, 2021.
 # Thomas jensen <vpnhd@protonmail.ch>, 2020.
 # Bryan Newbold <bnewbold@robocracy.org>, 2021, 2022.
+# Imre Kristoffer Eilertsen <imreeil42@gmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2022-01-05 09:04-0800\n"
-"PO-Revision-Date: 2022-01-09 01:55+0000\n"
-"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"PO-Revision-Date: 2022-01-11 08:52+0000\n"
+"Last-Translator: Imre Kristoffer Eilertsen <imreeil42@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
 "internetarchive/fatcat-scholar/nb_NO/>\n"
 "Language: nb\n"
@@ -522,10 +523,8 @@ msgid ""
 msgstr ""
 
 #: fatcat_scholar/templates/help.html:105
-#, fuzzy
-#| msgid "Search"
 msgid "Search Results"
-msgstr "Søk"
+msgstr "Søkeresultater"
 
 #: fatcat_scholar/templates/help.html:108
 msgid "Access Links"
@@ -579,7 +578,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:148
 msgid "Tags"
-msgstr ""
+msgstr "Tagger"
 
 #: fatcat_scholar/templates/help.html:150
 msgid ""
@@ -913,7 +912,7 @@ msgstr ""
 #: fatcat_scholar/templates/search_macros.html:144
 #, python-format
 msgid "%(year)s"
-msgstr ""
+msgstr "%(year)s"
 
 #: fatcat_scholar/templates/search_macros.html:197
 msgid "unknown"
@@ -1036,17 +1035,13 @@ msgstr "permanent lenke til denne oppføringen"
 
 #: fatcat_scholar/templates/search_macros.html:492
 #: fatcat_scholar/templates/search_macros.html:495
-#, fuzzy
-#| msgid "Previous"
 msgid "&laquo; Previous"
-msgstr "Forrige"
+msgstr "&laquo; Forrige"
 
 #: fatcat_scholar/templates/search_macros.html:500
 #: fatcat_scholar/templates/search_macros.html:503
-#, fuzzy
-#| msgid "More &raquo;"
 msgid "Next &raquo;"
-msgstr "Mer"
+msgstr "Neste &raquo;"
 
 #: fatcat_scholar/templates/search_macros.html:507
 #, fuzzy, python-format
