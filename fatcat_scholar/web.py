@@ -66,11 +66,13 @@ I18N_LANG_OPTIONS = I18N_LANG_TRANSLATIONS + [
 
 class LangPrefix:
     """
-    Looks for a two-character language prefix.
+    Looks for either a two-character URL path prefix, or an Accept-Language
+    HTTP header, to determine which translation of the site to display.
 
-    If there is no such prefix, in the future it could also look at the
-    Accept-Language header and try to infer a language from that, while not
-    setting the prefix code.
+    A URL path-prefix takes precedence, then an Accept-Language header is
+    considered, and finally a configurable default is used. Any path prefix is
+    stored as a context variable, so that URLs can be re-written in templates
+    to include the prefix.
     """
 
     def __init__(self, request: Request):
