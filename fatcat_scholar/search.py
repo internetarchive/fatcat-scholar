@@ -100,7 +100,7 @@ class FulltextHits(BaseModel):
 
 
 # global sync client connection
-es_client = elasticsearch.Elasticsearch(settings.ELASTICSEARCH_QUERY_BASE, timeout=25.0)
+es_client = elasticsearch.Elasticsearch(settings.ELASTICSEARCH_QUERY_BASE, timeout=40.0)
 
 
 def transform_es_results(resp: Response) -> List[dict]:
