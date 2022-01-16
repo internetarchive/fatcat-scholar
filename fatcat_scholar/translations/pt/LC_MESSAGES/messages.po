@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
 # Bryan Newbold <bnewbold@robocracy.org>, 2021, 2022.
-# ssantos <ssantos@web.de>, 2021.
+# ssantos <ssantos@web.de>, 2021, 2022.
 # Gabriel Gian <gabrielgian@live.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2022-01-05 09:04-0800\n"
-"PO-Revision-Date: 2022-01-09 01:55+0000\n"
-"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"PO-Revision-Date: 2022-01-17 19:55+0000\n"
+"Last-Translator: ssantos <ssantos@web.de>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/"
 "internetarchive/fatcat-scholar/pt/>\n"
 "Language: pt\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.10.1\n"
+"X-Generator: Weblate 4.11-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 #: fatcat_scholar/search.py:45
@@ -265,6 +265,10 @@ msgid ""
 "\"Ensuring the Persistent Access of Open Access Journal Literature\"</a> "
 "project (see <a href=\"%(blog_url)s\">original announcement</a>)."
 msgstr ""
+"O trabalho no Internet Archive Scholar recebeu apoio da Fundação Andrew W. "
+"Mellon por múltiplas fases da <a href=\"%(grant_url)s\">\"Garantir o Acesso "
+"Persistente da Literatura do Jornal de Acesso Aberto\"</a> projeto (ver <a "
+"href=\"%(blog_url)s\"> anúncio original</a>)."
 
 #: fatcat_scholar/templates/about.html:62
 #, python-format
@@ -272,6 +276,7 @@ msgid ""
 "See additional acknowledgements on <a href=\"%(fatcat_url)s\">fatcat.wiki</"
 "a>."
 msgstr ""
+"Veja agradecimentos adicionais em <a href=\"%(fatcat_url)s\">fatcat.wiki</a>."
 
 #: fatcat_scholar/templates/access_404.html:10
 msgid "404: Access Location Not Found"
