@@ -200,7 +200,7 @@ def apply_filters(search: Search, query: FulltextQuery) -> Search:
         search = search.filter("range", year=dict(gte=2000, lte=this_year))
     elif query.filter_time == "before_1925" or query.filter_time == "before_1927":
         # 1925 value retained for backwards compatibility in URLs
-        search = search.filter("range", year=dict(lte=1927))
+        search = search.filter("range", year=dict(lt=1927))
     elif query.filter_time == "all_time" or query.filter_time is None:
         pass
     else:
