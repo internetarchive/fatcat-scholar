@@ -36,6 +36,7 @@ uvicorn = "*"
 uvloop = "*"
 
 [dev-packages]
+black = "*"
 ipython = "*"
 mypy = "*"
 # typing_extensions is required for mypy to operate
@@ -50,9 +51,6 @@ responses = "*"
 types-requests = "*"
 types-beautifulsoup4 = "*"
 types-babel = "*"
-# must lock black to an exact version because it is still "beta"
-# see: https://github.com/psf/black/issues/517
-black = "==21.9b0"
 
 [requires]
 python_version = "3.8"
