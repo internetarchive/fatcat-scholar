@@ -368,11 +368,11 @@
     </div>
   {% elif paper.abstracts %}
     <div class="search-highlights">
-      {% if paper.abstracts[0].body|length > 500 %}
+      {% if paper.abstracts[0].body|length > 550 %}
         {{ paper.abstracts[0].body | truncate(500, False, '') }}
         <details style="display:inline;">
           <summary>{% trans %}more &raquo;{% endtrans %}</summary>
-          ... {{ paper.abstracts[0].body[480:] }}
+          ... {{ paper.abstracts[0].body[500:] }}
         </details>
       {% else %}
         {{ paper.abstracts[0].body }}
