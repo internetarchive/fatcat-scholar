@@ -466,7 +466,7 @@ def es_scholar_index_alive() -> bool:
         resp = es_client.count(
             body=None,
             index=settings.ELASTICSEARCH_QUERY_FULLTEXT_INDEX,
-            timeout=90.0,
+            request_timeout=90.0,
         )
     except elasticsearch.exceptions.RequestError as e_raw:
         if e_raw.status_code == 404:
