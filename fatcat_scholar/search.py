@@ -100,7 +100,7 @@ class FulltextHits(BaseModel):
 
 
 # global sync client connection
-es_client = elasticsearch.Elasticsearch(settings.ELASTICSEARCH_QUERY_BASE, timeout=40.0)
+es_client = elasticsearch.Elasticsearch(settings.ELASTICSEARCH_QUERY_BASE, timeout=50.0)
 
 
 def transform_es_results(resp: Response) -> List[dict]:
@@ -464,7 +464,9 @@ def es_scholar_index_alive() -> bool:
     """
     try:
         resp = es_client.count(
-            body=None, index=settings.ELASTICSEARCH_QUERY_FULLTEXT_INDEX
+            body=None,
+            index=settings.ELASTICSEARCH_QUERY_FULLTEXT_INDEX,
+            timeout=90.0,
         )
     except elasticsearch.exceptions.RequestError as e_raw:
         if e_raw.status_code == 404:
