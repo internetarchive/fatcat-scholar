@@ -6,13 +6,14 @@
 # Bryan Newbold <bnewbold@robocracy.org>, 2020, 2021, 2022.
 # Nikita Epifanov <nikgreens@protonmail.com>, 2021.
 # Artem <Localizer_in_Russian@protonmail.com>, 2021.
+# S3aBreeze <paperwork@evilcorp.ltd>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2022-01-05 09:04-0800\n"
-"PO-Revision-Date: 2022-01-09 01:55+0000\n"
-"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"PO-Revision-Date: 2022-02-18 11:13+0000\n"
+"Last-Translator: S3aBreeze <paperwork@evilcorp.ltd>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/ru/>\n"
 "Language: ru\n"
@@ -21,7 +22,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.10.1\n"
+"X-Generator: Weblate 4.11-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:45
@@ -295,7 +296,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/access_404.html:16
 msgid "Original web url:"
-msgstr ""
+msgstr "Оригинальный адрес веб-сайта:"
 
 #: fatcat_scholar/templates/access_404.html:20
 msgid "Wayback Machine calendar page (all captures)"
