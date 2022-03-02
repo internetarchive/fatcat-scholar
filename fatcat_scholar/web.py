@@ -242,7 +242,7 @@ def load_i18n_templates() -> Any:
     return d
 
 
-i18n_templates = load_i18n_templates()
+I18N_TEMPLATES = load_i18n_templates()
 
 
 @web.get("/", include_in_schema=False)
@@ -253,7 +253,7 @@ async def web_home(
 ) -> Any:
     if content.mimetype == "application/json":
         return await home()
-    return i18n_templates[lang.code].TemplateResponse(
+    return I18N_TEMPLATES[lang.code].TemplateResponse(
         "home.html",
         {"request": request, "locale": lang.code, "lang_prefix": lang.prefix},
     )
@@ -261,7 +261,7 @@ async def web_home(
 
 @web.get("/about", include_in_schema=False)
 async def web_about(request: Request, lang: LangPrefix = Depends(LangPrefix)) -> Any:
-    return i18n_templates[lang.code].TemplateResponse(
+    return I18N_TEMPLATES[lang.code].TemplateResponse(
         "about.html",
         {"request": request, "locale": lang.code, "lang_prefix": lang.prefix},
     )
@@ -269,7 +269,7 @@ async def web_about(request: Request, lang: LangPrefix = Depends(LangPrefix)) ->
 
 @web.get("/help", include_in_schema=False)
 async def web_help(request: Request, lang: LangPrefix = Depends(LangPrefix)) -> Any:
-    return i18n_templates[lang.code].TemplateResponse(
+    return I18N_TEMPLATES[lang.code].TemplateResponse(
         "help.html",
         {"request": request, "locale": lang.code, "lang_prefix": lang.prefix},
     )
@@ -311,7 +311,7 @@ def web_search(
             headers[
                 "Server-Timing"
             ] += f', es;desc="Search Internal Time";dur={hits.query_time_ms}'
-    return i18n_templates[lang.code].TemplateResponse(
+    return I18N_TEMPLATES[lang.code].TemplateResponse(
         "search.html",
         {
             "request": request,
@@ -342,7 +342,7 @@ def web_work(
     if not doc:
         raise HTTPException(status_code=404, detail="work not found")
 
-    return i18n_templates[lang.code].TemplateResponse(
+    return I18N_TEMPLATES[lang.code].TemplateResponse(
         "work.html",
         {
             "request": request,
@@ -427,7 +427,7 @@ def access_redirect_fallback(
 
     # give up and show an error page
     lang = LangPrefix(request)
-    return i18n_templates[lang.code].TemplateResponse(
+    return I18N_TEMPLATES[lang.code].TemplateResponse(
         "access_404.html",
         {
             "request": request,
@@ -577,7 +577,7 @@ async def http_exception_handler(request: Request, exc: StarletteHTTPException) 
 
     if content.mimetype == "text/html":
         lang = LangPrefix(request)
-        return i18n_templates[lang.code].TemplateResponse(
+        return I18N_TEMPLATES[lang.code].TemplateResponse(
             "error.html",
             {
                 "request": request,
