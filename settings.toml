@@ -56,6 +56,7 @@ ELASTICSEARCH_PUBLIC_URL = "https://search.fatcat.wiki"
 
 [qa]
 SCHOLAR_ENV = "qa"
+ENABLE_PROMETHEUS = true
 ELASTICSEARCH_QUERY_BASE = "https://search.fatcat.wiki"
 ELASTICSEARCH_WRITE_BASE = "http://localhost:9200"
 ELASTICSEARCH_PUBLIC_URL = "https://search.fatcat.wiki"
@@ -63,6 +64,7 @@ KAFKA_BROKERS = ["wbgrp-svc263.us.archive.org"]
 
 [prod]
 SCHOLAR_ENV = "prod"
+ENABLE_PROMETHEUS = true
 #ONION_DOMAIN = "scholar.archivev3qli37bju4rlh27glh24lljyezwxf4pokmrdbpefjlcrp5id.onion"
 ELASTICSEARCH_QUERY_BASE = "http://localhost:9292"
 ELASTICSEARCH_QUERY_FULLTEXT_INDEX = "scholar_fulltext"
