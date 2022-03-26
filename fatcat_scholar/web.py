@@ -4,12 +4,14 @@ This contains the FastAPI web application and RESTful API.
 So far there are few endpoints, so we just put them all here!
 """
 
+import datetime
 import logging
 import urllib.parse
 from typing import Any, Dict, List, Optional
 
 import babel.numbers
 import babel.support
+import fastapi_rss
 import fatcat_openapi_client
 import sentry_sdk
 from fastapi import APIRouter, Depends, FastAPI, HTTPException, Query, Request, Response
@@ -174,6 +176,63 @@ def search(query: FulltextQuery = Depends(FulltextQuery)) -> FulltextHits:
         doc.pop("_obj", None)
 
     return hits
+
+
+@api.get("/feed/rss", operation_id="get_feed_rss", include_in_schema=False)
+def feed_rss(
+    query: FulltextQuery = Depends(FulltextQuery),
+    lang: LangPrefix = Depends(LangPrefix),
+) -> fastapi_rss.RSSResponse:
+
+    # override some query params for feeds
+    if query.q:
+        query.q += " doc_type:work"
+    query.offset = None
+    query.filter_time = "past_year"
+    query.sort_order = "time_desc"
+
+    hits: FulltextHits = process_query(query)
+
+    rss_items = []
+    for hit in hits.results:
+        scholar_doc = hit["_obj"]
+        abstract: Optional[str] = None
+        if scholar_doc.abstracts:
+            abstract = scholar_doc.abstracts[0].body
+        authors = ", ".join(scholar_doc.biblio.contrib_names) or None
+        pub_date = None
+        if scholar_doc.biblio.release_date:
+            # convert datetime.date to datetime.datetime
+            pub_date = datetime.datetime(
+                *scholar_doc.biblio.release_date.timetuple()[:6]
+            )
+        rss_items.append(
+            fastapi_rss.Item(
+                title=scholar_doc.biblio.title,
+                link=f"https://scholar.archive.org/work/{scholar_doc.work_ident}",
+                description=abstract,
+                author=authors,
+                pub_date=pub_date,
+                guid=fastapi_rss.GUID(content=scholar_doc.key),
+            )
+        )
+
+    last_build_date = None
+    if rss_items:
+        last_build_date = rss_items[0].pub_date
+    feed = fastapi_rss.RSSFeed(
+        title=f"IA Scholar: {query.q}",
+        link="https://scholar.archive.org/",
+        description="Internet Archive Scholar query results feed",
+        language="en",
+        last_build_date=last_build_date,
+        docs="https://scholar.archive.org/help",
+        generator="fatcat-scholar",
+        webmaster="info@archive.org",
+        ttl=60 * 24,  # 24 hours, in minutes
+        item=rss_items,
+    )
+    return fastapi_rss.RSSResponse(feed)
 
 
 @api.get("/work/{work_ident}", operation_id="get_work")

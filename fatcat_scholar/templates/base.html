@@ -136,6 +136,21 @@
         <div style="display: flex; width: 100%; justify-content: space-between; padding-top: 0.5em;">
           <div></div>
           <div>
+            {% if query %}
+              <form class="" id="rss_feed_form" name="rss_feed_form" action="{{ lang_prefix }}/feed/rss" method="get">
+                <input form="rss_feed_form" type="hidden" name="q" value="{{ query.q }}">
+                {% if query.filter_type %}
+                  <input form="rss_feed_form" type="hidden" name="filter_type" value="{{ query.filter_type }}">
+                {% endif %}
+                {% if query.filter_availability %}
+                  <input form="rss_feed_form" type="hidden" name="filter_availability" value="{{ query.filter_availability }}">
+                {% endif %}
+                <button class="text-button" form="rss_feed_form" type="submit">
+                  {% trans %}RSS Feed{% endtrans %}
+                </button>
+              </form>
+              &nbsp;
+            {% endif %}
             <a rel="help" href="{{ lang_prefix }}/help" style="order: -1;">{{ _("User Guide") }}</a>
           </div>
         </div>
