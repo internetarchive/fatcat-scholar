@@ -185,11 +185,13 @@ def feed_rss(
 ) -> fastapi_rss.RSSResponse:
 
     # override some query params for feeds
+    original_query = query.q
     if query.q:
         query.q += " doc_type:work"
     query.offset = None
     query.filter_time = "past_year"
     query.sort_order = "time_desc"
+    query.limit = 20
 
     hits: FulltextHits = process_query(query)
 
@@ -221,7 +223,7 @@ def feed_rss(
     if rss_items:
         last_build_date = rss_items[0].pub_date
     feed = fastapi_rss.RSSFeed(
-        title=f"IA Scholar: {query.q}",
+        title=f"IA Scholar Query: {original_query}",
         link="https://scholar.archive.org/",
         description="Internet Archive Scholar query results feed",
         language="en",
