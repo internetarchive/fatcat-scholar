@@ -72,7 +72,7 @@ class FulltextQuery(BaseModel):
             {"label": gettext("Fulltext"), "slug": "fulltext"},
             {"label": gettext("Microfilm"), "slug": "microfilm"},
             {"label": gettext("Open Access"), "slug": "oa"},
-            {"label": gettext("Metadata"), "slug": "everything"},
+            {"label": gettext("All Records"), "slug": "everything"},
         ],
     }
     sort_options: Any = {
