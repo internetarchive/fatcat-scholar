@@ -2,17 +2,17 @@
 # Copyright (C) 2020 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
-# Bryan Newbold <bnewbold@robocracy.org>, 2020, 2021.
+# Bryan Newbold <bnewbold@robocracy.org>, 2020, 2021, 2022.
 # Eric <spice2wolf@gmail.com>, 2020, 2021.
 # Forbidden <10278743+f0rb1d@users.noreply.github.com>, 2020.
 # Eric <alchemillatruth@purelymail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2022-04-06 17:43-0700\n"
-"PO-Revision-Date: 2022-01-08 00:52+0000\n"
-"Last-Translator: Eric <alchemillatruth@purelymail.com>\n"
+"PO-Revision-Date: 2022-04-07 00:51+0000\n"
+"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "internetarchive/fatcat-scholar/zh_Hans/>\n"
 "Language: zh\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.10.1\n"
+"X-Generator: Weblate 4.12-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:45
@@ -85,7 +85,7 @@ msgstr "开放存取"
 
 #: fatcat_scholar/search.py:75
 msgid "All Records"
-msgstr ""
+msgstr "所有记录"
 
 #: fatcat_scholar/search.py:79
 msgid "Sort Order"
@@ -332,7 +332,7 @@ msgstr "搜索"
 
 #: fatcat_scholar/templates/base.html:144
 msgid "RSS Feed"
-msgstr ""
+msgstr "RSS 订阅源"
 
 #: fatcat_scholar/templates/base.html:148
 msgid "User Guide"
