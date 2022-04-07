@@ -9,8 +9,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
-"POT-Creation-Date: 2022-01-05 09:04-0800\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2022-04-06 17:43-0700\n"
 "PO-Revision-Date: 2022-01-11 08:52+0000\n"
 "Last-Translator: Imre Kristoffer Eilertsen <imreeil42@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
@@ -84,8 +84,8 @@ msgid "Open Access"
 msgstr "Åpen tilgang"
 
 #: fatcat_scholar/search.py:75
-msgid "Metadata"
-msgstr "Metadata"
+msgid "All Records"
+msgstr ""
 
 #: fatcat_scholar/search.py:79
 msgid "Sort Order"
@@ -122,7 +122,7 @@ msgid ""
 msgstr ""
 
 #: fatcat_scholar/templates/about.html:14
-#: fatcat_scholar/templates/base.html:197
+#: fatcat_scholar/templates/base.html:206
 msgid "How It Works"
 msgstr "Hvordan det fungerer"
 
@@ -155,7 +155,7 @@ msgid ""
 msgstr ""
 
 #: fatcat_scholar/templates/about.html:27
-#: fatcat_scholar/templates/base.html:198
+#: fatcat_scholar/templates/base.html:207
 msgid "Content Sources"
 msgstr "Innholdskilder"
 
@@ -169,7 +169,7 @@ msgid ""
 msgstr ""
 
 #: fatcat_scholar/templates/about.html:35
-#: fatcat_scholar/templates/base.html:199
+#: fatcat_scholar/templates/base.html:208
 msgid "Text and Data Mining"
 msgstr "Tekst og datautvinning"
 
@@ -308,11 +308,15 @@ msgstr "søk etter publiseringer"
 msgid "Search"
 msgstr "Søk"
 
-#: fatcat_scholar/templates/base.html:139
+#: fatcat_scholar/templates/base.html:144
+msgid "RSS Feed"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:148
 msgid "User Guide"
 msgstr "Brukerveiledning"
 
-#: fatcat_scholar/templates/base.html:167
+#: fatcat_scholar/templates/base.html:176
 msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
@@ -320,7 +324,7 @@ msgstr ""
 "Vi er et veldedig US-501(c)(3)-bibliotek, som bygger et verdensomspennende "
 "arkiv av internettsider og andre kulturelle gjenstander i digital form."
 
-#: fatcat_scholar/templates/base.html:169
+#: fatcat_scholar/templates/base.html:178
 #, python-format
 msgid ""
 "Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and "
@@ -329,47 +333,47 @@ msgstr ""
 "Andre prosjekter inkluderer %(wayback)s, %(archive_org)s, %(openlibrary)s, "
 "og %(archive_it)s."
 
-#: fatcat_scholar/templates/base.html:176
+#: fatcat_scholar/templates/base.html:185
 msgid "About Us"
 msgstr "Om oss"
 
-#: fatcat_scholar/templates/base.html:177
+#: fatcat_scholar/templates/base.html:186
 msgid "Contact Us"
 msgstr "Kontakt oss"
 
-#: fatcat_scholar/templates/base.html:178
+#: fatcat_scholar/templates/base.html:187
 msgid "Policies"
 msgstr "Praksiser"
 
-#: fatcat_scholar/templates/base.html:179
+#: fatcat_scholar/templates/base.html:188
 msgid "Donate"
 msgstr "Doner"
 
-#: fatcat_scholar/templates/base.html:185
+#: fatcat_scholar/templates/base.html:194
 msgid "Open Infrastructure"
 msgstr "Åpen infrastruktur"
 
-#: fatcat_scholar/templates/base.html:187
+#: fatcat_scholar/templates/base.html:196
 msgid "Editable Catalog (Fatcat)"
 msgstr "Redigerbar katalog (Fatcat)"
 
-#: fatcat_scholar/templates/base.html:188
+#: fatcat_scholar/templates/base.html:197
 msgid "Contribute"
 msgstr "Bidra"
 
-#: fatcat_scholar/templates/base.html:189
+#: fatcat_scholar/templates/base.html:198
 msgid "Search API"
 msgstr "Søke-API"
 
-#: fatcat_scholar/templates/base.html:190
+#: fatcat_scholar/templates/base.html:199
 msgid "Service Status"
 msgstr "Tjenestestatus"
 
-#: fatcat_scholar/templates/base.html:191
+#: fatcat_scholar/templates/base.html:200
 msgid "Source Code"
 msgstr "Kildekode"
 
-#: fatcat_scholar/templates/base.html:200
+#: fatcat_scholar/templates/base.html:209
 msgid "Help"
 msgstr "Hjelp"
 
@@ -1053,6 +1057,9 @@ msgstr "Viser resultater %(start)s &mdash; %(end)s av %(total)s resultater"
 #| msgid "Filters"
 msgid "Clear Filters"
 msgstr "Filtre"
+
+#~ msgid "Metadata"
+#~ msgstr "Metadata"
 
 #~ msgid "Next"
 #~ msgstr "Neste"

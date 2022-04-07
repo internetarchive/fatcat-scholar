@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
-"POT-Creation-Date: 2022-01-05 09:04-0800\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2022-04-06 17:43-0700\n"
 "PO-Revision-Date: 2022-01-09 01:55+0000\n"
 "Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/internetarchive/"
@@ -82,8 +82,8 @@ msgid "Open Access"
 msgstr "오픈 액세스"
 
 #: fatcat_scholar/search.py:75
-msgid "Metadata"
-msgstr "메타데이터"
+msgid "All Records"
+msgstr ""
 
 #: fatcat_scholar/search.py:79
 msgid "Sort Order"
@@ -120,7 +120,7 @@ msgstr ""
 "진 문제 목록"
 
 #: fatcat_scholar/templates/about.html:14
-#: fatcat_scholar/templates/base.html:197
+#: fatcat_scholar/templates/base.html:206
 msgid "How It Works"
 msgstr "작동 원리"
 
@@ -160,7 +160,7 @@ msgstr ""
 "트의 기술적 인프라와 목표에 대한 개요를 제공합니다."
 
 #: fatcat_scholar/templates/about.html:27
-#: fatcat_scholar/templates/base.html:198
+#: fatcat_scholar/templates/base.html:207
 msgid "Content Sources"
 msgstr "콘텐츠 소스"
 
@@ -179,7 +179,7 @@ msgstr ""
 "질문이 있으면 <a href=\"#contact\"> Google에 문의 </a>하세요."
 
 #: fatcat_scholar/templates/about.html:35
-#: fatcat_scholar/templates/base.html:199
+#: fatcat_scholar/templates/base.html:208
 msgid "Text and Data Mining"
 msgstr "텍스트 및 데이터 마이닝"
 
@@ -330,11 +330,15 @@ msgstr "논문 검색"
 msgid "Search"
 msgstr "검색"
 
-#: fatcat_scholar/templates/base.html:139
+#: fatcat_scholar/templates/base.html:144
+msgid "RSS Feed"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:148
 msgid "User Guide"
 msgstr "사용자 가이드"
 
-#: fatcat_scholar/templates/base.html:167
+#: fatcat_scholar/templates/base.html:176
 msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
@@ -342,7 +346,7 @@ msgstr ""
 "우리는 미국 501(c)(3) 비영리 도서관으로, 인터넷 사이트 및 기타 문화 유물을 디"
 "지털 형식의 글로벌 아카이브로 구축하고 있습니다."
 
-#: fatcat_scholar/templates/base.html:169
+#: fatcat_scholar/templates/base.html:178
 #, python-format
 msgid ""
 "Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and "
@@ -351,47 +355,47 @@ msgstr ""
 "다른 프로젝트로는 %(wayback)s, %(archive_org)s, %(openlibrary)s, "
 "%(archive_it)s이 있습니다."
 
-#: fatcat_scholar/templates/base.html:176
+#: fatcat_scholar/templates/base.html:185
 msgid "About Us"
 msgstr "소개"
 
-#: fatcat_scholar/templates/base.html:177
+#: fatcat_scholar/templates/base.html:186
 msgid "Contact Us"
 msgstr "연락처"
 
-#: fatcat_scholar/templates/base.html:178
+#: fatcat_scholar/templates/base.html:187
 msgid "Policies"
 msgstr "정책"
 
-#: fatcat_scholar/templates/base.html:179
+#: fatcat_scholar/templates/base.html:188
 msgid "Donate"
 msgstr "기부"
 
-#: fatcat_scholar/templates/base.html:185
+#: fatcat_scholar/templates/base.html:194
 msgid "Open Infrastructure"
 msgstr "개방형 인프라"
 
-#: fatcat_scholar/templates/base.html:187
+#: fatcat_scholar/templates/base.html:196
 msgid "Editable Catalog (Fatcat)"
 msgstr "편집 가능한 카탈로그(Fatcat)"
 
-#: fatcat_scholar/templates/base.html:188
+#: fatcat_scholar/templates/base.html:197
 msgid "Contribute"
 msgstr "기여"
 
-#: fatcat_scholar/templates/base.html:189
+#: fatcat_scholar/templates/base.html:198
 msgid "Search API"
 msgstr "검색 API"
 
-#: fatcat_scholar/templates/base.html:190
+#: fatcat_scholar/templates/base.html:199
 msgid "Service Status"
 msgstr "서비스 상태"
 
-#: fatcat_scholar/templates/base.html:191
+#: fatcat_scholar/templates/base.html:200
 msgid "Source Code"
 msgstr "소스 코드"
 
-#: fatcat_scholar/templates/base.html:200
+#: fatcat_scholar/templates/base.html:209
 msgid "Help"
 msgstr "도움"
 
@@ -1124,3 +1128,6 @@ msgstr "결과 표시 %(start)s &mdash; %(end)s / %(total)s 결과"
 #: fatcat_scholar/templates/search_macros.html:540
 msgid "Clear Filters"
 msgstr "필터 지우기"
+
+#~ msgid "Metadata"
+#~ msgstr "메타데이터"

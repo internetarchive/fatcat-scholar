@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
-"POT-Creation-Date: 2022-01-05 09:04-0800\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2022-04-06 17:43-0700\n"
 "PO-Revision-Date: 2022-01-09 01:55+0000\n"
 "Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/internetarchive/"
@@ -82,8 +82,8 @@ msgid "Open Access"
 msgstr "Open toegang"
 
 #: fatcat_scholar/search.py:75
-msgid "Metadata"
-msgstr "Metagegevens"
+msgid "All Records"
+msgstr ""
 
 #: fatcat_scholar/search.py:79
 msgid "Sort Order"
@@ -120,7 +120,7 @@ msgstr ""
 "enkele bugs en bekende problemen opsomt"
 
 #: fatcat_scholar/templates/about.html:14
-#: fatcat_scholar/templates/base.html:197
+#: fatcat_scholar/templates/base.html:206
 msgid "How It Works"
 msgstr "Hoe het werkt"
 
@@ -161,7 +161,7 @@ msgstr ""
 "het project."
 
 #: fatcat_scholar/templates/about.html:27
-#: fatcat_scholar/templates/base.html:198
+#: fatcat_scholar/templates/base.html:207
 msgid "Content Sources"
 msgstr "Inhoud Bronnen"
 
@@ -182,7 +182,7 @@ msgstr ""
 "<a href=\"#contact\">contact met ons op</a> als u vragen heeft."
 
 #: fatcat_scholar/templates/about.html:35
-#: fatcat_scholar/templates/base.html:199
+#: fatcat_scholar/templates/base.html:208
 msgid "Text and Data Mining"
 msgstr "Tekst- en datamining"
 
@@ -336,11 +336,15 @@ msgstr "naar documenten zoeken"
 msgid "Search"
 msgstr "Zoeken"
 
-#: fatcat_scholar/templates/base.html:139
+#: fatcat_scholar/templates/base.html:144
+msgid "RSS Feed"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:148
 msgid "User Guide"
 msgstr "Gebruikershandleiding"
 
-#: fatcat_scholar/templates/base.html:167
+#: fatcat_scholar/templates/base.html:176
 msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
@@ -349,7 +353,7 @@ msgstr ""
 "wereldwijd archief aanlegt van internetsites en andere culturele artefacten "
 "in digitale vorm."
 
-#: fatcat_scholar/templates/base.html:169
+#: fatcat_scholar/templates/base.html:178
 #, python-format
 msgid ""
 "Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and "
@@ -358,47 +362,47 @@ msgstr ""
 "Andere projecten zijn %(wayback)s, %(archive_org)s, %(openlibrary)s, en "
 "%(archive_it)s."
 
-#: fatcat_scholar/templates/base.html:176
+#: fatcat_scholar/templates/base.html:185
 msgid "About Us"
 msgstr "Over ons"
 
-#: fatcat_scholar/templates/base.html:177
+#: fatcat_scholar/templates/base.html:186
 msgid "Contact Us"
 msgstr "Contact"
 
-#: fatcat_scholar/templates/base.html:178
+#: fatcat_scholar/templates/base.html:187
 msgid "Policies"
 msgstr "Beleidsregels"
 
-#: fatcat_scholar/templates/base.html:179
+#: fatcat_scholar/templates/base.html:188
 msgid "Donate"
 msgstr "Doneer"
 
-#: fatcat_scholar/templates/base.html:185
+#: fatcat_scholar/templates/base.html:194
 msgid "Open Infrastructure"
 msgstr "Open infrastructuur"
 
-#: fatcat_scholar/templates/base.html:187
+#: fatcat_scholar/templates/base.html:196
 msgid "Editable Catalog (Fatcat)"
 msgstr "Bewerkbare catalogus (Fatcat)"
 
-#: fatcat_scholar/templates/base.html:188
+#: fatcat_scholar/templates/base.html:197
 msgid "Contribute"
 msgstr "Draag bij"
 
-#: fatcat_scholar/templates/base.html:189
+#: fatcat_scholar/templates/base.html:198
 msgid "Search API"
 msgstr "Zoek API"
 
-#: fatcat_scholar/templates/base.html:190
+#: fatcat_scholar/templates/base.html:199
 msgid "Service Status"
 msgstr "Dienststatus"
 
-#: fatcat_scholar/templates/base.html:191
+#: fatcat_scholar/templates/base.html:200
 msgid "Source Code"
 msgstr "Broncode"
 
-#: fatcat_scholar/templates/base.html:200
+#: fatcat_scholar/templates/base.html:209
 msgid "Help"
 msgstr "Hulp"
 
@@ -1161,3 +1165,6 @@ msgstr "Toont resultaten %(start)s &mdash; %(end)s van %(total)s resultaten"
 #: fatcat_scholar/templates/search_macros.html:540
 msgid "Clear Filters"
 msgstr "Wis filters"
+
+#~ msgid "Metadata"
+#~ msgstr "Metagegevens"

@@ -10,8 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
-"POT-Creation-Date: 2022-01-05 09:04-0800\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2022-04-06 17:43-0700\n"
 "PO-Revision-Date: 2022-02-18 11:13+0000\n"
 "Last-Translator: S3aBreeze <paperwork@evilcorp.ltd>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/internetarchive/"
@@ -86,8 +86,8 @@ msgid "Open Access"
 msgstr "Открытый доступ"
 
 #: fatcat_scholar/search.py:75
-msgid "Metadata"
-msgstr "Метаданные"
+msgid "All Records"
+msgstr ""
 
 #: fatcat_scholar/search.py:79
 msgid "Sort Order"
@@ -124,7 +124,7 @@ msgstr ""
 "котором перечислены некоторые ошибки и известные проблемы"
 
 #: fatcat_scholar/templates/about.html:14
-#: fatcat_scholar/templates/base.html:197
+#: fatcat_scholar/templates/base.html:206
 msgid "How It Works"
 msgstr "Как это работает"
 
@@ -165,7 +165,7 @@ msgstr ""
 "обзор технической инфраструктуры и целей проекта в целом."
 
 #: fatcat_scholar/templates/about.html:27
-#: fatcat_scholar/templates/base.html:198
+#: fatcat_scholar/templates/base.html:207
 msgid "Content Sources"
 msgstr "Источники контента"
 
@@ -186,7 +186,7 @@ msgstr ""
 "<a href=\"#contact\"> свяжитесь с нами </a>, если у вас есть вопросы."
 
 #: fatcat_scholar/templates/about.html:35
-#: fatcat_scholar/templates/base.html:199
+#: fatcat_scholar/templates/base.html:208
 msgid "Text and Data Mining"
 msgstr "Интеллектуальный анализ текста и данных"
 
@@ -338,11 +338,15 @@ msgstr "поиск документов"
 msgid "Search"
 msgstr "Поиск"
 
-#: fatcat_scholar/templates/base.html:139
+#: fatcat_scholar/templates/base.html:144
+msgid "RSS Feed"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:148
 msgid "User Guide"
 msgstr "Руководство пользователя"
 
-#: fatcat_scholar/templates/base.html:167
+#: fatcat_scholar/templates/base.html:176
 msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
@@ -350,7 +354,7 @@ msgstr ""
 "Мы - некоммерческая библиотека US 501(c)(3), создающая глобальный архив "
 "Интернет-сайтов и других культурных артефактов в цифровой форме."
 
-#: fatcat_scholar/templates/base.html:169
+#: fatcat_scholar/templates/base.html:178
 #, python-format
 msgid ""
 "Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and "
@@ -359,47 +363,47 @@ msgstr ""
 "Другие проекты включают в себя %(wayback)s, %(archive_org)s, "
 "%(openlibrary)s, и %(archive_it)s."
 
-#: fatcat_scholar/templates/base.html:176
+#: fatcat_scholar/templates/base.html:185
 msgid "About Us"
 msgstr "О нас"
 
-#: fatcat_scholar/templates/base.html:177
+#: fatcat_scholar/templates/base.html:186
 msgid "Contact Us"
 msgstr "Связаться с нами"
 
-#: fatcat_scholar/templates/base.html:178
+#: fatcat_scholar/templates/base.html:187
 msgid "Policies"
 msgstr "Политика"
 
-#: fatcat_scholar/templates/base.html:179
+#: fatcat_scholar/templates/base.html:188
 msgid "Donate"
 msgstr "Пожертвовать"
 
-#: fatcat_scholar/templates/base.html:185
+#: fatcat_scholar/templates/base.html:194
 msgid "Open Infrastructure"
 msgstr "Открытая инфраструктура"
 
-#: fatcat_scholar/templates/base.html:187
+#: fatcat_scholar/templates/base.html:196
 msgid "Editable Catalog (Fatcat)"
 msgstr "Редактируемый каталог (Fatcat)"
 
-#: fatcat_scholar/templates/base.html:188
+#: fatcat_scholar/templates/base.html:197
 msgid "Contribute"
 msgstr "Стать участником"
 
-#: fatcat_scholar/templates/base.html:189
+#: fatcat_scholar/templates/base.html:198
 msgid "Search API"
 msgstr "Поисковый API"
 
-#: fatcat_scholar/templates/base.html:190
+#: fatcat_scholar/templates/base.html:199
 msgid "Service Status"
 msgstr "Статус сервиса"
 
-#: fatcat_scholar/templates/base.html:191
+#: fatcat_scholar/templates/base.html:200
 msgid "Source Code"
 msgstr "Исходный код"
 
-#: fatcat_scholar/templates/base.html:200
+#: fatcat_scholar/templates/base.html:209
 msgid "Help"
 msgstr "Справка"
 
@@ -1154,6 +1158,9 @@ msgstr ""
 #: fatcat_scholar/templates/search_macros.html:540
 msgid "Clear Filters"
 msgstr "Очистить фильтры"
+
+#~ msgid "Metadata"
+#~ msgstr "Метаданные"
 
 #~ msgid "Digital Bibliography of Logic Programming"
 #~ msgstr "Цифровая библиография логического программирования"

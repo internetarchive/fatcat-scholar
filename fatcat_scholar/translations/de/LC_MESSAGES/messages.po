@@ -11,8 +11,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
-"POT-Creation-Date: 2022-01-05 09:04-0800\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2022-04-06 17:43-0700\n"
 "PO-Revision-Date: 2022-01-09 01:55+0000\n"
 "Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/internetarchive/"
@@ -86,8 +86,8 @@ msgid "Open Access"
 msgstr "Offener Zugang"
 
 #: fatcat_scholar/search.py:75
-msgid "Metadata"
-msgstr "Metadaten"
+msgid "All Records"
+msgstr ""
 
 #: fatcat_scholar/search.py:79
 msgid "Sort Order"
@@ -124,7 +124,7 @@ msgstr ""
 "einige Bugs und bekannte Probleme auflistet"
 
 #: fatcat_scholar/templates/about.html:14
-#: fatcat_scholar/templates/base.html:197
+#: fatcat_scholar/templates/base.html:206
 msgid "How It Works"
 msgstr "Wie es funktioniert"
 
@@ -165,7 +165,7 @@ msgstr ""
 "Überblick über die technische Infrastruktur und die Ziele des Gesamtprojekts."
 
 #: fatcat_scholar/templates/about.html:27
-#: fatcat_scholar/templates/base.html:198
+#: fatcat_scholar/templates/base.html:207
 msgid "Content Sources"
 msgstr "Datenquellen"
 
@@ -186,7 +186,7 @@ msgstr ""
 "<a href=\"#contact\">kontaktieren Sie uns</a>, wenn Sie Fragen haben."
 
 #: fatcat_scholar/templates/about.html:35
-#: fatcat_scholar/templates/base.html:199
+#: fatcat_scholar/templates/base.html:208
 msgid "Text and Data Mining"
 msgstr "Text- und Datenuntersuchung"
 
@@ -341,11 +341,15 @@ msgstr "Artikel suchen"
 msgid "Search"
 msgstr "Suche"
 
-#: fatcat_scholar/templates/base.html:139
+#: fatcat_scholar/templates/base.html:144
+msgid "RSS Feed"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:148
 msgid "User Guide"
 msgstr "Benutzerhandbuch"
 
-#: fatcat_scholar/templates/base.html:167
+#: fatcat_scholar/templates/base.html:176
 msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
@@ -354,7 +358,7 @@ msgstr ""
 "Archiv von Internetseiten und anderen kulturellen Er­zeug­nissen in digitaler "
 "Form erstellt."
 
-#: fatcat_scholar/templates/base.html:169
+#: fatcat_scholar/templates/base.html:178
 #, python-format
 msgid ""
 "Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and "
@@ -363,47 +367,47 @@ msgstr ""
 "Weitere Projekte sind %(wayback)s, %(archive_org)s, %(openlibrary)s und "
 "%(archive_it)s."
 
-#: fatcat_scholar/templates/base.html:176
+#: fatcat_scholar/templates/base.html:185
 msgid "About Us"
 msgstr "Über uns"
 
-#: fatcat_scholar/templates/base.html:177
+#: fatcat_scholar/templates/base.html:186
 msgid "Contact Us"
 msgstr "Kontakt"
 
-#: fatcat_scholar/templates/base.html:178
+#: fatcat_scholar/templates/base.html:187
 msgid "Policies"
 msgstr "Richtlinien"
 
-#: fatcat_scholar/templates/base.html:179
+#: fatcat_scholar/templates/base.html:188
 msgid "Donate"
 msgstr "Spenden"
 
-#: fatcat_scholar/templates/base.html:185
+#: fatcat_scholar/templates/base.html:194
 msgid "Open Infrastructure"
 msgstr "Offene Infrastruktur"
 
-#: fatcat_scholar/templates/base.html:187
+#: fatcat_scholar/templates/base.html:196
 msgid "Editable Catalog (Fatcat)"
 msgstr "Bearbeitbarer Katalog (Fatcat)"
 
-#: fatcat_scholar/templates/base.html:188
+#: fatcat_scholar/templates/base.html:197
 msgid "Contribute"
 msgstr "Mitmachen"
 
-#: fatcat_scholar/templates/base.html:189
+#: fatcat_scholar/templates/base.html:198
 msgid "Search API"
 msgstr "Such-API"
 
-#: fatcat_scholar/templates/base.html:190
+#: fatcat_scholar/templates/base.html:199
 msgid "Service Status"
 msgstr "Dienststatus"
 
-#: fatcat_scholar/templates/base.html:191
+#: fatcat_scholar/templates/base.html:200
 msgid "Source Code"
 msgstr "Quellcode"
 
-#: fatcat_scholar/templates/base.html:200
+#: fatcat_scholar/templates/base.html:209
 msgid "Help"
 msgstr "Hilfe"
 
@@ -1169,6 +1173,9 @@ msgstr "Ergebnisse %(start)s &ndash; %(end)s von %(total)s"
 #: fatcat_scholar/templates/search_macros.html:540
 msgid "Clear Filters"
 msgstr "Filter löschen"
+
+#~ msgid "Metadata"
+#~ msgstr "Metadaten"
 
 #~ msgid "Digital Bibliography of Logic Programming"
 #~ msgstr "Digitale Bibliographie der logischen Programmierung"

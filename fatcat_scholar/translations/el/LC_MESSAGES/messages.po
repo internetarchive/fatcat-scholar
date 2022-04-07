@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
-"POT-Creation-Date: 2022-01-05 09:04-0800\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2022-04-06 17:43-0700\n"
 "PO-Revision-Date: 2022-01-09 01:55+0000\n"
 "Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/internetarchive/"
@@ -83,8 +83,8 @@ msgid "Open Access"
 msgstr "Ανοικτή πρόσβαση"
 
 #: fatcat_scholar/search.py:75
-msgid "Metadata"
-msgstr "Μέτα δεδομένα"
+msgid "All Records"
+msgstr ""
 
 #: fatcat_scholar/search.py:79
 msgid "Sort Order"
@@ -121,7 +121,7 @@ msgstr ""
 "απαριθμεί κάποια σφάλματα και γνωστά προβλήματα"
 
 #: fatcat_scholar/templates/about.html:14
-#: fatcat_scholar/templates/base.html:197
+#: fatcat_scholar/templates/base.html:206
 msgid "How It Works"
 msgstr "Πώς λειτουργεί"
 
@@ -159,7 +159,7 @@ msgstr ""
 "κάνει μια επισκόπηση των τεχνικών υποδομών και στόχων του έργου γενικά."
 
 #: fatcat_scholar/templates/about.html:27
-#: fatcat_scholar/templates/base.html:198
+#: fatcat_scholar/templates/base.html:207
 msgid "Content Sources"
 msgstr "Πηγές περιεχομένου"
 
@@ -178,7 +178,7 @@ msgstr ""
 "\"#contact\">επικοινωνήσετε με εμάς</a> εάν έχετε απορίες."
 
 #: fatcat_scholar/templates/about.html:35
-#: fatcat_scholar/templates/base.html:199
+#: fatcat_scholar/templates/base.html:208
 msgid "Text and Data Mining"
 msgstr "Εξόρυξη κειμένου και δεδομένων"
 
@@ -332,11 +332,15 @@ msgstr "αναζήτηση εγγράφων"
 msgid "Search"
 msgstr "Αναζήτηση"
 
-#: fatcat_scholar/templates/base.html:139
+#: fatcat_scholar/templates/base.html:144
+msgid "RSS Feed"
+msgstr ""
+
+#: fatcat_scholar/templates/base.html:148
 msgid "User Guide"
 msgstr "Οδηγός Χρήστη"
 
-#: fatcat_scholar/templates/base.html:167
+#: fatcat_scholar/templates/base.html:176
 msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
@@ -345,7 +349,7 @@ msgstr ""
 "ένα παγκόσμιο αρχείο ιστοτόπων στο Διαδίκτυο και άλλων πολιτιστικών "
 "αντικειμένων σε ψηφιακή μορφή."
 
-#: fatcat_scholar/templates/base.html:169
+#: fatcat_scholar/templates/base.html:178
 #, python-format
 msgid ""
 "Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and "
@@ -354,47 +358,47 @@ msgstr ""
 "Άλλα έργα περιλαμβάνουν τα %(wayback)s, %(archive_org)s, %(openlibrary)s και "
 "το %(archive_it)s."
 
-#: fatcat_scholar/templates/base.html:176
+#: fatcat_scholar/templates/base.html:185
 msgid "About Us"
 msgstr "Σχετικά Με Εμάς"
 
-#: fatcat_scholar/templates/base.html:177
+#: fatcat_scholar/templates/base.html:186
 msgid "Contact Us"
 msgstr "Επικοινωνήστε Μαζί Μας"
 
-#: fatcat_scholar/templates/base.html:178
+#: fatcat_scholar/templates/base.html:187
 msgid "Policies"
 msgstr "Πολιτική"
 
-#: fatcat_scholar/templates/base.html:179
+#: fatcat_scholar/templates/base.html:188
 msgid "Donate"
 msgstr "Κάντε μια δωρεά"
 
-#: fatcat_scholar/templates/base.html:185
+#: fatcat_scholar/templates/base.html:194
 msgid "Open Infrastructure"
 msgstr "Ανοιχτή Υποδομή"
 
-#: fatcat_scholar/templates/base.html:187
+#: fatcat_scholar/templates/base.html:196
 msgid "Editable Catalog (Fatcat)"
 msgstr "Κατάλογος με δυνατότητα επεξεργασίας (Φάτκατ)"
 
-#: fatcat_scholar/templates/base.html:188
+#: fatcat_scholar/templates/base.html:197
 msgid "Contribute"
 msgstr "Συνεισφέρετε"
 
-#: fatcat_scholar/templates/base.html:189
+#: fatcat_scholar/templates/base.html:198
 msgid "Search API"
 msgstr "Αναζήτηση Διεπαφής Προγραμματισμού Εφαρμογών"
 
-#: fatcat_scholar/templates/base.html:190
+#: fatcat_scholar/templates/base.html:199
 msgid "Service Status"
 msgstr "Κατάσταση Υπηρεσίας"
 
-#: fatcat_scholar/templates/base.html:191
+#: fatcat_scholar/templates/base.html:200
 msgid "Source Code"
 msgstr "Πηγαίος Κώδικας"
 
-#: fatcat_scholar/templates/base.html:200
+#: fatcat_scholar/templates/base.html:209
 msgid "Help"
 msgstr "Βοήθεια"
 
@@ -1080,3 +1084,6 @@ msgstr ""
 #: fatcat_scholar/templates/search_macros.html:540
 msgid "Clear Filters"
 msgstr "Εκκαθάριση φίλτρων"
+
+#~ msgid "Metadata"
+#~ msgstr "Μέτα δεδομένα"
