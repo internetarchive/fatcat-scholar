@@ -104,6 +104,28 @@ def test_basic_search(client: Any, mocker: Any) -> None:
     assert rv.status_code == 200
 
 
+def test_basic_rss_feed(client: Any, mocker: Any) -> None:
+
+    with open("tests/files/elastic_fulltext_search.json") as f:
+        elastic_resp = json.loads(f.read())
+
+    es_raw = mocker.patch(
+        "elasticsearch.connection.Urllib3HttpConnection.perform_request"
+    )
+    es_raw.side_effect = [
+        (200, {}, json.dumps(elastic_resp)),
+        (200, {}, json.dumps(elastic_resp)),
+    ]
+
+    rv = client.get("/feed/rss?q=blood")
+    assert rv.status_code == 200
+    assert rv.content.startswith(b"<rss")
+
+    rv = client.get("/zh/feed/rss?q=blood")
+    assert rv.status_code == 200
+    assert rv.content.startswith(b"<rss")
+
+
 def test_basic_work_landing_page(client: Any, mocker: Any) -> None:
 
     with open("tests/files/elastic_fulltext_get.json") as f:

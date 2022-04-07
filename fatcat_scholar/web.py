@@ -178,65 +178,6 @@ def search(query: FulltextQuery = Depends(FulltextQuery)) -> FulltextHits:
     return hits
 
 
-@api.get("/feed/rss", operation_id="get_feed_rss", include_in_schema=False)
-def feed_rss(
-    query: FulltextQuery = Depends(FulltextQuery),
-    lang: LangPrefix = Depends(LangPrefix),
-) -> fastapi_rss.RSSResponse:
-
-    # override some query params for feeds
-    original_query = query.q
-    if query.q:
-        query.q += " doc_type:work"
-    query.offset = None
-    query.filter_time = "past_year"
-    query.sort_order = "time_desc"
-    query.limit = 20
-
-    hits: FulltextHits = process_query(query)
-
-    rss_items = []
-    for hit in hits.results:
-        scholar_doc = hit["_obj"]
-        abstract: Optional[str] = None
-        if scholar_doc.abstracts:
-            abstract = scholar_doc.abstracts[0].body
-        authors = ", ".join(scholar_doc.biblio.contrib_names) or None
-        pub_date = None
-        if scholar_doc.biblio.release_date:
-            # convert datetime.date to datetime.datetime
-            pub_date = datetime.datetime(
-                *scholar_doc.biblio.release_date.timetuple()[:6]
-            )
-        rss_items.append(
-            fastapi_rss.Item(
-                title=scholar_doc.biblio.title,
-                link=f"https://scholar.archive.org/work/{scholar_doc.work_ident}",
-                description=abstract,
-                author=authors,
-                pub_date=pub_date,
-                guid=fastapi_rss.GUID(content=scholar_doc.key),
-            )
-        )
-
-    last_build_date = None
-    if rss_items:
-        last_build_date = rss_items[0].pub_date
-    feed = fastapi_rss.RSSFeed(
-        title=f"IA Scholar Query: {original_query}",
-        link="https://scholar.archive.org/",
-        description="Internet Archive Scholar query results feed",
-        language="en",
-        last_build_date=last_build_date,
-        docs="https://scholar.archive.org/help",
-        generator="fatcat-scholar",
-        webmaster="info@archive.org",
-        ttl=60 * 24,  # 24 hours, in minutes
-        item=rss_items,
-    )
-    return fastapi_rss.RSSResponse(feed)
-
-
 @api.get("/work/{work_ident}", operation_id="get_work")
 def get_work(work_ident: str = Query(..., min_length=20, max_length=20)) -> dict:
     doc = get_es_scholar_doc(f"work_{work_ident}")
@@ -284,7 +225,7 @@ def load_i18n_templates() -> Any:
         )
         templates = Jinja2Templates(
             directory="fatcat_scholar/templates",
-            extensions=["jinja2.ext.i18n"],
+            extensions=["jinja2.ext.i18n", "jinja2.ext.do"],
         )
         templates.env.install_gettext_translations(translations, newstyle=True)  # type: ignore
         templates.env.install_gettext_callables(  # type: ignore
@@ -385,6 +326,67 @@ def web_search(
         headers=headers,
         status_code=status_code,
     )
+
+
+@web.get("/feed/rss", operation_id="get_feed_rss", include_in_schema=False)
+def web_feed_rss(
+    query: FulltextQuery = Depends(FulltextQuery),
+    lang: LangPrefix = Depends(LangPrefix),
+) -> fastapi_rss.RSSResponse:
+
+    # override some query params for feeds
+    original_query = query.q
+    if query.q:
+        query.q += " doc_type:work"
+    query.offset = None
+    query.filter_time = "past_year"
+    query.sort_order = "time_desc"
+    query.limit = 20
+
+    hits: FulltextHits = process_query(query)
+
+    rss_items = []
+    for hit in hits.results:
+        scholar_doc = hit["_obj"]
+        abstract: Optional[str] = None
+        if scholar_doc.abstracts:
+            abstract = scholar_doc.abstracts[0].body
+        authors = ", ".join(scholar_doc.biblio.contrib_names) or None
+        pub_date = None
+        if scholar_doc.biblio.release_date:
+            # convert datetime.date to datetime.datetime
+            pub_date = datetime.datetime(
+                *scholar_doc.biblio.release_date.timetuple()[:6]
+            )
+        rss_items.append(
+            # NOTE(i18n): could prefer "original title" and abstract based on lang context
+            fastapi_rss.Item(
+                title=scholar_doc.biblio.title or f"(Microfilm Page)",
+                link=f"https://scholar.archive.org{lang.prefix}/work/{scholar_doc.work_ident}",
+                description=abstract,
+                author=authors,
+                pub_date=pub_date,
+                guid=fastapi_rss.GUID(content=scholar_doc.key),
+            )
+        )
+
+    last_build_date = None
+    if rss_items:
+        last_build_date = rss_items[0].pub_date
+    # i18n: unsure how to swap in translated strings here (in code, not in jinja2 template)
+    feed = fastapi_rss.RSSFeed(
+        title=f"IA Scholar Query: {original_query}",
+        link=f"https://scholar.archive.org{lang.prefix}/",
+        description="Internet Archive Scholar query results feed",
+        language="en",
+        last_build_date=last_build_date,
+        docs=f"https://scholar.archive.org{lang.prefix}/help",
+        generator="fatcat-scholar",
+        webmaster="info@archive.org",
+        ttl=60 * 24,  # 24 hours, in minutes
+        item=rss_items,
+    )
+    return fastapi_rss.RSSResponse(feed)
 
 
 @web.get("/work/{work_ident}", include_in_schema=False)
