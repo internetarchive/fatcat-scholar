@@ -2,15 +2,15 @@
 # Copyright (C) 2020 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
-# Milo Ivir <mail@milotype.de>, 2020, 2021.
+# Milo Ivir <mail@milotype.de>, 2020, 2021, 2022.
 # Bryan Newbold <bnewbold@robocracy.org>, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2022-04-06 17:43-0700\n"
-"PO-Revision-Date: 2022-04-07 00:51+0000\n"
-"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"PO-Revision-Date: 2022-04-09 11:11+0000\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/hr/>\n"
 "Language: hr\n"
@@ -84,7 +84,7 @@ msgstr "Slobodan pristup"
 
 #: fatcat_scholar/search.py:75
 msgid "All Records"
-msgstr ""
+msgstr "Svi zapisi"
 
 #: fatcat_scholar/search.py:79
 msgid "Sort Order"
