@@ -60,7 +60,7 @@ ENABLE_PROMETHEUS = true
 ELASTICSEARCH_QUERY_BASE = "https://search.fatcat.wiki"
 ELASTICSEARCH_WRITE_BASE = "http://localhost:9200"
 ELASTICSEARCH_PUBLIC_URL = "https://search.fatcat.wiki"
-KAFKA_BROKERS = ["wbgrp-svc263.us.archive.org"]
+KAFKA_BROKERS = ["wbgrp-svc350.us.archive.org"]
 
 [prod]
 SCHOLAR_ENV = "prod"
@@ -72,7 +72,7 @@ ELASTICSEARCH_QUERY_PREFERENCE = "_local"
 ELASTICSEARCH_WRITE_BASE = "http://localhost:9200"
 ELASTICSEARCH_WRITE_FULLTEXT_INDEX = "scholar_fulltext_v01_20211208"
 ELASTICSEARCH_PUBLIC_URL = "https://search.fatcat.wiki"
-KAFKA_BROKERS = ["wbgrp-svc263.us.archive.org"]
+KAFKA_BROKERS = ["wbgrp-svc350.us.archive.org"]
 ENABLE_GOATCOUNTER = true
 GOATCOUNTER_ENDPOINT = "/goatcounter/count"
 GOATCOUNTER_SCRIPT_URL = "/goatcounter/count.js"
