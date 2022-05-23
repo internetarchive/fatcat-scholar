@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
 # Bryan Newbold <bnewbold@robocracy.org>, 2021, 2022.
+# MEgooneh <mohammad.erfan.gooneh@gmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2022-04-06 17:43-0700\n"
-"PO-Revision-Date: 2022-04-07 00:51+0000\n"
-"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"PO-Revision-Date: 2022-05-23 14:59+0000\n"
+"Last-Translator: MEgooneh <mohammad.erfan.gooneh@gmail.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/fa/>\n"
 "Language: fa\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.12-dev\n"
+"X-Generator: Weblate 4.13-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 #: fatcat_scholar/search.py:45
@@ -82,7 +83,7 @@ msgstr "دسترسی آزاد"
 
 #: fatcat_scholar/search.py:75
 msgid "All Records"
-msgstr ""
+msgstr "تمام رکوردها"
 
 #: fatcat_scholar/search.py:79
 msgid "Sort Order"
@@ -267,12 +268,12 @@ msgstr ""
 
 #: fatcat_scholar/templates/access_404.html:10
 msgid "404: Access Location Not Found"
-msgstr ""
+msgstr "404: دسترسی به مکان یافت نشد"
 
 #: fatcat_scholar/templates/access_404.html:11
 msgid ""
 "We could not find a valid redirect for the URL you tried. Sorry about that!"
-msgstr ""
+msgstr "ما برای آدرسی که دادید هدایت کننده معتبری پیدا نکردیم. معذرت می خواهیم!"
 
 #: fatcat_scholar/templates/access_404.html:12
 msgid ""
@@ -288,15 +289,15 @@ msgstr ""
 
 #: fatcat_scholar/templates/access_404.html:16
 msgid "Original web url:"
-msgstr ""
+msgstr "آدرس وب اصلی:"
 
 #: fatcat_scholar/templates/access_404.html:20
 msgid "Wayback Machine calendar page (all captures)"
-msgstr ""
+msgstr "صفحه‌ی تقویم(تمام نتایج)"
 
 #: fatcat_scholar/templates/access_404.html:23
 msgid "archive.org download link for the item:"
-msgstr ""
+msgstr "لینک دانلود:"
 
 #: fatcat_scholar/templates/access_404.html:29
 msgid "Scholar landing page"
@@ -332,7 +333,7 @@ msgstr "جستجو"
 
 #: fatcat_scholar/templates/base.html:144
 msgid "RSS Feed"
-msgstr "آر اس اس فید"
+msgstr "RSS Feed"
 
 #: fatcat_scholar/templates/base.html:148
 msgid "User Guide"
@@ -647,7 +648,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:148
 msgid "Tags"
-msgstr ""
+msgstr "تگ‌ها"
 
 #: fatcat_scholar/templates/help.html:150
 msgid ""
@@ -739,7 +740,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:198
 msgid "Persistent Identifiers"
-msgstr ""
+msgstr "شناسه‌های ثابت"
 
 #: fatcat_scholar/templates/help.html:200
 msgid ""
