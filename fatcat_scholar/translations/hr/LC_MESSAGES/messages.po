@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2022-04-06 17:43-0700\n"
-"PO-Revision-Date: 2022-04-09 11:11+0000\n"
+"PO-Revision-Date: 2022-06-01 13:18+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/hr/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.12-dev\n"
+"X-Generator: Weblate 4.13-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:45
@@ -40,11 +40,11 @@ msgstr "Prošla godina"
 
 #: fatcat_scholar/search.py:52
 msgid "Since 2000"
-msgstr "Nakon 2000."
+msgstr "Od 2000. godine nadalje"
 
 #: fatcat_scholar/search.py:53
 msgid "Before 1927"
-msgstr "Prije 1927"
+msgstr "Prije 1927. godine"
 
 #: fatcat_scholar/search.py:57
 msgid "Resource Type"
