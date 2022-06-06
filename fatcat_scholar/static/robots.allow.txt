@@ -7,6 +7,7 @@ User-agent: SemrushBot
 User-agent: YandexBot
 User-agent: bingbot
 User-agent: Googlebot
+User-agent: SemanticScholarBot
 Disallow: /search
 
 # crawling search result pages is expensive, so we do specify a long crawl
