@@ -5,13 +5,14 @@
 # Bryan Newbold <bnewbold@robocracy.org>, 2020, 2021, 2022.
 # badlop <badlop@process-one.net>, 2021.
 # Adolfo Jayme Barrientos <fitojb@ubuntu.com>, 2021.
+# eulalio <eulalio@disroot.org>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2022-04-06 17:43-0700\n"
-"PO-Revision-Date: 2022-01-09 01:55+0000\n"
-"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"PO-Revision-Date: 2022-06-23 12:15+0000\n"
+"Last-Translator: eulalio <eulalio@disroot.org>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/es/>\n"
 "Language: es\n"
@@ -19,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.10.1\n"
+"X-Generator: Weblate 4.13.1-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:45
@@ -84,7 +85,7 @@ msgstr "Acceso abierto"
 
 #: fatcat_scholar/search.py:75
 msgid "All Records"
-msgstr ""
+msgstr "Todos los registros"
 
 #: fatcat_scholar/search.py:79
 msgid "Sort Order"
@@ -256,7 +257,7 @@ msgstr "Hay un canal de chat público en <a href=\"%(url)s\">%(url)s</a>."
 
 #: fatcat_scholar/templates/about.html:57
 msgid "Support and Acknowledgements"
-msgstr ""
+msgstr "Apoyo y Agradecimientos"
 
 #: fatcat_scholar/templates/about.html:60
 #, python-format
@@ -266,6 +267,10 @@ msgid ""
 "\"Ensuring the Persistent Access of Open Access Journal Literature\"</a> "
 "project (see <a href=\"%(blog_url)s\">original announcement</a>)."
 msgstr ""
+"El trabajo en Internet Archive Scholar ha recibido el apoyo de la Fundación "
+"Andrew W. Mellon en múltiples fases del proyecto <a href=\"%(grant_url)s\">"
+"\"Ensuring the Persistent Access of Open Access Journal Literature\"</a> ("
+"ver <a href=\"%(blog_url)s\">anuncio original</a>)."
 
 #: fatcat_scholar/templates/about.html:62
 #, python-format
@@ -273,47 +278,55 @@ msgid ""
 "See additional acknowledgements on <a href=\"%(fatcat_url)s\">fatcat.wiki</"
 "a>."
 msgstr ""
+"Ver reconocimientos adicionales en <a href=\"%(fatcat_url)s\">fatcat."
+"wiki</a>."
 
 #: fatcat_scholar/templates/access_404.html:10
 msgid "404: Access Location Not Found"
-msgstr ""
+msgstr "404: No se encuentra localización de acceso"
 
 #: fatcat_scholar/templates/access_404.html:11
 msgid ""
 "We could not find a valid redirect for the URL you tried. Sorry about that!"
 msgstr ""
+"No pudimos encontrar una redirección válida para la URL que intentó. ¡Lo "
+"lamento!"
 
 #: fatcat_scholar/templates/access_404.html:12
 msgid ""
 "There may be a typo, truncation, or encoding error. Or, the resource may "
 "have been removed from our catalog."
 msgstr ""
+"Puede haber un error tipográfico, truncado o de codificación. O bien, se "
+"puede haber eliminado el recurso de nuestro catálogo."
 
 #: fatcat_scholar/templates/access_404.html:13
 msgid ""
 "Some places you can visit try to hunt down this resource (or a replacement) "
 "include:"
 msgstr ""
+"Algunos lugares que puede visitar para buscar este recurso (o una "
+"sustitución) incluyen:"
 
 #: fatcat_scholar/templates/access_404.html:16
 msgid "Original web url:"
-msgstr ""
+msgstr "URL web original:"
 
 #: fatcat_scholar/templates/access_404.html:20
 msgid "Wayback Machine calendar page (all captures)"
-msgstr ""
+msgstr "Página del calendario de Wayback Machine (todas las capturas)"
 
 #: fatcat_scholar/templates/access_404.html:23
 msgid "archive.org download link for the item:"
-msgstr ""
+msgstr "archive.org enlace de descarga para el elemento:"
 
 #: fatcat_scholar/templates/access_404.html:29
 msgid "Scholar landing page"
-msgstr ""
+msgstr "Página de destino escolar"
 
 #: fatcat_scholar/templates/access_404.html:30
 msgid "Fatcat catalog page"
-msgstr ""
+msgstr "Página del catálogo Fatcat"
 
 #: fatcat_scholar/templates/base.html:13
 msgid "Internet Archive Scholar"
@@ -341,7 +354,7 @@ msgstr "Buscar"
 
 #: fatcat_scholar/templates/base.html:144
 msgid "RSS Feed"
-msgstr ""
+msgstr "RSS Feed"
 
 #: fatcat_scholar/templates/base.html:148
 msgid "User Guide"
@@ -665,8 +678,9 @@ msgstr ""
 "a veces proporcionaremos enlaces adicionales"
 
 #: fatcat_scholar/templates/help.html:148
+#, fuzzy
 msgid "Tags"
-msgstr ""
+msgstr "Tags"
 
 #: fatcat_scholar/templates/help.html:150
 msgid ""
@@ -760,7 +774,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:198
 msgid "Persistent Identifiers"
-msgstr ""
+msgstr "Identificadores persistentes"
 
 #: fatcat_scholar/templates/help.html:200
 msgid ""
