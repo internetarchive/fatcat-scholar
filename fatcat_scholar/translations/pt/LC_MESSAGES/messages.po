@@ -5,13 +5,14 @@
 # Bryan Newbold <bnewbold@robocracy.org>, 2021, 2022.
 # ssantos <ssantos@web.de>, 2021, 2022.
 # Gabriel Gian <gabrielgian@live.com>, 2022.
+# Vander <vander.azevedo88@gmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2022-04-06 17:43-0700\n"
-"PO-Revision-Date: 2022-01-17 19:55+0000\n"
-"Last-Translator: ssantos <ssantos@web.de>\n"
+"PO-Revision-Date: 2022-06-24 21:19+0000\n"
+"Last-Translator: Vander <vander.azevedo88@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/"
 "internetarchive/fatcat-scholar/pt/>\n"
 "Language: pt\n"
@@ -19,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.11-dev\n"
+"X-Generator: Weblate 4.13.1-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 #: fatcat_scholar/search.py:45
@@ -84,7 +85,7 @@ msgstr "Acesso Aberto"
 
 #: fatcat_scholar/search.py:75
 msgid "All Records"
-msgstr ""
+msgstr "Todos os registros"
 
 #: fatcat_scholar/search.py:79
 msgid "Sort Order"
@@ -351,7 +352,7 @@ msgstr "Procurar"
 
 #: fatcat_scholar/templates/base.html:144
 msgid "RSS Feed"
-msgstr ""
+msgstr "Feed RSS"
 
 #: fatcat_scholar/templates/base.html:148
 msgid "User Guide"
