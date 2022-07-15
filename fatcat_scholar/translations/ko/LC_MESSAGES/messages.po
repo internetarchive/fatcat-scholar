@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2022-04-06 17:43-0700\n"
-"PO-Revision-Date: 2022-07-15 06:21+0000\n"
+"PO-Revision-Date: 2022-07-17 01:23+0000\n"
 "Last-Translator: DNSE <kty5663@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/ko/>\n"
@@ -258,13 +258,17 @@ msgid ""
 "\"Ensuring the Persistent Access of Open Access Journal Literature\"</a> "
 "project (see <a href=\"%(blog_url)s\">original announcement</a>)."
 msgstr ""
+"Internet Archive Scholar를 작업하며 <a href=\"%(grant_url)s\">\"Open Access "
+"Journal Literature의 지속적인 접근 보장\"</a> 프로젝트의 여러 단계를 통해 "
+"Andrew W. Mellon 재단의 지원을 받았습니다(<a href=\"%(blog_url)s\">원본 "
+"발표</a> 참조)."
 
 #: fatcat_scholar/templates/about.html:62
 #, python-format
 msgid ""
 "See additional acknowledgements on <a href=\"%(fatcat_url)s\">fatcat.wiki</"
 "a>."
-msgstr ""
+msgstr "<a href=\"%(fatcat_url)s\">fatcat.wiki</a>에서 더 확인할 수 있습니다."
 
 #: fatcat_scholar/templates/access_404.html:10
 msgid "404: Access Location Not Found"
@@ -279,13 +283,14 @@ msgstr "찾으시는 URL에 대해 유효한 리다이렉트를 찾을 수 없�
 msgid ""
 "There may be a typo, truncation, or encoding error. Or, the resource may "
 "have been removed from our catalog."
-msgstr ""
+msgstr "오타나 끊김, 인코딩 오류가 있을 수 있습니다. 혹은 리소스가 저희 카탈로그에서 "
+"삭제되었을 수 있습니다."
 
 #: fatcat_scholar/templates/access_404.html:13
 msgid ""
 "Some places you can visit try to hunt down this resource (or a replacement) "
 "include:"
-msgstr ""
+msgstr "검색하신 단어와 관련된 자료를 찾아볼 수 있는 곳을 알려드리겠습니다. 검색어:"
 
 #: fatcat_scholar/templates/access_404.html:16
 msgid "Original web url:"
@@ -293,15 +298,15 @@ msgstr "원본 웹 URL:"
 
 #: fatcat_scholar/templates/access_404.html:20
 msgid "Wayback Machine calendar page (all captures)"
-msgstr ""
+msgstr "Wayback Machine 캘린더 페이지 (모든 캡처본)"
 
 #: fatcat_scholar/templates/access_404.html:23
 msgid "archive.org download link for the item:"
-msgstr ""
+msgstr "archive.org 항목 다운로드 링크:"
 
 #: fatcat_scholar/templates/access_404.html:29
 msgid "Scholar landing page"
-msgstr ""
+msgstr "학술 홈페이지"
 
 #: fatcat_scholar/templates/access_404.html:30
 msgid "Fatcat catalog page"
