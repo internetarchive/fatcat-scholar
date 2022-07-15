@@ -4,13 +4,14 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
 # Bryan Newbold <bnewbold@robocracy.org>, 2021, 2022.
 # YiReun <zleonoti@gmail.com>, 2021.
+# DNSE <kty5663@gmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2022-04-06 17:43-0700\n"
-"PO-Revision-Date: 2022-04-07 00:51+0000\n"
-"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"PO-Revision-Date: 2022-07-15 06:21+0000\n"
+"Last-Translator: DNSE <kty5663@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/ko/>\n"
 "Language: ko\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.12-dev\n"
+"X-Generator: Weblate 4.14-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 #: fatcat_scholar/search.py:45
@@ -83,7 +84,7 @@ msgstr "오픈 액세스"
 
 #: fatcat_scholar/search.py:75
 msgid "All Records"
-msgstr ""
+msgstr "모든 기록"
 
 #: fatcat_scholar/search.py:79
 msgid "Sort Order"
@@ -247,7 +248,7 @@ msgstr "<a href=\"%(url)s\"> %(url)s </a>에 공개 채팅 채널이 있습니�
 
 #: fatcat_scholar/templates/about.html:57
 msgid "Support and Acknowledgements"
-msgstr ""
+msgstr "지원 및 감사의 말"
 
 #: fatcat_scholar/templates/about.html:60
 #, python-format
@@ -267,12 +268,12 @@ msgstr ""
 
 #: fatcat_scholar/templates/access_404.html:10
 msgid "404: Access Location Not Found"
-msgstr ""
+msgstr "404: 접근 위치를 찾을 수 없습니다"
 
 #: fatcat_scholar/templates/access_404.html:11
 msgid ""
 "We could not find a valid redirect for the URL you tried. Sorry about that!"
-msgstr ""
+msgstr "찾으시는 URL에 대해 유효한 리다이렉트를 찾을 수 없었습니다. 죄송합니다!"
 
 #: fatcat_scholar/templates/access_404.html:12
 msgid ""
@@ -288,7 +289,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/access_404.html:16
 msgid "Original web url:"
-msgstr ""
+msgstr "원본 웹 URL:"
 
 #: fatcat_scholar/templates/access_404.html:20
 msgid "Wayback Machine calendar page (all captures)"
@@ -304,7 +305,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/access_404.html:30
 msgid "Fatcat catalog page"
-msgstr ""
+msgstr "Fatcat 카탈로그 페이지"
 
 #: fatcat_scholar/templates/base.html:13
 msgid "Internet Archive Scholar"
@@ -641,7 +642,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:148
 msgid "Tags"
-msgstr ""
+msgstr "태그"
 
 #: fatcat_scholar/templates/help.html:150
 msgid ""
@@ -732,7 +733,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/help.html:198
 msgid "Persistent Identifiers"
-msgstr ""
+msgstr "영구 식별자"
 
 #: fatcat_scholar/templates/help.html:200
 msgid ""
