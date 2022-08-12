@@ -9,8 +9,6 @@ import logging
 import urllib.parse
 from typing import Any, Dict, List, Optional
 
-import babel.numbers
-import babel.support
 import fastapi_rss
 import fatcat_openapi_client
 import sentry_sdk
@@ -28,12 +26,7 @@ from sentry_sdk.integrations.asgi import SentryAsgiMiddleware
 from starlette.exceptions import HTTPException as StarletteHTTPException
 from starlette_prometheus import PrometheusMiddleware, metrics
 
-from fatcat_scholar.config import GIT_REVISION, settings
-from fatcat_scholar.web_hacks import (
-    Jinja2Templates,
-    make_access_redirect_url,
-    parse_accept_lang,
-)
+from fatcat_scholar.config import GIT_REVISION, I18N_LANG_OPTIONS, settings
 from fatcat_scholar.schema import ScholarDoc
 from fatcat_scholar.search import (
     FulltextHits,
@@ -42,6 +35,7 @@ from fatcat_scholar.search import (
     get_es_scholar_doc,
     process_query,
 )
+from fatcat_scholar.web_hacks import i18n_templates, parse_accept_lang
 
 logger = logging.getLogger()
 
@@ -170,63 +164,6 @@ def get_work(work_ident: str = Query(..., min_length=20, max_length=20)) -> dict
 web = APIRouter()
 
 
-def locale_gettext(translations: Any) -> Any:
-    def gt(s):  # noqa: ANN001,ANN201
-        return translations.ugettext(s)
-
-    return gt
-
-
-def locale_ngettext(translations: Any) -> Any:
-    def ngt(s, p, n):  # noqa: ANN001,ANN201
-        return translations.ungettext(s, p, n)
-
-    return ngt
-
-
-def load_i18n_templates() -> Any:
-    """
-    This is a hack to work around lack of per-request translation
-    (babel/gettext) locale switching in FastAPI and Starlette. Flask (and
-    presumably others) get around this using global context (eg, in
-    Flask-Babel).
-
-    See related issues:
-
-    - https://github.com/encode/starlette/issues/279
-    - https://github.com/aio-libs/aiohttp-jinja2/issues/187
-    """
-
-    d = dict()
-    for lang_opt in I18N_LANG_OPTIONS:
-        translations = babel.support.Translations.load(
-            dirname="fatcat_scholar/translations",
-            locales=[lang_opt],
-        )
-        templates = Jinja2Templates(
-            directory="fatcat_scholar/templates",
-            extensions=["jinja2.ext.i18n", "jinja2.ext.do"],
-        )
-        templates.env.install_gettext_translations(translations, newstyle=True)  # type: ignore
-        templates.env.install_gettext_callables(  # type: ignore
-            locale_gettext(translations),
-            locale_ngettext(translations),
-            newstyle=True,
-        )
-        # remove a lot of whitespace in HTML output with these configs
-        templates.env.trim_blocks = True
-        templates.env.lstrip_blocks = True
-        # pass-through application settings to be available in templates
-        templates.env.globals["settings"] = settings
-        templates.env.globals["babel_numbers"] = babel.numbers
-        templates.env.globals["make_access_redirect_url"] = make_access_redirect_url
-        d[lang_opt] = templates
-    return d
-
-
-I18N_TEMPLATES = load_i18n_templates()
-
-
 @web.get("/", include_in_schema=False)
 async def web_home(
     request: Request,
@@ -235,7 +172,7 @@ async def web_home(
 ) -> Any:
     if content.mimetype == "application/json":
         return await home()
-    return I18N_TEMPLATES[lang.code].TemplateResponse(
+    return i18n_templates(lang.code).TemplateResponse(
         "home.html",
         {"request": request, "locale": lang.code, "lang_prefix": lang.prefix},
     )
@@ -243,7 +180,7 @@ async def web_home(
 
 @web.get("/about", include_in_schema=False)
 async def web_about(request: Request, lang: LangPrefix = Depends(LangPrefix)) -> Any:
-    return I18N_TEMPLATES[lang.code].TemplateResponse(
+    return i18n_templates(lang.code).TemplateResponse(
         "about.html",
         {"request": request, "locale": lang.code, "lang_prefix": lang.prefix},
     )
@@ -251,7 +188,7 @@ async def web_about(request: Request, lang: LangPrefix = Depends(LangPrefix)) ->
 
 @web.get("/help", include_in_schema=False)
 async def web_help(request: Request, lang: LangPrefix = Depends(LangPrefix)) -> Any:
-    return I18N_TEMPLATES[lang.code].TemplateResponse(
+    return i18n_templates(lang.code).TemplateResponse(
         "help.html",
         {"request": request, "locale": lang.code, "lang_prefix": lang.prefix},
     )
@@ -293,7 +230,7 @@ def web_search(
             headers[
                 "Server-Timing"
             ] += f', es;desc="Search Internal Time";dur={hits.query_time_ms}'
-    return I18N_TEMPLATES[lang.code].TemplateResponse(
+    return i18n_templates(lang.code).TemplateResponse(
         "search.html",
         {
             "request": request,
@@ -385,7 +322,7 @@ def web_work(
     if not doc:
         raise HTTPException(status_code=404, detail="work not found")
 
-    return I18N_TEMPLATES[lang.code].TemplateResponse(
+    return i18n_templates(lang.code).TemplateResponse(
         "work.html",
         {
             "request": request,
@@ -470,7 +407,7 @@ def access_redirect_fallback(
 
     # give up and show an error page
     lang = LangPrefix(request)
-    return I18N_TEMPLATES[lang.code].TemplateResponse(
+    return i18n_templates(lang.code).TemplateResponse(
         "access_404.html",
         {
             "request": request,
@@ -620,7 +557,7 @@ async def http_exception_handler(request: Request, exc: StarletteHTTPException) 
 
     if content.mimetype == "text/html":
         lang = LangPrefix(request)
-        return I18N_TEMPLATES[lang.code].TemplateResponse(
+        return i18n_templates(lang.code).TemplateResponse(
             "error.html",
             {
                 "request": request,

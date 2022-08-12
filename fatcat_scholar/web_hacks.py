@@ -1,8 +1,12 @@
 import typing
 
+import babel.numbers
+import babel.support
 import jinja2
 from starlette.background import BackgroundTask
 from starlette.templating import _TemplateResponse
+
+from fatcat_scholar.config import I18N_LANG_OPTIONS, settings
 
 
 class Jinja2Templates:
@@ -51,6 +55,86 @@ class Jinja2Templates:
             media_type=media_type,
             background=background,
         )
+
+
+def load_i18n_files() -> typing.Any:
+    """
+    This is a hack to work around lack of per-request translation
+    (babel/gettext) locale switching in FastAPI and Starlette. Flask (and
+    presumably others) get around this using global context (eg, in
+    Flask-Babel).
+
+    See related issues:
+
+    - https://github.com/encode/starlette/issues/279
+    - https://github.com/aio-libs/aiohttp-jinja2/issues/187
+    """
+
+    d = dict()
+    for lang_opt in I18N_LANG_OPTIONS:
+        translations = babel.support.Translations.load(
+            dirname="fatcat_scholar/translations",
+            locales=[lang_opt],
+        )
+        d[lang_opt] = translations
+    return d
+
+
+I18N_TRANSLATION_FILES = load_i18n_files()
+
+
+def locale_gettext(translations: typing.Any) -> typing.Any:
+    def gt(s):  # noqa: ANN001,ANN201
+        return translations.ugettext(s)
+
+    return gt
+
+
+def locale_ngettext(translations: typing.Any) -> typing.Any:
+    def ngt(s, p, n):  # noqa: ANN001,ANN201
+        return translations.ungettext(s, p, n)
+
+    return ngt
+
+
+def i18n_templates(locale: str) -> Jinja2Templates:
+    """
+    This is a hack to work around lack of per-request translation
+    (babel/gettext) locale switching in FastAPI and Starlette. Flask (and
+    presumably others) get around this using global context (eg, in
+    Flask-Babel).
+
+    The intent is to call this function and create a new Jinja2 Environment for
+    a specific language separately within a request (aka, not shared between
+    requests), when needed. This is inefficient but should resolve issues with
+    cross-request poisoning, both in threading (threadpool) or async
+    concurrency.
+
+    See related issues:
+
+    - https://github.com/encode/starlette/issues/279
+    - https://github.com/aio-libs/aiohttp-jinja2/issues/187
+    """
+
+    translations = I18N_TRANSLATION_FILES[locale]
+    templates = Jinja2Templates(
+        directory="fatcat_scholar/templates",
+        extensions=["jinja2.ext.i18n", "jinja2.ext.do"],
+    )
+    templates.env.install_gettext_translations(translations, newstyle=True)  # type: ignore
+    templates.env.install_gettext_callables(  # type: ignore
+        locale_gettext(translations),
+        locale_ngettext(translations),
+        newstyle=True,
+    )
+    # remove a lot of whitespace in HTML output with these configs
+    templates.env.trim_blocks = True
+    templates.env.lstrip_blocks = True
+    # pass-through application settings to be available in templates
+    templates.env.globals["settings"] = settings
+    templates.env.globals["babel_numbers"] = babel.numbers
+    templates.env.globals["make_access_redirect_url"] = make_access_redirect_url
+    return templates
 
 
 def parse_accept_lang(header: str, options: typing.List[str]) -> typing.Optional[str]:
