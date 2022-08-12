@@ -46,7 +46,7 @@ serve-qa: ## Run web service locally, with reloading, but point search queries t
 
 .PHONY: serve-gunicorn
 serve-gunicorn: ## Run web service under gunicorn
-	pipenv run gunicorn fatcat_scholar.web:app -w 4 -k uvicorn.workers.UvicornWorker
+	pipenv run gunicorn fatcat_scholar.web:app -b 127.0.0.1:9819 -w 4 -k uvicorn.workers.UvicornWorker
 
 .PHONY: fetch-works
 fetch-works: ## Fetches some works from any release .json in the data dir
