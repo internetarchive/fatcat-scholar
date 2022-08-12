@@ -29,7 +29,7 @@ from starlette.exceptions import HTTPException as StarletteHTTPException
 from starlette_prometheus import PrometheusMiddleware, metrics
 
 from fatcat_scholar.config import GIT_REVISION, settings
-from fatcat_scholar.hacks import (
+from fatcat_scholar.web_hacks import (
     Jinja2Templates,
     make_access_redirect_url,
     parse_accept_lang,
