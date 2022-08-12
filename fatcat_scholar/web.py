@@ -91,7 +91,7 @@ api = APIRouter()
 
 
 @api.get("/", operation_id="get_home")
-async def home() -> Any:
+def home() -> Any:
     return {"endpoints": {"/": "this", "/search": "fulltext search"}}
 
 
@@ -165,13 +165,13 @@ web = APIRouter()
 
 
 @web.get("/", include_in_schema=False)
-async def web_home(
+def web_home(
     request: Request,
     lang: LangPrefix = Depends(LangPrefix),
     content: ContentNegotiation = Depends(ContentNegotiation),
 ) -> Any:
     if content.mimetype == "application/json":
-        return await home()
+        return home()
     return i18n_templates(lang.code).TemplateResponse(
         "home.html",
         {"request": request, "locale": lang.code, "lang_prefix": lang.prefix},
@@ -179,7 +179,7 @@ async def web_home(
 
 
 @web.get("/about", include_in_schema=False)
-async def web_about(request: Request, lang: LangPrefix = Depends(LangPrefix)) -> Any:
+def web_about(request: Request, lang: LangPrefix = Depends(LangPrefix)) -> Any:
     return i18n_templates(lang.code).TemplateResponse(
         "about.html",
         {"request": request, "locale": lang.code, "lang_prefix": lang.prefix},
@@ -187,7 +187,7 @@ async def web_about(request: Request, lang: LangPrefix = Depends(LangPrefix)) ->
 
 
 @web.get("/help", include_in_schema=False)
-async def web_help(request: Request, lang: LangPrefix = Depends(LangPrefix)) -> Any:
+def web_help(request: Request, lang: LangPrefix = Depends(LangPrefix)) -> Any:
     return i18n_templates(lang.code).TemplateResponse(
         "help.html",
         {"request": request, "locale": lang.code, "lang_prefix": lang.prefix},
@@ -548,7 +548,7 @@ async def robots_txt(response_class: Any = PlainTextResponse) -> Any:
 
 
 @app.exception_handler(StarletteHTTPException)
-async def http_exception_handler(request: Request, exc: StarletteHTTPException) -> Any:
+def http_exception_handler(request: Request, exc: StarletteHTTPException) -> Any:
     """
     This is the generic handler for things like 404 errors.
     """
