@@ -8,6 +8,8 @@ from starlette.templating import _TemplateResponse
 
 from fatcat_scholar.config import I18N_LANG_OPTIONS, settings
 
+TEMPLATE_LOADER = jinja2.FileSystemLoader("fatcat_scholar/templates")
+
 
 class Jinja2Templates:
     """
@@ -15,20 +17,19 @@ class Jinja2Templates:
     supports extensions (list of strings) passed to jinja2.Environment
     """
 
-    def __init__(self, directory: str, extensions: typing.List[str] = []) -> None:
+    def __init__(self, extensions: typing.List[str] = []) -> None:
         assert jinja2 is not None, "jinja2 must be installed to use Jinja2Templates"
-        self.env = self.get_env(directory, extensions)
+        self.env = self.get_env(extensions)
 
-    def get_env(
-        self, directory: str, extensions: typing.List[str] = []
-    ) -> "jinja2.Environment":
+    def get_env(self, extensions: typing.List[str] = []) -> "jinja2.Environment":
         @jinja2.pass_context
         def url_for(context: dict, name: str, **path_params: typing.Any) -> str:
             request = context["request"]
             return request.url_for(name, **path_params)
 
-        loader = jinja2.FileSystemLoader(directory)
-        env = jinja2.Environment(loader=loader, extensions=extensions, autoescape=True)
+        env = jinja2.Environment(
+            loader=TEMPLATE_LOADER, extensions=extensions, autoescape=True
+        )
         env.globals["url_for"] = url_for
         return env
 
@@ -118,7 +119,6 @@ def i18n_templates(locale: str) -> Jinja2Templates:
 
     translations = I18N_TRANSLATION_FILES[locale]
     templates = Jinja2Templates(
-        directory="fatcat_scholar/templates",
         extensions=["jinja2.ext.i18n", "jinja2.ext.do"],
     )
     templates.env.install_gettext_translations(translations, newstyle=True)  # type: ignore
