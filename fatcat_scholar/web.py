@@ -45,26 +45,6 @@ from fatcat_scholar.search import (
 
 logger = logging.getLogger()
 
-I18N_LANG_TRANSLATIONS = [
-    "ar",
-    "de",
-    "el",
-    "es",
-    "fa",
-    "fr",
-    "hr",
-    "it",
-    "ko",
-    "nb",
-    "nl",
-    "pt",
-    "ru",
-    "zh",
-]
-I18N_LANG_OPTIONS = I18N_LANG_TRANSLATIONS + [
-    settings.I18N_LANG_DEFAULT,
-]
-
 
 class LangPrefix:
     """
