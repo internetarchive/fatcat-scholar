@@ -1,7 +1,7 @@
 
 {% macro tag_label(tag) -%}
   {% if tag == "oa" %}
-    <span class="ui label basic orange small" title="Open Access">{% trans %}Open Access{% endtrans %}</span>
+    <span class="ui label basic orange small" title="Open Access"></span>
   {% elif tag == "jstor" %}
     <span class="ui label basic purple small" title="Preserved in JSTOR">JSTOR</span>
   {% elif tag == "scielo" %}
@@ -18,12 +18,12 @@
   {% elif tag == "doaj" %}
     <span class="ui label basic orange small" title="Directory of Open Access Journals">DOAJ</span>
   {% elif tag == "multiple-versions" %}
-    <span class="ui label basic blue small">{% trans %}Multiple Versions{% endtrans %}</span>
+    <span class="ui label basic blue small"></span>
   {% elif tag.startswith("lang:") %}
     <span class="ui label basic black small" title="ISO Language Code">{{ tag }}</span>
   {% else %}
     {# disabling "other" tags for now #}
-    {# <span class="ui label basic grey small">{{ _(tag) }}</span> #}
+    {# <span class="ui label basic grey small">{{ (tag) }}</span> #}
   {% endif %}
 {% endmacro %}
 
@@ -56,11 +56,11 @@
 
 {% macro ia_access_button(access, show_thumbnail=False, other_version=False) -%}
   {% if access.file_mimetype == "application/pdf" %}
-    {% set access_alt = _('fulltext PDF download') %}
+    {% set access_alt = ('fulltext PDF download') %}
   {% elif access.access_type == "ia_sim" %}
-    {% set access_alt = _('read fulltext microfilm') %}
+    {% set access_alt = ('read fulltext microfilm') %}
   {% else %}
-    {% set access_alt = _('fulltext access') %}
+    {% set access_alt = ('fulltext access') %}
   {% endif %}
   {% if other_version %}
     {% set access_alt = access_alt + " [" + other_version + "]" %}
@@ -69,21 +69,14 @@
     <button class="ui simple right pointing dropdown compact black labeled icon button serp-button">
       <i class="icon ia-icon"></i>
       {% if access.access_type == "wayback" %}
-        {% trans %}Web Archive{% endtrans %}
       {% elif access.access_type == "ia_file" %}
-        {% trans %}File Archive{% endtrans %}
       {% elif access.access_type == "ia_sim" %}
-        {% trans %}Archive [Microfilm]{% endtrans %}
       {% else %}
-        {% trans %}Other{% endtrans %}
       {% endif %}
 
       {% if access.file_mimetype == "application/pdf" or (access.file_mimetype == None and access.access_type == "wayback") %}
-        {% trans %}[PDF]{% endtrans %}
       {% elif access.file_mimetype == "text/html" %}
-        {% trans %}[HTML]{% endtrans %}
       {% elif access.file_mimetype == "text/xml" %}
-        {% trans %}[XML]{% endtrans %}
       {% endif %}
 
       {% if other_version %}
@@ -92,7 +85,7 @@
 
       {% if show_thumbnail and access.thumbnail_url %}
         <div class="menu fulltext-thumbnail">
-          <img src="{{ access.thumbnail_url }}" alt="{{ _('fulltext thumbnail') }}" loading="lazy">
+          <img src="{{ access.thumbnail_url }}" alt="{{ ('fulltext thumbnail') }}" loading="lazy">
         </div>
       {% endif %}
     </button>
@@ -108,7 +101,7 @@
         {% else %}
           <i class="external alternate icon"></i>
         {% endif %}
-        {% set default_domain = _("Publisher / doi.org") %}
+        {% set default_domain = ("Publisher / doi.org") %}
         {% if paper._obj and paper._obj.biblio %}
           {{ paper._obj.biblio.doi_link_domain(default_domain) }}
         {% else %}
@@ -141,7 +134,7 @@
 {% macro journal_row(biblio, paper) -%}
   {# NOTE: should be able to call with paper.biblio or any paper.release[] #}
   {% if biblio.release_year %}
-    <span title="{{ biblio.release_date or '' }}">{% trans year=biblio.release_year %}{{ year }}{% endtrans %}</span>
+    <span title="{{ biblio.release_date or '' }}"></span>
   {% endif %}
   {% if biblio.container_name %}
     <i {% if biblio.publisher %}title="{{ biblio.publisher }}"{% endif %}>
@@ -192,11 +185,11 @@
       {% if paper.biblio.release_type in ("article-journal", "paper-conference") or paper.doc_type == "sim_page" %}
         {# pass #}
       {% elif paper.biblio.release_type in ("book", "chapter", "dataset") %}
-        [{{ _(paper.biblio.release_type) }}]
+        [{{ (paper.biblio.release_type) }}]
       {% elif not paper.biblio.release_type %}
-        [{{ _("unknown") }}]
+        [{{ ("unknown") }}]
       {% else %}
-        [{{ _(paper.biblio.release_type) }}]
+        [{{ (paper.biblio.release_type) }}]
       {% endif %}
       </span>
 
@@ -210,9 +203,8 @@
 
     {% elif paper.doc_type == "sim_page" %}
       <span class="link">
-        {% trans page_num = paper.ia_sim.first_page, journal_name = paper.biblio.container_name, volume = paper.biblio.volume, issue = paper.biblio.issue %}Page {{ page_num }} of {{ journal_name }} Vol. {{ volume }}, Issue {{ issue }}{% endtrans %}
       </span>
-      <span class="release-type">[{{ _("page") }}]</span>
+      <span class="release-type">[{{ ("page") }}]</span>
     {% endif %}
 
   </h3>
@@ -233,14 +225,13 @@
 <div class="dropdown-menu">
   {# ### FULLTEXT ACCESS OPTIONS #}
   <h4 class="ui horizontal divider header">
-    {% trans %}Preserved Fulltext{% endtrans %}
   </h4>
 
   {% if paper.fulltext and paper.fulltext.access_url %}
     <div class="ui items">
       <div class="item">
         <div class="image">
-          <a target="_blank" rel="noopener" href="{{ paper.fulltext.access_url }}" title="{{ _('fulltext access') }}" {% if settings.ENABLE_GOATCOUNTER %}data-goatcounter-click="serp-fulltext" data-goatcounter-title="serp-fulltext"{% endif %}>
+          <a target="_blank" rel="noopener" href="{{ paper.fulltext.access_url }}" title="{{ ('fulltext access') }}" {% if settings.ENABLE_GOATCOUNTER %}data-goatcounter-click="serp-fulltext" data-goatcounter-title="serp-fulltext"{% endif %}>
           {% if paper.fulltext.thumbnail_url %}
             <div class="ui serp card">
               <img class="ui" src="{{ paper.fulltext.thumbnail_url }}" alt="fulltext thumbnail" loading="lazy">
@@ -256,11 +247,8 @@
           <div class="header">
             <a rel="noopener" href="{{ paper.fulltext.access_url }}" {% if settings.ENABLE_GOATCOUNTER %}data-goatcounter-click="serp-fulltext" data-goatcounter-title="serp-fulltext"{% endif %}>
             {% if paper.fulltext.access_type == "wayback" %}
-              {% trans %}Web Archive Capture{% endtrans %}
             {% elif paper.fulltext.access_type == "ia_file" %}
-              {% trans %}File Archive{% endtrans %}
             {% elif paper.fulltext.access_type == "ia_sim" %}
-              {% trans %}Digitized Microfilm{% endtrans %}
             {% endif %}
 
             {% if paper.fulltext.file_mimetype == "application/pdf" or (paper.fulltext.file_mimetype == None and paper.fulltext.access_type == "wayback") %}
@@ -285,20 +273,15 @@
             {% if paper.fulltext.access_type == "wayback" %}
               {% set original_url = '/'.join(paper.fulltext.access_url.split('/')[5:]) %}
               {% set capture_year = paper.fulltext.access_url.split('/')[4][:4] %}
-              <p>{% trans %}A copy of this work was available on the public web and has been preserved in the Wayback Machine. The capture dates from {{ capture_year }}; you can also visit <a rel="external noopener" href="{{ original_url }}">the original URL</a>.{% endtrans %}
             {% elif paper.fulltext.access_type == "ia_file" %}
-              <p>{% trans %}The Internet Archive has a preservation copy of this work in our general collections.{% endtrans %}
             {% elif paper.fulltext.access_type == "ia_sim" %}
-              <p>{% trans %}The Internet Archive has digitized a microfilm copy of this work. It may be possible to borrow a copy for reading.{% endtrans %}
             {% endif %}
 
             {% if paper.fulltext.file_mimetype %}
-              {% trans mimetype = ("<code>" + paper.fulltext.file_mimetype + "</code>")|safe %}The file type is {{ mimetype }}.{% endtrans %}
             {% endif %}
 
             {% if paper.fulltext.release_ident and (paper.biblio.release_ident != paper.fulltext.release_ident) %}
               {# Fulltext copy is different from biblio version! #}
-              <p>{% trans %}Note that this fulltext copy is not of the "primary" version of this work. The version it corresponds to is:{% endtrans %}
               <div class="ui fitted divider"></div>
               {% for release in paper.releases if release.ident == paper.fulltext.release_ident %}
                 {{ journal_row(release, paper) }}
@@ -311,7 +294,6 @@
           {# currently, ia_sim access types are not linked to specific versions #}
           {% for access in paper.access if access.access_type != paper.fulltext.access_type and (access.release_ident == paper.fulltext.release_ident or access.release_ident == paper.biblio.release_ident or access.access_type == 'ia_sim') %}
             {% if loop.first %}
-              <p>{% trans %}Additional access options for the primary version of this work:{% endtrans %}
             {% endif %}
             {{ ia_access_button(access )}}
           {% endfor %}
@@ -321,10 +303,8 @@
     </div>
   {% else %}
     {# No fulltext case #}
-    <p>{% trans %}We don't yet know of a public preservation copy of this work. You may be able to obtain a copy of this work to read from the publisher, platforms, or institutional libraries.{% endtrans %}
     {% if paper.doc_type == "work" %}
       {% set save_paper_now_url = "https://fatcat.wiki/release/" + paper.biblio.release_ident + "/save" %}
-      <p>{% trans %}If you know of a legal, public version that we should archive, please let us know via <a rel="noopener" href="{{ save_paper_now_url }}">"Save Paper Now"</a>.{% endtrans %}
     {% endif %}
   {% endif %}
 
@@ -371,7 +351,6 @@
       {% if paper.abstracts[0].body|length > 550 %}
         {{ paper.abstracts[0].body | truncate(500, False, '') }}
         <details style="display:inline;">
-          <summary>{% trans %}more &raquo;{% endtrans %}</summary>
           ... {{ paper.abstracts[0].body[500:] }}
         </details>
       {% else %}
@@ -393,7 +372,7 @@
       </a>
     {% endif %}
 
-    <a rel="noopener" href="{{ lang_prefix }}/help#tags" aria-label="{{ _('tag definitions') }}">
+    <a rel="noopener" href="{{ lang_prefix }}/help#tags" aria-label="{{ ('tag definitions') }}">
       {% for tag in paper.tags|sort %}
         {# HACK: don't show "oa" tag if already obvious #}
         {% if tag != "oa" or ("doaj" not in paper.tags and "szczepanski" not in paper.tags) %}
@@ -420,7 +399,7 @@
   {# archive links (if available) #}
   {% if paper.fulltext and paper.fulltext.access_url %}
     {% if (paper.fulltext.release_ident and paper.fulltext.release_ident != paper.biblio.release_ident) %}
-      {% set other_version = _("not primary version") %}
+      {% set other_version = ("not primary version") %}
     {% else %}
       {% set other_version = "" %}
     {% endif %}
@@ -437,9 +416,6 @@
   {% if paper._collapsed_count and paper._collapsed_count > 0 %}
     <button class="ui basic compact blue labeled icon button serp-button" form="search_form" type="submit" name="collapse_key" value="{{ paper.collapse_key }}">
       <i class="ui icon zoom-in"></i>
-      {% trans trimmed count=paper._collapsed_count %}
-        Same Issue ({{ count }})
-      {% endtrans %}
     </button>
   {% endif %}
 
@@ -448,12 +424,11 @@
 
     <details class="serp-action-menu">
       <summary>
-        <div class="circular ui icon compact basic button" title="{{ _('cite this work') }}">
+        <div class="circular ui icon compact basic button" title="{{ ('cite this work') }}">
           <i class="quote left icon"></i>
         </div>
       </summary>
       <div class="citation-menu menu">
-        <b>{% trans %}Citation{% endtrans %}</b>
         <p>{{ paper._obj.biblio.citation_str("default") }}
         {% if paper.doc_type == "work" %}
           <div class="ui divider"></div>
@@ -467,13 +442,14 @@
       </div>
     </details>
 
-    <a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}" rel="noopener" title="{{ _('edit metadata on fatcat wiki') }}">
+    <a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}" rel="noopener" title="{{ ('edit metadata on fatcat wiki') }}">
+
       <div class="circular ui icon compact basic button">
         <i class="edit icon"></i>
       </div>
     </a>
 
-    <a href="{{ lang_prefix }}{% if paper.doc_type == "work" %}/work/{{ paper.work_ident }}{% else %}/search?q=key:{{ paper.key }}{% endif %}" rel="noopener" title="{{ _('permalink to this record') }}">
+    <a href="{{ lang_prefix }}{% if paper.doc_type == "work" %}/work/{{ paper.work_ident }}{% else %}/search?q=key:{{ paper.key }}{% endif %}" rel="noopener" title="{{ ('permalink to this record') }}">
       <div class="circular ui icon compact basic button">
         <i class="linkify icon"></i>
       </div>
@@ -489,32 +465,26 @@
 {% macro search_pagination(hits, locale) %}
 {% if hits.offset > 0 %}
   <button class="text-button" form="search_form" type="submit" name="offset" value="{{ hits.offset - hits.limit }}" style="float: left;" rel="prev">
-    <a>{% trans %}&laquo; Previous{% endtrans %}</a>
   </button>
 {% else %}
-  <span style="color:rgba(0,0,0,0.55); float: left">{% trans %}&laquo; Previous{% endtrans %}</span>
+  <span style="color:rgba(0,0,0,0.55); float: left">&laquo; </span>
 {% endif %}
 
 {% if hits.offset + hits.limit < hits.count_found %}
 <button class="text-button" form="search_form" type="submit" name="offset" value="{{ hits.offset + hits.limit }}" style="float: right;" rel="next">
-  <a>{% trans %}Next &raquo;{% endtrans %}</a>
+  <a>&raquo; </a>
 </button>
 {% else %}
-  <span style="color:rgba(0,0,0,0.55); float: right;">{% trans %}Next &raquo;{% endtrans %}</span>
+  <span style="color:rgba(0,0,0,0.55); float: right;">&raquo; </span>
 {% endif %}
 
 <i style="padding-left: 0.5em; padding-right: 0.5em;">
-  {% trans trimmed start=babel_numbers.format_decimal(hits.offset + 1, locale=locale),
-                   end=babel_numbers.format_decimal([hits.offset + hits.limit, hits.count_found]|min, locale=locale),
-                   total=babel_numbers.format_decimal(hits.count_found, locale=locale) %}
-    Showing results {{ start }} &mdash; {{ end }} out of {{ total }} results
-  {% endtrans %}
 </i>
 {% endmacro %}
 
 {% macro query_option(options, selected) -%}
 <div>
-  <label class="filter-label" for="{{ options.slug }}">{{ _(options.label) }}</label>
+  <label class="filter-label" for="{{ options.slug }}">{{ (options.label) }}</label>
   <br>
   <div class="ui link list" style="margin-top: 0.3em;">
     {% for opt in options.list %}
@@ -524,7 +494,7 @@
         {% else %}
           <span>
         {% endif %}
-        {{ _(opt.label) }}
+        {{ (opt.label) }}
         </span>
       </button>
       <br>
@@ -537,7 +507,7 @@
 {% macro clear_query(query) -%}
   {% if query.filter_time or query.filter_type or query.filter_availability or query.sort_order %}
     <div>
-      <a class="filter-label" href="{{ lang_prefix }}/search{% if query.q %}?q={{ query.q|urlencode }}{% endif %}" style="color: rgba(0,0,0,0.55); color: brown;">{% trans %}Clear Filters{% endtrans %}</a>
+      <a class="filter-label" href="{{ lang_prefix }}/search{% if query.q %}?q={{ query.q|urlencode }}{% endif %}" style="color: rgba(0,0,0,0.55); color: brown;"></a>
     </div>
     <br>
   {% endif %}

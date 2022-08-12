@@ -32,7 +32,7 @@
 <div class="tablet-only" style="margin-top: 1.0em;">
 
   <details class="search-filters">
-    <summary><i class="filter icon"></i>{{ _("Filters") }}</summary>
+    <summary><i class="filter icon"></i>{{ "Filters" }}</summary>
     <div class="tablet-filter-bar">
       {{ search_macros.query_option(query.time_options, query.filter_time) }}
       {{ search_macros.query_option(query.type_options, query.filter_type) }}
@@ -44,15 +44,9 @@
 
   {% if hits %}
     <span class="hit-count" style="font-size: 1.5em;">{{ babel_numbers.format_decimal(hits.count_found, locale=locale) }}</span>
-      {% trans trimmed count=hits.count_found %}
         Hit
-      {% pluralize %}
         Hits
-      {% endtrans %}
     <span style="color: rgba(0,0,0,0.55);">
-      {% trans trimmed frac_sec=format_query_time(hits.query_time_ms) %}
-        in {{ frac_sec }}sec
-      {% endtrans %}
     </span>
   {% else %}
     &nbsp;
@@ -74,17 +68,9 @@
         <span class="hit-count" style="display: block; font-size: {{ count_size }};">
           {{ babel_numbers.format_decimal(hits.count_found, locale=locale) }}
         </span>
-        {% trans trimmed count=hits.count_found %}
-          Hit
-        {% pluralize %}
-          Hits
-        {% endtrans %}
       </div>
       <div style="text-align: end;">
         <span style="color: rgba(0,0,0,0.55);">
-          {% trans trimmed frac_sec=format_query_time(hits.query_time_ms) %}
-            in {{ frac_sec }}sec
-          {% endtrans %}
         </span>
       </div>
       <div class="ui clearing divider"></div>
@@ -106,15 +92,8 @@
         <i class="ban icon"></i>
         <div class="content">
           <div class="header">
-            {% if search_error.type == "backend" %}
-              {% trans %}Backend Search Engine Error{% endtrans %}
-            {% elif search_error.type == "query" %}
-              {% trans %}Search Query Error{% endtrans %}
-            {% endif %}
           </div>
           <p>Computer said: <code>{{ search_error.message }}</code>
-          <p>{% trans trimmed %}Query parsing is currently very naive. Sometimes you can fix this
-          problem by adding quotes around terms or entire phrases.{% endtrans %}
         </div>
       </div>
     {% elif hits and hits.results %}
@@ -145,25 +124,21 @@
       <div class="ui placeholder segment" style="height: 100%;">
         <div class="ui icon header">
           <i class="search icon"></i>
-          {% trans %}We didn't find any documents matching your query{% endtrans %}
         </div>
         <div class="inline">
           {% if query.filter_type != "everything" %}
             <button class="ui primary button" form="search_form" type="submit" name="filter_type" value="everything">
-              {% trans %}Try All Resource Types{% endtrans %}
             </button>
           {% endif %}
           {% if query.filter_time and query.filter_time != "all_time" %}
             <button class="ui primary button" form="search_form" type="submit" name="filter_time" value="all_time">
-              {% trans %}Try All Time{% endtrans %}
             </button>
           {% endif %}
           {% if query.filter_availability != "everything" %}
             <button class="ui primary button" form="search_form" type="submit" name="filter_availability" value="everything">
-              {% trans %}Try Metadata Records{% endtrans %}
             </button>
           {% endif %}
-          <a href="{{ lang_prefix }}/search" class="ui primary button" style="margin: 0.5em;">{{ _("Start Over") }}</a>
+          <a href="{{ lang_prefix }}/search" class="ui primary button" style="margin: 0.5em;">{{ "Start Over" }}</a>
         </div>
         <div class="inline">
           <a href="https://archive.org/search.php?sin=TXT&query={{ query.q|urlencode }}" target="_blank" rel="noopener" class="ui button" style="margin: 0.5em;">Try archive.org</a>
@@ -176,7 +151,6 @@
       <div class="ui placeholder segment" style="height: 100%;">
         <div class="ui icon header">
           <i class="search icon"></i>
-          {% trans %}Enter a query in the box above to get started{% endtrans %}
         </div>
       </div>
     {% endif %}

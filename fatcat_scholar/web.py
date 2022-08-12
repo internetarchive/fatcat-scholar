@@ -225,14 +225,15 @@ def load_i18n_templates() -> Any:
         )
         templates = Jinja2Templates(
             directory="fatcat_scholar/templates",
-            extensions=["jinja2.ext.i18n", "jinja2.ext.do"],
+            #extensions=["jinja2.ext.i18n", "jinja2.ext.do"],
+            extensions=["jinja2.ext.do"],
         )
-        templates.env.install_gettext_translations(translations, newstyle=True)  # type: ignore
-        templates.env.install_gettext_callables(  # type: ignore
-            locale_gettext(translations),
-            locale_ngettext(translations),
-            newstyle=True,
-        )
+        #templates.env.install_gettext_translations(translations, newstyle=True)  # type: ignore
+        #templates.env.install_gettext_callables(  # type: ignore
+        #    locale_gettext(translations),
+        #    locale_ngettext(translations),
+        #    newstyle=True,
+        #)
         # remove a lot of whitespace in HTML output with these configs
         templates.env.trim_blocks = True
         templates.env.lstrip_blocks = True

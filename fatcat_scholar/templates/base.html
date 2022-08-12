@@ -10,7 +10,6 @@
   {%- endif %}
   <title>
     {%- if settings.SCHOLAR_ENV != "prod" -%}[{{ settings.SCHOLAR_ENV|upper }}] {% endif -%}
-    {%- block title -%}{% trans %}Internet Archive Scholar{% endtrans %}{%- endblock %}
   </title>
   <link rel="stylesheet"
     href="/static/scholar-semantic-ui.v2.4.2.min.css"
@@ -80,7 +79,7 @@
     </span>
 
     <div class="right menu">
-      <div class="ui simple dropdown item translate-dropdown" aria-expanded="false" role="menu" aria-controls="language_menu" title="{{ _('language selection menu') }}">
+      <div class="ui simple dropdown item translate-dropdown" aria-expanded="false" role="menu" aria-controls="language_menu" title="{{ 'language selection menu' }}">
         <div class="translate-icon"></div>
         <i class="dropdown icon" style="margin-left: 0.2em;"></i>
         <div id="language_menu" class="menu">
@@ -102,7 +101,7 @@
             <a role="menuitem" class="item" href="/ru/">Русский</a>
             <a role="menuitem" class="item" href="/zh/">中文</a>
             <div class="divider"></div>
-            <a class="item" href="https://hosted.weblate.org/projects/internetarchive/fatcat-scholar/">{% trans %}Contribute to translations{% endtrans %}</a>
+            <a class="item" href="https://hosted.weblate.org/projects/internetarchive/fatcat-scholar/">asdf</a>
         </div>
       </div>
     </div>
@@ -125,8 +124,8 @@
           <meta itemprop="target" content="/search?q={q}"/>
           <div class="ui form">
             <div class="ui action input large fluid">
-              <input type="search" placeholder="{{ _("by title, authors, keywords...") }}" name="q" aria-label="{{ _('search for papers') }}" required itemprop="query-input" style="border-radius: 0; border: 1px #999 solid;" {% if query and query.q %}value="{{ query.q }}"{% endif %}>
-              <button id="search_submit_button" class="ui green button" style="border-radius: 0; background-color: #44a25a; font-size: 1.2rem;">{{ _("Search") }}</button>
+              <input type="search" placeholder="{{ "by title, authors, keywords..." }}" name="q" aria-label="{{ 'search for papers' }}" required itemprop="query-input" style="border-radius: 0; border: 1px #999 solid;" {% if query and query.q %}value="{{ query.q }}"{% endif %}>
+              <button id="search_submit_button" class="ui green button" style="border-radius: 0; background-color: #44a25a; font-size: 1.2rem;">{{ "Search" }}</button>
               {% if query and query.parsed_q %}
                 <!-- parsed query: {{ query.parsed_q }} -->
               {% endif %}
@@ -141,11 +140,11 @@
               {% if query.filter_type %}{% do rss_params.update(dict(filter_type= query.filter_type)) %}{% endif %}
               {% if query.filter_availability %}{% do rss_params.update(dict(filter_availabilty=query.filter_availability)) %}{% endif %}
               <a href="{{ lang_prefix }}/feed/rss?{{ rss_params | urlencode }}" rel="nofollow">
-                {% trans %}RSS Feed{% endtrans %}
+                RSS
               </a>
               &nbsp;
             {% endif %}
-            <a rel="help" href="{{ lang_prefix }}/help" style="order: -1;">{{ _("User Guide") }}</a>
+            <a rel="help" href="{{ lang_prefix }}/help" style="order: -1;">{{ "User Guide" }}</a>
           </div>
         </div>
       </div>
@@ -173,40 +172,33 @@
           <div class="thirteen wide twelve wide computer column">
             <h4 style="font-size: 1.28571429rem;">Internet Archive</h4>
             <p style="color: rgba(255, 255, 255, 0.5);">
-            {% trans %}We are a US 501(c)(3) non-profit library, building a global archive of Internet sites and other cultural artifacts in digital form.{% endtrans %}
 
-            {% trans trimmed wayback='<a target="_blank" rel="noopener" href="https://web.archive.org">The Wayback Machine</a>'|safe,
-                archive_org = '<a target="_blank" rel="noopener" href="https://archive.org">archive.org</a>'|safe,
-                openlibrary = '<a target="_blank" rel="noopener" href="https://openlibrary.org">Open Library</a>'|safe,
-                archive_it = '<a target="_blank" rel="noopener" href="https://archive-it.org">Archive-It</a>'|safe %}
-              Other projects include {{ wayback }}, {{ archive_org }}, {{ openlibrary }}, and {{ archive_it }}.
-            {% endtrans %}
             <div class="ui horizontal inverted link list">
-              <a class="item" target="_blank" rel="noopener" href="https://archive.org/about/">{{ _("About Us") }}</a>
-              <a class="item" target="_blank" rel="noopener" href="https://archive.org/about/contact.php">{{ _("Contact Us") }}</a>
-              <a class="item" target="_blank" rel="noopener" href="https://archive.org/about/terms.php">{{ _("Policies") }}</a>
-              <a class="item" target="_blank" rel="noopener" href="https://archive.org/donate">{{ _("Donate") }}</a>
+              <a class="item" target="_blank" rel="noopener" href="https://archive.org/about/">{{ "About Us" }}</a>
+              <a class="item" target="_blank" rel="noopener" href="https://archive.org/about/contact.php">{{ ("Contact Us") }}</a>
+              <a class="item" target="_blank" rel="noopener" href="https://archive.org/about/terms.php">{{ ("Policies") }}</a>
+              <a class="item" target="_blank" rel="noopener" href="https://archive.org/donate">{{ ("Donate") }}</a>
             </div>
           </div>
         </div>
       </nav>
       <nav class="three wide column">
-        <h4 class="ui inverted header">{% trans %}Open Infrastructure{% endtrans %}</h4>
+        <h4 class="ui inverted header"></h4>
         <div class="ui inverted link list">
-          <a target="_blank" rel="noopener" href="https://fatcat.wiki" class="item">{{ _("Editable Catalog (Fatcat)") }}</a>
-          <a target="_blank" rel="noopener" href="https://guide.fatcat.wiki" class="item">{{ _("Contribute") }}</a>
-          <a target="_blank" rel="noopener" href="/api/redoc" class="item">{{ _("Search API") }}</a>
-          <a target="_blank" rel="noopener noreferrer" href="https://status.fatcat.wiki" class="item">{{ _("Service Status") }}</a>
-          <a target="_blank" rel="external noopener noreferrer" href="https://github.com/internetarchive/fatcat-scholar" class="item">{{ _("Source Code") }}</a>
+          <a target="_blank" rel="noopener" href="https://fatcat.wiki" class="item">{{ ("Editable Catalog (Fatcat)") }}</a>
+          <a target="_blank" rel="noopener" href="https://guide.fatcat.wiki" class="item">{{ ("Contribute") }}</a>
+          <a target="_blank" rel="noopener" href="/api/redoc" class="item">{{ ("Search API") }}</a>
+          <a target="_blank" rel="noopener noreferrer" href="https://status.fatcat.wiki" class="item">{{ ("Service Status") }}</a>
+          <a target="_blank" rel="external noopener noreferrer" href="https://github.com/internetarchive/fatcat-scholar" class="item">{{ ("Source Code") }}</a>
         </div>
       </nav>
       <nav class="three wide column">
         <h4 class="ui inverted header">scholar.archive.org</h4>
         <div class="ui inverted link list">
-          <a href="{{ lang_prefix }}/about#howitworks" class="item">{{ _("How It Works") }}</a>
-          <a href="{{ lang_prefix }}/about#sources" class="item">{{ _("Content Sources") }}</a>
-          <a href="{{ lang_prefix }}/about#tdm" class="item">{{ _("Text and Data Mining") }}</a>
-          <a href="{{ lang_prefix }}/help" rel="help" class="item">{{ _("Help") }}</a>
+          <a href="{{ lang_prefix }}/about#howitworks" class="item">{{ ("How It Works") }}</a>
+          <a href="{{ lang_prefix }}/about#sources" class="item">{{ ("Content Sources") }}</a>
+          <a href="{{ lang_prefix }}/about#tdm" class="item">{{ ("Text and Data Mining") }}</a>
+          <a href="{{ lang_prefix }}/help" rel="help" class="item">{{ ("Help") }}</a>
         </div>
       </nav>
     </div>
