@@ -278,7 +278,7 @@ def web_feed_rss(
         rss_items.append(
             # NOTE(i18n): could prefer "original title" and abstract based on lang context
             fastapi_rss.Item(
-                title=scholar_doc.biblio.title or f"(Microfilm Page)",
+                title=scholar_doc.biblio.title or "(Microfilm Page)",
                 link=f"https://scholar.archive.org{lang.prefix}/work/{scholar_doc.work_ident}",
                 description=abstract,
                 author=authors,
