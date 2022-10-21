@@ -1,9 +1,9 @@
 
 # This image comes with:
-# - ubuntu:focal (what IA infrastructure runs circa 2021)
+# - ubuntu:jammy
 # - python3 dev setup
 # - pipenv
-image: "bnewbold/fatcat-test-base:focal"
+image: "bnewbold/fatcat-test-base:jammy"
 
 before_script:
   - pipenv --version
