@@ -8,6 +8,7 @@ User-agent: YandexBot
 User-agent: bingbot
 User-agent: Googlebot
 User-agent: SemanticScholarBot
+User-agent: yacybot
 Disallow: /search
 
 # crawling search result pages is expensive, so we do specify a long crawl
