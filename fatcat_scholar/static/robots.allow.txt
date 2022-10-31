@@ -9,13 +9,19 @@ User-agent: bingbot
 User-agent: Googlebot
 User-agent: SemanticScholarBot
 User-agent: yacybot
+User-agent: PetalBot
+User-agent: Yeti
+User-agent: Riddler
 Disallow: /search
 
 # crawling search result pages is expensive, so we do specify a long crawl
 # delay for those (for bots other than the above broad search bots)
+# UPDATE: actually, just block all robots from search page, we are overwhelmed
+# as of 2022-10-31
 User-agent: *
-Allow: /search
-Crawl-delay: 5
+Disallow: /search
+#Allow: /search
+#Crawl-delay: 5
 
 # by default, can crawl anything on this domain. HTTP 429 ("backoff") status
 # codes are used for rate-limiting instead of any crawl delay specified here.
