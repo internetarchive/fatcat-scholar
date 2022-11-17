@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
-"POT-Creation-Date: 2022-04-06 17:43-0700\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2022-11-16 20:35-0800\n"
 "PO-Revision-Date: 2022-05-23 14:59+0000\n"
 "Last-Translator: MEgooneh <mohammad.erfan.gooneh@gmail.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/internetarchive/"
@@ -220,10 +220,30 @@ msgstr ""
 "a> بیشتر بخوانید."
 
 #: fatcat_scholar/templates/about.html:47
+msgid "Authors and Publishers"
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:50
+#, python-format
+msgid ""
+"Information specifically for authors of research works can be found at <a "
+"href=\"%(url)s\">%(url)s</a>. This includes instructions for correcting "
+"bibliographic metadata and updates to published works."
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:53
+#, python-format
+msgid ""
+"Likewise information specifically for publishers can be found at <a href="
+"\"%(url)s\">%(url)s</a>. This includes guidelines for having content indexed "
+"and preserved."
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:56
 msgid "Contact Information"
 msgstr "اطلاعات تماس"
 
-#: fatcat_scholar/templates/about.html:50
+#: fatcat_scholar/templates/about.html:59
 #, python-format
 msgid ""
 "The organizational contact information for the Internet Archive is listed at "
@@ -232,7 +252,7 @@ msgstr ""
 "اطلاعات تماس سازمانی برای بایگانی اینترنت در <a href=\"%(url)s\"> %(url)s </"
 "a> ذکر شده است."
 
-#: fatcat_scholar/templates/about.html:52
+#: fatcat_scholar/templates/about.html:61
 #, python-format
 msgid ""
 "Queries about this search service and the fatcat catalog can be directed to "
@@ -241,16 +261,16 @@ msgstr ""
 "سوالات مربوط به این سرویس جستجو و کاتالوگ fatcat را می توان به <a href="
 "\"mailto:%(email)s\"> %(email)s </a> هدایت کرد."
 
-#: fatcat_scholar/templates/about.html:54
+#: fatcat_scholar/templates/about.html:63
 #, python-format
 msgid "There is a public chat channel at <a href=\"%(url)s\">%(url)s</a>."
 msgstr "یک کانال چت عمومی در <a href=\"%(url)s\"> %(url)s </a> وجود دارد."
 
-#: fatcat_scholar/templates/about.html:57
+#: fatcat_scholar/templates/about.html:66
 msgid "Support and Acknowledgements"
 msgstr "پشتیبانی و قدردانی"
 
-#: fatcat_scholar/templates/about.html:60
+#: fatcat_scholar/templates/about.html:69
 #, python-format
 msgid ""
 "Work on Internet Archive Scholar has received support from the Andrew W. "
@@ -259,7 +279,7 @@ msgid ""
 "project (see <a href=\"%(blog_url)s\">original announcement</a>)."
 msgstr ""
 
-#: fatcat_scholar/templates/about.html:62
+#: fatcat_scholar/templates/about.html:71
 #, python-format
 msgid ""
 "See additional acknowledgements on <a href=\"%(fatcat_url)s\">fatcat.wiki</"
@@ -273,7 +293,8 @@ msgstr "404: دسترسی به مکان یافت نشد"
 #: fatcat_scholar/templates/access_404.html:11
 msgid ""
 "We could not find a valid redirect for the URL you tried. Sorry about that!"
-msgstr "ما برای آدرسی که دادید هدایت کننده معتبری پیدا نکردیم. معذرت می خواهیم!"
+msgstr ""
+"ما برای آدرسی که دادید هدایت کننده معتبری پیدا نکردیم. معذرت می خواهیم!"
 
 #: fatcat_scholar/templates/access_404.html:12
 msgid ""
@@ -396,7 +417,7 @@ msgstr "وضعیت سرویس"
 msgid "Source Code"
 msgstr "کد منبع"
 
-#: fatcat_scholar/templates/base.html:209
+#: fatcat_scholar/templates/base.html:210
 msgid "Help"
 msgstr "راهنمایی"
 
