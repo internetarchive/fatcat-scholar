@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
-"POT-Creation-Date: 2022-04-06 17:43-0700\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2022-11-16 20:35-0800\n"
 "PO-Revision-Date: 2022-07-17 01:23+0000\n"
 "Last-Translator: DNSE <kty5663@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/internetarchive/"
@@ -220,10 +220,30 @@ msgstr ""
 "Fatcat 가이드 </a>를 참조하세요."
 
 #: fatcat_scholar/templates/about.html:47
+msgid "Authors and Publishers"
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:50
+#, python-format
+msgid ""
+"Information specifically for authors of research works can be found at <a "
+"href=\"%(url)s\">%(url)s</a>. This includes instructions for correcting "
+"bibliographic metadata and updates to published works."
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:53
+#, python-format
+msgid ""
+"Likewise information specifically for publishers can be found at <a href="
+"\"%(url)s\">%(url)s</a>. This includes guidelines for having content indexed "
+"and preserved."
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:56
 msgid "Contact Information"
 msgstr "연락 정보"
 
-#: fatcat_scholar/templates/about.html:50
+#: fatcat_scholar/templates/about.html:59
 #, python-format
 msgid ""
 "The organizational contact information for the Internet Archive is listed at "
@@ -232,7 +252,7 @@ msgstr ""
 "인터넷 아카이브의 조직 연락처 정보는 <a href=\"%(url)s\"> %(url)s </a>에 나열"
 "되어 있습니다."
 
-#: fatcat_scholar/templates/about.html:52
+#: fatcat_scholar/templates/about.html:61
 #, python-format
 msgid ""
 "Queries about this search service and the fatcat catalog can be directed to "
@@ -241,16 +261,16 @@ msgstr ""
 "이 검색 서비스 및 fatcat 카탈로그에 대한 쿼리는 <a href=\"mailto:%(email)s"
 "\"> %(email)s </a>로 이동할 수 있습니다."
 
-#: fatcat_scholar/templates/about.html:54
+#: fatcat_scholar/templates/about.html:63
 #, python-format
 msgid "There is a public chat channel at <a href=\"%(url)s\">%(url)s</a>."
 msgstr "<a href=\"%(url)s\"> %(url)s </a>에 공개 채팅 채널이 있습니다."
 
-#: fatcat_scholar/templates/about.html:57
+#: fatcat_scholar/templates/about.html:66
 msgid "Support and Acknowledgements"
 msgstr "지원 및 감사의 말"
 
-#: fatcat_scholar/templates/about.html:60
+#: fatcat_scholar/templates/about.html:69
 #, python-format
 msgid ""
 "Work on Internet Archive Scholar has received support from the Andrew W. "
@@ -260,10 +280,10 @@ msgid ""
 msgstr ""
 "Internet Archive Scholar를 작업하며 <a href=\"%(grant_url)s\">\"Open Access "
 "Journal Literature의 지속적인 접근 보장\"</a> 프로젝트의 여러 단계를 통해 "
-"Andrew W. Mellon 재단의 지원을 받았습니다(<a href=\"%(blog_url)s\">원본 "
-"발표</a> 참조)."
+"Andrew W. Mellon 재단의 지원을 받았습니다(<a href=\"%(blog_url)s\">원본 발표"
+"</a> 참조)."
 
-#: fatcat_scholar/templates/about.html:62
+#: fatcat_scholar/templates/about.html:71
 #, python-format
 msgid ""
 "See additional acknowledgements on <a href=\"%(fatcat_url)s\">fatcat.wiki</"
@@ -277,20 +297,23 @@ msgstr "404: 접근 위치를 찾을 수 없습니다"
 #: fatcat_scholar/templates/access_404.html:11
 msgid ""
 "We could not find a valid redirect for the URL you tried. Sorry about that!"
-msgstr "찾으시는 URL에 대해 유효한 리다이렉트를 찾을 수 없었습니다. 죄송합니다!"
+msgstr ""
+"찾으시는 URL에 대해 유효한 리다이렉트를 찾을 수 없었습니다. 죄송합니다!"
 
 #: fatcat_scholar/templates/access_404.html:12
 msgid ""
 "There may be a typo, truncation, or encoding error. Or, the resource may "
 "have been removed from our catalog."
-msgstr "오타나 끊김, 인코딩 오류가 있을 수 있습니다. 혹은 리소스가 저희 카탈로그에서 "
+msgstr ""
+"오타나 끊김, 인코딩 오류가 있을 수 있습니다. 혹은 리소스가 저희 카탈로그에서 "
 "삭제되었을 수 있습니다."
 
 #: fatcat_scholar/templates/access_404.html:13
 msgid ""
 "Some places you can visit try to hunt down this resource (or a replacement) "
 "include:"
-msgstr "검색하신 단어와 관련된 자료를 찾아볼 수 있는 곳을 알려드리겠습니다. 검색어:"
+msgstr ""
+"검색하신 단어와 관련된 자료를 찾아볼 수 있는 곳을 알려드리겠습니다. 검색어:"
 
 #: fatcat_scholar/templates/access_404.html:16
 msgid "Original web url:"
@@ -401,7 +424,7 @@ msgstr "서비스 상태"
 msgid "Source Code"
 msgstr "소스 코드"
 
-#: fatcat_scholar/templates/base.html:209
+#: fatcat_scholar/templates/base.html:210
 msgid "Help"
 msgstr "도움"
 

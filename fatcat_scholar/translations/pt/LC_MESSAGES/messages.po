@@ -9,8 +9,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
-"POT-Creation-Date: 2022-04-06 17:43-0700\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2022-11-16 20:35-0800\n"
 "PO-Revision-Date: 2022-06-24 21:19+0000\n"
 "Last-Translator: Vander <vander.azevedo88@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/"
@@ -228,10 +228,30 @@ msgstr ""
 "Guia Fatcat</a>."
 
 #: fatcat_scholar/templates/about.html:47
+msgid "Authors and Publishers"
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:50
+#, python-format
+msgid ""
+"Information specifically for authors of research works can be found at <a "
+"href=\"%(url)s\">%(url)s</a>. This includes instructions for correcting "
+"bibliographic metadata and updates to published works."
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:53
+#, python-format
+msgid ""
+"Likewise information specifically for publishers can be found at <a href="
+"\"%(url)s\">%(url)s</a>. This includes guidelines for having content indexed "
+"and preserved."
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:56
 msgid "Contact Information"
 msgstr "Informação de contato"
 
-#: fatcat_scholar/templates/about.html:50
+#: fatcat_scholar/templates/about.html:59
 #, python-format
 msgid ""
 "The organizational contact information for the Internet Archive is listed at "
@@ -240,7 +260,7 @@ msgstr ""
 "As informações de contato organizacional para o Arquivo da Internet estão "
 "listadas em <a href=\"%(url)s\">%(url)s</a>."
 
-#: fatcat_scholar/templates/about.html:52
+#: fatcat_scholar/templates/about.html:61
 #, python-format
 msgid ""
 "Queries about this search service and the fatcat catalog can be directed to "
@@ -249,16 +269,16 @@ msgstr ""
 "Consultas sobre este serviço de busca e o catálogo fatcat podem ser "
 "dirigidas a <a href=\"mailto:%(email)s\">%(email)s</a>."
 
-#: fatcat_scholar/templates/about.html:54
+#: fatcat_scholar/templates/about.html:63
 #, python-format
 msgid "There is a public chat channel at <a href=\"%(url)s\">%(url)s</a>."
 msgstr "Há um canal de chat público em <a href=\"%(url)s\">%(url)s</a>."
 
-#: fatcat_scholar/templates/about.html:57
+#: fatcat_scholar/templates/about.html:66
 msgid "Support and Acknowledgements"
 msgstr "Suporte e Reconhecimentos"
 
-#: fatcat_scholar/templates/about.html:60
+#: fatcat_scholar/templates/about.html:69
 #, python-format
 msgid ""
 "Work on Internet Archive Scholar has received support from the Andrew W. "
@@ -271,7 +291,7 @@ msgstr ""
 "Persistente da Literatura do Jornal de Acesso Aberto\"</a> projeto (ver <a "
 "href=\"%(blog_url)s\"> anúncio original</a>)."
 
-#: fatcat_scholar/templates/about.html:62
+#: fatcat_scholar/templates/about.html:71
 #, python-format
 msgid ""
 "See additional acknowledgements on <a href=\"%(fatcat_url)s\">fatcat.wiki</"
@@ -416,7 +436,7 @@ msgstr "Estado do serviço"
 msgid "Source Code"
 msgstr "Código fonte"
 
-#: fatcat_scholar/templates/base.html:209
+#: fatcat_scholar/templates/base.html:210
 msgid "Help"
 msgstr "Ajuda"
 
