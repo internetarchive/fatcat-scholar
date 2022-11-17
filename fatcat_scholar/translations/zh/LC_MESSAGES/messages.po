@@ -6,13 +6,14 @@
 # Eric <spice2wolf@gmail.com>, 2020, 2021.
 # Forbidden <10278743+f0rb1d@users.noreply.github.com>, 2020.
 # Eric <alchemillatruth@purelymail.com>, 2022.
+# Eric <hamburger1024@mailbox.org>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2022-11-16 20:35-0800\n"
-"PO-Revision-Date: 2022-04-07 00:51+0000\n"
-"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"PO-Revision-Date: 2022-11-18 04:46+0000\n"
+"Last-Translator: Eric <hamburger1024@mailbox.org>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "internetarchive/fatcat-scholar/zh_Hans/>\n"
 "Language: zh\n"
@@ -20,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.12-dev\n"
+"X-Generator: Weblate 4.15-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:45
@@ -218,7 +219,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/about.html:47
 msgid "Authors and Publishers"
-msgstr ""
+msgstr "作者和出版商"
 
 #: fatcat_scholar/templates/about.html:50
 #, python-format
@@ -227,6 +228,8 @@ msgid ""
 "href=\"%(url)s\">%(url)s</a>. This includes instructions for correcting "
 "bibliographic metadata and updates to published works."
 msgstr ""
+"可以访问 <a href=\"%(url)s\">%(url)s</a> "
+"获取专为研究著作作者准备的信息。这包括更正书目元数据和更新已发表作品的说明。"
 
 #: fatcat_scholar/templates/about.html:53
 #, python-format
@@ -234,7 +237,8 @@ msgid ""
 "Likewise information specifically for publishers can be found at <a href="
 "\"%(url)s\">%(url)s</a>. This includes guidelines for having content indexed "
 "and preserved."
-msgstr ""
+msgstr "类似地，可以访问 <a href=\"%(url)s\">%(url)s</a> "
+"获取专为出版商准备的信息。这包括对内容进行索引和保存的指南。"
 
 #: fatcat_scholar/templates/about.html:56
 msgid "Contact Information"
