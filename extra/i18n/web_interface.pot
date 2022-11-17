@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-04-06 17:43-0700\n"
+"POT-Creation-Date: 2022-11-16 20:35-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.1\n"
+"Generated-By: Babel 2.10.3\n"
 
 #: fatcat_scholar/search.py:45
 msgid "Release Date"
@@ -193,33 +193,53 @@ msgid ""
 msgstr ""
 
 #: fatcat_scholar/templates/about.html:47
-msgid "Contact Information"
+msgid "Authors and Publishers"
 msgstr ""
 
 #: fatcat_scholar/templates/about.html:50
+#, python-format
+msgid ""
+"Information specifically for authors of research works can be found at <a"
+" href=\"%(url)s\">%(url)s</a>. This includes instructions for correcting "
+"bibliographic metadata and updates to published works."
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:53
+#, python-format
+msgid ""
+"Likewise information specifically for publishers can be found at <a "
+"href=\"%(url)s\">%(url)s</a>. This includes guidelines for having content"
+" indexed and preserved."
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:56
+msgid "Contact Information"
+msgstr ""
+
+#: fatcat_scholar/templates/about.html:59
 #, python-format
 msgid ""
 "The organizational contact information for the Internet Archive is listed"
 " at <a href=\"%(url)s\">%(url)s</a>."
 msgstr ""
 
-#: fatcat_scholar/templates/about.html:52
+#: fatcat_scholar/templates/about.html:61
 #, python-format
 msgid ""
 "Queries about this search service and the fatcat catalog can be directed "
 "to <a href=\"mailto:%(email)s\">%(email)s</a>."
 msgstr ""
 
-#: fatcat_scholar/templates/about.html:54
+#: fatcat_scholar/templates/about.html:63
 #, python-format
 msgid "There is a public chat channel at <a href=\"%(url)s\">%(url)s</a>."
 msgstr ""
 
-#: fatcat_scholar/templates/about.html:57
+#: fatcat_scholar/templates/about.html:66
 msgid "Support and Acknowledgements"
 msgstr ""
 
-#: fatcat_scholar/templates/about.html:60
+#: fatcat_scholar/templates/about.html:69
 #, python-format
 msgid ""
 "Work on Internet Archive Scholar has received support from the Andrew W. "
@@ -229,7 +249,7 @@ msgid ""
 "announcement</a>)."
 msgstr ""
 
-#: fatcat_scholar/templates/about.html:62
+#: fatcat_scholar/templates/about.html:71
 #, python-format
 msgid ""
 "See additional acknowledgements on <a "
@@ -363,7 +383,7 @@ msgstr ""
 msgid "Source Code"
 msgstr ""
 
-#: fatcat_scholar/templates/base.html:209
+#: fatcat_scholar/templates/base.html:210
 msgid "Help"
 msgstr ""
 
