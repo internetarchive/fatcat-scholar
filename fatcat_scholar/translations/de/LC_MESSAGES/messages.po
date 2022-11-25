@@ -9,13 +9,14 @@
 # nautilusx <translate@disroot.org>, 2021.
 # J. Lavoie <j.lavoie@net-c.ca>, 2021.
 # Ettore Atalan <atalanttore@googlemail.com>, 2022.
+# Minh P <phandinhminh@protonmail.ch>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2022-11-16 20:35-0800\n"
-"PO-Revision-Date: 2022-05-30 19:17+0000\n"
-"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
+"PO-Revision-Date: 2022-11-26 23:48+0000\n"
+"Last-Translator: Minh P <phandinhminh@protonmail.ch>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/de/>\n"
 "Language: de\n"
@@ -23,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13-dev\n"
+"X-Generator: Weblate 4.15-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:45
@@ -231,7 +232,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/about.html:47
 msgid "Authors and Publishers"
-msgstr ""
+msgstr "Autoren und Herausgeber"
 
 #: fatcat_scholar/templates/about.html:50
 #, python-format
@@ -248,6 +249,9 @@ msgid ""
 "\"%(url)s\">%(url)s</a>. This includes guidelines for having content indexed "
 "and preserved."
 msgstr ""
+"Ebenso finden Sie Informationen speziell für Publisher unter <a href=\"%(url)"
+"s\">%(url)s</a>. Dazu gehören Richtlinien für die Indizierung und "
+"Aufbewahrung von Inhalten."
 
 #: fatcat_scholar/templates/about.html:56
 msgid "Contact Information"
@@ -334,7 +338,7 @@ msgstr "Wayback Machine Kalender-Seite (alle Aufzeichnungen)"
 
 #: fatcat_scholar/templates/access_404.html:23
 msgid "archive.org download link for the item:"
-msgstr ""
+msgstr "archive.org Herunterladen Link für den Artikel:"
 
 #: fatcat_scholar/templates/access_404.html:29
 msgid "Scholar landing page"
@@ -370,7 +374,7 @@ msgstr "Suche"
 
 #: fatcat_scholar/templates/base.html:144
 msgid "RSS Feed"
-msgstr ""
+msgstr "RSS-Feed"
 
 #: fatcat_scholar/templates/base.html:148
 msgid "User Guide"
