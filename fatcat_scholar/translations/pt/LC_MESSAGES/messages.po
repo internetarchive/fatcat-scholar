@@ -9,10 +9,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2022-11-16 20:35-0800\n"
-"PO-Revision-Date: 2022-06-24 21:19+0000\n"
-"Last-Translator: Vander <vander.azevedo88@gmail.com>\n"
+"PO-Revision-Date: 2022-12-03 00:36+0000\n"
+"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/"
 "internetarchive/fatcat-scholar/pt/>\n"
 "Language: pt\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13.1-dev\n"
+"X-Generator: Weblate 4.15-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 #: fatcat_scholar/search.py:45
@@ -229,7 +229,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/about.html:47
 msgid "Authors and Publishers"
-msgstr ""
+msgstr "Autores e Editores"
 
 #: fatcat_scholar/templates/about.html:50
 #, python-format
@@ -238,6 +238,9 @@ msgid ""
 "href=\"%(url)s\">%(url)s</a>. This includes instructions for correcting "
 "bibliographic metadata and updates to published works."
 msgstr ""
+"Informações específicas para autores de trabalhos de pesquisa podem ser "
+"encontradas em <a href=\"%(url)s\">%(url)s</a>. Isso inclui instruções para "
+"corrigir metadados bibliográficos e atualizações de trabalhos publicados."
 
 #: fatcat_scholar/templates/about.html:53
 #, python-format
@@ -246,6 +249,9 @@ msgid ""
 "\"%(url)s\">%(url)s</a>. This includes guidelines for having content indexed "
 "and preserved."
 msgstr ""
+"Da mesma forma, informações específicas para editores podem ser encontradas "
+"em <a href=\"%(url)s\">%(url)s</a>. Isso inclui diretrizes para indexação e "
+"preservação de conteúdo."
 
 #: fatcat_scholar/templates/about.html:56
 msgid "Contact Information"
