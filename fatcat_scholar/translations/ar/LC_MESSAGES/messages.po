@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2022-11-16 20:35-0800\n"
-"PO-Revision-Date: 2022-04-07 00:51+0000\n"
+"PO-Revision-Date: 2022-12-03 00:36+0000\n"
 "Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/ar/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=0 && n%100<=2 ? 4 : 5);\n"
-"X-Generator: Weblate 4.12-dev\n"
+"X-Generator: Weblate 4.15-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:45
@@ -220,7 +220,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/about.html:47
 msgid "Authors and Publishers"
-msgstr ""
+msgstr "المؤلفون والناشرون"
 
 #: fatcat_scholar/templates/about.html:50
 #, python-format
@@ -229,6 +229,9 @@ msgid ""
 "href=\"%(url)s\">%(url)s</a>. This includes instructions for correcting "
 "bibliographic metadata and updates to published works."
 msgstr ""
+"يمكن العثور على معلومات خاصة بمؤلفي الأعمال البحثية على <a href=\"%(url)s\"> "
+"%(url)s </a>. يتضمن ذلك تعليمات لتصحيح البيانات الوصفية الببليوغرافية "
+"والتحديثات على الأعمال المنشورة."
 
 #: fatcat_scholar/templates/about.html:53
 #, python-format
@@ -237,6 +240,8 @@ msgid ""
 "\"%(url)s\">%(url)s</a>. This includes guidelines for having content indexed "
 "and preserved."
 msgstr ""
+"وبالمثل ، يمكن العثور على معلومات خاصة بالناشرين على <a href=\"%(url)s\"> "
+"%(url)s </a>. يتضمن هذا إرشادات لفهرسة المحتوى وحفظه."
 
 #: fatcat_scholar/templates/about.html:56
 msgid "Contact Information"
@@ -277,13 +282,17 @@ msgid ""
 "\"Ensuring the Persistent Access of Open Access Journal Literature\"</a> "
 "project (see <a href=\"%(blog_url)s\">original announcement</a>)."
 msgstr ""
+"تلقى العمل في Internet Archive Scholar دعمًا من مؤسسة Andrew W. Mellon عبر "
+"مراحل متعددة من مشروع <a href=\"%(grant_url)s\"> \"ضمان الوصول المستمر لأدب "
+"جريدة الوصول المفتوح\" </a> (انظر <a href=\"%(blog_url)s\"> الإعلان الأصلي "
+"</a>)."
 
 #: fatcat_scholar/templates/about.html:71
 #, python-format
 msgid ""
 "See additional acknowledgements on <a href=\"%(fatcat_url)s\">fatcat.wiki</"
 "a>."
-msgstr ""
+msgstr "انظر إقرارات إضافية على <a href=\"%(fatcat_url)s\"> fatcat.wiki </a>."
 
 #: fatcat_scholar/templates/access_404.html:10
 msgid "404: Access Location Not Found"
@@ -300,32 +309,36 @@ msgid ""
 "There may be a typo, truncation, or encoding error. Or, the resource may "
 "have been removed from our catalog."
 msgstr ""
+"قد يكون هناك خطأ إملائي أو اقتطاع أو خطأ في الترميز. أو ربما تمت إزالة "
+"المورد من الكتالوج الخاص بنا."
 
 #: fatcat_scholar/templates/access_404.html:13
 msgid ""
 "Some places you can visit try to hunt down this resource (or a replacement) "
 "include:"
 msgstr ""
+"تتضمن بعض الأماكن التي يمكنك زيارتها لمحاولة البحث عن هذا المورد (أو بديل) "
+"ما يلي:"
 
 #: fatcat_scholar/templates/access_404.html:16
 msgid "Original web url:"
-msgstr ""
+msgstr "عنوان url الأصلي للويب:"
 
 #: fatcat_scholar/templates/access_404.html:20
 msgid "Wayback Machine calendar page (all captures)"
-msgstr ""
+msgstr "صفحة تقويم Wayback Machine (جميع اللقطات)"
 
 #: fatcat_scholar/templates/access_404.html:23
 msgid "archive.org download link for the item:"
-msgstr ""
+msgstr "رابط تحميل archive.org للعنصر:"
 
 #: fatcat_scholar/templates/access_404.html:29
 msgid "Scholar landing page"
-msgstr ""
+msgstr "الصفحة المقصودة الباحث العلمي"
 
 #: fatcat_scholar/templates/access_404.html:30
 msgid "Fatcat catalog page"
-msgstr ""
+msgstr "صفحة كتالوج Fatcat"
 
 #: fatcat_scholar/templates/base.html:13
 msgid "Internet Archive Scholar"
