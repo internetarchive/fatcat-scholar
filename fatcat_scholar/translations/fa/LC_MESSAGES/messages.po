@@ -7,10 +7,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2022-11-16 20:35-0800\n"
-"PO-Revision-Date: 2022-05-23 14:59+0000\n"
-"Last-Translator: MEgooneh <mohammad.erfan.gooneh@gmail.com>\n"
+"PO-Revision-Date: 2022-12-03 00:36+0000\n"
+"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/fa/>\n"
 "Language: fa\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.13-dev\n"
+"X-Generator: Weblate 4.15-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 #: fatcat_scholar/search.py:45
@@ -221,7 +221,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/about.html:47
 msgid "Authors and Publishers"
-msgstr ""
+msgstr "نویسندگان و ناشران"
 
 #: fatcat_scholar/templates/about.html:50
 #, python-format
@@ -238,6 +238,9 @@ msgid ""
 "\"%(url)s\">%(url)s</a>. This includes guidelines for having content indexed "
 "and preserved."
 msgstr ""
+"به همین ترتیب، اطلاعات ویژه ناشران را می‌توانید در <a href=\"%(url)s\""
+">%(url)s</a> پیدا کنید. این شامل دستورالعمل هایی برای نمایه سازی و حفظ محتوا "
+"است."
 
 #: fatcat_scholar/templates/about.html:56
 msgid "Contact Information"
@@ -301,12 +304,16 @@ msgid ""
 "There may be a typo, truncation, or encoding error. Or, the resource may "
 "have been removed from our catalog."
 msgstr ""
+"ممکن است یک اشتباه تایپی، کوتاهی یا کدگذاری وجود داشته باشد. یا ممکن است این "
+"منبع از کاتالوگ ما حذف شده باشد."
 
 #: fatcat_scholar/templates/access_404.html:13
 msgid ""
 "Some places you can visit try to hunt down this resource (or a replacement) "
 "include:"
 msgstr ""
+"برخی از مکان هایی که می توانید به آن مراجعه کنید سعی کنید این منبع (یا "
+"جایگزینی) را شکار کنید عبارتند از:"
 
 #: fatcat_scholar/templates/access_404.html:16
 msgid "Original web url:"
@@ -322,11 +329,11 @@ msgstr "لینک دانلود:"
 
 #: fatcat_scholar/templates/access_404.html:29
 msgid "Scholar landing page"
-msgstr ""
+msgstr "صفحه فرود Scholar"
 
 #: fatcat_scholar/templates/access_404.html:30
 msgid "Fatcat catalog page"
-msgstr ""
+msgstr "صفحه کاتالوگ Fatcat"
 
 #: fatcat_scholar/templates/base.html:13
 msgid "Internet Archive Scholar"
