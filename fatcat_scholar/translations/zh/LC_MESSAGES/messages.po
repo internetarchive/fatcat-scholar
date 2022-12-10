@@ -7,13 +7,14 @@
 # Forbidden <10278743+f0rb1d@users.noreply.github.com>, 2020.
 # Eric <alchemillatruth@purelymail.com>, 2022.
 # Eric <hamburger1024@mailbox.org>, 2022.
+# Eric <hamburger1024@duck.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2022-11-16 20:35-0800\n"
-"PO-Revision-Date: 2022-11-18 04:46+0000\n"
-"Last-Translator: Eric <hamburger1024@mailbox.org>\n"
+"PO-Revision-Date: 2022-12-11 01:52+0000\n"
+"Last-Translator: Eric <hamburger1024@duck.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "internetarchive/fatcat-scholar/zh_Hans/>\n"
 "Language: zh\n"
@@ -388,7 +389,7 @@ msgstr "联系我们"
 
 #: fatcat_scholar/templates/base.html:187
 msgid "Policies"
-msgstr "策略"
+msgstr "政策"
 
 #: fatcat_scholar/templates/base.html:188
 msgid "Donate"
