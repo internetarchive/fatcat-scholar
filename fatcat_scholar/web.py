@@ -502,7 +502,7 @@ def access_redirect_ia_file(
 app = FastAPI(
     title="Fatcat Scholar",
     description="Fulltext search interface for scholarly web content in the Fatcat catalog. An Internet Archive project.",
-    version="0.2.0-dev",
+    version="0.2.1-dev",
     openapi_url="/api/openapi.json",
     redoc_url="/api/redoc",
     docs_url="/api/docs",
