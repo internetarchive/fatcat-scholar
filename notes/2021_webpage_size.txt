@@ -1,0 +1,29 @@
+
+comparing HTML size across changes (eg, adding citations and modals)
+
+query is "superglue" with defaults
+
+older prod: 61KB
+newer dev:  62KB (15 KB compressed)
+
+modal dev (buttons, modal skeleton): 104 KB
+
+dropdown dev (buttons, citations, drop-down fulltext, versions): 107 KB
+
+2020-01-20
+    bare (404 page): 15 kB
+        head CSS: 5.3 kB
+        translate svg: 1.7 kB
+    serp ("superglue"): 107 kB
+        citations: 10.4 kB
+        access drop-down: 10.2 kB
+        highlights: 7 kB
+        all serp content: 83 kB
+        all right column: 35 kB
+    serp no hits: 25.2 kB
+
+take-aways:
+- move CSS to separate file
+- citations not that bad, but some wins by linking instead of including (?)
+- links are heavy
+- don't sweat it too much, compresses well
