@@ -1,57 +1,59 @@
 
-more accessibility:
-- try lynx
-- lynx filters: "no form action defined"
-- lynx filters: duplicated (would be good to de-dupe in general)
-- "missing image" alt tag
-- "hit count" should not be <h3> (see also lynx)
-- fulltext download: <a> alt/title
-- all footer headers should be same header class
-- should SERP page have an <h1>? "Search Results"? hidden?
-- search ARIA pages
-- search filter labels not linked correctly?
-- orange tag labels: low contrast?
-- next/previous grey low-contrast
+- have i18n stuff set 'Content-Language' in response header
+- only add id_ to PDF replay (not other content types)
+- add 'hdl' to schema (release extid)
 
+human names:
+    https://www.librarian.net/stax/5222/what-you-learn-in-library-school-whats-in-a-name/
 
-language notes:
-- french would open up canadian partnerships?
-- UN languages (there are 6)
+- refactor publisher domain/link lookup into python code (not jinja2 template logic)
+- async elasticsearch: https://elasticsearch-py.readthedocs.io/en/v7.10.1/async.html
+    => not until elasticsearch-dsl support exists
+- adopt a better "remove tags" library in clean_str() (replace bs4)
+    https://stackoverflow.com/a/57648173/4682349
 
-
-- Onion-Location header
-- es 7.x library breaks QA searching
-    => setup small public QA index somewhere public
-- <meta> description
-- canonical links?
-- "clear filters" link/button
-- jinja2: "if xyz is defined" better than "if xyz"
-- "default" translation option (clear prefix, use browser default)
-- detect browser-requested languages for default language
+work in progress:
+- SIM respect 'noindex' (verify)
+- SIM fetch much less metadata (changes in API?)
 
 copy editing:
 - "how it works" page
 - "Contribute" -> "How To Participate"
 - web.archive.org not found -> resolved
-- link to "known issues" from alpha warning?
-- /alpha page, include known issues there
+
+workers:
+- fetch worker: filter by changelog or 'updated' datetime
+- work deletion: some bundle version/variant to allow deleting ES documents?
+- SIM updater
+x what is the process for updating issue DB? cronjob? at least have a makefile target
+    => not really a problem now that SIM is ~done
+
+SIM:
+x SIM parallelism
+x fatcat lookup: ISSN/ISSN-L
+- ambiguity. sim_pubid only extra? are both ISSNs available?
+- add page count to issn-db (?)
 
 content/pipeline:
-- continuous update worker from fatcat
 - add gzip to intermediate files pipeline commands
-- parallelize SIM indexing
 - makefile targets for bulk ingest
 
 cleanups:
-- "web assets" (CSS etc) in this repo or on *.archive.org in general
+x "web assets" (CSS etc) in this repo or on *.archive.org in general
+x have "json to IntermediateBundle" be a helper method, instead of multiple implementations
 - better typing/annotation of work pipeline
 - test coverage
 - use settings.toml for defaults of CLI args
 
 ponder:
-- smaller author font size (?)
 - "search inside" phrasing
 - "counts" target to summarize (to console)
+- Onion-Location header
+- <meta> description
+- canonical links?
+- jinja2: "if xyz is defined" better than "if xyz"
+- "default" translation option (clear prefix, use browser default)
+- should SERP page have an <h1>? "Search Results"? hidden?
 
 data quality:
 - handle sim_issue items with multiple issues in single item (eg, issue="3-4")
