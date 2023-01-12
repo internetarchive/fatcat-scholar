@@ -6,13 +6,14 @@
 # ysard <ysard_git@gmx.fr>, 2020.
 # Nathan <bonnemainsnathan@gmail.com>, 2021.
 # J. Lavoie <j.lavoie@net-c.ca>, 2021.
+# Nifou <nifou@mailfence.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2022-11-16 20:35-0800\n"
-"PO-Revision-Date: 2022-01-09 01:55+0000\n"
-"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"PO-Revision-Date: 2023-01-13 21:49+0000\n"
+"Last-Translator: Nifou <nifou@mailfence.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/fr/>\n"
 "Language: fr\n"
@@ -20,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.10.1\n"
+"X-Generator: Weblate 4.15.1-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: src/scholar/search.py:45
@@ -85,7 +86,7 @@ msgstr "Accès libre"
 
 #: src/scholar/search.py:75
 msgid "All Records"
-msgstr ""
+msgstr "Tous les enregistrements"
 
 #: src/scholar/search.py:79
 msgid "Sort Order"
@@ -234,7 +235,7 @@ msgstr ""
 
 #: src/scholar/templates/about.html:47
 msgid "Authors and Publishers"
-msgstr ""
+msgstr "Auteurs et éditeurs"
 
 #: src/scholar/templates/about.html:50
 #, python-format
@@ -243,6 +244,10 @@ msgid ""
 "href=\"%(url)s\">%(url)s</a>. This includes instructions for correcting "
 "bibliographic metadata and updates to published works."
 msgstr ""
+"Des informations spécifiquement destinées aux auteurs de travaux de "
+"recherche sont disponibles à l'adresse <a href=\"%(url)s\">%(url)s</a>. Cela "
+"inclut des instructions pour corriger les métadonnées bibliographiques et "
+"les mises à jour des travaux publiés."
 
 #: src/scholar/templates/about.html:53
 #, python-format
@@ -251,6 +256,9 @@ msgid ""
 "\"%(url)s\">%(url)s</a>. This includes guidelines for having content indexed "
 "and preserved."
 msgstr ""
+"De même, des informations spécifiquement destinées aux éditeurs sont "
+"disponibles à l'adresse <a href=\"%(url)s\">%(url)s</a>. Cela inclut des "
+"directives à suivre pour indexer et préserver le contenu."
 
 #: src/scholar/templates/about.html:56
 msgid "Contact Information"
@@ -282,7 +290,7 @@ msgstr ""
 
 #: src/scholar/templates/about.html:66
 msgid "Support and Acknowledgements"
-msgstr ""
+msgstr "Soutien et remerciements"
 
 #: src/scholar/templates/about.html:69
 #, python-format
@@ -292,6 +300,10 @@ msgid ""
 "\"Ensuring the Persistent Access of Open Access Journal Literature\"</a> "
 "project (see <a href=\"%(blog_url)s\">original announcement</a>)."
 msgstr ""
+"Le travail sur Internet Archive Scholar a reçu le soutient de la fondation "
+"Andrew W. Mellon à travers plusieurs phases du projet <a href=\"%(grant_url)"
+"s\">\"Ensuring the Persistent Access of Open Access Journal Literature\"</a> "
+"(voir <a href=\"%(blog_url)s\">l'annonce originale</a>)."
 
 #: src/scholar/templates/about.html:71
 #, python-format
@@ -299,39 +311,47 @@ msgid ""
 "See additional acknowledgements on <a href=\"%(fatcat_url)s\">fatcat.wiki</"
 "a>."
 msgstr ""
+"Voir les remerciements supplémentaires sur <a href=\"%(fatcat_url)s\">fatcat."
+"wiki</a>."
 
 #: src/scholar/templates/access_404.html:10
 msgid "404: Access Location Not Found"
-msgstr ""
+msgstr "404 : Page non trouvée"
 
 #: src/scholar/templates/access_404.html:11
 msgid ""
 "We could not find a valid redirect for the URL you tried. Sorry about that!"
 msgstr ""
+"Nous n'avons pas été en mesure de trouver une redirection valide pour l'URL "
+"que vous avez entrée. Désolé !"
 
 #: src/scholar/templates/access_404.html:12
 msgid ""
 "There may be a typo, truncation, or encoding error. Or, the resource may "
 "have been removed from our catalog."
 msgstr ""
+"Il peut y avoir une faute de frappe, un contenu tronqué ou une erreur "
+"d'encodage. Ou la ressource a pu être retirée de notre catalogue."
 
 #: src/scholar/templates/access_404.html:13
 msgid ""
 "Some places you can visit try to hunt down this resource (or a replacement) "
 "include:"
 msgstr ""
+"Voici quelques pages que vous pouvez visiter pour essayer de traquer cette "
+"ressource (ou un remplacement) :"
 
 #: src/scholar/templates/access_404.html:16
 msgid "Original web url:"
-msgstr ""
+msgstr "URL web d'origine :"
 
 #: src/scholar/templates/access_404.html:20
 msgid "Wayback Machine calendar page (all captures)"
-msgstr ""
+msgstr "Page du calendrier de la Wayback Machine (toutes les captures)"
 
 #: src/scholar/templates/access_404.html:23
 msgid "archive.org download link for the item:"
-msgstr ""
+msgstr "Lien de téléchargement archive.org pour cet élément :"
 
 #: src/scholar/templates/access_404.html:29
 msgid "Scholar landing page"
@@ -367,7 +387,7 @@ msgstr "Recherche"
 
 #: src/scholar/templates/base.html:144
 msgid "RSS Feed"
-msgstr ""
+msgstr "Flux RSS"
 
 #: src/scholar/templates/base.html:148
 msgid "User Guide"
@@ -694,7 +714,7 @@ msgstr ""
 
 #: src/scholar/templates/help.html:148
 msgid "Tags"
-msgstr ""
+msgstr "Mots clés"
 
 #: src/scholar/templates/help.html:150
 msgid ""
@@ -788,7 +808,7 @@ msgstr ""
 
 #: src/scholar/templates/help.html:198
 msgid "Persistent Identifiers"
-msgstr ""
+msgstr "Identifiants persistants"
 
 #: src/scholar/templates/help.html:200
 msgid ""
