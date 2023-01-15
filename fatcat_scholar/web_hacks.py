@@ -41,8 +41,8 @@ class Jinja2Templates:
         name: str,
         context: dict,
         status_code: int = 200,
-        headers: dict = None,
-        media_type: str = None,
+        headers: typing.Optional[dict] = None,
+        media_type: typing.Optional[str] = None,
         background: BackgroundTask = None,
     ) -> _TemplateResponse:
         if "request" not in context:

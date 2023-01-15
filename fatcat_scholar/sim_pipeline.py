@@ -154,7 +154,7 @@ class SimPipeline:
             pages.append(bundle)
         return pages
 
-    def run_issue_db(self, limit: int = None) -> None:
+    def run_issue_db(self, limit: Optional[int] = None) -> None:
         """
         Legacy/Deprecated code path
 

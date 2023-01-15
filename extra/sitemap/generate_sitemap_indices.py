@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
 
-import sys
 import glob
 import datetime
+
 
 def index_entity(entity_type, output):
 
     now = datetime.date.today().isoformat()
     print("""<?xml version="1.0" encoding="UTF-8"?>""", file=output)
-    print("""<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">""", file=output)
+    print(
+        """<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">""",
+        file=output,
+    )
 
     for filename in glob.glob(f"sitemap-{entity_type}-*.txt"):
         print("  <sitemap>", file=output)
@@ -18,11 +21,13 @@ def index_entity(entity_type, output):
 
     print("</sitemapindex>", file=output)
 
+
 def main():
-    with open('sitemap-index-works.xml', 'w') as output:
+    with open("sitemap-index-works.xml", "w") as output:
         index_entity("works", output)
-    with open('sitemap-index-access.xml', 'w') as output:
+    with open("sitemap-index-access.xml", "w") as output:
         index_entity("access", output)
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     main()
