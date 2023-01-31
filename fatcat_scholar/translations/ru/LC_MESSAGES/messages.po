@@ -7,22 +7,23 @@
 # Nikita Epifanov <nikgreens@protonmail.com>, 2021, 2022.
 # Artem <Localizer_in_Russian@protonmail.com>, 2021.
 # S3aBreeze <paperwork@evilcorp.ltd>, 2022.
+# eightyy8 <oliver.kha@pm.me>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2022-11-16 20:35-0800\n"
-"PO-Revision-Date: 2022-06-03 20:14+0000\n"
-"Last-Translator: Nikita Epifanov <nikgreens@protonmail.com>\n"
+"PO-Revision-Date: 2023-02-01 17:52+0000\n"
+"Last-Translator: eightyy8 <oliver.kha@pm.me>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.13-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.16-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:45
@@ -228,7 +229,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/about.html:47
 msgid "Authors and Publishers"
-msgstr ""
+msgstr "Авторы и издатели"
 
 #: fatcat_scholar/templates/about.html:50
 #, python-format
@@ -292,6 +293,8 @@ msgid ""
 "See additional acknowledgements on <a href=\"%(fatcat_url)s\">fatcat.wiki</"
 "a>."
 msgstr ""
+"Смотрите дополнительные благодарности на <a href=\"%(fatcat_url)s\">fatcat."
+"wiki</a>."
 
 #: fatcat_scholar/templates/access_404.html:10
 msgid "404: Access Location Not Found"
@@ -324,7 +327,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/access_404.html:23
 msgid "archive.org download link for the item:"
-msgstr ""
+msgstr "archive.org ссылку на скачивание материала:"
 
 #: fatcat_scholar/templates/access_404.html:29
 msgid "Scholar landing page"
