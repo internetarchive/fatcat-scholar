@@ -8,13 +8,14 @@
 # Artem <Localizer_in_Russian@protonmail.com>, 2021.
 # S3aBreeze <paperwork@evilcorp.ltd>, 2022.
 # eightyy8 <oliver.kha@pm.me>, 2023.
+# Andrey <andrey@mailbox.org>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2022-11-16 20:35-0800\n"
-"PO-Revision-Date: 2023-02-01 17:52+0000\n"
-"Last-Translator: eightyy8 <oliver.kha@pm.me>\n"
+"PO-Revision-Date: 2023-02-18 11:20+0000\n"
+"Last-Translator: Andrey <andrey@mailbox.org>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/ru/>\n"
 "Language: ru\n"
@@ -32,7 +33,7 @@ msgstr "Дата выпуска"
 
 #: fatcat_scholar/search.py:49
 msgid "All Time"
-msgstr "Всё время"
+msgstr "Все время"
 
 #: fatcat_scholar/search.py:50
 msgid "Past Week"
@@ -68,7 +69,7 @@ msgstr "Наборы данных"
 
 #: fatcat_scholar/search.py:64
 msgid "Everything"
-msgstr "Всё"
+msgstr "Все"
 
 #: fatcat_scholar/search.py:68
 msgid "Availability"
@@ -238,6 +239,9 @@ msgid ""
 "href=\"%(url)s\">%(url)s</a>. This includes instructions for correcting "
 "bibliographic metadata and updates to published works."
 msgstr ""
+"Специальную информацию для авторов научных работ можно найти на сайте <a "
+"href=\"%(url)s\">%(url)s</a>. Она включает инструкции по исправлению "
+"библиографических метаданных и обновлению опубликованных работ."
 
 #: fatcat_scholar/templates/about.html:53
 #, python-format
@@ -246,6 +250,9 @@ msgid ""
 "\"%(url)s\">%(url)s</a>. This includes guidelines for having content indexed "
 "and preserved."
 msgstr ""
+"Аналогичную информацию, предназначенную специально для издателей, можно "
+"найти на сайте <a href=\"%(url)s\">%(url)s</a>. Здесь содержатся "
+"рекомендации по индексированию и сохранению контента."
 
 #: fatcat_scholar/templates/about.html:56
 msgid "Contact Information"
@@ -286,6 +293,10 @@ msgid ""
 "\"Ensuring the Persistent Access of Open Access Journal Literature\"</a> "
 "project (see <a href=\"%(blog_url)s\">original announcement</a>)."
 msgstr ""
+"Работа над Internet Archive Scholar получила поддержку Фонда Эндрю У. "
+"Меллона в рамках нескольких этапов проекта <a href=\"%(grant_url)s\">"
+"\"Обеспечение постоянного доступа к журнальной литературе открытого доступа\""
+"</a> (см. <a href=\"%(blog_url)s\">оригинальный анонс</a>)."
 
 #: fatcat_scholar/templates/about.html:71
 #, python-format
@@ -298,24 +309,30 @@ msgstr ""
 
 #: fatcat_scholar/templates/access_404.html:10
 msgid "404: Access Location Not Found"
-msgstr ""
+msgstr "404: Место доступа не найдено"
 
 #: fatcat_scholar/templates/access_404.html:11
 msgid ""
 "We could not find a valid redirect for the URL you tried. Sorry about that!"
 msgstr ""
+"Мы не смогли найти корректное перенаправление для URL-адреса, который вы "
+"использовали. Приносим свои извинения!"
 
 #: fatcat_scholar/templates/access_404.html:12
 msgid ""
 "There may be a typo, truncation, or encoding error. Or, the resource may "
 "have been removed from our catalog."
 msgstr ""
+"Возможна опечатка, усечение или ошибка кодирования. Или, возможно, ресурс "
+"был удален из нашего каталога."
 
 #: fatcat_scholar/templates/access_404.html:13
 msgid ""
 "Some places you can visit try to hunt down this resource (or a replacement) "
 "include:"
 msgstr ""
+"Некоторые места, которые вы можете посетить, чтобы попытаться найти этот "
+"ресурс (или замену), включают:"
 
 #: fatcat_scholar/templates/access_404.html:16
 msgid "Original web url:"
@@ -323,7 +340,7 @@ msgstr "Оригинальный адрес веб-сайта:"
 
 #: fatcat_scholar/templates/access_404.html:20
 msgid "Wayback Machine calendar page (all captures)"
-msgstr ""
+msgstr "Страница календаря Wayback Machine (все снимки)"
 
 #: fatcat_scholar/templates/access_404.html:23
 msgid "archive.org download link for the item:"
@@ -436,7 +453,7 @@ msgstr "Не найдено"
 
 #: fatcat_scholar/templates/error.html:14
 msgid "Access Forbidden"
-msgstr "Доступ запрещён"
+msgstr "Доступ запрещен"
 
 #: fatcat_scholar/templates/error.html:16
 msgid "Request Error"
@@ -964,7 +981,7 @@ msgstr "Попробуйте все типы ресурсов"
 
 #: fatcat_scholar/templates/search.html:158
 msgid "Try All Time"
-msgstr "Попробуйте всё время"
+msgstr "Попробуйте все время"
 
 #: fatcat_scholar/templates/search.html:163
 msgid "Try Metadata Records"
