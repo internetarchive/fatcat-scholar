@@ -44,6 +44,12 @@ def pre_parse_query(raw: str) -> str:
     # TODO: can we configure shlex to handle this?
     if '"~' in raw:
         return raw
+    if raw.count("[") > 0 and raw.count("[") != raw.count("]"):
+        # be a bit rude here for simplicity; if the brackets are off, remove
+        # them altogether; note: we'd like not to drop "field:[1 TO 2]" and the
+        tr = {"[": "", "]": ""}
+        raw = raw.translate(str.maketrans(tr))
+
     lex = shlex.shlex(raw, posix=False)
     lex.commenters = ""
     lex.whitespace_split = True
@@ -102,6 +108,13 @@ def test_pre_parse_query() -> None:
     assert pre_parse_query("kimchy?") == '"kimchy?"'
     assert pre_parse_query("Saul B/ Cohen") == 'Saul "B/" Cohen'
     assert pre_parse_query("Nobel / Nino") == 'Nobel "/" Nino'
+
+    assert (
+        pre_parse_query(
+            "Comparing efficiency of gain generation in Li II] 13.5-nm laser with 0.25-um and 1-ym subpicosecond pumping pulses (Invited Paper) [3776-16] A. Y. Goltsov, A. Morozov, S. Suckewer, Princeton Univ.; R. C. Elton, U. Feldman, K. Krushelnick, T. Jones, C. Moore, J. F. Seely, P. Sprangle, A. C. Ting, A. Zigler, Naval Research Lab. "
+        )
+        == "Comparing efficiency of gain generation in Li II 13.5-nm laser with 0.25-um and 1-ym subpicosecond pumping pulses (Invited Paper) 3776-16 A. Y. Goltsov, A. Morozov, S. Suckewer, Princeton Univ.; R. C. Elton, U. Feldman, K. Krushelnick, T. Jones, C. Moore, J. F. Seely, P. Sprangle, A. C. Ting, A. Zigler, Naval Research Lab."
+    )
 
 
 def sniff_citation_query(raw: str) -> bool:
