@@ -163,7 +163,7 @@ def test_basic_access_redirect(client: Any, mocker: Any) -> None:
 
     rv = client.get(
         "/work/2x5qvct2dnhrbctqa2q2uyut6a/access/wayback/https://www.federalreserve.gov/econresdata/feds/2015/files/2015118pap.pdf",
-        allow_redirects=False,
+        follow_redirects=False,
     )
     assert rv.status_code == 302
     assert (
@@ -178,7 +178,7 @@ def test_basic_access_redirect(client: Any, mocker: Any) -> None:
     ]
     rv = client.get(
         "/work/2x5qvct2dnhrbctqa2q2uyut6a/access/wayback/https://www.federalreserve.gov/econresdata/feds/2015/files/2015118pap.pdf.DUMMY",
-        allow_redirects=False,
+        follow_redirects=False,
     )
     assert rv.status_code == 404
 
@@ -248,7 +248,7 @@ def test_access_redirect_fallback(client: Any, mocker: Any) -> None:
     # redirects should work after API lookup, for both wayback and archive.org
     rv = client.get(
         "/work/2x5qvct2dnhrbctqa2q2uyut6a/access/wayback/https://example.com",
-        allow_redirects=False,
+        follow_redirects=False,
     )
     assert rv.status_code == 302
     assert (
@@ -258,7 +258,7 @@ def test_access_redirect_fallback(client: Any, mocker: Any) -> None:
 
     rv = client.get(
         "/work/2x5qvct2dnhrbctqa2q2uyut6a/access/ia_file/some/thing.pdf",
-        allow_redirects=False,
+        follow_redirects=False,
     )
     assert rv.status_code == 302
     assert rv.headers["Location"] == "https://archive.org/download/some/thing.pdf"
@@ -266,7 +266,7 @@ def test_access_redirect_fallback(client: Any, mocker: Any) -> None:
     # wrong URLs should still not work, but display a page with helpful links
     rv = client.get(
         "/work/2x5qvct2dnhrbctqa2q2uyut6a/access/wayback/https://www.federalreserve.gov/econresdata/feds/2015/files/2015118pap.pdf.DUMMY",
-        allow_redirects=False,
+        follow_redirects=False,
     )
     assert rv.status_code == 404
     assert b"Access Location Not Found" in rv.content
@@ -274,7 +274,7 @@ def test_access_redirect_fallback(client: Any, mocker: Any) -> None:
 
     rv = client.get(
         "/work/2x5qvct2dnhrbctqa2q2uyut6a/access/ia_file/some/thing.else.pdf",
-        allow_redirects=False,
+        follow_redirects=False,
     )
     assert rv.status_code == 404
     assert b"Access Location Not Found" in rv.content
@@ -299,7 +299,7 @@ def test_access_redirect_encoding(client: Any, mocker: Any) -> None:
     # tricky "URL encoding in archive.org path" case
     rv = client.get(
         "/work/a6gvpil4brdgzhqyaog3ftngqe/access/ia_file/crossref-pre-1909-scholarly-works/10.1016%252Fs0140-6736%252802%252912493-7.zip/10.1016%252Fs0140-6736%252802%252912928-x.pdf",
-        allow_redirects=False,
+        follow_redirects=False,
     )
     assert rv.status_code == 302
     assert (
@@ -310,7 +310,7 @@ def test_access_redirect_encoding(client: Any, mocker: Any) -> None:
     # spaces ("%20" vs "+")
     rv = client.get(
         "/work/ao5l3ykgbvg2vfpqe2y5qold5y/access/wayback/http://sudjms.net/issues/5-4/pdf/8)A%20comparison%20study%20of%20histochemical%20staining%20of%20various%20tissues%20after.pdf",
-        allow_redirects=False,
+        follow_redirects=False,
     )
     assert rv.status_code == 302
     assert (
