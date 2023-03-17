@@ -35,6 +35,7 @@ starlette-prometheus = "*"
 toml = "*"
 uvicorn = "*"
 uvloop = "*"
+httpx = "*"
 
 [dev-packages]
 black = "*"
