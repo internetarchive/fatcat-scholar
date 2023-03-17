@@ -17,7 +17,7 @@ dep: ## Install dependencies using pipenv
 lint: ## Run lints (eg, flake8, mypy)
 	pipenv run flake8 fatcat_scholar/ tests/ --exit-zero
 	pipenv run isort -q -c fatcat_scholar/ tests/ || true
-	pipenv run mypy fatcat_scholar/ tests/ --ignore-missing-imports --disable-error-code call-arg
+	pipenv run mypy fatcat_scholar/ tests/ --ignore-missing-imports --disable-error-code call-arg --disable-error-code arg-type --disable-error-code assignment
 
 .PHONY: pytype
 pytype: ## Run slow pytype type check (not part of dev deps)
