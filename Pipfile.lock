@@ -342,7 +342,6 @@
                 "sha256:5920df0ab2630778680376d86bea349dc99860977eec9b6d2bd0860f337313f2"
             ],
             "index": "pypi",
-            "markers": null,
             "version": "==7.13.4"
         },
         "elasticsearch-dsl": {
