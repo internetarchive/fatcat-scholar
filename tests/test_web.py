@@ -280,7 +280,7 @@ def test_access_redirect_fallback(client: Any, mocker: Any) -> None:
     assert b"Access Location Not Found" in rv.content
     assert b"archive.org/download/some/thing.else.pdf" in rv.content
 
-
+@pytest.mark.skip(reason="todo: requires a mocked fatcat API client, not just es")
 def test_access_redirect_encoding(client: Any, mocker: Any) -> None:
 
     with open("tests/files/elastic_get_work_a6gvpil4brdgzhqyaog3ftngqe.json") as f:
