@@ -7,7 +7,6 @@ from fatcat_scholar.transform import refs_from_crossref, refs_from_grobid
 
 
 def test_transform_refs_grobid() -> None:
-
     with open("tests/files/example_grobid.tei.xml", "r") as f:
         blob = f.read()
 
@@ -45,7 +44,6 @@ def test_transform_refs_grobid() -> None:
 
 
 def test_transform_refs_crossref() -> None:
-
     with open("tests/files/example_crossref_record.json", "r") as f:
         record = json.loads(f.read())
 

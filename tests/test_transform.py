@@ -14,7 +14,6 @@ from fatcat_scholar.transform import (
 
 
 def test_es_release_from_release() -> None:
-
     with open("tests/files/release_hsmo6p4smrganpb3fndaj2lon4.json", "r") as f:
         release = entity_from_json(f.read(), ReleaseEntity)
 
@@ -27,7 +26,6 @@ def test_es_release_from_release() -> None:
 
 
 def test_es_biblio_from_release() -> None:
-
     with open("tests/files/release_hsmo6p4smrganpb3fndaj2lon4.json", "r") as f:
         release = entity_from_json(f.read(), ReleaseEntity)
 
@@ -43,13 +41,11 @@ def test_es_biblio_from_release() -> None:
 
 
 def test_run_refs() -> None:
-
     with open("tests/files/work_iarm6swodra2bcrzhxrfaah7py_bundle.json", "r") as f:
         run_refs(f.readlines())
 
 
 def test_run_transform() -> None:
-
     with open("tests/files/work_iarm6swodra2bcrzhxrfaah7py_bundle.json", "r") as f:
         run_transform(f.readlines())
 

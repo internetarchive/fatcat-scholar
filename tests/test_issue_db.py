@@ -6,7 +6,6 @@ from fatcat_scholar.issue_db import IssueDB
 
 
 def test_issue_db_basics() -> None:
-
     api_conf = fatcat_openapi_client.Configuration()
     api_conf.host = settings.FATCAT_API_HOST
     api = fatcat_openapi_client.DefaultApi(fatcat_openapi_client.ApiClient(api_conf))

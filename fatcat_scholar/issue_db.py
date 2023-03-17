@@ -358,7 +358,7 @@ class IssueDB:
         )
         cur: Any = self.db.cursor()
         count = 0
-        for (sim_pubid, container_ident) in all_pub_containers:
+        for sim_pubid, container_ident in all_pub_containers:
             count += 1
             if count % 500 == 0:
                 print(f"  {count}...", file=sys.stderr)

@@ -216,7 +216,6 @@ class WorkPipeline:
         wc: WebcaptureEntity,
         release_ident: str,
     ) -> Optional[Dict[str, Any]]:
-
         primary_resources = [cdx for cdx in wc.cdx if cdx.url == wc.original_url]
         if not primary_resources or primary_resources[0].mimetype != "text/html":
             return None

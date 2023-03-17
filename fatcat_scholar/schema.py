@@ -496,7 +496,6 @@ def contrib_affiliation(contrib: ReleaseContrib) -> Optional[str]:
 
 
 def es_abstracts_from_grobid(tei_doc: GrobidDocument) -> List[ScholarAbstract]:
-
     if tei_doc.abstract:
         body = scrub_text(tei_doc.abstract)
         if body:
@@ -505,7 +504,6 @@ def es_abstracts_from_grobid(tei_doc: GrobidDocument) -> List[ScholarAbstract]:
 
 
 def es_abstracts_from_release(release: ReleaseEntity) -> List[ScholarAbstract]:
-
     d = dict()
     for abst in release.abstracts:
         if abst.lang not in d:
@@ -518,7 +516,6 @@ def es_abstracts_from_release(release: ReleaseEntity) -> List[ScholarAbstract]:
 
 
 def es_biblio_from_release(release: ReleaseEntity) -> ScholarBiblio:
-
     container_name = release.extra and release.extra.get("container_name")
     container_sherpa_color = None
 
@@ -622,7 +619,6 @@ def es_biblio_from_release(release: ReleaseEntity) -> ScholarBiblio:
 
 
 def es_release_from_release(release: ReleaseEntity) -> ScholarRelease:
-
     if release.container:
         container_name = release.container.name
         container_ident = release.container.redirect or release.container.ident

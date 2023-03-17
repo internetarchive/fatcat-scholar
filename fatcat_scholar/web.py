@@ -202,7 +202,6 @@ def web_search(
     lang: LangPrefix = Depends(LangPrefix),
     content: ContentNegotiation = Depends(ContentNegotiation),
 ) -> Any:
-
     if content.mimetype == "application/json":
         return search(query)
     hits: Optional[FulltextHits] = None
@@ -250,7 +249,6 @@ def web_feed_rss(
     query: FulltextQuery = Depends(FulltextQuery),
     lang: LangPrefix = Depends(LangPrefix),
 ) -> fastapi_rss.RSSResponse:
-
     # override some query params for feeds
     original_query = query.q
     if query.q:
@@ -314,7 +312,6 @@ def web_work(
     lang: LangPrefix = Depends(LangPrefix),
     content: ContentNegotiation = Depends(ContentNegotiation),
 ) -> Any:
-
     if content.mimetype == "application/json":
         return get_work(work_ident)
 

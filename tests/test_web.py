@@ -81,7 +81,6 @@ def test_basic_routes(client: Any) -> None:
 
 
 def test_basic_search(client: Any, mocker: Any) -> None:
-
     rv = client.get("/search")
     assert rv.status_code == 200
 
@@ -105,7 +104,6 @@ def test_basic_search(client: Any, mocker: Any) -> None:
 
 
 def test_basic_rss_feed(client: Any, mocker: Any) -> None:
-
     with open("tests/files/elastic_fulltext_search.json") as f:
         elastic_resp = json.loads(f.read())
 
@@ -127,7 +125,6 @@ def test_basic_rss_feed(client: Any, mocker: Any) -> None:
 
 
 def test_basic_work_landing_page(client: Any, mocker: Any) -> None:
-
     with open("tests/files/elastic_fulltext_get.json") as f:
         elastic_resp = json.loads(f.read())
 
@@ -149,7 +146,6 @@ def test_basic_work_landing_page(client: Any, mocker: Any) -> None:
 
 
 def test_basic_access_redirect(client: Any, mocker: Any) -> None:
-
     with open("tests/files/elastic_fulltext_get.json") as f:
         elastic_resp = json.loads(f.read())
 
@@ -184,7 +180,6 @@ def test_basic_access_redirect(client: Any, mocker: Any) -> None:
 
 
 def test_access_redirect_fallback(client: Any, mocker: Any) -> None:
-
     with open("tests/files/elastic_fulltext_get.json") as f:
         elastic_resp = json.loads(f.read())
 
@@ -280,9 +275,9 @@ def test_access_redirect_fallback(client: Any, mocker: Any) -> None:
     assert b"Access Location Not Found" in rv.content
     assert b"archive.org/download/some/thing.else.pdf" in rv.content
 
+
 @pytest.mark.skip(reason="todo: requires a mocked fatcat API client, not just es")
 def test_access_redirect_encoding(client: Any, mocker: Any) -> None:
-
     with open("tests/files/elastic_get_work_a6gvpil4brdgzhqyaog3ftngqe.json") as f:
         elastic_ia_resp = json.loads(f.read())
     with open("tests/files/elastic_get_work_ao5l3ykgbvg2vfpqe2y5qold5y.json") as f:

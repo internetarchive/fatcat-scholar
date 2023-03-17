@@ -115,7 +115,6 @@ class IndexDocsWorker(KafkaWorker):
         self.es_index = es_index
 
     def process_batch(self, batch: List[dict]) -> None:
-
         bulk_actions = []
         for obj in batch:
             bundle = IntermediateBundle.from_json(obj)

@@ -16,7 +16,7 @@ def djvu_extract_leaf_texts(
     if only_leaves:
         max_leaf = max(only_leaves)
     elem_iter = ET.iterparse(blob, ["start", "end"])
-    for (event, element) in elem_iter:
+    for event, element in elem_iter:
         if event == "start":
             continue
         if not (element.tag == "OBJECT" and event == "end"):

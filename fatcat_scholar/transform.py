@@ -122,7 +122,6 @@ SIM_COUNTRY_MAP = {
 
 
 def es_biblio_from_sim(sim: Dict[str, Any]) -> ScholarBiblio:
-
     issue_meta = sim["issue_item_metadata"]["metadata"]
     pub_meta = sim["pub_item_metadata"]["metadata"]
 
@@ -264,7 +263,6 @@ def es_fulltext_from_grobid(
 def es_fulltext_from_pdftotext(
     raw_text: str, pdf_meta: Optional[dict], re: ReleaseEntity, fe: FileEntity
 ) -> Optional[ScholarFulltext]:
-
     if raw_text and len(raw_text) > MAX_BODY_CHARS:
         raw_text = raw_text[:MAX_BODY_CHARS]
     ret = ScholarFulltext(
@@ -281,7 +279,6 @@ def es_fulltext_from_html(
     re: ReleaseEntity,
     wc: WebcaptureEntity,
 ) -> Optional[ScholarFulltext]:
-
     if not wc.archive_urls or not html_fulltext.get("tei_xml"):
         return None
 
@@ -407,7 +404,6 @@ def biblio_metadata_hacks(biblio: ScholarBiblio) -> ScholarBiblio:  # noqa: C901
 def generate_tags(
     biblio: ScholarBiblio, primary_release: Optional[ReleaseEntity]
 ) -> List[str]:
-
     tags = []
 
     # tags
@@ -466,7 +462,6 @@ def check_exclude_web(biblio: ScholarBiblio) -> bool:
 
 
 def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
-
     tags: List[str] = []
     work_ident: Optional[str] = None
     sim_issue: Optional[str] = None

@@ -13,7 +13,6 @@ from fatcat_scholar.work_pipeline import WorkPipeline
 
 @responses.activate
 def test_run_transform(mocker: Any) -> None:
-
     issue_db = IssueDB(settings.SCHOLAR_ISSUEDB_PATH)
     issue_db.init_db()
 

@@ -228,7 +228,6 @@ def apply_filters(search: Search, query: FulltextQuery) -> Search:
 
 
 def process_query(query: FulltextQuery) -> FulltextHits:
-
     if not query.q:
         return do_fulltext_search(query)
 
@@ -295,7 +294,6 @@ def do_lookup_query(lookup: str) -> FulltextHits:
 def do_fulltext_search(
     query: FulltextQuery, deep_page_limit: int = 2000
 ) -> FulltextHits:
-
     search = Search(using=es_client, index=settings.ELASTICSEARCH_QUERY_FULLTEXT_INDEX)
 
     if query.collapse_key:

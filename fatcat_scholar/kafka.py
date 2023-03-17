@@ -85,7 +85,6 @@ class KafkaWorker:
         """
 
         def _on_rebalance(consumer: Any, partitions: Any) -> None:
-
             for p in partitions:
                 if p.error:
                     raise KafkaException(p.error)
@@ -160,7 +159,6 @@ class KafkaWorker:
         return Producer(config)
 
     def run(self) -> Counter:
-
         if self.batch_timeout_sec:
             signal.signal(signal.SIGALRM, self._timeout_handler)
 
