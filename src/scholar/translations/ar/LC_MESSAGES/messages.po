@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # Bryan Newbold <bnewbold@robocracy.org>, 2020, 2021, 2022.
+# Sahil Khan <khansaahil223@live.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2022-11-16 20:35-0800\n"
-"PO-Revision-Date: 2022-12-03 00:36+0000\n"
-"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"PO-Revision-Date: 2023-04-10 04:47+0000\n"
+"Last-Translator: Sahil Khan <khansaahil223@live.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/ar/>\n"
 "Language: ar\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=0 && n%100<=2 ? 4 : 5);\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 4.17-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: src/scholar/search.py:45
@@ -921,12 +922,12 @@ msgstr "تصفية"
 #: src/scholar/templates/search.html:77
 msgid "Hit"
 msgid_plural "Hits"
-msgstr[0] "يضرب"
-msgstr[1] "يضرب"
-msgstr[2] "يضرب"
-msgstr[3] "يضرب"
-msgstr[4] "يضرب"
-msgstr[5] "يضرب"
+msgstr[0] "نتيجة"
+msgstr[1] "نتيجة"
+msgstr[2] "نتيجتين"
+msgstr[3] "نتيجات"
+msgstr[4] "نتيجات"
+msgstr[5] "نتيجات"
 
 #: src/scholar/templates/search.html:53
 #: src/scholar/templates/search.html:85
