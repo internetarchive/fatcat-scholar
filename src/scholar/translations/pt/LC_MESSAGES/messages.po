@@ -6,13 +6,14 @@
 # ssantos <ssantos@web.de>, 2021, 2022.
 # Gabriel Gian <gabrielgian@live.com>, 2022.
 # Vander <vander.azevedo88@gmail.com>, 2022.
+# Jessica Patricio <jessicacacau@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2022-11-16 20:35-0800\n"
-"PO-Revision-Date: 2022-12-03 00:36+0000\n"
-"Last-Translator: Bryan Newbold <bnewbold@robocracy.org>\n"
+"PO-Revision-Date: 2023-06-22 08:50+0000\n"
+"Last-Translator: Jessica Patricio <jessicacacau@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/"
 "internetarchive/fatcat-scholar/pt/>\n"
 "Language: pt\n"
@@ -20,32 +21,32 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 4.18.1\n"
 "Generated-By: Babel 2.6.0\n"
 
 #: src/scholar/search.py:45
 msgid "Release Date"
-msgstr "Data de Lançamento"
+msgstr "Data de lançamento"
 
 #: src/scholar/search.py:49
 msgid "All Time"
-msgstr "Todo o Tempo"
+msgstr "Qualquer data"
 
 #: src/scholar/search.py:50
 msgid "Past Week"
-msgstr "Semana passada"
+msgstr "Última semana"
 
 #: src/scholar/search.py:51
 msgid "Past Year"
-msgstr "Ano passado"
+msgstr "Último ano"
 
 #: src/scholar/search.py:52
 msgid "Since 2000"
-msgstr "Desde 2000"
+msgstr "A partir de 2000"
 
 #: src/scholar/search.py:53
 msgid "Before 1927"
-msgstr "Antes de 1927"
+msgstr "Anterior a 1927"
 
 #: src/scholar/search.py:57
 msgid "Resource Type"
@@ -53,7 +54,7 @@ msgstr "Tipo de recurso"
 
 #: src/scholar/search.py:61
 msgid "Papers"
-msgstr "Trabalhos"
+msgstr "Artigos"
 
 #: src/scholar/search.py:62
 msgid "Reports"
@@ -61,7 +62,7 @@ msgstr "Relatórios"
 
 #: src/scholar/search.py:63
 msgid "Datasets"
-msgstr "Sets de dados"
+msgstr "Conjuntos de dados"
 
 #: src/scholar/search.py:64
 msgid "Everything"
@@ -73,7 +74,7 @@ msgstr "Disponibilidade"
 
 #: src/scholar/search.py:72
 msgid "Fulltext"
-msgstr "Texto Completo"
+msgstr "Texto completo"
 
 #: src/scholar/search.py:73
 msgid "Microfilm"
@@ -81,7 +82,7 @@ msgstr "Microfilme"
 
 #: src/scholar/search.py:74 src/scholar/templates/search_macros.html:4
 msgid "Open Access"
-msgstr "Acesso Aberto"
+msgstr "Acesso aberto"
 
 #: src/scholar/search.py:75
 msgid "All Records"
@@ -89,7 +90,7 @@ msgstr "Todos os registros"
 
 #: src/scholar/search.py:79
 msgid "Sort Order"
-msgstr "Ordem de classificação"
+msgstr "Ordenar por"
 
 #: src/scholar/search.py:83
 msgid "Relevancy"
@@ -97,11 +98,11 @@ msgstr "Relevância"
 
 #: src/scholar/search.py:84
 msgid "Recent First"
-msgstr "Recente Primeiro"
+msgstr "Mais recentes"
 
 #: src/scholar/search.py:85
 msgid "Oldest First"
-msgstr "Mais antigos primeiro"
+msgstr "Mais antigos"
 
 #: src/scholar/templates/about.html:4
 #, python-format
@@ -110,7 +111,7 @@ msgstr "Sobre %(website_name)s"
 
 #: src/scholar/templates/about.html:8
 msgid "About Internet Archive Scholar"
-msgstr "Sobre o bolsista do Internet Archive Scholar"
+msgstr "Sobre o Internet Archive Scholar"
 
 #: src/scholar/templates/about.html:10
 #, python-format
@@ -118,17 +119,19 @@ msgid ""
 "See also: <a href=\"%(lang_prefix)s/help\">User Guide</a> which lists some "
 "bugs and known issues"
 msgstr ""
-"Veja também: <a href=\"%(lang_prefix)s/help\">Guia do Usuário</a> que lista "
+"Veja também: <a href=\"%(lang_prefix)s/help\">Guia do Usuário</a>, que lista "
 "alguns bugs e problemas conhecidos"
 
 #: src/scholar/templates/about.html:14
 #: src/scholar/templates/base.html:206
 msgid "How It Works"
-msgstr "Como Funciona"
+msgstr "Como funciona"
 
 #: src/scholar/templates/about.html:16
 msgid "Content in this search index comes in one of three forms:"
-msgstr "O conteúdo neste índice de pesquisa vem em uma das três formas:"
+msgstr ""
+"Neste índice de pesquisa, o conteúdo pode se apresentar de uma dessas três "
+"formas:"
 
 #: src/scholar/templates/about.html:19
 msgid ""
@@ -136,14 +139,14 @@ msgid ""
 "\">The Wayback Machine</a> and <a href=\"https://archive-it.org\">Archive-"
 "It</a> partner collections"
 msgstr ""
-"<b>conteúdo da web pública</b> como preservado em <a href=\"https://web."
-"archive.org\">The Wayback Machine</a> e <a href=\"https://archive-it.org"
-"\">Archive-It</a> coleções de parceiros"
+"<b>conteúdo público da web</b>, como o preservado no <a href=\"https://web."
+"archive.org\">The Wayback Machine</a> e nas coleções do parceiro <a href="
+"\"https://archive-it.org\">Archive-It</a>"
 
 #: src/scholar/templates/about.html:20
 msgid "<b>digitized print materials</b> from paper and microform collections"
 msgstr ""
-"<b>materiais de impressão digitalizada</b> a partir de colecções de papel e "
+"<b>materiais impressos digitalizados</b>, de coleções de artigos e "
 "microformas"
 
 #: src/scholar/templates/about.html:21
@@ -151,8 +154,8 @@ msgid ""
 "<b>general materials</b> from <a href=\"https://archive.org\">archive.org "
 "collections</a>, including collaborations with partners"
 msgstr ""
-"<b>materiais gerais</b> das coleções <a href=\"https://archive.org\">archive."
-"org</a>, incluindo colaborações com parceiros"
+"<b>materiais em geral</b>, das coleções do <a href=\"https://archive.org\""
+">archive.org</a>, incluindo colaborações com parceiros"
 
 #: src/scholar/templates/about.html:24
 #, python-format
@@ -160,9 +163,9 @@ msgid ""
 "This <a href=\"%(url)s\">2019 FORCE11 conference presentation</a> gives an "
 "overview of the technical infrastructure and goals of the project overall."
 msgstr ""
-"Esta apresentação da conferência <a href=\"%(url)s\">2019 FORCE11</a> dá uma "
-"visão geral da infra-estrutura técnica e dos objectivos do projecto no seu "
-"conjunto."
+"Esta apresentação da conferência <a href=\"%(url)s\">2019 FORCE11</a> "
+"oferece uma visão geral da infraestrutura técnica e dos objetivos do projeto "
+"em geral."
 
 #: src/scholar/templates/about.html:27
 #: src/scholar/templates/base.html:207
@@ -177,12 +180,12 @@ msgid ""
 "attribute the provenance of content and metadata in all cases. Please\n"
 "<a href=\"#contact\">contact us</a> if you have questions."
 msgstr ""
-"Metadados vem de <a href=\"https://fatcat.wiki\">fatcat.wiki</a>, um\n"
-"catálogo de trabalhos acadêmicos editáveis pelo usuário. Deve ser possível "
+"Os metadados vem do <a href=\"https://fatcat.wiki\">fatcat.wiki</a>, um "
+"catálogo\n"
+"de trabalhos acadêmicos aberto e editável pelo usuário. Deve ser possível "
 "rastrear e\n"
-"atribuir a proveniência do conteúdo e dos metadados em todos os casos. Por "
-"favor\n"
-"<a href=\"#contact\"> contacte-nos</a> se tiver dúvidas."
+"atribuir a origem do conteúdo e metadados em todos os casos.\n"
+"<a href=\"#contact\"> Entre em contato</a> se tiver dúvidas."
 
 #: src/scholar/templates/about.html:35
 #: src/scholar/templates/base.html:208
@@ -198,14 +201,14 @@ msgid ""
 "interested\n"
 "or would like to see specific datasets made available, please contact us."
 msgstr ""
-"Pretendemos proporcionar aos investigadores acesso ao corpus completo de "
-"textos e dados\n"
-"fins mineiros. Os conjuntos de dados derivados também podem ser lançados "
-"publicamente para análise, para\n"
-"exemplo um gráfico de citação ou frequências de N-grama por ano. Se você "
-"estiver interessado\n"
-"ou gostaria de ver conjuntos de dados específicos disponíveis, por favor "
-"contacte-nos."
+"Pretendemos fornecer aos pesquisadores acesso completo ao corpus para fins "
+"de mineração\n"
+"de texto e dados. Os conjuntos de dados derivados também podem ser "
+"divulgados publicamente\n"
+"para análise, como um grafo de citação ou frequências de N-grama por ano. Se "
+"tiver interesse\n"
+"ou quiser ver determinados conjuntos de dados disponíveis, entre em contato "
+"conosco."
 
 #: src/scholar/templates/about.html:42
 msgid ""
@@ -224,12 +227,12 @@ msgid ""
 "Read more in <a href=\"https://guide.fatcat.wiki/bulk_exports.html\">the "
 "Fatcat Guide</a>."
 msgstr ""
-"Leia mais em <a href=\"https://guide.fatcat.wiki/bulk_exports.html\">, o "
-"Guia Fatcat</a>."
+"Leia mais no <a href=\"https://guide.fatcat.wiki/bulk_exports.html\">Guia "
+"Fatcat</a>."
 
 #: src/scholar/templates/about.html:47
 msgid "Authors and Publishers"
-msgstr "Autores e Editores"
+msgstr "Autores e editores"
 
 #: src/scholar/templates/about.html:50
 #, python-format
@@ -255,7 +258,7 @@ msgstr ""
 
 #: src/scholar/templates/about.html:56
 msgid "Contact Information"
-msgstr "Informação de contato"
+msgstr "Informações de contato"
 
 #: src/scholar/templates/about.html:59
 #, python-format
@@ -282,7 +285,7 @@ msgstr "Há um canal de chat público em <a href=\"%(url)s\">%(url)s</a>."
 
 #: src/scholar/templates/about.html:66
 msgid "Support and Acknowledgements"
-msgstr "Suporte e Reconhecimentos"
+msgstr "Apoio e agradecimentos"
 
 #: src/scholar/templates/about.html:69
 #, python-format
@@ -303,7 +306,8 @@ msgid ""
 "See additional acknowledgements on <a href=\"%(fatcat_url)s\">fatcat.wiki</"
 "a>."
 msgstr ""
-"Veja agradecimentos adicionais em <a href=\"%(fatcat_url)s\">fatcat.wiki</a>."
+"Veja os agradecimentos adicionais na <a href=\"%(fatcat_url)s\">fatcat."
+"wiki</a>."
 
 #: src/scholar/templates/access_404.html:10
 msgid "404: Access Location Not Found"
@@ -354,11 +358,11 @@ msgstr "Página de catálogo do Fatcat"
 
 #: src/scholar/templates/base.html:13
 msgid "Internet Archive Scholar"
-msgstr "Bolsista do Arquivo da Internet"
+msgstr "Internet Archive Scholar"
 
 #: src/scholar/templates/base.html:83
 msgid "language selection menu"
-msgstr "menu de selecção de idioma"
+msgstr "menu de seleção de idioma"
 
 #: src/scholar/templates/base.html:105
 msgid "Contribute to translations"
@@ -370,7 +374,7 @@ msgstr "por título, autores, palavras-chave..."
 
 #: src/scholar/templates/base.html:128
 msgid "search for papers"
-msgstr "busca de documentos"
+msgstr "buscar artigos"
 
 #: src/scholar/templates/base.html:129 src/scholar/templates/home.html:16
 msgid "Search"
@@ -382,7 +386,7 @@ msgstr "Feed RSS"
 
 #: src/scholar/templates/base.html:148
 msgid "User Guide"
-msgstr "Guia do utilizador"
+msgstr "Guia do usuário"
 
 #: src/scholar/templates/base.html:176
 msgid ""
@@ -448,15 +452,15 @@ msgstr "Ajuda"
 
 #: src/scholar/templates/error.html:12
 msgid "Not Found"
-msgstr "Não Encontrado"
+msgstr "Não encontrado"
 
 #: src/scholar/templates/error.html:14
 msgid "Access Forbidden"
-msgstr "Acesso Proibido"
+msgstr "Acesso proibido"
 
 #: src/scholar/templates/error.html:16
 msgid "Request Error"
-msgstr "Erro de Pedido"
+msgstr "Erro de solicitação"
 
 #: src/scholar/templates/error.html:18
 msgid "Internal Error"
@@ -473,7 +477,7 @@ msgstr "Experimente"
 
 #: src/scholar/templates/help.html:22
 msgid "Scholar User Guide"
-msgstr "Manual do bolsista"
+msgstr "Guia do usuário do Scholar"
 
 #: src/scholar/templates/help.html:23
 #, python-format
