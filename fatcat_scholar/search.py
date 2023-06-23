@@ -6,6 +6,7 @@ import copy
 import datetime
 import logging
 from gettext import gettext
+from timeit import default_timer as timer
 from typing import Any, List, Optional
 
 import elasticsearch
@@ -461,11 +462,15 @@ def es_scholar_index_alive() -> bool:
     shards queried, and thus seems like a good fit for this check.
     """
     try:
+        started_at = timer()
         resp = es_client.count(
             body=None,
             index=settings.ELASTICSEARCH_QUERY_FULLTEXT_INDEX,
             request_timeout=90.0,
         )
+        stopped_at = timer()
+        if stopped_at - started_at > 5.0:
+            logging.warn(f"slow health check: {stopped_at - started_at}")
     except elasticsearch.exceptions.RequestError as e_raw:
         if e_raw.status_code == 404:
             return False
