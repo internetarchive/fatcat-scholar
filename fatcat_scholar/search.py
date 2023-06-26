@@ -6,7 +6,6 @@ import copy
 import datetime
 import logging
 from gettext import gettext
-from timeit import default_timer as timer
 from typing import Any, List, Optional
 
 import elasticsearch
@@ -453,34 +452,10 @@ def es_scholar_index_alive() -> bool:
     service queries. Intended to be used in health checks, called every couple
     seconds.
 
-    Note that the regular client.indices.exists(index) function call will
-    return an error if the cluster leader can not be reached, even if the local
-    node could service queries in a read-only manner.
-
-    The client.count(body=None, index=index) API returns quickly enough (though
-    might be slow during indexing?), and returns context about the number of
-    shards queried, and thus seems like a good fit for this check.
+    For performance reasons, we currently only check generic connectivity with
+    ping. Previously we used client.count.
     """
-    try:
-        started_at = timer()
-        resp = es_client.count(
-            body=None,
-            index=settings.ELASTICSEARCH_QUERY_FULLTEXT_INDEX,
-            request_timeout=90.0,
-        )
-        stopped_at = timer()
-        if stopped_at - started_at > 5.0:
-            logging.warn(f"slow health check: {stopped_at - started_at}")
-    except elasticsearch.exceptions.RequestError as e_raw:
-        if e_raw.status_code == 404:
-            return False
-        else:
-            raise e_raw
-    try:
-        return bool(resp["_shards"]["successful"] == resp["_shards"]["total"])
-    except KeyError:
-        return False
-
+    return es_client.ping()
 
 def get_es_scholar_doc(key: str) -> Optional[dict]:
     """
