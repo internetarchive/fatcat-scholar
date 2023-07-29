@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2022-11-16 20:35-0800\n"
-"PO-Revision-Date: 2023-01-11 17:48+0000\n"
+"PO-Revision-Date: 2023-07-30 20:04+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/hr/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.15.1-dev\n"
+"X-Generator: Weblate 5.0-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:45
@@ -251,7 +251,7 @@ msgstr ""
 
 #: fatcat_scholar/templates/about.html:56
 msgid "Contact Information"
-msgstr "Kontakt"
+msgstr "Podaci za kontaktiranje"
 
 #: fatcat_scholar/templates/about.html:59
 #, python-format
@@ -405,7 +405,7 @@ msgstr "O nama"
 
 #: fatcat_scholar/templates/base.html:186
 msgid "Contact Us"
-msgstr "Kontakt"
+msgstr "Kontaktiraj nas"
 
 #: fatcat_scholar/templates/base.html:187
 msgid "Policies"
