@@ -7,13 +7,14 @@
 # Nathan <bonnemainsnathan@gmail.com>, 2021.
 # J. Lavoie <j.lavoie@net-c.ca>, 2021.
 # Nifou <nifou@mailfence.com>, 2023.
+# Miguel <mig.mllr@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2022-11-16 20:35-0800\n"
-"PO-Revision-Date: 2023-01-13 21:49+0000\n"
-"Last-Translator: Nifou <nifou@mailfence.com>\n"
+"PO-Revision-Date: 2023-08-17 12:54+0000\n"
+"Last-Translator: Miguel <mig.mllr@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/fr/>\n"
 "Language: fr\n"
@@ -21,16 +22,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.15.1-dev\n"
+"X-Generator: Weblate 5.0-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:45
 msgid "Release Date"
-msgstr "Date de version"
+msgstr "Date de sortie"
 
 #: fatcat_scholar/search.py:49
 msgid "All Time"
-msgstr "N'importe quelle date"
+msgstr "Depuis toujours"
 
 #: fatcat_scholar/search.py:50
 msgid "Past Week"
