@@ -8,13 +8,14 @@
 # J. Lavoie <j.lavoie@net-c.ca>, 2021.
 # Mauro Piccotti <mauro.piccotti@gmail.com>, 2021.
 # Alfonso Scarpino <alfonso.scarpino@gmail.com>, 2021, 2022.
+# Marco Mandelli <marco.mandelli@protonmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2022-11-16 20:35-0800\n"
-"PO-Revision-Date: 2022-07-19 17:15+0000\n"
-"Last-Translator: Alfonso Scarpino <alfonso.scarpino@gmail.com>\n"
+"PO-Revision-Date: 2023-09-16 23:02+0000\n"
+"Last-Translator: Marco Mandelli <marco.mandelli@protonmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/it/>\n"
 "Language: it\n"
@@ -22,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 5.0.2\n"
 "Generated-By: Babel 2.6.0\n"
 
 #: src/scholar/search.py:45
@@ -230,7 +231,7 @@ msgstr ""
 
 #: src/scholar/templates/about.html:47
 msgid "Authors and Publishers"
-msgstr ""
+msgstr "Autori ed editori"
 
 #: src/scholar/templates/about.html:50
 #, python-format
@@ -239,6 +240,10 @@ msgid ""
 "href=\"%(url)s\">%(url)s</a>. This includes instructions for correcting "
 "bibliographic metadata and updates to published works."
 msgstr ""
+"Informazioni specifiche per gli autori di lavori di ricerca possono essere "
+"trovate su <a href=\"%(url)s\">%(url)s</a>. Sono incluse istruzioni per la "
+"correzione dei metadati bibliografici e gli aggiornamenti delle opere "
+"pubblicate."
 
 #: src/scholar/templates/about.html:53
 #, python-format
@@ -247,6 +252,9 @@ msgid ""
 "\"%(url)s\">%(url)s</a>. This includes guidelines for having content indexed "
 "and preserved."
 msgstr ""
+"Allo stesso modo informazioni specifiche per gli editori possono essere "
+"trovate su <a href=\"%(url)s\">%(url)s</a>. Sono incluse linee guida per "
+"l'indicizzazione e la conservazione dei contenuti."
 
 #: src/scholar/templates/about.html:56
 msgid "Contact Information"
