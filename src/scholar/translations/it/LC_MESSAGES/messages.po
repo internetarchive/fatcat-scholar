@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2022-11-16 20:35-0800\n"
-"PO-Revision-Date: 2023-09-16 23:02+0000\n"
+"PO-Revision-Date: 2023-09-18 00:01+0000\n"
 "Last-Translator: Marco Mandelli <marco.mandelli@protonmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/it/>\n"
@@ -369,7 +369,7 @@ msgstr "Contribuire alle traduzioni"
 
 #: src/scholar/templates/base.html:128
 msgid "by title, authors, keywords..."
-msgstr "per titolo, autore, parole chiave..."
+msgstr "per titolo, autori, parole chiave..."
 
 #: src/scholar/templates/base.html:128
 msgid "search for papers"
