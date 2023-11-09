@@ -6,9 +6,6 @@
 
 {% block main %}
 <h1>{% trans %}About Internet Archive Scholar{% endtrans %}</h1>
-<p><i>
-  {% trans %}See also: <a href="{{ lang_prefix }}/help">User Guide</a> which lists some bugs and known issues{% endtrans %}
-</i>
 
 <a name="howitworks"></a>
 <h3>{% trans %}How It Works{% endtrans %}</h3>
@@ -27,9 +24,7 @@
 <h3>{% trans %}Content Sources{% endtrans %}</h3>
 
 <p>{% trans %}Metadata comes from <a href="https://fatcat.wiki">fatcat.wiki</a>, an open
-user-editable catalog of scholarly work. It should be possible to track and
-attribute the provenance of content and metadata in all cases. Please
-<a href="#contact">contact us</a> if you have questions.{% endtrans %}
+user-editable catalog of scholarly work.{% endtrans %}
 
 <a name="tdm"></a>
 <h3>{% trans %}Text and Data Mining{% endtrans %}</h3>
@@ -37,7 +32,7 @@ attribute the provenance of content and metadata in all cases. Please
 <p>{% trans %}We intend to provide researcher access to the full corpus for text and data
 mining purposes. Derived datasets may also be posted publicly for analysis, for
 example a citation graph or N-gram frequencies by year. If you are interested
-or would like to see specific datasets made available, please contact us.{% endtrans %}
+or would like to see specific datasets made available, please contact us at scholar@archive.org.{% endtrans %}
 
 <p>{% trans %}Currently snapshots of the full fatcat metadata corpus and upstream metadata sources are uploaded periodically to the <a href="https://archive.org/details/ia_biblio_metadata">Bulk Bibliographic Metadata</a> collection on archive.org.{% endtrans %}
 
@@ -50,15 +45,12 @@ or would like to see specific datasets made available, please contact us.{% endt
 {% trans url="https://guide.fatcat.wiki/authors.html" %}Information specifically for authors of research works can be found at <a href="{{ url }}">{{ url }}</a>. This includes instructions for correcting bibliographic metadata and updates to published works.{% endtrans %}
 
 <p>
-{% trans url="https://guide.fatcat.wiki/publishers.html" %}Likewise information specifically for publishers can be found at <a href="{{ url }}">{{ url }}</a>. This includes guidelines for having content indexed and preserved.{% endtrans %}
+{% trans url="https://guide.fatcat.wiki/publishers.html" %}In alignment with its mission, Internet Archive makes automated attempts to capture and preserve all open access research publications on the public web. If your open access journal articles aren’t currently included in Internet Archive Scholar, you can fill out the <a href="https://form.jotform.com/232483341499059">Internet Archive Scholar inclusion form</a> to share journal URLs for crawling. Please note that it will take at least 3 months from the time you submit this form until your content starts to appear in Internet Archive Scholar. Emails about the status of your content sent less than 3 months after submitting this form will not be answered. Additional information specifically for publishers can be found at <a href="{{ url }}">{{ url }}</a>. This includes guidelines for having content indexed and preserved.{% endtrans %}
 
 <a name="contact"></a>
 <h3>{% trans %}Contact Information{% endtrans %}</h3>
 
-<p>
-{% trans url="https://archive.org/about/contact.php" %}The organizational contact information for the Internet Archive is listed at <a href="{{ url }}">{{ url }}</a>.{% endtrans %}
-
-{% trans email="webservices@archive.org" %}Queries about this search service and the fatcat catalog can be directed to <a href="mailto:{{ email }}">{{ email }}</a>.{% endtrans %}
+{% trans email="scholar@archive.org" %}Queries about this search service and the fatcat catalog can be directed to <a href="mailto:{{ email }}">{{ email }}</a>.{% endtrans %}
 
 {% trans url="https://gitter.im/internetarchive/fatcat" %}There is a public chat channel at <a href="{{ url }}">{{ url }}</a>.{% endtrans %}
 
