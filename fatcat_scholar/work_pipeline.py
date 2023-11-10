@@ -470,6 +470,7 @@ class WorkPipeline:
                 requests.exceptions.ConnectionError,
                 requests.exceptions.ReadTimeout,
                 requests.exceptions.ChunkedEncodingError,
+                requests.exceptions.RetryError,
             ) as e:
                 print(str(e), file=sys.stderr)
                 continue
