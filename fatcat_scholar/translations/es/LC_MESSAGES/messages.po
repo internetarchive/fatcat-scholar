@@ -8,13 +8,14 @@
 # eulalio <eulalio@disroot.org>, 2022.
 # Jaime Marquínez Ferrándiz <weblate@jregistros.fastmail.net>, 2022.
 # gallegonovato <fran-carro@hotmail.es>, 2022, 2023.
+# Héctor Cortés <frewilfis@protonmail.ch>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2022-11-16 20:35-0800\n"
-"PO-Revision-Date: 2023-09-19 17:01+0000\n"
-"Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
+"PO-Revision-Date: 2023-12-28 22:13+0000\n"
+"Last-Translator: Héctor Cortés <frewilfis@protonmail.ch>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/es/>\n"
 "Language: es\n"
@@ -22,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.1-dev\n"
+"X-Generator: Weblate 5.4-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:45
@@ -1204,7 +1205,7 @@ msgstr "Anterior"
 #: fatcat_scholar/templates/search_macros.html:500
 #: fatcat_scholar/templates/search_macros.html:503
 msgid "Next &raquo;"
-msgstr "Más &raquo;"
+msgstr "Siguiente &raquo;"
 
 #: fatcat_scholar/templates/search_macros.html:507
 #, python-format
