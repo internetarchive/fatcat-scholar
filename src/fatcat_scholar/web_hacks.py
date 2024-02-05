@@ -8,7 +8,7 @@ from starlette.templating import _TemplateResponse
 
 from fatcat_scholar.config import I18N_LANG_OPTIONS, settings
 
-TEMPLATE_LOADER = jinja2.FileSystemLoader("fatcat_scholar/templates")
+TEMPLATE_LOADER = jinja2.FileSystemLoader("src/fatcat_scholar/templates")
 
 
 class Jinja2Templates:
@@ -70,11 +70,10 @@ def load_i18n_files() -> typing.Any:
     - https://github.com/encode/starlette/issues/279
     - https://github.com/aio-libs/aiohttp-jinja2/issues/187
     """
-
     d = dict()
     for lang_opt in I18N_LANG_OPTIONS:
         translations = babel.support.Translations.load(
-            dirname="fatcat_scholar/translations",
+            dirname="src/fatcat_scholar/translations",
             locales=[lang_opt],
         )
         d[lang_opt] = translations

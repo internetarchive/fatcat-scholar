@@ -515,25 +515,25 @@ for lang_option in I18N_LANG_OPTIONS:
 # work, and results in the OpenAPI docs looking correct.
 app.include_router(api)
 
-app.mount("/static", StaticFiles(directory="fatcat_scholar/static"), name="static")
+app.mount("/static", StaticFiles(directory="src/fatcat_scholar/static"), name="static")
 
 
 @app.get("/favicon.ico", include_in_schema=False)
 async def favicon() -> Any:
     return FileResponse(
-        "fatcat_scholar/static/ia-favicon.ico", media_type="image/x-icon"
+        "src/fatcat_scholar/static/ia-favicon.ico", media_type="image/x-icon"
     )
 
 
 @app.get("/sitemap.xml", include_in_schema=False)
 async def basic_sitemap() -> Any:
     return FileResponse(
-        "fatcat_scholar/static/sitemap.xml", media_type="application/xml"
+        "src/fatcat_scholar/static/sitemap.xml", media_type="application/xml"
     )
 
 
-ROBOTS_ALLOW = open("fatcat_scholar/static/robots.allow.txt", "r").read()
-ROBOTS_DISALLOW = open("fatcat_scholar/static/robots.disallow.txt", "r").read()
+ROBOTS_ALLOW = open("src/fatcat_scholar/static/robots.allow.txt", "r").read()
+ROBOTS_DISALLOW = open("src/fatcat_scholar/static/robots.disallow.txt", "r").read()
 
 
 @app.get("/robots.txt", include_in_schema=False)
