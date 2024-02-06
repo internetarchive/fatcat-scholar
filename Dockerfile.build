@@ -1,0 +1,12 @@
+# syntax=docker/dockerfile:1
+
+FROM ubuntu:focal
+WORKDIR /src
+RUN apt-get update && apt-get -y install binutils software-properties-common && add-apt-repository ppa:deadsnakes/ppa -uy && apt-get install -y python3.11 python3.11-venv python3.11-dev python3.11-distutils build-essential libffi-dev
+CMD \
+  mkdir -p build && \
+  python3.11 -mvenv build/venv && \
+  build/venv/bin/pip install -e ".[build]" && \
+  build/venv/bin/pip-compile --generate-hashes --strip-extras -o build/requirements.txt && \
+  build/venv/bin/pip install -r build/requirements.txt && \
+  build/venv/bin/pyinstaller -Fy src/fatcat_scholar/__main__.py -nscholar -p build/venv/lib/*/site-packages --specpath build 

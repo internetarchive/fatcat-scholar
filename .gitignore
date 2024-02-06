@@ -1,3 +1,5 @@
+dist
+venv/
 *.egg-info
 data/
 fulltext_web/
