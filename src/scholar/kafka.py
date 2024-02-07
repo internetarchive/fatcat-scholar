@@ -62,9 +62,7 @@ class KafkaWorker:
         self.batch_size = kwargs.get("batch_size", 1)
         self.batch_timeout_sec = kwargs.get("batch_timeout_sec", 60)
         self.poll_interval_sec = kwargs.get("poll_interval_sec", 5.0)
-        self.consumer = self.create_kafka_consumer(
-            kafka_brokers, consume_topics, consumer_group
-        )
+        self.consumer = self.create_kafka_consumer(kafka_brokers, consume_topics, consumer_group)
 
     @staticmethod
     def _fail_fast_produce(err: Any, msg: Any) -> None:

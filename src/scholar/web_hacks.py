@@ -27,9 +27,7 @@ class Jinja2Templates:
             request = context["request"]
             return request.url_for(name, **path_params)
 
-        env = jinja2.Environment(
-            loader=TEMPLATE_LOADER, extensions=extensions, autoescape=True
-        )
+        env = jinja2.Environment(loader=TEMPLATE_LOADER, extensions=extensions, autoescape=True)
         env.globals["url_for"] = url_for
         return env
 
@@ -70,7 +68,7 @@ def load_i18n_files() -> typing.Any:
     - https://github.com/encode/starlette/issues/279
     - https://github.com/aio-libs/aiohttp-jinja2/issues/187
     """
-    d = dict()
+    d = {}
     for lang_opt in I18N_LANG_OPTIONS:
         translations = babel.support.Translations.load(
             dirname="src/scholar/translations",
@@ -84,14 +82,14 @@ I18N_TRANSLATION_FILES = load_i18n_files()
 
 
 def locale_gettext(translations: typing.Any) -> typing.Any:
-    def gt(s):  # noqa: ANN001,ANN201
+    def gt(s):  # noqa: ANN001,ANN201,ANN202
         return translations.ugettext(s)
 
     return gt
 
 
 def locale_ngettext(translations: typing.Any) -> typing.Any:
-    def ngt(s, p, n):  # noqa: ANN001,ANN201
+    def ngt(s, p, n):  # noqa: ANN001,ANN201,ANN202
         return translations.ungettext(s, p, n)
 
     return ngt
@@ -157,20 +155,11 @@ def test_parse_accept_lang() -> None:
     assert parse_accept_lang("en-GB,de", ["en"]) == "en"
     assert parse_accept_lang("zh_Hans_CN", ["en", "zh"]) == "zh"
     assert parse_accept_lang("en,de", ["de"]) == "de"
+    assert parse_accept_lang("en-ca,en;q=0.8,en-us;q=0.6,de-de;q=0.4,de;q=0.2", ["de"]) == "de"
     assert (
-        parse_accept_lang("en-ca,en;q=0.8,en-us;q=0.6,de-de;q=0.4,de;q=0.2", ["de"])
-        == "de"
+        parse_accept_lang("en-ca,en;q=0.8,en-us;q=0.6,de-de;q=0.4,de;q=0.2", ["en", "de"]) == "en"
     )
-    assert (
-        parse_accept_lang(
-            "en-ca,en;q=0.8,en-us;q=0.6,de-de;q=0.4,de;q=0.2", ["en", "de"]
-        )
-        == "en"
-    )
-    assert (
-        parse_accept_lang("en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7", ["zh", "en", "de"])
-        == "en"
-    )
+    assert parse_accept_lang("en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7", ["zh", "en", "de"]) == "en"
 
 
 def wayback_direct_url(url: str) -> str:
@@ -187,18 +176,13 @@ def wayback_direct_url(url: str) -> str:
 
 
 def test_wayback_direct_url() -> None:
-    assert (
-        wayback_direct_url("http://fatcat.wiki/thing.pdf")
-        == "http://fatcat.wiki/thing.pdf"
-    )
+    assert wayback_direct_url("http://fatcat.wiki/thing.pdf") == "http://fatcat.wiki/thing.pdf"
     assert (
         wayback_direct_url("https://web.archive.org/web/*/http://fatcat.wiki/thing.pdf")
         == "https://web.archive.org/web/*/http://fatcat.wiki/thing.pdf"
     )
     assert (
-        wayback_direct_url(
-            "https://web.archive.org/web/1234/http://fatcat.wiki/thing.pdf"
-        )
+        wayback_direct_url("https://web.archive.org/web/1234/http://fatcat.wiki/thing.pdf")
         == "https://web.archive.org/web/1234id_/http://fatcat.wiki/thing.pdf"
     )
     assert (
@@ -247,9 +231,7 @@ def test_make_access_redirect_url() -> None:
         == "https://scholar.archive.org/work/lmobci36t5aelogzjsazuwxpie/access/ia_file/something/file.pdf"
     )
     assert (
-        make_access_redirect_url(
-            "lmobci36t5aelogzjsazuwxpie", "blah", "https://mit.edu/file.pdf"
-        )
+        make_access_redirect_url("lmobci36t5aelogzjsazuwxpie", "blah", "https://mit.edu/file.pdf")
         == "https://mit.edu/file.pdf"
     )
     assert (

@@ -11,7 +11,7 @@ def djvu_extract_leaf_texts(
     IA XML file type), and iterates throug
     """
 
-    leaf_text = dict()
+    leaf_text = {}
     max_leaf = None
     if only_leaves:
         max_leaf = max(only_leaves)

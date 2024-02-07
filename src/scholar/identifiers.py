@@ -66,9 +66,7 @@ def test_clean_doi() -> None:
     assert clean_doi("doi:10.1234/asdf ") == "10.1234/asdf"
     assert clean_doi("doi:10.1234/ asdf ") is None
     assert clean_doi("10.4149/gpb¬_2017042") is None  # "logical negation" character
-    assert (
-        clean_doi("10.6002/ect.2020.häyry") is None
-    )  # this example via pubmed (pmid:32519616)
+    assert clean_doi("10.6002/ect.2020.häyry") is None  # this example via pubmed (pmid:32519616)
     # GROBID mangled DOI
     assert clean_doi("21924DOI10.1234/asdf ") == "10.1234/asdf"
 

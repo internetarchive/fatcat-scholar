@@ -13,6 +13,7 @@ import fatcat_openapi_client
 import sentry_sdk
 from elasticsearch_dsl import Q, Search
 from elasticsearch_dsl.response import Response
+
 # pytype: disable=import-error
 from pydantic import BaseModel
 
@@ -119,9 +120,7 @@ def transform_es_results(resp: Response) -> List[dict]:
             if isinstance(h.meta.inner_hits.more_pages.hits.total, int):
                 r["_collapsed_count"] = h.meta.inner_hits.more_pages.hits.total - 1
             else:
-                r["_collapsed_count"] = (
-                    h.meta.inner_hits.more_pages.hits.total["value"] - 1
-                )
+                r["_collapsed_count"] = h.meta.inner_hits.more_pages.hits.total["value"] - 1
             for k in h.meta.inner_hits.more_pages:
                 if k["key"] != r["key"]:
                     r["_collapsed"].append(k)
@@ -132,10 +131,10 @@ def transform_es_results(resp: Response) -> List[dict]:
         # probably due to mangled data processing in some pipeline.
         # "Crimes against Unicode"; production workaround
         for key in h:
-            if type(h[key]) is str:
+            if isinstance(h[key], str):
                 h[key] = h[key].encode("utf8", "ignore").decode("utf8")
         # ensure collapse_key is a single value, not an array
-        if type(h["collapse_key"]) == list:
+        if isinstance(h["collapse_key"], list):
             h["collapse_key"] = h["collapse_key"][0]
         # add ScholarDoc object as a helper (eg, to call python helpers)
         try:
@@ -173,16 +172,14 @@ def apply_filters(search: Search, query: FulltextQuery) -> Search:
     elif query.filter_type == "everything":
         pass
     else:
-        raise ValueError(
-            f"Unknown 'filter_type' parameter value: '{query.filter_type}'"
-        )
+        raise ValueError(f"Unknown 'filter_type' parameter value: '{query.filter_type}'")
 
     # time filters
     if query.filter_time == "past_week":
         date_today = datetime.date.today()
         week_ago_date = str(date_today - datetime.timedelta(days=7))
         tomorrow_date = str(date_today + datetime.timedelta(days=1))
-        search = search.filter("range", date=dict(gte=week_ago_date, lte=tomorrow_date))
+        search = search.filter("range", date={"gte": week_ago_date, "lte": tomorrow_date})
     elif query.filter_time == "past_year":
         # (date in the past year) or (year is this year)
         # the later to catch papers which don't have release_date defined
@@ -191,21 +188,19 @@ def apply_filters(search: Search, query: FulltextQuery) -> Search:
         tomorrow_date = str(date_today + datetime.timedelta(days=1))
         year_ago_date = str(date_today - datetime.timedelta(days=365))
         search = search.filter(
-            Q("range", date=dict(gte=year_ago_date, lte=tomorrow_date))
+            Q("range", date={"gte": year_ago_date, "lte": tomorrow_date})
             | Q("term", year=this_year)
         )
     elif query.filter_time == "since_2000":
         this_year = datetime.date.today().year
-        search = search.filter("range", year=dict(gte=2000, lte=this_year))
+        search = search.filter("range", year={"gte": 2000, "lte": this_year})
     elif query.filter_time == "before_1925" or query.filter_time == "before_1927":
         # 1925 value retained for backwards compatibility in URLs
-        search = search.filter("range", year=dict(lt=1927))
+        search = search.filter("range", year={"lt": 1927})
     elif query.filter_time == "all_time" or query.filter_time is None:
         pass
     else:
-        raise ValueError(
-            f"Unknown 'filter_time' parameter value: '{query.filter_time}'"
-        )
+        raise ValueError(f"Unknown 'filter_time' parameter value: '{query.filter_time}'")
 
     # availability filters
     if query.filter_availability == "oa":
@@ -213,9 +208,7 @@ def apply_filters(search: Search, query: FulltextQuery) -> Search:
     elif query.filter_availability == "everything":
         pass
     elif query.filter_availability == "fulltext" or query.filter_availability is None:
-        search = search.filter(
-            "terms", **{"access.access_type": ["wayback", "ia_file", "ia_sim"]}
-        )
+        search = search.filter("terms", **{"access.access_type": ["wayback", "ia_file", "ia_sim"]})
     elif query.filter_availability == "microfilm":
         search = search.filter("term", **{"access.access_type": "ia_sim"})
     else:
@@ -245,9 +238,7 @@ def process_query(query: FulltextQuery) -> FulltextHits:
     if settings.ENABLE_CITATION_QUERY and sniff_citation_query(query.q):
         api_conf = fatcat_openapi_client.Configuration()
         api_conf.host = settings.FATCAT_API_HOST
-        api_client = fatcat_openapi_client.DefaultApi(
-            fatcat_openapi_client.ApiClient(api_conf)
-        )
+        api_client = fatcat_openapi_client.DefaultApi(fatcat_openapi_client.ApiClient(api_conf))
         fatcat_es_client = elasticsearch.Elasticsearch("https://search.fatcat.wiki")
         key: Optional[str] = None
         # "best effort" fuzzy match lookup (but aggressively skip on any exception)
@@ -290,9 +281,7 @@ def do_lookup_query(lookup: str) -> FulltextHits:
     return result
 
 
-def do_fulltext_search(
-    query: FulltextQuery, deep_page_limit: int = 2000
-) -> FulltextHits:
+def do_fulltext_search(query: FulltextQuery, deep_page_limit: int = 2000) -> FulltextHits:
     search = Search(using=es_client, index=settings.ELASTICSEARCH_QUERY_FULLTEXT_INDEX)
 
     if query.collapse_key:

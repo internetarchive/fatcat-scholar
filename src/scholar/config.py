@@ -7,9 +7,7 @@ settings = Dynaconf(
     environments=True,
 )
 
-GIT_REVISION = (
-    subprocess.check_output(["git", "describe", "--always"]).strip().decode("utf-8")
-)
+GIT_REVISION = subprocess.check_output(["git", "describe", "--always"]).strip().decode("utf-8")
 
 I18N_LANG_OPTIONS = [
     "ar",

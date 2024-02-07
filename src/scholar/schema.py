@@ -14,6 +14,7 @@ import ftfy
 from bs4 import BeautifulSoup
 from fatcat_openapi_client import ReleaseContrib, ReleaseEntity
 from grobid_tei_xml import GrobidDocument
+
 # pytype: disable=import-error
 from pydantic import BaseModel
 
@@ -52,8 +53,7 @@ class IntermediateBundle(BaseModel):
         return IntermediateBundle(
             doc_type=DocType(obj.get("doc_type")),
             releases=[
-                entity_from_json(json.dumps(re), ReleaseEntity)
-                for re in obj.get("releases", [])
+                entity_from_json(json.dumps(re), ReleaseEntity) for re in obj.get("releases", [])
             ],
             biblio_release_ident=obj.get("biblio_release_ident"),
             crossref=obj.get("crossref"),
@@ -503,14 +503,12 @@ def es_abstracts_from_grobid(tei_doc: GrobidDocument) -> List[ScholarAbstract]:
 
 
 def es_abstracts_from_release(release: ReleaseEntity) -> List[ScholarAbstract]:
-    d = dict()
+    d = {}
     for abst in release.abstracts:
         if abst.lang not in d:
             body = scrub_text(abst.content)
             if body:
-                d[abst.lang] = ScholarAbstract(
-                    lang_code=abst.lang, body=scrub_text(abst.content)
-                )
+                d[abst.lang] = ScholarAbstract(lang_code=abst.lang, body=scrub_text(abst.content))
     return list(d.values())
 
 
@@ -532,9 +530,7 @@ def es_biblio_from_release(release: ReleaseEntity) -> ScholarBiblio:
         if release.container.extra:
             publisher_type = release.container.extra.get("publisher_type")
             container_original_name = release.container.extra.get("original_name")
-            container_sherpa_color = release.container.extra.get(
-                "sherpa_romeo", {}
-            ).get("color")
+            container_sherpa_color = release.container.extra.get("sherpa_romeo", {}).get("color")
             if release.container.extra.get("issne"):
                 issns.append(release.container.extra["issne"])
             if release.container.extra.get("issnp"):
@@ -606,11 +602,7 @@ def es_biblio_from_release(release: ReleaseEntity) -> ScholarBiblio:
         affiliations=list(
             filter(
                 lambda x: bool(x),
-                [
-                    clean_str(contrib_affiliation(c))
-                    for c in release.contribs
-                    if c.index
-                ],
+                [clean_str(contrib_affiliation(c)) for c in release.contribs if c.index],
             )
         ),
     )

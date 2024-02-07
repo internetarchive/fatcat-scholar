@@ -70,17 +70,13 @@ def test_pre_parse_query() -> None:
     assert pre_parse_query("a/B thing") == '"a/B" thing'
     assert pre_parse_query('"a/B thing"') == '"a/B thing"'
     assert pre_parse_query("Krämer") == "Krämer"
-    assert (
-        pre_parse_query('"10.1093/qjmed/os-14.56.398"')
-        == '"10.1093/qjmed/os-14.56.398"'
-    )
+    assert pre_parse_query('"10.1093/qjmed/os-14.56.398"') == '"10.1093/qjmed/os-14.56.398"'
     assert (
         pre_parse_query("this (is my) paper: here are the results")
         == 'this (is my) "paper:" here are the results'
     )
     assert (
-        pre_parse_query('"hello world" computing type:book')
-        == '"hello world" computing type:book'
+        pre_parse_query('"hello world" computing type:book') == '"hello world" computing type:book'
     )
     assert (
         pre_parse_query('"hello world" computing type:"chapter thing"')
@@ -100,9 +96,7 @@ def test_pre_parse_query() -> None:
         == "status:[400 TO 499] AND (extension:php OR extension:html)"
     )
     assert pre_parse_query("[embargoed]") == '"[embargoed]"'
-    assert (
-        pre_parse_query("something 10.1002/eco.2061") == 'something "10.1002/eco.2061"'
-    )
+    assert pre_parse_query("something 10.1002/eco.2061") == 'something "10.1002/eco.2061"'
     assert pre_parse_query("different wet/dry ratios") == 'different "wet/dry" ratios'
     assert pre_parse_query("kimchy!") == '"kimchy!"'
     assert pre_parse_query("kimchy?") == '"kimchy?"'
@@ -137,7 +131,7 @@ def sniff_citation_query(raw: str) -> bool:
 
     # numbers, years, page numbers, capitalization, quoted strings all increase
     # confidence that this is a citation, not just a title
-    char_types = dict()
+    char_types = {}
     for c in raw:
         if c.isdigit():
             char_types["digit"] = True
@@ -162,10 +156,7 @@ def sniff_citation_query(raw: str) -> bool:
 
 def test_sniff_citation_query() -> None:
     assert sniff_citation_query("short") is False
-    assert (
-        sniff_citation_query("(title:foo OR title:bar)^1.5 (body:foo OR body:bar)")
-        is False
-    )
+    assert sniff_citation_query("(title:foo OR title:bar)^1.5 (body:foo OR body:bar)") is False
     assert sniff_citation_query("DR. SCHAUDINN'S WORK ON BLOOD PARASITES") is False
     assert sniff_citation_query('"DR. SCHAUDINN\'S WORK ON BLOOD PARASITES"') is False
     assert (

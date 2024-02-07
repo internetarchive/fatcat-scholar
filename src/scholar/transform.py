@@ -12,13 +12,25 @@ from grobid_tei_xml import GrobidBiblio, GrobidDocument, parse_document_xml
 
 from scholar.config import GIT_REVISION, settings
 from scholar.identifiers import clean_doi, clean_pmcid
-from scholar.schema import (AccessType, DocType, IntermediateBundle, RefBiblio,
-                            RefStructured, ScholarAbstract, ScholarAccess,
-                            ScholarBiblio, ScholarDoc, ScholarFulltext,
-                            ScholarSim, clean_small_int,
-                            clean_url_conservative, es_abstracts_from_grobid,
-                            es_abstracts_from_release, es_biblio_from_release,
-                            es_release_from_release)
+from scholar.schema import (
+    AccessType,
+    DocType,
+    IntermediateBundle,
+    RefBiblio,
+    RefStructured,
+    ScholarAbstract,
+    ScholarAccess,
+    ScholarBiblio,
+    ScholarDoc,
+    ScholarFulltext,
+    ScholarSim,
+    clean_small_int,
+    clean_url_conservative,
+    es_abstracts_from_grobid,
+    es_abstracts_from_release,
+    es_biblio_from_release,
+    es_release_from_release,
+)
 
 MAX_BODY_CHARS = 512 * 1024
 
@@ -309,9 +321,7 @@ def biblio_metadata_hacks(biblio: ScholarBiblio) -> ScholarBiblio:  # noqa: C901
     """
 
     # valid year
-    if biblio.release_year and (
-        biblio.release_year > 2025 or biblio.release_year < 1500
-    ):
+    if biblio.release_year and (biblio.release_year > 2025 or biblio.release_year < 1500):
         biblio.release_year = None
         biblio.release_date = None
 
@@ -389,9 +399,7 @@ def biblio_metadata_hacks(biblio: ScholarBiblio) -> ScholarBiblio:  # noqa: C901
     return biblio
 
 
-def generate_tags(
-    biblio: ScholarBiblio, primary_release: Optional[ReleaseEntity]
-) -> List[str]:
+def generate_tags(biblio: ScholarBiblio, primary_release: Optional[ReleaseEntity]) -> List[str]:
     tags = []
 
     # tags
@@ -431,10 +439,7 @@ def check_exclude_web(biblio: ScholarBiblio) -> bool:
     """
     if biblio.release_year and biblio.release_year <= 1926:
         return False
-    if (
-        biblio.container_ident
-        and biblio.container_ident in settings.EXCLUDE_WEB_CONTAINER_IDENTS
-    ):
+    if biblio.container_ident and biblio.container_ident in settings.EXCLUDE_WEB_CONTAINER_IDENTS:
         return True
     if biblio.publisher:
         for pub in settings.EXCLUDE_WEB_PUBLISHERS:
@@ -477,9 +482,7 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
         work_ident = heavy.releases[0].work_id
         key = f"work_{work_ident}"
         assert heavy.biblio_release_ident
-        primary_release = [
-            r for r in heavy.releases if r.ident == heavy.biblio_release_ident
-        ][0]
+        primary_release = [r for r in heavy.releases if r.ident == heavy.biblio_release_ident][0]
         biblio = es_biblio_from_release(primary_release)
         biblio = biblio_metadata_hacks(biblio)
         exclude_web_fulltext = check_exclude_web(biblio)
@@ -498,14 +501,10 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
         and heavy.grobid_fulltext.get("file_ident") != "gbbvrg2tpzan5hl3qcsfzh4vfq"
     ):
         fulltext_release = [
-            r
-            for r in heavy.releases
-            if r.ident == heavy.grobid_fulltext["release_ident"]
+            r for r in heavy.releases if r.ident == heavy.grobid_fulltext["release_ident"]
         ][0]
         fulltext_file = [
-            f
-            for f in fulltext_release.files
-            if f.ident == heavy.grobid_fulltext["file_ident"]
+            f for f in fulltext_release.files if f.ident == heavy.grobid_fulltext["file_ident"]
         ][0]
         try:
             tei_doc: Optional[GrobidDocument] = parse_document_xml(
@@ -528,14 +527,10 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
 
     if not fulltext and heavy.pdftotext_fulltext:
         fulltext_release = [
-            r
-            for r in heavy.releases
-            if r.ident == heavy.pdftotext_fulltext["release_ident"]
+            r for r in heavy.releases if r.ident == heavy.pdftotext_fulltext["release_ident"]
         ][0]
         fulltext_file = [
-            f
-            for f in fulltext_release.files
-            if f.ident == heavy.pdftotext_fulltext["file_ident"]
+            f for f in fulltext_release.files if f.ident == heavy.pdftotext_fulltext["file_ident"]
         ][0]
         pdftotext_fulltext = es_fulltext_from_pdftotext(
             heavy.pdftotext_fulltext["raw_text"],
@@ -568,7 +563,7 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
             fulltext = html_fulltext
 
     # TODO: additional access list (eg, HTML if only PDF currently)
-    access_dict = dict()
+    access_dict = {}
     if fulltext and fulltext.access_type:
         access_dict[fulltext.access_type] = ScholarAccess(
             access_type=fulltext.access_type,
@@ -669,9 +664,7 @@ def test_clean_ref_key() -> None:
         assert clean_ref_key(raw, doi=doi) == expected
 
 
-def refs_from_grobid(
-    release: ReleaseEntity, tei_doc: GrobidDocument
-) -> List[RefStructured]:
+def refs_from_grobid(release: ReleaseEntity, tei_doc: GrobidDocument) -> List[RefStructured]:
     output = []
     ref: GrobidBiblio
     for ref in tei_doc.citations or []:
@@ -734,9 +727,9 @@ def refs_from_release_refs(release: ReleaseEntity) -> List[RefStructured]:
         elif release.extra and release.extra.get("datacite"):
             ref_source = "fatcat-datacite"
 
-        extra = ref.extra or dict()
+        extra = ref.extra or {}
         authors = extra.get("authors") or []
-        authors = [a for a in authors if type(a) == str]
+        authors = [a for a in authors if isinstance(a, str)]
         ref_index = None
         if ref.index is not None:
             # transform from 0-indexed (release.refs) to 1-indexed (fatcat_refs)
@@ -775,14 +768,12 @@ def refs_from_release_refs(release: ReleaseEntity) -> List[RefStructured]:
     return output
 
 
-def refs_from_crossref(
-    release: ReleaseEntity, crossref: Dict[str, Any]
-) -> List[RefStructured]:
+def refs_from_crossref(release: ReleaseEntity, crossref: Dict[str, Any]) -> List[RefStructured]:
     # TODO: test coverage
     record = crossref["record"]
     if not record.get("reference"):
         return []
-    grobid_refs = dict()
+    grobid_refs = {}
     for ref in crossref.get("grobid_refs") or []:
         # TODO: some kind of check whether we should include this, based on
         # source date or similar?
@@ -914,9 +905,7 @@ def refs_from_heavy(heavy: IntermediateBundle) -> Sequence[RefStructured]:
         return []
 
     assert heavy.biblio_release_ident
-    primary_release = [
-        r for r in heavy.releases if r.ident == heavy.biblio_release_ident
-    ][0]
+    primary_release = [r for r in heavy.releases if r.ident == heavy.biblio_release_ident][0]
 
     refs: List[RefStructured] = []
 
@@ -937,9 +926,7 @@ def refs_from_heavy(heavy: IntermediateBundle) -> Sequence[RefStructured]:
         and heavy.grobid_fulltext.get("file_ident") != "gbbvrg2tpzan5hl3qcsfzh4vfq"
     ):
         fulltext_release = [
-            r
-            for r in heavy.releases
-            if r.ident == heavy.grobid_fulltext["release_ident"]
+            r for r in heavy.releases if r.ident == heavy.grobid_fulltext["release_ident"]
         ][0]
         tei_doc = parse_document_xml(heavy.grobid_fulltext["tei_xml"])
         fulltext_refs = refs_from_grobid(fulltext_release, tei_doc)
@@ -956,14 +943,14 @@ def refs_from_heavy(heavy: IntermediateBundle) -> Sequence[RefStructured]:
     if (
         fatcat_refs
         and crossref_refs
-        and all([r.ref_source in ["crossref", "fatcat-crossref"] for r in fatcat_refs])
+        and all(r.ref_source in ["crossref", "fatcat-crossref"] for r in fatcat_refs)
     ):
         # priorize recent crossref over old-fatcat-imported-from-crossref (?)
         fatcat_refs = []
     elif (
         fatcat_refs
         and fulltext_refs
-        and all([r.ref_source == ["grobid", "fatcat-grobid"] for r in fatcat_refs])
+        and all(r.ref_source == ["grobid", "fatcat-grobid"] for r in fatcat_refs)
     ):
         # prioritize newer GROBID fulltext extraction (?)
         fatcat_refs = []
@@ -972,9 +959,7 @@ def refs_from_heavy(heavy: IntermediateBundle) -> Sequence[RefStructured]:
     refs.extend(crossref_refs)
 
     # include fulltext refs if there are more than in both of the crossref and fatcat refs
-    if len(fulltext_refs) > len(fatcat_refs) and len(fulltext_refs) > len(
-        crossref_refs
-    ):
+    if len(fulltext_refs) > len(fatcat_refs) and len(fulltext_refs) > len(crossref_refs):
         refs.extend(fulltext_refs)
 
     # TODO: use GROBID to parse any refs which only have 'unstructured' (if they don't already come from GROBID)
@@ -1011,9 +996,7 @@ def main() -> None:
         python -m scholar.transform
     """
 
-    parser = argparse.ArgumentParser(
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter
-    )
+    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     subparsers = parser.add_subparsers()
 
     sub = subparsers.add_parser(
@@ -1029,9 +1012,7 @@ def main() -> None:
         type=argparse.FileType("r"),
     )
 
-    sub = subparsers.add_parser(
-        "run_refs", help="extracts references from 'heavy' intermediate"
-    )
+    sub = subparsers.add_parser("run_refs", help="extracts references from 'heavy' intermediate")
     sub.set_defaults(func="run_refs")
     sub.add_argument(
         "json_file",

@@ -15,8 +15,7 @@ from scholar.api_entities import entity_from_json
 from scholar.config import GIT_REVISION, settings
 from scholar.djvu import djvu_extract_leaf_texts
 from scholar.issue_db import IssueDB, SimIssueRow, SimPubRow
-from scholar.sandcrawler import (SandcrawlerMinioClient,
-                                 SandcrawlerPostgrestClient)
+from scholar.sandcrawler import SandcrawlerMinioClient, SandcrawlerPostgrestClient
 from scholar.schema import DocType, IntermediateBundle, clean_str
 from scholar.sim_pipeline import truncate_issue_meta, truncate_pub_meta
 
@@ -87,9 +86,7 @@ def fulltext_pref_list(releases: List[ReleaseEntity]) -> List[str]:
     return [r.ident for r in releases_sorted]
 
 
-def enrich_release_from_crossref(
-    release: ReleaseEntity, record: Dict[str, Any]
-) -> ReleaseEntity:
+def enrich_release_from_crossref(release: ReleaseEntity, record: Dict[str, Any]) -> ReleaseEntity:
     """
     Hack to copy some SIM-relevant fields from Crossref record to release entity.
 
@@ -148,15 +145,13 @@ class WorkPipeline:
             # HACK: work around broken seaweedfs keys
             print(f"seaweedfs failure: sha1hex={fe.sha1}", file=sys.stderr)
             return None
-        return dict(
-            tei_xml=grobid_xml,
-            release_ident=release_ident,
-            file_ident=fe.ident,
-        )
+        return {
+            "tei_xml": grobid_xml,
+            "release_ident": release_ident,
+            "file_ident": fe.ident,
+        }
 
-    def fetch_pdf_meta(
-        self, fe: FileEntity, release_ident: str
-    ) -> Optional[Dict[str, Any]]:
+    def fetch_pdf_meta(self, fe: FileEntity, release_ident: str) -> Optional[Dict[str, Any]]:
         """
         Fetches pdftext metadata from sandcrawler-db via postgrest HTTP
         interface.
@@ -172,11 +167,11 @@ class WorkPipeline:
         pdf_meta = self.sandcrawler_db_client.get_pdf_meta(fe.sha1)
         if not pdf_meta or pdf_meta["status"] != "success":
             return None
-        return dict(
-            pdf_meta=pdf_meta,
-            release_ident=release_ident,
-            file_ident=fe.ident,
-        )
+        return {
+            "pdf_meta": pdf_meta,
+            "release_ident": release_ident,
+            "file_ident": fe.ident,
+        }
 
     def fetch_file_pdftotext(self, fe: FileEntity, release_ident: str) -> Optional[Any]:
         """
@@ -203,11 +198,11 @@ class WorkPipeline:
             # HACK: work around broken seaweedfs keys
             print(f"seaweedfs failure: sha1hex={fe.sha1}", file=sys.stderr)
             return None
-        return dict(
-            raw_text=raw_text,
-            release_ident=release_ident,
-            file_ident=fe.ident,
-        )
+        return {
+            "raw_text": raw_text,
+            "release_ident": release_ident,
+            "file_ident": fe.ident,
+        }
 
     def fetch_webcapture_html_fulltext(
         self,
@@ -242,12 +237,12 @@ class WorkPipeline:
             print(f"seaweedfs failure: sha1hex={sha1hex}", file=sys.stderr)
             return None
 
-        return dict(
-            html_meta=html_meta,
-            tei_xml=tei_xml,
-            release_ident=release_ident,
-            webcapture_ident=wc.ident,
-        )
+        return {
+            "html_meta": html_meta,
+            "tei_xml": tei_xml,
+            "release_ident": release_ident,
+            "webcapture_ident": wc.ident,
+        }
 
     def fetch_crossref(self, re: ReleaseEntity) -> Optional[Dict[str, Any]]:
         """
@@ -276,12 +271,12 @@ class WorkPipeline:
         crossref_meta = self.sandcrawler_db_client.get_crossref_with_refs(doi)
         if not crossref_meta or not crossref_meta.get("record"):
             return None
-        return dict(
-            release_ident=re.ident,
-            doi=doi,
-            record=crossref_meta["record"],
-            grobid_refs=crossref_meta["refs_json"] or [],
-        )
+        return {
+            "release_ident": re.ident,
+            "doi": doi,
+            "record": crossref_meta["record"],
+            "grobid_refs": crossref_meta["refs_json"] or [],
+        }
 
     def lookup_sim(self, release: ReleaseEntity) -> Optional[SimIssueRow]:
         """
@@ -295,9 +290,7 @@ class WorkPipeline:
         - issue
         - pages
         """
-        if not (
-            release.container_id and release.volume and release.issue and release.pages
-        ):
+        if not (release.container_id and release.volume and release.issue and release.pages):
             return None
         sim_pubid = self.issue_db.container2pubid(release.container_id)
         if not sim_pubid:
@@ -338,7 +331,7 @@ class WorkPipeline:
         issue_meta = self.ia_client.get_metadata(issue_db_row.issue_item)
         pub_meta = self.ia_client.get_metadata(issue_db_pub_row.pub_collection)
 
-        leaf_index = dict()
+        leaf_index = {}
         leaf_list = []
         if "page_numbers" not in issue_meta:
             # TODO: warn
@@ -371,21 +364,21 @@ class WorkPipeline:
 
         for leaf_num, raw_text in leaf_dict.items():
             page_texts.append(
-                dict(
-                    page_num=leaf_index.get(leaf_num),
-                    leaf_num=leaf_num,
-                    raw_text=raw_text,
-                )
+                {
+                    "page_num": leaf_index.get(leaf_num),
+                    "leaf_num": leaf_num,
+                    "raw_text": raw_text,
+                }
             )
 
-        return dict(
-            issue_item=issue_db_row.issue_item,
-            pages=pages,
-            page_texts=page_texts,
-            release_ident=release_ident,
-            pub_item_metadata=truncate_pub_meta(pub_meta),
-            issue_item_metadata=truncate_issue_meta(issue_meta),
-        )
+        return {
+            "issue_item": issue_db_row.issue_item,
+            "pages": pages,
+            "page_texts": page_texts,
+            "release_ident": release_ident,
+            "pub_item_metadata": truncate_pub_meta(pub_meta),
+            "issue_item_metadata": truncate_issue_meta(issue_meta),
+        }
 
     def process_release_list(self, releases: List[ReleaseEntity]) -> IntermediateBundle:
         """
@@ -461,9 +454,7 @@ class WorkPipeline:
                 continue
             sim_fulltext = None
             try:
-                sim_fulltext = self.fetch_sim(
-                    sim_issue, sim_pub, release.pages, release.ident
-                )
+                sim_fulltext = self.fetch_sim(sim_issue, sim_pub, release.pages, release.ident)
             except (
                 requests.exceptions.ConnectionError,
                 requests.exceptions.ReadTimeout,
@@ -528,9 +519,7 @@ def main() -> None:
         python -m scholar.work_pipeline
     """
 
-    parser = argparse.ArgumentParser(
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter
-    )
+    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     subparsers = parser.add_subparsers()
 
     parser.add_argument(
@@ -579,9 +568,7 @@ def main() -> None:
 
     wp = WorkPipeline(
         issue_db=IssueDB(args.issue_db_file),
-        sandcrawler_db_client=SandcrawlerPostgrestClient(
-            api_url=args.sandcrawler_db_api
-        ),
+        sandcrawler_db_client=SandcrawlerPostgrestClient(api_url=args.sandcrawler_db_api),
         sandcrawler_s3_client=SandcrawlerMinioClient(
             host_url=args.sandcrawler_s3_api,
             access_key=os.environ.get("MINIO_ACCESS_KEY"),

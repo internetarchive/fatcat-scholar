@@ -51,13 +51,9 @@ license = {text = "AGPL3"}
 [project.optional-dependencies]
 #build = ["pyinstaller==6.3.0", "pip-tools==7.3.0",]
 dev = [
-  "black==23.1.0",
   "ipython==8.11.0",
   "mypy==1.1.1",
   "typing-extensions==4.5.0",
-  "flake8==6.0.0",
-  "flake8-annotations==3.0.0",
-  "isort==5.12.0",
   "pytest==7.2.2",
   "pytest-cov==4.0.0",
   "pytest-mock==3.10.0",
@@ -66,4 +62,33 @@ dev = [
   "types-beautifulsoup4==4.11.6.7",
   "types-requests==2.28.11.15",
   "pip-tools==7.3.0",
+  "ruff==0.2.1",
 ]
+
+[tool.ruff]
+target-version="py311"
+# I set line-length but it's not being enforced because I became infuriated at
+# the inability to disable for commented lines and string literals. I refuse to
+# painstakingly noqa all of those.
+line-length=99
+exclude = [
+  ".git",
+  "__pycache__",
+  ".venv",
+  ".pytest_cache",
+  ".mypy_cache",
+  ".ruff_cache",
+]
+
+[tool.ruff.lint]
+select = ["C","E","F","W","ANN"]
+# ANN003 is annotation on, eg, **kwargs
+# ANN101 is annotation on 'self'
+# ANN204 is annotation on '__init__()'
+# ANN401 is 'Any' in type annotations
+# E265,E266 are restrictions on comments ('#')
+ignore = ["C901", "ANN003", "ANN101", "ANN204", "ANN401", "E265", "E266", "E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["E402", "F401"]
+"**/{tests,docs,tools}/*" = ["E402", "ANN201", "ANN001"]

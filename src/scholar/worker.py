@@ -13,8 +13,7 @@ import sentry_sdk
 from scholar.config import GIT_REVISION, settings
 from scholar.issue_db import IssueDB
 from scholar.kafka import KafkaWorker
-from scholar.sandcrawler import (SandcrawlerMinioClient,
-                                 SandcrawlerPostgrestClient)
+from scholar.sandcrawler import SandcrawlerMinioClient, SandcrawlerPostgrestClient
 from scholar.schema import IntermediateBundle
 from scholar.sim_pipeline import SimPipeline
 from scholar.transform import transform_heavy
@@ -72,9 +71,7 @@ class FetchDocsWorker(KafkaWorker):
             self.producer.poll(0)
         elif key.startswith("sim_"):
             # filter out "contents" and "index" items (again)
-            if msg["issue_item"].endswith("_contents") or msg["issue_item"].endswith(
-                "_index"
-            ):
+            if msg["issue_item"].endswith("_contents") or msg["issue_item"].endswith("_index"):
                 return
             try:
                 full_issue = self.sim_pipeline.fetch_sim_issue(
@@ -145,9 +142,7 @@ def main() -> None:
         python -m scholar.work_pipeline
     """
 
-    parser = argparse.ArgumentParser(
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter
-    )
+    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     subparsers = parser.add_subparsers()
 
     parser.add_argument(
@@ -196,9 +191,7 @@ def main() -> None:
         issue_db = IssueDB(args.issue_db_file)
         wp = WorkPipeline(
             issue_db=issue_db,
-            sandcrawler_db_client=SandcrawlerPostgrestClient(
-                api_url=args.sandcrawler_db_api
-            ),
+            sandcrawler_db_client=SandcrawlerPostgrestClient(api_url=args.sandcrawler_db_api),
             sandcrawler_s3_client=SandcrawlerMinioClient(
                 host_url=args.sandcrawler_s3_api,
                 access_key=os.environ.get("MINIO_ACCESS_KEY"),
@@ -220,9 +213,7 @@ def main() -> None:
         )
         fdw.run()
     elif args.worker == "index-docs-worker":
-        es_client = elasticsearch.Elasticsearch(
-            settings.ELASTICSEARCH_WRITE_BASE, timeout=50.0
-        )
+        es_client = elasticsearch.Elasticsearch(settings.ELASTICSEARCH_WRITE_BASE, timeout=50.0)
         idw = IndexDocsWorker(
             kafka_brokers=settings.KAFKA_BROKERS,
             batch_size=settings.INDEX_WORKER_BATCH_SIZE,

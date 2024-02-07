@@ -21,9 +21,7 @@ def run_query_fatcat(query: str, fulltext_only: bool, json_output: Any) -> None:
     """
     api_session = requests_retry_session()
 
-    es_backend = os.environ.get(
-        "ELASTICSEARCH_FATCAT_BASE", "https://search.fatcat.wiki"
-    )
+    es_backend = os.environ.get("ELASTICSEARCH_FATCAT_BASE", "https://search.fatcat.wiki")
     es_index = os.environ.get("ELASTICSEARCH_FATCAT_RELEASE_INDEX", "fatcat_release")
     es_client = elasticsearch.Elasticsearch(es_backend)
 
@@ -60,11 +58,11 @@ def run_query_fatcat(query: str, fulltext_only: bool, json_output: Any) -> None:
             },
         )
         resp.raise_for_status()
-        row = dict(
-            fatcat_hit=hit.meta._d_,
-            release_id=release_id,
-            fatcat_release=resp.json(),
-        )
+        row = {
+            "fatcat_hit": hit.meta._d_,
+            "release_id": release_id,
+            "fatcat_release": resp.json(),
+        }
         print(json.dumps(row, sort_keys=True), file=json_output)
 
 
@@ -75,9 +73,7 @@ def main() -> None:
         python -m scholar.query_fatcat
     """
 
-    parser = argparse.ArgumentParser(
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter
-    )
+    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument(
         "query",
         help="base query string to use",

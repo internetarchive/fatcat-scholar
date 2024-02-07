@@ -69,8 +69,7 @@ def test_transform_refs_crossref() -> None:
     assert refs[0].biblio.contrib_raw_names[0] == "Churg"
     assert refs[0].biblio.container_name == "Arch. Pathol. Lab. Med."
     assert (
-        refs[0].biblio.title
-        == "The separation of benign and malignant mesothelial proliferations"
+        refs[0].biblio.title == "The separation of benign and malignant mesothelial proliferations"
     )
     assert refs[0].biblio.year == 2012
     assert refs[0].biblio.pages == "1217"

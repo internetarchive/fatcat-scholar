@@ -4,9 +4,13 @@ from fatcat_openapi_client import ReleaseEntity
 
 from scholar.api_entities import entity_from_json
 from scholar.schema import ScholarBiblio
-from scholar.transform import (biblio_metadata_hacks, es_biblio_from_release,
-                               es_release_from_release, run_refs,
-                               run_transform)
+from scholar.transform import (
+    biblio_metadata_hacks,
+    es_biblio_from_release,
+    es_release_from_release,
+    run_refs,
+    run_transform,
+)
 
 
 def test_es_release_from_release() -> None:
@@ -28,12 +32,7 @@ def test_es_biblio_from_release() -> None:
     obj = es_biblio_from_release(release)
     d = json.loads(obj.json())
 
-    assert (
-        obj.release_ident
-        == release.ident
-        == d["release_ident"]
-        == "hsmo6p4smrganpb3fndaj2lon4"
-    )
+    assert obj.release_ident == release.ident == d["release_ident"] == "hsmo6p4smrganpb3fndaj2lon4"
 
 
 def test_run_refs() -> None:

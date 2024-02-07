@@ -112,9 +112,7 @@ class ReleaseCountsRow:
         )
 
 
-def es_issue_count(
-    es_client: Any, container_id: str, year: int, volume: str, issue: str
-) -> int:
+def es_issue_count(es_client: Any, container_id: str, year: int, volume: str, issue: str) -> int:
     search = Search(using=es_client, index="fatcat_release")
     search = (
         search.filter("term", container_id=container_id)
@@ -135,15 +133,13 @@ def es_container_aggs(es_client: Any, container_id: str) -> List[Dict[str, Any]]
     """
     search = Search(using=es_client, index="fatcat_release")
     search = search.filter("term", container_id=container_id)
-    search.aggs.bucket("years", "terms", field="year").bucket(
-        "volumes", "terms", field="volume"
-    )
+    search.aggs.bucket("years", "terms", field="year").bucket("volumes", "terms", field="volume")
     search = search[:0]
     res = search.execute()
     ret = []
     for year in res.aggregations.years.buckets:
         for volume in year.volumes.buckets:
-            ret.append(dict(count=volume.doc_count, year=year.key, volume=volume.key))
+            ret.append({"count": volume.doc_count, "year": year.key, "volume": volume.key})
             # print(ret[-1])
     return ret
 
@@ -154,8 +150,8 @@ class IssueDB:
         To create a temporary database, pass ":memory:" as db_file
         """
         self.db = sqlite3.connect(db_file, isolation_level="EXCLUSIVE")
-        self._pubid2container_map: Dict[str, Optional[str]] = dict()
-        self._container2pubid_map: Dict[str, Optional[str]] = dict()
+        self._pubid2container_map: Dict[str, Optional[str]] = {}
+        self._container2pubid_map: Dict[str, Optional[str]] = {}
 
     def init_db(self) -> None:
         self.db.executescript(
@@ -173,23 +169,17 @@ class IssueDB:
         if not cur:
             cur = self.db.cursor()
         # print(pub.tuple(), file=sys.stderr)
-        cur.execute(
-            "INSERT OR REPLACE INTO sim_pub VALUES (?,?,?,?,?,?,?,?,?)", pub.tuple()
-        )
+        cur.execute("INSERT OR REPLACE INTO sim_pub VALUES (?,?,?,?,?,?,?,?,?)", pub.tuple())
 
     def insert_sim_issue(self, issue: SimIssueRow, cur: Any = None) -> None:
         if not cur:
             cur = self.db.cursor()
-        cur.execute(
-            "INSERT OR REPLACE INTO sim_issue VALUES (?,?,?,?,?,?,?,?)", issue.tuple()
-        )
+        cur.execute("INSERT OR REPLACE INTO sim_issue VALUES (?,?,?,?,?,?,?,?)", issue.tuple())
 
     def insert_release_counts(self, counts: ReleaseCountsRow, cur: Any = None) -> None:
         if not cur:
             cur = self.db.cursor()
-        cur.execute(
-            "INSERT OR REPLACE INTO release_counts VALUES (?,?,?,?)", counts.tuple()
-        )
+        cur.execute("INSERT OR REPLACE INTO release_counts VALUES (?,?,?,?)", counts.tuple())
 
     def pubid2container(self, sim_pubid: str) -> Optional[str]:
         if sim_pubid in self._pubid2container_map:
@@ -222,9 +212,7 @@ class IssueDB:
             self._pubid2container_map[container_ident] = None
             return None
 
-    def lookup_issue(
-        self, sim_pubid: str, volume: str, issue: str
-    ) -> Optional[SimIssueRow]:
+    def lookup_issue(self, sim_pubid: str, volume: str, issue: str) -> Optional[SimIssueRow]:
         row = list(
             self.db.execute(
                 "SELECT * FROM sim_issue WHERE sim_pubid = ? AND volume = ? AND issue = ?;",
@@ -236,9 +224,7 @@ class IssueDB:
         return SimIssueRow.from_tuple(row[0])
 
     def lookup_pub(self, sim_pubid: str) -> Optional[SimPubRow]:
-        row = list(
-            self.db.execute("SELECT * FROM sim_pub WHERE sim_pubid = ?;", [sim_pubid])
-        )
+        row = list(self.db.execute("SELECT * FROM sim_pub WHERE sim_pubid = ?;", [sim_pubid]))
         if not row:
             return None
         return SimPubRow.from_tuple(row[0])
@@ -314,11 +300,7 @@ class IssueDB:
             first_page: Optional[int] = None
             last_page: Optional[int] = None
             if obj.get("page_numbers"):
-                pages = [
-                    p["pageNumber"]
-                    for p in obj["page_numbers"]["pages"]
-                    if p["pageNumber"]
-                ]
+                pages = [p["pageNumber"] for p in obj["page_numbers"]["pages"] if p["pageNumber"]]
                 pages = [int(p) for p in pages if p.isdigit()]
                 if len(pages):
                     first_page = min(pages)
@@ -328,9 +310,7 @@ class IssueDB:
             if year and volume and issue:
                 container_id = self.pubid2container(sim_pubid)
                 if container_id:
-                    release_count = es_issue_count(
-                        es_client, container_id, year, volume, issue
-                    )
+                    release_count = es_issue_count(es_client, container_id, year, volume, issue)
 
             row = SimIssueRow(
                 issue_item=issue_item,
@@ -382,9 +362,7 @@ def main() -> None:
         python -m scholar.issue_db
     """
 
-    parser = argparse.ArgumentParser(
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter
-    )
+    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     subparsers = parser.add_subparsers()
 
     parser.add_argument(
@@ -397,9 +375,7 @@ def main() -> None:
     sub = subparsers.add_parser("init_db", help="create sqlite3 output file and tables")
     sub.set_defaults(func="init_db")
 
-    sub = subparsers.add_parser(
-        "load_pubs", help="update container-level stats from JSON file"
-    )
+    sub = subparsers.add_parser("load_pubs", help="update container-level stats from JSON file")
     sub.set_defaults(func="load_pubs")
     sub.add_argument(
         "json_file",
@@ -409,9 +385,7 @@ def main() -> None:
         type=argparse.FileType("r"),
     )
 
-    sub = subparsers.add_parser(
-        "load_issues", help="update item-level stats from JSON file"
-    )
+    sub = subparsers.add_parser("load_issues", help="update item-level stats from JSON file")
     sub.set_defaults(func="load_issues")
     sub.add_argument(
         "json_file",

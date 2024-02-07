@@ -17,9 +17,8 @@ help: ## Print info about all commands
 dep: .venv ## Install dependencies using pip install -e to .venv
 
 .PHONY: lint
-lint: dep ## Run lints (eg, flake8, mypy)
-	.venv/bin/flake8 src/scholar/ tests/ --exit-zero
-	.venv/bin/isort -q -c src/scholar/ tests/ || true
+lint: dep ## Run ruff check and mypy
+	.venv/bin/ruff check src/scholar/ tests/
 	.venv/bin/mypy src/scholar/ tests/ --ignore-missing-imports --disable-error-code call-arg --disable-error-code arg-type --disable-error-code assignment
 
 .PHONY: pytype
@@ -27,9 +26,8 @@ pytype: dep ## Run slow pytype type check (not part of dev deps)
 	.venv/bin/pytype src/scholar/
 
 .PHONY: fmt
-fmt: dep ## Run code formatting on all source code
-	.venv/bin/isort --atomic src/scholar/ tests/
-	.venv/bin/black --line-length 88 src/scholar/ tests/
+fmt: dep ## Run ruff format on all source code
+	.venv/bin/ruff format src/scholar tests/
 
 .PHONY: test
 test: dep ## Run all tests and lints

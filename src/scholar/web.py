@@ -12,11 +12,14 @@ from typing import Any, Dict, List, Optional
 import fastapi_rss
 import fatcat_openapi_client
 import sentry_sdk
-from fastapi import (APIRouter, Depends, FastAPI, HTTPException, Query,
-                     Request, Response)
+from fastapi import APIRouter, Depends, FastAPI, HTTPException, Query, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import (FileResponse, JSONResponse, PlainTextResponse,
-                               RedirectResponse)
+from fastapi.responses import (
+    FileResponse,
+    JSONResponse,
+    PlainTextResponse,
+    RedirectResponse,
+)
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from sentry_sdk.integrations.asgi import SentryAsgiMiddleware
@@ -25,9 +28,13 @@ from starlette_prometheus import PrometheusMiddleware, metrics
 
 from scholar.config import GIT_REVISION, I18N_LANG_OPTIONS, settings
 from scholar.schema import ScholarDoc
-from scholar.search import (FulltextHits, FulltextQuery,
-                            es_scholar_index_alive, get_es_scholar_doc,
-                            process_query)
+from scholar.search import (
+    FulltextHits,
+    FulltextQuery,
+    es_scholar_index_alive,
+    get_es_scholar_doc,
+    process_query,
+)
 from scholar.web_hacks import i18n_templates, parse_accept_lang
 
 logger = logging.getLogger()
@@ -206,14 +213,14 @@ def web_search(
         except ValueError as e:
             sentry_sdk.set_level("warning")
             sentry_sdk.capture_exception(e)
-            search_error = dict(type="query", message=str(e))
+            search_error = {"type": "query", "message": str(e)}
             status_code = 400
         except IOError as e:
             sentry_sdk.capture_exception(e)
-            search_error = dict(type="backend", message=str(e))
+            search_error = {"type": "backend", "message": str(e)}
             status_code = 500
 
-    headers = dict()
+    headers = {}
     if hits and hits.query_wall_time_ms:
         headers[
             "Server-Timing"
@@ -263,9 +270,7 @@ def web_feed_rss(
         pub_date = None
         if scholar_doc.biblio.release_date:
             # convert datetime.date to datetime.datetime
-            pub_date = datetime.datetime(
-                *scholar_doc.biblio.release_date.timetuple()[:6]
-            )
+            pub_date = datetime.datetime(*scholar_doc.biblio.release_date.timetuple()[:6])
         rss_items.append(
             # NOTE(i18n): could prefer "original title" and abstract based on lang context
             fastapi_rss.Item(
@@ -337,9 +342,7 @@ def access_redirect_fallback(
     # lookup against the live fatcat API, instead of scholar ES index
     api_conf = fatcat_openapi_client.Configuration()
     api_conf.host = settings.FATCAT_API_HOST
-    api_client = fatcat_openapi_client.DefaultApi(
-        fatcat_openapi_client.ApiClient(api_conf)
-    )
+    api_client = fatcat_openapi_client.DefaultApi(fatcat_openapi_client.ApiClient(api_conf))
 
     # fetch list of releases for this work from current fatcat catalog. note
     # that these releases are not expanded (don't include file entities)
@@ -384,9 +387,7 @@ def access_redirect_fallback(
                     # if not (len(timestamp) == 14 and timestamp.isdigit()):
                     #    continue
                     # TODO: only add 'id_' for PDF replay
-                    replay_url = (
-                        f"https://web.archive.org/web/{timestamp}id_/{original_url}"
-                    )
+                    replay_url = f"https://web.archive.org/web/{timestamp}id_/{original_url}"
                     return RedirectResponse(replay_url, status_code=302)
                 elif (
                     archiveorg_path
@@ -430,9 +431,7 @@ def access_redirect_wayback(
     )
     doc_dict = get_es_scholar_doc(f"work_{work_ident}")
     if not doc_dict:
-        return access_redirect_fallback(
-            request, work_ident=work_ident, original_url=original_url
-        )
+        return access_redirect_fallback(request, work_ident=work_ident, original_url=original_url)
     doc: ScholarDoc = doc_dict["_obj"]
     # combine fulltext with all access options
     access: List[Any] = []
@@ -452,9 +451,7 @@ def access_redirect_wayback(
             # TODO: only add id_ for PDF replay
             access_url = f"https://web.archive.org/web/{timestamp}id_/{original_url}"
             return RedirectResponse(access_url, status_code=302)
-    return access_redirect_fallback(
-        request, work_ident=work_ident, original_url=original_url
-    )
+    return access_redirect_fallback(request, work_ident=work_ident, original_url=original_url)
 
 
 @web.get(

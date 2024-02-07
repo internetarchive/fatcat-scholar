@@ -149,9 +149,7 @@ def try_fuzzy_match(
         return None
     release = ref_to_release(ref)
 
-    matches = fuzzy_match(
-        release, es_client=es_client, api_client=fatcat_api_client, timeout=3.0
-    )
+    matches = fuzzy_match(release, es_client=es_client, api_client=fatcat_api_client, timeout=3.0)
     if not matches or matches[0] not in ("EXACT", "STRONG", "WEAK"):
         return None
     return f"work_{matches[2].work_id}"
@@ -179,15 +177,11 @@ if __name__ == "__main__":
     release = ref_to_release(ref)
     print(release)
 
-    es_backend = os.environ.get(
-        "ELASTICSEARCH_FATCAT_BASE", "https://search.fatcat.wiki"
-    )
+    es_backend = os.environ.get("ELASTICSEARCH_FATCAT_BASE", "https://search.fatcat.wiki")
     es_client = elasticsearch.Elasticsearch(es_backend)
     api_conf = fatcat_openapi_client.Configuration()
     api_conf.host = os.environ.get("FATCAT_API_HOST", "https://api.fatcat.wiki/v0")
-    api_client = fatcat_openapi_client.DefaultApi(
-        fatcat_openapi_client.ApiClient(api_conf)
-    )
+    api_client = fatcat_openapi_client.DefaultApi(fatcat_openapi_client.ApiClient(api_conf))
     matches = fuzzy_match(release, es_client=es_client, api_client=api_client)
     print(matches)
     if not matches or matches[0] not in ("EXACT", "STRONG", "WEAK"):

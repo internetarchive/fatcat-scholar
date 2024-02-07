@@ -3,8 +3,7 @@ from typing import Any, Dict, List, Optional
 import minio
 import requests
 from requests.adapters import HTTPAdapter
-from requests.packages.urllib3.util.retry import \
-    Retry  # pylint: disable=import-error
+from requests.packages.urllib3.util.retry import Retry  # pylint: disable=import-error
 
 
 def requests_retry_session(
@@ -35,9 +34,7 @@ class SandcrawlerPostgrestClient:
         self.session = requests_retry_session()
 
     def get_grobid(self, sha1: str) -> Optional[Dict[str, Any]]:
-        resp = self.session.get(
-            self.api_url + "/grobid", params=dict(sha1hex="eq." + sha1)
-        )
+        resp = self.session.get(self.api_url + "/grobid", params={"sha1hex": "eq." + sha1})
         resp.raise_for_status()
         resp_json = resp.json()
         if resp_json:
@@ -46,9 +43,7 @@ class SandcrawlerPostgrestClient:
             return None
 
     def get_pdf_meta(self, sha1: str) -> Optional[Dict[str, Any]]:
-        resp = self.session.get(
-            self.api_url + "/pdf_meta", params=dict(sha1hex="eq." + sha1)
-        )
+        resp = self.session.get(self.api_url + "/pdf_meta", params={"sha1hex": "eq." + sha1})
         resp.raise_for_status()
         resp_json = resp.json()
         if resp_json:
@@ -57,9 +52,7 @@ class SandcrawlerPostgrestClient:
             return None
 
     def get_html_meta(self, sha1: str) -> Optional[Dict[str, Any]]:
-        resp = self.session.get(
-            self.api_url + "/html_meta", params=dict(sha1hex="eq." + sha1)
-        )
+        resp = self.session.get(self.api_url + "/html_meta", params={"sha1hex": "eq." + sha1})
         resp.raise_for_status()
         resp_json = resp.json()
         if resp_json:
@@ -68,9 +61,7 @@ class SandcrawlerPostgrestClient:
             return None
 
     def get_crossref_with_refs(self, doi: str) -> Optional[Dict[str, Any]]:
-        resp = self.session.get(
-            self.api_url + "/crossref_with_refs", params=dict(doi="eq." + doi)
-        )
+        resp = self.session.get(self.api_url + "/crossref_with_refs", params={"doi": "eq." + doi})
         resp.raise_for_status()
         resp_json = resp.json()
         if resp_json:

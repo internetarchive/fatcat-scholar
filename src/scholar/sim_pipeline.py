@@ -83,7 +83,7 @@ class SimPipeline:
         issue_meta = self.ia_client.get_metadata(issue_item)
         pub_meta = self.ia_client.get_metadata(pub_collection)
 
-        leaf_index = dict()
+        leaf_index = {}
         leaf_list = []
         if "page_numbers" not in issue_meta:
             print(f"issue without page_numbers: {issue_item}", file=sys.stderr)
@@ -116,21 +116,21 @@ class SimPipeline:
 
         for leaf_num, raw_text in leaf_dict.items():
             page_texts.append(
-                dict(
-                    page_num=leaf_index.get(leaf_num),
-                    leaf_num=leaf_num,
-                    raw_text=raw_text,
-                )
+                {
+                    "page_num": leaf_index.get(leaf_num),
+                    "leaf_num": leaf_num,
+                    "raw_text": raw_text,
+                }
             )
 
-        return dict(
-            issue_item=issue_item,
-            pages=None,
-            page_texts=page_texts,
-            release_ident=None,
-            pub_item_metadata=truncate_pub_meta(pub_meta),
-            issue_item_metadata=truncate_issue_meta(issue_meta),
-        )
+        return {
+            "issue_item": issue_item,
+            "pages": None,
+            "page_texts": page_texts,
+            "release_ident": None,
+            "pub_item_metadata": truncate_pub_meta(pub_meta),
+            "issue_item_metadata": truncate_issue_meta(issue_meta),
+        }
 
     def full_issue_to_pages(self, full_issue: dict) -> List[IntermediateBundle]:
         pages = []
@@ -142,14 +142,14 @@ class SimPipeline:
                 crossref=None,
                 grobid_fulltext=None,
                 pdftotext_fulltext=None,
-                sim_fulltext=dict(
-                    issue_item=full_issue["issue_item"],
-                    pages=str(leaf["page_num"]),
-                    page_texts=[leaf],
-                    release_ident=None,
-                    pub_item_metadata=full_issue["pub_item_metadata"],
-                    issue_item_metadata=full_issue["issue_item_metadata"],
-                ),
+                sim_fulltext={
+                    "issue_item": full_issue["issue_item"],
+                    "pages": str(leaf["page_num"]),
+                    "page_texts": [leaf],
+                    "release_ident": None,
+                    "pub_item_metadata": full_issue["pub_item_metadata"],
+                    "issue_item_metadata": full_issue["issue_item_metadata"],
+                },
             )
             pages.append(bundle)
         return pages
@@ -170,9 +170,7 @@ class SimPipeline:
                 continue
 
             try:
-                full_issue = self.fetch_sim_issue(
-                    row["issue_item"], row["pub_collection"]
-                )
+                full_issue = self.fetch_sim_issue(row["issue_item"], row["pub_collection"])
             except (
                 requests.exceptions.ConnectionError,
                 requests.exceptions.Timeout,
@@ -241,9 +239,7 @@ def main() -> None:
         python -m scholar.sim_pipeline
     """
 
-    parser = argparse.ArgumentParser(
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter
-    )
+    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     subparsers = parser.add_subparsers()
 
     parser.add_argument(
@@ -263,9 +259,7 @@ def main() -> None:
     )
     sub.set_defaults(func="run_print_issues")
 
-    sub = subparsers.add_parser(
-        "run_fetch_issue", help="fetches pages for given issue item"
-    )
+    sub = subparsers.add_parser("run_fetch_issue", help="fetches pages for given issue item")
     sub.add_argument("issue_item", type=str)
     sub.add_argument("pub_collection", type=str)
     sub.set_defaults(func="run_fetch_issue")
@@ -290,9 +284,7 @@ def main() -> None:
     elif args.func == "run_print_issues":
         sp.run_print_issues()
     elif args.func == "run_fetch_issue":
-        sp.run_fetch_issue(
-            issue_item=args.issue_item, pub_collection=args.pub_collection
-        )
+        sp.run_fetch_issue(issue_item=args.issue_item, pub_collection=args.pub_collection)
     else:
         func = getattr(sp, args.func)
         func()
