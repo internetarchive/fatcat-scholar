@@ -9,15 +9,12 @@ help: ## Print info about all commands
 	@echo
 	@grep -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "    \033[01;32m%-20s\033[0m %s\n", $$1, $$2}'
 
-.PHONY: venv
-venv: .venv
-
 .venv:
 	python3 -mvenv .venv
+	.venv/bin/pip install -e .[dev]
 
 .PHONY: dep
-dep: venv ## Install dependencies using pip install -e
-	.venv/bin/pip install -e .[dev]
+dep: .venv ## Install dependencies using pip install -e to .venv
 
 .PHONY: lint
 lint: dep ## Run lints (eg, flake8, mypy)
