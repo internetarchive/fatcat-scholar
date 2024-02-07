@@ -106,4 +106,5 @@ issue-db: data/issue_db.sqlite  ## Build SIM issue database with today's metadat
 
 .PHONY: freeze
 freeze: dep
-	.venv/bin/pip-compile --generate-hashes --extra dev
+	.venv/bin/pip-compile --generate-hashes -o requirements.txt
+	.venv/bin/pip-compile --generate-hashes --extra dev -o dev.requirements.txt
