@@ -103,3 +103,7 @@ data/issue_db.sqlite: data/$(TODAY)/issue_db.sqlite dep
 
 .PHONY: issue-db
 issue-db: data/issue_db.sqlite  ## Build SIM issue database with today's metadata, then move to default location
+
+.PHONY: freeze
+freeze: dep
+	.venv/bin/pip-compile --generate-hashes --extra dev
