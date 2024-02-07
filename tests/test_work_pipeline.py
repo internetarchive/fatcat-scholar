@@ -2,13 +2,13 @@ from typing import Any
 
 import responses
 
-from fatcat_scholar.config import settings
-from fatcat_scholar.issue_db import IssueDB
-from fatcat_scholar.sandcrawler import (
+from scholar.config import settings
+from scholar.issue_db import IssueDB
+from scholar.sandcrawler import (
     SandcrawlerMinioClient,
     SandcrawlerPostgrestClient,
 )
-from fatcat_scholar.work_pipeline import WorkPipeline
+from scholar.work_pipeline import WorkPipeline
 
 
 @responses.activate
@@ -87,7 +87,7 @@ def test_run_transform(mocker: Any) -> None:
         ],
     )
 
-    es_raw = mocker.patch("fatcat_scholar.work_pipeline.WorkPipeline.fetch_file_grobid")
+    es_raw = mocker.patch("scholar.work_pipeline.WorkPipeline.fetch_file_grobid")
     es_raw.side_effect = [
         {"tei_xml": "<xml>dummy", "release_ident": "asdf123", "file_ident": "xyq9876"},
     ]

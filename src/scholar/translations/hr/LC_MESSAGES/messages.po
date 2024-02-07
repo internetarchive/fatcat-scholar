@@ -1,0 +1,1230 @@
+# Croatian translations for PROJECT.
+# Copyright (C) 2020 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+# Milo Ivir <mail@milotype.de>, 2020, 2021, 2022.
+# Bryan Newbold <bnewbold@robocracy.org>, 2021, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
+"POT-Creation-Date: 2022-11-16 20:35-0800\n"
+"PO-Revision-Date: 2022-11-21 15:48+0000\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>\n"
+"Language-Team: Croatian <https://hosted.weblate.org/projects/internetarchive/"
+"fatcat-scholar/hr/>\n"
+"Language: hr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.15-dev\n"
+"Generated-By: Babel 2.8.0\n"
+
+#: src/scholar/search.py:45
+msgid "Release Date"
+msgstr "Datum objave"
+
+#: src/scholar/search.py:49
+msgid "All Time"
+msgstr "Svo vrijeme"
+
+#: src/scholar/search.py:50
+msgid "Past Week"
+msgstr "Prošli tjedan"
+
+#: src/scholar/search.py:51
+msgid "Past Year"
+msgstr "Prošla godina"
+
+#: src/scholar/search.py:52
+msgid "Since 2000"
+msgstr "Od 2000. godine nadalje"
+
+#: src/scholar/search.py:53
+msgid "Before 1927"
+msgstr "Prije 1927. godine"
+
+#: src/scholar/search.py:57
+msgid "Resource Type"
+msgstr "Vrsta građe"
+
+#: src/scholar/search.py:61
+msgid "Papers"
+msgstr "Članci"
+
+#: src/scholar/search.py:62
+msgid "Reports"
+msgstr "Izvještaji"
+
+#: src/scholar/search.py:63
+msgid "Datasets"
+msgstr "Skupovi podataka"
+
+#: src/scholar/search.py:64
+msgid "Everything"
+msgstr "Sve"
+
+#: src/scholar/search.py:68
+msgid "Availability"
+msgstr "Dostupnost"
+
+#: src/scholar/search.py:72
+msgid "Fulltext"
+msgstr "Tekst"
+
+#: src/scholar/search.py:73
+msgid "Microfilm"
+msgstr "Mikrofilm"
+
+#: src/scholar/search.py:74 src/scholar/templates/search_macros.html:4
+msgid "Open Access"
+msgstr "Slobodan pristup"
+
+#: src/scholar/search.py:75
+msgid "All Records"
+msgstr "Svi zapisi"
+
+#: src/scholar/search.py:79
+msgid "Sort Order"
+msgstr "Redoslijed"
+
+#: src/scholar/search.py:83
+msgid "Relevancy"
+msgstr "Relevantnost"
+
+#: src/scholar/search.py:84
+msgid "Recent First"
+msgstr "Najprije najnovije"
+
+#: src/scholar/search.py:85
+msgid "Oldest First"
+msgstr "Najprije najstarije"
+
+#: src/scholar/templates/about.html:4
+#, python-format
+msgid "About %(website_name)s"
+msgstr "Informacije o %(website_name)s"
+
+#: src/scholar/templates/about.html:8
+msgid "About Internet Archive Scholar"
+msgstr "Informacije o Internet Archive Scholar"
+
+#: src/scholar/templates/about.html:10
+#, python-format
+msgid ""
+"See also: <a href=\"%(lang_prefix)s/help\">User Guide</a> which lists some "
+"bugs and known issues"
+msgstr ""
+"Također pogledaj: <a href=\"%(lang_prefix)s/help\">Korisnički priručnik </a> "
+"koji navodi greške i poznate probleme"
+
+#: src/scholar/templates/about.html:14
+#: src/scholar/templates/base.html:206
+msgid "How It Works"
+msgstr "Način rada"
+
+#: src/scholar/templates/about.html:16
+msgid "Content in this search index comes in one of three forms:"
+msgstr ""
+"Sadržaj u ovom indeksu pretraživanja prikazuje se u jednom od tri oblika:"
+
+#: src/scholar/templates/about.html:19
+msgid ""
+"<b>public web content</b> as preserved in <a href=\"https://web.archive.org"
+"\">The Wayback Machine</a> and <a href=\"https://archive-it.org\">Archive-"
+"It</a> partner collections"
+msgstr ""
+"<b>javni web sadržaj</b> sačuvan u <a href=\"https://web.archive.org\">The "
+"Wayback Machine</a> i <a href=\"https://archive-it.org\">Archive-It</a> "
+"partnerskim zbirkama"
+
+#: src/scholar/templates/about.html:20
+msgid "<b>digitized print materials</b> from paper and microform collections"
+msgstr "<b>digitalizirana tiskana građa</b> i zbirke mikroformata"
+
+#: src/scholar/templates/about.html:21
+msgid ""
+"<b>general materials</b> from <a href=\"https://archive.org\">archive.org "
+"collections</a>, including collaborations with partners"
+msgstr ""
+"<b>opća građa</b> iz <a href=\"https://archive.org\">archive.org zbirki</a>, "
+"uključujući suradnje s partnerima"
+
+#: src/scholar/templates/about.html:24
+#, python-format
+msgid ""
+"This <a href=\"%(url)s\">2019 FORCE11 conference presentation</a> gives an "
+"overview of the technical infrastructure and goals of the project overall."
+msgstr ""
+"Ova <a href=\"%(url)s\">prezentacija FORCE11 konferencije 2019.</a> daje "
+"pregled tehničke infrastrukture i sveopćih ciljeva projekta."
+
+#: src/scholar/templates/about.html:27
+#: src/scholar/templates/base.html:207
+msgid "Content Sources"
+msgstr "Izvori sadržaja"
+
+#: src/scholar/templates/about.html:29
+msgid ""
+"Metadata comes from <a href=\"https://fatcat.wiki\">fatcat.wiki</a>, an "
+"open\n"
+"user-editable catalog of scholarly work. It should be possible to track and\n"
+"attribute the provenance of content and metadata in all cases. Please\n"
+"<a href=\"#contact\">contact us</a> if you have questions."
+msgstr ""
+"Metapodaci potječu iz <a href=\"https://fatcat.wiki\">fatcat.wiki</a>, "
+"otvorenog\n"
+"korisnički uređivanog kataloga znanstvenih radova. Trebalo bi biti moguće "
+"pratiti i\n"
+"pripisati porijeklo sadržaja i metapodataka u svim slučajevima. <a href="
+"\"#contact\">Kontaktiraj nas</a>\n"
+"ako imaš pitanja."
+
+#: src/scholar/templates/about.html:35
+#: src/scholar/templates/base.html:208
+msgid "Text and Data Mining"
+msgstr "Analiziranje tekstova i podataka"
+
+#: src/scholar/templates/about.html:37
+msgid ""
+"We intend to provide researcher access to the full corpus for text and data\n"
+"mining purposes. Derived datasets may also be posted publicly for analysis, "
+"for\n"
+"example a citation graph or N-gram frequencies by year. If you are "
+"interested\n"
+"or would like to see specific datasets made available, please contact us."
+msgstr ""
+"Istraživačima želimo pružiti pristup potpunom korpusu u svrhu pretraživanja "
+"teksta i\n"
+"podataka. Izvedeni skupovi podataka također se mogu javno objaviti za "
+"analizu, npr.\n"
+"grafikon citata ili učestalost slijeda elemenata po godinama. Ako te zanima "
+"ili ako želiš\n"
+"da određeni skupovi podataka budu dostupni, obrati nam se."
+
+#: src/scholar/templates/about.html:42
+msgid ""
+"Currently snapshots of the full fatcat metadata corpus and upstream metadata "
+"sources are uploaded periodically to the <a href=\"https://archive.org/"
+"details/ia_biblio_metadata\">Bulk Bibliographic Metadata</a> collection on "
+"archive.org."
+msgstr ""
+"Trenutačno se snimke cijelog korpusa metapodataka fatcat-a i glavnog izvora "
+"metapodataka periodično prenose u zbirku <a href=\"https://archive.org/"
+"details/ia_biblio_metadata\"> Bulk Bibliographic Metadata </a> na archive."
+"org."
+
+#: src/scholar/templates/about.html:44
+msgid ""
+"Read more in <a href=\"https://guide.fatcat.wiki/bulk_exports.html\">the "
+"Fatcat Guide</a>."
+msgstr ""
+"Saznaj više u <a href=\"https://guide.fatcat.wiki/bulk_exports.html\">Fatcat "
+"priručniku</a>."
+
+#: src/scholar/templates/about.html:47
+msgid "Authors and Publishers"
+msgstr "Autori i izdavači"
+
+#: src/scholar/templates/about.html:50
+#, python-format
+msgid ""
+"Information specifically for authors of research works can be found at <a "
+"href=\"%(url)s\">%(url)s</a>. This includes instructions for correcting "
+"bibliographic metadata and updates to published works."
+msgstr ""
+"Informacije za autore istraživačkih radova mogu se pronaći na <a href=\""
+"%(url)s\">%(url)s</a>. Stranica uključuje upute za ispravljanje "
+"bibliografskih metapodataka i aktualiziranja objavljenih radova."
+
+#: src/scholar/templates/about.html:53
+#, python-format
+msgid ""
+"Likewise information specifically for publishers can be found at <a href="
+"\"%(url)s\">%(url)s</a>. This includes guidelines for having content indexed "
+"and preserved."
+msgstr ""
+"Informacije za izdavače mogu se pronaći na <a href=\"%(url)s\">%(url)s</a>. "
+"Stranica uključuje smjernice za indeksiranje i očuvanje sadržaja."
+
+#: src/scholar/templates/about.html:56
+msgid "Contact Information"
+msgstr "Kontakt"
+
+#: src/scholar/templates/about.html:59
+#, python-format
+msgid ""
+"The organizational contact information for the Internet Archive is listed at "
+"<a href=\"%(url)s\">%(url)s</a>."
+msgstr ""
+"Podaci za kontaktiranje organizacije Internet Archive mogu se pronaći na <a "
+"href=\"%(url)s\">%(url)s</a>."
+
+#: src/scholar/templates/about.html:61
+#, python-format
+msgid ""
+"Queries about this search service and the fatcat catalog can be directed to "
+"<a href=\"mailto:%(email)s\">%(email)s</a>."
+msgstr ""
+"Pitanja o ovoj usluzi pretraživanja i o fatcat katalogu mogu se uputiti na "
+"<a href=\"mailto:%(email)s\">%(email)s</a>."
+
+#: src/scholar/templates/about.html:63
+#, python-format
+msgid "There is a public chat channel at <a href=\"%(url)s\">%(url)s</a>."
+msgstr ""
+"Postoji javni kanal za razgovore na stranici <a href=\"%(url)s\">%(url)s</a>."
+
+#: src/scholar/templates/about.html:66
+msgid "Support and Acknowledgements"
+msgstr "Podrška i priznanja"
+
+#: src/scholar/templates/about.html:69
+#, python-format
+msgid ""
+"Work on Internet Archive Scholar has received support from the Andrew W. "
+"Mellon Foundation through multiple phases of the <a href=\"%(grant_url)s\">"
+"\"Ensuring the Persistent Access of Open Access Journal Literature\"</a> "
+"project (see <a href=\"%(blog_url)s\">original announcement</a>)."
+msgstr ""
+"Rad na Internet Archive Scholar dobio je podršku od zaklade Andrew W. Mellon "
+"u više faza projekta <a href=\"%(grant_url)s\">„Ensuring the Persistent "
+"Access of Open Access Journal Literature“</a> (Osiguravanje trajnog pristupa "
+"literaturi časopisa otvorenog pristupa) (pogledaj <a href=\"%(blog_url)s"
+"\">izvornu najavu</a>)."
+
+#: src/scholar/templates/about.html:71
+#, python-format
+msgid ""
+"See additional acknowledgements on <a href=\"%(fatcat_url)s\">fatcat.wiki</"
+"a>."
+msgstr ""
+"Pogledaj dodatna priznanja na <a href=\"%(fatcat_url)s\">fatcat.wiki</a>."
+
+#: src/scholar/templates/access_404.html:10
+msgid "404: Access Location Not Found"
+msgstr "404: Mjesto pristupa nije pronađeno"
+
+#: src/scholar/templates/access_404.html:11
+msgid ""
+"We could not find a valid redirect for the URL you tried. Sorry about that!"
+msgstr ""
+"Nismo mogli pronaći valjano preusmjeravanje za traženi URL. Žao nam je zbog "
+"toga!"
+
+#: src/scholar/templates/access_404.html:12
+msgid ""
+"There may be a typo, truncation, or encoding error. Or, the resource may "
+"have been removed from our catalog."
+msgstr ""
+"Možda postoji greška pri upisu, skraćivanju ili kodiranju. A možda je resurs "
+"uklonjen iz našeg kataloga."
+
+#: src/scholar/templates/access_404.html:13
+msgid ""
+"Some places you can visit try to hunt down this resource (or a replacement) "
+"include:"
+msgstr ""
+"Neka mjesta koja možeš posjetiti pokušavaju pronaći ovaj resurs (ili "
+"zamjenu) uključuju:"
+
+#: src/scholar/templates/access_404.html:16
+msgid "Original web url:"
+msgstr "Izvorna web URL-adresa:"
+
+#: src/scholar/templates/access_404.html:20
+msgid "Wayback Machine calendar page (all captures)"
+msgstr "Stranica Wayback Machine kalendara (sve snimke)"
+
+#: src/scholar/templates/access_404.html:23
+msgid "archive.org download link for the item:"
+msgstr "archive.org poveznica za preuzimanje elementa:"
+
+#: src/scholar/templates/access_404.html:29
+msgid "Scholar landing page"
+msgstr "Početna Scholar stranica"
+
+#: src/scholar/templates/access_404.html:30
+msgid "Fatcat catalog page"
+msgstr "Stranica Fatcat kataloga"
+
+#: src/scholar/templates/base.html:13
+msgid "Internet Archive Scholar"
+msgstr "Internet Archive Scholar"
+
+#: src/scholar/templates/base.html:83
+msgid "language selection menu"
+msgstr "izbornik jezika"
+
+#: src/scholar/templates/base.html:105
+msgid "Contribute to translations"
+msgstr "Doprinesi prijevodima"
+
+#: src/scholar/templates/base.html:128
+msgid "by title, authors, keywords..."
+msgstr "po naslovu, autorima, ključnim riječima …"
+
+#: src/scholar/templates/base.html:128
+msgid "search for papers"
+msgstr "traži članke"
+
+#: src/scholar/templates/base.html:129 src/scholar/templates/home.html:16
+msgid "Search"
+msgstr "Traži"
+
+#: src/scholar/templates/base.html:144
+msgid "RSS Feed"
+msgstr "RSS feedovi"
+
+#: src/scholar/templates/base.html:148
+msgid "User Guide"
+msgstr "Korisnički priručnik"
+
+#: src/scholar/templates/base.html:176
+msgid ""
+"We are a US 501(c)(3) non-profit library, building a global archive of "
+"Internet sites and other cultural artifacts in digital form."
+msgstr ""
+"Mi smo američka neprofitna knjižnica (501(c)(3)). Gradimo globalni arhiv "
+"internetskih stranica i druge kulturne građe u digitalnom obliku."
+
+#: src/scholar/templates/base.html:178
+#, python-format
+msgid ""
+"Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and "
+"%(archive_it)s."
+msgstr ""
+"Drugi projekti uključuju %(wayback)s, %(archive_org)s, %(openlibrary)s i "
+"%(archive_it)s."
+
+#: src/scholar/templates/base.html:185
+msgid "About Us"
+msgstr "O nama"
+
+#: src/scholar/templates/base.html:186
+msgid "Contact Us"
+msgstr "Kontakt"
+
+#: src/scholar/templates/base.html:187
+msgid "Policies"
+msgstr "Pravila"
+
+#: src/scholar/templates/base.html:188
+msgid "Donate"
+msgstr "Donacije"
+
+#: src/scholar/templates/base.html:194
+msgid "Open Infrastructure"
+msgstr "Otvorena infrastruktura"
+
+#: src/scholar/templates/base.html:196
+msgid "Editable Catalog (Fatcat)"
+msgstr "Urediv katalog (Fatcat)"
+
+#: src/scholar/templates/base.html:197
+msgid "Contribute"
+msgstr "Doprinesi"
+
+#: src/scholar/templates/base.html:198
+msgid "Search API"
+msgstr "API pretrage"
+
+#: src/scholar/templates/base.html:199
+msgid "Service Status"
+msgstr "Stanje usluge"
+
+#: src/scholar/templates/base.html:200
+msgid "Source Code"
+msgstr "Izvorni kȏd"
+
+#: src/scholar/templates/base.html:210
+msgid "Help"
+msgstr "Pomoć"
+
+#: src/scholar/templates/error.html:12
+msgid "Not Found"
+msgstr "Nije pronađeno"
+
+#: src/scholar/templates/error.html:14
+msgid "Access Forbidden"
+msgstr "Zabranjen pristup"
+
+#: src/scholar/templates/error.html:16
+msgid "Request Error"
+msgstr "Greška zahtijeva"
+
+#: src/scholar/templates/error.html:18
+msgid "Internal Error"
+msgstr "Interna greška"
+
+#: src/scholar/templates/help.html:5
+#, python-format
+msgid "%(website_name)s Help"
+msgstr "%(website_name)s pomoć"
+
+#: src/scholar/templates/help.html:14
+msgid "Try It"
+msgstr "Isprobaj"
+
+#: src/scholar/templates/help.html:22
+msgid "Scholar User Guide"
+msgstr "Korisnički priručnik za Scholar"
+
+#: src/scholar/templates/help.html:23
+#, python-format
+msgid "See also: <a href=\"%(lang_prefix)s/about\">About Scholarly Search</a>"
+msgstr ""
+"Također pogledaj: <a href=\"%(lang_prefix)s/about\">O pretrazi znanstvenih "
+"radova</a>"
+
+#: src/scholar/templates/help.html:25
+msgid ""
+"This service provides <a href=\"https://en.wikipedia.org/wiki/Full-"
+"text_search\">fulltext searching</a> over research publications archived in "
+"Internet Archive's various collections. It includes content from the natural "
+"sciences, humanities, biomedicine, art, history, industrial research, "
+"government reports, and more."
+msgstr ""
+"Ova usluga omogućuje <a href=\"https://en.wikipedia.org/wiki/Full-text_search"
+"\">pretraživanje teksta</a> u istraživačkim publikacijama arhiviranim u "
+"raznim Internet Archive zbirkama. Obuhvaća sadržaje iz prirodnih znanosti, "
+"humanističkih znanosti, biomedicine, umjetnosti, povijesti, industrijskih "
+"istraživanja, vladinih izvještaja i drugih."
+
+#: src/scholar/templates/help.html:26
+msgid ""
+"Reader access to the content is provided when possible. Sometimes this "
+"access is to a \"pre-print\" or other version of the work, and this is "
+"indicated in the search results."
+msgstr ""
+"Kadgod moguće, omogućuje se čitateljski pristup sadržaju. Ponekad se radi o "
+"pristupu „predizdanju” ili jednoj drugoj verziji rada. Stanje se naznačuje u "
+"rezultatima pretrage."
+
+#: src/scholar/templates/help.html:28
+msgid ""
+"In other cases, depending on search filters, results are included for which "
+"there is only a bibliographic catalog entry. It may still be possible to "
+"obtain access through a public library or from the publisher directly."
+msgstr ""
+"U drugim slučajevima, ovisno o filtrima pretrage, uključeni su rezultati za "
+"koje postoji samo bibliografski kataloški unosi. I dalje je moguće dobiti "
+"pristup putem javne knjižnice ili izravno od izdavača."
+
+#: src/scholar/templates/help.html:30
+msgid "Query Syntax"
+msgstr "Sintaksa za pretragu"
+
+#: src/scholar/templates/help.html:32
+msgid ""
+"In addition to the basic filtering and sorting options, this search\n"
+"interface also allows the use of Lucene query syntax in the search box. You "
+"can\n"
+"restrict term queries on multiple metadata fields using colon statements "
+"like\n"
+"<code>journal:Science</code>, set filters like <code>lang:de</code>, and\n"
+"apply range queries like <code>year:&gt;1989 year:&lt;2000</code>."
+msgstr ""
+"Pored osnovne mogućnosti filtriranja i razvrstavanja, ova pretraga\n"
+"također omogućuje upotrebu Lucene sintakse u polju pretrage. Pretraga se\n"
+"može ograničiti za više polja metapodataka. Koristi dvotočke za odvajanje "
+"pojmova\n"
+"<code>journal:Science</code>, postavi filtre poput <code>lang:hr</code> i\n"
+"primijeni raspone poput <code>godina:&gt;1989 godina:&lt;2000</code>."
+
+#: src/scholar/templates/help.html:38
+msgid ""
+"While this syntax allows for relatively complex and powerful queries, at "
+"some point advanced users may run into limits on the size or complexity of "
+"queries."
+msgstr ""
+"Iako ova sintaksa omogućuje relativno složenu i moćnu pretragu, napredni "
+"korisnici mogu doseći granice veličine ili složenosti pretrage."
+
+#: src/scholar/templates/help.html:40
+msgid ""
+"For the time being we recommend systems like <a href=\"https://lens.org"
+"\">lens.org</a> for a more powerful interface."
+msgstr ""
+"Za sada preporučujemo sustave kao što je <a href=\"https://lens.org\">lens."
+"org</a> za bolje sučelje."
+
+#: src/scholar/templates/help.html:43
+msgid "Example Queries"
+msgstr "Primjeri pretraživanja"
+
+#: src/scholar/templates/help.html:45
+msgid "Search for digitized pages about a topic from specific years:"
+msgstr "Traži digitalizirane stranice o temi u određenim godinama:"
+
+#: src/scholar/templates/help.html:49
+msgid "Search for papers in Chinese matching a term:"
+msgstr "Traži članke na kineskom koji odgovaraju pojmu:"
+
+#: src/scholar/templates/help.html:53
+msgid "Conference papers with an author name query:"
+msgstr "Konferencijski članci s pretragom imena autora:"
+
+#: src/scholar/templates/help.html:57
+msgid "Citation Queries"
+msgstr "Pretraživanja citata"
+
+#: src/scholar/templates/help.html:58
+msgid ""
+"As an experimental feature, if the search query \"looks like\" a formal "
+"citation, as found in the bibliography of a research paper, the service will "
+"attempt to parse the citation and do a match against our catalog of known "
+"works. When this happens, any filters are ignored."
+msgstr ""
+"Kao eksperimentalna funkcija, ako pretraživanje „sliči” formalnom citatu, "
+"kao što se nalazi u bibliografiji istraživačkog članka, usluga će pokušati "
+"analizirati citat i usporediti ga s našim katalogom poznatih članaka. Kada "
+"se to dogodi, svi filtri se zanemaruju."
+
+#: src/scholar/templates/help.html:62
+msgid "Metadata Fields"
+msgstr "Polja metapodataka"
+
+#: src/scholar/templates/help.html:64
+msgid ""
+"You can restrict to records where the field exists with an asterisk like "
+"<code>doi:*</code>, and negate any term like <code>!type:article-journal</"
+"code>."
+msgstr ""
+"Možeš ograničiti na zapise gdje polje postoji sa zvjezdicom poput <code>doi:"
+"*</code>, i negirati bilo koji pojam poput <code>!type:article-journal</"
+"code>."
+
+#: src/scholar/templates/help.html:66
+msgid ""
+"In-depth documentation of the query syntax is available <a href=\"https://"
+"www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-"
+"string-query.html#query-string-query-notes\">from the Elasticsearch project</"
+"a>."
+msgstr ""
+"Detaljna dokumentacija sintakse za pretragu dostupna je <a href=\"https://"
+"www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-"
+"string-query.html#query-string-query-notes\">u projektu Elasticsearch</a>."
+
+#: src/scholar/templates/help.html:68
+msgid ""
+"The complete current search document schema is available (as JSON) <a href="
+"\"https://github.com/internetarchive/fatcat-scholar/blob/master/schema/"
+"scholar_fulltext.v01.json\">in the source code</a>."
+msgstr ""
+"Potpuna trenutačna shema za pretraživanje dokumenata dostupna je (kao JSON) "
+"<a href=\"https://github.com/internetarchive/fatcat-scholar/blob/master/"
+"schema/scholar_fulltext.v01.json\">u izvornom kodu</a>."
+
+#: src/scholar/templates/help.html:105
+msgid "Search Results"
+msgstr "Rezultati pretrage"
+
+#: src/scholar/templates/help.html:108
+msgid "Access Links"
+msgstr "Poveznice za pristup"
+
+#: src/scholar/templates/help.html:118
+msgid ""
+"All Internet Archive preservation copy links have the same style and icon. "
+"Content from the Wayback Machine looks like this."
+msgstr ""
+"Sve poveznice za sačuvane primjerke u arhivu Internet Archive imaju isti "
+"stil i ikonu. Sadržaj od Wayback Machine izgleda ovako."
+
+#: src/scholar/templates/help.html:122
+msgid ""
+"If the preserved copy of the work is from a pre-print, author manuscript, or "
+"other alternative version of the work, the access link has an indicator. You "
+"can get details and view all versions by clicking on the primary title link"
+msgstr ""
+"Ako se u sačuvanom primjerku radi o predizdanju, manuskriptu autora ili neke "
+"druge alternativne verzije rada, poveznica za pristup sadrži oznaku. Detalje "
+"i prikaz svih verzija možeš dobiti pritiskom poveznice za primarni naslov"
+
+#: src/scholar/templates/help.html:126
+msgid ""
+"Some preserved content, particularly older Public Domain works, may be "
+"stored in general Internet Archive digital collections (as opposed to the "
+"web archive)"
+msgstr ""
+"Neki sačuvani sadržaji, osobito stariji radovi u javnom vlasništvu, možda su "
+"spremljeni u općim digitalnim zbirkama arhiva Internet Archive (za razliku "
+"od web-arhiva)"
+
+#: src/scholar/templates/help.html:130
+msgid ""
+"Digitized copies of works on microfilm may be linked to experimentally. "
+"Access may be limited to controlled lending"
+msgstr ""
+"Digitalizirani primjerci rada na mikrofilmu mogu se eksperimentalno "
+"povezati. Pristup se može ograničiti na kontroliranu posudbu"
+
+#: src/scholar/templates/help.html:134
+msgid ""
+"A publisher landing page is the authoritative source for the \"version of "
+"record\" of a research publication, but content is not always accessible to "
+"the general public"
+msgstr ""
+"Odredišna stranica izdavača ovlašteni je izvor za „verziju zapisa” "
+"istraživačke publikacije, ali sadržaj nije uvijek dostupan široj javnosti"
+
+#: src/scholar/templates/help.html:138
+msgid ""
+"When the work is from an Open Access publication (sometimes known as \"Gold"
+"\" or \"Diamond\" OA), and the publisher is expected to provide access to "
+"all readers, the button has an orange \"unlocked\" icon"
+msgstr ""
+"Kad je rad iz Open Access publikacije (ponekad poznato pod „Gold” ili "
+"„Diamond”), a od izdavača se očekuje da omogući pristup svim čitateljima, "
+"gumb ima narančastu „otključano”-ikonu"
+
+#: src/scholar/templates/help.html:142
+msgid ""
+"If the work is archived in full on a reliable, open platform, we will "
+"sometimes provide additional links"
+msgstr ""
+"Ako je rad u cijelosti arhiviran na pouzdanoj, otvorenoj platformi, ponekad "
+"ćemo pružiti dodatne poveznice"
+
+#: src/scholar/templates/help.html:148
+msgid "Tags"
+msgstr "Oznake"
+
+#: src/scholar/templates/help.html:150
+msgid ""
+"Search results may have tag labels which provide additional context about "
+"the work. For example, indexes the journal is included in, or open platform "
+"technology used for publications."
+msgstr ""
+"Rezultati pretraživanja mogu sadržati oznake koje pružaju dodatni kontekst o "
+"radu. Na primjer, indekse u kojima je časopis uključen ili tehnologiju "
+"otvorene platforme koja se koristi za publikacije."
+
+#: src/scholar/templates/help.html:160
+msgid ""
+"There are multiple released \"versions\" or \"editions\" of this work, and "
+"bibliographic metadata for the \"primary\" is being shown. Click the title "
+"to see other versions"
+msgstr ""
+"Postoji više objavljenih „verzija” ili „izdanja” ovog rada, a prikazuju se "
+"bibliografski metapodaci za „primarni” rad. Za prikaz drugih verzija "
+"pritisni naslov"
+
+#: src/scholar/templates/help.html:164
+msgid ""
+"The primary language of this work is different from the search interface "
+"language. The <a href=\"https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes"
+"\">ISO two-letter language code</a> is indicated"
+msgstr ""
+"Primarni jezik ovog rada razlikuje se od jezika sučelja pretrage. Na jezik "
+"se ukazuje <a href=\"https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes"
+"\">dvoslovnim ISO kodom</a>"
+
+#: src/scholar/templates/help.html:168
+msgid ""
+"Published in a <a href=\"https://doaj.org\">Directory of Open Access "
+"Journals</a> publication, which implies that this is an Open Access work"
+msgstr ""
+"Objavljeno u publikaciji na <a href=\"https://doaj.org\">Directory of Open "
+"Access Journals</a>, što implicira da se radi o radu otvorenog pristupa"
+
+#: src/scholar/templates/help.html:172
+msgid ""
+"Publication indexed in <a href=\"https://www.ebsco.com/open-access/"
+"szczepanski-list\">Szczepanski's List of Open Access Journals</a>, which "
+"implies that this is an Open Access work"
+msgstr ""
+"Publikacija je indeksirana na <a href=\"https://www.ebsco.com/open-access/"
+"szczepanski-list\">Szczepanski's List of Open Access Journals</a>, to "
+"implicira da se radi o radu otvorenog pristupa"
+
+#: src/scholar/templates/help.html:176
+msgid ""
+"The work is believed to be <a href=\"https://en.wikipedia.org/wiki/"
+"Open_access\">\"Open Access\"</a> for any other reason"
+msgstr ""
+"Rad je vrste <a href=\"https://en.wikipedia.org/wiki/Open_access"
+"\">„otvorenog pristupa”</a> iz drugih razloga"
+
+#: src/scholar/templates/help.html:180
+msgid ""
+"Published on a <a href=\"https://en.wikipedia.org/wiki/SciELO\">SciELO</a> "
+"national platform"
+msgstr ""
+"Objavljeno na nacionalnoj <a href=\"https://en.wikipedia.org/wiki/SciELO"
+"\">SciELO</a> platformi"
+
+#: src/scholar/templates/help.html:184
+msgid ""
+"Published using <a href=\"https://en.wikipedia.org/wiki/Open_Journal_Systems"
+"\">Open Journal Systems</a> software"
+msgstr ""
+"Objavljeno pomoću <a href=\"https://en.wikipedia.org/wiki/"
+"Open_Journal_Systems\">Open Journal Systems</a> softvera"
+
+#: src/scholar/templates/help.html:188
+msgid ""
+"Published using <a href=\"https://en.wikipedia.org/wiki/Wordpress"
+"\">WordPress</a> software"
+msgstr ""
+"Objavljeno pomoću <a href=\"https://en.wikipedia.org/wiki/Wordpress"
+"\">WordPress</a> softvera"
+
+#: src/scholar/templates/help.html:192
+msgid ""
+"Preserved and/or hosted on the <a href=\"https://en.wikipedia.org/wiki/JSTOR"
+"\">JSTOR</a> digital preservation platform"
+msgstr ""
+"Čuvanje i/ili hosting na <a href=\"https://en.wikipedia.org/wiki/JSTOR"
+"\">JSTOR</a> platformi za čuvanje digitalne građe"
+
+#: src/scholar/templates/help.html:198
+msgid "Persistent Identifiers"
+msgstr "Trajni identifikatori"
+
+#: src/scholar/templates/help.html:200
+msgid ""
+"Underneath search results, and alternate version listings, are any known "
+"\"persistent identifiers\" that uniquely identify the specific version of "
+"the work. These are usually hyperlinks."
+msgstr ""
+"Ispod rezultata pretraživanja i alternativnih popisa verzija nalaze se svi "
+"poznati „trajni identifikatori” koji jedinstveno identificiraju određenu "
+"verziju rada. Uobičajeno su to poveznice."
+
+#: src/scholar/templates/help.html:210
+msgid ""
+"<a href=\"https://en.wikipedia.org/wiki/Digital_object_identifier\">Digital "
+"Object Identifier (DOI)</a>, provides a redirect to the publisher's landing "
+"page"
+msgstr ""
+"<a href=\"https://en.wikipedia.org/wiki/Digital_object_identifier"
+"\">Digitalni identifikator objekta (DOI)</a>, omogućuje preusmjeravanje na "
+"stranicu izdavača"
+
+#: src/scholar/templates/help.html:214
+msgid "PubMed/MEDLINE"
+msgstr "PubMed/MEDLINE"
+
+#: src/scholar/templates/help.html:218
+msgid "PubMed Central"
+msgstr "PubMed Central"
+
+#: src/scholar/templates/help.html:222
+msgid "arXiv pre-print service"
+msgstr "arXiv usluga predizdanja"
+
+#: src/scholar/templates/help.html:226
+msgid "The DBLP Computer Science Bibliography"
+msgstr "DBLP Computer Science Bibliography"
+
+#: src/scholar/templates/help.html:230
+msgid ""
+"Article-level identifier for works in DOAJ, particularly those with no DOI"
+msgstr ""
+"Identifikator na razini članka za radove na DOAJ stranicama, posebno onih "
+"koji nemaju digitalni identifikator objekta"
+
+#: src/scholar/templates/help.html:234
+msgid ""
+"<a href=\"https://fatcat.wiki\">fatcat.wiki</a> \"release\" identifier. "
+"Scholar is built on top of the fatcat catalog"
+msgstr ""
+"<a href=\"https://fatcat.wiki\">fatcat.wiki</a> identifikator „izdanja”. "
+"Scholar je izgrađen na osnovi fatcat kataloga"
+
+#: src/scholar/templates/help.html:240
+msgid "Work In Progress"
+msgstr "Radovi u tijeku"
+
+#: src/scholar/templates/help.html:244 src/scholar/templates/home.html:37
+msgid ""
+"This service is in \"alpha\". It has several bugs, experiences downtime, and "
+"has not been officially announced."
+msgstr ""
+"Usluga se nalazi u „alfa” fazi. Sadrži greške, ponakad je nedostupna i nije "
+"javno objavljena."
+
+#: src/scholar/templates/help.html:246 src/scholar/templates/home.html:39
+msgid ""
+"This is a new service. Metadata is being improved and features have not been "
+"finalized."
+msgstr ""
+"Ovo je nova usluga. Metapodaci se poboljšavaju i funkcije još nisu dovršene."
+
+#: src/scholar/templates/help.html:250
+msgid "This project is currently a <i>prototype</i>"
+msgstr "Ovaj je projekt trenutačno <i>prototip</i>"
+
+#: src/scholar/templates/help.html:253
+msgid "Some known bugs and issues:"
+msgstr "Neke poznate greške i problemi:"
+
+#: src/scholar/templates/help.html:256
+msgid ""
+"Poor metadata quality for conference proceedings. Many are labeled "
+"\"unpublished\" and are not associated with the conference."
+msgstr ""
+"Loša kvaliteta metapodataka za zbornike konferencije. Mnogi su označeni kao "
+"„neobjavljeni” i nisu povezani s konferencijom."
+
+#: src/scholar/templates/help.html:257
+msgid ""
+"Duplicate versions of same work. For example, different versions of the same "
+"paper or dataset. We are working on basic entity-deduplication in the fatcat "
+"catalog."
+msgstr ""
+"Duplikat istog djela. Na primjer, različite verzije istog članka ili skupa "
+"podataka. Radimo na osnovnom uklanjanju duplikata entiteta u fatcat katalogu."
+
+#: src/scholar/templates/help.html:258
+msgid ""
+"Mis-matching of file content or version with work metadata. For example, "
+"sometimes pre-prints or author manuscripts are incorrectly associated with "
+"version-of-record metadata, or vice-versa."
+msgstr ""
+"Nepoklapanje sadržaja datoteke ili verzije s metapodacima rada. Na primjer, "
+"ponekad su predizdanja ili rukopisi autora pogrešno povezani s metapodacima "
+"verzije zapisa ili obratno."
+
+#: src/scholar/templates/home.html:10
+msgid "Internet Archive Scholar logo (vaporwave)"
+msgstr "Internet Archive Scholar logotip (vaporwave)"
+
+#: src/scholar/templates/home.html:15
+msgid "by title, author, keywords..."
+msgstr "po naslovu, autoru, ključnim riječima …"
+
+#: src/scholar/templates/home.html:23
+msgid "Search Millions of Research Papers"
+msgstr "Pretraži milijune znanstvenih članaka"
+
+#: src/scholar/templates/home.html:24
+msgid ""
+"This fulltext search index includes over 25 million research articles and "
+"other scholarly documents preserved in the Internet Archive."
+msgstr ""
+"Ovaj indeks pretraživanja teksta obuhvaća preko 25 milijuna istraživačkih "
+"članaka i drugih znanstvenih dokumenata sačuvanih u arhivu Internet Archive."
+
+#: src/scholar/templates/home.html:24
+msgid ""
+"The collection spans from digitized copies of eighteenth century journals "
+"through the latest Open Access conference proceedings and pre-prints crawled "
+"from the World Wide Web."
+msgstr ""
+"Zbirka obuhvaća digitalizirane primjerke časopisa iz osamnaestog stoljeća, "
+"dok se najnoviji zbornici i predizdanja konferencija slobodnog pristupa "
+"pretražuju na internetu."
+
+#: src/scholar/templates/home.html:24
+msgid "More &raquo;"
+msgstr "Više &raquo;"
+
+#: src/scholar/templates/home.html:52 src/scholar/templates/home.html:66
+#: src/scholar/templates/home.html:80 src/scholar/templates/home.html:94
+msgid "PDF thumbnail"
+msgstr "Minijatura PDF-a"
+
+#: src/scholar/templates/search.html:35
+msgid "Filters"
+msgstr "Filtri"
+
+#: src/scholar/templates/search.html:47
+#: src/scholar/templates/search.html:77
+msgid "Hit"
+msgid_plural "Hits"
+msgstr[0] "pogodak"
+msgstr[1] "pogotka"
+msgstr[2] "pogodaka"
+
+#: src/scholar/templates/search.html:53
+#: src/scholar/templates/search.html:85
+#, python-format
+msgid "in %(frac_sec)ssec"
+msgstr "u %(frac_sec)ss"
+
+#: src/scholar/templates/search.html:110
+msgid "Backend Search Engine Error"
+msgstr "Interna greška tražilice"
+
+#: src/scholar/templates/search.html:112
+msgid "Search Query Error"
+msgstr "Greška pretrage"
+
+#: src/scholar/templates/search.html:116
+msgid ""
+"Query parsing is currently very naive. Sometimes you can fix this problem by "
+"adding quotes around terms or entire phrases."
+msgstr ""
+"Obrada traženog pojma ili izraza trenutačno je još nije zrela. Taj se "
+"problem ponekad može riješiti stavljanjem pojmova ili čitavih izraza pod "
+"navodnike."
+
+#: src/scholar/templates/search.html:148
+msgid "We didn't find any documents matching your query"
+msgstr "Nismo pronašli nijedan odgovarajući dokument"
+
+#: src/scholar/templates/search.html:153
+msgid "Try All Resource Types"
+msgstr "Pretraži sve vrste građe"
+
+#: src/scholar/templates/search.html:158
+msgid "Try All Time"
+msgstr "Pretraži svo vrijeme"
+
+#: src/scholar/templates/search.html:163
+msgid "Try Metadata Records"
+msgstr "Pretraži zapise metapodataka"
+
+#: src/scholar/templates/search.html:166
+msgid "Start Over"
+msgstr "Počni ispočetka"
+
+#: src/scholar/templates/search.html:179
+msgid "Enter a query in the box above to get started"
+msgstr "Najprije upiši traženi pojam u gornje polje"
+
+#: src/scholar/templates/search_macros.html:21
+msgid "Multiple Versions"
+msgstr "Višestruke verzije"
+
+#: src/scholar/templates/search_macros.html:59
+msgid "fulltext PDF download"
+msgstr "preuzimanje teksta u PDF formatu"
+
+#: src/scholar/templates/search_macros.html:61
+msgid "read fulltext microfilm"
+msgstr "čitanje teksta na mikrofilmu"
+
+#: src/scholar/templates/search_macros.html:63
+#: src/scholar/templates/search_macros.html:243
+msgid "fulltext access"
+msgstr "pristup tekstu"
+
+#: src/scholar/templates/search_macros.html:72
+msgid "Web Archive"
+msgstr "Web-arhiv"
+
+#: src/scholar/templates/search_macros.html:74
+#: src/scholar/templates/search_macros.html:261
+msgid "File Archive"
+msgstr "Datotečni arhiv"
+
+#: src/scholar/templates/search_macros.html:76
+msgid "Archive [Microfilm]"
+msgstr "Arhiv [Mikrofilm]"
+
+#: src/scholar/templates/search_macros.html:78
+msgid "Other"
+msgstr "Ostalo"
+
+#: src/scholar/templates/search_macros.html:82
+msgid "[PDF]"
+msgstr "[PDF]"
+
+#: src/scholar/templates/search_macros.html:84
+msgid "[HTML]"
+msgstr "[HTML]"
+
+#: src/scholar/templates/search_macros.html:86
+msgid "[XML]"
+msgstr "[XML]"
+
+#: src/scholar/templates/search_macros.html:95
+msgid "fulltext thumbnail"
+msgstr "minijatura teksta"
+
+#: src/scholar/templates/search_macros.html:111
+msgid "Publisher / doi.org"
+msgstr "Izdavač/doi.org"
+
+#: src/scholar/templates/search_macros.html:144
+#, python-format
+msgid "%(year)s"
+msgstr "%(year)s."
+
+#: src/scholar/templates/search_macros.html:197
+msgid "unknown"
+msgstr "nepoznato"
+
+#: src/scholar/templates/search_macros.html:213
+#, python-format
+msgid "Page %(page_num)s of %(journal_name)s Vol. %(volume)s, Issue %(issue)s"
+msgstr ""
+"%(page_num)s. stranica u %(journal_name)s, %(volume)s. svezak, izdanje "
+"%(issue)s"
+
+#: src/scholar/templates/search_macros.html:215
+msgid "page"
+msgstr "stranica"
+
+#: src/scholar/templates/search_macros.html:236
+msgid "Preserved Fulltext"
+msgstr "Sačuvani tekst"
+
+#: src/scholar/templates/search_macros.html:259
+msgid "Web Archive Capture"
+msgstr "Snimka web-arhiva"
+
+#: src/scholar/templates/search_macros.html:263
+msgid "Digitized Microfilm"
+msgstr "Digitaliziran mikrofilm"
+
+#: src/scholar/templates/search_macros.html:288
+#, python-format
+msgid ""
+"A copy of this work was available on the public web and has been preserved "
+"in the Wayback Machine. The capture dates from %(capture_year)s; you can "
+"also visit <a rel=\"external noopener\" href=\"%(original_url)s\">the "
+"original URL</a>."
+msgstr ""
+"Primjerak ovog rada bio je dostupan na javnom webu i sačuvan je na Wayback "
+"Machine stranicama. Snimljeno %(capture_year)s. <a rel=\"external noopener\" "
+"href=\"%(original_url)s\">Izvorni URL</a>."
+
+#: src/scholar/templates/search_macros.html:290
+msgid ""
+"The Internet Archive has a preservation copy of this work in our general "
+"collections."
+msgstr "Internet Archive ima primjerak ovog rada u našim općim zbirkama."
+
+#: src/scholar/templates/search_macros.html:292
+msgid ""
+"The Internet Archive has digitized a microfilm copy of this work. It may be "
+"possible to borrow a copy for reading."
+msgstr ""
+"Internet Archive ima primjerak ovog djela u obliku digitaliziranog "
+"mikrofilma. Moguće je posuditi primjerak za čitanje."
+
+#: src/scholar/templates/search_macros.html:296
+#, python-format
+msgid "The file type is %(mimetype)s."
+msgstr "Datotečna vrsta je %(mimetype)s."
+
+#: src/scholar/templates/search_macros.html:301
+msgid ""
+"Note that this fulltext copy is not of the \"primary\" version of this work. "
+"The version it corresponds to is:"
+msgstr ""
+"Ovaj primjerak cijelog teksta nije „primarna” verzija ovog rada. Verzija "
+"kojoj odgovara je:"
+
+#: src/scholar/templates/search_macros.html:314
+msgid "Additional access options for the primary version of this work:"
+msgstr "Dodatne mogućnosti pristupa za primarnu verziju ovog rada:"
+
+#: src/scholar/templates/search_macros.html:324
+msgid ""
+"We don't yet know of a public preservation copy of this work. You may be "
+"able to obtain a copy of this work to read from the publisher, platforms, or "
+"institutional libraries."
+msgstr ""
+"Još ne znamo za javno sačuvan primjerak ovog rada. Primjerak ovog rada se "
+"možda može dobiti od izdavača, platformi ili institucionalnih knjižnica."
+
+#: src/scholar/templates/search_macros.html:327
+#, python-format
+msgid ""
+"If you know of a legal, public version that we should archive, please let us "
+"know via <a rel=\"noopener\" href=\"%(save_paper_now_url)s\">\"Save Paper Now"
+"\"</a>."
+msgstr ""
+"Ako poznaš legalnu, javnu verziju koju bismo trebali arhivirati, javi nam "
+"putem <a rel=\"noopener\" href=\"%(save_paper_now_url)s\">„Spremi članak "
+"sada”</a>."
+
+#: src/scholar/templates/search_macros.html:374
+msgid "more &raquo;"
+msgstr "više &raquo;"
+
+#: src/scholar/templates/search_macros.html:396
+msgid "tag definitions"
+msgstr "definicije oznaka"
+
+#: src/scholar/templates/search_macros.html:423
+msgid "not primary version"
+msgstr "nije primarna verzija"
+
+#: src/scholar/templates/search_macros.html:440
+#, python-format
+msgid "Same Issue (%(count)s)"
+msgstr "Isto izdanje (%(count)s)"
+
+#: src/scholar/templates/search_macros.html:451
+msgid "cite this work"
+msgstr "citiraj ovo djelo"
+
+#: src/scholar/templates/search_macros.html:456
+msgid "Citation"
+msgstr "Citat"
+
+#: src/scholar/templates/search_macros.html:470
+msgid "edit metadata on fatcat wiki"
+msgstr "uredi metapodatke na fatcat wiki"
+
+#: src/scholar/templates/search_macros.html:476
+msgid "permalink to this record"
+msgstr "trajna poveznica na ovaj zapis"
+
+#: src/scholar/templates/search_macros.html:492
+#: src/scholar/templates/search_macros.html:495
+msgid "&laquo; Previous"
+msgstr "&laquo; Prethodni"
+
+#: src/scholar/templates/search_macros.html:500
+#: src/scholar/templates/search_macros.html:503
+msgid "Next &raquo;"
+msgstr "Sljedeći &raquo;"
+
+#: src/scholar/templates/search_macros.html:507
+#, python-format
+msgid "Showing results %(start)s &mdash; %(end)s out of %(total)s results"
+msgstr "Prikaz rezultata: %(start)s. &ndash; %(end)s. od %(total)s"
+
+#: src/scholar/templates/search_macros.html:540
+msgid "Clear Filters"
+msgstr "Izbriši filtre"
+
+#~ msgid "Metadata"
+#~ msgstr "Metapodaci"
+
+#~ msgid "Digital Bibliography of Logic Programming"
+#~ msgstr "Digitalna bibliografija logičkog programiranja"
+
+#~ msgid "Next"
+#~ msgstr "Sljedeći"
+
+#~ msgid ""
+#~ "This service is in \"alpha\". It has several bugs, experiences\n"
+#~ "          downtime, and has not been officially announced."
+#~ msgstr ""
+#~ "Usluga se nalazi u „alfa” fazi. Sadrži greške,\n"
+#~ "        ponakad je nedostupna i nije javno objavljena."
+
+#~ msgid "access microfilm on archive.org"
+#~ msgstr "pristup mikrofilmu na archive.org"
+
+#~ msgid "Publication Stage"
+#~ msgstr "Faza publikacije"
+
+#~ msgid "Date"
+#~ msgstr "Datum"
+
+#~ msgid "published"
+#~ msgstr "objavljeno"
+
+#~ msgid "microfilm"
+#~ msgstr "mikrofilm"
+
+#~ msgid "Show %(count)s additional result from this issue"
+#~ msgid_plural "Show %(count)s additional results from this issue"
+#~ msgstr[0] "Prikaži još %(count)s rezultat ovog izdanja"
+#~ msgstr[1] "Prikaži još %(count)s rezultata ovog izdanja"
+#~ msgstr[2] "Prikaži još %(count)s rezultata ovog izdanja"
+
+#~ msgid "select language"
+#~ msgstr "odaberi jezik"

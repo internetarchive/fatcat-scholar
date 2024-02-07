@@ -35,14 +35,15 @@ dependencies = [
   "sentry-sdk==1.17.0",
   "starlette-prometheus==0.9.0",
   "toml==0.10.2",
-  "typer==0.9.0",
   "uvicorn==0.21.1",
   "uvloop==0.17.0",
   "httpx==0.23.3",
 ]
-version = "0.1.0"
+version = "0.2.1"
 authors = [
     {name = "Nate Smith", email = "nsmith@archive.org"},
+    {name = "Martin Czygan", email = "martin@archive.org"},
+    {name = "Bryan Newbold"},
 ]
 readme = "README.md"
 license = {text = "AGPL3"}

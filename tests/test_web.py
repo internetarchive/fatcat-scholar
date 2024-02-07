@@ -5,7 +5,7 @@ import fatcat_openapi_client
 import pytest
 from fastapi.testclient import TestClient
 
-from fatcat_scholar.web import app
+from scholar.web import app
 
 
 @pytest.fixture

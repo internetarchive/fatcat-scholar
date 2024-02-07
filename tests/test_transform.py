@@ -2,9 +2,9 @@ import json
 
 from fatcat_openapi_client import ReleaseEntity
 
-from fatcat_scholar.api_entities import entity_from_json
-from fatcat_scholar.schema import ScholarBiblio
-from fatcat_scholar.transform import (
+from scholar.api_entities import entity_from_json
+from scholar.schema import ScholarBiblio
+from scholar.transform import (
     biblio_metadata_hacks,
     es_biblio_from_release,
     es_release_from_release,

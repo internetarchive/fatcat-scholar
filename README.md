@@ -1,6 +1,6 @@
 
 <div align="center">
-<img src="fatcat_scholar/static/scholar-vaporwave-logo.png">
+<img src="src/scholar/static/scholar-vaporwave-logo.png">
 </div>
 
 `fatcat-scholar` / Internet Archive Scholar
@@ -20,8 +20,8 @@ querying the full content of papers when available.
 
 This repository is fairly small and contains:
 
-- `fatcat_scholar/`: Python code for web service and indexing pipeline
-- `fatcat_scholar/templates/`: HTML template for web interface
+- `src/scholar/`: Python code for web service and indexing pipeline
+- `src/scholar/templates/`: HTML template for web interface
 - `tests/`: Python test files
 - `proposals/`: design documentation and change proposals
 - `data/`: empty directory for indexing pipeline

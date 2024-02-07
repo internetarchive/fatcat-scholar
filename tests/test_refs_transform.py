@@ -3,7 +3,7 @@ import json
 from fatcat_openapi_client import ReleaseEntity
 from grobid_tei_xml import parse_document_xml
 
-from fatcat_scholar.transform import refs_from_crossref, refs_from_grobid
+from scholar.transform import refs_from_crossref, refs_from_grobid
 
 
 def test_transform_refs_grobid() -> None:
