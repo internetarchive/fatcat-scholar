@@ -12,14 +12,11 @@ from typing import Any, Dict, List, Optional
 import fastapi_rss
 import fatcat_openapi_client
 import sentry_sdk
-from fastapi import APIRouter, Depends, FastAPI, HTTPException, Query, Request, Response
+from fastapi import (APIRouter, Depends, FastAPI, HTTPException, Query,
+                     Request, Response)
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import (
-    FileResponse,
-    JSONResponse,
-    PlainTextResponse,
-    RedirectResponse,
-)
+from fastapi.responses import (FileResponse, JSONResponse, PlainTextResponse,
+                               RedirectResponse)
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from sentry_sdk.integrations.asgi import SentryAsgiMiddleware
@@ -28,13 +25,9 @@ from starlette_prometheus import PrometheusMiddleware, metrics
 
 from scholar.config import GIT_REVISION, I18N_LANG_OPTIONS, settings
 from scholar.schema import ScholarDoc
-from scholar.search import (
-    FulltextHits,
-    FulltextQuery,
-    es_scholar_index_alive,
-    get_es_scholar_doc,
-    process_query,
-)
+from scholar.search import (FulltextHits, FulltextQuery,
+                            es_scholar_index_alive, get_es_scholar_doc,
+                            process_query)
 from scholar.web_hacks import i18n_templates, parse_accept_lang
 
 logger = logging.getLogger()
@@ -520,16 +513,12 @@ app.mount("/static", StaticFiles(directory="src/scholar/static"), name="static")
 
 @app.get("/favicon.ico", include_in_schema=False)
 async def favicon() -> Any:
-    return FileResponse(
-        "src/scholar/static/ia-favicon.ico", media_type="image/x-icon"
-    )
+    return FileResponse("src/scholar/static/ia-favicon.ico", media_type="image/x-icon")
 
 
 @app.get("/sitemap.xml", include_in_schema=False)
 async def basic_sitemap() -> Any:
-    return FileResponse(
-        "src/scholar/static/sitemap.xml", media_type="application/xml"
-    )
+    return FileResponse("src/scholar/static/sitemap.xml", media_type="application/xml")
 
 
 ROBOTS_ALLOW = open("src/scholar/static/robots.allow.txt", "r").read()

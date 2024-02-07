@@ -14,7 +14,6 @@ import ftfy
 from bs4 import BeautifulSoup
 from fatcat_openapi_client import ReleaseContrib, ReleaseEntity
 from grobid_tei_xml import GrobidDocument
-
 # pytype: disable=import-error
 from pydantic import BaseModel
 

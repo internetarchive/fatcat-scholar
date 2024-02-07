@@ -15,10 +15,8 @@ from scholar.api_entities import entity_from_json
 from scholar.config import GIT_REVISION, settings
 from scholar.djvu import djvu_extract_leaf_texts
 from scholar.issue_db import IssueDB, SimIssueRow, SimPubRow
-from scholar.sandcrawler import (
-    SandcrawlerMinioClient,
-    SandcrawlerPostgrestClient,
-)
+from scholar.sandcrawler import (SandcrawlerMinioClient,
+                                 SandcrawlerPostgrestClient)
 from scholar.schema import DocType, IntermediateBundle, clean_str
 from scholar.sim_pipeline import truncate_issue_meta, truncate_pub_meta
 

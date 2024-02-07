@@ -13,7 +13,6 @@ import fatcat_openapi_client
 import sentry_sdk
 from elasticsearch_dsl import Q, Search
 from elasticsearch_dsl.response import Response
-
 # pytype: disable=import-error
 from pydantic import BaseModel
 
@@ -456,6 +455,7 @@ def es_scholar_index_alive() -> bool:
     ping. Previously we used client.count.
     """
     return es_client.ping()
+
 
 def get_es_scholar_doc(key: str) -> Optional[dict]:
     """

@@ -12,25 +12,13 @@ from grobid_tei_xml import GrobidBiblio, GrobidDocument, parse_document_xml
 
 from scholar.config import GIT_REVISION, settings
 from scholar.identifiers import clean_doi, clean_pmcid
-from scholar.schema import (
-    AccessType,
-    DocType,
-    IntermediateBundle,
-    RefBiblio,
-    RefStructured,
-    ScholarAbstract,
-    ScholarAccess,
-    ScholarBiblio,
-    ScholarDoc,
-    ScholarFulltext,
-    ScholarSim,
-    clean_small_int,
-    clean_url_conservative,
-    es_abstracts_from_grobid,
-    es_abstracts_from_release,
-    es_biblio_from_release,
-    es_release_from_release,
-)
+from scholar.schema import (AccessType, DocType, IntermediateBundle, RefBiblio,
+                            RefStructured, ScholarAbstract, ScholarAccess,
+                            ScholarBiblio, ScholarDoc, ScholarFulltext,
+                            ScholarSim, clean_small_int,
+                            clean_url_conservative, es_abstracts_from_grobid,
+                            es_abstracts_from_release, es_biblio_from_release,
+                            es_release_from_release)
 
 MAX_BODY_CHARS = 512 * 1024
 

@@ -3,7 +3,8 @@ from typing import Any, Dict, List, Optional
 import minio
 import requests
 from requests.adapters import HTTPAdapter
-from requests.packages.urllib3.util.retry import Retry  # pylint: disable=import-error
+from requests.packages.urllib3.util.retry import \
+    Retry  # pylint: disable=import-error
 
 
 def requests_retry_session(

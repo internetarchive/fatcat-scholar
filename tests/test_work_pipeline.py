@@ -4,10 +4,8 @@ import responses
 
 from scholar.config import settings
 from scholar.issue_db import IssueDB
-from scholar.sandcrawler import (
-    SandcrawlerMinioClient,
-    SandcrawlerPostgrestClient,
-)
+from scholar.sandcrawler import (SandcrawlerMinioClient,
+                                 SandcrawlerPostgrestClient)
 from scholar.work_pipeline import WorkPipeline
 
 

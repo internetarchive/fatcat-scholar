@@ -4,13 +4,9 @@ from fatcat_openapi_client import ReleaseEntity
 
 from scholar.api_entities import entity_from_json
 from scholar.schema import ScholarBiblio
-from scholar.transform import (
-    biblio_metadata_hacks,
-    es_biblio_from_release,
-    es_release_from_release,
-    run_refs,
-    run_transform,
-)
+from scholar.transform import (biblio_metadata_hacks, es_biblio_from_release,
+                               es_release_from_release, run_refs,
+                               run_transform)
 
 
 def test_es_release_from_release() -> None:

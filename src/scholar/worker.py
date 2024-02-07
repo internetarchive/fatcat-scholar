@@ -13,10 +13,8 @@ import sentry_sdk
 from scholar.config import GIT_REVISION, settings
 from scholar.issue_db import IssueDB
 from scholar.kafka import KafkaWorker
-from scholar.sandcrawler import (
-    SandcrawlerMinioClient,
-    SandcrawlerPostgrestClient,
-)
+from scholar.sandcrawler import (SandcrawlerMinioClient,
+                                 SandcrawlerPostgrestClient)
 from scholar.schema import IntermediateBundle
 from scholar.sim_pipeline import SimPipeline
 from scholar.transform import transform_heavy
