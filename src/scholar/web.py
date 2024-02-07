@@ -12,7 +12,7 @@ from typing import Any, Dict, List, Optional
 import fastapi_rss
 import fatcat_openapi_client
 import sentry_sdk
-from fastapi import APIRouter, Depends, FastAPI, HTTPException, Query, Request, Response
+from fastapi import APIRouter, Depends, FastAPI, HTTPException, Path, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import (
     FileResponse,
@@ -153,7 +153,7 @@ def search(query: FulltextQuery = Depends(FulltextQuery)) -> FulltextHits:
 
 
 @api.get("/work/{work_ident}", operation_id="get_work")
-def get_work(work_ident: str = Query(..., min_length=20, max_length=20)) -> dict:
+def get_work(work_ident: str = Path(..., min_length=20, max_length=30)) -> dict:
     doc = get_es_scholar_doc(f"work_{work_ident}")
     if not doc:
         raise HTTPException(status_code=404, detail="work not found")
@@ -306,7 +306,7 @@ def web_feed_rss(
 def web_work(
     request: Request,
     response: Response,
-    work_ident: str = Query(..., min_length=20, max_length=20),
+    work_ident: str = Path(..., min_length=20, max_length=30),
     lang: LangPrefix = Depends(LangPrefix),
     content: ContentNegotiation = Depends(ContentNegotiation),
 ) -> Any:
@@ -420,7 +420,7 @@ def access_redirect_fallback(
 def access_redirect_wayback(
     url: str,
     request: Request,
-    work_ident: str = Query(..., min_length=20, max_length=20),
+    work_ident: str = Path(..., min_length=20, max_length=30),
 ) -> Any:
     raw_original_url = "/".join(str(request.url).split("/")[7:])
     # the quote() call is necessary because the URL is un-encoded in the path parameter
@@ -463,7 +463,7 @@ def access_redirect_ia_file(
     item: str,
     file_path: str,
     request: Request,
-    work_ident: str = Query(..., min_length=20, max_length=20),
+    work_ident: str = Path(..., min_length=20, max_length=30),
 ) -> Any:
     original_path = urllib.parse.quote("/".join(str(request.url).split("/")[8:]))
     access_url = f"https://archive.org/download/{item}/{original_path}"
