@@ -11,6 +11,6 @@ variables:
 test_python:
   script:
     - python3.11 -mvenv .venv
-    - .venv/bin/pip install -rrequirements.txt
+    - .venv/bin/pip install -rci.requirements.txt
     - make lint
     - make test
