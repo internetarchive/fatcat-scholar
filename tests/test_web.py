@@ -111,11 +111,11 @@ def test_basic_rss_feed(client: Any, mocker: Any) -> None:
 
     rv = client.get("/feed/rss?q=blood")
     assert rv.status_code == 200
-    assert rv.content.startswith(b"<rss")
+    assert '<rss version="2.0">' in str(rv.content)
 
     rv = client.get("/zh/feed/rss?q=blood")
     assert rv.status_code == 200
-    assert rv.content.startswith(b"<rss")
+    assert '<rss version="2.0">' in str(rv.content)
 
 
 def test_basic_work_landing_page(client: Any, mocker: Any) -> None:
