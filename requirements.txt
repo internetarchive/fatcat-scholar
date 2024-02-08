@@ -4,10 +4,6 @@
 #
 #    pip-compile --generate-hashes --output-file=requirements.txt
 #
-aiofiles==23.1.0 \
-    --hash=sha256:9312414ae06472eb6f1d163f555e466a23aed1c8f60c30cccf7121dba2e53eb2 \
-    --hash=sha256:edd247df9a19e0db16534d4baaf536d6609a43e1de5401d7a4c1c148753a1635
-    # via scholar (pyproject.toml)
 anyio==4.2.0 \
     --hash=sha256:745843b39e829e108e518c489b31dc757de7d2131d53fac32bd8df268227bfee \
     --hash=sha256:e1875bb4b4e2de1669f4bc7869b6d3f54231cdced71605e6e64c9be77e3be50f

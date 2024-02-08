@@ -6,7 +6,6 @@ build-backend = "setuptools.build_meta"
 name = "scholar"
 description = "Internet Archive Scholar"
 dependencies = [ 
-  "aiofiles==23.1.0",
   "babel==2.12.1",
   "beautifulsoup4 == 4.11.2",
   "confluent-kafka == 2.0.2",
@@ -39,7 +38,7 @@ dependencies = [
   "uvloop==0.17.0",
   "httpx==0.23.3",
 ]
-version = "0.2.3"
+version = "0.2.4"
 authors = [
     {name = "Nate Smith", email = "nsmith@archive.org"},
     {name = "Martin Czygan", email = "martin@archive.org"},
