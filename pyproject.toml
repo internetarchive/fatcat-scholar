@@ -9,7 +9,7 @@ dependencies = [
   "babel==2.12.1",
   "beautifulsoup4 == 4.11.2",
   "confluent-kafka == 2.0.2",
-  "dynaconf == 3.1.12",
+  "dynaconf == 3.2.3",
   # <7.14 pin is because of elasticsearch.exceptions.UnsupportedProductError
   "elasticsearch == 7.13.4",
   "elasticsearch-dsl == 7.4.1",
@@ -38,7 +38,7 @@ dependencies = [
   "uvloop==0.17.0",
   "httpx==0.23.3",
 ]
-version = "0.2.4"
+version = "0.2.6"
 authors = [
     {name = "Nate Smith", email = "nsmith@archive.org"},
     {name = "Martin Czygan", email = "martin@archive.org"},

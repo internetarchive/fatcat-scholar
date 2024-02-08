@@ -271,9 +271,9 @@ defusedxml==0.7.1 \
 docopt==0.6.2 \
     --hash=sha256:49b3a825280bd66b3aa83585ef59c4a8c82f2c8a522dbe754a8bc8d08c85c491
     # via internetarchive
-dynaconf==3.1.12 \
-    --hash=sha256:11a60bcd735f82b8a47b288f99e4ffbbd08c6c130a7be93c5d03e93fc260a5e1 \
-    --hash=sha256:a79d7b3ad4a35af9b576c49f11cd3b23a1b04b87b63a4e9f92cc82f2b0cafeeb
+dynaconf==3.2.3 \
+    --hash=sha256:8a37ba3b16df64cb1db383eaad9c733aece218413be0fad5d785f7a907612106 \
+    --hash=sha256:df4af8d0f3b068cc6419ceceaae572070a6b8fec38fa51a1f5eb8ea4883e53de
     # via scholar (pyproject.toml)
 elasticsearch==7.13.4 \
     --hash=sha256:52dda85f76eeb85ec873bf9ffe0ba6849e544e591f66d4048a5e48016de268e0 \
