@@ -48,6 +48,18 @@ readme = "README.md"
 license = {text = "AGPL3"}
 
 [project.optional-dependencies]
+ci = [
+  "mypy==1.1.1",
+  "typing-extensions==4.8.0",
+  "pytest==7.2.2",
+  "pytest-cov==4.0.0",
+  "pytest-mock==3.10.0",
+  "responses==0.23.1",
+  "types-babel==2.11.0.11",
+  "types-beautifulsoup4==4.11.6.7",
+  "types-requests==2.28.11.15",
+  "ruff==0.2.1",
+]
 dev = [
   "ipython==8.11.0",
   "mypy==1.1.1",
