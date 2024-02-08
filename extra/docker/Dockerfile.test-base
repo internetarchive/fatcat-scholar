@@ -1,0 +1,8 @@
+# syntax=docker/dockerfile:1
+
+FROM ubuntu:focal
+RUN \
+apt-get update &&\
+apt-get -y install software-properties-common && \
+add-apt-repository ppa:deadsnakes/ppa -uy && \
+apt-get install -y python3.11 python3.11-venv python3.11-dev python3.11-distutils binutils build-essential libffi-dev
