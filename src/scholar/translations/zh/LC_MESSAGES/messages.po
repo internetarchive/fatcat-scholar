@@ -12,18 +12,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
-"POT-Creation-Date: 2022-11-16 20:35-0800\n"
+"POT-Creation-Date: 2024-02-09 14:56-0800\n"
 "PO-Revision-Date: 2022-12-11 01:52+0000\n"
 "Last-Translator: Eric <hamburger1024@duck.com>\n"
-"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
-"internetarchive/fatcat-scholar/zh_Hans/>\n"
 "Language: zh\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Language-Team: Chinese (Simplified) "
+"<https://hosted.weblate.org/projects/internetarchive/fatcat-"
+"scholar/zh_Hans/>\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.15-dev\n"
-"Generated-By: Babel 2.8.0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.12.1\n"
 
 #: src/scholar/search.py:45
 msgid "Release Date"
@@ -114,179 +114,161 @@ msgstr "关于 %(website_name)s"
 msgid "About Internet Archive Scholar"
 msgstr "关于互联网档案馆学术"
 
-#: src/scholar/templates/about.html:10
-#, python-format
-msgid ""
-"See also: <a href=\"%(lang_prefix)s/help\">User Guide</a> which lists some "
-"bugs and known issues"
-msgstr ""
-"另见<a href=\"%(lang_prefix)s/help\">用户指南</a>，其中列出了一些错误和已知问"
-"题"
-
-#: src/scholar/templates/about.html:14
-#: src/scholar/templates/base.html:206
+#: src/scholar/templates/about.html:11 src/scholar/templates/base.html:206
 msgid "How It Works"
 msgstr "怎么运行的"
 
-#: src/scholar/templates/about.html:16
+#: src/scholar/templates/about.html:13
 msgid "Content in this search index comes in one of three forms:"
 msgstr "这个搜索索引的内容将以下列三种形式之一呈现："
 
-#: src/scholar/templates/about.html:19
+#: src/scholar/templates/about.html:16
 msgid ""
-"<b>public web content</b> as preserved in <a href=\"https://web.archive.org"
-"\">The Wayback Machine</a> and <a href=\"https://archive-it.org\">Archive-"
-"It</a> partner collections"
+"<b>public web content</b> as preserved in <a "
+"href=\"https://web.archive.org\">The Wayback Machine</a> and <a "
+"href=\"https://archive-it.org\">Archive-It</a> partner collections"
 msgstr ""
 "<b>公共网络内容</b>保存于 <a href=\"https://web.archive.org\">The Wayback "
 "Machine</a>和<a href=\"https://archive-it.org\">Archive-It</a>合作伙伴收藏"
 
-#: src/scholar/templates/about.html:20
+#: src/scholar/templates/about.html:17
 msgid "<b>digitized print materials</b> from paper and microform collections"
 msgstr "<b>数字化的印刷材料</b>，源自纸质和缩微收藏"
 
-#: src/scholar/templates/about.html:21
+#: src/scholar/templates/about.html:18
 msgid ""
-"<b>general materials</b> from <a href=\"https://archive.org\">archive.org "
-"collections</a>, including collaborations with partners"
+"<b>general materials</b> from <a href=\"https://archive.org\">archive.org"
+" collections</a>, including collaborations with partners"
 msgstr ""
-"<b>一般材料</b>，源自<a href=\"https://archive.org\">archive.org 收藏</a>，包"
-"括与合作伙伴的协作"
+"<b>一般材料</b>，源自<a href=\"https://archive.org\">archive.org "
+"收藏</a>，包括与合作伙伴的协作"
 
-#: src/scholar/templates/about.html:24
+#: src/scholar/templates/about.html:21
 #, python-format
 msgid ""
-"This <a href=\"%(url)s\">2019 FORCE11 conference presentation</a> gives an "
-"overview of the technical infrastructure and goals of the project overall."
-msgstr ""
-"这份<a href=\"%(url)s\">2019年FORCE11会议报告</a>概述了项目整体的技术基础设施"
-"和目标。"
+"This <a href=\"%(url)s\">2019 FORCE11 conference presentation</a> gives "
+"an overview of the technical infrastructure and goals of the project "
+"overall."
+msgstr "这份<a href=\"%(url)s\">2019年FORCE11会议报告</a>概述了项目整体的技术基础设施和目标。"
 
-#: src/scholar/templates/about.html:27
-#: src/scholar/templates/base.html:207
+#: src/scholar/templates/about.html:24 src/scholar/templates/base.html:207
 msgid "Content Sources"
 msgstr "内容来源"
 
-#: src/scholar/templates/about.html:29
+#: src/scholar/templates/about.html:26
 msgid ""
 "Metadata comes from <a href=\"https://fatcat.wiki\">fatcat.wiki</a>, an "
 "open\n"
-"user-editable catalog of scholarly work. It should be possible to track and\n"
-"attribute the provenance of content and metadata in all cases. Please\n"
-"<a href=\"#contact\">contact us</a> if you have questions."
+"user-editable catalog of scholarly work."
 msgstr ""
-"元数据来自<a href=\"https://fatcat.wiki\">fatcat.wiki</a>，一个开放的\n"
-"用户可编辑的学术工作目录。应该能够跟踪和\n"
-"在所有情况下，都要对内容和元数据的出处进行归属。请\n"
-"<a href=\"#contact\">如有疑问请联系我们</a>。"
 
-#: src/scholar/templates/about.html:35
-#: src/scholar/templates/base.html:208
+#: src/scholar/templates/about.html:30 src/scholar/templates/base.html:208
 msgid "Text and Data Mining"
 msgstr "文本和数据挖掘"
 
-#: src/scholar/templates/about.html:37
+#: src/scholar/templates/about.html:32
+#, fuzzy
 msgid ""
-"We intend to provide researcher access to the full corpus for text and data\n"
-"mining purposes. Derived datasets may also be posted publicly for analysis, "
-"for\n"
+"We intend to provide researcher access to the full corpus for text and "
+"data\n"
+"mining purposes. Derived datasets may also be posted publicly for "
+"analysis, for\n"
 "example a citation graph or N-gram frequencies by year. If you are "
 "interested\n"
-"or would like to see specific datasets made available, please contact us."
+"or would like to see specific datasets made available, please contact us "
+"at scholar@archive.org."
 msgstr ""
 "我们打算为研究人员提供文本和数据的完整语料库访问。\n"
 "采矿目的。衍生的数据集也可以公开发布，用于分析，以达到以下目的\n"
 "例如引文图或按年份排列的N-gram频率。如果您有兴趣\n"
 "或希望看到特定的数据集，请联系我们。"
 
-#: src/scholar/templates/about.html:42
+#: src/scholar/templates/about.html:37
 msgid ""
-"Currently snapshots of the full fatcat metadata corpus and upstream metadata "
-"sources are uploaded periodically to the <a href=\"https://archive.org/"
-"details/ia_biblio_metadata\">Bulk Bibliographic Metadata</a> collection on "
-"archive.org."
+"Currently snapshots of the full fatcat metadata corpus and upstream "
+"metadata sources are uploaded periodically to the <a "
+"href=\"https://archive.org/details/ia_biblio_metadata\">Bulk "
+"Bibliographic Metadata</a> collection on archive.org."
 msgstr ""
-"目前，完整的fatcat元数据语料库和上游元数据源的快照会定期上传到archive.org上的"
-"<a href=\"https://archive.org/details/ia_biblio_metadata\">批量书目元数据</a>"
-"集合。"
+"目前，完整的fatcat元数据语料库和上游元数据源的快照会定期上传到archive.org上的<a "
+"href=\"https://archive.org/details/ia_biblio_metadata\">批量书目元数据</a>集合。"
 
-#: src/scholar/templates/about.html:44
+#: src/scholar/templates/about.html:39
 msgid ""
 "Read more in <a href=\"https://guide.fatcat.wiki/bulk_exports.html\">the "
 "Fatcat Guide</a>."
-msgstr ""
-"更多内容请阅读<a href=\"https://guide.fatcat.wiki/bulk_exports.html\">《肥猫"
-"指南》</a>。"
+msgstr "更多内容请阅读<a href=\"https://guide.fatcat.wiki/bulk_exports.html\">《肥猫指南》</a>。"
 
-#: src/scholar/templates/about.html:47
+#: src/scholar/templates/about.html:42
 msgid "Authors and Publishers"
 msgstr "作者和出版商"
 
-#: src/scholar/templates/about.html:50
+#: src/scholar/templates/about.html:45
 #, python-format
 msgid ""
-"Information specifically for authors of research works can be found at <a "
-"href=\"%(url)s\">%(url)s</a>. This includes instructions for correcting "
+"Information specifically for authors of research works can be found at <a"
+" href=\"%(url)s\">%(url)s</a>. This includes instructions for correcting "
 "bibliographic metadata and updates to published works."
 msgstr ""
 "可以访问 <a href=\"%(url)s\">%(url)s</a> "
 "获取专为研究著作作者准备的信息。这包括更正书目元数据和更新已发表作品的说明。"
 
-#: src/scholar/templates/about.html:53
+#: src/scholar/templates/about.html:48
 #, python-format
 msgid ""
-"Likewise information specifically for publishers can be found at <a href="
-"\"%(url)s\">%(url)s</a>. This includes guidelines for having content indexed "
-"and preserved."
-msgstr "类似地，可以访问 <a href=\"%(url)s\">%(url)s</a> "
-"获取专为出版商准备的信息。这包括对内容进行索引和保存的指南。"
+"In alignment with its mission, Internet Archive makes automated attempts "
+"to capture and preserve all open access research publications on the "
+"public web. If your open access journal articles aren’t currently "
+"included in Internet Archive Scholar, you can fill out the <a "
+"href=\"https://form.jotform.com/232483341499059\">Internet Archive "
+"Scholar inclusion form</a> to share journal URLs for crawling. Please "
+"note that it will take at least 3 months from the time you submit this "
+"form until your content starts to appear in Internet Archive Scholar. "
+"Emails about the status of your content sent less than 3 months after "
+"submitting this form will not be answered. Additional information "
+"specifically for publishers can be found at <a "
+"href=\"%(url)s\">%(url)s</a>. This includes guidelines for having content"
+" indexed and preserved."
+msgstr ""
 
-#: src/scholar/templates/about.html:56
+#: src/scholar/templates/about.html:51
 msgid "Contact Information"
 msgstr "联系信息"
 
-#: src/scholar/templates/about.html:59
+#: src/scholar/templates/about.html:53
 #, python-format
 msgid ""
-"The organizational contact information for the Internet Archive is listed at "
-"<a href=\"%(url)s\">%(url)s</a>."
-msgstr "互联网档案馆的组织联系信息列于<a href=\"%(url)s\">%(url)s</a>。"
+"Queries about this search service and the fatcat catalog can be directed "
+"to <a href=\"mailto:%(email)s\">%(email)s</a>."
+msgstr "关于这个搜索服务和fatcat目录的查询可以直接到<a href=\"mailto:%(email)s\">%(email)s</a>。"
 
-#: src/scholar/templates/about.html:61
-#, python-format
-msgid ""
-"Queries about this search service and the fatcat catalog can be directed to "
-"<a href=\"mailto:%(email)s\">%(email)s</a>."
-msgstr ""
-"关于这个搜索服务和fatcat目录的查询可以直接到<a href=\"mailto:%(email)s\">"
-"%(email)s</a>。"
-
-#: src/scholar/templates/about.html:63
+#: src/scholar/templates/about.html:55
 #, python-format
 msgid "There is a public chat channel at <a href=\"%(url)s\">%(url)s</a>."
 msgstr "在<a href=\"%(url)s\">%(url)s</a>有一个公共聊天频道。"
 
-#: src/scholar/templates/about.html:66
+#: src/scholar/templates/about.html:58
 msgid "Support and Acknowledgements"
 msgstr "支持和致谢"
 
-#: src/scholar/templates/about.html:69
+#: src/scholar/templates/about.html:61
 #, python-format
 msgid ""
 "Work on Internet Archive Scholar has received support from the Andrew W. "
-"Mellon Foundation through multiple phases of the <a href=\"%(grant_url)s\">"
-"\"Ensuring the Persistent Access of Open Access Journal Literature\"</a> "
-"project (see <a href=\"%(blog_url)s\">original announcement</a>)."
+"Mellon Foundation through multiple phases of the <a "
+"href=\"%(grant_url)s\">\"Ensuring the Persistent Access of Open Access "
+"Journal Literature\"</a> project (see <a href=\"%(blog_url)s\">original "
+"announcement</a>)."
 msgstr ""
-"Internet Archive 学术的工作获得了安德鲁W·梅隆基金会 <a href=\"%(grant_url)s"
-"\">“确保开放获取期刊文献的持续访问”</a> 项目多个阶段的支持 (见 <a href="
-"\"%(blog_url)s\">原始声明</a>)。"
+"Internet Archive 学术的工作获得了安德鲁W·梅隆基金会 <a "
+"href=\"%(grant_url)s\">“确保开放获取期刊文献的持续访问”</a> 项目多个阶段的支持 (见 <a "
+"href=\"%(blog_url)s\">原始声明</a>)。"
 
-#: src/scholar/templates/about.html:71
+#: src/scholar/templates/about.html:63
 #, python-format
 msgid ""
-"See additional acknowledgements on <a href=\"%(fatcat_url)s\">fatcat.wiki</"
-"a>."
+"See additional acknowledgements on <a "
+"href=\"%(fatcat_url)s\">fatcat.wiki</a>."
 msgstr "查看其它致谢，请前往 <a href=\"%(fatcat_url)s\">fatcat.wiki</a>。"
 
 #: src/scholar/templates/access_404.html:10
@@ -295,20 +277,20 @@ msgstr "404：未找到访问位置"
 
 #: src/scholar/templates/access_404.html:11
 msgid ""
-"We could not find a valid redirect for the URL you tried. Sorry about that!"
+"We could not find a valid redirect for the URL you tried. Sorry about "
+"that!"
 msgstr "我们找不到您尝试的 URL 的有效重定向。我们对此很抱歉！"
 
 #: src/scholar/templates/access_404.html:12
 msgid ""
 "There may be a typo, truncation, or encoding error. Or, the resource may "
 "have been removed from our catalog."
-msgstr ""
-"可能存在拼写错误、截断或编码错误。 或者，该资源可能已从我们的目录中删除。"
+msgstr "可能存在拼写错误、截断或编码错误。 或者，该资源可能已从我们的目录中删除。"
 
 #: src/scholar/templates/access_404.html:13
 msgid ""
-"Some places you can visit try to hunt down this resource (or a replacement) "
-"include:"
+"Some places you can visit try to hunt down this resource (or a "
+"replacement) include:"
 msgstr "您可以访问以下地方尝试寻找此资源（或替代资源）："
 
 #: src/scholar/templates/access_404.html:16
@@ -367,17 +349,14 @@ msgstr "用户指南"
 msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
-msgstr ""
-"我们是一家美国的501(c)(3)非营利图书馆，旨在以数字形式建立一个互联网站点和其他"
-"文化文物的全球档案馆。"
+msgstr "我们是一家美国的501(c)(3)非营利图书馆，旨在以数字形式建立一个互联网站点和其他文化文物的全球档案馆。"
 
 #: src/scholar/templates/base.html:178
 #, python-format
 msgid ""
-"Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and "
-"%(archive_it)s."
-msgstr ""
-"其他项目包括%(wayback)s、%(archive_org)s、%(openlibrary)s和%(archive_it)s。"
+"Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and"
+" %(archive_it)s."
+msgstr "其他项目包括%(wayback)s、%(archive_org)s、%(openlibrary)s和%(archive_it)s。"
 
 #: src/scholar/templates/base.html:185
 msgid "About Us"
@@ -419,7 +398,7 @@ msgstr "服务状态"
 msgid "Source Code"
 msgstr "源代码"
 
-#: src/scholar/templates/base.html:210
+#: src/scholar/templates/base.html:209
 msgid "Help"
 msgstr "说明"
 
@@ -458,34 +437,32 @@ msgid "See also: <a href=\"%(lang_prefix)s/about\">About Scholarly Search</a>"
 msgstr "另请参阅：<a href=\"%(lang_prefix)s/about\">关于学术搜索</a>"
 
 #: src/scholar/templates/help.html:25
+#, fuzzy
 msgid ""
 "This service provides <a href=\"https://en.wikipedia.org/wiki/Full-"
-"text_search\">fulltext searching</a> over research publications archived in "
-"Internet Archive's various collections. It includes content from the natural "
-"sciences, humanities, biomedicine, art, history, industrial research, "
-"government reports, and more."
+"text_search\">fulltext searching</a> for research publications archived "
+"in Internet Archive's various collections. It includes content from the "
+"natural sciences, humanities, biomedicine, art, history, industrial "
+"research, government reports, and more."
 msgstr ""
-"本服务提供对存档于互联网档案馆中各种集合的研究出版物进行<a href=\"https://en."
-"wikipedia.org/wiki/Full-text_search\">全文搜索</a>。它包括自然科学，人文科"
-"学，生物医学，艺术，历史，工业研究，政府报告等内容。"
+"本服务提供对存档于互联网档案馆中各种集合的研究出版物进行<a href=\"https://en.wikipedia.org/wiki/Full-"
+"text_search\">全文搜索</a>。它包括自然科学，人文科学，生物医学，艺术，历史，工业研究，政府报告等内容。"
 
 #: src/scholar/templates/help.html:26
+#, fuzzy
 msgid ""
 "Reader access to the content is provided when possible. Sometimes this "
-"access is to a \"pre-print\" or other version of the work, and this is "
+"access is to a preprint or other version of the work, and this is "
 "indicated in the search results."
-msgstr ""
-"如果可能，提供读者对内容的访问。有时，这种访问是对作品的“预印本”或其他版本的"
-"访问，这在搜索结果中指明。"
+msgstr "如果可能，提供读者对内容的访问。有时，这种访问是对作品的“预印本”或其他版本的访问，这在搜索结果中指明。"
 
 #: src/scholar/templates/help.html:28
 msgid ""
-"In other cases, depending on search filters, results are included for which "
-"there is only a bibliographic catalog entry. It may still be possible to "
-"obtain access through a public library or from the publisher directly."
-msgstr ""
-"在其他情况下，根据搜索过滤器，将包括仅包含书目目录条目的结果。仍然有可能通过"
-"公共图书馆或直接从出版商获得访问权限。"
+"In other cases, depending on search filters, results are included for "
+"which there is only a bibliographic catalog entry. It may still be "
+"possible to obtain access through a public library or from the publisher "
+"directly."
+msgstr "在其他情况下，根据搜索过滤器，将包括仅包含书目目录条目的结果。仍然有可能通过公共图书馆或直接从出版商获得访问权限。"
 
 #: src/scholar/templates/help.html:30
 msgid "Query Syntax"
@@ -494,8 +471,8 @@ msgstr "查询语法"
 #: src/scholar/templates/help.html:32
 msgid ""
 "In addition to the basic filtering and sorting options, this search\n"
-"interface also allows the use of Lucene query syntax in the search box. You "
-"can\n"
+"interface also allows the use of Lucene query syntax in the search box. "
+"You can\n"
 "restrict term queries on multiple metadata fields using colon statements "
 "like\n"
 "<code>journal:Science</code>, set filters like <code>lang:de</code>, and\n"
@@ -504,26 +481,21 @@ msgstr ""
 "除了基本的过滤和排序选项，此搜索\n"
 "界面还允许在搜索框中使用Lucene查询语法。您可以\n"
 "使用冒号语句限制对多个元数据字段的术语查询\n"
-"<code> journal：Science </code>，设置过滤器，例如<code> lang：de </code>，以"
-"及\n"
+"<code> journal：Science </code>，设置过滤器，例如<code> lang：de </code>，以及\n"
 "应用范围查询，例如<code> year：&gt; 1989 year：&lt; 2000 </code>。"
 
 #: src/scholar/templates/help.html:38
 msgid ""
 "While this syntax allows for relatively complex and powerful queries, at "
-"some point advanced users may run into limits on the size or complexity of "
-"queries."
-msgstr ""
-"虽然这种语法允许相对复杂和强大的查询，但某些时候，高级用户可能会遇到查询的大"
-"小或复杂性的限制。"
+"some point advanced users may run into limits on the size or complexity "
+"of queries."
+msgstr "虽然这种语法允许相对复杂和强大的查询，但某些时候，高级用户可能会遇到查询的大小或复杂性的限制。"
 
 #: src/scholar/templates/help.html:40
 msgid ""
-"For the time being we recommend systems like <a href=\"https://lens.org"
-"\">lens.org</a> for a more powerful interface."
-msgstr ""
-"目前，我们建议使用<a href=\"https://lens.org\"> lens.org </a>之类的系统来提供"
-"更强大的界面。"
+"For the time being we recommend systems like <a "
+"href=\"https://lens.org\">lens.org</a> for a more powerful interface."
+msgstr "目前，我们建议使用<a href=\"https://lens.org\"> lens.org </a>之类的系统来提供更强大的界面。"
 
 #: src/scholar/templates/help.html:43
 msgid "Example Queries"
@@ -548,13 +520,10 @@ msgstr "引文查询"
 #: src/scholar/templates/help.html:58
 msgid ""
 "As an experimental feature, if the search query \"looks like\" a formal "
-"citation, as found in the bibliography of a research paper, the service will "
-"attempt to parse the citation and do a match against our catalog of known "
-"works. When this happens, any filters are ignored."
-msgstr ""
-"作为一项实验性功能，如果搜索查询“看起来像”是正式引文（如在研究论文的书目中发"
-"现的那样），则该服务将尝试解析引文，并与我们的已知作品目录进行匹配。发生这种"
-"情况时，将忽略所有过滤器。"
+"citation, as found in the bibliography of a research paper, the service "
+"will attempt to parse the citation and do a match against our catalog of "
+"known works. When this happens, any filters are ignored."
+msgstr "作为一项实验性功能，如果搜索查询“看起来像”是正式引文（如在研究论文的书目中发现的那样），则该服务将尝试解析引文，并与我们的已知作品目录进行匹配。发生这种情况时，将忽略所有过滤器。"
 
 #: src/scholar/templates/help.html:62
 msgid "Metadata Fields"
@@ -563,32 +532,34 @@ msgstr "元数据字段"
 #: src/scholar/templates/help.html:64
 msgid ""
 "You can restrict to records where the field exists with an asterisk like "
-"<code>doi:*</code>, and negate any term like <code>!type:article-journal</"
-"code>."
+"<code>doi:*</code>, and negate any term like <code>!type:article-"
+"journal</code>."
 msgstr ""
-"您可以使用星号（例如<code> doi：* </code>）限制字段存在的记录，并否定<code>！"
-"type：article-journal </code>之类的任何术语。"
+"您可以使用星号（例如<code> doi：* </code>）限制字段存在的记录，并否定<code>！type：article-journal "
+"</code>之类的任何术语。"
 
 #: src/scholar/templates/help.html:66
 msgid ""
-"In-depth documentation of the query syntax is available <a href=\"https://"
-"www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-"
-"string-query.html#query-string-query-notes\">from the Elasticsearch project</"
-"a>."
+"In-depth documentation of the query syntax is available <a "
+"href=\"https://www.elastic.co/guide/en/elasticsearch/reference/current"
+"/query-dsl-query-string-query.html#query-string-query-notes\">from the "
+"Elasticsearch project</a>."
 msgstr ""
-"查询语法的深入文档是可用的，参见 <a href=\"https://www.elastic.co/guide/en/"
-"elasticsearch/reference/current/query-dsl-query-string-query.html#query-"
-"string-query-notes\">，这源自 Elasticsearch 项目</a>。"
+"查询语法的深入文档是可用的，参见 <a "
+"href=\"https://www.elastic.co/guide/en/elasticsearch/reference/current"
+"/query-dsl-query-string-query.html#query-string-query-notes\">，这源自 "
+"Elasticsearch 项目</a>。"
 
 #: src/scholar/templates/help.html:68
 msgid ""
-"The complete current search document schema is available (as JSON) <a href="
-"\"https://github.com/internetarchive/fatcat-scholar/blob/master/schema/"
-"scholar_fulltext.v01.json\">in the source code</a>."
+"The complete current search document schema is available (as JSON) <a "
+"href=\"https://github.com/internetarchive/fatcat-"
+"scholar/blob/master/schema/scholar_fulltext.v01.json\">in the source "
+"code</a>."
 msgstr ""
-"完整的当前搜索文档模式是可用的 (作为 JSON)，参见 <a href=\"https://github."
-"com/internetarchive/fatcat-scholar/blob/master/schema/scholar_fulltext.v01."
-"json\">，这位于项目源码</a>。"
+"完整的当前搜索文档模式是可用的 (作为 JSON)，参见 <a href=\"https://github.com/internetarchive"
+"/fatcat-"
+"scholar/blob/master/schema/scholar_fulltext.v01.json\">，这位于项目源码</a>。"
 
 #: src/scholar/templates/help.html:105
 msgid "Search Results"
@@ -600,29 +571,24 @@ msgstr "访问链接"
 
 #: src/scholar/templates/help.html:118
 msgid ""
-"All Internet Archive preservation copy links have the same style and icon. "
-"Content from the Wayback Machine looks like this."
-msgstr ""
-"所有Internet存档保留副本链接均具有相同的样式和图标。 Wayback Machine的内容如"
-"下所示。"
+"All Internet Archive preservation copy links have the same style and "
+"icon. Content from the Wayback Machine looks like this."
+msgstr "所有Internet存档保留副本链接均具有相同的样式和图标。 Wayback Machine的内容如下所示。"
 
 #: src/scholar/templates/help.html:122
 msgid ""
-"If the preserved copy of the work is from a pre-print, author manuscript, or "
-"other alternative version of the work, the access link has an indicator. You "
-"can get details and view all versions by clicking on the primary title link"
-msgstr ""
-"如果该作品的保留副本来自该作品的预印本，作者手稿或其他替代版本，则访问链接具"
-"有指示符。您可以通过单击主要标题链接来获取详细信息并查看所有版本"
+"If the preserved copy of the work is from a pre-print, author manuscript,"
+" or other alternative version of the work, the access link has an "
+"indicator. You can get details and view all versions by clicking on the "
+"primary title link"
+msgstr "如果该作品的保留副本来自该作品的预印本，作者手稿或其他替代版本，则访问链接具有指示符。您可以通过单击主要标题链接来获取详细信息并查看所有版本"
 
 #: src/scholar/templates/help.html:126
 msgid ""
 "Some preserved content, particularly older Public Domain works, may be "
-"stored in general Internet Archive digital collections (as opposed to the "
-"web archive)"
-msgstr ""
-"一些保留的内容，尤其是较旧的Public Domain作品，可以存储在一般的Internet存档数"
-"字馆藏中（与Web存档相对）"
+"stored in general Internet Archive digital collections (as opposed to the"
+" web archive)"
+msgstr "一些保留的内容，尤其是较旧的Public Domain作品，可以存储在一般的Internet存档数字馆藏中（与Web存档相对）"
 
 #: src/scholar/templates/help.html:130
 msgid ""
@@ -632,20 +598,19 @@ msgstr "缩微胶卷作品的数字化副本可以与实验相关。访问权限
 
 #: src/scholar/templates/help.html:134
 msgid ""
-"A publisher landing page is the authoritative source for the \"version of "
-"record\" of a research publication, but content is not always accessible to "
-"the general public"
-msgstr ""
-"出版商登录页面是研究出版物“记录版本”的权威来源，但公众并不总是可以访问内容"
+"A publisher landing page is the authoritative source for the \"version of"
+" record\" of a research publication, but content is not always accessible"
+" to the general public"
+msgstr "出版商登录页面是研究出版物“记录版本”的权威来源，但公众并不总是可以访问内容"
 
 #: src/scholar/templates/help.html:138
 msgid ""
-"When the work is from an Open Access publication (sometimes known as \"Gold"
-"\" or \"Diamond\" OA), and the publisher is expected to provide access to "
-"all readers, the button has an orange \"unlocked\" icon"
+"When the work is from an Open Access publication (sometimes known as "
+"\"Gold\" or \"Diamond\" OA), and the publisher is expected to provide "
+"access to all readers, the button has an orange \"unlocked\" icon"
 msgstr ""
-"当作品来自Open Access出版物（有时称为“ Gold”或“ Diamond” OA），并且期望出版者"
-"提供对所有阅读器的访问权限时，该按钮具有橙色的“解锁”图标"
+"当作品来自Open Access出版物（有时称为“ Gold”或“ Diamond” "
+"OA），并且期望出版者提供对所有阅读器的访问权限时，该按钮具有橙色的“解锁”图标"
 
 #: src/scholar/templates/help.html:142
 msgid ""
@@ -659,86 +624,81 @@ msgstr "标签"
 
 #: src/scholar/templates/help.html:150
 msgid ""
-"Search results may have tag labels which provide additional context about "
-"the work. For example, indexes the journal is included in, or open platform "
-"technology used for publications."
-msgstr ""
-"搜索结果可能具有标签标签，这些标签标签提供了有关作品的其他背景信息。例如，包"
-"含期刊的索引，或用于出版物的开放平台技术。"
+"Search results may have tag labels which provide additional context about"
+" the work. For example, indexes the journal is included in, or open "
+"platform technology used for publications."
+msgstr "搜索结果可能具有标签标签，这些标签标签提供了有关作品的其他背景信息。例如，包含期刊的索引，或用于出版物的开放平台技术。"
 
 #: src/scholar/templates/help.html:160
 msgid ""
-"There are multiple released \"versions\" or \"editions\" of this work, and "
-"bibliographic metadata for the \"primary\" is being shown. Click the title "
-"to see other versions"
-msgstr ""
-"该作品有多个发行的“版本”或“版本”，并且正在显示“主要”的书目元数据。点击标题以"
-"查看其他版本"
+"There are multiple released \"versions\" or \"editions\" of this work, "
+"and bibliographic metadata for the \"primary\" is being shown. Click the "
+"title to see other versions"
+msgstr "该作品有多个发行的“版本”或“版本”，并且正在显示“主要”的书目元数据。点击标题以查看其他版本"
 
 #: src/scholar/templates/help.html:164
 msgid ""
 "The primary language of this work is different from the search interface "
-"language. The <a href=\"https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes"
-"\">ISO two-letter language code</a> is indicated"
+"language. The <a "
+"href=\"https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes\">ISO two-"
+"letter language code</a> is indicated"
 msgstr ""
-"这项工作的主要语言不同于搜索界面语言。指示<a href=\"https://en.wikipedia.org/"
-"wiki/List_of_ISO_639-1_codes\"> ISO两字母语言代码</a>"
+"这项工作的主要语言不同于搜索界面语言。指示<a "
+"href=\"https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes\"> "
+"ISO两字母语言代码</a>"
 
 #: src/scholar/templates/help.html:168
 msgid ""
 "Published in a <a href=\"https://doaj.org\">Directory of Open Access "
 "Journals</a> publication, which implies that this is an Open Access work"
-msgstr ""
-"发表在<a href=\"https://doaj.org\">开放获取期刊目录</a>出版物中，这意味着这是"
-"一项开放获取工作"
+msgstr "发表在<a href=\"https://doaj.org\">开放获取期刊目录</a>出版物中，这意味着这是一项开放获取工作"
 
 #: src/scholar/templates/help.html:172
 msgid ""
-"Publication indexed in <a href=\"https://www.ebsco.com/open-access/"
-"szczepanski-list\">Szczepanski's List of Open Access Journals</a>, which "
-"implies that this is an Open Access work"
+"Publication indexed in <a href=\"https://www.ebsco.com/open-access"
+"/szczepanski-list\">Szczepanski's List of Open Access Journals</a>, which"
+" implies that this is an Open Access work"
 msgstr ""
-"在<a href=\"https://www.ebsco.com/open-access/szczepanski-list\"> Szczepanski"
-"的“开放获取期刊列表” </a>中索引的出版物，这意味着这是一项开放获取工作"
+"在<a href=\"https://www.ebsco.com/open-access/szczepanski-list\"> "
+"Szczepanski的“开放获取期刊列表” </a>中索引的出版物，这意味着这是一项开放获取工作"
 
 #: src/scholar/templates/help.html:176
 msgid ""
-"The work is believed to be <a href=\"https://en.wikipedia.org/wiki/"
-"Open_access\">\"Open Access\"</a> for any other reason"
+"The work is believed to be <a "
+"href=\"https://en.wikipedia.org/wiki/Open_access\">\"Open Access\"</a> "
+"for any other reason"
 msgstr ""
-"由于任何其他原因，该作品被认为是<a href=\"https://en.wikipedia.org/wiki/"
-"Open_access\">“开放获取” </a>"
+"由于任何其他原因，该作品被认为是<a "
+"href=\"https://en.wikipedia.org/wiki/Open_access\">“开放获取” </a>"
 
 #: src/scholar/templates/help.html:180
 msgid ""
-"Published on a <a href=\"https://en.wikipedia.org/wiki/SciELO\">SciELO</a> "
-"national platform"
-msgstr ""
-"在<a href=\"https://en.wikipedia.org/wiki/SciELO\"> SciELO </a>国家平台上发布"
+"Published on a <a "
+"href=\"https://en.wikipedia.org/wiki/SciELO\">SciELO</a> national "
+"platform"
+msgstr "在<a href=\"https://en.wikipedia.org/wiki/SciELO\"> SciELO </a>国家平台上发布"
 
 #: src/scholar/templates/help.html:184
 msgid ""
-"Published using <a href=\"https://en.wikipedia.org/wiki/Open_Journal_Systems"
-"\">Open Journal Systems</a> software"
+"Published using <a "
+"href=\"https://en.wikipedia.org/wiki/Open_Journal_Systems\">Open Journal "
+"Systems</a> software"
 msgstr ""
 "使用<a href=\"https://en.wikipedia.org/wiki/Open_Journal_Systems\"> Open "
 "Journal Systems </a>软件发布"
 
 #: src/scholar/templates/help.html:188
 msgid ""
-"Published using <a href=\"https://en.wikipedia.org/wiki/Wordpress"
-"\">WordPress</a> software"
-msgstr ""
-"使用<a href=\"https://en.wikipedia.org/wiki/Wordpress\"> WordPress </a>软件发"
-"布"
+"Published using <a "
+"href=\"https://en.wikipedia.org/wiki/Wordpress\">WordPress</a> software"
+msgstr "使用<a href=\"https://en.wikipedia.org/wiki/Wordpress\"> WordPress </a>软件发布"
 
 #: src/scholar/templates/help.html:192
 msgid ""
-"Preserved and/or hosted on the <a href=\"https://en.wikipedia.org/wiki/JSTOR"
-"\">JSTOR</a> digital preservation platform"
-msgstr ""
-"在<a href=\"https://en.wikipedia.org/wiki/JSTOR\"> JSTOR </a>数字保存平台上保"
-"存和/或托管"
+"Preserved and/or hosted on the <a "
+"href=\"https://en.wikipedia.org/wiki/JSTOR\">JSTOR</a> digital "
+"preservation platform"
+msgstr "在<a href=\"https://en.wikipedia.org/wiki/JSTOR\"> JSTOR </a>数字保存平台上保存和/或托管"
 
 #: src/scholar/templates/help.html:198
 msgid "Persistent Identifiers"
@@ -747,20 +707,19 @@ msgstr "持久标识符"
 #: src/scholar/templates/help.html:200
 msgid ""
 "Underneath search results, and alternate version listings, are any known "
-"\"persistent identifiers\" that uniquely identify the specific version of "
-"the work. These are usually hyperlinks."
-msgstr ""
-"在搜索结果和替代版本列表的下方，是可以唯一标识作品特定版本的任何已知“持久标识"
-"符”。这些通常是超链接。"
+"\"persistent identifiers\" that uniquely identify the specific version of"
+" the work. These are usually hyperlinks."
+msgstr "在搜索结果和替代版本列表的下方，是可以唯一标识作品特定版本的任何已知“持久标识符”。这些通常是超链接。"
 
 #: src/scholar/templates/help.html:210
 msgid ""
-"<a href=\"https://en.wikipedia.org/wiki/Digital_object_identifier\">Digital "
-"Object Identifier (DOI)</a>, provides a redirect to the publisher's landing "
-"page"
+"<a "
+"href=\"https://en.wikipedia.org/wiki/Digital_object_identifier\">Digital "
+"Object Identifier (DOI)</a>, provides a redirect to the publisher's "
+"landing page"
 msgstr ""
-"<a href=\"https://en.wikipedia.org/wiki/Digital_object_identifier\">数字对象"
-"标识符（DOI）</a>，用于重定向到发布者的登录页面"
+"<a "
+"href=\"https://en.wikipedia.org/wiki/Digital_object_identifier\">数字对象标识符（DOI）</a>，用于重定向到发布者的登录页面"
 
 #: src/scholar/templates/help.html:214
 msgid "PubMed/MEDLINE"
@@ -779,8 +738,7 @@ msgid "The DBLP Computer Science Bibliography"
 msgstr "DBLP计算机科学书目"
 
 #: src/scholar/templates/help.html:230
-msgid ""
-"Article-level identifier for works in DOAJ, particularly those with no DOI"
+msgid "Article-level identifier for works in DOAJ, particularly those with no DOI"
 msgstr "DOAJ中作品的文章级标识符，尤其是没有DOI的作品"
 
 #: src/scholar/templates/help.html:234
@@ -788,56 +746,46 @@ msgid ""
 "<a href=\"https://fatcat.wiki\">fatcat.wiki</a> \"release\" identifier. "
 "Scholar is built on top of the fatcat catalog"
 msgstr ""
-"<a href=\"https://fatcat.wiki\"> fatcat.wiki </a>“发布”标识符。 Scholar是基于"
-"fatcat目录建立的"
+"<a href=\"https://fatcat.wiki\"> fatcat.wiki </a>“发布”标识符。 "
+"Scholar是基于fatcat目录建立的"
 
 #: src/scholar/templates/help.html:240
 msgid "Work In Progress"
 msgstr "工作正在进行中"
 
-#: src/scholar/templates/help.html:244 src/scholar/templates/home.html:37
+#: src/scholar/templates/help.html:243
 msgid ""
-"This service is in \"alpha\". It has several bugs, experiences downtime, and "
-"has not been officially announced."
-msgstr "这项服务处于 \"alpha\" 阶段。它有几个错误，经历宕机，且尚未正式发布。"
-
-#: src/scholar/templates/help.html:246 src/scholar/templates/home.html:39
-msgid ""
-"This is a new service. Metadata is being improved and features have not been "
-"finalized."
+"This is a new service. Metadata is being improved and features have not "
+"been finalized."
 msgstr "这是一项新服务。元数据正在改进，功能尚未最后确定。"
 
-#: src/scholar/templates/help.html:250
+#: src/scholar/templates/help.html:247
 msgid "This project is currently a <i>prototype</i>"
 msgstr "该项目目前是<i>原型</i>"
 
-#: src/scholar/templates/help.html:253
+#: src/scholar/templates/help.html:250
 msgid "Some known bugs and issues:"
 msgstr "一些已知的错误和问题："
 
-#: src/scholar/templates/help.html:256
+#: src/scholar/templates/help.html:253
 msgid ""
 "Poor metadata quality for conference proceedings. Many are labeled "
 "\"unpublished\" and are not associated with the conference."
 msgstr "会议记录的元数据质量差。许多论文集被标注为 \"未出版\"，与会议无关。"
 
-#: src/scholar/templates/help.html:257
+#: src/scholar/templates/help.html:254
 msgid ""
-"Duplicate versions of same work. For example, different versions of the same "
-"paper or dataset. We are working on basic entity-deduplication in the fatcat "
-"catalog."
-msgstr ""
-"同一作品的重复版本。例如，同一论文或数据集的不同版本。我们正在研究fatcat目录"
-"中的基本实体重复数据删除。"
+"Duplicate versions of same work. For example, different versions of the "
+"same paper or dataset. We are working on basic entity-deduplication in "
+"the fatcat catalog."
+msgstr "同一作品的重复版本。例如，同一论文或数据集的不同版本。我们正在研究fatcat目录中的基本实体重复数据删除。"
 
-#: src/scholar/templates/help.html:258
+#: src/scholar/templates/help.html:255
 msgid ""
 "Mis-matching of file content or version with work metadata. For example, "
-"sometimes pre-prints or author manuscripts are incorrectly associated with "
-"version-of-record metadata, or vice-versa."
-msgstr ""
-"文件内容或版本与作品元数据不匹配。例如，有时预印本或作者手稿与记录版本元数据"
-"的关联不正确，反之亦然。"
+"sometimes pre-prints or author manuscripts are incorrectly associated "
+"with version-of-record metadata, or vice-versa."
+msgstr "文件内容或版本与作品元数据不匹配。例如，有时预印本或作者手稿与记录版本元数据的关联不正确，反之亦然。"
 
 #: src/scholar/templates/home.html:10
 msgid "Internet Archive Scholar logo (vaporwave)"
@@ -852,27 +800,26 @@ msgid "Search Millions of Research Papers"
 msgstr "搜索数以百万计的研究论文"
 
 #: src/scholar/templates/home.html:24
+#, fuzzy
 msgid ""
-"This fulltext search index includes over 25 million research articles and "
-"other scholarly documents preserved in the Internet Archive."
-msgstr ""
-"全文检索索引包含超过2500万的研究文章和其他保存在互联网档案馆里的学术文档。"
+"This fulltext search index includes over 35 million research articles and"
+" other scholarly documents preserved in the Internet Archive."
+msgstr "全文检索索引包含超过2500万的研究文章和其他保存在互联网档案馆里的学术文档。"
 
 #: src/scholar/templates/home.html:24
+#, fuzzy
 msgid ""
-"The collection spans from digitized copies of eighteenth century journals "
-"through the latest Open Access conference proceedings and pre-prints crawled "
-"from the World Wide Web."
-msgstr ""
-"该馆藏涵盖从18世纪期刊的数字化副本，到最新的Open Access会议记录和从万维网上抓"
-"取的预印本。"
+"The collection spans from digitized copies of eighteenth century journals"
+" through the latest Open Access conference proceedings and preprints "
+"crawled from the World Wide Web."
+msgstr "该馆藏涵盖从18世纪期刊的数字化副本，到最新的Open Access会议记录和从万维网上抓取的预印本。"
 
 #: src/scholar/templates/home.html:24
 msgid "More &raquo;"
 msgstr "更多&raquo;"
 
-#: src/scholar/templates/home.html:52 src/scholar/templates/home.html:66
-#: src/scholar/templates/home.html:80 src/scholar/templates/home.html:94
+#: src/scholar/templates/home.html:35 src/scholar/templates/home.html:49
+#: src/scholar/templates/home.html:63 src/scholar/templates/home.html:77
 msgid "PDF thumbnail"
 msgstr "PDF缩略图"
 
@@ -880,14 +827,12 @@ msgstr "PDF缩略图"
 msgid "Filters"
 msgstr "搜索过滤器"
 
-#: src/scholar/templates/search.html:47
-#: src/scholar/templates/search.html:77
+#: src/scholar/templates/search.html:47 src/scholar/templates/search.html:77
 msgid "Hit"
 msgid_plural "Hits"
 msgstr[0] "点击"
 
-#: src/scholar/templates/search.html:53
-#: src/scholar/templates/search.html:85
+#: src/scholar/templates/search.html:53 src/scholar/templates/search.html:85
 #, python-format
 msgid "in %(frac_sec)ssec"
 msgstr "在 %(frac_sec)s秒内"
@@ -902,11 +847,9 @@ msgstr "搜索查询错误"
 
 #: src/scholar/templates/search.html:116
 msgid ""
-"Query parsing is currently very naive. Sometimes you can fix this problem by "
-"adding quotes around terms or entire phrases."
-msgstr ""
-"查询解析目前是非常幼稚的。有时你可以通过在术语或整个短语周围加引号来解决这个"
-"问题。"
+"Query parsing is currently very naive. Sometimes you can fix this problem"
+" by adding quotes around terms or entire phrases."
+msgstr "查询解析目前是非常幼稚的。有时你可以通过在术语或整个短语周围加引号来解决这个问题。"
 
 #: src/scholar/templates/search.html:148
 msgid "We didn't find any documents matching your query"
@@ -1019,14 +962,13 @@ msgstr "数字化的缩微胶卷"
 #: src/scholar/templates/search_macros.html:288
 #, python-format
 msgid ""
-"A copy of this work was available on the public web and has been preserved "
-"in the Wayback Machine. The capture dates from %(capture_year)s; you can "
-"also visit <a rel=\"external noopener\" href=\"%(original_url)s\">the "
-"original URL</a>."
+"A copy of this work was available on the public web and has been "
+"preserved in the Wayback Machine. The capture dates from "
+"%(capture_year)s; you can also visit <a rel=\"external noopener\" "
+"href=\"%(original_url)s\">the original URL</a>."
 msgstr ""
-"这项工作的副本可以在公共网站上找到，并保存在Wayback Machine中。捕获日期"
-"为%(capture_year)s；您还可以访问<a rel=\"external noopener\" href="
-"\"%(original_url)s\">原始URL </a>。"
+"这项工作的副本可以在公共网站上找到，并保存在Wayback Machine中。捕获日期为%(capture_year)s；您还可以访问<a "
+"rel=\"external noopener\" href=\"%(original_url)s\">原始URL </a>。"
 
 #: src/scholar/templates/search_macros.html:290
 msgid ""
@@ -1036,8 +978,8 @@ msgstr "Internet档案库在我们的一般馆藏中有此作品的保存副本�
 
 #: src/scholar/templates/search_macros.html:292
 msgid ""
-"The Internet Archive has digitized a microfilm copy of this work. It may be "
-"possible to borrow a copy for reading."
+"The Internet Archive has digitized a microfilm copy of this work. It may "
+"be possible to borrow a copy for reading."
 msgstr "互联网档案馆已将该作品的缩微胶卷数字化。可能可以借阅一份副本。"
 
 #: src/scholar/templates/search_macros.html:296
@@ -1047,8 +989,8 @@ msgstr "文件类型为 %(mimetype)s。"
 
 #: src/scholar/templates/search_macros.html:301
 msgid ""
-"Note that this fulltext copy is not of the \"primary\" version of this work. "
-"The version it corresponds to is:"
+"Note that this fulltext copy is not of the \"primary\" version of this "
+"work. The version it corresponds to is:"
 msgstr "请注意，此全文副本不是本作品的“主要”版本。对应的版本是："
 
 #: src/scholar/templates/search_macros.html:314
@@ -1058,21 +1000,19 @@ msgstr "此作品主要版本的其他访问选项："
 #: src/scholar/templates/search_macros.html:324
 msgid ""
 "We don't yet know of a public preservation copy of this work. You may be "
-"able to obtain a copy of this work to read from the publisher, platforms, or "
-"institutional libraries."
-msgstr ""
-"我们尚不知道该作品的公共保存副本。您可能可以获取此作品的副本，以从出版商，平"
-"台或机构图书馆中阅读。"
+"able to obtain a copy of this work to read from the publisher, platforms,"
+" or institutional libraries."
+msgstr "我们尚不知道该作品的公共保存副本。您可能可以获取此作品的副本，以从出版商，平台或机构图书馆中阅读。"
 
 #: src/scholar/templates/search_macros.html:327
 #, python-format
 msgid ""
-"If you know of a legal, public version that we should archive, please let us "
-"know via <a rel=\"noopener\" href=\"%(save_paper_now_url)s\">\"Save Paper Now"
-"\"</a>."
+"If you know of a legal, public version that we should archive, please let"
+" us know via <a rel=\"noopener\" href=\"%(save_paper_now_url)s\">\"Save "
+"Paper Now\"</a>."
 msgstr ""
-"如果您知道应存档的合法公共版本，请通过<a rel=\"noopener\" href="
-"\"%(save_paper_now_url)s\">“立即保存纸张” </a>告知我们。"
+"如果您知道应存档的合法公共版本，请通过<a rel=\"noopener\" "
+"href=\"%(save_paper_now_url)s\">“立即保存纸张” </a>告知我们。"
 
 #: src/scholar/templates/search_macros.html:374
 msgid "more &raquo;"
@@ -1168,19 +1108,63 @@ msgstr "清除过滤器"
 #~ msgstr "选择语言"
 
 #~ msgid ""
-#~ "This fulltext search index includes over 25 million research articles and "
-#~ "other documents preserved in the Internet Archive."
+#~ "This fulltext search index includes over"
+#~ " 25 million research articles and "
+#~ "other documents preserved in the "
+#~ "Internet Archive."
 #~ msgstr "全文检索索引包括超过2500万篇研究文章和Internet档案中保存的其他文档"
 
 #~ msgid "by title, authors, identifiers..."
 #~ msgstr "按标题，作者，标识符..."
 
 #~ msgid ""
-#~ "We are a 501(c)(3) non-profit, building a digital library of Internet "
-#~ "sites and other cultural artifacts in digital form."
-#~ msgstr ""
-#~ "我们是501（c）（3）非营利组织，以数字形式建立了互联网站点和其他文化人工制"
-#~ "品的数字图书馆"
+#~ "We are a 501(c)(3) non-profit, "
+#~ "building a digital library of Internet"
+#~ " sites and other cultural artifacts "
+#~ "in digital form."
+#~ msgstr "我们是501（c）（3）非营利组织，以数字形式建立了互联网站点和其他文化人工制品的数字图书馆"
 
 #~ msgid "Search Inside Millions of Research Papers"
 #~ msgstr "搜索数以百万计的研究论文"
+
+#~ msgid ""
+#~ "See also: <a href=\"%(lang_prefix)s/help\">User "
+#~ "Guide</a> which lists some bugs and "
+#~ "known issues"
+#~ msgstr "另见<a href=\"%(lang_prefix)s/help\">用户指南</a>，其中列出了一些错误和已知问题"
+
+#~ msgid ""
+#~ "Metadata comes from <a "
+#~ "href=\"https://fatcat.wiki\">fatcat.wiki</a>, an open\n"
+#~ ""
+#~ "user-editable catalog of scholarly work."
+#~ " It should be possible to track "
+#~ "and\n"
+#~ "attribute the provenance of content and metadata in all cases. Please\n"
+#~ "<a href=\"#contact\">contact us</a> if you have questions."
+#~ msgstr ""
+#~ "元数据来自<a href=\"https://fatcat.wiki\">fatcat.wiki</a>，一个开放的\n"
+#~ "用户可编辑的学术工作目录。应该能够跟踪和\n"
+#~ "在所有情况下，都要对内容和元数据的出处进行归属。请\n"
+#~ "<a href=\"#contact\">如有疑问请联系我们</a>。"
+
+#~ msgid ""
+#~ "Likewise information specifically for "
+#~ "publishers can be found at <a "
+#~ "href=\"%(url)s\">%(url)s</a>. This includes "
+#~ "guidelines for having content indexed "
+#~ "and preserved."
+#~ msgstr "类似地，可以访问 <a href=\"%(url)s\">%(url)s</a> 获取专为出版商准备的信息。这包括对内容进行索引和保存的指南。"
+
+#~ msgid ""
+#~ "The organizational contact information for "
+#~ "the Internet Archive is listed at "
+#~ "<a href=\"%(url)s\">%(url)s</a>."
+#~ msgstr "互联网档案馆的组织联系信息列于<a href=\"%(url)s\">%(url)s</a>。"
+
+#~ msgid ""
+#~ "This service is in \"alpha\". It "
+#~ "has several bugs, experiences downtime, "
+#~ "and has not been officially announced."
+#~ msgstr "这项服务处于 \"alpha\" 阶段。它有几个错误，经历宕机，且尚未正式发布。"
+

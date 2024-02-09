@@ -13,18 +13,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
-"POT-Creation-Date: 2022-11-16 20:35-0800\n"
+"POT-Creation-Date: 2024-02-09 14:56-0800\n"
 "PO-Revision-Date: 2024-02-04 20:01+0000\n"
 "Last-Translator: Clémence <kdraw.minecraft@gmail.com>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/internetarchive/"
-"fatcat-scholar/fr/>\n"
 "Language: fr\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Language-Team: French "
+"<https://hosted.weblate.org/projects/internetarchive/fatcat-scholar/fr/>"
+"\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.4-dev\n"
-"Generated-By: Babel 2.8.0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.12.1\n"
 
 #: src/scholar/search.py:45
 msgid "Release Date"
@@ -115,206 +115,190 @@ msgstr "À propos de %(website_name)s"
 msgid "About Internet Archive Scholar"
 msgstr "À propos d'Internet Archive Scholar"
 
-#: src/scholar/templates/about.html:10
-#, python-format
-msgid ""
-"See also: <a href=\"%(lang_prefix)s/help\">User Guide</a> which lists some "
-"bugs and known issues"
-msgstr ""
-"Voir aussi : <a href=\"%(lang_prefix)s/help\">Guide de l'utilisateur</a> qui "
-"liste certains bogues et problèmes connus"
-
-#: src/scholar/templates/about.html:14
-#: src/scholar/templates/base.html:206
+#: src/scholar/templates/about.html:11 src/scholar/templates/base.html:206
 msgid "How It Works"
 msgstr "Comment ça marche"
 
-#: src/scholar/templates/about.html:16
+#: src/scholar/templates/about.html:13
 msgid "Content in this search index comes in one of three forms:"
 msgstr ""
-"Le contenu de cet index de recherche se présente sous l'une des trois formes "
-"suivantes :"
+"Le contenu de cet index de recherche se présente sous l'une des trois "
+"formes suivantes :"
 
-#: src/scholar/templates/about.html:19
+#: src/scholar/templates/about.html:16
 msgid ""
-"<b>public web content</b> as preserved in <a href=\"https://web.archive.org"
-"\">The Wayback Machine</a> and <a href=\"https://archive-it.org\">Archive-"
-"It</a> partner collections"
+"<b>public web content</b> as preserved in <a "
+"href=\"https://web.archive.org\">The Wayback Machine</a> and <a "
+"href=\"https://archive-it.org\">Archive-It</a> partner collections"
 msgstr ""
-"<b>contenu Web public</b> tel que conservé dans <a href=\"https://web."
-"archive.org\">The Wayback Machine</a> et <a href=\"https://archive-it.org"
-"\">Archive-It</a> collections partenaires"
+"<b>contenu Web public</b> tel que conservé dans <a "
+"href=\"https://web.archive.org\">The Wayback Machine</a> et <a "
+"href=\"https://archive-it.org\">Archive-It</a> collections partenaires"
 
-#: src/scholar/templates/about.html:20
+#: src/scholar/templates/about.html:17
 msgid "<b>digitized print materials</b> from paper and microform collections"
 msgstr ""
-"<b>documents imprimés numérisés</b> provenant de collections de papier et de "
-"microformes"
+"<b>documents imprimés numérisés</b> provenant de collections de papier et"
+" de microformes"
 
-#: src/scholar/templates/about.html:21
+#: src/scholar/templates/about.html:18
 msgid ""
-"<b>general materials</b> from <a href=\"https://archive.org\">archive.org "
-"collections</a>, including collaborations with partners"
+"<b>general materials</b> from <a href=\"https://archive.org\">archive.org"
+" collections</a>, including collaborations with partners"
 msgstr ""
 "<b> matériel général </b> provenant de <a href=\"https://archive.org\"> "
 "collections archive.org </a>, y compris des collaborations avec des "
 "partenaires"
 
-#: src/scholar/templates/about.html:24
+#: src/scholar/templates/about.html:21
 #, python-format
 msgid ""
-"This <a href=\"%(url)s\">2019 FORCE11 conference presentation</a> gives an "
-"overview of the technical infrastructure and goals of the project overall."
+"This <a href=\"%(url)s\">2019 FORCE11 conference presentation</a> gives "
+"an overview of the technical infrastructure and goals of the project "
+"overall."
 msgstr ""
 "Cette présentation <a href=\"%(url)s\">2019 de la conférence FORCE11</a> "
 "donne un aperçu de l'infrastructure technique et des objectifs du projet "
 "dans son ensemble."
 
-#: src/scholar/templates/about.html:27
-#: src/scholar/templates/base.html:207
+#: src/scholar/templates/about.html:24 src/scholar/templates/base.html:207
 msgid "Content Sources"
 msgstr "Sources de contenu"
 
-#: src/scholar/templates/about.html:29
+#: src/scholar/templates/about.html:26
 msgid ""
 "Metadata comes from <a href=\"https://fatcat.wiki\">fatcat.wiki</a>, an "
 "open\n"
-"user-editable catalog of scholarly work. It should be possible to track and\n"
-"attribute the provenance of content and metadata in all cases. Please\n"
-"<a href=\"#contact\">contact us</a> if you have questions."
+"user-editable catalog of scholarly work."
 msgstr ""
-"Les métadonnées proviennent de <a href=\"https://fatcat.wiki\">fatcat.wiki</"
-"a>, un catalogue ouvert et modifiable par l'utilisateur.\n"
-"catalogue ouvert et modifiable par l'utilisateur des travaux universitaires. "
-"Il devrait être possible de suivre et d'attribuer\n"
-"d'attribuer la provenance du contenu et des métadonnées dans tous les cas. "
-"Veuillez\n"
-"<a href=\"#contact\">contactez-nous</a> si vous avez des questions."
 
-#: src/scholar/templates/about.html:35
-#: src/scholar/templates/base.html:208
+#: src/scholar/templates/about.html:30 src/scholar/templates/base.html:208
 msgid "Text and Data Mining"
 msgstr "Exploration de texte et de données"
 
-#: src/scholar/templates/about.html:37
+#: src/scholar/templates/about.html:32
+#, fuzzy
 msgid ""
-"We intend to provide researcher access to the full corpus for text and data\n"
-"mining purposes. Derived datasets may also be posted publicly for analysis, "
-"for\n"
+"We intend to provide researcher access to the full corpus for text and "
+"data\n"
+"mining purposes. Derived datasets may also be posted publicly for "
+"analysis, for\n"
 "example a citation graph or N-gram frequencies by year. If you are "
 "interested\n"
-"or would like to see specific datasets made available, please contact us."
+"or would like to see specific datasets made available, please contact us "
+"at scholar@archive.org."
 msgstr ""
 "Nous avons l'intention de permettre aux chercheurs d'accéder au corpus "
 "complet à des fins d'exploration de textes et de données.\n"
-"de données. Des ensembles de données dérivées peuvent également être mis à "
-"la disposition du public pour analyse, par exemple un graphique de citations "
-"ou des fréquences de N-gram par année.\n"
-"par exemple un graphique de citations ou des fréquences de N-gram par année. "
-"Si vous êtes intéressé\n"
-"ou si vous souhaitez que des ensembles de données spécifiques soient mis à "
-"disposition, veuillez nous contacter."
+"de données. Des ensembles de données dérivées peuvent également être mis "
+"à la disposition du public pour analyse, par exemple un graphique de "
+"citations ou des fréquences de N-gram par année.\n"
+"par exemple un graphique de citations ou des fréquences de N-gram par "
+"année. Si vous êtes intéressé\n"
+"ou si vous souhaitez que des ensembles de données spécifiques soient mis "
+"à disposition, veuillez nous contacter."
 
-#: src/scholar/templates/about.html:42
+#: src/scholar/templates/about.html:37
 msgid ""
-"Currently snapshots of the full fatcat metadata corpus and upstream metadata "
-"sources are uploaded periodically to the <a href=\"https://archive.org/"
-"details/ia_biblio_metadata\">Bulk Bibliographic Metadata</a> collection on "
-"archive.org."
+"Currently snapshots of the full fatcat metadata corpus and upstream "
+"metadata sources are uploaded periodically to the <a "
+"href=\"https://archive.org/details/ia_biblio_metadata\">Bulk "
+"Bibliographic Metadata</a> collection on archive.org."
 msgstr ""
-"Actuellement, des instantanés du corpus complet de métadonnées fatcat et des "
-"sources de métadonnées en amont sont téléchargés périodiquement dans la "
-"collection <a href=\"https://archive.org/details/ia_biblio_metadata\">Bulk "
+"Actuellement, des instantanés du corpus complet de métadonnées fatcat et "
+"des sources de métadonnées en amont sont téléchargés périodiquement dans "
+"la collection <a "
+"href=\"https://archive.org/details/ia_biblio_metadata\">Bulk "
 "Bibliographic Metadata</a> sur archive.org."
 
-#: src/scholar/templates/about.html:44
+#: src/scholar/templates/about.html:39
 msgid ""
 "Read more in <a href=\"https://guide.fatcat.wiki/bulk_exports.html\">the "
 "Fatcat Guide</a>."
 msgstr ""
-"Pour en savoir plus, consultez <a href=\"https://guide.fatcat.wiki/"
-"bulk_exports.html\">le Guide du chat gras</a>."
+"Pour en savoir plus, consultez <a "
+"href=\"https://guide.fatcat.wiki/bulk_exports.html\">le Guide du chat "
+"gras</a>."
 
-#: src/scholar/templates/about.html:47
+#: src/scholar/templates/about.html:42
 msgid "Authors and Publishers"
 msgstr "Auteurs et éditeurs"
 
-#: src/scholar/templates/about.html:50
+#: src/scholar/templates/about.html:45
 #, python-format
 msgid ""
-"Information specifically for authors of research works can be found at <a "
-"href=\"%(url)s\">%(url)s</a>. This includes instructions for correcting "
+"Information specifically for authors of research works can be found at <a"
+" href=\"%(url)s\">%(url)s</a>. This includes instructions for correcting "
 "bibliographic metadata and updates to published works."
 msgstr ""
 "Des informations spécifiquement destinées aux auteurs de travaux de "
-"recherche sont disponibles à l'adresse <a href=\"%(url)s\">%(url)s</a>. Cela "
-"inclut des instructions pour corriger les métadonnées bibliographiques et "
-"les mises à jour des travaux publiés."
+"recherche sont disponibles à l'adresse <a href=\"%(url)s\">%(url)s</a>. "
+"Cela inclut des instructions pour corriger les métadonnées "
+"bibliographiques et les mises à jour des travaux publiés."
+
+#: src/scholar/templates/about.html:48
+#, python-format
+msgid ""
+"In alignment with its mission, Internet Archive makes automated attempts "
+"to capture and preserve all open access research publications on the "
+"public web. If your open access journal articles aren’t currently "
+"included in Internet Archive Scholar, you can fill out the <a "
+"href=\"https://form.jotform.com/232483341499059\">Internet Archive "
+"Scholar inclusion form</a> to share journal URLs for crawling. Please "
+"note that it will take at least 3 months from the time you submit this "
+"form until your content starts to appear in Internet Archive Scholar. "
+"Emails about the status of your content sent less than 3 months after "
+"submitting this form will not be answered. Additional information "
+"specifically for publishers can be found at <a "
+"href=\"%(url)s\">%(url)s</a>. This includes guidelines for having content"
+" indexed and preserved."
+msgstr ""
+
+#: src/scholar/templates/about.html:51
+msgid "Contact Information"
+msgstr "Informations de contact"
 
 #: src/scholar/templates/about.html:53
 #, python-format
 msgid ""
-"Likewise information specifically for publishers can be found at <a href="
-"\"%(url)s\">%(url)s</a>. This includes guidelines for having content indexed "
-"and preserved."
-msgstr ""
-"De même, des informations spécifiquement destinées aux éditeurs sont "
-"disponibles à l'adresse <a href=\"%(url)s\">%(url)s</a>. Cela inclut des "
-"directives à suivre pour indexer et préserver le contenu."
-
-#: src/scholar/templates/about.html:56
-msgid "Contact Information"
-msgstr "Informations de contact"
-
-#: src/scholar/templates/about.html:59
-#, python-format
-msgid ""
-"The organizational contact information for the Internet Archive is listed at "
-"<a href=\"%(url)s\">%(url)s</a>."
-msgstr ""
-"Les coordonnées de l'Internet Archive sont indiquées à <a href=\"%(url)s\">"
-"%(url)s</a>."
-
-#: src/scholar/templates/about.html:61
-#, python-format
-msgid ""
-"Queries about this search service and the fatcat catalog can be directed to "
-"<a href=\"mailto:%(email)s\">%(email)s</a>."
+"Queries about this search service and the fatcat catalog can be directed "
+"to <a href=\"mailto:%(email)s\">%(email)s</a>."
 msgstr ""
 "Les demandes concernant ce service de recherche et le catalogue fatcat "
 "peuvent être adressées à <a href=\"mailto:%(email)s\">%(email)s</a>."
 
-#: src/scholar/templates/about.html:63
+#: src/scholar/templates/about.html:55
 #, python-format
 msgid "There is a public chat channel at <a href=\"%(url)s\">%(url)s</a>."
-msgstr ""
-"Il existe un canal de discussion public à <a href=\"%(url)s\">%(url)s</a>."
+msgstr "Il existe un canal de discussion public à <a href=\"%(url)s\">%(url)s</a>."
 
-#: src/scholar/templates/about.html:66
+#: src/scholar/templates/about.html:58
 msgid "Support and Acknowledgements"
 msgstr "Soutien et remerciements"
 
-#: src/scholar/templates/about.html:69
+#: src/scholar/templates/about.html:61
 #, python-format
 msgid ""
 "Work on Internet Archive Scholar has received support from the Andrew W. "
-"Mellon Foundation through multiple phases of the <a href=\"%(grant_url)s\">"
-"\"Ensuring the Persistent Access of Open Access Journal Literature\"</a> "
-"project (see <a href=\"%(blog_url)s\">original announcement</a>)."
+"Mellon Foundation through multiple phases of the <a "
+"href=\"%(grant_url)s\">\"Ensuring the Persistent Access of Open Access "
+"Journal Literature\"</a> project (see <a href=\"%(blog_url)s\">original "
+"announcement</a>)."
 msgstr ""
-"Le travail sur Internet Archive Scholar a reçu le soutient de la fondation "
-"Andrew W. Mellon à travers plusieurs phases du projet <a href=\"%(grant_url)"
-"s\">\"Ensuring the Persistent Access of Open Access Journal Literature\"</a> "
-"(voir <a href=\"%(blog_url)s\">l'annonce originale</a>)."
+"Le travail sur Internet Archive Scholar a reçu le soutient de la "
+"fondation Andrew W. Mellon à travers plusieurs phases du projet <a "
+"href=\"%(grant_url)s\">\"Ensuring the Persistent Access of Open Access "
+"Journal Literature\"</a> (voir <a href=\"%(blog_url)s\">l'annonce "
+"originale</a>)."
 
-#: src/scholar/templates/about.html:71
+#: src/scholar/templates/about.html:63
 #, python-format
 msgid ""
-"See additional acknowledgements on <a href=\"%(fatcat_url)s\">fatcat.wiki</"
-"a>."
+"See additional acknowledgements on <a "
+"href=\"%(fatcat_url)s\">fatcat.wiki</a>."
 msgstr ""
-"Voir les remerciements supplémentaires sur <a href=\"%(fatcat_url)s\">fatcat."
-"wiki</a>."
+"Voir les remerciements supplémentaires sur <a "
+"href=\"%(fatcat_url)s\">fatcat.wiki</a>."
 
 #: src/scholar/templates/access_404.html:10
 msgid "404: Access Location Not Found"
@@ -322,10 +306,11 @@ msgstr "404 : Page non trouvée"
 
 #: src/scholar/templates/access_404.html:11
 msgid ""
-"We could not find a valid redirect for the URL you tried. Sorry about that!"
+"We could not find a valid redirect for the URL you tried. Sorry about "
+"that!"
 msgstr ""
-"Nous n'avons pas été en mesure de trouver une redirection valide pour l'URL "
-"que vous avez entrée. Désolé !"
+"Nous n'avons pas été en mesure de trouver une redirection valide pour "
+"l'URL que vous avez entrée. Désolé !"
 
 #: src/scholar/templates/access_404.html:12
 msgid ""
@@ -337,11 +322,11 @@ msgstr ""
 
 #: src/scholar/templates/access_404.html:13
 msgid ""
-"Some places you can visit try to hunt down this resource (or a replacement) "
-"include:"
+"Some places you can visit try to hunt down this resource (or a "
+"replacement) include:"
 msgstr ""
-"Voici quelques pages que vous pouvez visiter pour essayer de traquer cette "
-"ressource (ou un remplacement) :"
+"Voici quelques pages que vous pouvez visiter pour essayer de traquer "
+"cette ressource (ou un remplacement) :"
 
 #: src/scholar/templates/access_404.html:16
 msgid "Original web url:"
@@ -400,18 +385,18 @@ msgid ""
 "We are a US 501(c)(3) non-profit library, building a global archive of "
 "Internet sites and other cultural artifacts in digital form."
 msgstr ""
-"Nous sommes une bibliothèque à but non lucratif aux États-Unis 501 (c) (3), "
-"construisant une archive mondiale de sites Internet et d'autres objets "
-"culturels sous forme numérique."
+"Nous sommes une bibliothèque à but non lucratif aux États-Unis 501 (c) "
+"(3), construisant une archive mondiale de sites Internet et d'autres "
+"objets culturels sous forme numérique."
 
 #: src/scholar/templates/base.html:178
 #, python-format
 msgid ""
-"Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and "
-"%(archive_it)s."
+"Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and"
+" %(archive_it)s."
 msgstr ""
-"D'autres projets comprennent %(wayback)s, %(archive_org)s, %(openlibrary)s "
-"et %(archive_it)s."
+"D'autres projets comprennent %(wayback)s, %(archive_org)s, "
+"%(openlibrary)s et %(archive_it)s."
 
 #: src/scholar/templates/base.html:185
 msgid "About Us"
@@ -453,7 +438,7 @@ msgstr "État des services"
 msgid "Source Code"
 msgstr "Code source"
 
-#: src/scholar/templates/base.html:210
+#: src/scholar/templates/base.html:209
 msgid "Help"
 msgstr "Aide"
 
@@ -494,40 +479,44 @@ msgstr ""
 "scientifique</a>"
 
 #: src/scholar/templates/help.html:25
+#, fuzzy
 msgid ""
 "This service provides <a href=\"https://en.wikipedia.org/wiki/Full-"
-"text_search\">fulltext searching</a> over research publications archived in "
-"Internet Archive's various collections. It includes content from the natural "
-"sciences, humanities, biomedicine, art, history, industrial research, "
-"government reports, and more."
+"text_search\">fulltext searching</a> for research publications archived "
+"in Internet Archive's various collections. It includes content from the "
+"natural sciences, humanities, biomedicine, art, history, industrial "
+"research, government reports, and more."
 msgstr ""
-"Ce service fournit <a href=\"https://en.wikipedia.org/wiki/Full-text_search"
-"\"> une recherche en texte intégral </a> sur les publications de recherche "
-"archivées dans les diverses collections d'Internet Archive. Il comprend du "
-"contenu des sciences naturelles, des sciences humaines, de la biomédecine, "
-"de l'art, de l'histoire, de la recherche industrielle, des rapports "
-"gouvernementaux, etc."
+"Ce service fournit <a href=\"https://en.wikipedia.org/wiki/Full-"
+"text_search\"> une recherche en texte intégral </a> sur les publications "
+"de recherche archivées dans les diverses collections d'Internet Archive. "
+"Il comprend du contenu des sciences naturelles, des sciences humaines, de"
+" la biomédecine, de l'art, de l'histoire, de la recherche industrielle, "
+"des rapports gouvernementaux, etc."
 
 #: src/scholar/templates/help.html:26
+#, fuzzy
 msgid ""
 "Reader access to the content is provided when possible. Sometimes this "
-"access is to a \"pre-print\" or other version of the work, and this is "
+"access is to a preprint or other version of the work, and this is "
 "indicated in the search results."
 msgstr ""
 "L'accès au contenu est fourni aux lecteurs lorsque cela est possible. "
-"Parfois, cet accès se fait à une « pré-impression » ou à ne autre version de "
-"l'ouvrage, et ceci est indiqué dans les résultats de la recherche."
+"Parfois, cet accès se fait à une « pré-impression » ou à ne autre version"
+" de l'ouvrage, et ceci est indiqué dans les résultats de la recherche."
 
 #: src/scholar/templates/help.html:28
 msgid ""
-"In other cases, depending on search filters, results are included for which "
-"there is only a bibliographic catalog entry. It may still be possible to "
-"obtain access through a public library or from the publisher directly."
+"In other cases, depending on search filters, results are included for "
+"which there is only a bibliographic catalog entry. It may still be "
+"possible to obtain access through a public library or from the publisher "
+"directly."
 msgstr ""
-"Dans d'autres cas, en fonction des filtres de recherche, les résultats sont "
-"inclus pour lesquels il n'existe qu'une entrée de catalogue bibliographique. "
-"Il peut encore être possible d'obtenir l'accès par l'intermédiaire d'une "
-"bibliothèque publique ou directement auprès de l'éditeur."
+"Dans d'autres cas, en fonction des filtres de recherche, les résultats "
+"sont inclus pour lesquels il n'existe qu'une entrée de catalogue "
+"bibliographique. Il peut encore être possible d'obtenir l'accès par "
+"l'intermédiaire d'une bibliothèque publique ou directement auprès de "
+"l'éditeur."
 
 #: src/scholar/templates/help.html:30
 msgid "Query Syntax"
@@ -536,40 +525,40 @@ msgstr "Syntaxe de la requête"
 #: src/scholar/templates/help.html:32
 msgid ""
 "In addition to the basic filtering and sorting options, this search\n"
-"interface also allows the use of Lucene query syntax in the search box. You "
-"can\n"
+"interface also allows the use of Lucene query syntax in the search box. "
+"You can\n"
 "restrict term queries on multiple metadata fields using colon statements "
 "like\n"
 "<code>journal:Science</code>, set filters like <code>lang:de</code>, and\n"
 "apply range queries like <code>year:&gt;1989 year:&lt;2000</code>."
 msgstr ""
 "En plus des options de filtrage et de tri de base, cette recherche\n"
-"permet également l'utilisation de la syntaxe de requête Lucene dans la boîte "
-"de recherche. Vous pouvez\n"
+"permet également l'utilisation de la syntaxe de requête Lucene dans la "
+"boîte de recherche. Vous pouvez\n"
 "limiter les requêtes de termes sur plusieurs champs de métadonnées en "
 "utilisant des déclarations en deux points comme\n"
-"<code>journal:Science</code>, définir des filtres comme <code>lang:de</"
-"code>, et\n"
-"appliquer des requêtes de type <code>année : &gt;1989 année : &lt;2000 </"
-"code>."
+"<code>journal:Science</code>, définir des filtres comme "
+"<code>lang:de</code>, et\n"
+"appliquer des requêtes de type <code>année : &gt;1989 année : &lt;2000 "
+"</code>."
 
 #: src/scholar/templates/help.html:38
 msgid ""
 "While this syntax allows for relatively complex and powerful queries, at "
-"some point advanced users may run into limits on the size or complexity of "
-"queries."
+"some point advanced users may run into limits on the size or complexity "
+"of queries."
 msgstr ""
 "Bien que cette syntaxe permette des requêtes relativement complexes et "
-"puissantes, à un moment donné, les utilisateurs avertis peuvent se heurter à "
-"des limites quant à la taille ou à la complexité des requêtes."
+"puissantes, à un moment donné, les utilisateurs avertis peuvent se "
+"heurter à des limites quant à la taille ou à la complexité des requêtes."
 
 #: src/scholar/templates/help.html:40
 msgid ""
-"For the time being we recommend systems like <a href=\"https://lens.org"
-"\">lens.org</a> for a more powerful interface."
+"For the time being we recommend systems like <a "
+"href=\"https://lens.org\">lens.org</a> for a more powerful interface."
 msgstr ""
-"Pour l'instant, nous recommandons des systèmes comme <a href=\"https://lens."
-"org\">lens.org</a> pour une interface plus puissante."
+"Pour l'instant, nous recommandons des systèmes comme <a "
+"href=\"https://lens.org\">lens.org</a> pour une interface plus puissante."
 
 #: src/scholar/templates/help.html:43
 msgid "Example Queries"
@@ -594,13 +583,13 @@ msgstr "Demandes de citations"
 #: src/scholar/templates/help.html:58
 msgid ""
 "As an experimental feature, if the search query \"looks like\" a formal "
-"citation, as found in the bibliography of a research paper, the service will "
-"attempt to parse the citation and do a match against our catalog of known "
-"works. When this happens, any filters are ignored."
+"citation, as found in the bibliography of a research paper, the service "
+"will attempt to parse the citation and do a match against our catalog of "
+"known works. When this happens, any filters are ignored."
 msgstr ""
 "À titre expérimental, si la requête de recherche « ressemble » à une "
-"citation formelle, telle que trouvée dans la bibliographie d'un document de "
-"recherche, le service tentera d'analyser la citation et d'établir une "
+"citation formelle, telle que trouvée dans la bibliographie d'un document "
+"de recherche, le service tentera d'analyser la citation et d'établir une "
 "correspondance avec notre catalogue d'œuvres connues. Dans ce cas, les "
 "filtres éventuels sont ignorés."
 
@@ -611,34 +600,36 @@ msgstr "Métadonnées"
 #: src/scholar/templates/help.html:64
 msgid ""
 "You can restrict to records where the field exists with an asterisk like "
-"<code>doi:*</code>, and negate any term like <code>!type:article-journal</"
-"code>."
+"<code>doi:*</code>, and negate any term like <code>!type:article-"
+"journal</code>."
 msgstr ""
 "Vous pouvez limiter les enregistrements où le champ existe avec un "
-"astérisque comme <code>doi:*</code>, et nier tout terme comme <code>!type:"
-"article-journal</code>."
+"astérisque comme <code>doi:*</code>, et nier tout terme comme <code>!type"
+":article-journal</code>."
 
 #: src/scholar/templates/help.html:66
 msgid ""
-"In-depth documentation of the query syntax is available <a href=\"https://"
-"www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-"
-"string-query.html#query-string-query-notes\">from the Elasticsearch project</"
-"a>."
+"In-depth documentation of the query syntax is available <a "
+"href=\"https://www.elastic.co/guide/en/elasticsearch/reference/current"
+"/query-dsl-query-string-query.html#query-string-query-notes\">from the "
+"Elasticsearch project</a>."
 msgstr ""
-"Une documentation approfondie de la syntaxe de la requête est disponible <a "
-"href=\"https://www.elastic.co/guide/en/elasticsearch/reference/current/query-"
-"dsl-query-string-query.html#query-string-query-notes\"> sur le site du "
-"projet Elasticsearch </a>."
+"Une documentation approfondie de la syntaxe de la requête est disponible "
+"<a href=\"https://www.elastic.co/guide/en/elasticsearch/reference/current"
+"/query-dsl-query-string-query.html#query-string-query-notes\"> sur le "
+"site du projet Elasticsearch </a>."
 
 #: src/scholar/templates/help.html:68
 msgid ""
-"The complete current search document schema is available (as JSON) <a href="
-"\"https://github.com/internetarchive/fatcat-scholar/blob/master/schema/"
-"scholar_fulltext.v01.json\">in the source code</a>."
+"The complete current search document schema is available (as JSON) <a "
+"href=\"https://github.com/internetarchive/fatcat-"
+"scholar/blob/master/schema/scholar_fulltext.v01.json\">in the source "
+"code</a>."
 msgstr ""
-"Le schéma complet du document de recherche actuel est disponible (en tant "
-"que JSON) <a href=\"https://github.com/internetarchive/fatcat-scholar/blob/"
-"master/schema/scholar_fulltext.v01.json\"> dans le code source </a>."
+"Le schéma complet du document de recherche actuel est disponible (en tant"
+" que JSON) <a href=\"https://github.com/internetarchive/fatcat-"
+"scholar/blob/master/schema/scholar_fulltext.v01.json\"> dans le code "
+"source </a>."
 
 #: src/scholar/templates/help.html:105
 msgid "Search Results"
@@ -650,69 +641,71 @@ msgstr "Lien d'accès"
 
 #: src/scholar/templates/help.html:118
 msgid ""
-"All Internet Archive preservation copy links have the same style and icon. "
-"Content from the Wayback Machine looks like this."
+"All Internet Archive preservation copy links have the same style and "
+"icon. Content from the Wayback Machine looks like this."
 msgstr ""
-"Tous les liens de copie de préservation d'Internet Archive ont le même style "
-"et la même icône. Le contenu de la machine à remonter le temps ressemble à "
-"ceci."
+"Tous les liens de copie de préservation d'Internet Archive ont le même "
+"style et la même icône. Le contenu de la machine à remonter le temps "
+"ressemble à ceci."
 
 #: src/scholar/templates/help.html:122
 msgid ""
-"If the preserved copy of the work is from a pre-print, author manuscript, or "
-"other alternative version of the work, the access link has an indicator. You "
-"can get details and view all versions by clicking on the primary title link"
+"If the preserved copy of the work is from a pre-print, author manuscript,"
+" or other alternative version of the work, the access link has an "
+"indicator. You can get details and view all versions by clicking on the "
+"primary title link"
 msgstr ""
 "Si l'exemplaire conservé de l'œuvre provient d'une préimpression, d'un "
-"manuscrit de l'auteur ou d'une autre version alternative de l'œuvre, le lien "
-"d'accès comporte un indicateur. Vous pouvez obtenir des détails et "
+"manuscrit de l'auteur ou d'une autre version alternative de l'œuvre, le "
+"lien d'accès comporte un indicateur. Vous pouvez obtenir des détails et "
 "visualiser toutes les versions en cliquant sur le lien du titre principal"
 
 #: src/scholar/templates/help.html:126
 msgid ""
 "Some preserved content, particularly older Public Domain works, may be "
-"stored in general Internet Archive digital collections (as opposed to the "
-"web archive)"
+"stored in general Internet Archive digital collections (as opposed to the"
+" web archive)"
 msgstr ""
-"Certains contenus préservés, en particulier les anciennes œuvres du domaine "
-"public, peuvent être stockés dans les collections numériques générales "
-"d'Internet Archive (par opposition aux archives du web)"
+"Certains contenus préservés, en particulier les anciennes œuvres du "
+"domaine public, peuvent être stockés dans les collections numériques "
+"générales d'Internet Archive (par opposition aux archives du web)"
 
 #: src/scholar/templates/help.html:130
 msgid ""
 "Digitized copies of works on microfilm may be linked to experimentally. "
 "Access may be limited to controlled lending"
 msgstr ""
-"Des copies numérisées d'œuvres sur microfilm peuvent être reliées à titre "
-"expérimental. L'accès peut être limité au prêt contrôlé"
+"Des copies numérisées d'œuvres sur microfilm peuvent être reliées à titre"
+" expérimental. L'accès peut être limité au prêt contrôlé"
 
 #: src/scholar/templates/help.html:134
 msgid ""
-"A publisher landing page is the authoritative source for the \"version of "
-"record\" of a research publication, but content is not always accessible to "
-"the general public"
+"A publisher landing page is the authoritative source for the \"version of"
+" record\" of a research publication, but content is not always accessible"
+" to the general public"
 msgstr ""
-"La page d'accueil d'un éditeur est la source officielle de la « version du "
-"dossier » d'une publication de recherche, mais le contenu n'est pas toujours "
-"accessible au grand public"
+"La page d'accueil d'un éditeur est la source officielle de la « version "
+"du dossier » d'une publication de recherche, mais le contenu n'est pas "
+"toujours accessible au grand public"
 
 #: src/scholar/templates/help.html:138
 msgid ""
-"When the work is from an Open Access publication (sometimes known as \"Gold"
-"\" or \"Diamond\" OA), and the publisher is expected to provide access to "
-"all readers, the button has an orange \"unlocked\" icon"
+"When the work is from an Open Access publication (sometimes known as "
+"\"Gold\" or \"Diamond\" OA), and the publisher is expected to provide "
+"access to all readers, the button has an orange \"unlocked\" icon"
 msgstr ""
-"Lorsque l'ouvrage provient d'une publication en libre accès (parfois appelée "
-"Gold ou Diamond OA), et que l'éditeur est censé permettre l'accès à tous les "
-"lecteurs, le bouton comporte une icône orange « déverrouillée »"
+"Lorsque l'ouvrage provient d'une publication en libre accès (parfois "
+"appelée Gold ou Diamond OA), et que l'éditeur est censé permettre l'accès"
+" à tous les lecteurs, le bouton comporte une icône orange « déverrouillée"
+" »"
 
 #: src/scholar/templates/help.html:142
 msgid ""
 "If the work is archived in full on a reliable, open platform, we will "
 "sometimes provide additional links"
 msgstr ""
-"Si l'œuvre est archivée intégralement sur une plateforme fiable et ouverte, "
-"nous fournirons parfois des liens supplémentaires"
+"Si l'œuvre est archivée intégralement sur une plateforme fiable et "
+"ouverte, nous fournirons parfois des liens supplémentaires"
 
 #: src/scholar/templates/help.html:148
 msgid "Tags"
@@ -720,35 +713,36 @@ msgstr "Mots clés"
 
 #: src/scholar/templates/help.html:150
 msgid ""
-"Search results may have tag labels which provide additional context about "
-"the work. For example, indexes the journal is included in, or open platform "
-"technology used for publications."
+"Search results may have tag labels which provide additional context about"
+" the work. For example, indexes the journal is included in, or open "
+"platform technology used for publications."
 msgstr ""
 "Les résultats de la recherche peuvent comporter des étiquettes qui "
-"fournissent un contexte supplémentaire sur l'œuvre. Par exemple, les index "
-"dans lesquels la revue est incluse, ou la technologie de plate-forme ouverte "
-"utilisée pour les publications."
+"fournissent un contexte supplémentaire sur l'œuvre. Par exemple, les "
+"index dans lesquels la revue est incluse, ou la technologie de plate-"
+"forme ouverte utilisée pour les publications."
 
 #: src/scholar/templates/help.html:160
 msgid ""
-"There are multiple released \"versions\" or \"editions\" of this work, and "
-"bibliographic metadata for the \"primary\" is being shown. Click the title "
-"to see other versions"
+"There are multiple released \"versions\" or \"editions\" of this work, "
+"and bibliographic metadata for the \"primary\" is being shown. Click the "
+"title to see other versions"
 msgstr ""
 "Il existe plusieurs « versions » ou « éditions » de cet ouvrage, et les "
-"métadonnées bibliographiques pour le « primaire » sont affichées. Cliquez "
-"sur le titre pour voir les autres versions"
+"métadonnées bibliographiques pour le « primaire » sont affichées. Cliquez"
+" sur le titre pour voir les autres versions"
 
 #: src/scholar/templates/help.html:164
 msgid ""
 "The primary language of this work is different from the search interface "
-"language. The <a href=\"https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes"
-"\">ISO two-letter language code</a> is indicated"
+"language. The <a "
+"href=\"https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes\">ISO two-"
+"letter language code</a> is indicated"
 msgstr ""
 "La langue principale de ce travail est différente de la langue de "
-"l'interface de recherche. Le <a href=\"https://fr.wikipedia.org/wiki/"
-"Liste_des_codes_ISO_639-1\"> code de langue ISO à deux lettres </a> est "
-"indiqué"
+"l'interface de recherche. Le <a "
+"href=\"https://fr.wikipedia.org/wiki/Liste_des_codes_ISO_639-1\"> code de"
+" langue ISO à deux lettres </a> est indiqué"
 
 #: src/scholar/templates/help.html:168
 msgid ""
@@ -760,53 +754,59 @@ msgstr ""
 
 #: src/scholar/templates/help.html:172
 msgid ""
-"Publication indexed in <a href=\"https://www.ebsco.com/open-access/"
-"szczepanski-list\">Szczepanski's List of Open Access Journals</a>, which "
-"implies that this is an Open Access work"
+"Publication indexed in <a href=\"https://www.ebsco.com/open-access"
+"/szczepanski-list\">Szczepanski's List of Open Access Journals</a>, which"
+" implies that this is an Open Access work"
 msgstr ""
-"Publication indexée dans <a href=\"https://www.ebsco.com/open-access/"
-"szczepanski-list\">Szczepanski's List of Open Access Journals</a>, ce qui "
-"implique qu'il s'agit d'un travail en accès libre"
+"Publication indexée dans <a href=\"https://www.ebsco.com/open-access"
+"/szczepanski-list\">Szczepanski's List of Open Access Journals</a>, ce "
+"qui implique qu'il s'agit d'un travail en accès libre"
 
 #: src/scholar/templates/help.html:176
 msgid ""
-"The work is believed to be <a href=\"https://en.wikipedia.org/wiki/"
-"Open_access\">\"Open Access\"</a> for any other reason"
+"The work is believed to be <a "
+"href=\"https://en.wikipedia.org/wiki/Open_access\">\"Open Access\"</a> "
+"for any other reason"
 msgstr ""
-"L'œuvre est considérée comme <a href=\"https://en.wikipedia.org/wiki/"
-"Open_access\"> \"Open Access\" </a> pour toute autre raison"
+"L'œuvre est considérée comme <a "
+"href=\"https://en.wikipedia.org/wiki/Open_access\"> \"Open Access\" </a> "
+"pour toute autre raison"
 
 #: src/scholar/templates/help.html:180
 msgid ""
-"Published on a <a href=\"https://en.wikipedia.org/wiki/SciELO\">SciELO</a> "
-"national platform"
+"Published on a <a "
+"href=\"https://en.wikipedia.org/wiki/SciELO\">SciELO</a> national "
+"platform"
 msgstr ""
-"Publié sur une plateforme nationale <a href=\"https://en.wikipedia.org/wiki/"
-"SciELO\">SciELO</a>"
+"Publié sur une plateforme nationale <a "
+"href=\"https://en.wikipedia.org/wiki/SciELO\">SciELO</a>"
 
 #: src/scholar/templates/help.html:184
 msgid ""
-"Published using <a href=\"https://en.wikipedia.org/wiki/Open_Journal_Systems"
-"\">Open Journal Systems</a> software"
+"Published using <a "
+"href=\"https://en.wikipedia.org/wiki/Open_Journal_Systems\">Open Journal "
+"Systems</a> software"
 msgstr ""
-"Publié à l'aide du logiciel <a href=\"https://en.wikipedia.org/wiki/"
-"Open_Journal_Systems\">Open Journal Systems</a>"
+"Publié à l'aide du logiciel <a "
+"href=\"https://en.wikipedia.org/wiki/Open_Journal_Systems\">Open Journal "
+"Systems</a>"
 
 #: src/scholar/templates/help.html:188
 msgid ""
-"Published using <a href=\"https://en.wikipedia.org/wiki/Wordpress"
-"\">WordPress</a> software"
+"Published using <a "
+"href=\"https://en.wikipedia.org/wiki/Wordpress\">WordPress</a> software"
 msgstr ""
-"Publié à l'aide du logiciel <a href=\"https://en.wikipedia.org/wiki/Wordpress"
-"\">WordPress</a>"
+"Publié à l'aide du logiciel <a "
+"href=\"https://en.wikipedia.org/wiki/Wordpress\">WordPress</a>"
 
 #: src/scholar/templates/help.html:192
 msgid ""
-"Preserved and/or hosted on the <a href=\"https://en.wikipedia.org/wiki/JSTOR"
-"\">JSTOR</a> digital preservation platform"
+"Preserved and/or hosted on the <a "
+"href=\"https://en.wikipedia.org/wiki/JSTOR\">JSTOR</a> digital "
+"preservation platform"
 msgstr ""
-"Préservé et/ou hébergé sur la plateforme de préservation numérique <a href="
-"\"https://en.wikipedia.org/wiki/JSTOR\">JSTOR</a>"
+"Préservé et/ou hébergé sur la plateforme de préservation numérique <a "
+"href=\"https://en.wikipedia.org/wiki/JSTOR\">JSTOR</a>"
 
 #: src/scholar/templates/help.html:198
 msgid "Persistent Identifiers"
@@ -815,21 +815,23 @@ msgstr "Identifiants persistants"
 #: src/scholar/templates/help.html:200
 msgid ""
 "Underneath search results, and alternate version listings, are any known "
-"\"persistent identifiers\" that uniquely identify the specific version of "
-"the work. These are usually hyperlinks."
+"\"persistent identifiers\" that uniquely identify the specific version of"
+" the work. These are usually hyperlinks."
 msgstr ""
-"Sous les résultats de la recherche et les listes de versions alternatives, "
-"se trouvent des « identifiants persistants » connus qui identifient de "
-"manière unique la version spécifique de l'œuvre. Il s'agit généralement "
-"d'hyperliens."
+"Sous les résultats de la recherche et les listes de versions "
+"alternatives, se trouvent des « identifiants persistants » connus qui "
+"identifient de manière unique la version spécifique de l'œuvre. Il s'agit"
+" généralement d'hyperliens."
 
 #: src/scholar/templates/help.html:210
 msgid ""
-"<a href=\"https://en.wikipedia.org/wiki/Digital_object_identifier\">Digital "
-"Object Identifier (DOI)</a>, provides a redirect to the publisher's landing "
-"page"
+"<a "
+"href=\"https://en.wikipedia.org/wiki/Digital_object_identifier\">Digital "
+"Object Identifier (DOI)</a>, provides a redirect to the publisher's "
+"landing page"
 msgstr ""
-"<a href=\"https://fr.wikipedia.org/wiki/Digital_Object_Identifier\">Digital "
+"<a "
+"href=\"https://fr.wikipedia.org/wiki/Digital_Object_Identifier\">Digital "
 "Object Identifier (DOI)</a>, fournit une redirection vers la page de "
 "destination de l'éditeur"
 
@@ -850,11 +852,10 @@ msgid "The DBLP Computer Science Bibliography"
 msgstr "La bibliographie informatique DBLP"
 
 #: src/scholar/templates/help.html:230
-msgid ""
-"Article-level identifier for works in DOAJ, particularly those with no DOI"
+msgid "Article-level identifier for works in DOAJ, particularly those with no DOI"
 msgstr ""
-"Identifiant au niveau de l'article pour les œuvres du DOAJ, en particulier "
-"celles sans DOI"
+"Identifiant au niveau de l'article pour les œuvres du DOAJ, en "
+"particulier celles sans DOI"
 
 #: src/scholar/templates/help.html:234
 msgid ""
@@ -868,53 +869,45 @@ msgstr ""
 msgid "Work In Progress"
 msgstr "Travaux en cours"
 
-#: src/scholar/templates/help.html:244 src/scholar/templates/home.html:37
+#: src/scholar/templates/help.html:243
 msgid ""
-"This service is in \"alpha\". It has several bugs, experiences downtime, and "
-"has not been officially announced."
+"This is a new service. Metadata is being improved and features have not "
+"been finalized."
 msgstr ""
-"Ce service est en « alpha ». Il a plusieurs bugs, connaît des interruptions "
-"de service, et n'a pas été officiellement annoncé."
+"Il s'agit d'un nouveau service. Les métadonnées sont en cours "
+"d'amélioration et les fonctionnalités n'ont pas encore été finalisées."
 
-#: src/scholar/templates/help.html:246 src/scholar/templates/home.html:39
-msgid ""
-"This is a new service. Metadata is being improved and features have not been "
-"finalized."
-msgstr ""
-"Il s'agit d'un nouveau service. Les métadonnées sont en cours d'amélioration "
-"et les fonctionnalités n'ont pas encore été finalisées."
-
-#: src/scholar/templates/help.html:250
+#: src/scholar/templates/help.html:247
 msgid "This project is currently a <i>prototype</i>"
 msgstr "Ce projet est actuellement un <i> prototype</i>"
 
-#: src/scholar/templates/help.html:253
+#: src/scholar/templates/help.html:250
 msgid "Some known bugs and issues:"
 msgstr "Quelques bogues et problèmes connus :"
 
-#: src/scholar/templates/help.html:256
+#: src/scholar/templates/help.html:253
 msgid ""
 "Poor metadata quality for conference proceedings. Many are labeled "
 "\"unpublished\" and are not associated with the conference."
 msgstr ""
-"Mauvaise qualité des métadonnées pour les actes des conférences. Beaucoup "
-"sont étiquetés « non publiés » et ne sont pas associés à la conférence."
+"Mauvaise qualité des métadonnées pour les actes des conférences. Beaucoup"
+" sont étiquetés « non publiés » et ne sont pas associés à la conférence."
 
-#: src/scholar/templates/help.html:257
+#: src/scholar/templates/help.html:254
 msgid ""
-"Duplicate versions of same work. For example, different versions of the same "
-"paper or dataset. We are working on basic entity-deduplication in the fatcat "
-"catalog."
+"Duplicate versions of same work. For example, different versions of the "
+"same paper or dataset. We are working on basic entity-deduplication in "
+"the fatcat catalog."
 msgstr ""
 "Versions dupliquées d'un même travail. Par exemple, différentes versions "
-"d'un même article ou d'un même ensemble de données. Nous travaillons sur la "
-"déduplication des entités de base dans le catalogue fatcat."
+"d'un même article ou d'un même ensemble de données. Nous travaillons sur "
+"la déduplication des entités de base dans le catalogue fatcat."
 
-#: src/scholar/templates/help.html:258
+#: src/scholar/templates/help.html:255
 msgid ""
 "Mis-matching of file content or version with work metadata. For example, "
-"sometimes pre-prints or author manuscripts are incorrectly associated with "
-"version-of-record metadata, or vice-versa."
+"sometimes pre-prints or author manuscripts are incorrectly associated "
+"with version-of-record metadata, or vice-versa."
 msgstr ""
 "Correspondance erronée entre le contenu ou la version du fichier et les "
 "métadonnées de travail. Par exemple, il arrive que des prétirés ou des "
@@ -934,30 +927,32 @@ msgid "Search Millions of Research Papers"
 msgstr "Rechercher des millions d'articles de recherche"
 
 #: src/scholar/templates/home.html:24
+#, fuzzy
 msgid ""
-"This fulltext search index includes over 25 million research articles and "
-"other scholarly documents preserved in the Internet Archive."
+"This fulltext search index includes over 35 million research articles and"
+" other scholarly documents preserved in the Internet Archive."
 msgstr ""
 "Cet index de recherche en texte intégral comprend plus de 25 millions "
-"d'articles de recherche et d'autres documents scientifiques conservés dans "
-"les archives Internet."
+"d'articles de recherche et d'autres documents scientifiques conservés "
+"dans les archives Internet."
 
 #: src/scholar/templates/home.html:24
+#, fuzzy
 msgid ""
-"The collection spans from digitized copies of eighteenth century journals "
-"through the latest Open Access conference proceedings and pre-prints crawled "
-"from the World Wide Web."
+"The collection spans from digitized copies of eighteenth century journals"
+" through the latest Open Access conference proceedings and preprints "
+"crawled from the World Wide Web."
 msgstr ""
 "La collection s'étend des copies numérisées de revues du XVIIIe siècle à "
-"travers les derniers actes de conférence en accès libre et les pré-"
-"impressions explorées à partir du World Wide Web."
+"travers les derniers actes de conférence en accès libre et les "
+"pré-impressions explorées à partir du World Wide Web."
 
 #: src/scholar/templates/home.html:24
 msgid "More &raquo;"
 msgstr "En savoir plus &raquo;"
 
-#: src/scholar/templates/home.html:52 src/scholar/templates/home.html:66
-#: src/scholar/templates/home.html:80 src/scholar/templates/home.html:94
+#: src/scholar/templates/home.html:35 src/scholar/templates/home.html:49
+#: src/scholar/templates/home.html:63 src/scholar/templates/home.html:77
 msgid "PDF thumbnail"
 msgstr "Vignette PDF"
 
@@ -965,15 +960,13 @@ msgstr "Vignette PDF"
 msgid "Filters"
 msgstr "Filtres"
 
-#: src/scholar/templates/search.html:47
-#: src/scholar/templates/search.html:77
+#: src/scholar/templates/search.html:47 src/scholar/templates/search.html:77
 msgid "Hit"
 msgid_plural "Hits"
 msgstr[0] "Résultat"
 msgstr[1] "Résultats"
 
-#: src/scholar/templates/search.html:53
-#: src/scholar/templates/search.html:85
+#: src/scholar/templates/search.html:53 src/scholar/templates/search.html:85
 #, python-format
 msgid "in %(frac_sec)ssec"
 msgstr "en %(frac_sec)ssec"
@@ -988,8 +981,8 @@ msgstr "Erreur de requête de recherche"
 
 #: src/scholar/templates/search.html:116
 msgid ""
-"Query parsing is currently very naive. Sometimes you can fix this problem by "
-"adding quotes around terms or entire phrases."
+"Query parsing is currently very naive. Sometimes you can fix this problem"
+" by adding quotes around terms or entire phrases."
 msgstr ""
 "L'analyse des requêtes est actuellement très naïve. Parfois, vous pouvez "
 "résoudre ce problème en ajoutant des guillemets autour des termes ou des "
@@ -1085,8 +1078,7 @@ msgstr "inconnu"
 #: src/scholar/templates/search_macros.html:213
 #, python-format
 msgid "Page %(page_num)s of %(journal_name)s Vol. %(volume)s, Issue %(issue)s"
-msgstr ""
-"Page %(page_num)s sur %(journal_name)s Vol. %(volume)s, question %(issue)s"
+msgstr "Page %(page_num)s sur %(journal_name)s Vol. %(volume)s, question %(issue)s"
 
 #: src/scholar/templates/search_macros.html:215
 msgid "page"
@@ -1107,15 +1099,15 @@ msgstr "Digitized Microfilm"
 #: src/scholar/templates/search_macros.html:288
 #, python-format
 msgid ""
-"A copy of this work was available on the public web and has been preserved "
-"in the Wayback Machine. The capture dates from %(capture_year)s; you can "
-"also visit <a rel=\"external noopener\" href=\"%(original_url)s\">the "
-"original URL</a>."
+"A copy of this work was available on the public web and has been "
+"preserved in the Wayback Machine. The capture dates from "
+"%(capture_year)s; you can also visit <a rel=\"external noopener\" "
+"href=\"%(original_url)s\">the original URL</a>."
 msgstr ""
 "Une copie de ce travail était disponible sur le web public et a été "
 "conservée dans la Wayback Machine. La capture date de %(capture_year)s ; "
-"vous pouvez également visiter <a rel=\"external noopener\" href="
-"\"%(original_url)s\"> l'URL originale </a>."
+"vous pouvez également visiter <a rel=\"external noopener\" "
+"href=\"%(original_url)s\"> l'URL originale </a>."
 
 #: src/scholar/templates/search_macros.html:290
 msgid ""
@@ -1127,11 +1119,11 @@ msgstr ""
 
 #: src/scholar/templates/search_macros.html:292
 msgid ""
-"The Internet Archive has digitized a microfilm copy of this work. It may be "
-"possible to borrow a copy for reading."
+"The Internet Archive has digitized a microfilm copy of this work. It may "
+"be possible to borrow a copy for reading."
 msgstr ""
-"L'Internet Archive a numérisé une copie sur microfilm de cet ouvrage. Il est "
-"possible d'en emprunter une copie pour la lire."
+"L'Internet Archive a numérisé une copie sur microfilm de cet ouvrage. Il "
+"est possible d'en emprunter une copie pour la lire."
 
 #: src/scholar/templates/search_macros.html:296
 #, python-format
@@ -1140,37 +1132,37 @@ msgstr "Le type de fichier est %(mimetype)s."
 
 #: src/scholar/templates/search_macros.html:301
 msgid ""
-"Note that this fulltext copy is not of the \"primary\" version of this work. "
-"The version it corresponds to is:"
+"Note that this fulltext copy is not of the \"primary\" version of this "
+"work. The version it corresponds to is:"
 msgstr ""
 "Notez que cette copie en texte intégral ne fait pas partie de la version "
 "\"primaire\" de cet ouvrage. La version à laquelle il correspond est :"
 
 #: src/scholar/templates/search_macros.html:314
 msgid "Additional access options for the primary version of this work:"
-msgstr ""
-"Options d'accès supplémentaires pour la version primaire de cet ouvrage :"
+msgstr "Options d'accès supplémentaires pour la version primaire de cet ouvrage :"
 
 #: src/scholar/templates/search_macros.html:324
 msgid ""
 "We don't yet know of a public preservation copy of this work. You may be "
-"able to obtain a copy of this work to read from the publisher, platforms, or "
-"institutional libraries."
+"able to obtain a copy of this work to read from the publisher, platforms,"
+" or institutional libraries."
 msgstr ""
-"Nous n'avons pas encore connaissance d'une copie de préservation publique de "
-"cette œuvre. Vous pourrez peut-être obtenir une copie de cet ouvrage à lire "
-"auprès de l'éditeur, des plateformes ou des bibliothèques institutionnelles."
+"Nous n'avons pas encore connaissance d'une copie de préservation publique"
+" de cette œuvre. Vous pourrez peut-être obtenir une copie de cet ouvrage "
+"à lire auprès de l'éditeur, des plateformes ou des bibliothèques "
+"institutionnelles."
 
 #: src/scholar/templates/search_macros.html:327
 #, python-format
 msgid ""
-"If you know of a legal, public version that we should archive, please let us "
-"know via <a rel=\"noopener\" href=\"%(save_paper_now_url)s\">\"Save Paper Now"
-"\"</a>."
+"If you know of a legal, public version that we should archive, please let"
+" us know via <a rel=\"noopener\" href=\"%(save_paper_now_url)s\">\"Save "
+"Paper Now\"</a>."
 msgstr ""
 "Si vous connaissez une version légale et publique que nous devrions "
-"archiver, veuillez nous le faire savoir via <a rel=\"noopener\" href="
-"\"%(save_paper_now_url)s\"> \"Save Paper Now\" </a>."
+"archiver, veuillez nous le faire savoir via <a rel=\"noopener\" "
+"href=\"%(save_paper_now_url)s\"> \"Save Paper Now\" </a>."
 
 #: src/scholar/templates/search_macros.html:374
 msgid "more &raquo;"
@@ -1218,8 +1210,7 @@ msgstr "En savoir plus &raquo;"
 #: src/scholar/templates/search_macros.html:507
 #, python-format
 msgid "Showing results %(start)s &mdash; %(end)s out of %(total)s results"
-msgstr ""
-"Affichage des résultats %(start)s &mdash; %(end)s sur %(total)s résultats"
+msgstr "Affichage des résultats %(start)s &mdash; %(end)s sur %(total)s résultats"
 
 #: src/scholar/templates/search_macros.html:540
 msgid "Clear Filters"
@@ -1234,10 +1225,6 @@ msgstr "Effacer les filtres"
 #~ msgid "Next"
 #~ msgstr "Suivant"
 
-#, fuzzy
-#~| msgid ""
-#~| "This service is in \"alpha\". It has several bugs, experiences\n"
-#~| "        downtime, and has not been officially announced."
 #~ msgid ""
 #~ "This service is in \"alpha\". It has several bugs, experiences\n"
 #~ "          downtime, and has not been officially announced."
@@ -1245,7 +1232,6 @@ msgstr "Effacer les filtres"
 #~ "Ce service est en \"alpha\". Il a plusieurs bugs, expériences\n"
 #~ "        temps d'arrêt, et n'a pas été officiellement annoncé."
 
-#, fuzzy
 #~ msgid "permalink"
 #~ msgstr "permalien"
 
@@ -1271,3 +1257,69 @@ msgstr "Effacer les filtres"
 
 #~ msgid "select language"
 #~ msgstr "sélectionner la langue"
+
+#~ msgid ""
+#~ "See also: <a href=\"%(lang_prefix)s/help\">User "
+#~ "Guide</a> which lists some bugs and "
+#~ "known issues"
+#~ msgstr ""
+#~ "Voir aussi : <a "
+#~ "href=\"%(lang_prefix)s/help\">Guide de l'utilisateur</a>"
+#~ " qui liste certains bogues et "
+#~ "problèmes connus"
+
+#~ msgid ""
+#~ "Metadata comes from <a "
+#~ "href=\"https://fatcat.wiki\">fatcat.wiki</a>, an open\n"
+#~ ""
+#~ "user-editable catalog of scholarly work."
+#~ " It should be possible to track "
+#~ "and\n"
+#~ "attribute the provenance of content and metadata in all cases. Please\n"
+#~ "<a href=\"#contact\">contact us</a> if you have questions."
+#~ msgstr ""
+#~ "Les métadonnées proviennent de <a "
+#~ "href=\"https://fatcat.wiki\">fatcat.wiki</a>, un catalogue"
+#~ " ouvert et modifiable par l'utilisateur."
+#~ "\n"
+#~ "catalogue ouvert et modifiable par "
+#~ "l'utilisateur des travaux universitaires. Il"
+#~ " devrait être possible de suivre et"
+#~ " d'attribuer\n"
+#~ "d'attribuer la provenance du contenu et"
+#~ " des métadonnées dans tous les cas."
+#~ " Veuillez\n"
+#~ "<a href=\"#contact\">contactez-nous</a> si vous avez des questions."
+
+#~ msgid ""
+#~ "Likewise information specifically for "
+#~ "publishers can be found at <a "
+#~ "href=\"%(url)s\">%(url)s</a>. This includes "
+#~ "guidelines for having content indexed "
+#~ "and preserved."
+#~ msgstr ""
+#~ "De même, des informations spécifiquement "
+#~ "destinées aux éditeurs sont disponibles "
+#~ "à l'adresse <a href=\"%(url)s\">%(url)s</a>. "
+#~ "Cela inclut des directives à suivre "
+#~ "pour indexer et préserver le contenu."
+
+#~ msgid ""
+#~ "The organizational contact information for "
+#~ "the Internet Archive is listed at "
+#~ "<a href=\"%(url)s\">%(url)s</a>."
+#~ msgstr ""
+#~ "Les coordonnées de l'Internet Archive "
+#~ "sont indiquées à <a "
+#~ "href=\"%(url)s\">%(url)s</a>."
+
+#~ msgid ""
+#~ "This service is in \"alpha\". It "
+#~ "has several bugs, experiences downtime, "
+#~ "and has not been officially announced."
+#~ msgstr ""
+#~ "Ce service est en « alpha ». "
+#~ "Il a plusieurs bugs, connaît des "
+#~ "interruptions de service, et n'a pas "
+#~ "été officiellement annoncé."
+
