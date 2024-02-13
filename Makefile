@@ -98,7 +98,7 @@ data/$(TODAY)/issue_db.sqlite: data/$(TODAY)/sim_collections.json data/$(TODAY)/
 	.venv/bin/python -m scholar.issue_db --db-file $@.wip load_counts
 	mv $@.wip $@
 
-data/issue_db.sqlite: data/$(TODAY)/issue_db.sqlite dep
+data/issue_db.sqlite: data/$(TODAY)/issue_db.sqlite
 	cp data/$(TODAY)/issue_db.sqlite data/issue_db.sqlite
 
 .PHONY: issue-db
