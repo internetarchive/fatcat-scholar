@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-02-07 11:10-0800\n"
+"POT-Creation-Date: 2024-02-09 14:56-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -696,40 +696,34 @@ msgstr ""
 msgid "Work In Progress"
 msgstr ""
 
-#: src/scholar/templates/help.html:244
-msgid ""
-"This service is in \"alpha\". It has several bugs, experiences downtime, "
-"and has not been officially announced."
-msgstr ""
-
-#: src/scholar/templates/help.html:246
+#: src/scholar/templates/help.html:243
 msgid ""
 "This is a new service. Metadata is being improved and features have not "
 "been finalized."
 msgstr ""
 
-#: src/scholar/templates/help.html:250
+#: src/scholar/templates/help.html:247
 msgid "This project is currently a <i>prototype</i>"
 msgstr ""
 
-#: src/scholar/templates/help.html:253
+#: src/scholar/templates/help.html:250
 msgid "Some known bugs and issues:"
 msgstr ""
 
-#: src/scholar/templates/help.html:256
+#: src/scholar/templates/help.html:253
 msgid ""
 "Poor metadata quality for conference proceedings. Many are labeled "
 "\"unpublished\" and are not associated with the conference."
 msgstr ""
 
-#: src/scholar/templates/help.html:257
+#: src/scholar/templates/help.html:254
 msgid ""
 "Duplicate versions of same work. For example, different versions of the "
 "same paper or dataset. We are working on basic entity-deduplication in "
 "the fatcat catalog."
 msgstr ""
 
-#: src/scholar/templates/help.html:258
+#: src/scholar/templates/help.html:255
 msgid ""
 "Mis-matching of file content or version with work metadata. For example, "
 "sometimes pre-prints or author manuscripts are incorrectly associated "
