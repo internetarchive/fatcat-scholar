@@ -3,7 +3,7 @@ import json
 from fatcat_openapi_client import ReleaseEntity
 from grobid_tei_xml import parse_document_xml
 
-from fatcat_scholar.transform import refs_from_crossref, refs_from_grobid
+from scholar.transform import refs_from_crossref, refs_from_grobid
 
 
 def test_transform_refs_grobid() -> None:
@@ -69,8 +69,7 @@ def test_transform_refs_crossref() -> None:
     assert refs[0].biblio.contrib_raw_names[0] == "Churg"
     assert refs[0].biblio.container_name == "Arch. Pathol. Lab. Med."
     assert (
-        refs[0].biblio.title
-        == "The separation of benign and malignant mesothelial proliferations"
+        refs[0].biblio.title == "The separation of benign and malignant mesothelial proliferations"
     )
     assert refs[0].biblio.year == 2012
     assert refs[0].biblio.pages == "1217"

@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 
-import sys
 import glob
 import datetime
 
-def index_entity(entity_type, output):
+def index_entity(entity_type, output) -> None:
 
     now = datetime.date.today().isoformat()
     print("""<?xml version="1.0" encoding="UTF-8"?>""", file=output)
@@ -18,7 +17,7 @@ def index_entity(entity_type, output):
 
     print("</sitemapindex>", file=output)
 
-def main():
+def main() -> None:
     with open('sitemap-index-works.xml', 'w') as output:
         index_entity("works", output)
     with open('sitemap-index-access.xml', 'w') as output:

@@ -2,7 +2,7 @@
 
 import sys
 
-# NOTE: copied from fatcat_scholar/hacks.py
+# NOTE: copied from scholar/hacks.py
 def make_access_redirect_url(work_ident: str, access_type: str, access_url: str) -> str:
     if access_type == "wayback" and "://web.archive.org/" in access_url:
         segments = access_url.split("/")

@@ -1,0 +1,11 @@
+# syntax=docker/dockerfile:1
+
+FROM ubuntu:focal
+ENV LC_ALL="C.UTF-8"
+ENV LANG="C.UTF-8"
+ENV DEBIAN_FRONTEND=noninteractive
+RUN \
+apt-get update &&\
+apt-get -y install git software-properties-common && \
+add-apt-repository ppa:deadsnakes/ppa -uy && \
+apt-get install -y python3.11 python3.11-venv python3.11-dev python3.11-distutils build-essential libffi-dev

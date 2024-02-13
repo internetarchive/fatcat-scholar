@@ -8,6 +8,6 @@
     cat data/sim_collections.tsv | parallel -j4 ia metadata {} | jq . -c | pv -l > data/sim_collections.json
     cat data/sim_items.tsv | parallel -j8 ia metadata {} | jq . -c | pv -l > data/sim_items.json
 
-    cat data/sim_collections.2020-05-15.json | pv -l | python -m fatcat_scholar.issue_db load_pubs
-    cat data/sim_items.2020-05-15.json | pv -l | python -m fatcat_scholar.issue_db load_issues
-    python -m fatcat_scholar.issue_db load_counts
+    cat data/sim_collections.2020-05-15.json | pv -l | python -m scholar.issue_db load_pubs
+    cat data/sim_items.2020-05-15.json | pv -l | python -m scholar.issue_db load_issues
+    python -m scholar.issue_db load_counts

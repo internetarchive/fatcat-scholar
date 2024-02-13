@@ -1,6 +1,6 @@
 import io
 
-from fatcat_scholar.djvu import djvu_extract_leaf_texts
+from scholar.djvu import djvu_extract_leaf_texts
 
 
 def test_djvu_extract_leaf_texts() -> None:

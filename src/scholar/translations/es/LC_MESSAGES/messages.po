@@ -1,0 +1,1321 @@
+# Spanish translations for PROJECT.
+# Copyright (C) 2020 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+# Bryan Newbold <bnewbold@robocracy.org>, 2020, 2021, 2022.
+# badlop <badlop@process-one.net>, 2021.
+# Adolfo Jayme Barrientos <fitojb@ubuntu.com>, 2021.
+# eulalio <eulalio@disroot.org>, 2022.
+# Jaime Marquínez Ferrándiz <weblate@jregistros.fastmail.net>, 2022.
+# gallegonovato <fran-carro@hotmail.es>, 2022, 2023.
+# Héctor Cortés <frewilfis@protonmail.ch>, 2023.
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: bnewbold@archive.org\n"
+"POT-Creation-Date: 2024-02-13 15:27-0800\n"
+"PO-Revision-Date: 2023-12-28 22:13+0000\n"
+"Last-Translator: Héctor Cortés <frewilfis@protonmail.ch>\n"
+"Language: es\n"
+"Language-Team: Spanish "
+"<https://hosted.weblate.org/projects/internetarchive/fatcat-scholar/es/>"
+"\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.12.1\n"
+
+#: src/scholar/search.py:45
+msgid "Release Date"
+msgstr "Fecha de publicación"
+
+#: src/scholar/search.py:49
+msgid "All Time"
+msgstr "Todo el tiempo"
+
+#: src/scholar/search.py:50
+msgid "Past Week"
+msgstr "La semana pasada"
+
+#: src/scholar/search.py:51
+msgid "Past Year"
+msgstr "El año pasado"
+
+#: src/scholar/search.py:52
+msgid "Since 2000"
+msgstr "Desde 2000"
+
+#: src/scholar/search.py:53
+msgid "Before 1927"
+msgstr "Antes de 1927"
+
+#: src/scholar/search.py:57
+msgid "Resource Type"
+msgstr "Tipo de recurso"
+
+#: src/scholar/search.py:61
+msgid "Papers"
+msgstr "Artículos"
+
+#: src/scholar/search.py:62
+msgid "Reports"
+msgstr "Informes"
+
+#: src/scholar/search.py:63
+msgid "Datasets"
+msgstr "Conjuntos de datos"
+
+#: src/scholar/search.py:64
+msgid "Everything"
+msgstr "Todo"
+
+#: src/scholar/search.py:68
+msgid "Availability"
+msgstr "Disponibilidad"
+
+#: src/scholar/search.py:72
+msgid "Fulltext"
+msgstr "Texto completo"
+
+#: src/scholar/search.py:73
+msgid "Microfilm"
+msgstr "Microfilme"
+
+#: src/scholar/search.py:74 src/scholar/templates/search_macros.html:4
+msgid "Open Access"
+msgstr "Acceso abierto"
+
+#: src/scholar/search.py:75
+msgid "All Records"
+msgstr "Todos los registros"
+
+#: src/scholar/search.py:79
+msgid "Sort Order"
+msgstr "Orden de clasificación"
+
+#: src/scholar/search.py:83
+msgid "Relevancy"
+msgstr "Relevancia"
+
+#: src/scholar/search.py:84
+msgid "Recent First"
+msgstr "Recientes primero"
+
+#: src/scholar/search.py:85
+msgid "Oldest First"
+msgstr "Los más antiguos primero"
+
+#: src/scholar/templates/about.html:4
+#, python-format
+msgid "About %(website_name)s"
+msgstr "Acerca de %(website_name)s"
+
+#: src/scholar/templates/about.html:8
+msgid "About Internet Archive Scholar"
+msgstr "Acerca de Internet Archive Académico"
+
+#: src/scholar/templates/about.html:11 src/scholar/templates/base.html:206
+msgid "How It Works"
+msgstr "Cómo funciona"
+
+#: src/scholar/templates/about.html:13
+msgid "Content in this search index comes in one of three forms:"
+msgstr "El contenido de este índice de búsqueda se presenta de tres formas:"
+
+#: src/scholar/templates/about.html:16
+msgid ""
+"<b>public web content</b> as preserved in <a "
+"href=\"https://web.archive.org\">The Wayback Machine</a> and <a "
+"href=\"https://archive-it.org\">Archive-It</a> partner collections"
+msgstr ""
+"<b>contenido web público</b> tal como se conserva en las colecciones de "
+"socios <a href=\"https://web.archive.org\">The Wayback Machine</a> y <a "
+"href=\"https://archive-it.org\">Archive-It</a>"
+
+#: src/scholar/templates/about.html:17
+msgid "<b>digitized print materials</b> from paper and microform collections"
+msgstr ""
+"<b>materiales impresos digitalizados</b> de colecciones en papel y "
+"microformas"
+
+#: src/scholar/templates/about.html:18
+msgid ""
+"<b>general materials</b> from <a href=\"https://archive.org\">archive.org"
+" collections</a>, including collaborations with partners"
+msgstr ""
+"<b>material general</b> de las colecciones de <a "
+"href=\"https://archive.org\">archive.org</a>, incluidas las "
+"colaboraciones con socios"
+
+#: src/scholar/templates/about.html:21
+#, python-format
+msgid ""
+"This <a href=\"%(url)s\">2019 FORCE11 conference presentation</a> gives "
+"an overview of the technical infrastructure and goals of the project "
+"overall."
+msgstr ""
+"Esta <a href=\"%(url)s\"> presentación de la conferencia FORCE11 de 2019 "
+"</a> ofrece una descripción general de la infraestructura técnica y los "
+"objetivos del proyecto en general."
+
+#: src/scholar/templates/about.html:24 src/scholar/templates/base.html:207
+msgid "Content Sources"
+msgstr "Fuentes de contenido"
+
+#: src/scholar/templates/about.html:26
+msgid ""
+"Metadata comes from <a href=\"https://fatcat.wiki\">fatcat.wiki</a>, an "
+"open\n"
+"user-editable catalog of scholarly work."
+msgstr ""
+
+#: src/scholar/templates/about.html:30 src/scholar/templates/base.html:208
+msgid "Text and Data Mining"
+msgstr "Minería de textos y datos"
+
+#: src/scholar/templates/about.html:32
+#, fuzzy
+msgid ""
+"We intend to provide researcher access to the full corpus for text and "
+"data\n"
+"mining purposes. Derived datasets may also be posted publicly for "
+"analysis, for\n"
+"example a citation graph or N-gram frequencies by year. If you are "
+"interested\n"
+"or would like to see specific datasets made available, please contact us "
+"at scholar@archive.org."
+msgstr ""
+"Tenemos la intención de proporcionar a los investigadores acceso al "
+"corpus completo de texto y datos.\n"
+"fines mineros. Los conjuntos de datos derivados también pueden publicarse"
+" para su análisis, por\n"
+"ejemplo, un gráfico de citas o frecuencias de N-gramos por año. Si estás "
+"interesado\n"
+"o le gustaría ver conjuntos de datos específicos disponibles, contáctenos."
+
+#: src/scholar/templates/about.html:37
+msgid ""
+"Currently snapshots of the full fatcat metadata corpus and upstream "
+"metadata sources are uploaded periodically to the <a "
+"href=\"https://archive.org/details/ia_biblio_metadata\">Bulk "
+"Bibliographic Metadata</a> collection on archive.org."
+msgstr ""
+"Actualmente se suben periódicamente instantáneas del corpus completo de "
+"metadatos fatcat y de las fuentes de metadatos anteriores a la colección "
+"<a href=\"https://archive.org/details/ia_biblio_metadata\">Bulk "
+"Bibliographic Metadata</a> en archive.org."
+
+#: src/scholar/templates/about.html:39
+msgid ""
+"Read more in <a href=\"https://guide.fatcat.wiki/bulk_exports.html\">the "
+"Fatcat Guide</a>."
+msgstr ""
+"Más información en <a "
+"href=\"https://guide.fatcat.wiki/bulk_exports.html\">la Guía del Gato "
+"Gordo</a>."
+
+#: src/scholar/templates/about.html:42
+msgid "Authors and Publishers"
+msgstr "Autores y Editores"
+
+#: src/scholar/templates/about.html:45
+#, python-format
+msgid ""
+"Information specifically for authors of research works can be found at <a"
+" href=\"%(url)s\">%(url)s</a>. This includes instructions for correcting "
+"bibliographic metadata and updates to published works."
+msgstr ""
+"Puede encontrar información específica para los autores de los trabajos "
+"de investigación en <a href=\"%(url)s\">%(url)s</a>. Esto incluye "
+"instrucciones para corregir los metadatos bibliográficos y las "
+"actualizaciones de los trabajos publicados."
+
+#: src/scholar/templates/about.html:48
+#, python-format
+msgid ""
+"In alignment with its mission, Internet Archive makes automated attempts "
+"to capture and preserve all open access research publications on the "
+"public web. If your open access journal articles aren’t currently "
+"included in Internet Archive Scholar, you can fill out the <a "
+"href=\"https://form.jotform.com/232483341499059\">Internet Archive "
+"Scholar inclusion form</a> to share journal URLs for crawling. Please "
+"note that it will take at least 3 months from the time you submit this "
+"form until your content starts to appear in Internet Archive Scholar. "
+"Emails about the status of your content sent less than 3 months after "
+"submitting this form will not be answered. Additional information "
+"specifically for publishers can be found at <a "
+"href=\"%(url)s\">%(url)s</a>. This includes guidelines for having content"
+" indexed and preserved."
+msgstr ""
+
+#: src/scholar/templates/about.html:51
+msgid "Contact Information"
+msgstr "Información de Contacto"
+
+#: src/scholar/templates/about.html:53
+#, python-format
+msgid ""
+"Queries about this search service and the fatcat catalog can be directed "
+"to <a href=\"mailto:%(email)s\">%(email)s</a>."
+msgstr ""
+"Las consultas sobre este servicio de búsqueda y el catálogo fatcat pueden"
+" dirigirse a <a href=\"mailto:%(email)s\">%(email)s</a>."
+
+#: src/scholar/templates/about.html:55
+#, python-format
+msgid "There is a public chat channel at <a href=\"%(url)s\">%(url)s</a>."
+msgstr "Hay un canal de chat público en <a href=\"%(url)s\">%(url)s</a>."
+
+#: src/scholar/templates/about.html:58
+msgid "Support and Acknowledgements"
+msgstr "Apoyo y Agradecimientos"
+
+#: src/scholar/templates/about.html:61
+#, python-format
+msgid ""
+"Work on Internet Archive Scholar has received support from the Andrew W. "
+"Mellon Foundation through multiple phases of the <a "
+"href=\"%(grant_url)s\">\"Ensuring the Persistent Access of Open Access "
+"Journal Literature\"</a> project (see <a href=\"%(blog_url)s\">original "
+"announcement</a>)."
+msgstr ""
+"El trabajo en Internet Archive Scholar ha recibido el apoyo de la "
+"Fundación Andrew W. Mellon en múltiples fases del proyecto <a "
+"href=\"%(grant_url)s\">\"Ensuring the Persistent Access of Open Access "
+"Journal Literature\"</a> (ver <a href=\"%(blog_url)s\">anuncio "
+"original</a>)."
+
+#: src/scholar/templates/about.html:63
+#, python-format
+msgid ""
+"See additional acknowledgements on <a "
+"href=\"%(fatcat_url)s\">fatcat.wiki</a>."
+msgstr ""
+"Ver reconocimientos adicionales en <a "
+"href=\"%(fatcat_url)s\">fatcat.wiki</a>."
+
+#: src/scholar/templates/access_404.html:10
+msgid "404: Access Location Not Found"
+msgstr "404: No se encuentra localización de acceso"
+
+#: src/scholar/templates/access_404.html:11
+msgid ""
+"We could not find a valid redirect for the URL you tried. Sorry about "
+"that!"
+msgstr ""
+"No pudimos encontrar una redirección válida para la URL que intentó. ¡Lo "
+"lamento!"
+
+#: src/scholar/templates/access_404.html:12
+msgid ""
+"There may be a typo, truncation, or encoding error. Or, the resource may "
+"have been removed from our catalog."
+msgstr ""
+"Puede haber un error tipográfico, truncado o de codificación. O bien, se "
+"puede haber eliminado el recurso de nuestro catálogo."
+
+#: src/scholar/templates/access_404.html:13
+msgid ""
+"Some places you can visit try to hunt down this resource (or a "
+"replacement) include:"
+msgstr ""
+"Algunos lugares que puede visitar para buscar este recurso (o una "
+"sustitución) incluyen:"
+
+#: src/scholar/templates/access_404.html:16
+msgid "Original web url:"
+msgstr "URL web original:"
+
+#: src/scholar/templates/access_404.html:20
+msgid "Wayback Machine calendar page (all captures)"
+msgstr "Página del calendario de Wayback Machine (todas las capturas)"
+
+#: src/scholar/templates/access_404.html:23
+msgid "archive.org download link for the item:"
+msgstr "archive.org enlace de descarga para el elemento:"
+
+#: src/scholar/templates/access_404.html:29
+msgid "Scholar landing page"
+msgstr "Página de destino escolar"
+
+#: src/scholar/templates/access_404.html:30
+msgid "Fatcat catalog page"
+msgstr "Página del catálogo Fatcat"
+
+#: src/scholar/templates/base.html:13
+msgid "Internet Archive Scholar"
+msgstr "Archivo de Internet Académico"
+
+#: src/scholar/templates/base.html:83
+msgid "language selection menu"
+msgstr "Carta de selección de la lengua"
+
+#: src/scholar/templates/base.html:105
+msgid "Contribute to translations"
+msgstr "Contribuir a las traducciones"
+
+#: src/scholar/templates/base.html:128
+msgid "by title, authors, keywords..."
+msgstr "por título, autores, palabras clave..."
+
+#: src/scholar/templates/base.html:128
+msgid "search for papers"
+msgstr "buscar artículos"
+
+#: src/scholar/templates/base.html:129 src/scholar/templates/home.html:16
+msgid "Search"
+msgstr "Buscar"
+
+#: src/scholar/templates/base.html:144
+msgid "RSS Feed"
+msgstr "Fuentes RSS"
+
+#: src/scholar/templates/base.html:148
+msgid "User Guide"
+msgstr "Guía del usuario"
+
+#: src/scholar/templates/base.html:176
+msgid ""
+"We are a US 501(c)(3) non-profit library, building a global archive of "
+"Internet sites and other cultural artifacts in digital form."
+msgstr ""
+"Somos una biblioteca sin ánimo de lucro 501(c)(3) de los EE.UU., que está"
+" construyendo un archivo global de sitios de Internet y otros artefactos "
+"culturales en forma digital."
+
+#: src/scholar/templates/base.html:178
+#, python-format
+msgid ""
+"Other projects include %(wayback)s, %(archive_org)s, %(openlibrary)s, and"
+" %(archive_it)s."
+msgstr ""
+"Otros proyectos incluyen %(wayback)s, %(archive_org)s, %(openlibrary)s y "
+"%(archive_it)s."
+
+#: src/scholar/templates/base.html:185
+msgid "About Us"
+msgstr "Sobre nosotros"
+
+#: src/scholar/templates/base.html:186
+msgid "Contact Us"
+msgstr "Contacto"
+
+#: src/scholar/templates/base.html:187
+msgid "Policies"
+msgstr "Políticas"
+
+#: src/scholar/templates/base.html:188
+msgid "Donate"
+msgstr "Donar"
+
+#: src/scholar/templates/base.html:194
+msgid "Open Infrastructure"
+msgstr "Infraestructura abierta"
+
+#: src/scholar/templates/base.html:196
+msgid "Editable Catalog (Fatcat)"
+msgstr "Catálogo editable (Fatcat)"
+
+#: src/scholar/templates/base.html:197
+msgid "Contribute"
+msgstr "Contribur"
+
+#: src/scholar/templates/base.html:198
+msgid "Search API"
+msgstr "Búsqueda API"
+
+#: src/scholar/templates/base.html:199
+msgid "Service Status"
+msgstr "Estado del servicio"
+
+#: src/scholar/templates/base.html:200
+msgid "Source Code"
+msgstr "Código fuente"
+
+#: src/scholar/templates/base.html:209
+msgid "Help"
+msgstr "Ayuda"
+
+#: src/scholar/templates/error.html:12
+msgid "Not Found"
+msgstr "No encontrado"
+
+#: src/scholar/templates/error.html:14
+msgid "Access Forbidden"
+msgstr "Acceso denegado"
+
+#: src/scholar/templates/error.html:16
+msgid "Request Error"
+msgstr "Error de solicitud"
+
+#: src/scholar/templates/error.html:18
+msgid "Internal Error"
+msgstr "Error interno"
+
+#: src/scholar/templates/help.html:5
+#, python-format
+msgid "%(website_name)s Help"
+msgstr "Ayuda de %(website_name)s"
+
+#: src/scholar/templates/help.html:14
+msgid "Try It"
+msgstr "Inténtalo"
+
+#: src/scholar/templates/help.html:22
+msgid "Scholar User Guide"
+msgstr "Guía del usuario académico"
+
+#: src/scholar/templates/help.html:23
+#, python-format
+msgid "See also: <a href=\"%(lang_prefix)s/about\">About Scholarly Search</a>"
+msgstr ""
+"Véase también: <a href=\"%(lang_prefix)s/about\">Acerca de la búsqueda "
+"académica</a>"
+
+#: src/scholar/templates/help.html:25
+#, fuzzy
+msgid ""
+"This service provides <a href=\"https://en.wikipedia.org/wiki/Full-"
+"text_search\">fulltext searching</a> for research publications archived "
+"in Internet Archive's various collections. It includes content from the "
+"natural sciences, humanities, biomedicine, art, history, industrial "
+"research, government reports, and more."
+msgstr ""
+"Este servicio ofrece <a href=\"https://en.wikipedia.org/wiki/Full-"
+"text_search\">búsquedas a texto completo</a> sobre todas las "
+"publicaciones de investigación archivadas en las diversas colecciones del"
+" Internet Archive. Incluye contenidos de ciencias naturales, humanidades,"
+" biomedicina, arte, historia, investigación industrial, informes "
+"gubernamentales y más."
+
+#: src/scholar/templates/help.html:26
+#, fuzzy
+msgid ""
+"Reader access to the content is provided when possible. Sometimes this "
+"access is to a preprint or other version of the work, and this is "
+"indicated in the search results."
+msgstr ""
+"El acceso del lector al contenido se proporciona siempre y cuando sea "
+"posible. A veces este acceso es a una “preimpresión” u otra versión de la"
+" obra, y esto se indica en los resultados de la búsqueda."
+
+#: src/scholar/templates/help.html:28
+msgid ""
+"In other cases, depending on search filters, results are included for "
+"which there is only a bibliographic catalog entry. It may still be "
+"possible to obtain access through a public library or from the publisher "
+"directly."
+msgstr ""
+"En otros casos, dependiendo de los filtros de búsqueda, se incluyen "
+"resultados para los que solo existe una entrada en el catálogo "
+"bibliográfico. Puede ser posible obtener acceso a través de una "
+"biblioteca pública o directamente del editor."
+
+#: src/scholar/templates/help.html:30
+msgid "Query Syntax"
+msgstr "Sintaxis de la consulta"
+
+#: src/scholar/templates/help.html:32
+msgid ""
+"In addition to the basic filtering and sorting options, this search\n"
+"interface also allows the use of Lucene query syntax in the search box. "
+"You can\n"
+"restrict term queries on multiple metadata fields using colon statements "
+"like\n"
+"<code>journal:Science</code>, set filters like <code>lang:de</code>, and\n"
+"apply range queries like <code>year:&gt;1989 year:&lt;2000</code>."
+msgstr ""
+"Además de las opciones básicas de filtrado y clasificación, esta interfaz"
+"\n"
+"de búsqueda también permite el uso de la sintaxis de consulta Lucene en "
+"el campo de búsqueda. Se puede\n"
+"restringir las consultas de términos en múltiples campos de metadatos "
+"utilizando declaraciones de dos puntos como\n"
+"<code>journal:Science</code>, establecer filtros como "
+"<code>lang:es</code>, y\n"
+"aplicar consultas de rango como <code>year:&gt;1989 year:&lt;2000</code>."
+
+#: src/scholar/templates/help.html:38
+msgid ""
+"While this syntax allows for relatively complex and powerful queries, at "
+"some point advanced users may run into limits on the size or complexity "
+"of queries."
+msgstr ""
+"Si bien esta sintaxis permite realizar consultas relativamente complejas "
+"y potentes, en algún momento los usuarios avanzados pueden llegar a "
+"límites en el tamaño o la complejidad de las consultas."
+
+#: src/scholar/templates/help.html:40
+msgid ""
+"For the time being we recommend systems like <a "
+"href=\"https://lens.org\">lens.org</a> for a more powerful interface."
+msgstr ""
+"Por el momento recomendamos sistemas como <a "
+"href=\"https://lens.org\">lens.org</a> para una interfaz más potente."
+
+#: src/scholar/templates/help.html:43
+msgid "Example Queries"
+msgstr "Ejemplo de consultas"
+
+#: src/scholar/templates/help.html:45
+msgid "Search for digitized pages about a topic from specific years:"
+msgstr "Buscar páginas digitalizadas sobre un tema de años específicos:"
+
+#: src/scholar/templates/help.html:49
+msgid "Search for papers in Chinese matching a term:"
+msgstr "Buscar documentos en chino que coincidan con un término:"
+
+#: src/scholar/templates/help.html:53
+msgid "Conference papers with an author name query:"
+msgstr "Documentos de la conferencia con una consulta del nombre del autor:"
+
+#: src/scholar/templates/help.html:57
+msgid "Citation Queries"
+msgstr "Consultas de citas"
+
+#: src/scholar/templates/help.html:58
+msgid ""
+"As an experimental feature, if the search query \"looks like\" a formal "
+"citation, as found in the bibliography of a research paper, the service "
+"will attempt to parse the citation and do a match against our catalog of "
+"known works. When this happens, any filters are ignored."
+msgstr ""
+"Como característica experimental, si la consulta de búsqueda \"se "
+"parece\" a una cita formal, como la que se encuentra en la bibliografía "
+"de un trabajo de investigación, el servicio intentará analizar la cita y "
+"hacer una comparación con nuestro catálogo de obras conocidas. Cuando "
+"esto sucede, cualquier filtro es ignorado."
+
+#: src/scholar/templates/help.html:62
+msgid "Metadata Fields"
+msgstr "Campos de metadatos"
+
+#: src/scholar/templates/help.html:64
+msgid ""
+"You can restrict to records where the field exists with an asterisk like "
+"<code>doi:*</code>, and negate any term like <code>!type:article-"
+"journal</code>."
+msgstr ""
+"Se puede restringir a los registros en los que el campo existe con un "
+"asterisco como <code>doi:*</code>, y negar cualquier término como "
+"<code>!type:article-journal</code>."
+
+#: src/scholar/templates/help.html:66
+msgid ""
+"In-depth documentation of the query syntax is available <a "
+"href=\"https://www.elastic.co/guide/en/elasticsearch/reference/current"
+"/query-dsl-query-string-query.html#query-string-query-notes\">from the "
+"Elasticsearch project</a>."
+msgstr ""
+"Se puede consultar una documentación detallada de la sintaxis de la "
+"consulta <a "
+"href=\"https://www.elastic.co/guide/en/elasticsearch/reference/current"
+"/query-dsl-query-string-query.html#query-string-query-notes\"> en el "
+"proyecto Elasticsearch</a>."
+
+#: src/scholar/templates/help.html:68
+msgid ""
+"The complete current search document schema is available (as JSON) <a "
+"href=\"https://github.com/internetarchive/fatcat-"
+"scholar/blob/master/schema/scholar_fulltext.v01.json\">in the source "
+"code</a>."
+msgstr ""
+"El esquema completo del documento de búsqueda actual está disponible "
+"(como JSON) <a href=\"https://github.com/internetarchive/fatcat-"
+"scholar/blob/master/schema/scholar_fulltext.v01.json\">en el código "
+"fuente</a>."
+
+#: src/scholar/templates/help.html:105
+msgid "Search Results"
+msgstr "Resultados de la búsqueda"
+
+#: src/scholar/templates/help.html:108
+msgid "Access Links"
+msgstr "Enlaces de acceso"
+
+#: src/scholar/templates/help.html:118
+msgid ""
+"All Internet Archive preservation copy links have the same style and "
+"icon. Content from the Wayback Machine looks like this."
+msgstr ""
+"Todos los enlaces de copia de preservación del Archivo de Internet tienen"
+" el mismo estilo e icono. El contenido de la Wayback Machine se ve así."
+
+#: src/scholar/templates/help.html:122
+msgid ""
+"If the preserved copy of the work is from a pre-print, author manuscript,"
+" or other alternative version of the work, the access link has an "
+"indicator. You can get details and view all versions by clicking on the "
+"primary title link"
+msgstr ""
+"Si la copia conservada de la obra procede de una preimpresión, un "
+"manuscrito del autor u otra versión alternativa de la obra, el enlace de "
+"acceso tiene un indicador. Puede obtener detalles y ver todas las "
+"versiones haciendo clic en el enlace de título primario"
+
+#: src/scholar/templates/help.html:126
+msgid ""
+"Some preserved content, particularly older Public Domain works, may be "
+"stored in general Internet Archive digital collections (as opposed to the"
+" web archive)"
+msgstr ""
+"Algunos contenidos preservados, en particular las obras más antiguas de "
+"dominio público, pueden almacenarse en colecciones digitales generales "
+"del Archivo de Internet (a diferencia del archivo de la web)"
+
+#: src/scholar/templates/help.html:130
+msgid ""
+"Digitized copies of works on microfilm may be linked to experimentally. "
+"Access may be limited to controlled lending"
+msgstr ""
+"Las copias digitalizadas de las obras en microfilm pueden vincularse "
+"experimentalmente. El acceso puede limitarse a los préstamos controlados"
+
+#: src/scholar/templates/help.html:134
+msgid ""
+"A publisher landing page is the authoritative source for the \"version of"
+" record\" of a research publication, but content is not always accessible"
+" to the general public"
+msgstr ""
+"La página de aterrizaje de un editor es la fuente autorizada de la "
+"\"versión de registro\" de una publicación de investigación, pero el "
+"contenido no siempre es accesible al público en general"
+
+#: src/scholar/templates/help.html:138
+msgid ""
+"When the work is from an Open Access publication (sometimes known as "
+"\"Gold\" or \"Diamond\" OA), and the publisher is expected to provide "
+"access to all readers, the button has an orange \"unlocked\" icon"
+msgstr ""
+"Cuando la obra es de una publicación de acceso abierto (a veces conocida "
+"como OA \"Oro\" o \"Diamante\"), y se espera que el editor proporcione "
+"acceso a todos los lectores, el botón tiene un icono naranja de "
+"\"desbloqueo\""
+
+#: src/scholar/templates/help.html:142
+msgid ""
+"If the work is archived in full on a reliable, open platform, we will "
+"sometimes provide additional links"
+msgstr ""
+"Si el trabajo se archiva en su totalidad en una plataforma abierta y "
+"fiable, a veces proporcionaremos enlaces adicionales"
+
+#: src/scholar/templates/help.html:148
+msgid "Tags"
+msgstr "Etiquetas"
+
+#: src/scholar/templates/help.html:150
+msgid ""
+"Search results may have tag labels which provide additional context about"
+" the work. For example, indexes the journal is included in, or open "
+"platform technology used for publications."
+msgstr ""
+"Los resultados de la búsqueda pueden tener etiquetas que proporcionen un "
+"contexto adicional sobre la obra. Por ejemplo, los índices en los que se "
+"incluye la revista o la tecnología de plataforma abierta utilizada para "
+"las publicaciones."
+
+#: src/scholar/templates/help.html:160
+msgid ""
+"There are multiple released \"versions\" or \"editions\" of this work, "
+"and bibliographic metadata for the \"primary\" is being shown. Click the "
+"title to see other versions"
+msgstr ""
+"Hay múltiples \"versiones\" o \"ediciones\" publicadas de esta obra, y se"
+" están mostrando los metadatos bibliográficos de las \"primarias\". Haga "
+"clic en el título para ver otras versiones"
+
+#: src/scholar/templates/help.html:164
+msgid ""
+"The primary language of this work is different from the search interface "
+"language. The <a "
+"href=\"https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes\">ISO two-"
+"letter language code</a> is indicated"
+msgstr ""
+"El idioma principal de este trabajo es diferente del idioma de la "
+"interfaz de búsqueda. Se indica el <a "
+"href=\"https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes\"> código de"
+" idioma ISO de dos letras </a>"
+
+#: src/scholar/templates/help.html:168
+msgid ""
+"Published in a <a href=\"https://doaj.org\">Directory of Open Access "
+"Journals</a> publication, which implies that this is an Open Access work"
+msgstr ""
+"Publicado en un <a href=\"https://doaj.org\">Directorio de Revistas de "
+"Acceso Abierto</a> publicación, lo que implica que se trata de una obra "
+"de Acceso Abierto"
+
+#: src/scholar/templates/help.html:172
+msgid ""
+"Publication indexed in <a href=\"https://www.ebsco.com/open-access"
+"/szczepanski-list\">Szczepanski's List of Open Access Journals</a>, which"
+" implies that this is an Open Access work"
+msgstr ""
+"Publicación indexada en la Lista de Revistas de Acceso Abierto de <a "
+"href=\"https://www.ebsco.com/open-access/szczepanski-"
+"list\">Szczepanski</a>, lo que implica que se trata de una obra de acceso"
+" abierto"
+
+#: src/scholar/templates/help.html:176
+msgid ""
+"The work is believed to be <a "
+"href=\"https://en.wikipedia.org/wiki/Open_access\">\"Open Access\"</a> "
+"for any other reason"
+msgstr ""
+"Se cree que la obra es <a "
+"href=\"https://en.wikipedia.org/wiki/Open_access\">\"Open Access\"</a> "
+"por cualquier otra razón"
+
+#: src/scholar/templates/help.html:180
+msgid ""
+"Published on a <a "
+"href=\"https://en.wikipedia.org/wiki/SciELO\">SciELO</a> national "
+"platform"
+msgstr ""
+"Publicado en una plataforma nacional <a "
+"href=\"https://en.wikipedia.org/wiki/SciELO\">SciELO</a>"
+
+#: src/scholar/templates/help.html:184
+msgid ""
+"Published using <a "
+"href=\"https://en.wikipedia.org/wiki/Open_Journal_Systems\">Open Journal "
+"Systems</a> software"
+msgstr ""
+"Publicado con el software <a "
+"href=\"https://en.wikipedia.org/wiki/Open_Journal_Systems\">Open Journal "
+"Systems</a>"
+
+#: src/scholar/templates/help.html:188
+msgid ""
+"Published using <a "
+"href=\"https://en.wikipedia.org/wiki/Wordpress\">WordPress</a> software"
+msgstr ""
+"Publicado con el software <a "
+"href=\"https://en.wikipedia.org/wiki/Wordpress\">WordPress</a>"
+
+#: src/scholar/templates/help.html:192
+msgid ""
+"Preserved and/or hosted on the <a "
+"href=\"https://en.wikipedia.org/wiki/JSTOR\">JSTOR</a> digital "
+"preservation platform"
+msgstr ""
+"Preservado y/o alojado en la plataforma de preservación digital <a "
+"href=\"https://en.wikipedia.org/wiki/JSTOR\">JSTOR</a>"
+
+#: src/scholar/templates/help.html:198
+msgid "Persistent Identifiers"
+msgstr "Identificadores persistentes"
+
+#: src/scholar/templates/help.html:200
+msgid ""
+"Underneath search results, and alternate version listings, are any known "
+"\"persistent identifiers\" that uniquely identify the specific version of"
+" the work. These are usually hyperlinks."
+msgstr ""
+"Debajo de los resultados de la búsqueda, y de los listados de versiones "
+"alternativas, se encuentran los \"identificadores persistentes\" "
+"conocidos que identifican de manera única la versión específica de la "
+"obra. Estos suelen ser hipervínculos."
+
+#: src/scholar/templates/help.html:210
+msgid ""
+"<a "
+"href=\"https://en.wikipedia.org/wiki/Digital_object_identifier\">Digital "
+"Object Identifier (DOI)</a>, provides a redirect to the publisher's "
+"landing page"
+msgstr ""
+"<a "
+"href=\"https://en.wikipedia.org/wiki/Digital_object_identifier\">Identificador"
+" de Objeto Digital (DOI)</a>, provee una redirección a la página de "
+"aterrizaje del editor"
+
+#: src/scholar/templates/help.html:214
+msgid "PubMed/MEDLINE"
+msgstr "PubMed/MEDLINE"
+
+#: src/scholar/templates/help.html:218
+msgid "PubMed Central"
+msgstr "PubMed Central"
+
+#: src/scholar/templates/help.html:222
+msgid "arXiv pre-print service"
+msgstr "Servicio de preimpresión arXiv"
+
+#: src/scholar/templates/help.html:226
+msgid "The DBLP Computer Science Bibliography"
+msgstr "Bibliografía de informática de la DBLP"
+
+#: src/scholar/templates/help.html:230
+msgid "Article-level identifier for works in DOAJ, particularly those with no DOI"
+msgstr ""
+"Identificador a nivel de artículo para las obras en DOAJ, en particular "
+"las que no tienen DOI"
+
+#: src/scholar/templates/help.html:234
+msgid ""
+"<a href=\"https://fatcat.wiki\">fatcat.wiki</a> \"release\" identifier. "
+"Scholar is built on top of the fatcat catalog"
+msgstr ""
+"<a href=\"https://fatcat.wiki\">fatcat.wiki</a> identificador de "
+"\"liberación\". Scholar está construido sobre el catálogo de fatcat"
+
+#: src/scholar/templates/help.html:240
+msgid "Work In Progress"
+msgstr "Trabajo en curso"
+
+#: src/scholar/templates/help.html:243
+msgid ""
+"This is a new service. Metadata is being improved and features have not "
+"been finalized."
+msgstr ""
+"Este es un servicio nuevo. Los metadatos se están mejorando y las "
+"características no se han finalizado."
+
+#: src/scholar/templates/help.html:247
+msgid "This project is currently a <i>prototype</i>"
+msgstr "Este proyecto es actualmente un <i>prototipo</i>"
+
+#: src/scholar/templates/help.html:250
+msgid "Some known bugs and issues:"
+msgstr "Algunos errores y problemas conocidos:"
+
+#: src/scholar/templates/help.html:253
+msgid ""
+"Poor metadata quality for conference proceedings. Many are labeled "
+"\"unpublished\" and are not associated with the conference."
+msgstr ""
+"Mala calidad de los metadatos de las actas de las conferencias. Muchas "
+"están etiquetadas como \"no publicadas\" y no están asociadas a la "
+"conferencia."
+
+#: src/scholar/templates/help.html:254
+msgid ""
+"Duplicate versions of same work. For example, different versions of the "
+"same paper or dataset. We are working on basic entity-deduplication in "
+"the fatcat catalog."
+msgstr ""
+"Versiones duplicadas de un mismo trabajo. Por ejemplo, diferentes "
+"versiones de un mismo trabajo o conjunto de datos. Estamos trabajando en "
+"la deduplicación básica de entidades en el catálogo fatcat."
+
+#: src/scholar/templates/help.html:255
+msgid ""
+"Mis-matching of file content or version with work metadata. For example, "
+"sometimes pre-prints or author manuscripts are incorrectly associated "
+"with version-of-record metadata, or vice-versa."
+msgstr ""
+"Coincidencia errónea del contenido del archivo o de la versión con los "
+"metadatos del trabajo. Por ejemplo, a veces los preimpresos o los "
+"manuscritos del autor se asocian incorrectamente con los metadatos de la "
+"versión del registro, o vice-versa."
+
+#: src/scholar/templates/home.html:10
+msgid "Internet Archive Scholar logo (vaporwave)"
+msgstr "Logotipo de un erudito del Archivo de Internet (vaporwave)"
+
+#: src/scholar/templates/home.html:15
+msgid "by title, author, keywords..."
+msgstr "por título, autor, palabras clave..."
+
+#: src/scholar/templates/home.html:23
+msgid "Search Millions of Research Papers"
+msgstr "Buscar en millones de artículos de investigación"
+
+#: src/scholar/templates/home.html:24
+#, fuzzy
+msgid ""
+"This fulltext search index includes over 35 million research articles and"
+" other scholarly documents preserved in the Internet Archive."
+msgstr ""
+"Este índice de búsqueda de texto completo incluye más de 25 millones de "
+"artículos de investigación y otros documentos académicos conservados en "
+"el Archivo de Internet."
+
+#: src/scholar/templates/home.html:24
+#, fuzzy
+msgid ""
+"The collection spans from digitized copies of eighteenth century journals"
+" through the latest Open Access conference proceedings and preprints "
+"crawled from the World Wide Web."
+msgstr ""
+"La colección abarca desde copias digitalizadas de revistas del siglo "
+"XVIII hasta las últimas actas de conferencias de acceso abierto y "
+"preimpresiones rastreadas desde la World Wide Web."
+
+#: src/scholar/templates/home.html:24
+msgid "More &raquo;"
+msgstr "Más &raquo;"
+
+#: src/scholar/templates/home.html:35 src/scholar/templates/home.html:49
+#: src/scholar/templates/home.html:63 src/scholar/templates/home.html:77
+msgid "PDF thumbnail"
+msgstr "Miniatura en PDF"
+
+#: src/scholar/templates/search.html:35
+msgid "Filters"
+msgstr "Filtros"
+
+#: src/scholar/templates/search.html:47 src/scholar/templates/search.html:77
+msgid "Hit"
+msgid_plural "Hits"
+msgstr[0] "Visita"
+msgstr[1] "Visitas"
+
+#: src/scholar/templates/search.html:53 src/scholar/templates/search.html:85
+#, python-format
+msgid "in %(frac_sec)ssec"
+msgstr "en %(frac_sec)sseg"
+
+#: src/scholar/templates/search.html:110
+msgid "Backend Search Engine Error"
+msgstr "Error del motor de búsqueda del backend"
+
+#: src/scholar/templates/search.html:112
+msgid "Search Query Error"
+msgstr "Error de búsqueda"
+
+#: src/scholar/templates/search.html:116
+msgid ""
+"Query parsing is currently very naive. Sometimes you can fix this problem"
+" by adding quotes around terms or entire phrases."
+msgstr ""
+"El análisis de la consulta es actualmente muy ingenuo. A veces se puede "
+"solucionar este problema añadiendo citas alrededor de términos o frases "
+"enteras."
+
+#: src/scholar/templates/search.html:148
+msgid "We didn't find any documents matching your query"
+msgstr "No encontramos cualesquier documentos que emparejan vuestra consulta"
+
+#: src/scholar/templates/search.html:153
+msgid "Try All Resource Types"
+msgstr "Pruebe todos los tipos de recursos"
+
+#: src/scholar/templates/search.html:158
+msgid "Try All Time"
+msgstr "Inténtalo todo el tiempo"
+
+#: src/scholar/templates/search.html:163
+msgid "Try Metadata Records"
+msgstr "Pruebe los registros de metadatos"
+
+#: src/scholar/templates/search.html:166
+msgid "Start Over"
+msgstr "Comenzar de nuevo"
+
+#: src/scholar/templates/search.html:179
+msgid "Enter a query in the box above to get started"
+msgstr "Introduzca una consulta en el cuadro de arriba para empezar"
+
+#: src/scholar/templates/search_macros.html:21
+msgid "Multiple Versions"
+msgstr "Múltiples versiones"
+
+#: src/scholar/templates/search_macros.html:59
+msgid "fulltext PDF download"
+msgstr "descarga de texto completo en PDF"
+
+#: src/scholar/templates/search_macros.html:61
+msgid "read fulltext microfilm"
+msgstr "leer microfilm completo"
+
+#: src/scholar/templates/search_macros.html:63
+#: src/scholar/templates/search_macros.html:243
+msgid "fulltext access"
+msgstr "texto completo"
+
+#: src/scholar/templates/search_macros.html:72
+msgid "Web Archive"
+msgstr "Archivo Web"
+
+#: src/scholar/templates/search_macros.html:74
+#: src/scholar/templates/search_macros.html:261
+msgid "File Archive"
+msgstr "Archivo de archivos"
+
+#: src/scholar/templates/search_macros.html:76
+msgid "Archive [Microfilm]"
+msgstr "Archivo [Microfilm]"
+
+#: src/scholar/templates/search_macros.html:78
+msgid "Other"
+msgstr "Otros"
+
+#: src/scholar/templates/search_macros.html:82
+msgid "[PDF]"
+msgstr "[PDF]"
+
+#: src/scholar/templates/search_macros.html:84
+msgid "[HTML]"
+msgstr "[HTML]"
+
+#: src/scholar/templates/search_macros.html:86
+msgid "[XML]"
+msgstr "[XML]"
+
+#: src/scholar/templates/search_macros.html:95
+msgid "fulltext thumbnail"
+msgstr "miniatura de texto completo"
+
+#: src/scholar/templates/search_macros.html:111
+msgid "Publisher / doi.org"
+msgstr "Editorial / doi.org"
+
+#: src/scholar/templates/search_macros.html:144
+#, python-format
+msgid "%(year)s"
+msgstr "%(year)s"
+
+#: src/scholar/templates/search_macros.html:197
+msgid "unknown"
+msgstr "desconocido"
+
+#: src/scholar/templates/search_macros.html:213
+#, python-format
+msgid "Page %(page_num)s of %(journal_name)s Vol. %(volume)s, Issue %(issue)s"
+msgstr "Página %(page_num)s de %(journal_name)s Vol. %(volume)s, Número %(issue)s"
+
+#: src/scholar/templates/search_macros.html:215
+msgid "page"
+msgstr "página"
+
+#: src/scholar/templates/search_macros.html:236
+msgid "Preserved Fulltext"
+msgstr "Texto completo conservado"
+
+#: src/scholar/templates/search_macros.html:259
+msgid "Web Archive Capture"
+msgstr "Captura de archivos en la web"
+
+#: src/scholar/templates/search_macros.html:263
+msgid "Digitized Microfilm"
+msgstr "Microfilm digitalizado"
+
+#: src/scholar/templates/search_macros.html:288
+#, python-format
+msgid ""
+"A copy of this work was available on the public web and has been "
+"preserved in the Wayback Machine. The capture dates from "
+"%(capture_year)s; you can also visit <a rel=\"external noopener\" "
+"href=\"%(original_url)s\">the original URL</a>."
+msgstr ""
+"Una copia de este trabajo estaba disponible en la web pública y se ha "
+"conservado en la Wayback Machine. La captura data de %(capture_year)s; "
+"también puedes visitar <a rel=\"external noopener\" "
+"href=\"%(original_url)s\"> el URL original </a>."
+
+#: src/scholar/templates/search_macros.html:290
+msgid ""
+"The Internet Archive has a preservation copy of this work in our general "
+"collections."
+msgstr ""
+"El Archivo de Internet tiene una copia de conservación de esta obra en "
+"nuestras colecciones generales."
+
+#: src/scholar/templates/search_macros.html:292
+msgid ""
+"The Internet Archive has digitized a microfilm copy of this work. It may "
+"be possible to borrow a copy for reading."
+msgstr ""
+"El Archivo de Internet ha digitalizado una copia en microfilm de este "
+"trabajo. Puede ser posible pedir prestada una copia para su lectura."
+
+#: src/scholar/templates/search_macros.html:296
+#, python-format
+msgid "The file type is %(mimetype)s."
+msgstr "El tipo de archivo es %(mimetype)s."
+
+#: src/scholar/templates/search_macros.html:301
+msgid ""
+"Note that this fulltext copy is not of the \"primary\" version of this "
+"work. The version it corresponds to is:"
+msgstr ""
+"Tenga en cuenta que esta copia de texto completo no es de la versión "
+"\"primaria\" de esta obra. La versión a la que corresponde es:"
+
+#: src/scholar/templates/search_macros.html:314
+msgid "Additional access options for the primary version of this work:"
+msgstr "Opciones de acceso adicionales para la versión primaria de esta obra:"
+
+#: src/scholar/templates/search_macros.html:324
+msgid ""
+"We don't yet know of a public preservation copy of this work. You may be "
+"able to obtain a copy of this work to read from the publisher, platforms,"
+" or institutional libraries."
+msgstr ""
+"Aún no conocemos una copia de conservación pública de esta obra. Es "
+"posible que pueda obtener una copia de esta obra para leerla en la "
+"editorial, las plataformas o las bibliotecas institucionales."
+
+#: src/scholar/templates/search_macros.html:327
+#, python-format
+msgid ""
+"If you know of a legal, public version that we should archive, please let"
+" us know via <a rel=\"noopener\" href=\"%(save_paper_now_url)s\">\"Save "
+"Paper Now\"</a>."
+msgstr ""
+"Si conoce una versión legal y pública que debamos archivar, por favor "
+"háganoslo saber a través de <a rel=\"noopener\" "
+"href=\"%(save_paper_now_url)s\">\"Guardar Papel Ahora\"</a>."
+
+#: src/scholar/templates/search_macros.html:374
+msgid "more &raquo;"
+msgstr "más &raquo;"
+
+#: src/scholar/templates/search_macros.html:396
+msgid "tag definitions"
+msgstr "definiciones de las etiquetas"
+
+#: src/scholar/templates/search_macros.html:423
+msgid "not primary version"
+msgstr "no la versión primaria"
+
+#: src/scholar/templates/search_macros.html:440
+#, python-format
+msgid "Same Issue (%(count)s)"
+msgstr "El mismo tema (%(count)s)"
+
+#: src/scholar/templates/search_macros.html:451
+msgid "cite this work"
+msgstr "citar este trabajo"
+
+#: src/scholar/templates/search_macros.html:456
+msgid "Citation"
+msgstr "Mención"
+
+#: src/scholar/templates/search_macros.html:470
+msgid "edit metadata on fatcat wiki"
+msgstr "editar en fatcat wiki"
+
+#: src/scholar/templates/search_macros.html:476
+msgid "permalink to this record"
+msgstr "permalink a este disco"
+
+#: src/scholar/templates/search_macros.html:492
+#: src/scholar/templates/search_macros.html:495
+msgid "&laquo; Previous"
+msgstr "Anterior"
+
+#: src/scholar/templates/search_macros.html:500
+#: src/scholar/templates/search_macros.html:503
+msgid "Next &raquo;"
+msgstr "Siguiente &raquo;"
+
+#: src/scholar/templates/search_macros.html:507
+#, python-format
+msgid "Showing results %(start)s &mdash; %(end)s out of %(total)s results"
+msgstr "Mostrando resultados %(start)s &mdash; %(end)s de %(total)s resultados"
+
+#: src/scholar/templates/search_macros.html:540
+msgid "Clear Filters"
+msgstr "Limpiar filtros"
+
+#~ msgid "Metadata"
+#~ msgstr "Metadatos"
+
+#~ msgid "Digital Bibliography of Logic Programming"
+#~ msgstr "Bibliografía digital de la programación lógica"
+
+#~ msgid "Next"
+#~ msgstr "Siguiente"
+
+#~ msgid ""
+#~ "This service is in \"alpha\". It has several bugs, experiences\n"
+#~ "          downtime, and has not been officially announced."
+#~ msgstr ""
+#~ "Este servicio está en \"alfa\". Tiene varios errores, experiencias\n"
+#~ "        tiempo de inactividad, y no ha sido anunciado oficialmente."
+
+#~ msgid "permalink"
+#~ msgstr "permalink"
+
+#~ msgid "access microfilm on archive.org"
+#~ msgstr "acceder al microfilm en archive.org"
+
+#~ msgid "Publication Stage"
+#~ msgstr "Etapa de publicación"
+
+#~ msgid "Date"
+#~ msgstr "Fecha"
+
+#~ msgid "published"
+#~ msgstr "publicado"
+
+#~ msgid "microfilm"
+#~ msgstr "microfilm"
+
+#~ msgid "Show %(count)s additional result from this issue"
+#~ msgid_plural "Show %(count)s additional results from this issue"
+#~ msgstr[0] "Mostrar %(count)s resultado adicional de esta edición"
+#~ msgstr[1] "Mostrar %(count)s resultados adicionales de esta edición"
+
+#~ msgid "select language"
+#~ msgstr "Seleccionar idioma"
+
+#~ msgid ""
+#~ "See also: <a href=\"%(lang_prefix)s/help\">User "
+#~ "Guide</a> which lists some bugs and "
+#~ "known issues"
+#~ msgstr ""
+#~ "Consulte también la <a "
+#~ "href=\"%(lang_prefix)s/help\">guía de uso</a>, que"
+#~ " enumera algunos defectos y problemas "
+#~ "conocidos"
+
+#~ msgid ""
+#~ "Metadata comes from <a "
+#~ "href=\"https://fatcat.wiki\">fatcat.wiki</a>, an open\n"
+#~ ""
+#~ "user-editable catalog of scholarly work."
+#~ " It should be possible to track "
+#~ "and\n"
+#~ "attribute the provenance of content and metadata in all cases. Please\n"
+#~ "<a href=\"#contact\">contact us</a> if you have questions."
+#~ msgstr ""
+#~ "Los metadatos proceden de <a "
+#~ "href=\"https://fatcat.wiki\">fatcat.wiki</a>, un catálogo"
+#~ " abierto\n"
+#~ "catálogo abierto de trabajos académicos "
+#~ "que puede ser editado por los "
+#~ "usuarios. Debería ser posible rastrear y"
+#~ "\n"
+#~ "atribuir la procedencia del contenido y"
+#~ " los metadatos en todos los casos."
+#~ " Por favor,\n"
+#~ "<a href=\"#contact\">póngase en contacto con"
+#~ " nosotros</a> si tiene alguna duda."
+
+#~ msgid ""
+#~ "Likewise information specifically for "
+#~ "publishers can be found at <a "
+#~ "href=\"%(url)s\">%(url)s</a>. This includes "
+#~ "guidelines for having content indexed "
+#~ "and preserved."
+#~ msgstr ""
+#~ "También puede encontrar información específica"
+#~ " para editores en <a "
+#~ "href=\"%(url)s\">%(url)s</a>. Aquí se incluyen "
+#~ "las directrices para la indexación y "
+#~ "conservación de los contenidos."
+
+#~ msgid ""
+#~ "The organizational contact information for "
+#~ "the Internet Archive is listed at "
+#~ "<a href=\"%(url)s\">%(url)s</a>."
+#~ msgstr ""
+#~ "La información de contacto de la "
+#~ "organización del Archivo de Internet se"
+#~ " encuentra en <a href=\"%(url)s\">%(url)s</a>."
+
+#~ msgid ""
+#~ "This service is in \"alpha\". It "
+#~ "has several bugs, experiences downtime, "
+#~ "and has not been officially announced."
+#~ msgstr ""
+#~ "Este servicio está en \"alfa\". Tiene"
+#~ " varios errores, experiencias tiempo de "
+#~ "inactividad, y no ha sido anunciado "
+#~ "oficialmente."
+

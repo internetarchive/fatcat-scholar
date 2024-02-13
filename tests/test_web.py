@@ -5,7 +5,7 @@ import fatcat_openapi_client
 import pytest
 from fastapi.testclient import TestClient
 
-from fatcat_scholar.web import app
+from scholar.web import app
 
 
 @pytest.fixture
@@ -47,9 +47,7 @@ def test_basic_api(client: Any, mocker: Any) -> None:
     with open("tests/files/elastic_fulltext_search.json") as f:
         elastic_resp = json.loads(f.read())
 
-    es_raw = mocker.patch(
-        "elasticsearch.connection.Urllib3HttpConnection.perform_request"
-    )
+    es_raw = mocker.patch("elasticsearch.connection.Urllib3HttpConnection.perform_request")
     es_raw.side_effect = [
         (200, {}, json.dumps(elastic_resp)),
     ]
@@ -87,9 +85,7 @@ def test_basic_search(client: Any, mocker: Any) -> None:
     with open("tests/files/elastic_fulltext_search.json") as f:
         elastic_resp = json.loads(f.read())
 
-    es_raw = mocker.patch(
-        "elasticsearch.connection.Urllib3HttpConnection.perform_request"
-    )
+    es_raw = mocker.patch("elasticsearch.connection.Urllib3HttpConnection.perform_request")
     es_raw.side_effect = [
         (200, {}, json.dumps(elastic_resp)),
         (200, {}, json.dumps(elastic_resp)),
@@ -107,9 +103,7 @@ def test_basic_rss_feed(client: Any, mocker: Any) -> None:
     with open("tests/files/elastic_fulltext_search.json") as f:
         elastic_resp = json.loads(f.read())
 
-    es_raw = mocker.patch(
-        "elasticsearch.connection.Urllib3HttpConnection.perform_request"
-    )
+    es_raw = mocker.patch("elasticsearch.connection.Urllib3HttpConnection.perform_request")
     es_raw.side_effect = [
         (200, {}, json.dumps(elastic_resp)),
         (200, {}, json.dumps(elastic_resp)),
@@ -117,20 +111,18 @@ def test_basic_rss_feed(client: Any, mocker: Any) -> None:
 
     rv = client.get("/feed/rss?q=blood")
     assert rv.status_code == 200
-    assert rv.content.startswith(b"<rss")
+    assert '<rss version="2.0">' in str(rv.content)
 
     rv = client.get("/zh/feed/rss?q=blood")
     assert rv.status_code == 200
-    assert rv.content.startswith(b"<rss")
+    assert '<rss version="2.0">' in str(rv.content)
 
 
 def test_basic_work_landing_page(client: Any, mocker: Any) -> None:
     with open("tests/files/elastic_fulltext_get.json") as f:
         elastic_resp = json.loads(f.read())
 
-    es_raw = mocker.patch(
-        "elasticsearch.connection.Urllib3HttpConnection.perform_request"
-    )
+    es_raw = mocker.patch("elasticsearch.connection.Urllib3HttpConnection.perform_request")
     es_raw.side_effect = [
         (200, {}, json.dumps(elastic_resp)),
         (200, {}, json.dumps(elastic_resp)),
@@ -149,9 +141,7 @@ def test_basic_access_redirect(client: Any, mocker: Any) -> None:
     with open("tests/files/elastic_fulltext_get.json") as f:
         elastic_resp = json.loads(f.read())
 
-    es_raw = mocker.patch(
-        "elasticsearch.connection.Urllib3HttpConnection.perform_request"
-    )
+    es_raw = mocker.patch("elasticsearch.connection.Urllib3HttpConnection.perform_request")
     es_raw.side_effect = [
         (200, {}, json.dumps(elastic_resp)),
         (200, {}, json.dumps(elastic_resp)),
@@ -169,9 +159,7 @@ def test_basic_access_redirect(client: Any, mocker: Any) -> None:
 
     # check that URL is validated (force fatcat API fallback to fail)
     fatcat_api_raw = mocker.patch("fatcat_openapi_client.ApiClient.call_api")
-    fatcat_api_raw.side_effect = [
-        fatcat_openapi_client.ApiException(status=404, reason="dummy")
-    ]
+    fatcat_api_raw.side_effect = [fatcat_openapi_client.ApiException(status=404, reason="dummy")]
     rv = client.get(
         "/work/2x5qvct2dnhrbctqa2q2uyut6a/access/wayback/https://www.federalreserve.gov/econresdata/feds/2015/files/2015118pap.pdf.DUMMY",
         follow_redirects=False,
@@ -183,9 +171,7 @@ def test_access_redirect_fallback(client: Any, mocker: Any) -> None:
     with open("tests/files/elastic_fulltext_get.json") as f:
         elastic_resp = json.loads(f.read())
 
-    es_raw = mocker.patch(
-        "elasticsearch.connection.Urllib3HttpConnection.perform_request"
-    )
+    es_raw = mocker.patch("elasticsearch.connection.Urllib3HttpConnection.perform_request")
     es_raw.side_effect = [
         (200, {}, json.dumps(elastic_resp)),
         (200, {}, json.dumps(elastic_resp)),
@@ -210,9 +196,7 @@ def test_access_redirect_fallback(client: Any, mocker: Any) -> None:
             ),
         ]
     ] * 4
-    fatcat_get_release_raw = mocker.patch(
-        "fatcat_openapi_client.DefaultApi.get_release"
-    )
+    fatcat_get_release_raw = mocker.patch("fatcat_openapi_client.DefaultApi.get_release")
     fatcat_get_release_raw.side_effect = [
         fatcat_openapi_client.ReleaseEntity(
             state="active",
@@ -246,10 +230,7 @@ def test_access_redirect_fallback(client: Any, mocker: Any) -> None:
         follow_redirects=False,
     )
     assert rv.status_code == 302
-    assert (
-        rv.headers["Location"]
-        == "https://web.archive.org/web/12345id_/https://example.com"
-    )
+    assert rv.headers["Location"] == "https://web.archive.org/web/12345id_/https://example.com"
 
     rv = client.get(
         "/work/2x5qvct2dnhrbctqa2q2uyut6a/access/ia_file/some/thing.pdf",
@@ -283,9 +264,7 @@ def test_access_redirect_encoding(client: Any, mocker: Any) -> None:
     with open("tests/files/elastic_get_work_ao5l3ykgbvg2vfpqe2y5qold5y.json") as f:
         elastic_wayback_resp = json.loads(f.read())
 
-    es_raw = mocker.patch(
-        "elasticsearch.connection.Urllib3HttpConnection.perform_request"
-    )
+    es_raw = mocker.patch("elasticsearch.connection.Urllib3HttpConnection.perform_request")
     es_raw.side_effect = [
         (200, {}, json.dumps(elastic_ia_resp)),
         (200, {}, json.dumps(elastic_wayback_resp)),
