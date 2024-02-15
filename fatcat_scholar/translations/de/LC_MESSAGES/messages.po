@@ -10,13 +10,14 @@
 # J. Lavoie <j.lavoie@net-c.ca>, 2021.
 # Ettore Atalan <atalanttore@googlemail.com>, 2022.
 # Minh P <phandinhminh@protonmail.ch>, 2022.
+# nova madeline <493ov2lof@mozmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: bnewbold@archive.org\n"
 "POT-Creation-Date: 2022-11-16 20:35-0800\n"
-"PO-Revision-Date: 2022-11-26 23:48+0000\n"
-"Last-Translator: Minh P <phandinhminh@protonmail.ch>\n"
+"PO-Revision-Date: 2024-01-02 22:11+0000\n"
+"Last-Translator: nova madeline <493ov2lof@mozmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/internetarchive/"
 "fatcat-scholar/de/>\n"
 "Language: de\n"
@@ -24,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 5.4-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 #: fatcat_scholar/search.py:45
@@ -241,6 +242,9 @@ msgid ""
 "href=\"%(url)s\">%(url)s</a>. This includes instructions for correcting "
 "bibliographic metadata and updates to published works."
 msgstr ""
+"Autoren von Forschungsarbeiten finden unter <a href=\"%(url)s\">%(url)s</a> "
+"weitere Informationen, darunter insbesondere Anleitungen zu Berichtigung "
+"bibliografischer Metadaten sowie Aktualisierung veröffentlichter Werke."
 
 #: fatcat_scholar/templates/about.html:53
 #, python-format
