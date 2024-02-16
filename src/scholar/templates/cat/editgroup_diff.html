@@ -1,0 +1,54 @@
+{% extends "editgroup_view.html" %}
+
+{% macro edit_diff_list(editgroup, edits, diffs, entity_type, entity_name) -%}
+{% if edits %}
+  <h3>{{ entity_name }} Edit Diffs ({{ edits|count }})</h3>
+  <hr>
+  <div class="ui divided list">
+    {% for edit in edits %}
+    <div class="item" id="{{ entity_type }}_{{ edit.ident }}">
+      <div class="content" style="padding-bottom: 0.5em;">
+        {{ entity_edit_header(editgroup, edit, entity_type, entity_name) }}
+        {% if edit.extra %}
+          {{ entity_macros.extra_metadata(edit.extra) }}
+        {% endif %}
+        {% if edit.revision and not edit.redirect_ident and edit.ident in diffs and diffs[edit.ident] != None %}
+          <br clear="all">
+          <div style="border: 1px solid black; font-size: smaller; font-color: #222; word-break: break-all; margin-top: 0.5em; margin-bottom: 0.5em;">
+          {% for line in diffs[edit.ident] %}
+            {% set line_space = false %}
+            {% if line.startswith('@@') or line.startswith('---') or line.startswith('+++') %}
+              {% set line_color = "lightblue" %}{# a light blue #}
+            {% elif line.startswith('+') %}
+              {% set line_color = "#a4efa4" %}{# a light green #}
+            {% elif line.startswith('-') %}
+              {% set line_color = "#ffa3a3" %}{# a light red #}
+            {% else %}
+              {% set line_color = "#eee" %}{# almost white #}
+              {% set line_space = true %}
+            {% endif %}
+            <pre style="background-color: {{ line_color }}; white-space: pre-wrap; margin: 0px;">{% if line_space %}&nbsp;{% endif %}{{ line.strip() }}</pre>
+          {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+{% endif %}
+{%- endmacro %}
+
+{% block title %}Editgroup Diff{% endblock %}
+
+{% block pagetitle %}Editgroup Diff{% endblock %}
+
+{% block editgroupedits %}
+{{ edit_diff_list(editgroup, editgroup.edits.releases, editgroup_diffs.release, "release", "Release") }}
+{{ edit_diff_list(editgroup, editgroup.edits.works, editgroup_diffs.work, "work", "Work") }}
+{{ edit_diff_list(editgroup, editgroup.edits.containers, editgroup_diffs.container, "container", "Container") }}
+{{ edit_diff_list(editgroup, editgroup.edits.creators, editgroup_diffs.creator, "creator", "Creator") }}
+{{ edit_diff_list(editgroup, editgroup.edits.files, editgroup_diffs.file, "file", "File") }}
+{{ edit_diff_list(editgroup, editgroup.edits.filesets, editgroup_diffs.fileset, "fileset", "File Set") }}
+{{ edit_diff_list(editgroup, editgroup.edits.webcaptures, editgroup_diffs.webcapture, "webcapture", "Web Capture") }}
+{% endblock %}
+

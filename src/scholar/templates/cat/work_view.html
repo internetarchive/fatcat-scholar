@@ -1,0 +1,36 @@
+{% set work = entity %}
+{% set entity_view = "overview" %}
+{% import "entity_macros.html" as entity_macros %}
+{% extends "entity_base.html" %}
+
+{% block entity_main %}
+
+<div class="ui stackable mobile reversed grid centered">
+<div class="column" style="font-size: 16px; flex: 1;">
+
+<h3>Releases</h3>
+{% if work._releases != [] and work._releases != None %}
+  {{ entity_macros.release_list(work._releases) }}
+{% else %}
+<p>There are no known releases associated with this work.
+{% endif %}
+
+{% if entity.extra %}
+  {{ entity_macros.extra_metadata(entity.extra) }}
+{% endif %}
+
+<h3>What is a "Work"?</h3>
+<p>A Fatcat "<code>work</code>" groups a set of releases that are all editings
+or editing stages of the same intellectual contribution. For example, a
+pre-print and a published article may contain small differences, but still
+reference the same underlying "work".
+
+</div>
+<div class="column" style="flex: 0 0 24em;">
+
+{{ entity_macros.fatcat_bits(entity, "work", "", editgroup) }}
+
+</div>
+</div>
+
+{% endblock %}

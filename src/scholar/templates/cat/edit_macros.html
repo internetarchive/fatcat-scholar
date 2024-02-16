@@ -1,0 +1,102 @@
+
+{% macro edit_link_bar(entity_type, existing_ident, editgroup, view) -%}
+  {% set has_form = entity_type in ['release', 'file', 'container'] %}
+  <div class="ui {% if has_form %}four{% else %}three{% endif %} item menu">
+    <a class="item" href="{% if editgroup %}/editgroup/{{ editgroup.editgroup_id }}{% endif %}/{{ entity_type }}/{{ existing_ident }}">View</a>
+    {% if has_form %}
+      <a class="item {% if view == 'form' %}active{% endif %}" href="{% if editgroup %}/editgroup/{{ editgroup.editgroup_id }}{% endif %}/{{ entity_type }}/{{ existing_ident }}/edit">Edit Form</a>
+    {% endif %}
+    <a class="item {% if view == 'toml' %}active{% endif %}" href="{% if editgroup %}/editgroup/{{ editgroup.editgroup_id }}{% endif %}/{{ entity_type }}/{{ existing_ident }}/edit/toml">Edit TOML</a>
+    <a class="red item {% if view == 'delete' %}active{% endif %}" href="{% if editgroup %}/editgroup/{{ editgroup.editgroup_id }}{% endif %}/{{ entity_type }}/{{ existing_ident }}/delete">Delete</a>
+  </div>
+{% endmacro %}
+
+
+{% macro form_field_errors(field) -%}
+  {% if field.errors %}
+    <div class="ui pointing red label">
+    {% for err in field.errors %}
+        {{ err }}
+    {% endfor %}
+    </div>
+  {% endif %}
+{%- endmacro %}
+
+{% macro form_field_basic(field, div_classes="") -%}
+<div class="field {{ div_classes }} {% if field.errors %}error{% endif %}">
+  {{ field.label }}
+  {{ field() }}
+  {{ form_field_errors(field) }}
+</div>
+{%- endmacro %}
+
+{% macro form_toml_field(field, div_classes="") -%}
+<h3 class="ui dividing header">Raw Metadata (TOML)</h3>
+<div class="field {{ div_classes }} {% if field.errors %}error{% endif %}">
+  <p><a href="https://toml.io/en/">TOML</a> is a markup language, similar to
+  YAML or Wikitext. The schema here is the same as the Fatcat API JSON schema, but
+  with a syntax that is easier to read and edit by hand. All nested metadata
+  fields are available here; refer to the fatcat guide for metadata
+  documentation and style guide, or TOML documentation for syntax notes (eg,
+  what those double brackets mean, and how to represent lists of authors or
+  references).
+  <br>
+  <br>
+  {{ field(rows=24) }}
+  {{ form_field_errors(field) }}
+</div>
+{%- endmacro %}
+
+{% macro form_field_inline(field, div_classes="") -%}
+<div class="ui grid">
+  <div class="three wide column middle aligned right aligned" {# style="padding-right: 0.5rem;" #}>
+    <div class="field inline {{ div_classes }} {% if field.errors %}error{% endif %}">
+      {{ field.label }}
+    </div>
+  </div>
+  <div class="twelve wide column" {# style="padding-left: 0.5rem;" #}>
+    <div class="field {{ div_classes }} {% if field.errors %}error{% endif %}">
+      {{ field() }}
+      {{ form_field_errors(field) }}
+    </div>
+  </div>
+  <div class="one wide column">
+  </div>
+</div>
+{%- endmacro %}
+
+{% macro editgroup_dropdown(form, editgroup=None, potential_editgroups=None) -%}
+  {% if editgroup %}
+    <p>You are updating an existing un-merged editgroup: <a href="/editgroup/{{ editgroup.editgroup_id}}">{{ editgroup.editgroup_id }}</a>.
+    <p><b>Description:</b> {{ editgroup.description or "" }}
+  {% else %}
+    {% if not potential_editgroups %}
+      <p>You have no un-submitted editgroups in progress; a new one will be
+      created. You can add a description for the whole group of edits:
+      {{ form_field_inline(form.editgroup_description) }}
+    {% else %}
+      <p>Select an in-progress editgroup for this change to be part of (or start a new one):
+
+        <div class="ui fluid selection dropdown">
+          <input type="hidden" id="editgroup_id" name="editgroup_id" value="{{ form.editgroup_id.data }}">
+          <i class="dropdown icon"></i>
+          <div class="default text">Select Editgroup</div>
+          <div class="menu">
+            {% for peg in potential_editgroups %}
+              <div class="item" data-value="{{ peg.editgroup_id }}">
+                  <div class="right floated">{{ peg.created.strftime('%Y-%m-%d %X') }}</div>
+                  <code><b>editgroup_{{ peg.editgroup_id }}</b></code>
+                  {% if peg.description %}
+                    <br>{{ peg.description[:200] }}
+                  {% endif %}
+              </div>
+            {% endfor %}
+            <div class="item" data-value=""><b>Start New Editgroup</b></div>
+          </div>
+        </div>
+
+      <p>If starting a new editgroup, you can add a description for the whole group:
+      {{ form_field_inline(form.editgroup_description) }}
+    {% endif %}
+  {% endif %}
+{%- endmacro %}

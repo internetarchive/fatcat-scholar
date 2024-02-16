@@ -1,0 +1,91 @@
+{% set webcapture = entity %}
+{% set entity_view = "overview" %}
+{% import "entity_macros.html" as entity_macros %}
+{% extends "entity_base.html" %}
+
+{% block entity_main %}
+
+<div class="ui stackable mobile reversed grid centered">
+<div class="column" style="font-size: 16px; flex: 1;">
+
+<h3>Associated Releases</h3>
+{% if entity.releases != [] %}
+  {{ entity_macros.release_list(entity.releases) }}
+{% else %}
+  <p>
+  This Web Capture is not associated with any fatcat release.
+{% endif %}
+
+<h3>Public Archive URLs</h3>
+{% if webcapture.archive_urls != None %}
+  <table class="ui very basic compact single line fixed table">
+  <tbody>
+  {% for url in webcapture.archive_urls %}
+    <tr><td class="two wide right aligned">{{ url.rel }}
+        <td class="eight wide"><small><code>
+        {% if url.rel == "wayback" %}
+          <a href="{{ url.url }}{{ webcapture._wayback_suffix }}">
+            <b>{{ url.url }}</b>{{ webcapture._wayback_suffix }}
+          </a>
+        {% else %}
+          <a href="{{ url.url }}">
+            <b>{{ url.url }}</b>
+          </a>
+        {% endif %}
+        </a></code></small>
+    {% endfor %}
+  </tbody>
+  </table>
+{% else %}
+No known public archive for this webcapture.
+{% endif %}
+
+
+<h3>Captured Resources ({{ webcapture.cdx|count }})</h3>
+{% if webcapture.cdx %}
+  <div class="ui celled list">
+    {% for row in webcapture.cdx %}
+    <div class="item">
+      <div class="content">
+        <div class="header">
+          <code><a href="{{ row.url }}" style="color: black;">{{ row.url}}</a></code>
+        </div>
+        <div style="margin-left: 1em;">
+          {{ row.timestamp.strftime("%Y-%m-%d %H:%M:%S") }}
+          {% if row.mimetype %}| <code style="font-size: smaller;">{{ row.mimetype }}</code> {% endif %}
+          {% if row.size %}| {{ row.size|filesizeformat }} {% endif %}
+          <br>
+          <code><small style="color: #666;">
+            {% if row.sha1 %}sha1:{{ row.sha1 }}<br>{% endif %}
+            {% if row.sha256 %}sha256:{{ row.sha256 }}<br>{% endif %}
+          </small></code>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+{% else %}
+This web capture is empty (contains no resources).
+{% endif %}
+
+</div>
+<div class="column" style="flex: 0 0 24em;">
+
+{% if webcapture.state == 'active' and webcapture.archive_urls != [] and webcapture.archive_urls[0].rel == "wayback" %}
+  <a href="{{ webcapture.archive_urls[0].url }}{{ webcapture._wayback_suffix }}" class="ui fluid huge black button" style="text-decoration: underline;">
+    <i class="university icon"></i>View Web Archive
+  </a>
+{% endif %}
+
+{% if webcapture.timestamp != None %}
+<div class="ui segment top attached">
+  <p><b>Capture Time</b> &nbsp;{{ webcapture.timestamp.strftime("%Y-%m-%d %H:%M:%S") }}
+</div>
+{% endif %}
+
+{{ entity_macros.fatcat_bits(entity, "webcapture", "", editgroup) }}
+
+</div>
+</div>
+
+{% endblock %}

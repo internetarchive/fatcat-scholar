@@ -1,0 +1,75 @@
+{% set file = entity %}
+{% set entity_view = "overview" %}
+{% import "entity_macros.html" as entity_macros %}
+{% extends "entity_base.html" %}
+
+{% block entity_main %}
+
+<div class="ui stackable mobile reversed grid centered">
+<div class="column" style="font-size: 16px; flex: 1;">
+
+<h3>Associated Releases</h3>
+{% if entity.releases != [] %}
+  {{ entity_macros.release_list(entity.releases) }}
+{% else %}
+  <p>
+  This file is not associated with any release entity! This makes it a stub entry in the catalog.
+{% endif %}
+
+
+<h3>Public Access URLs</h3>
+{% if file.urls != None %}
+  {{ entity_macros.url_list(file.urls) }}
+{% else %}
+No known archives or mirrors of this file.
+{% endif %}
+
+<h3>Data Integrity Checksums</h3>
+<table class="ui definition single line fixed compact small unstackable table">
+  <tbody>
+    {% if file.sha1 != None %}
+    <tr><td class="one wide right aligned">SHA-1
+        <td class="four wide"><small><code>{{ file.sha1 }}</code></small>
+    {% endif %}
+    {% if file.sha256 != None %}
+    <tr><td class="one wide right aligned">SHA-256
+        <td><small><code>{{ file.sha256 }}</code></small>
+    {% endif %}
+    {% if file.md5!= None %}
+    <tr><td class="one wide right aligned">MD5
+        <td><small><code>{{ file.md5 }}</code></small>
+    {% endif %}
+</table>
+
+</div>
+<div class="column" style="flex: 0 0 24em;">
+
+{% if file._es and file._es.best_url %}
+  {# TODO: this currently shows *any* file, though prefers archive.org #}
+  <a href="{{ file._es.best_url }}" class="ui fluid huge black button" style="text-decoration: underline;">
+    <i class="file icon"></i>View Archived File
+  </a>
+{% elif file.state and file.state == "active" %}
+  <span class="ui fluid huge grey button">
+    <i class="file cross icon"></i>
+    No Public URL
+  </span>
+{% endif %}
+
+<div class="ui top attached segment">
+  {% if file.size != None %}
+    <b>Size</b> &nbsp;{{ file.size|filesizeformat }}<br>
+  {% else %}
+    <b>Size</b> &nbsp;<i>(unknown)</i><br>
+  {% endif %}
+  {% if file.mimetype != None %}
+    <b>MIME Type</b> &nbsp;<code>{{ file.mimetype }}</code><br>
+  {% endif %}
+</div>
+
+{{ entity_macros.fatcat_bits(entity, "file", "", editgroup) }}
+
+</div>
+</div>
+
+{% endblock %}
