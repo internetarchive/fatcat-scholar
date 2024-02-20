@@ -3,8 +3,11 @@
 <img src="src/scholar/static/scholar-vaporwave-logo.png">
 </div>
 
-`fatcat-scholar` / Internet Archive Scholar
-===========================================
+# Internet Archive Scholar
+
+IA Scholar is an effort within the [Internet Archive](https://archive.org) to track, preserve, index, and serve scholarly articles.
+
+Our focus is on [Open Access](https://en.wikipedia.org/wiki/Open_access) content that might otherwise disappear from the web, but we also focus on building an open bibliographic database of all scholarly content.
 
 This is source code for [scholar.archive.org](https://scholar.archive.org), a
 full-text web search interface over the 25+ million open research papers in the
@@ -32,15 +35,11 @@ Elasticsearch is used as the full-text search engine. A simple web interface
 parses search requests and formats Elasticsearch results with highlights and
 first-page thumbnails.
 
-The current Python web framework is FastAPI, though the number of routes is
-very small and it would be easy to switch to a more conventional framework like
-Flask.
-
-
 ## Getting Started for Developers
 
-You need `pipenv` and Python 3.8 installed. Most tasks are run using a
-Makefile; `make help` will show all options.
+You'll need `python3`. We test against 3.11; your mileage may vary with older pythons. Ensure that `pip` and `venv` modules are available (these need to be installed manually via `apt` on Debian).
+
+Most tasks are run using a Makefile; `make help` will show all options.
 
 Working on the indexing pipeline effectively requires internal access to the
 Internet Archive cluster and services, though some contributions and bugfixes
@@ -70,8 +69,8 @@ file (".pot") needs to be updated with `make extract-i18n`. When these changes
 are merged to master, the Weblate translation system will be updated
 automatically.
 
-This repository uses `black` for code formatting; please run `make fmt` and
-`make lint` for submitting a pull request.
+This repository uses `ruff` for code formatting and `mypy` for type checking;
+please run `make fmt` and `make lint` for submitting a pull request.
 
 
 ## Contributing

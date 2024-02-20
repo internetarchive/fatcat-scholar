@@ -8,7 +8,24 @@ See also:
 - [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
-## [UNRELEASED]
+## [0.2.6] - 2024-02-13
+
+This is a big release though it lacks any functional changes; it's a general repository refresh and update.
+
+### Added
+
+- Outstanding weblate translation commits
+- `make audit` for checking dependencies for security patches
+- `make freeze` for generating requirements files
+
+### Changed
+
+- Upgrade to python 3.11
+- Upgraded key dependencies
+- Remove some unused dependencies
+- Replaced `Pipefile` with a `pyproject.toml`
+- Replaced `pipenv` with `pip` + `pip-compile`
+- Replace pylint, flake8, black, and isort with ruff
 
 ## [0.2.1] - 2023-01-04
 

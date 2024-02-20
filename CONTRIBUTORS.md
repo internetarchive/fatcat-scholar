@@ -6,3 +6,5 @@ See also [weblate](https://hosted.weblate.org/projects/internetarchive/fatcat-sc
 * [Martin Czygan](https://github.com/miku)
 
 * [Bryan Newbold](https://bnewbold.net)
+
+* [Nate Smith](https://tilde.town/~vilmibm)
