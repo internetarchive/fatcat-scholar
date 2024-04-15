@@ -130,26 +130,26 @@ class HitsModel(BaseModel):
     results: List[ScholarDoc]
 
 
-@api.get("/search", operation_id="get_search", response_model=HitsModel)
-def search(query: FulltextQuery = Depends(FulltextQuery)) -> FulltextHits:
-    hits: Optional[FulltextHits] = None
-    if query.q is None:
-        raise HTTPException(status_code=400, detail="Expected a 'q' query parameter")
-    try:
-        hits = process_query(query)
-    except ValueError as e:
-        sentry_sdk.set_level("warning")
-        sentry_sdk.capture_exception(e)
-        raise HTTPException(status_code=400, detail=f"Query Error: {e}")
-    except IOError as e:
-        sentry_sdk.capture_exception(e)
-        raise HTTPException(status_code=500, detail=f"Backend Error: {e}")
-
-    # remove internal context from hit objects
-    for doc in hits.results:
-        doc.pop("_obj", None)
-
-    return hits
+#@api.get("/search", operation_id="get_search", response_model=HitsModel, include_in_schema=False)
+#def search(query: FulltextQuery = Depends(FulltextQuery)) -> FulltextHits:
+#    hits: Optional[FulltextHits] = None
+#    if query.q is None:
+#        raise HTTPException(status_code=400, detail="Expected a 'q' query parameter")
+#    try:
+#        hits = process_query(query)
+#    except ValueError as e:
+#        sentry_sdk.set_level("warning")
+#        sentry_sdk.capture_exception(e)
+#        raise HTTPException(status_code=400, detail=f"Query Error: {e}")
+#    except IOError as e:
+#        sentry_sdk.capture_exception(e)
+#        raise HTTPException(status_code=500, detail=f"Backend Error: {e}")
+#
+#    # remove internal context from hit objects
+#    for doc in hits.results:
+#        doc.pop("_obj", None)
+#
+#    return hits
 
 
 @api.get("/work/{work_ident}", operation_id="get_work")
@@ -203,7 +203,8 @@ def web_search(
     content: ContentNegotiation = Depends(ContentNegotiation),
 ) -> Any:
     if content.mimetype == "application/json":
-        return search(query)
+        #return search(query)
+        raise HttpException(status_code=400)
     hits: Optional[FulltextHits] = None
     search_error: Optional[dict] = None
     status_code: int = 200
@@ -490,9 +491,9 @@ app = FastAPI(
     title="Fatcat Scholar",
     description="Fulltext search interface for scholarly web content in the Fatcat catalog. An Internet Archive project.",
     version="0.2.1-dev",
-    openapi_url="/api/openapi.json",
-    redoc_url="/api/redoc",
-    docs_url="/api/docs",
+    #openapi_url="/api/openapi.json",
+    #redoc_url="/api/redoc",
+    #docs_url="/api/docs",
 )
 
 app.include_router(web)
@@ -562,13 +563,13 @@ def http_exception_handler(request: Request, exc: StarletteHTTPException) -> Any
 
 # configure middleware
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=False,
-    allow_methods=["GET"],
-    allow_headers=[],  # some defaults always enabled
-)
+#app.add_middleware(
+#    CORSMiddleware,
+#    allow_origins=["*"],
+#    allow_credentials=False,
+#    allow_methods=["GET"],
+#    allow_headers=[],  # some defaults always enabled
+#)
 
 if settings.SENTRY_DSN:
     logger.info("Sentry integration enabled")
