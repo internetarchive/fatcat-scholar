@@ -13,7 +13,6 @@ import fastapi_rss
 import fatcat_openapi_client
 import sentry_sdk
 from fastapi import APIRouter, Depends, FastAPI, HTTPException, Path, Request, Response
-from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import (
     FileResponse,
     JSONResponse,
@@ -204,7 +203,7 @@ def web_search(
 ) -> Any:
     if content.mimetype == "application/json":
         #return search(query)
-        raise HttpException(status_code=400)
+        raise HTTPException(status_code=400)
     hits: Optional[FulltextHits] = None
     search_error: Optional[dict] = None
     status_code: int = 200
