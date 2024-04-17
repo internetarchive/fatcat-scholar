@@ -5,8 +5,7 @@ def test_gunicorn_regression() -> None:
     uvicorn under gunicorn failed.
     """
     import uvloop
+    assert(uvloop is not None)
 
-    uvloop.__version__
     import httptools
-
-    httptools.__version__
+    assert(httptools is not None)

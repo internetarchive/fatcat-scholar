@@ -746,7 +746,7 @@ async def reference_match_json(
         response:     Response,
         _cors:        Annotated[None, Depends(cors)],
         fcclient:     Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ) -> dict|Response:
+        ) -> List[Any]|dict|Response:
     if request.method == "OPTIONS":
         response.status_code = 200
         return response
