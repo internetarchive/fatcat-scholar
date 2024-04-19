@@ -106,7 +106,7 @@
             <br>
           {% endfor %}
         {% elif direction == "out" and row.ref.target_unstructured %}
-          <form class="ui form" id="reference_match" method="POST" action="/reference/match">
+          <form class="ui form" id="reference_match" method="POST" action="/cat/reference/match">
             <input type="hidden" name="raw_citation" value="{{ row.ref.target_unstructured }}">
             <button class="ui tiny primary submit button" type="submit" name="submit_type" value="parse">
               re-parse
