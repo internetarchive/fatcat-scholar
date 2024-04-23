@@ -9,6 +9,7 @@ from fastapi import APIRouter, Depends, Path, Request, Response
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
 import fatcat_openapi_client as fcapi
+from fatcat_openapi_client import DefaultApi
 from fuzzycat.grobid_unstructured import (
     grobid_api_process_citation,
     grobid_ref_to_release,
@@ -80,10 +81,10 @@ routes = APIRouter()
 tmpls = Jinja2Templates(directory="src/scholar/templates/cat")
 tmpls.env.globals["settings"] = settings
 
-async def fcclient() -> fcapi.DefaultApi:
+async def fcclient() -> DefaultApi:
     fc_conf = fcapi.Configuration()
     fc_conf.host = settings.FATCAT_API_HOST
-    return fcapi.DefaultApi(fcapi.ApiClient(fc_conf))
+    return DefaultApi(fcapi.ApiClient(fc_conf))
 
 @routes.get("/", include_in_schema=False)
 async def index(request: Request) -> Response:
@@ -235,7 +236,7 @@ def generic_lookup(request: Request,
 async def release_save(
         request:  Request,
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:    Annotated[str, Path(..., min_length=1, max_length=30)]) -> Response:
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     release = fcclient.get_release(ident)
     return tmpls.TemplateResponse("release_save.html", {
         'request': request,
@@ -316,7 +317,7 @@ async def release_search(
 async def container_history(
         request:  Request,
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:    str = Path(..., min_length=1, max_length=30)) -> Response:
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     entity = fcclient.get_container(ident)
     history = fcclient.get_container_history(ident)
     return tmpls.TemplateResponse("entity_history.html", {
@@ -330,7 +331,7 @@ async def container_history(
 async def creator_history(
         request:  Request,
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:    str = Path(..., min_length=1, max_length=30)) -> Response:
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     entity = fcclient.get_creator(ident)
     history = fcclient.get_creator_history(ident)
     return tmpls.TemplateResponse("entity_history.html", {
@@ -344,7 +345,7 @@ async def creator_history(
 async def file_history(
         request:  Request,
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:    str = Path(..., min_length=1, max_length=30)) -> Response:
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     entity = fcclient.get_file(ident)
     history = fcclient.get_file_history(ident)
     return tmpls.TemplateResponse("entity_history.html", {
@@ -358,7 +359,7 @@ async def file_history(
 async def fileset_history(
         request:  Request,
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:    str = Path(..., min_length=1, max_length=30)) -> Response:
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     entity = fcclient.get_fileset(ident)
     history = fcclient.get_fileset_history(ident)
     return tmpls.TemplateResponse("entity_history.html", {
@@ -372,7 +373,7 @@ async def fileset_history(
 async def webcapture_history(
         request:  Request,
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:    str = Path(..., min_length=1, max_length=30)) -> Response:
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     entity = fcclient.get_webcapture(ident)
     history = fcclient.get_webcapture_history(ident)
     return tmpls.TemplateResponse("entity_history.html", {
@@ -386,7 +387,7 @@ async def webcapture_history(
 async def release_history(
         request:  Request,
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:    str = Path(..., min_length=1, max_length=30)) -> Response:
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     entity = fcclient.get_release(ident)
     history = fcclient.get_release_history(ident)
     return tmpls.TemplateResponse("entity_history.html", {
@@ -400,7 +401,7 @@ async def release_history(
 async def work_history(
         request:  Request,
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:    str = Path(..., min_length=1, max_length=30)) -> Response:
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     entity = fcclient.get_work(ident)
     history = fcclient.get_work_history(ident)
     return tmpls.TemplateResponse("entity_history.html", {
@@ -560,10 +561,10 @@ async def fileset_revision_view_metadata(
 async def container_view_browse(
         request:  Request,
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
+        ident:    Annotated[str, Path(length=26)],
         year:     int|None = None,
         volume:   str|None = None,
-        issue:    str|None = None,
-        ident:    str = Path(..., min_length=1, max_length=30)) -> Response:
+        issue:    str|None = None) -> Response:
     entity = generic_get_entity(fcclient, "container", ident)
 
     if entity.state == "redirect":
@@ -681,8 +682,7 @@ async def release_view_refs_outbound_json(
         response: Response,
         _cors:    Annotated[None, Depends(cors)],
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:    str = Path(..., min_length=1, max_length=30),
-        ) -> RefHitsEnriched|Response:
+        ident:    Annotated[str, Path(length=26)]) -> RefHitsEnriched|Response:
     if request.method == 'OPTIONS':
         response.status_code = 200
         return response
@@ -695,8 +695,7 @@ async def release_view_refs_inbound_json(
         response: Response,
         _cors:    Annotated[None, Depends(cors)],
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:    str = Path(..., min_length=1, max_length=30),
-        ) -> RefHitsEnriched|Response:
+        ident:    Annotated[str, Path(length=26)]) -> RefHitsEnriched|Response:
     if request.method == 'OPTIONS':
         response.status_code = 200
         return response
@@ -727,7 +726,7 @@ async def wikipedia_view_refs_outbound_json(
         response:     Response,
         _cors:        Annotated[None, Depends(cors)],
         fcclient:     Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        wiki_lang:    Annotated[str, Path(min_length=2, max_length=2)],
+        wiki_lang:    Annotated[str, Path(length=2)],
         wiki_article: str,
 ) -> RefHitsEnriched|Response:
     if request.method == 'OPTIONS':
@@ -932,8 +931,8 @@ async def container_search(request: Request,
 async def container_view_search(
         request:  Request,
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        q:        str|None = None,
-        ident:    str = Path(..., min_length=1, max_length=30)) -> Response:
+        ident:    Annotated[str, Path(length=26)],
+        q:        str|None = None) -> Response:
     entity = generic_get_entity(fcclient, "container", ident)
 
     ctx = {'request': request,
@@ -967,21 +966,21 @@ async def container_view_search(
 async def container_view_coverage(
         request: Request,
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:    str = Path(..., min_length=1, max_length=30)) -> Response:
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     # note: there is a special hack to add entity._type_preservation for this endpoint
     return generic_entity_view(request, fcclient, "container", ident, "container_view_coverage.html")
 
 @routes.get("/container_{ident}", include_in_schema=False)
 async def container_underscore_view(
         request:  Request,
-        ident:    str = Path(..., min_length=1, max_length=30)) -> Response:
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     return RedirectResponse(request.url_for("container_view", ident=ident),
                             status_code=302)
 
 @routes.get("/file_{ident}", include_in_schema=False)
 async def file_underscore_view(
         request:  Request,
-        ident:    str = Path(..., min_length=1, max_length=30)) -> Response:
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     return RedirectResponse(request.url_for("file_view", ident=ident),
                             status_code=302)
 
@@ -989,40 +988,40 @@ async def file_underscore_view(
 async def container_view_metadata(
         request:  Request,
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:    str = Path(..., min_length=1, max_length=30)) -> Response:
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     return generic_entity_view(request, fcclient, "container", ident, "entity_view_metadata.html")
 
 @routes.get("/creator_{ident}", include_in_schema=False)
 async def creator_underscore_view(
         request:  Request,
-        ident:    str = Path(..., min_length=1, max_length=30)) -> Response:
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     return RedirectResponse(request.url_for("creator_view", ident=ident), status_code=302)
 
 @routes.get("/creator/{ident}/metadata", include_in_schema=False)
 async def creator_view_metadata(
         request:  Request,
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:    str = Path(..., min_length=1, max_length=30)) -> Response:
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     return generic_entity_view(request, fcclient, "creator", ident, "entity_view_metadata.html")
 
 @routes.get("/file/{ident}/metadata", include_in_schema=False)
 async def file_view_metadata(
         request:  Request,
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:    str = Path(..., min_length=1, max_length=30)) -> Response:
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     return generic_entity_view(request, fcclient, "file", ident, "entity_view_metadata.html")
 
 @routes.get("/release_{ident}", include_in_schema=False)
 async def release_underscore_view(
         request:  Request,
-        ident:    str = Path(..., min_length=1, max_length=30)) -> Response:
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     return RedirectResponse(request.url_for("release_view", ident=ident), status_code=302)
 
 @routes.get("/release/{ident}/contribs", include_in_schema=False)
 async def release_view_contribs(
         request:  Request,
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:    str = Path(..., min_length=1, max_length=30)) -> Response:
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     return generic_entity_view(request, fcclient, "release",
                                ident, "release_view_contribs.html")
 
@@ -1030,7 +1029,7 @@ async def release_view_contribs(
 async def release_view_references(
         request:  Request,
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:    str = Path(..., min_length=1, max_length=30)) -> Response:
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     return generic_entity_view(request, fcclient, "release",
                                ident, "release_view_references.html")
 
@@ -1038,48 +1037,47 @@ async def release_view_references(
 async def webcapture_view(
         request:  Request,
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:    str = Path(..., min_length=1, max_length=30)) -> Response:
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     return generic_entity_view(request, fcclient, "webcapture", ident, "webcapture_view.html")
 
 @routes.get("/webcapture_{ident}", include_in_schema=False)
 async def webcapture_underscore_view(
         request:  Request,
-        ident:    str = Path(..., min_length=1, max_length=30)) -> Response:
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     return RedirectResponse(request.url_for("webcapture_view", ident=ident), status_code=302)
 
 @routes.get("/webcapture/{ident}/metadata", include_in_schema=False)
 async def webcapture_view_metadata(
         request:  Request,
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:    str = Path(..., min_length=1, max_length=30)) -> Response:
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     return generic_entity_view(request, fcclient, "webcapture", ident, "entity_view_metadata.html")
 
 @routes.get("/work/{ident}/metadata", include_in_schema=False)
 async def work_view_metadata(
         request:  Request,
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:    str = Path(..., min_length=1, max_length=30)) -> Response:
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     return generic_entity_view(request, fcclient, "work", ident, "entity_view_metadata.html")
 
 @routes.get("/work_{ident}", include_in_schema=False)
 async def work_underscore_view(
         request:  Request,
-        ident:    str = Path(..., min_length=1, max_length=30)) -> Response:
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     return RedirectResponse(request.url_for("work_view", ident=ident), status_code=302)
 
 @routes.get("/work/{ident}", include_in_schema=False)
 async def work_view(
         request:  Request,
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:    str = Path(..., min_length=1, max_length=30)) -> Response:
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     return generic_entity_view(request, fcclient, "work", ident, "work_view.html")
 
 @routes.get("/release/{ident}.bib", include_in_schema=False)
 async def release_bibtex(
-        request:      Request,
-        fcclient:     Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:        Annotated[str, Path(min_length=1, max_length=30)],
-) -> Response:
+        request:  Request,
+        fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     entity = fcclient.get_release(ident)
     try:
         csl = release_to_csl(entity)
@@ -1092,11 +1090,10 @@ async def release_bibtex(
 
 @routes.get("/release/{ident}/citeproc", include_in_schema=False)
 async def release_citeproc(
-        request:      Request,
-        fcclient:     Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:        Annotated[str, Path(min_length=1, max_length=30)],
-        style:        str = "harvard1",
-) -> Response:
+        request:  Request,
+        fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
+        ident:    Annotated[str, Path(length=26)],
+        style:    str = "harvard1") -> Response:
     # There was a way to have citeproc_csl generate html but as far as I could
     # tell it was unused. I ran into some encoding issues and decided to just
     # leave it out. It's not linked to from anywhere and not used in any
@@ -1123,21 +1120,21 @@ async def release_citeproc(
 async def release_view_metadata(
         request:  Request,
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:    str = Path(..., min_length=1, max_length=30)) -> Response:
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     return generic_entity_view(request, fcclient, "release", ident, "entity_view_metadata.html")
 
 @routes.get("/release/{ident}", include_in_schema=False)
 async def release_view(
         request:  Request,
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:    str = Path(..., min_length=1, max_length=30)) -> Response:
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     return generic_entity_view(request, fcclient, "release", ident, "release_view.html")
 
 @routes.get("/creator/{ident}", include_in_schema=False)
 async def creator_view(
         request:  Request,
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:    str = Path(..., min_length=1, max_length=30)) -> Response:
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     return generic_entity_view(request, fcclient, "creator", ident, "creator_view.html")
 
 
@@ -1145,7 +1142,7 @@ async def creator_view(
 async def file_view(
         request:  Request,
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:    str = Path(..., min_length=1, max_length=30)) -> Response:
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     return generic_entity_view(request, fcclient, "file", ident, "file_view.html")
 
 
@@ -1153,7 +1150,7 @@ async def file_view(
 async def container_view(
         request:  Request,
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:    str = Path(..., min_length=1, max_length=30)) -> Response:
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     return generic_entity_view(request, fcclient, "container", ident, "container_view.html")
 
 @routes.get("/fileset_{ident}")
@@ -1165,14 +1162,14 @@ async def fileset_underscore_view(request: Request,
 async def fileset_view_metadata(
         request:  Request,
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:    str = Path(..., min_length=1, max_length=30)) -> Response:
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     return generic_entity_view(request, fcclient, "fileset", ident, "entity_view_metadata.html")
 
 @routes.get("/fileset/{ident}")
 async def fileset_view(
         request:  Request,
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:    str = Path(..., min_length=1, max_length=30)) -> Response:
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     return generic_entity_view(request, fcclient, "fileset", ident, "fileset_view.html")
 
 def generic_editgroup_entity_view(
@@ -1207,8 +1204,7 @@ async def container_editgroup_view(
         request:      Request,
         fcclient:     Annotated[fcapi.DefaultApi, Depends(fcclient)],
         editgroup_id: str,
-        ident:        str = Path(..., min_length=1, max_length=30),
-) -> Response:
+        ident:        Annotated[str, Path(length=26)]) -> Response:
     return generic_editgroup_entity_view(
             request, fcclient, editgroup_id, 'container',
             ident, 'container_view.html')
@@ -1218,8 +1214,7 @@ async def container_editgroup_view_metadata(
         request:      Request,
         fcclient:     Annotated[fcapi.DefaultApi, Depends(fcclient)],
         editgroup_id: str,
-        ident:        str = Path(..., min_length=1, max_length=30),
-) -> Response:
+        ident:        Annotated[str, Path(length=26)]) -> Response:
     return generic_editgroup_entity_view(
             request, fcclient, editgroup_id, 'container',
             ident, 'entity_view_metadata.html')
@@ -1229,8 +1224,7 @@ async def creator_editgroup_view(
         request:      Request,
         fcclient:     Annotated[fcapi.DefaultApi, Depends(fcclient)],
         editgroup_id: str,
-        ident:        str = Path(..., min_length=1, max_length=30),
-) -> Response:
+        ident:        Annotated[str, Path(length=26)]) -> Response:
     return generic_editgroup_entity_view(
             request, fcclient, editgroup_id, 'creator',
             ident, 'creator_view.html')
@@ -1240,8 +1234,7 @@ async def creator_editgroup_view_metadata(
         request:      Request,
         fcclient:     Annotated[fcapi.DefaultApi, Depends(fcclient)],
         editgroup_id: str,
-        ident:        str = Path(..., min_length=1, max_length=30),
-) -> Response:
+        ident:        Annotated[str, Path(length=26)]) -> Response:
     return generic_editgroup_entity_view(
             request, fcclient, editgroup_id, 'creator',
             ident, 'entity_view_metadata.html')
@@ -1251,8 +1244,7 @@ async def file_editgroup_view(
         request:      Request,
         fcclient:     Annotated[fcapi.DefaultApi, Depends(fcclient)],
         editgroup_id: str,
-        ident:        str = Path(..., min_length=1, max_length=30),
-) -> Response:
+        ident:        Annotated[str, Path(length=26)]) -> Response:
     return generic_editgroup_entity_view(
             request, fcclient, editgroup_id, 'file',
             ident, 'file_view.html')
@@ -1262,8 +1254,7 @@ async def file_editgroup_view_metadata(
         request:      Request,
         fcclient:     Annotated[fcapi.DefaultApi, Depends(fcclient)],
         editgroup_id: str,
-        ident:        str = Path(..., min_length=1, max_length=30),
-) -> Response:
+        ident:        Annotated[str, Path(length=26)]) -> Response:
     return generic_editgroup_entity_view(
             request, fcclient, editgroup_id, 'file',
             ident, 'entity_view_metadata.html')
@@ -1273,8 +1264,7 @@ async def fileset_editgroup_view(
         request:      Request,
         fcclient:     Annotated[fcapi.DefaultApi, Depends(fcclient)],
         editgroup_id: str,
-        ident:        str = Path(..., min_length=1, max_length=30),
-) -> Response:
+        ident:        Annotated[str, Path(length=26)]) -> Response:
     return generic_editgroup_entity_view(
             request, fcclient, editgroup_id, 'fileset',
             ident, 'fileset_view.html')
@@ -1284,8 +1274,7 @@ async def fileset_editgroup_view_metadata(
         request:      Request,
         fcclient:     Annotated[fcapi.DefaultApi, Depends(fcclient)],
         editgroup_id: str,
-        ident:        str = Path(..., min_length=1, max_length=30),
-) -> Response:
+        ident:        Annotated[str, Path(length=26)]) -> Response:
     return generic_editgroup_entity_view(
             request, fcclient, editgroup_id, 'fileset',
             ident, 'entity_view_metadata.html')
@@ -1295,8 +1284,7 @@ async def webcapture_editgroup_view(
         request:      Request,
         fcclient:     Annotated[fcapi.DefaultApi, Depends(fcclient)],
         editgroup_id: str,
-        ident:        str = Path(..., min_length=1, max_length=30),
-) -> Response:
+        ident:        Annotated[str, Path(length=26)]) -> Response:
     return generic_editgroup_entity_view(
             request, fcclient, editgroup_id, 'webcapture',
             ident, 'webcapture_view.html')
@@ -1306,8 +1294,7 @@ async def webcapture_editgroup_view_metadata(
         request:      Request,
         fcclient:     Annotated[fcapi.DefaultApi, Depends(fcclient)],
         editgroup_id: str,
-        ident:        str = Path(..., min_length=1, max_length=30),
-) -> Response:
+        ident:        Annotated[str, Path(length=26)]) -> Response:
     return generic_editgroup_entity_view(
             request, fcclient, editgroup_id, 'webcapture',
             ident, 'entity_view_metadata.html')
@@ -1317,8 +1304,7 @@ async def release_editgroup_view(
         request:      Request,
         fcclient:     Annotated[fcapi.DefaultApi, Depends(fcclient)],
         editgroup_id: str,
-        ident:        str = Path(..., min_length=1, max_length=30),
-) -> Response:
+        ident:        Annotated[str, Path(length=26)]) -> Response:
     return generic_editgroup_entity_view(
             request, fcclient, editgroup_id, 'release',
             ident, 'release_view.html')
@@ -1328,8 +1314,7 @@ async def release_editgroup_view_metadata(
         request:      Request,
         fcclient:     Annotated[fcapi.DefaultApi, Depends(fcclient)],
         editgroup_id: str,
-        ident:        str = Path(..., min_length=1, max_length=30),
-) -> Response:
+        ident:        Annotated[str, Path(length=26)]) -> Response:
     return generic_editgroup_entity_view(
             request, fcclient, editgroup_id, 'release',
             ident, 'entity_view_metadata.html')
@@ -1339,8 +1324,7 @@ async def release_editgroup_view_contribs(
         request:      Request,
         fcclient:     Annotated[fcapi.DefaultApi, Depends(fcclient)],
         editgroup_id: str,
-        ident:        str = Path(..., min_length=1, max_length=30),
-) -> Response:
+        ident:        Annotated[str, Path(length=26)]) -> Response:
     return generic_editgroup_entity_view(
             request, fcclient, editgroup_id, 'release',
             ident, 'release_view_contribs.html')
@@ -1350,8 +1334,7 @@ async def release_editgroup_view_references(
         request:      Request,
         fcclient:     Annotated[fcapi.DefaultApi, Depends(fcclient)],
         editgroup_id: str,
-        ident:        str = Path(..., min_length=1, max_length=30),
-) -> Response:
+        ident:        Annotated[str, Path(length=26)]) -> Response:
     return generic_editgroup_entity_view(
             request, fcclient, editgroup_id, 'release',
             ident, 'release_view_references.html')
@@ -1361,8 +1344,7 @@ async def work_editgroup_view(
         request:      Request,
         fcclient:     Annotated[fcapi.DefaultApi, Depends(fcclient)],
         editgroup_id: str,
-        ident:        str = Path(..., min_length=1, max_length=30),
-) -> Response:
+        ident:        Annotated[str, Path(length=26)]) -> Response:
     return generic_editgroup_entity_view(
             request, fcclient, editgroup_id, 'work',
             ident, 'work_view.html')
@@ -1372,8 +1354,7 @@ async def work_editgroup_view_metadata(
         request:      Request,
         fcclient:     Annotated[fcapi.DefaultApi, Depends(fcclient)],
         editgroup_id: str,
-        ident:        str = Path(..., min_length=1, max_length=30),
-) -> Response:
+        ident:        Annotated[str, Path(length=26)]) -> Response:
     return generic_editgroup_entity_view(
             request, fcclient, editgroup_id, 'work',
             ident, 'entity_view_metadata.html')
@@ -1382,8 +1363,7 @@ async def work_editgroup_view_metadata(
 async def editgroup_view(
         request:      Request,
         fcclient:     Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:        str = Path(..., min_length=1, max_length=30),
-) -> Response:
+        ident:        Annotated[str, Path(length=26)]) -> Response:
     eg = fcclient.get_editgroup(ident)
     eg.editor = fcclient.get_editor(eg.editor_id)
     eg.annotations = fcclient.get_editgroup_annotations(
@@ -1396,16 +1376,15 @@ async def editgroup_view(
 @routes.get("/editgroup_{ident}", include_in_schema=False)
 async def editgroup_underscore_view(
         request:  Request,
-        ident:    str = Path(..., min_length=1, max_length=30)) -> Response:
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     return RedirectResponse(request.url_for("editgroup_view", ident=ident),
                             status_code=302)
 
 @routes.get("/editgroup/{ident}/diff", include_in_schema=False)
 async def editgroup_diff_view(
-        request:      Request,
-        fcclient:     Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:        str = Path(..., min_length=1, max_length=30),
-) -> Response:
+        request:  Request,
+        fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     eg = fcclient.get_editgroup(ident)
     eg.editor = fcclient.get_editor(eg.editor_id)
     eg.annotations = fcclient.get_editgroup_annotations(
@@ -1419,10 +1398,9 @@ async def editgroup_diff_view(
 
 @routes.get("/editor/{ident}", include_in_schema=False)
 async def editor_view(
-        request:      Request,
-        fcclient:     Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:        str = Path(..., min_length=1, max_length=30),
-) -> Response:
+        request:  Request,
+        fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     entity = fcclient.get_editor(ident)
     return tmpls.TemplateResponse("editor_view.html", {
         'request': request,
@@ -1431,18 +1409,16 @@ async def editor_view(
 
 @routes.get("/editor_{ident}", include_in_schema=False)
 async def editor_underscore_view(
-        request:      Request,
-        ident:        str = Path(..., min_length=1, max_length=30),
-) -> Response:
+        request: Request,
+        ident:   Annotated[str, Path(length=26)]) -> Response:
     return RedirectResponse(request.url_for("editor_view", ident=ident),
                             status_code=302)
 
 @routes.get("/editor/{ident}/editgroups", include_in_schema=False)
 async def editor_editgroups(
-        request:      Request,
-        fcclient:     Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:        str = Path(..., min_length=1, max_length=30),
-) -> Response:
+        request:  Request,
+        fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     editor = fcclient.get_editor(ident)
     editgroups = fcclient.get_editor_editgroups(ident, limit=50)
     # cheaper than API-side expand?
@@ -1456,10 +1432,9 @@ async def editor_editgroups(
 
 @routes.get("/editor/{ident}/annotations", include_in_schema=False)
 async def editor_annotations(
-        request:      Request,
-        fcclient:     Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:        str = Path(..., min_length=1, max_length=30),
-) -> Response:
+        request:  Request,
+        fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     editor = fcclient.get_editor(ident)
     annotations = fcclient.get_editor_annotations(ident, limit=50)
     return tmpls.TemplateResponse("editor_annotations.html", {
@@ -1472,7 +1447,7 @@ async def editor_annotations(
 async def editor_username_redirect(
         request:  Request,
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        username: str = Path(..., min_length=1),
+        username: Annotated[str, Path(min_length=1, max_length=100)],
 ) -> Response:
     editor = fcclient.lookup_editor(username=username)
     return RedirectResponse(
@@ -1533,10 +1508,9 @@ def _refs_web(
 
 @routes.get("/release/{ident}/refs-in", include_in_schema=False)
 async def release_view_refs_inbound(
-        request:      Request,
-        fcclient:     Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:        str = Path(..., min_length=1, max_length=30),
-) -> Response:
+        request:  Request,
+        fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     release = generic_get_entity(fcclient, "release", ident)
     hits = _refs_web("in", fcclient=fcclient, release_ident=ident)
     return tmpls.TemplateResponse("release_view_fuzzy_refs.html", {
@@ -1548,10 +1522,9 @@ async def release_view_refs_inbound(
 
 @routes.get("/release/{ident}/refs-out", include_in_schema=False)
 async def release_view_refs_outbound(
-        request:      Request,
-        fcclient:     Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:        Annotated[str, Path(min_length=1, max_length=30)],
-) -> Response:
+        request:  Request,
+        fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
+        ident:    Annotated[str, Path(length=26)]) -> Response:
     release = generic_get_entity(fcclient, "release", ident)
     hits = _refs_web("out", fcclient=fcclient, release_ident=ident)
     return tmpls.TemplateResponse("release_view_fuzzy_refs.html", {
@@ -1575,9 +1548,6 @@ async def openlibrary_view_refs_inbound(
         'direction': 'in',
         'hits': hits,
         })
-
-# TODO switch to using Annotated for Path
-# TODO do not need to use ... in paths
 
 @routes.get("/wikipedia/{wiki_lang}:{wiki_article}/refs-out", include_in_schema=False)
 async def wikipedia_view_refs_outbound(
