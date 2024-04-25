@@ -96,7 +96,7 @@ async def index(request: Request) -> Response:
 @routes.get("/search", include_in_schema=False)
 async def search(request: Request, q: str | None = None) -> Response:
     if q is None:
-        return RedirectResponse(request.url_for("t_release_search"), status_code=302)
+        return RedirectResponse(request.url_for("release_search"), status_code=302)
     query = q.strip()
 
     if len(query.split()) != 1:
