@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+{% block title %}About Scholar Catalog{% endblock %}
+
+{% block body %}
+
+<h1>Internet Archive Scholar Catalog</h1>
+
+<p>TODO</p>
+
+<p>Feedback and queries can be directed to
+<strong><a href="mailto:scholar@archive.org">scholar@archive.org</a></strong>.</p>
+
+<h3>Goals and Features</h3>
+
+<p>A few things set this catalog apart from similar indexing and discovery services:</p>
+
+<ul>
+  <li>
+    inclusion of archival, <strong>file-level metadata (hashes)</strong> in
+    addition to URLs, which allows automated verification ("do I have the right
+    copy"), reveals content-drift over time, and enables efficient distribution
+    of content through the ecosystem
+  </li>
+  <li>
+    native support for "post-PDF" digital media, including <strong>archival web
+      captures and datasets</strong>, as well as content stored on the
+    distributed web
+  </li>
+  <li>
+    data model that captures the <strong>work/edition distinction</strong>,
+    grouping pre-print, post-review, published, re-published, and updated
+    versions of a work together
+  </li>
+  <li>
+    focus on providing a stable API and corpus (making integration with diverse
+    user-facing applications simple), while enabling full replication and
+    mirroring of the corpus to <strong>reduce the risks of centralized
+    control</strong>
+  </li>
+</ul>
+
+<h3>Sources of Metadata</h3>
+
+<p>
+The source of all bibliographic information is recorded in edit history
+metadata, which allows the provenance of all records to be reconstructed. A few
+major sources are worth highlighting here:
+</p>
+
+<ul>
+  <li>
+    Release metadata from <strong>Crossref</strong>, via their public
+    <a href="https://github.com/CrossRef/rest-api-doc">REST API</a>
+  </li>
+  <li>
+    Release metadata and linked full-text content from NIH <strong>Pubmed</strong> and <strong><a href="https://arxiv.org">arXiv.org</a></strong>
+  </li>
+  <li>
+    Release metadata and linked public domain full-text content the <strong>JSTOR</strong> Early Journal Content collection
+  </li>
+  <li>
+    Creator names and de-duplication from <strong>ORCID</strong>, via their annual public data releases
+  </li>
+  <li>
+    Journal title metadata from <strong>DOAJ</strong>, <strong>ISSN ROAD</strong>, and <strong>SHERPA/RoMEO</strong>
+  </li>
+ <li>
+   Full-text URL lists from <strong><a href="https://core.ac.uk">CORE</a></strong>,
+ <strong><a href="http://unpaywall.org">Unpaywall</a></strong>,
+ <strong><a href="https://www.semanticscholar.org">Semantic Scholar</a></strong>,
+ <strong><a href="https://citeseerx.ist.psu.edu">CiteseerX</a></strong>,
+ and <strong><a href="https://www.microsoft.com/en-us/research/project/academic">Microsoft Academic Graph</a></strong>.
+ </li>
+</ul>
+
+<p>
+Initial `file` metadata and matches (file-to-release) come from earlier
+Internet Archive matching efforts, and in particular efforts to extra
+bibliographic metadata from PDFs (using GROBID) and fuzzy match (with
+conservative settings) to Crossref metadata.
+</p>
+
+<p>
+Many thanks for the hard work of all these projects, institutions, and
+individuals!
+</p>
+
+<h3>Bulk Exports</h3>
+
+<p>The Scholar Catalog is periodically dumped for public consumption.</p>
+
+<p>The internal database schema is not
+stable, so not as useful for longitudinal analysis. These dumps will include
+edits-in-progress, deleted entities, old revisions, etc, which are potentially
+difficult or impossible to fetch through the API.</p>
+
+<p>Public copies may have some tables redacted (eg, API credentials).</p>
+
+<p>Dumps are in PostgreSQL `pg_dump` "tar" binary format, and can be restored
+locally with the `pg_restore` command.</p>
+
+<p>All exports and dumps get uploaded to the Internet Archive under the
+<a href="https://archive.org/details/fatcat_snapshots_and_exports?&sort=-publicdate">Fatcat Database Snapshots and Bulk Metadata Exports</a> collection.
+
+<h3>Support and Acknowledgments</h3>
+
+<p>Scholar Catalog is a project of the <strong><a href="https://archive.org">Internet Archive</a></strong>,
+a US-based non-profit digital library, well known for its
+<a href="https://web.archive.org">Wayback Machine</a> web archive,
+<a href="https://openlibrary.org">Open Library</a>, and book digitization and
+lending services.</p>
+
+<p>Development of Scholar Catalog and related web harvesting, indexing, and preservation
+efforts at the Archive have been partially funded by
+a generous grant from the <strong>Andrew W. Mellon Foundation</strong>
+(<a href="https://blog.archive.org/2018/03/05/andrew-w-mellon-foundation-awards-grant-to-the-internet-archive-for-long-tail-journal-preservation/">"Long-tail Open Access Journal Preservation"</a>).
+We support this work by both tracking which open access works are in known
+archives and providing minimum-viable indexing and access mechanisms for
+long-tail works which otherwise would lack them.</p>
+
+<p>The service would not technically be possible without hundreds of Free
+Software components and the efforts of their individual and organizational
+maintainers, more than can be listed here (please see the source code for full
+lists). A few major components include the PostgreSQL database, Elasticsearch
+search engine, FastAPI python web framework, Rust programming language, Diesel
+database library, Swagger/OpenAPI code generators, Kafka distributed log,
+Ansible configuration management tool, and Ubuntu GNU/Linux operating system
+distribution.</p>
+
+<p>The front-page photo of a large feline with a cup of coffee is by
+<a href="http://www.kampschroer.com/photography.html">Quinn Kampschroer</a>,
+under a CC-0 license.</p>
+
+<p>A list of technical contributors, including volunteers, is maintained in the
+source code repository (<code>CONTRIBUTORS.md</code>). Thanks everybody!</p>
+
+{% endblock %}

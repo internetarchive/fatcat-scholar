@@ -1,0 +1,38 @@
+{% import "entity_macros.html" as entity_macros %}
+{% extends "base.html" %}
+
+{% block title %}[deleted]{% endblock %}
+
+{% block fullbody %}
+
+<div class="ui stackable mobile reversed grid centered">
+<div class="one wide column"></div>
+<div class="fifteen wide column">
+  <h1 class="ui header">Deleted Entity
+  <div class="sub header"><code>{{ entity_type }}_{{ entity.ident }}</code></div></h1>
+</div>
+</div>
+
+<div class="ui stackable mobile reversed grid centered">
+<div class="one wide column"></div>
+<div class="ten wide column" style="font-size: 16px;">
+
+<p>There used to be an entity here, but is has been deleted!
+
+<p>You can view history or revert the change using links to the right.
+
+<br>
+
+</div>
+<div class="five wide column">
+<div class="ui segment top attached">
+
+<b>Entity Type:</b> <code>{{ entity_type }}</code>
+</div>
+
+{{ entity_macros.fatcat_bits(entity, entity_type, "", editgroup=editgroup) }}
+
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block body %}
+
+<h1 class="ui header">{{ editor.username }}: Comments and Annotations
+<div class="sub header">
+  <code>editor_{{ editor.editor_id }}</code>
+</div>
+</h1>
+<a href="/cat/editor/{{ editor.editor_id }}/editgroups">Edit History</a> - 
+<a href="/cat/editor/{{ editor.editor_id }}/annotations">Comments and Annotation History</a>
+
+<br>
+<br>
+{% for annotation in annotations %}
+  <div class="ui segments">
+    <div class="ui top attached secondary segment">
+      On <b><small><code><a href="/cat/editgroup/{{ annotation.editgroup_id }}">
+        {{ annotation.editgroup_id }}
+      </a></code></small></b>
+      at {{ annotation.created.strftime("%Y-%m-%d %H:%M:%S") }}
+    </div>
+    {% if annotation.extra %}
+    <div class="ui attached segment">
+      {{ entity_macros.extra_metadata(annotation.extra) }}
+    </div>
+    {% endif %}
+    <div class="ui bottom attached segment">
+      {# TODO support markdown filter #}
+      {# {{ annotation.comment_markdown|markdown(escape=True) }} #}
+    </div>
+  </div>
+{% else %}
+  <i>No comments or annotations for this editor!</i>
+{% endfor %}
+
+{% endblock %}

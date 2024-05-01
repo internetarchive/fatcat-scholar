@@ -1,0 +1,316 @@
+{% extends "base.html" %}
+
+{% block fullmain %}
+
+<div class ="ui vertical inverted masthead center aligned segment" style="padding-top: 12em; padding-bottom: 10em;" itemscope itemtype="https://schema.org/WebSite">
+  <link itemprop="url" content="https://{{ settings.SCHOLAR_DOMAIN }}/cat"/>
+  <div class="ui text container">
+    <h1 class="ui header inverted huge centered">Perpetual Access to Millions of Open Research Publications From Around The World</h1>
+    <br>
+    <form class="" action="/cat/search" method="get" role="search" aria-label="papers" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
+      <meta itemprop="target" content="https://{{ settings.SCHOLAR_DOMAIN }}/cat/search?q={q}">
+      <div class="ui form">
+        <div class="ui action input huge fluid">
+          <input type="text" placeholder="by title, authors, identifiers..." name="q" aria-label="search metadata" required itemprop="query-input">
+          <button class="ui green button">Search</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="ui vertical stripe segment">
+  <div class="ui text container" style="max-width: 800px!important;">
+    <div class="ui centered equal grid">
+      <div class="row">
+        <div class="four wide mobile three wide center aligned column">
+          <a href="/cat/stats" style="color: black;">
+            <h4>131,904,171<br>Papers</h4>
+          </a>
+        </div>
+        <div class="four wide mobile three wide center aligned column">
+          <a href="/cat/stats" style="color: black;">
+            <h4>38,065,351<br>Accessible</h4>
+          </a>
+        </div>
+        <div class="four wide mobile three wide center aligned column">
+          <a href="/cat/stats" style="color: black;">
+            <h4>195,208<br>Journals</h4>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ui vertical stripe segment" style="padding-top: 2em; padding-bottom: 2em;">
+  <div class="ui text container" style="max-width: 800px!important;">
+    <div class="ui centered grid">
+      <div class="stackable row">
+        <div class="four wide column">
+          <!-- TODO: don't let it scale down -->
+          <img src="/static/paper_man_confused.gif" width="130" alt="confused paper man">
+        </div>
+        <div class="twelve wide column" style="font-size: 1.2rem;">
+          <p>
+            Fatcat is a catalog of research publications including journal articles, conference proceedings, and
+          datasets.
+          </p>
+          <p>
+            Features include archival file-level metadata (verified digests and
+            long-term copies), a <b><a href="/cat/coverage/search">preservation coverage visualizer</a></b>, work/edition grouping,
+            <!-- TODO an <b><a href="https://api.TODO">open API</a></b>, -->
+            and <a href="https://archive.org/details/ia_biblio_metadata">public metadata dumps</a>.
+            &nbsp;<a href="/cat/about">Read more...</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ui vertical stripe segment" style="padding-top: 2em; padding-bottom: 2em;">
+  <div class="ui text container" style="max-width: 1200px!important;">
+    <div class="ui middle aligned divided centered grid">
+      <div class="stackable row">
+        <div class="eight wide column" style="font-size: 1.6rem; text-align: center;">
+          <p>Our goal is to ensure long-term access to research content on the
+          "scholarly web" by tracking holes in preservation coverage across
+          digital preservation efforts</p>
+        </div>
+        <div class="seven wide column">
+          <a href="/cat/coverage/search?q=is_oa%3Atrue+year%3A%3E1995+year%3A%3C%3D2021+%28type%3Aarticle-journal+OR+type%3Aarticle+OR+type%3Apaper-conference%29+%21doi_prefix%3A10.5281+%21doi_prefix%3A10.6084">
+            <img alt="coverage visualization tool" src="/static/fatcat_oa_preservation_feb2022.svg" style="width: 100%;">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ui vertical stripe segment" style="padding-top: 2em; padding-bottom: 2em; background-color: #F5F5F5;">
+  <div class="ui text container" style="max-width: 800px!important;">
+  <div class="ui centered grid">
+    <div class="stackable row">
+      <div class="twelve wide column" style="font-size: 1.2rem;">
+        <p>This service is hosted at the <b><a
+        href="https://archive.org">Internet Archive</a></b>, a US
+        non-profit digital library dedicated to providing Universal Access to All Knowledge.
+        <a href="https://archive.org/donate/">Donations welcome!</a>
+        </p>
+        <p>Development for this project funding comes from
+        <b><a href="https://blog.archive.org/2018/03/05/andrew-w-mellon-foundation-awards-grant-to-the-internet-archive-for-long-tail-journal-preservation/">The Andrew W. Mellon Foundation</a></b>,
+        specifically to capture "long-tail" open access works on
+        the public web which might otherwise be lost.
+        </p>
+      </div>
+      <div class="four wide column">
+        <img src="/static/ia_logo_text.png" width="140" alt="IA logo">
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<div class="ui vertical stripe segment" style="padding-top: 2em; padding-bottom: 2em;">
+  <div class="ui text container" style="max-width: 800px!important;">
+    <div class="ui centered grid">
+      <div class="stackable row">
+        <div class="four wide column">
+          <a href="https://{{settings.SCHOLAR_DOMAIN}}">
+            <img src="/static/scholar-vaporwave-logo-small.png" width="170" alt="IA scholar logo">
+          </a>
+        </div>
+        <div class="twelve wide column" style="font-size: 1.2rem;">
+          <p><b><a href="https://{{settings.SCHOLAR_DOMAIN}}">Internet Archive Scholar</a></b>
+          is a sibling service, built on the Fatcat catalog, providing end-user
+          access to and full-text search over research content across the
+          Internet Archive's various holdings.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="ui center aligned container">
+
+<br>
+<h2 class="ui header centered">Explore Works In The Catalog So Far</h2>
+
+<br>
+{# this div makes the table scrollable on mobile #}
+<div style="max-width: 100%; overflow-x: auto;">
+<table class="ui single line unstackable table centered" style="max-width: 800px; font-size: 1.1rem; margin-right: auto; margin-left: auto;">
+<thead>
+<tr>
+  <th>Entity Type</th>
+  <th>Actions</th>
+  <th>Examples</th>
+  <th>Lookup</th>
+</tr>
+</thead>
+<tr>
+  <td>
+    <b>Release</b>
+    <br>journal article, pre-print, book
+    <br>published version of a Work
+  </td>
+  <td>
+    <a href="/cat/release/search">Search</a>
+  </td>
+{% if settings.SCHOLAR_ENV == 'prod' %}
+  <td><a href="/cat/release/hsmo6p4smrganpb3fndaj2lon4">Paper</a></td>
+{% else %}
+  <td>
+    <a href="/cat/release/hsmo6p4smrganpb3fndaj2lon4">Paper</a> (prod)
+    <br><a href="/cat/release/aaaaaaaaaaaaarceaaaaaaaaai">Dummy</a>
+    <br><a href="/cat/release/aaaaaaaaaaaaarceaaaaaaaaam">Realistic</a>
+  </td>
+{% endif %}
+  <td class="center aligned">
+    <form class="" action="/cat/release/lookup" method="get" role="search">
+      <div class="ui icon input">
+        <i class="search icon"></i>
+        <input type="text" placeholder="DOI" name="doi" aria-label="lookup paper by DOI">
+      </div>
+      <br><a href="/cat/release/lookup">Other Identifiers</a>
+    </form>
+  </td>
+</tr>
+<tr>
+  <td>
+    <b>Container</b>
+    <br>journal or serial
+  </td>
+  <td>
+    <a href="/cat/container/search">Search</a>
+  </td>
+{% if settings.SCHOLAR_ENV == 'prod' %}
+  <td><a href="/cat/container/iznnn644szdwva7khyxqzc73bi">Journal</a></td>
+{% else %}
+  <td>
+    <a href="/cat/container/iznnn644szdwva7khyxqzc73bi">Journal</a> (prod)
+    <br><a href="/cat/container/aaaaaaaaaaaaaeiraaaaaaaaai">Dummy</a>
+    <br><a href="/cat/container/aaaaaaaaaaaaaeiraaaaaaaaam">Realistic</a>
+  </td>
+{% endif %}
+  <td class="center aligned">
+    <form class="" action="/cat/container/lookup" method="get" role="search">
+      <div class="ui icon input">
+        <i class="search icon"></i>
+        <input type="text" placeholder="ISSN-L" name="issnl" aria-label="lookup journal by ISSN-L">
+      </div>
+      <br><a href="/cat/container/lookup">Other Identifiers</a>
+    </form>
+</tr>
+<tr>
+  <td>
+    <b>Creator</b>
+    <br>authors, editors, translators
+  </td>
+  <td></td>
+{% if settings.SCHOLAR_ENV == 'prod' %}
+  <td><a href="/cat/creator/iimvc523xbhqlav6j3sbthuehu">Author</a></td>
+{% else %}
+  <td>
+    <a href="/cat/creator/iimvc523xbhqlav6j3sbthuehu">Author</a> (prod)
+    <br><a href="/cat/creator/aaaaaaaaaaaaaircaaaaaaaaai">Dummy</a>
+    <br><a href="/cat/creator/aaaaaaaaaaaaaircaaaaaaaaam">Realistic</a>
+  </td>
+{% endif %}
+  <td class="center aligned">
+    <form class="" action="/cat/creator/lookup" method="get" role="search">
+      <div class="ui icon input">
+        <i class="search icon"></i>
+        <input type="text" placeholder="ORCID" name="orcid" aria-label="lookup author by ORCID">
+      </div>
+      <br><a href="/cat/creator/lookup">Other Identifiers</a>
+    </form>
+  </td>
+</tr>
+<tr>
+  <td>
+    <b>File</b>
+    <br>specific digital blobs (immutable)
+  </td>
+  <td></td>
+{% if settings.SCHOLAR_ENV == 'prod' %}
+  <td><a href="/cat/file/wklqsb5apzfhbbxxc7rgu2yw6m">PDF</a></td>
+{% else %}
+  <td>
+    <a href="/cat/file/wklqsb5apzfhbbxxc7rgu2yw6m">PDF</a> (prod)
+    <br><a href="/cat/file/aaaaaaaaaaaaamztaaaaaaaaai">Dummy</a>
+    <br><a href="/cat/file/aaaaaaaaaaaaamztaaaaaaaaam">Realistic</a>
+  </td>
+{% endif %}
+  <td class="center aligned">
+    <form class="" action="/cat/file/lookup" method="get" role="search">
+      <div class="ui icon input">
+        <i class="search icon"></i>
+        <input type="text" placeholder="SHA-1" name="sha1" aria-label="lookup file by SHA1">
+      </div>
+      <br><a href="/cat/file/lookup">Other Hashes</a>
+    </form>
+  </td>
+</tr>
+<tr>
+  <td>
+    <b>File Set</b>
+    <br>datasets, supplementary materials
+  </td>
+  <td></td>
+{% if settings.SCHOLAR_ENV == 'prod' %}
+  <td><a href="/cat/fileset/ho376wmdanckpp66iwfs7g22ne">Dataset</a></td>
+{% else %}
+  <td>
+    <a href="/cat/fileset/ho376wmdanckpp66iwfs7g22ne">Dataset</a> (prod)
+    <br><a href="/cat/fileset/aaaaaaaaaaaaaztgaaaaaaaaai">Dummy</a>
+    <br><a href="/cat/fileset/aaaaaaaaaaaaaztgaaaaaaaaam">Realistic</a>
+  </td>
+{% endif %}
+  <td></td>
+</tr>
+<tr>
+  <td>
+    <b>Web Capture</b>
+    <br>HTML and interactive articles, blog posts
+  <td></td>
+{% if settings.SCHOLAR_ENV == 'prod' %}
+  <td>
+    <a href="/cat/webcapture/z7uaeatyvfgwdpuxtrdu4okqii">D-Lib</a>
+    <br><a href="/cat/webcapture/5l2pubtfefbmdnqws2izccqlpm">Blog Post</a>
+  </td>
+{% else %}
+    <td>
+      <a href="/cat/webcapture/z7uaeatyvfgwdpuxtrdu4okqii">D-Lib</a> (prod)
+      <br><a href="/cat/webcapture/aaaaaaaaaaaaa53xaaaaaaaaai">Dummy</a>
+      <br><a href="/cat/webcapture/aaaaaaaaaaaaa53xaaaaaaaaam">Realistic</a>
+    </td>
+{% endif %}
+  <td></td>
+</tr>
+<tr>
+  <td>
+    <b>Work</b>
+    <br>for grouping Releases
+  </td>
+  <td></td>
+{% if settings.SCHOLAR_ENV == 'prod' %}
+  <td><a href="/cat/work/ftl6xv267vb6xfech3khri3nwa">Paper</a></td>
+{% else %}
+  <td>
+    <a href="/cat/work/ftl6xv267vb6xfech3khri3nwa">Paper</a> (prod)
+    <br><a href="/cat/work/aaaaaaaaaaaaavkvaaaaaaaaai">Dummy</a>
+    <br><a href="/cat/work/aaaaaaaaaaaaavkvaaaaaaaaam">Realistic</a>
+  </td>
+{% endif %}
+  <td></td>
+</tr>
+</table>
+</div>
+
+</div>
+
+{% endblock %}

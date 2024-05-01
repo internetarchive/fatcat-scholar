@@ -1,0 +1,39 @@
+{% set release = entity %}
+{% set entity_view = "contribs" %}
+{% set entity_type = "release" %}
+{% import "entity_macros.html" as entity_macros %}
+{% extends "entity_base.html" %}
+
+{% block entity_main %}
+
+{% if release.contribs|length > 0 %}
+<table class="ui basic compact table">
+<tbody>
+{% for contrib in release.contribs %}
+  <tr><td class="collapsing">{% if contrib.index or contrib.index == 0 %} {{ contrib.index + 1 }}{% endif %}
+      <td><span itemprop="author">
+      {% if contrib.creator_id and contrib.creator and contrib.creator.display_name %}
+        <a href="/cat/creator/{{contrib.creator_id}}">{{ contrib.creator.display_name }}</a>
+      {% else %}
+        {{ contrib.raw_name or '' }}
+      {% endif %}
+
+      {% if contrib.creator and contrib.creator.surname %}
+        <code>&nbsp;
+          ({{ contrib.creator.surname }}{% if contrib.creator.given_name %}, {{ contrib.creator.given_name }}{% endif %})
+        </code>
+      {% elif contrib.surname %}
+        <code>&nbsp;
+          ({{ contrib.surname }}{% if contrib.given_name %}, {{ contrib.given_name }}{% endif %})
+        </code>
+      {% endif %}
+      </span><br><i>{{ contrib.role or 'unknown' }}</i>
+{% endfor %}
+</tbody>
+</table>
+{% else %}
+<p>No known contributors (authors, translators, etc).
+{% endif %}
+
+{% endblock %}
+

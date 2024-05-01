@@ -5,12 +5,13 @@ So far there are few endpoints, so we just put them all here!
 """
 
 import datetime
+import json
 import logging
 import urllib.parse
 from typing import Any, Dict, List, Optional
 
 import fastapi_rss
-import fatcat_openapi_client
+import fatcat_openapi_client as fcapi
 import sentry_sdk
 from fastapi import APIRouter, Depends, FastAPI, HTTPException, Path, Request, Response
 from fastapi.responses import (
@@ -35,6 +36,8 @@ from scholar.search import (
     process_query,
 )
 from scholar.web_hacks import i18n_templates, parse_accept_lang
+from scholar.cat.web import routes as cat_routes
+from scholar.cat.web import tmpls as cat_tmpls
 
 logger = logging.getLogger()
 
@@ -340,9 +343,9 @@ def access_redirect_fallback(
     otherwise return a 404, and "try harder" to find a redirect.
     """
     # lookup against the live fatcat API, instead of scholar ES index
-    api_conf = fatcat_openapi_client.Configuration()
+    api_conf = fcapi.Configuration()
     api_conf.host = settings.FATCAT_API_HOST
-    api_client = fatcat_openapi_client.DefaultApi(fatcat_openapi_client.ApiClient(api_conf))
+    api_client = fcapi.DefaultApi(fcapi.ApiClient(api_conf))
 
     # fetch list of releases for this work from current fatcat catalog. note
     # that these releases are not expanded (don't include file entities)
@@ -358,7 +361,7 @@ def access_redirect_fallback(
             ident=work_ident,
             hide="abstracts,references",
         )
-    except fatcat_openapi_client.ApiException as ae:
+    except fcapi.ApiException as ae:
         raise HTTPException(
             status_code=ae.status,
             detail=f"Fatcat API call failed for work_{work_ident}",
@@ -499,6 +502,8 @@ app.include_router(web)
 for lang_option in I18N_LANG_OPTIONS:
     app.include_router(web, prefix=f"/{lang_option}")
 
+app.include_router(cat_routes, prefix="/cat")
+
 # Because we are mounting 'api' after 'web', the web routes will take
 # precedence. Requests get passed through the API handlers based on content
 # negotiation. This is counter-intuitive here in the code, but does seem to
@@ -529,6 +534,21 @@ async def robots_txt(response_class: Any = PlainTextResponse) -> Any:
     else:
         return PlainTextResponse(ROBOTS_DISALLOW)
 
+@app.exception_handler(fcapi.ApiException)
+async def unicorn_exception_handler(request: Request, ae: fcapi.ApiException) -> Response:
+    try:
+        json_body = json.loads(ae.body)
+        ae.error_name = json_body.get("error")
+        ae.message = json_body.get("message")
+    except ValueError:
+        pass
+    except TypeError:
+        pass
+
+    return cat_tmpls.TemplateResponse("api_error.html", {
+        "request": request,
+        "api_error": ae,
+        }, status_code=ae.status)
 
 @app.exception_handler(StarletteHTTPException)
 def http_exception_handler(request: Request, exc: StarletteHTTPException) -> Any:

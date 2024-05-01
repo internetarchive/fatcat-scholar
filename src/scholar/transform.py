@@ -603,7 +603,7 @@ def transform_heavy(heavy: IntermediateBundle) -> Optional[ScholarDoc]:
         key=key,
         collapse_key=sim_issue or work_ident,
         doc_type=heavy.doc_type.value,
-        doc_index_ts=datetime.datetime.utcnow(),
+        doc_index_ts=datetime.datetime.now(datetime.UTC),
         work_ident=work_ident,
         tags=tags,
         biblio=biblio,

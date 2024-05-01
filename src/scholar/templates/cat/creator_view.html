@@ -1,0 +1,63 @@
+{% set creator = entity %}
+{% set entity_view = "overview" %}
+{% import "entity_macros.html" as entity_macros %}
+{% extends "entity_base.html" %}
+
+{% block entity_main %}
+
+<div class="ui stackable mobile reversed grid centered">
+<div class="column" style="font-size: 16px; flex: 1;">
+
+{% if creator.given_name or creator.surname %}
+  <table class="ui definition single line fixed compact small unstackable table">
+  <tbody>
+    <tr><td class="two wide right aligned">Given name</td>
+        <td class="seven wide">
+          {% if creator.given_name != None %}{{ creator.given_name}}{% else %}<i>None or unknown</i>{% endif %}
+        </td>
+    <tr><td class="two wide right aligned">Surname</td>
+        <td class="seven wide">
+          {% if creator.surname != None %}{{ creator.surname }}{% else %}<i>None or unknown</i>{% endif %}
+        </td>
+  </tbody>
+  </table>
+{% endif %}
+
+<br>
+<h3>Releases</h3>
+{% if creator._releases != [] and creator._releases != None %}
+  <p>This creator has contributed to:
+  {{ entity_macros.release_list(creator._releases) }}
+{% else %}
+This creator has not contributed to any releases.
+{% endif %}
+
+</div>
+<div class="column" style="flex: 0 0 24em;">
+<div class="ui segment top attached">
+
+{% if creator.orcid or creator.wikidata_qid %}
+  {% if creator.orcid %}
+    <b>ORCID<sup><a href="https://en.wikipedia.org/wiki/Orcid">?</a></sup></b>
+      &nbsp;<a href="https://orcid.org/{{creator.orcid}}"><code>{{ creator.orcid }}</code></a><br>
+  {% endif %}
+  {% if creator.wikidata_qid %}
+    <b>Wikidata</b> <a href="https://www.wikidata.org/wiki/{{ creator.wikidata_qid }}">
+      &nbsp;<code>{{ creator.wikidata_qid }}</code></a><br>
+  {% endif %}
+</div><div class="ui segment attached">
+{% endif %}
+
+<b>Lookup Links</b>
+<br><a href="https://www.wikidata.org/w/index.php?search=&search={{ creator.display_name|urlencode }}">wikidata.org</a>
+<br><a href="https://viaf.org/viaf/search?query=local.personalNames%20all%20%22{{ creator.display_name|urlencode }}">VIAF</a>
+<br><a href="http://dblp.uni-trier.de/search?q={{ creator.display_name|urlencode }}">dblp</a> (CS)
+<br><a href="https://scholar.google.com/scholar?q={{ creator.display_name|urlencode }}">Google Scholar</a>
+</div>
+
+{{ entity_macros.fatcat_bits(entity, "creator", "", editgroup) }}
+
+</div>
+</div>
+
+{% endblock %}

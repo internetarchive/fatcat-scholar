@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block body %}
+
+<h1 class="ui header">{{ editor.username }}: Edit History
+<div class="sub header">
+  <code>editor_{{editor.editor_id}}</code>
+</div>
+</h1>
+<a href="/cat/editor/{{ editor.editor_id }}/editgroups">Edit History</a> - 
+<a href="/cat/editor/{{ editor.editor_id }}/annotations">Comments and Annotation History</a>
+
+<br>
+<table class="ui table">
+  <thead><tr>{# <th>Created (UTC) #}
+             <th>Status
+             <th>Editgroup
+             <th>Description
+  <tbody>
+  {% for editgroup in editgroups %}
+  <tr>{# <td>{{ editgroup.created.strftime("%Y-%m-%d %H:%M:%S") }} #}
+      <td>{% if editgroup.changelog_index %}
+            Merged
+            <br><a href="/cat/changelog/{{ editgroup.changelog_index }}">#{{ editgroup.changelog_index }}</a>
+          {% elif editgroup.submitted %}
+            Submitted
+            <br>{{ editgroup.submitted.strftime("%Y-%m-%d %H:%M:%S") }}
+          {% else %}
+            Work in Progress
+          {% endif %}
+      <td><small><code><a href="/cat/editgroup/{{ editgroup.editgroup_id }}">
+            editgroup_{{ editgroup.editgroup_id }}
+          </a></code></small>
+      <td>{% if editgroup.description != None %}{{ editgroup.description }}{% endif %}
+  {% endfor %}
+</table>
+
+{% endblock %}

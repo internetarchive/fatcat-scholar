@@ -1,0 +1,17 @@
+{% set auth_to = {} %}
+{% extends "editgroup_view.html" %}
+
+{% block title %}Changelog #{{ entry.index }}{% endblock %}
+
+{% block editgroupheader %}
+
+<h1 class="ui header">Changelog Entry
+<div class="sub header">
+  <code>changelog {{ entry.index }}</code>
+</div>
+</h1>
+
+<br><b>Timestamp:</b> {{ entry.timestamp.strftime("%Y-%m-%d %H:%M:%S") }}
+<br><b><a href="/cat/editgroup/{{editgroup.editgroup_id}}">Editgroup</a></b>
+<br>
+{% endblock %}

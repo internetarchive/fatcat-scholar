@@ -1,11 +1,11 @@
+# TODO delete this test
 def test_gunicorn_regression() -> None:
     """
     Had a problem where these two libraries were not included and running
     uvicorn under gunicorn failed.
     """
     import uvloop
+    assert(uvloop is not None)
 
-    uvloop.__version__
     import httptools
-
-    httptools.__version__
+    assert(httptools is not None)

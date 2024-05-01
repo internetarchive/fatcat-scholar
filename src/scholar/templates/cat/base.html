@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" style="position: relative; min-height: 100%; height: auto;">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="origin-when-cross-origin">
+
+  <title>{%- block title -%}
+    {%- if settings.SCHOLAR_ENV == 'qa' -%}
+      {{- "[QA] " -}}
+    {%- elif settings.SCHOLAR_ENV == 'dev' -%}
+      {{- "[DEV] " -}}
+    {%- endif -%}
+    Perpetual Access To The Scholarly Record
+  {%- endblock %} | fatcat!</title>
+
+  <link rel="stylesheet"
+    type="text/css"
+    href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.6/dist/semantic.min.css"
+    type="text/css"
+    crossorigin="anonymous">
+  <link rel="preload"
+    href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin&display=swap"
+    as="style">
+  <link rel="preload"
+    href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.6/dist/themes/default/assets/fonts/icons.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous">
+  <link rel="icon" href="data:,">
+
+  <style>
+    {# bnewbold: fix light grey bars in header #}
+    .ui.inverted.menu .item:before { background: none; }
+
+    @media only screen and (max-width: 479px) {
+      .mobile-hide{ display: none !important; }
+    }
+
+    .field textarea#toml {
+      font-family: monospace;
+    }
+  </style>
+  {% block extra_head %}{% endblock %}
+</head>
+<body style="margin-bottom: 130px;">
+
+<header class="ui fixed inverted menu" style="height: 3em;">
+  <div class="ui container">
+    {% if settings.SCHOLAR_ENV == 'qa' %}
+      <div class="ui left corner orange small label">
+        <div data-tooltip="[QA] environment (data not preserved)" data-position="bottom left">
+          <i class="ui cogs icon"></i>
+        </div>
+      </div>
+    {% elif settings.SCHOLAR_ENV == 'dev' %}
+      <div class="ui left corner pink small label">
+        <div data-tooltip="[DEV] environment (data not preserved)" data-position="bottom left">
+          <i class="ui cogs icon"></i>
+        </div>
+      </div>
+    {% endif %}
+    <a href="/cat" class="header item">catalog home</a>
+    <a href="/cat/about" class="item mobile-hide">About</a>
+    <a href="/cat/changelog" class="item mobile-hide">Changelog</a>
+    <div class="right menu">
+      <div class="item" style="padding: 0;">
+        <form class="" action="/cat/search" method="get" role="search" aria-label="Papers">
+          <div class="ui transparent inverted icon input">
+            <i class="search icon" style="padding-right: 2em;"></i>
+            <input type="text" placeholder="Search Papers..." name="q" style="border: 1px solid #777 !important; padding: 5px !important; width: 15em;">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+{% block fullmain %}
+<!-- 4em top margin is "enough" -->
+<main class="ui main container" style="margin-top: 6em; margin-bottom: 2em;" {% block main_extra_attr %}{% endblock %}>
+{% block fullbody %}
+  <div class="ui container text">
+    {% block body %}Nothing to see here.{% endblock %}
+  </div>
+{% endblock %}
+</main>
+{% endblock %}
+
+<footer class="ui inverted vertical footer segment" style="margin-top: 2em; padding-top: 2em; padding-bottom:2em; position: absolute; bottom: 0px; width: 100%;">
+  <div class="ui center aligned container">
+    <div class="ui horizontal inverted small divided link list">
+      <a class="item" href="/cat">fatcat!</a>
+      <a class="item" href="/cat/about">About</a>
+      <a class="item" href="https://github.com/internetarchive/fatcat-scholar/">Code</a>
+      <a class="item" href="https://github.com/internetarchive/fatcat-scholar/tree/{{ git_revision }}"><code>{{git_revision}}</code></a>
+      {% if settings.SCHOLAR_ENV == 'qa' %}
+        <a class="item"><b style="color: orange;">[QA]</b></a>
+      {% elif settings.SCHOLAR_ENV == 'dev' %}
+        <a class="item"><b style="color: magenta;">[DEV]</b></a>
+      {% endif %}
+    </div>
+  </div>
+</footer>
+
+<script
+  src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous">
+</script>
+<script
+  src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.6/dist/semantic.min.js"
+  integrity="sha256-9H3HWYnPJ2bEHgkOrw+48KheOqYzTvJd1hbeU9sEDFk="
+  crossorigin="anonymous">
+</script>
+{% if settings.ENABLE_GOATCOUNTER -%}
+  <script>
+    window.goatcounter = {
+        /* title leaks search query, so don't report it */
+        title: "",
+        {# to allow localhost connections (dev) to be collected, set: allow_local: true #}
+    };
+  </script>
+  <script data-goatcounter="{{ settings.GOATCOUNTER_ENDPOINT }}" async src="{{ settings.GOATCOUNTER_SCRIPT_URL }}"></script>
+{%- endif %}
+{% block postscript %}{% endblock %}
+
+</body>
+</html>
