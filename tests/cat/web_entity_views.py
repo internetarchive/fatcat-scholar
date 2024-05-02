@@ -232,11 +232,12 @@ def test_generic_entity_view_container_view(client, mocker, basic_entities):
 
     mm = mocker.MagicMock()
     mm.get_container = mocker.MagicMock(return_value=c)
+    # TODO use ES_CONTAINER_STATS_RESP
     m1 = mocker.patch("scholar.cat.web.get_elastic_container_stats", return_value={"total":0})
     m2 = mocker.patch("scholar.cat.web.get_elastic_container_random_releases")
     m = mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
 
-    res = client.get("/cat/container/abc")
+    res = client.get("/cat/container/abcdefghijklmnopqrstuvwxyz")
 
     assert res.status_code == 200
     assert "urusei yatsura" in res.text
