@@ -8,103 +8,55 @@ import fatcat_openapi_client as fcapi
 
 #from fatcat_web.forms import ContainerEntityForm, FileEntityForm, ReleaseEntityForm
 
-#DUMMY_DEMO_ENTITIES = {
-#    "container": ("aaaaaaaaaaaaaeiraaaaaaaaai", "00000000-0000-0000-1111-fff000000002"),
-#    # note inconsistency here (q not i)
-#    "creator": ("aaaaaaaaaaaaaircaaaaaaaaaq", "00000000-0000-0000-2222-fff000000002"),
-#    "file": ("aaaaaaaaaaaaamztaaaaaaaaai", "00000000-0000-0000-3333-fff000000002"),
-#    "fileset": ("aaaaaaaaaaaaaztgaaaaaaaaai", "00000000-0000-0000-6666-fff000000002"),
-#    "webcapture": ("aaaaaaaaaaaaa53xaaaaaaaaai", "00000000-0000-0000-7777-fff000000002"),
-#    "release": ("aaaaaaaaaaaaarceaaaaaaaaai", "00000000-0000-0000-4444-fff000000002"),
-#    "work": ("aaaaaaaaaaaaavkvaaaaaaaaai", "00000000-0000-0000-5555-fff000000002"),
+# TODO use in test below
+#ES_CONTAINER_STATS_RESP = {
+#    "timed_out": False,
+#    "aggregations": {
+#        "container_stats": {
+#            "buckets": {
+#                "is_preserved": {"doc_count": 461939},
+#                "in_kbart": {"doc_count": 461939},
+#                "in_web": {"doc_count": 2797},
+#            }
+#        },
+#        "preservation": {
+#            "buckets": [
+#                {"key": "bright", "doc_count": 444},
+#                {"key": "dark", "doc_count": 111},
+#            ],
+#            "sum_other_doc_count": 0,
+#        },
+#        "release_type": {
+#            "buckets": [
+#                {"key": "article-journal", "doc_count": 456},
+#                {"key": "book", "doc_count": 123},
+#            ],
+#            "sum_other_doc_count": 0,
+#        },
+#    },
+#    "hits": {"total": 461939, "hits": [], "max_score": 0.0},
+#    "_shards": {"successful": 5, "total": 5, "skipped": 0, "failed": 0},
+#    "took": 50,
 #}
-#
-#REALISTIC_DEMO_ENTITIES = {
-#    "container": "aaaaaaaaaaaaaeiraaaaaaaaam",
-#    "creator": "aaaaaaaaaaaaaircaaaaaaaaam",
-#    "file": "aaaaaaaaaaaaamztaaaaaaaaam",
-#    "fileset": "aaaaaaaaaaaaaztgaaaaaaaaam",
-#    "webcapture": "aaaaaaaaaaaaa53xaaaaaaaaam",
-#    "release": "aaaaaaaaaaaaarceaaaaaaaaam",
-#    "work": "aaaaaaaaaaaaavkvaaaaaaaaam",
-#}
-#
-#
-#def test_entity_basics(app, mocker):
-#
-#    es_raw = mocker.patch("elasticsearch.connection.Urllib3HttpConnection.perform_request")
-#    # these are basic ES stats for the container view pages
-#    es_raw.side_effect = [
-#        (200, {}, json.dumps(ES_CONTAINER_STATS_RESP)),
-#        (200, {}, json.dumps(ES_CONTAINER_RANDOM_RESP)),
-#    ]
-#
-#    for entity_type, (ident, revision) in DUMMY_DEMO_ENTITIES.items():
-#        # good requests
-#        rv = app.get("/{}/{}".format(entity_type, ident))
-#        assert rv.status_code == 200
-#        rv = app.get("/{}_{}".format(entity_type, ident))
-#        assert rv.status_code == 302
-#        rv = app.get("/{}/{}/history".format(entity_type, ident))
-#        assert rv.status_code == 200
-#        rv = app.get("/{}/{}/metadata".format(entity_type, ident))
-#        assert rv.status_code == 200
-#        rv = app.get("/{}/rev/{}".format(entity_type, revision))
-#        assert rv.status_code == 200
-#        rv = app.get("/{}/rev/{}_something".format(entity_type, revision))
-#        assert rv.status_code == 404
-#        rv = app.get("/{}/rev/{}/metadata".format(entity_type, revision))
-#        assert rv.status_code == 200
-#        print("/editgroup/aaaaaaaaaaaabo53aaaaaaaaaq/{}/{}".format(entity_type, ident))
-#        rv = app.get("/editgroup/aaaaaaaaaaaabo53aaaaaaaaaq/{}/{}".format(entity_type, ident))
-#        assert rv.status_code == 200
-#        rv = app.get(
-#            "/editgroup/aaaaaaaaaaaabo53aaaaaaaaaq/{}/{}/metadata".format(entity_type, ident)
-#        )
-#        assert rv.status_code == 200
-#
-#        # bad requests
-#        rv = app.get("/{}/9999999999".format(entity_type))
-#        assert rv.status_code == 404
-#        rv = app.get("/{}/9999999999/history".format(entity_type))
-#        assert rv.status_code == 404
-#        rv = app.get("/{}/f1f046a3-45c9-ffff-ffff-ffffffffffff".format(entity_type))
-#        assert rv.status_code == 404
-#        rv = app.get("/{}/rev/f1f046a3-45c9-ffff-ffff-fffffffff".format(entity_type))
-#        assert rv.status_code == 404
-#        rv = app.get("/{}/ccccccccccccccccccccccccca".format(entity_type))
-#        assert rv.status_code == 404
-#
-#        # TODO: redirects and deleted entities
-#
-#
-#def test_web_deleted_release(app, api):
-#    # specific regression test for view of a deleted release
-#
-#    # create release
-#    eg = quick_eg(api)
-#    r1 = ReleaseEntity(
-#        title="some title",
-#        ext_ids=ReleaseExtIds(),
-#    )
-#    r1edit = api.create_release(eg.editgroup_id, r1)
-#    api.accept_editgroup(eg.editgroup_id)
-#
-#    # delete
-#    eg = quick_eg(api)
-#    api.delete_release(eg.editgroup_id, r1edit.ident)
-#    api.accept_editgroup(eg.editgroup_id)
-#    r2 = api.get_release(r1edit.ident)
-#    assert r2.state == "deleted"
-#
-#    rv = app.get("/release/{}".format(r2.ident))
-#    assert rv.status_code == 200
-#    rv = app.get("/release/{}/metadata".format(r2.ident))
-#    assert rv.status_code == 200
-#    rv = app.get("/release/{}/history".format(r2.ident))
-#    assert rv.status_code == 200
-#
-#
+
+ENTITY_TYPES = ["release", "work", "webcapture", "file", "fileset", "creator", "container"]
+
+
+def test_malformed_entity(client):
+    for entity_type in ENTITY_TYPES:
+        rv = client.get("/cat/{}/9999999999".format(entity_type))
+        assert rv.status_code == 422, f"malformed {entity_type}"
+        # TODO what was up with this one; it's a valid ident, right?
+        # I'm guessing it lives in the DB somewhere but I haven't tracked it down.
+        #rv = client.get("/cat/{}/ccccccccccccccccccccccccca".format(entity_type))
+        #assert rv.status_code == 404, "mystery {entity_type}"
+        rv = client.get("/cat/{}/9999999999/history".format(entity_type))
+        assert rv.status_code == 422, f"malformed {entity_type} history"
+        rv = client.get("/cat/{}/f1f046a3-45c9-ffff-ffff-ffffffffffff".format(entity_type))
+        assert rv.status_code == 422, f"malformed {entity_type} uuid"
+        rv = client.get("/cat/{}/rev/f1f046a3-45c9-ffff-ffff-fffffffff".format(entity_type))
+        assert rv.status_code == 422, "malformed {entity_type} rev"
+
 #def test_lookups(app):
 #
 #    rv = app.get("/container/lookup")
@@ -181,38 +133,6 @@ import fatcat_openapi_client as fcapi
 #    )
 #    assert rv.status_code == 302
 #
-#def test_web_file(app):
-#    # not logged in
-#
-#    rv = app.get("/file/aaaaaaaaaaaaamztaaaaaaaaai")
-#    assert rv.status_code == 200
-#    rv = app.get("/file/aaaaaaaaaaaaamztaaaaaaaaai/edit")
-#    assert rv.status_code == 302
-#    rv = app.get("/file/create")
-#    assert rv.status_code == 302
-#
-#
-#def test_web_fileset(app):
-#    # not logged in
-#
-#    rv = app.get("/fileset/aaaaaaaaaaaaaztgaaaaaaaaai")
-#    assert rv.status_code == 200
-#    rv = app.get("/fileset/aaaaaaaaaaaaaztgaaaaaaaaai/edit")
-#    assert rv.status_code == 302
-#    rv = app.get("/fileset/create")
-#    assert rv.status_code == 302
-#
-#
-#def test_web_webcatpure(app):
-#    # not logged in
-#
-#    rv = app.get("/webcapture/aaaaaaaaaaaaa53xaaaaaaaaai")
-#    assert rv.status_code == 200
-#    rv = app.get("/webcapture/aaaaaaaaaaaaa53xaaaaaaaaai/edit")
-#    assert rv.status_code == 302
-#    rv = app.get("/webcapture/create")
-#    assert rv.status_code == 302
-#
 #
 #def test_web_release(app):
 #    # not logged in
@@ -257,10 +177,6 @@ import fatcat_openapi_client as fcapi
 #    rv = app.get("/release/search")
 #    assert rv.status_code == 200
 
-#def test_web_work(client):
-#    rv = client.get("/work/aaaaaaaaaaaaavkvaaaaaaaaai")
-#    assert rv.status_code == 200
-
 def test_generic_entity_view_active_release(client, mocker, basic_entities):
     r = basic_entities["release"]
 
@@ -268,7 +184,7 @@ def test_generic_entity_view_active_release(client, mocker, basic_entities):
     mm.get_release = mocker.MagicMock(return_value=r)
     m = mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
 
-    res = client.get("/cat/release/abc")
+    res = client.get("/cat/release/abcdefghijklmnopqrstuvwxyz")
 
     assert res.status_code == 200
     assert r.title in res.text
@@ -282,7 +198,7 @@ def test_generic_entity_view_deleted_release(client, mocker, basic_entities):
     mm.get_release = mocker.MagicMock(return_value=r)
     m = mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
 
-    res = client.get("/cat/release/abc")
+    res = client.get("/cat/release/abcdefghijklmnopqrstuvwxyz")
 
     assert res.status_code == 200
     assert "There used to be an entity here" in res.text
@@ -295,7 +211,7 @@ def test_generic_entity_view_redirect_release(client, mocker, basic_entities):
     mm.get_release = mocker.MagicMock(return_value=r)
     m = mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
 
-    res = client.get("/cat/release/abc", follow_redirects=False)
+    res = client.get("/cat/release/abcdefghijklmnopqrstuvwxyz", follow_redirects=False)
 
     assert res.status_code == 302
 
@@ -305,7 +221,7 @@ def test_generic_entity_view_release_metadata(client, mocker, basic_entities):
     mm.get_release = mocker.MagicMock(return_value=r)
     m = mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
 
-    res = client.get("/cat/release/metadata", follow_redirects=False)
+    res = client.get("/cat/release/abcdefghijklmnopqrstuvwxyz/metadata", follow_redirects=False)
 
     assert res.status_code == 200
     assert r.pages in res.text
@@ -336,7 +252,7 @@ def test_generic_entity_view_container_view_coverage(client, mocker, basic_entit
     m2 = mocker.patch("scholar.cat.web.get_elastic_preservation_by_type", return_value=[{}])
     m = mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
 
-    res = client.get("/cat/container/abc/coverage")
+    res = client.get("/cat/container/abcdefghijklmnopqrstuvwxyz/coverage")
 
     assert res.status_code == 200
     assert "urusei yatsura" in res.text
@@ -350,7 +266,7 @@ def test_generic_entity_view_creator(client, mocker, basic_entities):
     mm.get_creator = mocker.MagicMock(return_value=c)
     m = mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
 
-    res = client.get("/cat/creator/abc")
+    res = client.get("/cat/creator/abcdefghijklmnopqrstuvwxyz")
 
     assert res.status_code == 200
     assert "tetsuo" in res.text
@@ -363,7 +279,7 @@ def test_generic_entity_view_file(client, mocker, basic_entities):
     mm.get_file = mocker.MagicMock(return_value=f)
     m = mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
 
-    res = client.get("/cat/file/abc")
+    res = client.get("/cat/file/abcdefghijklmnopqrstuvwxyz")
 
     assert res.status_code == 200
     assert f.md5 in res.text
@@ -376,7 +292,7 @@ def test_generic_entity_view_fileset(client, mocker, basic_entities):
     mm.get_fileset = mocker.MagicMock(return_value=fs)
     m = mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
 
-    res = client.get("/cat/fileset/abc")
+    res = client.get("/cat/fileset/abcdefghijklmnopqrstuvwxyz")
 
     assert "File Manifest" in res.text
     assert res.status_code == 200
@@ -389,7 +305,7 @@ def test_generic_entity_view_webcapture(client, mocker, basic_entities):
     mm.get_webcapture = mocker.MagicMock(return_value=wc)
     m = mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
 
-    res = client.get("/cat/webcapture/abc")
+    res = client.get("/cat/webcapture/abcdefghijklmnopqrstuvwxyz")
     assert res.status_code == 200
     assert wc.cdx[0].sha1 in res.text
 
@@ -401,65 +317,65 @@ def test_generic_entity_view_work(client, mocker, basic_entities):
     mm.get_work_releases = mocker.MagicMock(return_value=[basic_entities["release"]])
     m = mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
 
-    res = client.get("/cat/work/abc")
+    res = client.get("/cat/work/abcdefghijklmnopqrstuvwxyz")
     assert res.status_code == 200
     assert basic_entities["release"].title in res.text
 
 def test_generic_entity_views(client, mocker):
-    cases = [{"route": "/cat/container/abc/coverage",
-               "args": ["container", "abc", "container_view_coverage.html"]},
-             {"route": "/cat/container_abc",
-               "args": ["container", "abc", "container_view.html"]},
-             {"route": "/cat/container/abc",
-               "args": ["container", "abc", "container_view.html"]},
-             {"route": "/cat/container/abc/metadata",
-               "args": ["container", "abc", "entity_view_metadata.html"]},
+    cases = [{"route": "/cat/container/abcdefghijklmnopqrstuvwxyz/coverage",
+               "args": ["container", "abcdefghijklmnopqrstuvwxyz", "container_view_coverage.html"]},
+             {"route": "/cat/container_abcdefghijklmnopqrstuvwxyz",
+               "args": ["container", "abcdefghijklmnopqrstuvwxyz", "container_view.html"]},
+             {"route": "/cat/container/abcdefghijklmnopqrstuvwxyz",
+               "args": ["container", "abcdefghijklmnopqrstuvwxyz", "container_view.html"]},
+             {"route": "/cat/container/abcdefghijklmnopqrstuvwxyz/metadata",
+               "args": ["container", "abcdefghijklmnopqrstuvwxyz", "entity_view_metadata.html"]},
 
-             {"route": "/cat/file_abc",
-               "args": ["file", "abc", "file_view.html"]},
-             {"route": "/cat/file/abc",
-               "args": ["file", "abc", "file_view.html"]},
-             {"route": "/cat/file/abc/metadata",
-               "args": ["file", "abc", "entity_view_metadata.html"]},
+             {"route": "/cat/file_abcdefghijklmnopqrstuvwxyz",
+               "args": ["file", "abcdefghijklmnopqrstuvwxyz", "file_view.html"]},
+             {"route": "/cat/file/abcdefghijklmnopqrstuvwxyz",
+               "args": ["file", "abcdefghijklmnopqrstuvwxyz", "file_view.html"]},
+             {"route": "/cat/file/abcdefghijklmnopqrstuvwxyz/metadata",
+               "args": ["file", "abcdefghijklmnopqrstuvwxyz", "entity_view_metadata.html"]},
 
-             {"route": "/cat/fileset_abc",
-               "args": ["fileset", "abc", "fileset_view.html"]},
-             {"route": "/cat/fileset/abc",
-               "args": ["fileset", "abc", "fileset_view.html"]},
-             {"route": "/cat/fileset/abc/metadata",
-               "args": ["fileset", "abc", "entity_view_metadata.html"]},
+             {"route": "/cat/fileset_abcdefghijklmnopqrstuvwxyz",
+               "args": ["fileset", "abcdefghijklmnopqrstuvwxyz", "fileset_view.html"]},
+             {"route": "/cat/fileset/abcdefghijklmnopqrstuvwxyz",
+               "args": ["fileset", "abcdefghijklmnopqrstuvwxyz", "fileset_view.html"]},
+             {"route": "/cat/fileset/abcdefghijklmnopqrstuvwxyz/metadata",
+               "args": ["fileset", "abcdefghijklmnopqrstuvwxyz", "entity_view_metadata.html"]},
 
-             {"route": "/cat/creator/abc",
-               "args": ["creator", "abc", "creator_view.html"]},
-             {"route": "/cat/creator_abc",
-               "args": ["creator", "abc", "creator_view.html"]},
-             {"route": "/cat/creator/abc/metadata",
-               "args": ["creator", "abc", "entity_view_metadata.html"]},
+             {"route": "/cat/creator/abcdefghijklmnopqrstuvwxyz",
+               "args": ["creator", "abcdefghijklmnopqrstuvwxyz", "creator_view.html"]},
+             {"route": "/cat/creator_abcdefghijklmnopqrstuvwxyz",
+               "args": ["creator", "abcdefghijklmnopqrstuvwxyz", "creator_view.html"]},
+             {"route": "/cat/creator/abcdefghijklmnopqrstuvwxyz/metadata",
+               "args": ["creator", "abcdefghijklmnopqrstuvwxyz", "entity_view_metadata.html"]},
 
-             {"route": "/cat/release_abc",
-               "args": ["release", "abc", "release_view.html"]},
-             {"route": "/cat/release/abc",
-               "args": ["release", "abc", "release_view.html"]},
-             {"route": "/cat/release/abc/contribs",
-               "args": ["release", "abc", "release_view_contribs.html"]},
-             {"route": "/cat/release/abc/references",
-               "args": ["release", "abc", "release_view_references.html"]},
-             {"route": "/cat/release/abc/metadata",
-               "args": ["release", "abc", "entity_view_metadata.html"]},
+             {"route": "/cat/release_abcdefghijklmnopqrstuvwxyz",
+               "args": ["release", "abcdefghijklmnopqrstuvwxyz", "release_view.html"]},
+             {"route": "/cat/release/abcdefghijklmnopqrstuvwxyz",
+               "args": ["release", "abcdefghijklmnopqrstuvwxyz", "release_view.html"]},
+             {"route": "/cat/release/abcdefghijklmnopqrstuvwxyz/contribs",
+               "args": ["release", "abcdefghijklmnopqrstuvwxyz", "release_view_contribs.html"]},
+             {"route": "/cat/release/abcdefghijklmnopqrstuvwxyz/references",
+               "args": ["release", "abcdefghijklmnopqrstuvwxyz", "release_view_references.html"]},
+             {"route": "/cat/release/abcdefghijklmnopqrstuvwxyz/metadata",
+               "args": ["release", "abcdefghijklmnopqrstuvwxyz", "entity_view_metadata.html"]},
 
-             {"route": "/cat/webcapture/abc",
-               "args": ["webcapture", "abc", "webcapture_view.html"]},
-             {"route": "/cat/webcapture_abc",
-               "args": ["webcapture", "abc", "webcapture_view.html"]},
-             {"route": "/cat/webcapture/abc/metadata",
-               "args": ["webcapture", "abc", "entity_view_metadata.html"]},
+             {"route": "/cat/webcapture/abcdefghijklmnopqrstuvwxyz",
+               "args": ["webcapture", "abcdefghijklmnopqrstuvwxyz", "webcapture_view.html"]},
+             {"route": "/cat/webcapture_abcdefghijklmnopqrstuvwxyz",
+               "args": ["webcapture", "abcdefghijklmnopqrstuvwxyz", "webcapture_view.html"]},
+             {"route": "/cat/webcapture/abcdefghijklmnopqrstuvwxyz/metadata",
+               "args": ["webcapture", "abcdefghijklmnopqrstuvwxyz", "entity_view_metadata.html"]},
 
-             {"route": "/cat/work/abc/metadata",
-               "args": ["work", "abc", "entity_view_metadata.html"]},
-             {"route": "/cat/work_abc",
-               "args": ["work", "abc", "work_view.html"]},
-             {"route": "/cat/work/abc",
-               "args": ["work", "abc", "work_view.html"]},
+             {"route": "/cat/work/abcdefghijklmnopqrstuvwxyz/metadata",
+               "args": ["work", "abcdefghijklmnopqrstuvwxyz", "entity_view_metadata.html"]},
+             {"route": "/cat/work_abcdefghijklmnopqrstuvwxyz",
+               "args": ["work", "abcdefghijklmnopqrstuvwxyz", "work_view.html"]},
+             {"route": "/cat/work/abcdefghijklmnopqrstuvwxyz",
+               "args": ["work", "abcdefghijklmnopqrstuvwxyz", "work_view.html"]},
             ]
 
     for case in cases:
