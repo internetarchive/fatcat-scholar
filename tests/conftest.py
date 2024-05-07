@@ -1,5 +1,5 @@
 #import elasticsearch
-from datetime import datetime
+import datetime
 import pytest
 #from dotenv import load_dotenv
 import fatcat_openapi_client as fcapi
@@ -70,6 +70,11 @@ from scholar.web import app
 @pytest.fixture
 def client():
     return TestClient(app)
+
+@pytest.fixture
+def entity_types():
+    return ["release", "work", "webcapture", "file", "fileset", "creator", "container"]
+
 
 #@pytest.fixture
 #def api():
@@ -177,7 +182,7 @@ def basic_entities():
             cdx=[
                 fcapi.WebcaptureCdxLine(
                     surt="org,archive,scholar)/",
-                    timestamp=datetime.utcnow(),
+                    timestamp=datetime.datetime.now(datetime.UTC),
                     url="https://scholar.archive.org/",
                     sha1="443f1867b3a56132905e8d611ad03445d8134d3c",
                 )],

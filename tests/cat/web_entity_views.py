@@ -39,11 +39,8 @@ import fatcat_openapi_client as fcapi
 #    "took": 50,
 #}
 
-ENTITY_TYPES = ["release", "work", "webcapture", "file", "fileset", "creator", "container"]
-
-
-def test_malformed_entity(client):
-    for entity_type in ENTITY_TYPES:
+def test_malformed_entity(client, entity_types):
+    for entity_type in entity_types:
         rv = client.get("/cat/{}/9999999999".format(entity_type))
         assert rv.status_code == 422, f"malformed {entity_type}"
         # TODO what was up with this one; it's a valid ident, right?
@@ -56,6 +53,105 @@ def test_malformed_entity(client):
         assert rv.status_code == 422, f"malformed {entity_type} uuid"
         rv = client.get("/cat/{}/rev/f1f046a3-45c9-ffff-ffff-fffffffff".format(entity_type))
         assert rv.status_code == 422, "malformed {entity_type} rev"
+
+def test_search_redirects(client):
+    cases = [{"name": "blank redirect",
+              "url": "/cat/search",
+              "redirect_path": "/cat/release/search",
+              "qarg": [],
+              },
+             {"name": "generic multi-term",
+              "url": "/cat/search?q=foo%20bar",
+              "redirect_path": "/cat/release/search",
+              "qarg": ["q=foo%2Bbar", "generic=1"],},
+             {"name": "doi",
+              "url": "/cat/search?q=10.3390/arts8010040",
+              "redirect_path": "/cat/release/lookup",
+              "qarg": ["doi=10.3390%2Farts8010040"],},
+             {"name":"pmcid",
+              "url": "/cat/search?q=PMC5160550",
+              "redirect_path": "/cat/release/lookup",
+              "qarg": ["pmcid=PMC5160550"],},
+             {"name": "issn",
+              "url": "/cat/search?q=2333-2468",
+              "redirect_path": "/cat/container/lookup",
+              "qarg": ["issnl=2333-2468"],},
+             {"name": "isbn13",
+              "url": "/cat/search?q=978-0-12-415894-8",
+              "redirect_path": "/cat/release/lookup",
+              "qarg": ["isbn13=978-0-12-415894-8"], },
+             {"name": "arxiv_id",
+              "url": "/cat/search?q=0712.2293v1",
+              "redirect_path": "/cat/release/lookup",
+              "qarg": ["arxiv=0712.2293v1"], },
+             {"name": "sha1",
+              "url": "/cat/search?q=5bcf14bb375d294162c671b214da7771064d7ba7",
+              "redirect_path": "/cat/file/lookup",
+              "qarg": ["sha1=5bcf14bb375d294162c671b214da7771064d7ba7"], },
+             {"name": "sha256",
+              "url": "/cat/search?q=9f089668c7f604097ad250983ba27201b63272ea4b954c5f3e4e94d668e60cb4",
+              "redirect_path": "/cat/file/lookup",
+              "qarg": ["sha256=9f089668c7f604097ad250983ba27201b63272ea4b954c5f3e4e94d668e60cb4"], },
+             {"name": "orcid",
+              "url": "/cat/search?q=0000-0003-3118-6859",
+              "redirect_path": "/cat/creator/lookup",
+              "qarg": ["orcid=0000-0003-3118-6859"], },
+             {"name": "generic single term",
+              "url": "/cat/search?q=foobar",
+              "redirect_path": "/cat/release/search",
+              "qarg": ["q=foobar", "generic=1"],
+              }
+            ]
+
+    for case in cases:
+        rv = client.get(case["url"], follow_redirects=False)
+        redirect_url = rv.headers.get("location")
+        assert rv.status_code == 302, case["name"]
+        assert case["redirect_path"] in redirect_url, case["name"]
+        if len(case["qarg"]) > 0:
+            for qarg in case["qarg"]:
+                assert qarg in redirect_url, case["name"]
+        else:
+            assert "q=" not in redirect_url, case["name"]
+            assert "generic=" not in redirect_url, case["name"]
+
+def test_creator_lookup(client, mocker):
+    # TODO
+    # TODO orcid
+    # TODO wikidata_qid
+    pass
+
+def test_release_lookup(client, mocker):
+    # TODO
+    # TODO doi
+    # TODO wikidata_qid
+    # TODO pmid
+    # TODO pmcid
+    # TODO isbn13
+    # TODO jstor
+    # TODO arxiv
+    # TODO core
+    # TODO ark
+    # TODO mag
+    # TODO oai
+    # TODO hdl
+    pass
+
+def test_file_lookup(client, mocker):
+    # TODO
+    # TODO md5
+    # TODO sha1
+    # TODO sha256
+
+    pass
+
+def test_container_lookup(client, mocker):
+    # TODO
+    # TODO issn
+    # TODO issne
+    # TODO issnp
+    # TODO issnl
+    pass
 
 #def test_lookups(app):
 #
@@ -179,13 +275,10 @@ def test_malformed_entity(client):
 
 def test_generic_entity_view_active_release(client, mocker, basic_entities):
     r = basic_entities["release"]
-
     mm = mocker.MagicMock()
     mm.get_release = mocker.MagicMock(return_value=r)
-    m = mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
-
+    mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
     res = client.get("/cat/release/abcdefghijklmnopqrstuvwxyz")
-
     assert res.status_code == 200
     assert r.title in res.text
     assert r.publisher in res.text
@@ -193,36 +286,28 @@ def test_generic_entity_view_active_release(client, mocker, basic_entities):
 def test_generic_entity_view_deleted_release(client, mocker, basic_entities):
     r = basic_entities["release"]
     r.state = "deleted"
-
     mm = mocker.MagicMock()
     mm.get_release = mocker.MagicMock(return_value=r)
-    m = mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
-
+    mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
     res = client.get("/cat/release/abcdefghijklmnopqrstuvwxyz")
-
     assert res.status_code == 200
     assert "There used to be an entity here" in res.text
 
 def test_generic_entity_view_redirect_release(client, mocker, basic_entities):
     r = basic_entities["release"]
     r.state = "redirect"
-
     mm = mocker.MagicMock()
     mm.get_release = mocker.MagicMock(return_value=r)
-    m = mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
-
+    mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
     res = client.get("/cat/release/abcdefghijklmnopqrstuvwxyz", follow_redirects=False)
-
     assert res.status_code == 302
 
 def test_generic_entity_view_release_metadata(client, mocker, basic_entities):
     r = basic_entities["release"]
     mm = mocker.MagicMock()
     mm.get_release = mocker.MagicMock(return_value=r)
-    m = mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
-
+    mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
     res = client.get("/cat/release/abcdefghijklmnopqrstuvwxyz/metadata", follow_redirects=False)
-
     assert res.status_code == 200
     assert r.pages in res.text
     assert r.volume in res.text
@@ -233,16 +318,14 @@ def test_generic_entity_view_container_view(client, mocker, basic_entities):
     mm = mocker.MagicMock()
     mm.get_container = mocker.MagicMock(return_value=c)
     # TODO use ES_CONTAINER_STATS_RESP
-    m1 = mocker.patch("scholar.cat.web.get_elastic_container_stats", return_value={"total":0})
-    m2 = mocker.patch("scholar.cat.web.get_elastic_container_random_releases")
-    m = mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
-
+    es_m1 = mocker.patch("scholar.cat.web.get_elastic_container_stats", return_value={"total":0})
+    es_m2 = mocker.patch("scholar.cat.web.get_elastic_container_random_releases")
+    mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
     res = client.get("/cat/container/abcdefghijklmnopqrstuvwxyz")
-
     assert res.status_code == 200
     assert "urusei yatsura" in res.text
-    m1.assert_called_once()
-    m2.assert_called_once()
+    es_m1.assert_called_once()
+    es_m2.assert_called_once()
 
 def test_generic_entity_view_container_view_coverage(client, mocker, basic_entities):
     c = basic_entities["container"]
@@ -278,10 +361,8 @@ def test_generic_entity_view_file(client, mocker, basic_entities):
 
     mm = mocker.MagicMock()
     mm.get_file = mocker.MagicMock(return_value=f)
-    m = mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
-
+    mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
     res = client.get("/cat/file/abcdefghijklmnopqrstuvwxyz")
-
     assert res.status_code == 200
     assert f.md5 in res.text
     assert f.sha256 in res.text
@@ -291,10 +372,8 @@ def test_generic_entity_view_fileset(client, mocker, basic_entities):
 
     mm = mocker.MagicMock()
     mm.get_fileset = mocker.MagicMock(return_value=fs)
-    m = mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
-
+    mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
     res = client.get("/cat/fileset/abcdefghijklmnopqrstuvwxyz")
-
     assert "File Manifest" in res.text
     assert res.status_code == 200
     assert fs.manifest[0].path in res.text
@@ -304,8 +383,7 @@ def test_generic_entity_view_webcapture(client, mocker, basic_entities):
 
     mm = mocker.MagicMock()
     mm.get_webcapture = mocker.MagicMock(return_value=wc)
-    m = mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
-
+    mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
     res = client.get("/cat/webcapture/abcdefghijklmnopqrstuvwxyz")
     assert res.status_code == 200
     assert wc.cdx[0].sha1 in res.text
@@ -316,8 +394,7 @@ def test_generic_entity_view_work(client, mocker, basic_entities):
     mm = mocker.MagicMock()
     mm.get_work = mocker.MagicMock(return_value=w)
     mm.get_work_releases = mocker.MagicMock(return_value=[basic_entities["release"]])
-    m = mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
-
+    mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
     res = client.get("/cat/work/abcdefghijklmnopqrstuvwxyz")
     assert res.status_code == 200
     assert basic_entities["release"].title in res.text
@@ -380,10 +457,10 @@ def test_generic_entity_views(client, mocker):
             ]
 
     for case in cases:
-        with mocker.patch("scholar.cat.web.generic_entity_view"):
-            client.get(case["route"])
-            scholar.cat.web.generic_entity_view.assert_called_once()
-            calls = scholar.cat.web.generic_entity_view.call_args[0]
-            assert calls[2] == case["args"][0]
-            assert calls[3] == case["args"][1]
-            assert calls[4] == case["args"][2]
+        mocker.patch("scholar.cat.web.generic_entity_view")
+        client.get(case["route"])
+        scholar.cat.web.generic_entity_view.assert_called_once()
+        calls = scholar.cat.web.generic_entity_view.call_args[0]
+        assert calls[2] == case["args"][0]
+        assert calls[3] == case["args"][1]
+        assert calls[4] == case["args"][2]

@@ -29,7 +29,7 @@ def container_to_elasticsearch(
 
     # First, the easy ones (direct copy)
     t = {
-        'doc_index_ts': datetime.datetime.utcnow().isoformat() + "Z",
+        'doc_index_ts': datetime.datetime.now(datetime.UTC).isoformat() + "Z",
         'ident': entity.ident,
         'state': entity.state,
         'revision': entity.revision,
@@ -161,7 +161,7 @@ def file_to_elasticsearch(entity: FileEntity) -> Dict[str, Any]:
 
     # First, the easy ones (direct copy)
     t = {
-        'doc_index_ts': datetime.datetime.utcnow().isoformat() + "Z",
+        'doc_index_ts': datetime.datetime.now(datetime.UTC).isoformat() + "Z",
         'ident': entity.ident,
         'state': entity.state,
         'revision': entity.revision,
@@ -223,7 +223,7 @@ def release_to_elasticsearch(entity: ReleaseEntity, force_bool: bool = True) -> 
     # First, the easy ones (direct copy)
     release = entity
     t: Dict[str, Any] = {
-        'doc_index_ts': datetime.datetime.utcnow().isoformat() + "Z",
+        'doc_index_ts': datetime.datetime.now(datetime.UTC).isoformat() + "Z",
         'ident': release.ident,
         'state': release.state,
         'revision': release.revision,

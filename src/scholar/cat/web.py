@@ -90,9 +90,8 @@ async def fcclient() -> DefaultApi:
 
 @routes.get("/", include_in_schema=False)
 async def index(request: Request) -> Response:
-    return tmpls.TemplateResponse("index.html", {
+    return tmpls.TemplateResponse(request, "index.html", {
         'git_revision': GIT_REVISION,
-        'request': request,
     })
 
 @routes.post("/search", include_in_schema=False)
@@ -208,23 +207,19 @@ def generic_lookup(request: Request,
             break
 
     if extid is None:
-        return tmpls.TemplateResponse(tmpl, {
-            'request': request,
-        })
+        return tmpls.TemplateResponse(request, tmpl)
 
     try:
         resp = lookup({extidtype: extid})
     except ValueError:
-        return tmpls.TemplateResponse(tmpl, {
-            "request": request,
+        return tmpls.TemplateResponse(request, tmpl, {
             "lookup_key":   extidtype,
             "lookup_value": extid,
             "lookup_error": 400,
             }, status_code=400)
     except fcapi.ApiException as ae:
         if ae.status == 404 or ae.status == 400:
-            return tmpls.TemplateResponse(tmpl, {
-                "request": request,
+            return tmpls.TemplateResponse(request, tmpl, {
                 "lookup_key":   extidtype,
                 "lookup_value": extid,
                 "lookup_error": ae.status,
@@ -240,10 +235,7 @@ async def release_save(
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
         ident:    Ident) -> Response:
     release = fcclient.get_release(ident)
-    return tmpls.TemplateResponse("release_save.html", {
-        'request': request,
-        'entity': release,
-        })
+    return tmpls.TemplateResponse(request, "release_save.html", {'entity': release})
 
 @routes.get("/release/lookup", include_in_schema=False)
 async def release_lookup(
@@ -275,13 +267,12 @@ async def release_search(
     q: str | None = None,
     generic: int | None = None
 ) -> Response:
-    ctx = {"request": request,
-           "git_revision": GIT_REVISION,
+    ctx = {"git_revision": GIT_REVISION,
            "found": None,
            "query": ReleaseQuery(),
           }
     if q is None or len(q) == 0:
-        return tmpls.TemplateResponse("release_search.html", ctx)
+        return tmpls.TemplateResponse(request, "release_search.html", ctx)
 
     # if this is a "generic" query (eg, from front page or top-of page bar),
     # and the query is not all filters/paramters (aka, there is an actual
@@ -306,11 +297,11 @@ async def release_search(
     try:
         found = do_release_search(query)
     except CatSearchError as cse:
-        return tmpls.TemplateResponse("release_search.html", ctx|{
+        return tmpls.TemplateResponse(request, "release_search.html", ctx|{
             "es_error": cse,
             "query": query}, status_code=cse.status_code)
 
-    return tmpls.TemplateResponse("release_search.html", ctx|{
+    return tmpls.TemplateResponse(request, "release_search.html", ctx|{
             "query": query,
             "found": found,
             "container_found": container_found})
@@ -322,8 +313,7 @@ async def container_history(
         ident:    Ident) -> Response:
     entity = fcclient.get_container(ident)
     history = fcclient.get_container_history(ident)
-    return tmpls.TemplateResponse("entity_history.html", {
-        'request': request,
+    return tmpls.TemplateResponse(request, "entity_history.html", {
         'entity_type': 'container',
         'entity': entity,
         'history': history,
@@ -336,8 +326,7 @@ async def creator_history(
         ident:    Ident) -> Response:
     entity = fcclient.get_creator(ident)
     history = fcclient.get_creator_history(ident)
-    return tmpls.TemplateResponse("entity_history.html", {
-        'request': request,
+    return tmpls.TemplateResponse(request, "entity_history.html", {
         'entity_type': 'creator',
         'entity': entity,
         'history': history,
@@ -350,8 +339,7 @@ async def file_history(
         ident:    Ident) -> Response:
     entity = fcclient.get_file(ident)
     history = fcclient.get_file_history(ident)
-    return tmpls.TemplateResponse("entity_history.html", {
-        'request': request,
+    return tmpls.TemplateResponse(request, "entity_history.html", {
         'entity_type': 'file',
         'entity': entity,
         'history': history,
@@ -364,8 +352,7 @@ async def fileset_history(
         ident:    Ident) -> Response:
     entity = fcclient.get_fileset(ident)
     history = fcclient.get_fileset_history(ident)
-    return tmpls.TemplateResponse("entity_history.html", {
-        'request': request,
+    return tmpls.TemplateResponse(request, "entity_history.html", {
         'entity_type': 'fileset',
         'entity': entity,
         'history': history,
@@ -378,8 +365,7 @@ async def webcapture_history(
         ident:    Ident) -> Response:
     entity = fcclient.get_webcapture(ident)
     history = fcclient.get_webcapture_history(ident)
-    return tmpls.TemplateResponse("entity_history.html", {
-        'request': request,
+    return tmpls.TemplateResponse(request, "entity_history.html", {
         'entity_type': 'webcapture',
         'entity': entity,
         'history': history,
@@ -392,8 +378,7 @@ async def release_history(
         ident:    Ident) -> Response:
     entity = fcclient.get_release(ident)
     history = fcclient.get_release_history(ident)
-    return tmpls.TemplateResponse("entity_history.html", {
-        'request': request,
+    return tmpls.TemplateResponse(request, "entity_history.html", {
         'entity_type': 'release',
         'entity': entity,
         'history': history,
@@ -406,8 +391,7 @@ async def work_history(
         ident:    Ident) -> Response:
     entity = fcclient.get_work(ident)
     history = fcclient.get_work_history(ident)
-    return tmpls.TemplateResponse("entity_history.html", {
-        'request': request,
+    return tmpls.TemplateResponse(request, "entity_history.html", {
         'entity_type': 'work',
         'entity': entity,
         'history': history,
@@ -426,8 +410,7 @@ def generic_entity_revision_view(
         metadata.pop(k)
     entity._metadata = metadata
 
-    return tmpls.TemplateResponse(tmpl, {
-        'request': request,
+    return tmpls.TemplateResponse(request, tmpl, {
         'entity_type': entity_type,
         'entity': entity,
         })
@@ -574,8 +557,7 @@ async def container_view_browse(
                 request.url_for("container_view",
                                 ident=entity.redirect), status_code=302)
     elif entity.state == "deleted":
-        return tmpls.TemplateResponse("deleted_entity.html", {
-            "request": request,
+        return tmpls.TemplateResponse(request, "deleted_entity.html", {
             "entity_type": "container",
             "entity": entity})
 
@@ -612,8 +594,7 @@ async def container_view_browse(
         entity._browse_year_volume_issue = get_elastic_container_browse_year_volume_issue(
             entity.ident
         )
-        return tmpls.TemplateResponse("container_view_browse.html", {
-            'request': request,
+        return tmpls.TemplateResponse(request, "container_view_browse.html", {
             'entity_type': 'container',
             'entity': entity,
             'volume': volume,
@@ -636,7 +617,7 @@ async def container_view_browse(
     try:
         found = do_release_search(query)
     except CatSearchError as fse:
-        return tmpls.TemplateResponse("container_view_search.html", {
+        return tmpls.TemplateResponse(request, "container_view_search.html", {
             'query': query,
             'es_error': fse,
             'entity_type': 'container',
@@ -650,8 +631,7 @@ async def container_view_browse(
                 doc["first_page"] = int(doc["first_page"])
         found.results = sorted(found.results, key=lambda d: d.get("first_page") or 99999999)
 
-    return tmpls.TemplateResponse("container_view_browse.html", {
-            'request': request,
+    return tmpls.TemplateResponse(request, "container_view_browse.html", {
             'query': query,
             'releases_found': found,
             'entity_type': 'container',
@@ -667,7 +647,7 @@ async def container_view_browse(
 
 @routes.get("/about", include_in_schema=False)
 async def page_about(request: Request) -> Response:
-    return tmpls.TemplateResponse("about.html", {"request": request})
+    return tmpls.TemplateResponse(request, "about.html")
 
 # settings ported from cors.py in fatcat
 async def cors(request: Request, response: Response) -> None:
@@ -788,9 +768,7 @@ async def changelog_view(
         request: Request,
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)]) -> Response:
     entries = fcclient.get_changelog()
-    return tmpls.TemplateResponse("changelog.html", {
-        'request': request,
-        'entries': entries})
+    return tmpls.TemplateResponse(request, "changelog.html", {'entries': entries})
 
 @routes.get("/changelog/{index}", include_in_schema=False)
 async def changelog_entry_view(
@@ -802,8 +780,7 @@ async def changelog_entry_view(
     entry.editgroup.annotations = fcclient.get_editgroup_annotations(
         entry.editgroup_id, expand="editors"
     )
-    return tmpls.TemplateResponse("changelog_view.html", {
-        'request': request,
+    return tmpls.TemplateResponse(request, "changelog_view.html", {
         'entry': entry,
         'editgroup': entry.editgroup})
 
@@ -814,10 +791,7 @@ async def stats_page(
         ) -> Response:
     stats = get_elastic_entity_stats()
     stats.update(get_changelog_stats(fcclient))
-    return tmpls.TemplateResponse("stats.html", {
-        'request': request,
-        'stats': stats,
-        })
+    return tmpls.TemplateResponse(request, "stats.html", {'stats': stats})
 
 def get_changelog_stats(fcclient: fcapi.DefaultApi) -> Dict[str, Any]:
     stats = {}
@@ -836,22 +810,21 @@ async def coverage_search(request: Request,
                           q: str|None = None,
                           ) -> Response:
 
-    ctx = {'request': request,
-           'query': ReleaseQuery(),
+    ctx = {'query': ReleaseQuery(),
            'coverage_stats': None,
            'coverage_type_preservation': None,
            'year_histogram_svg': None,
-           'date_histogram_svg': None
-            }
+           'date_histogram_svg': None}
+
     if q is None:
-        return tmpls.TemplateResponse("coverage_search.html", ctx)
+        return tmpls.TemplateResponse(request, "coverage_search.html", ctx)
 
     query = ReleaseQuery(q=q)
     ctx['query'] = query
     try:
         coverage_stats = get_elastic_search_coverage(query)
     except CatSearchError as fse:
-        return tmpls.TemplateResponse("coverage_search.html",
+        return tmpls.TemplateResponse(request, "coverage_search.html",
                                       ctx|{'es_error':fse},
                                       status_code=fse.status_code)
     year_histogram_svg = None
@@ -867,7 +840,7 @@ async def coverage_search(request: Request,
             year_histogram = get_elastic_preservation_by_year(query)
             year_histogram_svg = preservation_by_year_histogram(
                 year_histogram).render_data_uri()
-    return tmpls.TemplateResponse("coverage_search.html", ctx|{
+    return tmpls.TemplateResponse(request, "coverage_search.html", ctx|{
         'coverage_stats': coverage_stats,
         'coverage_type_preservation': coverage_type_preservation,
         'year_histogram_svg': year_histogram_svg,
@@ -882,8 +855,7 @@ def generic_entity_view(request: Request, fcclient: fcapi.DefaultApi, entity_typ
     if entity.state == "redirect":
         return RedirectResponse(request.url_for(f"{entity_type}_view", ident=entity.redirect), status_code=302)
     elif entity.state == "deleted":
-        return tmpls.TemplateResponse("deleted_entity.html", {
-            "request": request,
+        return tmpls.TemplateResponse(request, "deleted_entity.html", {
             "entity_type": entity_type,
             "entity": entity})
 
@@ -901,8 +873,7 @@ def generic_entity_view(request: Request, fcclient: fcapi.DefaultApi, entity_typ
         entity._type_preservation = get_elastic_preservation_by_type(
             ReleaseQuery(container_id=ident),
         )
-    return tmpls.TemplateResponse(tmpl, {
-        "request": request,
+    return tmpls.TemplateResponse(request, tmpl, {
         "entity_type": entity_type,
         "entity": entity,
         })
@@ -911,23 +882,21 @@ def generic_entity_view(request: Request, fcclient: fcapi.DefaultApi, entity_typ
 @routes.post("/container/search", include_in_schema=False)
 async def container_search(request: Request,
                            q: str|None = None) -> Response:
-    ctx = {'request': request,
-           'query': GenericQuery(),
-           'found': None,
-          }
+    ctx = {'query': GenericQuery(),
+           'found': None,}
 
     if q is None:
-        return tmpls.TemplateResponse("container_search.html", ctx)
+        return tmpls.TemplateResponse(request, "container_search.html", ctx)
 
     query = GenericQuery(q=q)
     ctx['query'] = query
     try:
         found = do_container_search(query)
     except CatSearchError as fse:
-        return tmpls.TemplateResponse("container_search.html",
+        return tmpls.TemplateResponse(request, "container_search.html",
                                 ctx|{'es_error': fse},
                                 status_code=fse.status_code)
-    return tmpls.TemplateResponse("container_search.html", ctx|{'found':found})
+    return tmpls.TemplateResponse(request, "container_search.html", ctx|{'found':found})
 
 @routes.get("/container/{ident}/search", include_in_schema=False)
 async def container_view_search(
@@ -937,31 +906,29 @@ async def container_view_search(
         q:        str|None = None) -> Response:
     entity = generic_get_entity(fcclient, "container", ident)
 
-    ctx = {'request': request,
-           'entity_type': 'container',
+    ctx = {'entity_type': 'container',
            'entity': entity,
-           'query': ReleaseQuery(),
-          }
+           'query': ReleaseQuery(),}
 
     if entity.state == "redirect":
         return RedirectResponse(
                 request.url_for("container_view", ident=entity.redirect),
                 status_code=302)
     elif entity.state == "deleted":
-        return tmpls.TemplateResponse("deleted_entity.html", ctx)
+        return tmpls.TemplateResponse(request, "deleted_entity.html", ctx)
     if q is None:
-        return tmpls.TemplateResponse("container_view_search.html", ctx)
+        return tmpls.TemplateResponse(request, "container_view_search.html", ctx)
 
     query = ReleaseQuery(q=q, container_id=ident)
     ctx.update({'query': query})
     try:
         found = do_release_search(query)
     except CatSearchError as fse:
-        return tmpls.TemplateResponse("container_view_search.html",
+        return tmpls.TemplateResponse(request, "container_view_search.html",
                                       ctx|{'es_error': fse},
                                       status_code=fse.status_code)
 
-    return tmpls.TemplateResponse("container_view_search.html",
+    return tmpls.TemplateResponse(request, "container_view_search.html",
                                   ctx|{'found': found})
 
 @routes.get("/container/{ident}/coverage", include_in_schema=False)
@@ -1192,14 +1159,14 @@ def generic_editgroup_entity_view(
           }
 
     if entity.revision is None or entity.state == "deleted":
-        return tmpls.TemplateResponse("deleted_entity.html", ctx)
+        return tmpls.TemplateResponse(request, "deleted_entity.html", ctx)
 
     metadata = entity.to_dict()
     for k in GENERIC_ENTITY_FIELDS:
         metadata.pop(k)
     entity._metadata = metadata
 
-    return tmpls.TemplateResponse(view_template, ctx)
+    return tmpls.TemplateResponse(request, view_template, ctx)
 
 @routes.get("/editgroup/{editgroup_id}/container/{ident}", include_in_schema=False)
 async def container_editgroup_view(
@@ -1370,10 +1337,7 @@ async def editgroup_view(
     eg.editor = fcclient.get_editor(eg.editor_id)
     eg.annotations = fcclient.get_editgroup_annotations(
             eg.editgroup_id, expand="editors")
-    return tmpls.TemplateResponse("editgroup_view.html", {
-        'request': request,
-        'editgroup': eg,
-        })
+    return tmpls.TemplateResponse(request, "editgroup_view.html", {'editgroup': eg})
 
 @routes.get("/editgroup_{ident}", include_in_schema=False)
 async def editgroup_underscore_view(
@@ -1392,8 +1356,7 @@ async def editgroup_diff_view(
     eg.annotations = fcclient.get_editgroup_annotations(
             eg.editgroup_id, expand="editors")
     diffs = editgroup_get_diffs(fcclient, eg)
-    return tmpls.TemplateResponse("editgroup_diff.html", {
-        'request': request,
+    return tmpls.TemplateResponse(request, "editgroup_diff.html", {
         'editgroup': eg,
         'editgroup_diffs': diffs,
         })
@@ -1404,10 +1367,7 @@ async def editor_view(
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
         ident:    Ident) -> Response:
     entity = fcclient.get_editor(ident)
-    return tmpls.TemplateResponse("editor_view.html", {
-        'request': request,
-        'editor': entity,
-        })
+    return tmpls.TemplateResponse(request, "editor_view.html", {'editor': entity})
 
 @routes.get("/editor_{ident}", include_in_schema=False)
 async def editor_underscore_view(
@@ -1426,8 +1386,7 @@ async def editor_editgroups(
     # cheaper than API-side expand?
     for eg in editgroups:
         eg.editor = editor
-    return tmpls.TemplateResponse("editor_editgroups.html", {
-        'request': request,
+    return tmpls.TemplateResponse(request, "editor_editgroups.html", {
         'editor': editor,
         'editgroups': editgroups,
         })
@@ -1439,8 +1398,7 @@ async def editor_annotations(
         ident:    Ident) -> Response:
     editor = fcclient.get_editor(ident)
     annotations = fcclient.get_editor_annotations(ident, limit=50)
-    return tmpls.TemplateResponse("editor_annotations.html", {
-        'request': request,
+    return tmpls.TemplateResponse(request, "editor_annotations.html", {
         'editor': editor,
         'annotations': annotations,
         })
@@ -1515,8 +1473,7 @@ async def release_view_refs_inbound(
         ident:    Ident) -> Response:
     release = generic_get_entity(fcclient, "release", ident)
     hits = _refs_web("in", fcclient=fcclient, release_ident=ident)
-    return tmpls.TemplateResponse("release_view_fuzzy_refs.html", {
-        'request': request,
+    return tmpls.TemplateResponse(request, "release_view_fuzzy_refs.html", {
         'direction': 'in',
         'entity': release,
         'hits': hits,
@@ -1529,8 +1486,7 @@ async def release_view_refs_outbound(
         ident:    Ident) -> Response:
     release = generic_get_entity(fcclient, "release", ident)
     hits = _refs_web("out", fcclient=fcclient, release_ident=ident)
-    return tmpls.TemplateResponse("release_view_fuzzy_refs.html", {
-        'request': request,
+    return tmpls.TemplateResponse(request, "release_view_fuzzy_refs.html", {
         'direction': 'out',
         'entity': release,
         'hits': hits,
@@ -1544,8 +1500,7 @@ async def openlibrary_view_refs_inbound(
 ) -> Response:
     openlibrary_id = f"OL{id_num}W"
     hits = _refs_web("in", fcclient=fcclient, openlibrary_id=openlibrary_id)
-    return tmpls.TemplateResponse("openlibrary_view_fuzzy_refs.html", {
-        'request': request,
+    return tmpls.TemplateResponse(request, "openlibrary_view_fuzzy_refs.html", {
         'openlibrary_id': openlibrary_id,
         'direction': 'in',
         'hits': hits,
@@ -1564,9 +1519,7 @@ async def wikipedia_view_refs_outbound(
     hits = _refs_web("out",
                      fcclient=fcclient,
                      wikipedia_article=wikipedia_article)
-    return tmpls.TemplateResponse(
-            "wikipedia_view_fuzzy_refs.html", {
-                'request': request,
+    return tmpls.TemplateResponse(request, "wikipedia_view_fuzzy_refs.html", {
                 'wiki_article': wiki_article,
                 'wiki_lang': wiki_lang,
                 'wiki_url': wiki_url,
@@ -1585,15 +1538,13 @@ async def reference_match(
 
     form = await ReferenceMatchForm.from_formdata(request)
 
-    ctx = {'request': request,
-           'form': form,
-          }
+    ctx = {'form': form}
 
     if request.method == 'GET':
-        return tmpls.TemplateResponse("reference_match.html", ctx)
+        return tmpls.TemplateResponse(request, "reference_match.html", ctx)
 
     if not await form.validate_on_submit():
-        return tmpls.TemplateResponse("reference_match.html", ctx,
+        return tmpls.TemplateResponse(request, "reference_match.html", ctx,
                                       status_code=400)
 
     es_backend = settings.ELASTICSEARCH_FATCAT_BASE
@@ -1603,13 +1554,13 @@ async def reference_match(
         resp_xml = grobid_api_process_citation(form.raw_citation.data)
         if not resp_xml:
             grobid_status = "failed"
-            return tmpls.TemplateResponse("reference_match.html", ctx|{
+            return tmpls.TemplateResponse(request, "reference_match.html", ctx|{
                 'grobid_status': grobid_status,
                 }, status_code=400)
         grobid_dict = transform_grobid_ref_xml(resp_xml)
         if not grobid_dict:
             grobid_status = "empty"
-            return tmpls.TemplateResponse("reference_match.html", ctx|{
+            return tmpls.TemplateResponse(request, "reference_match.html", ctx|{
                 'grobid_status': grobid_status,
                 })
         release_stub = grobid_ref_to_release(grobid_dict)
@@ -1645,7 +1596,7 @@ async def reference_match(
         # hack in access options
         m.access_options = release_access_options(m.release)
 
-    return tmpls.TemplateResponse("reference_match.html", ctx|{
+    return tmpls.TemplateResponse(request, "reference_match.html", ctx|{
         'grobid_dict': grobid_dict,
         'grobid_status': grobid_status,
         'matches': matches,
