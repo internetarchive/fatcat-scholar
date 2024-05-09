@@ -115,7 +115,13 @@ def test_search_redirects(client):
             assert "q=" not in redirect_url, case["name"]
             assert "generic=" not in redirect_url, case["name"]
 
-def test_creator_lookup(client, mocker):
+def test_creator_lookup(client, mocker, basic_entities):
+    c = basic_entities["creator"]
+    mm = mocker.MagicMock()
+    # TODO is c the right shape? check out fatcat-cli in terminal to see what lookup_creator returns.
+    # TODO try and get a fixture for patching DefaultApi
+    mm.lookup_creator = mocker.MagicMock(return_value=c)
+    mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
     # TODO
     # TODO orcid
     # TODO wikidata_qid
