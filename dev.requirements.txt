@@ -17,9 +17,7 @@ asttokens==2.4.1 \
 attrs==23.2.0 \
     --hash=sha256:935dc3b529c262f6cf76e50877d35a4bd3c1de194fd41f47a2b7ae8f19971f30 \
     --hash=sha256:99b87a485a5820b23b879f04c2305b44b951b502fd64be915879d77a7e8fc6f1
-    # via
-    #   glom
-    #   pytest
+    # via glom
 babel==2.12.1 \
     --hash=sha256:b4246fb7677d3b98f501a39d43396d3cafdc8eadb045f4a31be01863f655c610 \
     --hash=sha256:cc2d99999cd01d44420ae725a21c9e3711b3aadc7976d6147f622d8581963455
@@ -761,9 +759,9 @@ pip-tools==7.3.0 \
     --hash=sha256:8717693288720a8c6ebd07149c93ab0be1fced0b5191df9e9decd3263e20d85e \
     --hash=sha256:8e9c99127fe024c025b46a0b2d15c7bd47f18f33226cf7330d35493663fc1d1d
     # via scholar (pyproject.toml)
-pluggy==1.4.0 \
-    --hash=sha256:7db9f7b503d67d1c5b95f59773ebb58a8c1c288129a88665838012cfb07b8981 \
-    --hash=sha256:8c85c2876142a764e5b7548e7d9a0e0ddb46f5185161049a79b7e974454223be
+pluggy==1.5.0 \
+    --hash=sha256:2cffa88e94fdc978c4c574f15f9e59b7f4201d439195c3715ca9e2486f1d0cf1 \
+    --hash=sha256:44e1ad92c8ca002de6377e165f3e0f1be63266ab4d554740532335b9d75ea669
     # via pytest
 prometheus-client==0.12.0 \
     --hash=sha256:1b12ba48cee33b9b0b9de64a1047cbd3c5f2d0ab6ebcead7ddda613a750ec3c5 \
@@ -849,20 +847,20 @@ pyproject-hooks==1.0.0 \
     --hash=sha256:283c11acd6b928d2f6a7c73fa0d01cb2bdc5f07c57a2eeb6e83d5e56b97976f8 \
     --hash=sha256:f271b298b97f5955d53fb12b72c1fb1948c22c1a6b70b315c54cedaca0264ef5
     # via build
-pytest==7.2.2 \
-    --hash=sha256:130328f552dcfac0b1cec75c12e3f005619dc5f874f0a06e8ff7263f0ee6225e \
-    --hash=sha256:c99ab0c73aceb050f68929bc93af19ab6db0558791c6a0715723abe9d0ade9d4
+pytest==8.2.0 \
+    --hash=sha256:1733f0620f6cda4095bbf0d9ff8022486e91892245bb9e7d5542c018f612f233 \
+    --hash=sha256:d507d4482197eac0ba2bae2e9babf0672eb333017bcedaa5fb1a3d42c1174b3f
     # via
     #   pytest-cov
     #   pytest-mock
     #   scholar (pyproject.toml)
-pytest-cov==4.0.0 \
-    --hash=sha256:2feb1b751d66a8bd934e5edfa2e961d11309dc37b73b0eabe73b5945fee20f6b \
-    --hash=sha256:996b79efde6433cdbd0088872dbc5fb3ed7fe1578b68cdbba634f14bb8dd0470
+pytest-cov==5.0.0 \
+    --hash=sha256:4f0764a1219df53214206bf1feea4633c3b558a2925c8b59f144f682861ce652 \
+    --hash=sha256:5837b58e9f6ebd335b0f8060eecce69b662415b16dc503883a02f45dfeb14857
     # via scholar (pyproject.toml)
-pytest-mock==3.10.0 \
-    --hash=sha256:f4c973eeae0282963eb293eb173ce91b091a79c1334455acfac9ddee8a1c784b \
-    --hash=sha256:fbbdb085ef7c252a326fd8cdcac0aa3b1333d8811f131bdcc701002e1be7ed4f
+pytest-mock==3.14.0 \
+    --hash=sha256:0b72c38033392a5f4621342fe11e9219ac11ec9d375f8e2a0c164539e0d70f6f \
+    --hash=sha256:2719255a1efeceadbc056d6bf3df3d1c5015530fb40cf347c0f9afac88410bd0
     # via scholar (pyproject.toml)
 python-dateutil==2.8.2 \
     --hash=sha256:0123cacc1627ae19ddf3c27a5de5bd67ee4586fbdd6440d9748f8abb483d3e86 \
