@@ -128,78 +128,39 @@ def test_creator_lookup(client, fcclient, basic_entities):
 def test_release_lookup(client, fcclient, basic_entities):
     r = basic_entities["release"]
     fcclient.lookup_release.return_value = r
+    # i left out some unused ext id types. we should probably drop them from
+    # the codebase entirely (eg oai, mag)
     extidtypes = [("doi", r.ext_ids.doi), ("wikidata_qid", r.ext_ids.wikidata_qid),
                   ("pmid", r.ext_ids.pmid), ("pmcid", r.ext_ids.pmcid),
                   ("isbn13", r.ext_ids.isbn13), ("jstor", r.ext_ids.jstor),
-                  ("arxiv", r.ext_ids.arxiv), ("core", r.ext_ids.core),
-                  ("ark", r.ext_ids.ark), ("mag", r.ext_ids.mag), ("oai", r.ext_ids.oai),
-                  ("hdl", r.ext_ids.hdl)]
+                  ("arxiv", r.ext_ids.arxiv), ("ark", r.ext_ids.ark), ("hdl", r.ext_ids.hdl)]
     for extidtype, extid in extidtypes:
         rv = client.get(f"/cat/release/lookup?{extidtype}={extid}", follow_redirects=False)
         assert f"cat/release/{r.ident}" in rv.headers.get("location"), extidtype
         assert rv.status_code == 302, extidtype
         fcclient.lookup_release.assert_called_with(**{extidtype: extid})
 
-def test_file_lookup(client, mocker):
-    # TODO
-    # TODO md5
-    # TODO sha1
-    # TODO sha256
+def test_file_lookup(client, fcclient, basic_entities):
+    f = basic_entities["file"]
+    fcclient.lookup_file.return_value = f
+    extidtypes = [("md5", f.md5), ("sha1", f.sha1), ("sha256", f.sha256)]
+    for extidtype, extid in extidtypes:
+        rv = client.get(f"/cat/file/lookup?{extidtype}={extid}", follow_redirects=False)
+        assert f"cat/file/{f.ident}" in rv.headers.get("location"), extidtype
+        assert rv.status_code == 302, extidtype
+        fcclient.lookup_file.assert_called_with(**{extidtype: extid})
 
-    pass
+def test_container_lookup(client, fcclient, basic_entities):
+    c = basic_entities["container"]
+    fcclient.lookup_container.return_value = c
+    extidtypes = [("issn", c.issnl), ("issne", c.issne), ("issnp", c.issnp),
+                  ("issnl", c.issnl), ("wikidata_qid", c.wikidata_qid)]
+    for extidtype, extid in extidtypes:
+        rv = client.get(f"/cat/container/lookup?{extidtype}={extid}", follow_redirects=False)
+        assert f"cat/container/{c.ident}" in rv.headers.get("location"), extidtype
+        assert rv.status_code == 302, extidtype
+        fcclient.lookup_container.assert_called_with(**{extidtype: extid})
 
-def test_container_lookup(client, mocker):
-    # TODO
-    # TODO issn
-    # TODO issne
-    # TODO issnp
-    # TODO issnl
-    pass
-
-#def test_lookups(app):
-#
-#    rv = app.get("/container/lookup")
-#    assert rv.status_code == 200
-#    rv = app.get("/container/lookup?issnl=9999-9999")
-#    assert rv.status_code == 404
-#    rv = app.get("/container/lookup?issnl=1234-5678")
-#    assert rv.status_code == 302
-#
-#    rv = app.get("/creator/lookup")
-#    assert rv.status_code == 200
-#    rv = app.get("/creator/lookup?orcid=0000-0003-2088-7465")
-#    assert rv.status_code == 302
-#    rv = app.get("/creator/lookup?orcid=0000-0003-2088-0000")
-#    assert rv.status_code == 404
-#
-#    rv = app.get("/file/lookup")
-#    assert rv.status_code == 200
-#    rv = app.get("/file/lookup?sha1=7d97e98f8af710c7e7fe703abc8f639e0ee507c4")
-#    assert rv.status_code == 302
-#    rv = app.get("/file/lookup?sha1=7d97e98f8af710c7e7f00000000000000ee507c4")
-#    assert rv.status_code == 404
-#
-#    rv = app.get("/fileset/lookup")
-#    assert rv.status_code == 404
-#
-#    rv = app.get("/webcapture/lookup")
-#    assert rv.status_code == 404
-#
-#    rv = app.get("/release/lookup")
-#    assert rv.status_code == 200
-#    rv = app.get("/release/lookup?doi=10.123/abc")
-#    assert rv.status_code == 302
-#    rv = app.get("/release/lookup?doi=10.123%2Fabc")
-#    assert rv.status_code == 302
-#    rv = app.get("/release/lookup?doi=abcde")
-#    assert rv.status_code == 400
-#    rv = app.get("/release/lookup?doi=10.1234/uuu")
-#    assert rv.status_code == 404
-#
-#    rv = app.get("/work/lookup")
-#    assert rv.status_code == 404
-#
-#
 #def test_web_container(app, mocker):
 #
 #    es_raw = mocker.patch("elasticsearch.connection.Urllib3HttpConnection.perform_request")
