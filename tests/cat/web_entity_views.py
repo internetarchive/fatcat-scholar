@@ -118,32 +118,27 @@ def test_search_redirects(client):
 def test_creator_lookup(client, fcclient, basic_entities):
     c = basic_entities["creator"]
     fcclient.lookup_creator.return_value = c
-    rv = client.get(f"/cat/creator/lookup?orcid={c.orcid}", follow_redirects=False)
-    assert f"cat/creator/{c.ident}" in rv.headers.get("location")
-    assert rv.status_code == 302
-    fcclient.lookup_creator.assert_called_once_with(**{"orcid": c.orcid})
 
-    rv = client.get(
-            f"/cat/creator/lookup?wikidata_qid={c.wikidata_qid}", follow_redirects=False)
-    assert f"cat/creator/{c.ident}" in rv.headers.get("location")
-    assert rv.status_code == 302
-    fcclient.lookup_creator.assert_called_with(**{"wikidata_qid": c.wikidata_qid})
+    for extidtype, extid in (("orcid", c.orcid), ("wikidata_qid", c.wikidata_qid)):
+        rv = client.get(f"/cat/creator/lookup?{extidtype}={extid}", follow_redirects=False)
+        assert f"cat/creator/{c.ident}" in rv.headers.get("location"), extidtype
+        assert rv.status_code == 302, extidtype
+        fcclient.lookup_creator.assert_called_with(**{extidtype: extid})
 
-def test_release_lookup(client, mocker):
-    # TODO
-    # TODO doi
-    # TODO wikidata_qid
-    # TODO pmid
-    # TODO pmcid
-    # TODO isbn13
-    # TODO jstor
-    # TODO arxiv
-    # TODO core
-    # TODO ark
-    # TODO mag
-    # TODO oai
-    # TODO hdl
-    pass
+def test_release_lookup(client, fcclient, basic_entities):
+    r = basic_entities["release"]
+    fcclient.lookup_release.return_value = r
+    extidtypes = [("doi", r.ext_ids.doi), ("wikidata_qid", r.ext_ids.wikidata_qid),
+                  ("pmid", r.ext_ids.pmid), ("pmcid", r.ext_ids.pmcid),
+                  ("isbn13", r.ext_ids.isbn13), ("jstor", r.ext_ids.jstor),
+                  ("arxiv", r.ext_ids.arxiv), ("core", r.ext_ids.core),
+                  ("ark", r.ext_ids.ark), ("mag", r.ext_ids.mag), ("oai", r.ext_ids.oai),
+                  ("hdl", r.ext_ids.hdl)]
+    for extidtype, extid in extidtypes:
+        rv = client.get(f"/cat/release/lookup?{extidtype}={extid}", follow_redirects=False)
+        assert f"cat/release/{r.ident}" in rv.headers.get("location"), extidtype
+        assert rv.status_code == 302, extidtype
+        fcclient.lookup_release.assert_called_with(**{extidtype: extid})
 
 def test_file_lookup(client, mocker):
     # TODO
