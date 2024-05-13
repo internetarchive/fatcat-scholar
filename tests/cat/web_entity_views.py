@@ -308,17 +308,16 @@ def test_generic_entity_view_release_metadata(client, fcclient, basic_entities):
     assert r.pages in res.text
     assert r.volume in res.text
 
-def test_generic_entity_view_container_view(client, fcclient, mocker, basic_entities):
+def test_generic_entity_view_container_view(client, fcclient, es, basic_entities):
     c = basic_entities["container"]
     fcclient.get_container.return_value = c
-    # TODO use ES_CONTAINER_STATS_RESP
-    es_m1 = mocker.patch("scholar.cat.web.get_elastic_container_stats", return_value={"total":0})
-    es_m2 = mocker.patch("scholar.cat.web.get_elastic_container_random_releases")
+    es.side_effect = [
+        (200, {}, json.dumps(ES_CONTAINER_STATS_RESP)),
+        (200, {}, json.dumps(ES_CONTAINER_RANDOM_RESP)),
+    ]
     res = client.get("/cat/container/abcdefghijklmnopqrstuvwxyz")
     assert res.status_code == 200
     assert "urusei yatsura" in res.text
-    es_m1.assert_called_once()
-    es_m2.assert_called_once()
 
 def test_generic_entity_view_container_view_coverage(client, fcclient, mocker, basic_entities):
     c = basic_entities["container"]

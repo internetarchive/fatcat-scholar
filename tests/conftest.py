@@ -143,6 +143,10 @@ def fcclient(mocker):
     return mm
 
 @pytest.fixture
+def es(mocker):
+    return mocker.patch("elasticsearch.connection.Urllib3HttpConnection.perform_request")
+
+@pytest.fixture
 def basic_entities():
     return {
         "release": fcapi.ReleaseEntity(
