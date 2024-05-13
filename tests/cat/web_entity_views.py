@@ -1,43 +1,83 @@
+import json
+
 import scholar.cat.web
 
 import fatcat_openapi_client as fcapi
 
-#import json
+ES_CONTAINER_STATS_RESP = {
+    "timed_out": False,
+    "aggregations": {
+        "container_stats": {
+            "buckets": {
+                "is_preserved": {"doc_count": 461939},
+                "in_kbart": {"doc_count": 461939},
+                "in_web": {"doc_count": 2797},
+            }
+        },
+        "preservation": {
+            "buckets": [
+                {"key": "bright", "doc_count": 444},
+                {"key": "dark", "doc_count": 111},
+            ],
+            "sum_other_doc_count": 0,
+        },
+        "release_type": {
+            "buckets": [
+                {"key": "article-journal", "doc_count": 456},
+                {"key": "book", "doc_count": 123},
+            ],
+            "sum_other_doc_count": 0,
+        },
+    },
+    "hits": {"total": 461939, "hits": [], "max_score": 0.0},
+    "_shards": {"successful": 5, "total": 5, "skipped": 0, "failed": 0},
+    "took": 50,
+}
 
-#from fixtures import *
+ES_CONTAINER_RANDOM_RESP = {
+    "timed_out": False,
+    "hits": {"total": 461939, "hits": [], "max_score": 0.0},
+    "_shards": {"successful": 5, "total": 5, "skipped": 0, "failed": 0},
+    "took": 50,
+}
 
-#from fatcat_web.forms import ContainerEntityForm, FileEntityForm, ReleaseEntityForm
-
-# TODO use in test below
-#ES_CONTAINER_STATS_RESP = {
-#    "timed_out": False,
-#    "aggregations": {
-#        "container_stats": {
-#            "buckets": {
-#                "is_preserved": {"doc_count": 461939},
-#                "in_kbart": {"doc_count": 461939},
-#                "in_web": {"doc_count": 2797},
-#            }
-#        },
-#        "preservation": {
-#            "buckets": [
-#                {"key": "bright", "doc_count": 444},
-#                {"key": "dark", "doc_count": 111},
-#            ],
-#            "sum_other_doc_count": 0,
-#        },
-#        "release_type": {
-#            "buckets": [
-#                {"key": "article-journal", "doc_count": 456},
-#                {"key": "book", "doc_count": 123},
-#            ],
-#            "sum_other_doc_count": 0,
-#        },
-#    },
-#    "hits": {"total": 461939, "hits": [], "max_score": 0.0},
-#    "_shards": {"successful": 5, "total": 5, "skipped": 0, "failed": 0},
-#    "took": 50,
-#}
+# TODO /
+# TODO /about
+# TODO /stats
+# TODO /release/search
+# TODO /release/{ident}/contribs
+# TODO /release/{ident}/references
+# TODO /release/{ident}/citeproc
+# TODO /release/{ident}.bib
+# TODO /reference/match.json
+# TODO /reference/match (POST, GET)
+# TODO /coverage/search
+# TODO /container/search
+# TODO /container/{ident}/search
+# TODO /container/{ident}/coverage
+# TODO /release/save
+# TODO /changelog, /changelog/{index}
+# TODO /release/{ident}/refs-out.json
+# TODO /release/{ident}/refs-in.json
+# TODO /release/{ident}/refs-out
+# TODO /release/{ident}/refs-in
+# TODO /container/{ident}/history
+# TODO /creator/{ident}/history
+# TODO /file/{ident}/history
+# TODO /container/{ident}/browse
+# TODO /release/rev/{rev_id}/contribs
+# TODO /release/rev/{rev_id}/references
+# TODO /openlibrary/OL{id_num}W/refs-in
+# TODO /openlibrary/OL{id_num}W/refs-in.json
+# TODO /wikipedia/{wiki_lang}:{wiki_article}/refs-out
+# TODO /wikipedia/{wiki_lang}:{wiki_article}/refs-out.json
+# TODO /editgroup/{ident}
+# TODO /editgroup/{ident}/diff
+# TODO /editor routes
+# TODO /u/{username}
+# TODO common revision view routes (including /metadata)
+# TODO common editgroup routes
+# TODO common /metadata routes
 
 def test_malformed_entity(client, entity_types):
     for entity_type in entity_types:
