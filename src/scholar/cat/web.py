@@ -227,7 +227,8 @@ def generic_lookup(request: Request,
         else:
             raise ae
 
-    return RedirectResponse(request.url_for(f"{entity_type}_view", ident=resp.ident), status_code=302)
+    return RedirectResponse(
+            request.url_for(f"{entity_type}_view", ident=resp.ident), status_code=302)
 
 @routes.get("/release/{ident}/save", include_in_schema=False)
 async def release_save(

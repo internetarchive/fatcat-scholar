@@ -115,17 +115,19 @@ def test_search_redirects(client):
             assert "q=" not in redirect_url, case["name"]
             assert "generic=" not in redirect_url, case["name"]
 
-def test_creator_lookup(client, mocker, basic_entities):
+def test_creator_lookup(client, fcclient, basic_entities):
     c = basic_entities["creator"]
-    mm = mocker.MagicMock()
-    # TODO is c the right shape? check out fatcat-cli in terminal to see what lookup_creator returns.
-    # TODO try and get a fixture for patching DefaultApi
-    mm.lookup_creator = mocker.MagicMock(return_value=c)
-    mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
-    # TODO
-    # TODO orcid
-    # TODO wikidata_qid
-    pass
+    fcclient.lookup_creator.return_value = c
+    rv = client.get(f"/cat/creator/lookup?orcid={c.orcid}", follow_redirects=False)
+    assert f"cat/creator/{c.ident}" in rv.headers.get("location")
+    assert rv.status_code == 302
+    fcclient.lookup_creator.assert_called_once_with(**{"orcid": c.orcid})
+
+    rv = client.get(
+            f"/cat/creator/lookup?wikidata_qid={c.wikidata_qid}", follow_redirects=False)
+    assert f"cat/creator/{c.ident}" in rv.headers.get("location")
+    assert rv.status_code == 302
+    fcclient.lookup_creator.assert_called_with(**{"wikidata_qid": c.wikidata_qid})
 
 def test_release_lookup(client, mocker):
     # TODO
@@ -279,68 +281,55 @@ def test_container_lookup(client, mocker):
 #    rv = app.get("/release/search")
 #    assert rv.status_code == 200
 
-def test_generic_entity_view_active_release(client, mocker, basic_entities):
+def test_generic_entity_view_active_release(client, fcclient, mocker, basic_entities):
     r = basic_entities["release"]
-    mm = mocker.MagicMock()
-    mm.get_release = mocker.MagicMock(return_value=r)
-    mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
+    fcclient.get_release = mocker.MagicMock(return_value=r)
     res = client.get("/cat/release/abcdefghijklmnopqrstuvwxyz")
     assert res.status_code == 200
     assert r.title in res.text
     assert r.publisher in res.text
 
-def test_generic_entity_view_deleted_release(client, mocker, basic_entities):
+def test_generic_entity_view_deleted_release(client, fcclient, mocker, basic_entities):
     r = basic_entities["release"]
     r.state = "deleted"
-    mm = mocker.MagicMock()
-    mm.get_release = mocker.MagicMock(return_value=r)
-    mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
+    fcclient.get_release = mocker.MagicMock(return_value=r)
     res = client.get("/cat/release/abcdefghijklmnopqrstuvwxyz")
     assert res.status_code == 200
     assert "There used to be an entity here" in res.text
 
-def test_generic_entity_view_redirect_release(client, mocker, basic_entities):
+def test_generic_entity_view_redirect_release(client, fcclient, mocker, basic_entities):
     r = basic_entities["release"]
     r.state = "redirect"
-    mm = mocker.MagicMock()
-    mm.get_release = mocker.MagicMock(return_value=r)
-    mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
+    fcclient.get_release = mocker.MagicMock(return_value=r)
     res = client.get("/cat/release/abcdefghijklmnopqrstuvwxyz", follow_redirects=False)
     assert res.status_code == 302
 
-def test_generic_entity_view_release_metadata(client, mocker, basic_entities):
+def test_generic_entity_view_release_metadata(client, fcclient, basic_entities):
     r = basic_entities["release"]
-    mm = mocker.MagicMock()
-    mm.get_release = mocker.MagicMock(return_value=r)
-    mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
+    fcclient.get_release.return_value = r
     res = client.get("/cat/release/abcdefghijklmnopqrstuvwxyz/metadata", follow_redirects=False)
     assert res.status_code == 200
     assert r.pages in res.text
     assert r.volume in res.text
 
-def test_generic_entity_view_container_view(client, mocker, basic_entities):
+def test_generic_entity_view_container_view(client, fcclient, mocker, basic_entities):
     c = basic_entities["container"]
-
-    mm = mocker.MagicMock()
-    mm.get_container = mocker.MagicMock(return_value=c)
+    fcclient.get_container.return_value = c
     # TODO use ES_CONTAINER_STATS_RESP
     es_m1 = mocker.patch("scholar.cat.web.get_elastic_container_stats", return_value={"total":0})
     es_m2 = mocker.patch("scholar.cat.web.get_elastic_container_random_releases")
-    mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
     res = client.get("/cat/container/abcdefghijklmnopqrstuvwxyz")
     assert res.status_code == 200
     assert "urusei yatsura" in res.text
     es_m1.assert_called_once()
     es_m2.assert_called_once()
 
-def test_generic_entity_view_container_view_coverage(client, mocker, basic_entities):
+def test_generic_entity_view_container_view_coverage(client, fcclient, mocker, basic_entities):
     c = basic_entities["container"]
 
-    mm = mocker.MagicMock()
-    mm.get_container = mocker.MagicMock(return_value=c)
+    fcclient.get_container.return_value = c
     m1 = mocker.patch("scholar.cat.web.get_elastic_container_stats", return_value={"total":0})
     m2 = mocker.patch("scholar.cat.web.get_elastic_preservation_by_type", return_value=[{}])
-    m = mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
 
     res = client.get("/cat/container/abcdefghijklmnopqrstuvwxyz/coverage")
 
@@ -349,12 +338,9 @@ def test_generic_entity_view_container_view_coverage(client, mocker, basic_entit
     m1.assert_called_once()
     m2.assert_called_once()
 
-def test_generic_entity_view_creator(client, mocker, basic_entities):
+def test_generic_entity_view_creator(client, fcclient, basic_entities):
     c = basic_entities["creator"]
-
-    mm = mocker.MagicMock()
-    mm.get_creator = mocker.MagicMock(return_value=c)
-    m = mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
+    fcclient.get_creator.return_value = c
 
     res = client.get("/cat/creator/abcdefghijklmnopqrstuvwxyz")
 
@@ -362,45 +348,35 @@ def test_generic_entity_view_creator(client, mocker, basic_entities):
     assert "tetsuo" in res.text
     assert "the iron man" in res.text
 
-def test_generic_entity_view_file(client, mocker, basic_entities):
+def test_generic_entity_view_file(client, fcclient, basic_entities):
     f = basic_entities["file"]
+    fcclient.get_file.return_value = f
 
-    mm = mocker.MagicMock()
-    mm.get_file = mocker.MagicMock(return_value=f)
-    mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
     res = client.get("/cat/file/abcdefghijklmnopqrstuvwxyz")
     assert res.status_code == 200
     assert f.md5 in res.text
     assert f.sha256 in res.text
 
-def test_generic_entity_view_fileset(client, mocker, basic_entities):
+def test_generic_entity_view_fileset(client, fcclient, basic_entities):
     fs = basic_entities["fileset"]
-
-    mm = mocker.MagicMock()
-    mm.get_fileset = mocker.MagicMock(return_value=fs)
-    mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
+    fcclient.get_fileset.return_value = fs
     res = client.get("/cat/fileset/abcdefghijklmnopqrstuvwxyz")
     assert "File Manifest" in res.text
     assert res.status_code == 200
     assert fs.manifest[0].path in res.text
 
-def test_generic_entity_view_webcapture(client, mocker, basic_entities):
+def test_generic_entity_view_webcapture(client, fcclient, basic_entities):
     wc = basic_entities["webcapture"]
-
-    mm = mocker.MagicMock()
-    mm.get_webcapture = mocker.MagicMock(return_value=wc)
-    mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
+    fcclient.get_webcapture.return_value = wc
     res = client.get("/cat/webcapture/abcdefghijklmnopqrstuvwxyz")
     assert res.status_code == 200
     assert wc.cdx[0].sha1 in res.text
 
-def test_generic_entity_view_work(client, mocker, basic_entities):
+def test_generic_entity_view_work(client, fcclient, basic_entities):
     w = basic_entities["work"]
 
-    mm = mocker.MagicMock()
-    mm.get_work = mocker.MagicMock(return_value=w)
-    mm.get_work_releases = mocker.MagicMock(return_value=[basic_entities["release"]])
-    mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
+    fcclient.get_work.return_value = w
+    fcclient.get_work_releases.return_value = [basic_entities["release"]]
     res = client.get("/cat/work/abcdefghijklmnopqrstuvwxyz")
     assert res.status_code == 200
     assert basic_entities["release"].title in res.text

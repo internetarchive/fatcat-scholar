@@ -137,6 +137,12 @@ def entity_types():
 #    return eg
 
 @pytest.fixture
+def fcclient(mocker):
+    mm = mocker.MagicMock()
+    mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
+    return mm
+
+@pytest.fixture
 def basic_entities():
     return {
         "release": fcapi.ReleaseEntity(
@@ -155,6 +161,11 @@ def basic_entities():
         "creator": fcapi.CreatorEntity(
             display_name="testuo the iron man",
             given_name="tetsuo",
+            ident="iimvc523xbhqlav6j3sbthuehu",
+            orcid="0000-0003-3118-6859",
+            revision="52444283-850c-41d5-945b-bd7c6112cb89",
+            state="active",
+            wikidata_qid="Q6251482",
             surname="the iron man"),
         "file": fcapi.FileEntity(
             size=66,
