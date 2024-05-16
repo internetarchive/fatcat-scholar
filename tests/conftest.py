@@ -1,71 +1,57 @@
-#import elasticsearch
 import datetime
-import pytest
-#from dotenv import load_dotenv
-import fatcat_openapi_client as fcapi
+import json
+
 from fastapi.testclient import TestClient
+import fatcat_openapi_client as fcapi
+import pytest
 
 from scholar.web import app
 
-#import fatcat_web
+ES_CONTAINER_STATS_RESP = {
+    "timed_out": False,
+    "aggregations": {
+        "container_stats": {
+            "buckets": {
+                "is_preserved": {"doc_count": 461939},
+                "in_kbart": {"doc_count": 461939},
+                "in_web": {"doc_count": 2797},
+            }
+        },
+        "preservation": {
+            "buckets": [
+                {"key": "bright", "doc_count": 444},
+                {"key": "dark", "doc_count": 111},
+            ],
+            "sum_other_doc_count": 0,
+        },
+        "release_type": {
+            "buckets": [
+                {"key": "article-journal", "doc_count": 456},
+                {"key": "book", "doc_count": 123},
+            ],
+            "sum_other_doc_count": 0,
+        },
+    },
+    "hits": {"total": 461939, "hits": [], "max_score": 0.0},
+    "_shards": {"successful": 5, "total": 5, "skipped": 0, "failed": 0},
+    "took": 50,
+}
 
-#ES_CONTAINER_STATS_RESP = {
-#    "timed_out": False,
-#    "aggregations": {
-#        "container_stats": {
-#            "buckets": {
-#                "is_preserved": {"doc_count": 461939},
-#                "in_kbart": {"doc_count": 461939},
-#                "in_web": {"doc_count": 2797},
-#            }
-#        },
-#        "preservation": {
-#            "buckets": [
-#                {"key": "bright", "doc_count": 444},
-#                {"key": "dark", "doc_count": 111},
-#            ],
-#            "sum_other_doc_count": 0,
-#        },
-#        "release_type": {
-#            "buckets": [
-#                {"key": "article-journal", "doc_count": 456},
-#                {"key": "book", "doc_count": 123},
-#            ],
-#            "sum_other_doc_count": 0,
-#        },
-#    },
-#    "hits": {"total": 461939, "hits": [], "max_score": 0.0},
-#    "_shards": {"successful": 5, "total": 5, "skipped": 0, "failed": 0},
-#    "took": 50,
-#}
-#
-## TODO: this should not be empty
-#ES_CONTAINER_RANDOM_RESP = {
-#    "timed_out": False,
-#    "hits": {"total": 461939, "hits": [], "max_score": 0.0},
-#    "_shards": {"successful": 5, "total": 5, "skipped": 0, "failed": 0},
-#    "took": 50,
-#}
-#
+ES_CONTAINER_RANDOM_RESP = {
+    # TODO: this should not be empty
+    "timed_out": False,
+    "hits": {"total": 461939, "hits": [], "max_score": 0.0},
+    "_shards": {"successful": 5, "total": 5, "skipped": 0, "failed": 0},
+    "took": 50,
+}
+
+
 #ES_RELEASE_EMPTY_RESP = {
 #    "timed_out": False,
 #    "hits": {"total": 0, "hits": [], "max_score": 0.0},
 #    "_shards": {"successful": 5, "total": 5, "skipped": 0, "failed": 0},
 #    "took": 50,
 #}
-#
-#
-#@pytest.fixture
-#def full_app(mocker):
-#    load_dotenv(dotenv_path="./example.env")
-#    fatcat_web.app.testing = True
-#    fatcat_web.app.debug = False
-#    fatcat_web.app.config["WTF_CSRF_ENABLED"] = False
-#
-#    # mock out ES client requests, so they at least fail fast
-#    fatcat_web.app.es_client = elasticsearch.Elasticsearch("mockbackend")
-#    mocker.patch("elasticsearch.connection.Urllib3HttpConnection.perform_request")
-#    return fatcat_web.app
 
 @pytest.fixture
 def client():
@@ -76,14 +62,6 @@ def entity_types():
     return ["release", "work", "webcapture", "file", "fileset", "creator", "container"]
 
 
-#@pytest.fixture
-#def api():
-#    load_dotenv(dotenv_path="./example.env")
-#    api_client = authenticated_api("http://localhost:9411/v0")
-#    api_client.editor_id = "aaaaaaaaaaaabkvkaaaaaaaaae"
-#    return api_client
-#
-#
 #@pytest.fixture
 #def api_dummy_entities(api):
 #    """
@@ -121,20 +99,6 @@ def entity_types():
 #        "release": r1,
 #        "work": w1,
 #    }
-#
-#
-#def test_get_changelog_entry(api):
-#    """Check that fixture is working"""
-#    cl = api.get_changelog_entry(1)
-#    assert cl
-#
-#
-### Helpers ##################################################################
-#
-#
-#def quick_eg(api_inst):
-#    eg = api_inst.create_editgroup(fatcat_openapi_client.Editgroup())
-#    return eg
 
 @pytest.fixture
 def fcclient(mocker):
@@ -147,7 +111,7 @@ def es(mocker):
     return mocker.patch("elasticsearch.connection.Urllib3HttpConnection.perform_request")
 
 @pytest.fixture
-def basic_entities():
+def entities():
     return {
         "release": fcapi.ReleaseEntity(
             state="active",
@@ -224,3 +188,20 @@ def basic_entities():
 
             ),
     }
+
+@pytest.fixture
+def es_resps():
+    with open("tests/cat/files/elastic_refs_in_release.json") as f:
+        elastic_resp_in = json.loads(f.read())
+    with open("tests/cat/files/elastic_refs_out_release.json") as f:
+        elastic_resp_out = json.loads(f.read())
+    with open("tests/cat/files/elastic_empty.json") as f:
+        elastic_resp_empty = json.loads(f.read())
+
+    return {
+        "container_stats": ES_CONTAINER_STATS_RESP,
+        "container_random": ES_CONTAINER_RANDOM_RESP,
+        "release_refs_in": elastic_resp_in,
+        "release_refs_out": elastic_resp_out,
+        "release_refs_empty": elastic_resp_empty,
+            }

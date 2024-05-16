@@ -4,56 +4,6 @@ import scholar.cat.web
 
 import fatcat_openapi_client as fcapi
 
-ES_CONTAINER_STATS_RESP = {
-    "timed_out": False,
-    "aggregations": {
-        "container_stats": {
-            "buckets": {
-                "is_preserved": {"doc_count": 461939},
-                "in_kbart": {"doc_count": 461939},
-                "in_web": {"doc_count": 2797},
-            }
-        },
-        "preservation": {
-            "buckets": [
-                {"key": "bright", "doc_count": 444},
-                {"key": "dark", "doc_count": 111},
-            ],
-            "sum_other_doc_count": 0,
-        },
-        "release_type": {
-            "buckets": [
-                {"key": "article-journal", "doc_count": 456},
-                {"key": "book", "doc_count": 123},
-            ],
-            "sum_other_doc_count": 0,
-        },
-    },
-    "hits": {"total": 461939, "hits": [], "max_score": 0.0},
-    "_shards": {"successful": 5, "total": 5, "skipped": 0, "failed": 0},
-    "took": 50,
-}
-
-ES_CONTAINER_RANDOM_RESP = {
-    "timed_out": False,
-    "hits": {"total": 461939, "hits": [], "max_score": 0.0},
-    "_shards": {"successful": 5, "total": 5, "skipped": 0, "failed": 0},
-    "took": 50,
-}
-
-# TODO references / reference matching
-
-# TODO /reference/match.json
-# TODO /reference/match (POST, GET)
-# TODO /release/{ident}/refs-out.json
-# TODO /release/{ident}/refs-in.json
-# TODO /release/{ident}/refs-out
-# TODO /release/{ident}/refs-in
-# TODO /openlibrary/OL{id_num}W/refs-in
-# TODO /openlibrary/OL{id_num}W/refs-in.json
-# TODO /wikipedia/{wiki_lang}:{wiki_article}/refs-out
-# TODO /wikipedia/{wiki_lang}:{wiki_article}/refs-out.json
-
 # TODO /
 # TODO /about
 # TODO /stats
@@ -158,8 +108,8 @@ def test_search_redirects(client):
             assert "q=" not in redirect_url, case["name"]
             assert "generic=" not in redirect_url, case["name"]
 
-def test_creator_lookup(client, fcclient, basic_entities):
-    c = basic_entities["creator"]
+def test_creator_lookup(client, fcclient, entities):
+    c = entities["creator"]
     fcclient.lookup_creator.return_value = c
 
     for extidtype, extid in (("orcid", c.orcid), ("wikidata_qid", c.wikidata_qid)):
@@ -168,8 +118,8 @@ def test_creator_lookup(client, fcclient, basic_entities):
         assert rv.status_code == 302, extidtype
         fcclient.lookup_creator.assert_called_with(**{extidtype: extid})
 
-def test_release_lookup(client, fcclient, basic_entities):
-    r = basic_entities["release"]
+def test_release_lookup(client, fcclient, entities):
+    r = entities["release"]
     fcclient.lookup_release.return_value = r
     # i left out some unused ext id types. we should probably drop them from
     # the codebase entirely (eg oai, mag)
@@ -183,8 +133,8 @@ def test_release_lookup(client, fcclient, basic_entities):
         assert rv.status_code == 302, extidtype
         fcclient.lookup_release.assert_called_with(**{extidtype: extid})
 
-def test_file_lookup(client, fcclient, basic_entities):
-    f = basic_entities["file"]
+def test_file_lookup(client, fcclient, entities):
+    f = entities["file"]
     fcclient.lookup_file.return_value = f
     extidtypes = [("md5", f.md5), ("sha1", f.sha1), ("sha256", f.sha256)]
     for extidtype, extid in extidtypes:
@@ -193,8 +143,8 @@ def test_file_lookup(client, fcclient, basic_entities):
         assert rv.status_code == 302, extidtype
         fcclient.lookup_file.assert_called_with(**{extidtype: extid})
 
-def test_container_lookup(client, fcclient, basic_entities):
-    c = basic_entities["container"]
+def test_container_lookup(client, fcclient, entities):
+    c = entities["container"]
     fcclient.lookup_container.return_value = c
     extidtypes = [("issn", c.issnl), ("issne", c.issne), ("issnp", c.issnp),
                   ("issnl", c.issnl), ("wikidata_qid", c.wikidata_qid)]
@@ -280,50 +230,50 @@ def test_container_lookup(client, fcclient, basic_entities):
 #    rv = app.get("/release/search")
 #    assert rv.status_code == 200
 
-def test_generic_entity_view_active_release(client, fcclient, mocker, basic_entities):
-    r = basic_entities["release"]
+def test_generic_entity_view_active_release(client, fcclient, mocker, entities):
+    r = entities["release"]
     fcclient.get_release = mocker.MagicMock(return_value=r)
     res = client.get("/cat/release/abcdefghijklmnopqrstuvwxyz")
     assert res.status_code == 200
     assert r.title in res.text
     assert r.publisher in res.text
 
-def test_generic_entity_view_deleted_release(client, fcclient, mocker, basic_entities):
-    r = basic_entities["release"]
+def test_generic_entity_view_deleted_release(client, fcclient, mocker, entities):
+    r = entities["release"]
     r.state = "deleted"
     fcclient.get_release = mocker.MagicMock(return_value=r)
     res = client.get("/cat/release/abcdefghijklmnopqrstuvwxyz")
     assert res.status_code == 200
     assert "There used to be an entity here" in res.text
 
-def test_generic_entity_view_redirect_release(client, fcclient, mocker, basic_entities):
-    r = basic_entities["release"]
+def test_generic_entity_view_redirect_release(client, fcclient, mocker, entities):
+    r = entities["release"]
     r.state = "redirect"
     fcclient.get_release = mocker.MagicMock(return_value=r)
     res = client.get("/cat/release/abcdefghijklmnopqrstuvwxyz", follow_redirects=False)
     assert res.status_code == 302
 
-def test_generic_entity_view_release_metadata(client, fcclient, basic_entities):
-    r = basic_entities["release"]
+def test_generic_entity_view_release_metadata(client, fcclient, entities):
+    r = entities["release"]
     fcclient.get_release.return_value = r
     res = client.get("/cat/release/abcdefghijklmnopqrstuvwxyz/metadata", follow_redirects=False)
     assert res.status_code == 200
     assert r.pages in res.text
     assert r.volume in res.text
 
-def test_generic_entity_view_container_view(client, fcclient, es, basic_entities):
-    c = basic_entities["container"]
+def test_generic_entity_view_container_view(client, fcclient, es, entities, es_resps):
+    c = entities["container"]
     fcclient.get_container.return_value = c
     es.side_effect = [
-        (200, {}, json.dumps(ES_CONTAINER_STATS_RESP)),
-        (200, {}, json.dumps(ES_CONTAINER_RANDOM_RESP)),
+        (200, {}, json.dumps(es_resps["container_stats"])),
+        (200, {}, json.dumps(es_resps["container_random"])),
     ]
     res = client.get("/cat/container/abcdefghijklmnopqrstuvwxyz")
     assert res.status_code == 200
     assert "urusei yatsura" in res.text
 
-def test_generic_entity_view_container_view_coverage(client, fcclient, mocker, basic_entities):
-    c = basic_entities["container"]
+def test_generic_entity_view_container_view_coverage(client, fcclient, mocker, entities):
+    c = entities["container"]
 
     fcclient.get_container.return_value = c
     m1 = mocker.patch("scholar.cat.web.get_elastic_container_stats", return_value={"total":0})
@@ -336,8 +286,8 @@ def test_generic_entity_view_container_view_coverage(client, fcclient, mocker, b
     m1.assert_called_once()
     m2.assert_called_once()
 
-def test_generic_entity_view_creator(client, fcclient, basic_entities):
-    c = basic_entities["creator"]
+def test_generic_entity_view_creator(client, fcclient, entities):
+    c = entities["creator"]
     fcclient.get_creator.return_value = c
 
     res = client.get("/cat/creator/abcdefghijklmnopqrstuvwxyz")
@@ -346,8 +296,8 @@ def test_generic_entity_view_creator(client, fcclient, basic_entities):
     assert "tetsuo" in res.text
     assert "the iron man" in res.text
 
-def test_generic_entity_view_file(client, fcclient, basic_entities):
-    f = basic_entities["file"]
+def test_generic_entity_view_file(client, fcclient, entities):
+    f = entities["file"]
     fcclient.get_file.return_value = f
 
     res = client.get("/cat/file/abcdefghijklmnopqrstuvwxyz")
@@ -355,29 +305,29 @@ def test_generic_entity_view_file(client, fcclient, basic_entities):
     assert f.md5 in res.text
     assert f.sha256 in res.text
 
-def test_generic_entity_view_fileset(client, fcclient, basic_entities):
-    fs = basic_entities["fileset"]
+def test_generic_entity_view_fileset(client, fcclient, entities):
+    fs = entities["fileset"]
     fcclient.get_fileset.return_value = fs
     res = client.get("/cat/fileset/abcdefghijklmnopqrstuvwxyz")
     assert "File Manifest" in res.text
     assert res.status_code == 200
     assert fs.manifest[0].path in res.text
 
-def test_generic_entity_view_webcapture(client, fcclient, basic_entities):
-    wc = basic_entities["webcapture"]
+def test_generic_entity_view_webcapture(client, fcclient, entities):
+    wc = entities["webcapture"]
     fcclient.get_webcapture.return_value = wc
     res = client.get("/cat/webcapture/abcdefghijklmnopqrstuvwxyz")
     assert res.status_code == 200
     assert wc.cdx[0].sha1 in res.text
 
-def test_generic_entity_view_work(client, fcclient, basic_entities):
-    w = basic_entities["work"]
+def test_generic_entity_view_work(client, fcclient, entities):
+    w = entities["work"]
 
     fcclient.get_work.return_value = w
-    fcclient.get_work_releases.return_value = [basic_entities["release"]]
+    fcclient.get_work_releases.return_value = [entities["release"]]
     res = client.get("/cat/work/abcdefghijklmnopqrstuvwxyz")
     assert res.status_code == 200
-    assert basic_entities["release"].title in res.text
+    assert entities["release"].title in res.text
 
 def test_generic_entity_views(client, mocker):
     cases = [{"route": "/cat/container/abcdefghijklmnopqrstuvwxyz/coverage",
