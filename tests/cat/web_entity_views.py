@@ -41,6 +41,19 @@ ES_CONTAINER_RANDOM_RESP = {
     "took": 50,
 }
 
+# TODO references / reference matching
+
+# TODO /reference/match.json
+# TODO /reference/match (POST, GET)
+# TODO /release/{ident}/refs-out.json
+# TODO /release/{ident}/refs-in.json
+# TODO /release/{ident}/refs-out
+# TODO /release/{ident}/refs-in
+# TODO /openlibrary/OL{id_num}W/refs-in
+# TODO /openlibrary/OL{id_num}W/refs-in.json
+# TODO /wikipedia/{wiki_lang}:{wiki_article}/refs-out
+# TODO /wikipedia/{wiki_lang}:{wiki_article}/refs-out.json
+
 # TODO /
 # TODO /about
 # TODO /stats
@@ -49,28 +62,18 @@ ES_CONTAINER_RANDOM_RESP = {
 # TODO /release/{ident}/references
 # TODO /release/{ident}/citeproc
 # TODO /release/{ident}.bib
-# TODO /reference/match.json
-# TODO /reference/match (POST, GET)
 # TODO /coverage/search
 # TODO /container/search
 # TODO /container/{ident}/search
 # TODO /container/{ident}/coverage
 # TODO /release/save
 # TODO /changelog, /changelog/{index}
-# TODO /release/{ident}/refs-out.json
-# TODO /release/{ident}/refs-in.json
-# TODO /release/{ident}/refs-out
-# TODO /release/{ident}/refs-in
 # TODO /container/{ident}/history
 # TODO /creator/{ident}/history
 # TODO /file/{ident}/history
 # TODO /container/{ident}/browse
 # TODO /release/rev/{rev_id}/contribs
 # TODO /release/rev/{rev_id}/references
-# TODO /openlibrary/OL{id_num}W/refs-in
-# TODO /openlibrary/OL{id_num}W/refs-in.json
-# TODO /wikipedia/{wiki_lang}:{wiki_article}/refs-out
-# TODO /wikipedia/{wiki_lang}:{wiki_article}/refs-out.json
 # TODO /editgroup/{ident}
 # TODO /editgroup/{ident}/diff
 # TODO /editor routes
