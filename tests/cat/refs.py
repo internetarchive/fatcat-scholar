@@ -108,6 +108,7 @@ def test_release_refs_json(client, fcclient, entities, es, es_resps):
     ]
     fcclient.get_release.return_value=entities["release"]
     ident = entities["release"].ident
+
     rv = client.get(f"/cat/release/{ident}/refs-in.json")
 
     assert rv.status_code == 200
@@ -130,5 +131,27 @@ def test_release_refs_json(client, fcclient, entities, es, es_resps):
     assert payload["count_returned"] == 0
     assert len(payload["result_refs"]) == 0
 
-# TODO /release/{ident}/refs-out
-# TODO /release/{ident}/refs-in
+def test_release_refs_html(client, fcclient, entities, es, es_resps):
+    es.side_effect = [
+        (200, {}, json.dumps(es_resps["release_refs_in"])),
+        (200, {}, json.dumps(es_resps["release_refs_out"])),
+        (200, {}, json.dumps(es_resps["release_refs_empty"])),
+    ]
+    fcclient.get_release.return_value=entities["release"]
+    ident = entities["release"].ident
+
+    rv = client.get(f"/cat/release/{ident}/refs-in")
+
+    assert rv.status_code == 200
+    assert "Showing 1 - 9 of 69 references" in rv.text
+
+    rv = client.get(f"/cat/release/{ident}/refs-out")
+
+    assert rv.status_code == 200
+    assert "Showing 1 - 30 of 34 references" in rv.text
+
+    # same ident, simulating empty
+    rv = client.get(f"/cat/release/{ident}/refs-out")
+
+    assert rv.status_code == 200
+    assert "Showing 0 references" in rv.text
