@@ -1,15 +1,12 @@
 # TODO references / reference matching
 
-# TODO /release/{ident}/refs-out.json
-# TODO /release/{ident}/refs-in.json
-# TODO /release/{ident}/refs-out
-# TODO /release/{ident}/refs-in
 # TODO /openlibrary/OL{id_num}W/refs-in
 # TODO /openlibrary/OL{id_num}W/refs-in.json
 # TODO /wikipedia/{wiki_lang}:{wiki_article}/refs-out
 # TODO /wikipedia/{wiki_lang}:{wiki_article}/refs-out.json
 
 import datetime
+import json
 from urllib.parse import urlencode
 from fuzzycat.simple import FuzzyReleaseMatchResult, Status, Reason
 import scholar.cat.web
@@ -102,3 +99,36 @@ def test_reference_match_json(client, fcclient, mocker, entities):
     assert payload[0]["status"] == "ambiguous"
     assert payload[0]["reason"] == "unknown"
     assert payload[0]["release"]["title"] == "steel and lace"
+
+def test_release_refs_json(client, fcclient, entities, es, es_resps):
+    es.side_effect = [
+        (200, {}, json.dumps(es_resps["release_refs_in"])),
+        (200, {}, json.dumps(es_resps["release_refs_out"])),
+        (200, {}, json.dumps(es_resps["release_refs_empty"])),
+    ]
+    fcclient.get_release.return_value=entities["release"]
+    ident = entities["release"].ident
+    rv = client.get(f"/cat/release/{ident}/refs-in.json")
+
+    assert rv.status_code == 200
+    payload = rv.json()
+    assert payload["count_returned"] == 9
+    assert len(payload["result_refs"]) == 9
+
+    rv = client.get(f"/cat/release/{ident}/refs-out.json")
+
+    assert rv.status_code == 200
+    payload = rv.json()
+    assert payload["count_returned"] == 30
+    assert len(payload["result_refs"]) == 30
+
+    # same ident, just simulating empty
+    rv = client.get(f"/cat/release/{ident}/refs-out.json")
+
+    assert rv.status_code == 200
+    payload = rv.json()
+    assert payload["count_returned"] == 0
+    assert len(payload["result_refs"]) == 0
+
+# TODO /release/{ident}/refs-out
+# TODO /release/{ident}/refs-in
