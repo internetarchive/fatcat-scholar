@@ -1,10 +1,3 @@
-# TODO references / reference matching
-
-# TODO /openlibrary/OL{id_num}W/refs-in
-# TODO /openlibrary/OL{id_num}W/refs-in.json
-# TODO /wikipedia/{wiki_lang}:{wiki_article}/refs-out
-# TODO /wikipedia/{wiki_lang}:{wiki_article}/refs-out.json
-
 import datetime
 import json
 from urllib.parse import urlencode
@@ -155,3 +148,40 @@ def test_release_refs_html(client, fcclient, entities, es, es_resps):
 
     assert rv.status_code == 200
     assert "Showing 0 references" in rv.text
+
+def test_openlibrary_refs(client, fcclient, entities, es, es_resps):
+    es.side_effect = [
+        (200, {}, json.dumps(es_resps["release_refs_in"])),
+        (200, {}, json.dumps(es_resps["release_refs_empty"])),
+        (200, {}, json.dumps(es_resps["release_refs_in"])),
+        (200, {}, json.dumps(es_resps["release_refs_empty"])),
+    ]
+    fcclient.get_release.return_value=entities["release"]
+
+    rv = client.get(f"/cat/openlibrary/OL123W/refs-in")
+    assert rv.status_code == 200
+    assert "Showing 1 - 9 of 69 references" in rv.text
+
+    # simulating empty
+    rv = client.get(f"/cat/openlibrary/OL123W/refs-in")
+    assert rv.status_code == 200
+    assert "Showing 0 references" in rv.text
+
+    rv = client.get(f"/cat/openlibrary/OL123W/refs-in.json")
+
+    assert rv.status_code == 200
+    payload = rv.json()
+    assert payload["count_returned"] == 9
+    assert len(payload["result_refs"]) == 9
+
+    # simulating empty
+    rv = client.get(f"/cat/openlibrary/OL123W/refs-in.json")
+
+    assert rv.status_code == 200
+    payload = rv.json()
+    assert payload["count_returned"] == 0
+    assert len(payload["result_refs"]) == 0
+
+# TODO /wikipedia/{wiki_lang}:{wiki_article}/refs-out
+# TODO /wikipedia/{wiki_lang}:{wiki_article}/refs-out.json
+
