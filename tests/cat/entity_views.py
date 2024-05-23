@@ -13,15 +13,9 @@ import fatcat_openapi_client as fcapi
 # TODO /release/{ident}/citeproc
 # TODO /release/{ident}.bib
 # TODO /coverage/search
-# TODO /container/search
-# TODO /container/{ident}/search
-# TODO /container/{ident}/coverage
 # TODO /release/save
-# TODO /changelog, /changelog/{index}
-# TODO /container/{ident}/history
 # TODO /creator/{ident}/history
 # TODO /file/{ident}/history
-# TODO /container/{ident}/browse
 # TODO /release/rev/{rev_id}/contribs
 # TODO /release/rev/{rev_id}/references
 # TODO /editgroup/{ident}
@@ -153,6 +147,15 @@ def test_container_lookup(client, fcclient, entities):
         assert f"cat/container/{c.ident}" in rv.headers.get("location"), extidtype
         assert rv.status_code == 302, extidtype
         fcclient.lookup_container.assert_called_with(**{extidtype: extid})
+
+# TODO /container/{ident}/search
+# TODO /container/{ident}/coverage
+# TODO /container/{ident}/history
+# TODO /container/{ident}/browse
+
+def test_container_search(client, fcclient, es, es_resps):
+    # TODO /container/search
+    pass
 
 #def test_web_container(app, mocker):
 #

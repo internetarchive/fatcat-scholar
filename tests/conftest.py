@@ -185,7 +185,6 @@ def entities():
             ),
         "work": fcapi.WorkEntity(
             state="active",
-
             ),
     }
 
