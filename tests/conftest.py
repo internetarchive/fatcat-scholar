@@ -45,7 +45,6 @@ ES_CONTAINER_RANDOM_RESP = {
     "took": 50,
 }
 
-
 #ES_RELEASE_EMPTY_RESP = {
 #    "timed_out": False,
 #    "hits": {"total": 0, "hits": [], "max_score": 0.0},
@@ -196,10 +195,13 @@ def es_resps():
         elastic_resp_out = json.loads(f.read())
     with open("tests/cat/files/elastic_empty.json") as f:
         elastic_resp_empty = json.loads(f.read())
+    with open("tests/cat/files/elastic_container_search.json") as f:
+        elastic_resp_container_search = json.loads(f.read())
 
     return {
         "container_stats": ES_CONTAINER_STATS_RESP,
         "container_random": ES_CONTAINER_RANDOM_RESP,
+        "container_search": elastic_resp_container_search,
         "release_refs_in": elastic_resp_in,
         "release_refs_out": elastic_resp_out,
         "release_refs_empty": elastic_resp_empty,

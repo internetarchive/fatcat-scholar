@@ -154,8 +154,17 @@ def test_container_lookup(client, fcclient, entities):
 # TODO /container/{ident}/browse
 
 def test_container_search(client, fcclient, es, es_resps):
-    # TODO /container/search
-    pass
+    rv = client.get("/cat/container/search")
+    assert rv.status_code == 200
+    assert "Journal/Conference Search" in rv.text
+
+    es.side_effect = [
+        (200, {}, json.dumps(es_resps["container_search"])),
+    ]
+    rv = client.get("/cat/container/search?q=tetsuo")
+    assert rv.status_code == 200
+    assert "out of 2 results" in rv.text
+    assert "Herpetology" in rv.text
 
 #def test_web_container(app, mocker):
 #
