@@ -880,7 +880,6 @@ def generic_entity_view(request: Request, fcclient: fcapi.DefaultApi, entity_typ
         })
 
 @routes.get("/container/search", include_in_schema=False)
-@routes.post("/container/search", include_in_schema=False)
 async def container_search(request: Request,
                            q: str|None = None) -> Response:
     ctx = {'query': GenericQuery(),
