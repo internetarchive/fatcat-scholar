@@ -44,13 +44,11 @@ def results_to_dict(response: elasticsearch_dsl.response.Response) -> List[dict]
     results = []
     for h in response:
         r = h._d_
-        # print(h.meta._d_)
+        for key in r:
+            if isinstance(r[key], str):
+                r[key] = r[key].encode("utf8", "ignore").decode("utf8")
         results.append(r)
 
-    for h in results:
-        for key in h:
-            if isinstance(h[key], str):
-                h[key] = h[key].encode("utf8", "ignore").decode("utf8")
     return results
 
 
