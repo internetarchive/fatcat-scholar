@@ -12,10 +12,8 @@ import fatcat_openapi_client as fcapi
 # TODO /release/{ident}/references
 # TODO /release/{ident}/citeproc
 # TODO /release/{ident}.bib
-# TODO /coverage/search
 # TODO /release/save
-# TODO /creator/{ident}/history
-# TODO /file/{ident}/history
+# TODO /coverage/search
 # TODO /release/rev/{rev_id}/contribs
 # TODO /release/rev/{rev_id}/references
 # TODO /editgroup/{ident}
@@ -25,6 +23,53 @@ import fatcat_openapi_client as fcapi
 # TODO common revision view routes (including /metadata)
 # TODO common editgroup routes
 # TODO common /metadata routes
+
+def test_entity_history_views(client, fcclient, entities, histories):
+    fcclient.get_release.return_value    = entities["release"]
+    fcclient.get_file.return_value       = entities["file"]
+    fcclient.get_fileset.return_value    = entities["fileset"]
+    fcclient.get_container.return_value  = entities["container"]
+    fcclient.get_webcapture.return_value = entities["webcapture"]
+    fcclient.get_creator.return_value    = entities["creator"]
+    fcclient.get_work.return_value       = entities["work"]
+
+    fcclient.get_container_history.return_value  = histories["container"]
+    fcclient.get_creator_history.return_value    = histories["creator"]
+    fcclient.get_file_history.return_value       = histories["file"]
+    fcclient.get_fileset_history.return_value    = histories["fileset"]
+
+    c = entities["container"]
+    rv = client.get(f"/cat/container/{c.ident}/history")
+    assert rv.status_code == 200
+    assert "g4uijctf2nahznuvc2xxm5i5he" in rv.text
+    assert "#4620617" in rv.text
+    assert "2019-01-31" in rv.text
+
+    cr = entities["creator"]
+    rv = client.get(f"/cat/creator/{cr.ident}/history")
+    assert rv.status_code == 200
+    assert "#2796" in rv.text
+    assert "ynn4nvuwafdtxiqboq7wzcarz4" in rv.text
+    assert "orcid-bot" in rv.text
+
+    f = entities["file"]
+    rv = client.get(f"/cat/file/{f.ident}/history")
+    assert rv.status_code == 200
+    assert "#4873842" in rv.text
+    assert "crawl-bot" in rv.text
+    assert "bjiovs43zbf75pxze3udalm27a" in rv.text
+
+    fs = entities["fileset"]
+    rv = client.get(f"/cat/fileset/{fs.ident}/history")
+    assert rv.status_code == 200
+    assert "#2336005" in rv.text
+    assert "bnewbold-archive" in rv.text
+    assert "xl3rz6uxfrb2pgprzxictbkvxi" in rv.text
+
+
+    # TODO release
+    # TODO webcapture
+    # TODO work
 
 def test_malformed_entity(client, entity_types):
     for entity_type in entity_types:
@@ -147,8 +192,6 @@ def test_container_lookup(client, fcclient, entities):
         assert f"cat/container/{c.ident}" in rv.headers.get("location"), extidtype
         assert rv.status_code == 302, extidtype
         fcclient.lookup_container.assert_called_with(**{extidtype: extid})
-
-# TODO /container/{ident}/history
 
 def test_container_ident_browse(client, fcclient, es, es_resps, entities):
     c = entities["container"]
