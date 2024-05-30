@@ -135,6 +135,7 @@ def entities():
             contribs=[],
             abstracts=[]),
         "container": fcapi.ContainerEntity(
+            state="active",
             ident="bi7rkf2w6jc5fd6z2szjd4k7j4",
             name="urusei yatsura studies",
             issne="2148-6905",
@@ -200,11 +201,14 @@ def es_resps():
         elastic_resp_container_search = json.loads(f.read())
     with open("tests/cat/files/elastic_release_search.json") as f:
         elastic_resp_release_search = json.loads(f.read())
+    with open("tests/cat/files/elastic_container_browse_no_params.json") as f:
+        elastic_resp_container_browse_no_params = json.loads(f.read())
 
     return {
         "container_stats": ES_CONTAINER_STATS_RESP,
         "container_random": ES_CONTAINER_RANDOM_RESP,
         "container_search": elastic_resp_container_search,
+        "container_browse_no_params": elastic_resp_container_browse_no_params,
         "release_search": elastic_resp_release_search,
         "release_refs_in": elastic_resp_in,
         "release_refs_out": elastic_resp_out,

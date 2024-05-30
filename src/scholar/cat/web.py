@@ -543,26 +543,9 @@ async def fileset_revision_view_metadata(
     return generic_entity_revision_view(request, fcclient, 'fileset',
                                         rev_id, 'entity_view_metadata.html')
 
-@routes.get("/container/{ident}/browse", include_in_schema=False)
-async def container_view_browse(
-        request:  Request,
-        fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
-        ident:    Ident,
-        year:     int|None = None,
-        volume:   str|None = None,
-        issue:    str|None = None) -> Response:
-    entity = generic_get_entity(fcclient, "container", ident)
-
-    if entity.state == "redirect":
-        return RedirectResponse(
-                request.url_for("container_view",
-                                ident=entity.redirect), status_code=302)
-    elif entity.state == "deleted":
-        return tmpls.TemplateResponse(request, "deleted_entity.html", {
-            "entity_type": "container",
-            "entity": entity})
-
-    query_sort: List[str]|None
+def browse_query(year: int|None, issue: str|None, volume: str|None) -> Tuple[str, List[str]]|None:
+    # all of this logic is highly questionable to me but I'm just preserving
+    # what was here and adding tests for it -nate
     vol = "!volume:*"
     iss = "!issue:*"
     def every(*xs: List[Any]) -> bool:
@@ -592,6 +575,67 @@ async def container_view_browse(
         query_string = vol
         query_sort = ["issue", "first_page", "pages", "release_date"]
     else:
+        return None
+    return (query_string, query_sort)
+
+
+def test_browse_query():
+    # year, issue, volume
+    cases = [{"name": "all none",
+              "args": [None, None, None],
+              "expected": None},
+             {"args": [1969, None, None],
+              "name": "just year",
+              "expected": ["year:1969", ["release_date"]]},
+             {"args": [None, None, "6"],
+              "name": "just volume",
+              "expected": ['volume:"6"', ["issue", "first_page", "pages", "release_date"]]},
+             {"args": [None, None, ""],
+              "name": "just volume but it is blank",
+              "expected": ['!volume:*', ["issue", "first_page", "pages", "release_date"]]},
+             {"args": [1969, "", ""],
+              "name": "year and blanks",
+              "expected": ["year:1969 !volume:* !issue:*", ["first_page", "pages", "release_date"]]},
+             {"args": [1969, None, ""],
+              "name": "year, empty volume, no issue",
+              "expected": ["year:1969 !volume:*", ["issue", "first_page", "pages", "release_date"]]},
+             {"args": [1969, "", None],
+              "name": "year, empty issue, no volume",
+              "expected": ["year:1969", ["release_date"]]},
+             {"args": [1969, "13", "6"],
+              "name": "all there",
+              "expected": ['year:1969 volume:"6" issue:"13"', ["first_page", "pages", "release_date"]]},
+            ]
+    for case in cases:
+        result = browse_query(*case["args"])
+        if result is None:
+            assert result == case["expected"], case["name"]
+        else:
+            assert result[0] == case["expected"][0], case["name"]
+            assert result[1] == case["expected"][1], case["name"]
+
+
+@routes.get("/container/{ident}/browse", include_in_schema=False)
+async def container_view_browse(
+        request:  Request,
+        fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
+        ident:    Ident,
+        year:     int|None = None,
+        volume:   str|None = None,
+        issue:    str|None = None) -> Response:
+    entity = generic_get_entity(fcclient, "container", ident)
+
+    if entity.state == "redirect":
+        return RedirectResponse(
+                request.url_for("container_view",
+                                ident=entity.redirect), status_code=302)
+    elif entity.state == "deleted":
+        return tmpls.TemplateResponse(request, "deleted_entity.html", {
+            "entity_type": "container",
+            "entity": entity})
+
+    q = browse_query(year, issue, volume)
+    if q is None:
         entity._browse_year_volume_issue = get_elastic_container_browse_year_volume_issue(
             entity.ident
         )
@@ -603,6 +647,7 @@ async def container_view_browse(
             'year': year,
             # 'editgroup_id: None
             })
+    query_string, query_sort = q
 
     query = ReleaseQuery(
         q=query_string,

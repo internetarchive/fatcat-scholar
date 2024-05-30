@@ -1,0 +1,149 @@
+{
+  "took" : 115,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 6,
+    "successful" : 6,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 90,
+      "relation" : "eq"
+    },
+    "max_score" : null,
+    "hits" : [ ]
+  },
+  "aggregations" : {
+    "year_volume" : {
+      "after_key" : {
+        "year" : 2024.0,
+        "volume" : null,
+        "issue" : null
+      },
+      "buckets" : [
+        {
+          "key" : {
+            "year" : 2010.0,
+            "volume" : null,
+            "issue" : null
+          },
+          "doc_count" : 18
+        },
+        {
+          "key" : {
+            "year" : 2011.0,
+            "volume" : null,
+            "issue" : null
+          },
+          "doc_count" : 6
+        },
+        {
+          "key" : {
+            "year" : 2012.0,
+            "volume" : null,
+            "issue" : null
+          },
+          "doc_count" : 14
+        },
+        {
+          "key" : {
+            "year" : 2013.0,
+            "volume" : null,
+            "issue" : null
+          },
+          "doc_count" : 10
+        },
+        {
+          "key" : {
+            "year" : 2014.0,
+            "volume" : null,
+            "issue" : null
+          },
+          "doc_count" : 3
+        },
+        {
+          "key" : {
+            "year" : 2015.0,
+            "volume" : null,
+            "issue" : null
+          },
+          "doc_count" : 1
+        },
+        {
+          "key" : {
+            "year" : 2016.0,
+            "volume" : null,
+            "issue" : null
+          },
+          "doc_count" : 4
+        },
+        {
+          "key" : {
+            "year" : 2017.0,
+            "volume" : null,
+            "issue" : null
+          },
+          "doc_count" : 3
+        },
+        {
+          "key" : {
+            "year" : 2018.0,
+            "volume" : null,
+            "issue" : null
+          },
+          "doc_count" : 4
+        },
+        {
+          "key" : {
+            "year" : 2019.0,
+            "volume" : null,
+            "issue" : null
+          },
+          "doc_count" : 5
+        },
+        {
+          "key" : {
+            "year" : 2020.0,
+            "volume" : null,
+            "issue" : null
+          },
+          "doc_count" : 6
+        },
+        {
+          "key" : {
+            "year" : 2021.0,
+            "volume" : null,
+            "issue" : null
+          },
+          "doc_count" : 9
+        },
+        {
+          "key" : {
+            "year" : 2022.0,
+            "volume" : null,
+            "issue" : null
+          },
+          "doc_count" : 1
+        },
+        {
+          "key" : {
+            "year" : 2023.0,
+            "volume" : null,
+            "issue" : null
+          },
+          "doc_count" : 2
+        },
+        {
+          "key" : {
+            "year" : 2024.0,
+            "volume" : null,
+            "issue" : null
+          },
+          "doc_count" : 4
+        }
+      ]
+    }
+  }
+}

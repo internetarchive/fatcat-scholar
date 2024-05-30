@@ -148,11 +148,35 @@ def test_container_lookup(client, fcclient, entities):
         assert rv.status_code == 302, extidtype
         fcclient.lookup_container.assert_called_with(**{extidtype: extid})
 
-# TODO /container/{ident}/coverage
 # TODO /container/{ident}/history
-# TODO /container/{ident}/browse
 
-def test_container_search(client, fcclient, es, es_resps):
+def test_container_ident_browse(client, fcclient, es, es_resps, entities):
+    c = entities["container"]
+    c.state = "redirect"
+    fcclient.get_container.return_value = c
+    rv = client.get(f"/cat/container/{c.ident}/browse", follow_redirects=False)
+    assert rv.status_code == 302
+
+    c.state = "deleted"
+    fcclient.get_container.return_value = c
+    rv = client.get(f"/cat/container/{c.ident}/browse")
+    assert rv.status_code == 200
+    assert "There used to be an entity here" in rv.text
+
+    c.state = "active"
+    es.side_effect = [
+        (200, {}, json.dumps(es_resps["container_browse_no_params"])),
+        (200, {}, json.dumps(es_resps["release_search"])),
+    ]
+    rv = client.get(f"/cat/container/{c.ident}/browse")
+    assert rv.status_code == 200
+
+    rv = client.get(f"/cat/container/{c.ident}/browse?year=1969&issue=6&volume=13")
+    assert rv.status_code == 200
+    assert "Mourning" in rv.text
+    assert "Volume 13, Issue 6 (1969)" in rv.text
+
+def test_container_search(client, es, es_resps):
     rv = client.get("/cat/container/search")
     assert rv.status_code == 200
     assert "Journal/Conference Search" in rv.text
@@ -181,6 +205,7 @@ def test_container_ident_search(client, fcclient, es, es_resps, entities):
     assert rv.status_code == 200
     assert "Mourning" in rv.text
     assert "out of 2 results" in rv.text
+
 
 #def test_web_container(app, mocker):
 #
