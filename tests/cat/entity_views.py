@@ -148,7 +148,6 @@ def test_container_lookup(client, fcclient, entities):
         assert rv.status_code == 302, extidtype
         fcclient.lookup_container.assert_called_with(**{extidtype: extid})
 
-# TODO /container/{ident}/search
 # TODO /container/{ident}/coverage
 # TODO /container/{ident}/history
 # TODO /container/{ident}/browse
@@ -165,6 +164,23 @@ def test_container_search(client, fcclient, es, es_resps):
     assert rv.status_code == 200
     assert "out of 2 results" in rv.text
     assert "Herpetology" in rv.text
+
+def test_container_ident_search(client, fcclient, es, es_resps, entities):
+    c = entities["container"]
+    fcclient.get_container.return_value = c
+
+    rv = client.get(f"/cat/container/{c.ident}/search")
+    assert rv.status_code == 200
+    assert "Search inside Container" in rv.text
+
+    es.side_effect = [
+        (200, {}, json.dumps(es_resps["release_search"])),
+    ]
+
+    rv = client.get(f"/cat/container/{c.ident}/search?q=gecko")
+    assert rv.status_code == 200
+    assert "Mourning" in rv.text
+    assert "out of 2 results" in rv.text
 
 #def test_web_container(app, mocker):
 #
