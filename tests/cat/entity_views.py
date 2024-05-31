@@ -8,9 +8,6 @@ import fatcat_openapi_client as fcapi
 # TODO /about
 # TODO /stats
 # TODO /release/search
-# TODO /release/{ident}/contribs
-# TODO /release/{ident}/references
-# TODO /release/{ident}/citeproc
 # TODO /release/{ident}.bib
 # TODO /release/save
 # TODO /coverage/search
@@ -23,6 +20,13 @@ import fatcat_openapi_client as fcapi
 # TODO common revision view routes (including /metadata)
 # TODO common editgroup routes
 # TODO common /metadata routes
+
+def test_release_citeproc(client, fcclient):
+    # TODO /release/{ident}/citeproc
+    # TODO csl-json
+    # TODO MLA
+    # TODO harvard
+    pass
 
 def test_entity_history_views(client, fcclient, entities, histories):
     fcclient.get_release.return_value    = entities["release"]
@@ -267,83 +271,6 @@ def test_container_ident_search(client, fcclient, es, es_resps, entities):
     assert rv.status_code == 200
     assert "Mourning" in rv.text
     assert "out of 2 results" in rv.text
-
-
-#def test_web_container(app, mocker):
-#
-#    es_raw = mocker.patch("elasticsearch.connection.Urllib3HttpConnection.perform_request")
-#    # these are basic ES stats for the container view pages
-#    es_raw.side_effect = [
-#        (200, {}, json.dumps(ES_CONTAINER_STATS_RESP)),
-#        (200, {}, json.dumps(ES_CONTAINER_RANDOM_RESP)),
-#    ]
-#
-#    rv = app.get("/container/aaaaaaaaaaaaaeiraaaaaaaaai")
-#    assert rv.status_code == 200
-#    rv = app.get("/container/aaaaaaaaaaaaaeiraaaaaaaaai/metadata")
-#    assert rv.status_code == 200
-#    rv = app.get("/container/aaaaaaaaaaaaaeiraaaaaaaaai/edit")
-#    assert rv.status_code == 302
-#    rv = app.get("/container/create")
-#    assert rv.status_code == 302
-#    rv = app.get("/container/rev/00000000-0000-0000-1111-fff000000002")
-#    assert rv.status_code == 200
-#    rv = app.get("/container/rev/00000000-0000-0000-1111-fff000000002/metadata")
-#    assert rv.status_code == 200
-#    rv = app.get("/editgroup/aaaaaaaaaaaabo53aaaaaaaaaq/container/aaaaaaaaaaaaaeiraaaaaaaaai")
-#    assert rv.status_code == 200
-#    rv = app.get(
-#        "/editgroup/aaaaaaaaaaaabo53aaaaaaaaaq/container/aaaaaaaaaaaaaeiraaaaaaaaai/metadata"
-#    )
-#    assert rv.status_code == 200
-#    rv = app.get(
-#        "/editgroup/aaaaaaaaaaaabo53aaaaaaaaaq/container/aaaaaaaaaaaaaeiraaaaaaaaai/edit"
-#    )
-#    assert rv.status_code == 302
-#
-#
-#def test_web_release(app):
-#    # not logged in
-#
-#    rv = app.get("/release/aaaaaaaaaaaaarceaaaaaaaaai")
-#    assert rv.status_code == 200
-#    rv = app.get("/release/aaaaaaaaaaaaarceaaaaaaaaai/contribs")
-#    assert rv.status_code == 200
-#    rv = app.get("/release/aaaaaaaaaaaaarceaaaaaaaaai/references")
-#    assert rv.status_code == 200
-#    rv = app.get("/release/aaaaaaaaaaaaarceaaaaaaaaai/metadata")
-#    assert rv.status_code == 200
-#    rv = app.get("/release/rev/00000000-0000-0000-4444-fff000000002/contribs")
-#    assert rv.status_code == 200
-#    rv = app.get("/release/rev/00000000-0000-0000-4444-fff000000002/references")
-#    assert rv.status_code == 200
-#    rv = app.get("/release/rev/00000000-0000-0000-4444-fff000000002/metadata")
-#    assert rv.status_code == 200
-#    rv = app.get("/editgroup/aaaaaaaaaaaabo53aaaaaaaaaq/release/aaaaaaaaaaaaarceaaaaaaaaai")
-#    assert rv.status_code == 200
-#    rv = app.get(
-#        "/editgroup/aaaaaaaaaaaabo53aaaaaaaaaq/release/aaaaaaaaaaaaarceaaaaaaaaai/contribs"
-#    )
-#    assert rv.status_code == 200
-#    rv = app.get(
-#        "/editgroup/aaaaaaaaaaaabo53aaaaaaaaaq/release/aaaaaaaaaaaaarceaaaaaaaaai/references"
-#    )
-#    assert rv.status_code == 200
-#    rv = app.get(
-#        "/editgroup/aaaaaaaaaaaabo53aaaaaaaaaq/release/aaaaaaaaaaaaarceaaaaaaaaai/metadata"
-#    )
-#    assert rv.status_code == 200
-#
-#    rv = app.get("/release/aaaaaaaaaaaaarceaaaaaaaaai/edit")
-#    assert rv.status_code == 302
-#    rv = app.get("/release/create")
-#    assert rv.status_code == 302
-#
-#
-#def test_web_search(app):
-#
-#    rv = app.get("/release/search")
-#    assert rv.status_code == 200
 
 def test_generic_entity_view_active_release(client, fcclient, mocker, entities):
     r = entities["release"]
