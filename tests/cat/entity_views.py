@@ -37,6 +37,9 @@ def test_entity_history_views(client, fcclient, entities, histories):
     fcclient.get_creator_history.return_value    = histories["creator"]
     fcclient.get_file_history.return_value       = histories["file"]
     fcclient.get_fileset_history.return_value    = histories["fileset"]
+    fcclient.get_webcapture_history.return_value = histories["webcapture"]
+    fcclient.get_release_history.return_value    = histories["release"]
+    fcclient.get_work_history.return_value       = histories["work"]
 
     c = entities["container"]
     rv = client.get(f"/cat/container/{c.ident}/history")
@@ -66,10 +69,26 @@ def test_entity_history_views(client, fcclient, entities, histories):
     assert "bnewbold-archive" in rv.text
     assert "xl3rz6uxfrb2pgprzxictbkvxi" in rv.text
 
+    wc = entities["webcapture"]
+    rv = client.get(f"/cat/webcapture/{wc.ident}/history")
+    assert rv.status_code == 200
+    assert "#2336002" in rv.text
+    assert "bnewbold-archive" in rv.text
+    assert "kpuel5gcgjfrzkowokq54k633q" in rv.text
 
-    # TODO release
-    # TODO webcapture
-    # TODO work
+    r = entities["release"]
+    rv = client.get(f"/cat/release/{r.ident}/history")
+    assert rv.status_code == 200
+    assert "#4529728" in rv.text
+    assert "crossref-bot" in rv.text
+    assert "h32n3zxlfvforca3oefqdxc3lm" in rv.text
+
+    w = entities["work"]
+    rv = client.get(f"/cat/work/{w.ident}/history")
+    assert rv.status_code == 200
+    assert "#4529728" in rv.text
+    assert "crossref-bot" in rv.text
+    assert "uggz4zervvgevn4gt7odo4ufnq" in rv.text
 
 def test_malformed_entity(client, entity_types):
     for entity_type in entity_types:
