@@ -8,7 +8,6 @@ import fatcat_openapi_client as fcapi
 # TODO /about
 # TODO /stats
 # TODO /release/search
-# TODO /release/{ident}.bib
 # TODO /release/save
 # TODO /coverage/search
 # TODO /release/rev/{rev_id}/contribs
@@ -20,6 +19,24 @@ import fatcat_openapi_client as fcapi
 # TODO common revision view routes (including /metadata)
 # TODO common editgroup routes
 # TODO common /metadata routes
+
+def test_release_bibtex(client, fcclient, entities):
+    r = entities["bigrelease"]
+    fcclient.get_release.return_value = r
+
+    rv = client.get(f"/cat/release/{r.ident}.bib")
+
+    assert rv.status_code == 200
+    assert rv.text == '''@article{faas_weckerly_2010, 
+  title={Habitat Interference by Axis Deer on White-Tailed Deer}, 
+  volume={74}, 
+  ISSN={0022-541X}, 
+  DOI={10.2193/2009-135}, 
+  journal={Journal of Wildlife Management}, 
+  publisher={Wiley (Blackwell Publishing)}, 
+  author={Faas and Weckerly}, 
+  year={2010}
+  }'''
 
 def test_release_citeproc(client, fcclient, entities):
     r = entities["bigrelease"]
