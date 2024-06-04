@@ -21,12 +21,33 @@ import fatcat_openapi_client as fcapi
 # TODO common editgroup routes
 # TODO common /metadata routes
 
-def test_release_citeproc(client, fcclient):
-    # TODO /release/{ident}/citeproc
-    # TODO csl-json
-    # TODO MLA
-    # TODO harvard
-    pass
+def test_release_citeproc(client, fcclient, entities):
+    r = entities["bigrelease"]
+    fcclient.get_release.return_value = r
+
+    rv = client.get(f"/cat/release/{r.ident}/citeproc")
+
+    assert rv.status_code == 200
+    assert rv.text == "Faas and Weckerly (2010) ‘Habitat Interference by Axis Deer on White-Tailed Deer’, Journal of Wildlife Management, 74. doi: 10.2193/2009-135."
+
+    rv = client.get(f"/cat/release/{r.ident}/citeproc?style=modern-language-association")
+
+    assert rv.status_code == 200
+    assert rv.text == "Faasand Weckerly. “Habitat Interference by Axis Deer on White-tailed Deer”. Journal of Wildlife Management, vol. 74, Wiley (Blackwell Publishing), 2010, doi:10.2193/2009-135."
+
+    rv = client.get(f"/cat/release/{r.ident}/citeproc?style=csl-json")
+
+    assert rv.status_code == 200
+    assert rv.text == '{"type": "article-journal", "language": "en", "issued": {"date-parts": [[2010]]}, "DOI": "10.2193/2009-135", "ISSN": "0022-541X", "publisher": "Wiley (Blackwell Publishing)", "title": "Habitat Interference by Axis Deer on White-Tailed Deer", "volume": "74", "author": [{"family": "Faas"}, {"family": "Weckerly"}], "container-title": "Journal of Wildlife Management", "page-first": "698", "id": "unknown"}'
+
+    rv = client.get(f"/cat/release/{r.ident}/citeproc?style=elsevier-harvard")
+
+    assert rv.status_code == 200
+    assert rv.text == "Faas, Weckerly, 2010. Habitat Interference by Axis Deer on White-Tailed Deer. Journal of Wildlife Management 74.. https://doi.org/10.2193/2009-135" 
+
+    rv = client.get(f"/cat/release/{r.ident}/citeproc?style=bad")
+
+    assert rv.status_code == 400
 
 def test_entity_history_views(client, fcclient, entities, histories):
     fcclient.get_release.return_value    = entities["release"]
