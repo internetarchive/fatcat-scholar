@@ -182,7 +182,7 @@ def generic_get_entity_revision(fcclient: fcapi.DefaultApi, entity_type: str, re
         return fcclient.get_container_revision(rev_id)
     elif entity_type == "creator" and enrich:
         return enrich_creator_entity(
-                fcclient.get_creator_revision(rev_id))
+                fcclient, fcclient.get_creator_revision(rev_id))
     elif entity_type == "creator":
         return fcclient.get_creator_revision(rev_id)
     elif entity_type == "file" and enrich:
