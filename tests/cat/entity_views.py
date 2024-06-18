@@ -4,6 +4,8 @@ import scholar.cat.web
 
 import fatcat_openapi_client as fcapi
 
+from uuid import UUID
+
 # TODO /
 # TODO /about
 # TODO /stats
@@ -16,7 +18,6 @@ import fatcat_openapi_client as fcapi
 # TODO /editgroup/{ident}/diff
 # TODO /editor routes
 # TODO /u/{username}
-# TODO common revision view routes (including /metadata)
 # TODO common editgroup routes
 # TODO common /metadata routes
 
@@ -474,3 +475,142 @@ def test_generic_entity_views(client, mocker):
         assert calls[2] == case["args"][0]
         assert calls[3] == case["args"][1]
         assert calls[4] == case["args"][2]
+
+def test_generic_entity_revision_views(client, mocker):
+    cases = [{"route": "/cat/container/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d",
+               "args": ["container", UUID("a078e5fe-0815-4ec4-82d8-7841b8a6317d"), "container_view.html"]},
+             {"route": "/cat/container/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d/metadata",
+               "args": ["container", UUID("a078e5fe-0815-4ec4-82d8-7841b8a6317d"), "entity_view_metadata.html"]},
+
+             {"route": "/cat/creator/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d",
+               "args": ["creator", UUID("a078e5fe-0815-4ec4-82d8-7841b8a6317d"), "creator_view.html"]},
+             {"route": "/cat/creator/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d/metadata",
+               "args": ["creator", UUID("a078e5fe-0815-4ec4-82d8-7841b8a6317d"), "entity_view_metadata.html"]},
+
+             {"route": "/cat/file/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d",
+               "args": ["file", UUID("a078e5fe-0815-4ec4-82d8-7841b8a6317d"), "file_view.html"]},
+             {"route": "/cat/file/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d/metadata",
+               "args": ["file", UUID("a078e5fe-0815-4ec4-82d8-7841b8a6317d"), "entity_view_metadata.html"]},
+
+             {"route": "/cat/webcapture/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d",
+               "args": ["webcapture", UUID("a078e5fe-0815-4ec4-82d8-7841b8a6317d"), "webcapture_view.html"]},
+             {"route": "/cat/webcapture/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d/metadata",
+               "args": ["webcapture", UUID("a078e5fe-0815-4ec4-82d8-7841b8a6317d"), "entity_view_metadata.html"]},
+
+             {"route": "/cat/fileset/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d",
+               "args": ["fileset", UUID("a078e5fe-0815-4ec4-82d8-7841b8a6317d"), "fileset_view.html"]},
+             {"route": "/cat/fileset/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d/metadata",
+               "args": ["fileset", UUID("a078e5fe-0815-4ec4-82d8-7841b8a6317d"), "entity_view_metadata.html"]},
+
+             {"route": "/cat/work/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d",
+               "args": ["work", UUID("a078e5fe-0815-4ec4-82d8-7841b8a6317d"), "work_view.html"]},
+             {"route": "/cat/work/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d/metadata",
+               "args": ["work", UUID("a078e5fe-0815-4ec4-82d8-7841b8a6317d"), "entity_view_metadata.html"]},
+
+             {"route": "/cat/release/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d",
+               "args": ["release", UUID("a078e5fe-0815-4ec4-82d8-7841b8a6317d"), "release_view.html"]},
+             {"route": "/cat/release/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d/metadata",
+               "args": ["release", UUID("a078e5fe-0815-4ec4-82d8-7841b8a6317d"), "entity_view_metadata.html"]},
+             {"route": "/cat/release/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d/contribs",
+               "args": ["release", UUID("a078e5fe-0815-4ec4-82d8-7841b8a6317d"), "release_view_contribs.html"]},
+             {"route": "/cat/release/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d/references",
+               "args": ["release", UUID("a078e5fe-0815-4ec4-82d8-7841b8a6317d"), "release_view_references.html"]},
+            ]
+
+    for case in cases:
+        mocker.patch("scholar.cat.web.generic_entity_revision_view")
+        client.get(case["route"])
+        scholar.cat.web.generic_entity_revision_view.assert_called_once()
+        calls = scholar.cat.web.generic_entity_revision_view.call_args[0]
+        assert calls[2] == case["args"][0], "type"
+        assert calls[3] == case["args"][1], "id"
+        assert calls[4] == case["args"][2], "template"
+
+def test_generic_entity_revision_view_release(client, fcclient, mocker, entities):
+    r = entities["release"]
+    fcclient.get_release_revision.return_value = r
+    res = client.get("/cat/release/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d")
+    assert res.status_code == 200
+    assert r.title in res.text
+    assert r.publisher in res.text
+
+def test_generic_entity_revision_view_release_metadata(client, fcclient, entities):
+    r = entities["release"]
+    fcclient.get_release_revision.return_value = r
+    res = client.get("/cat/release/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d/metadata")
+    assert res.status_code == 200
+    assert r.pages in res.text
+    assert r.volume in res.text
+
+def test_generic_entity_revision_view_container_view(client, fcclient, es, entities, es_resps):
+    c = entities["container"]
+    fcclient.get_container_revision.return_value = c
+    es.side_effect = [
+        (200, {}, json.dumps(es_resps["container_stats"])),
+        (200, {}, json.dumps(es_resps["container_random"])),
+    ]
+    res = client.get("/cat/container/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d")
+    assert res.status_code == 200
+    assert "urusei yatsura" in res.text
+
+def test_generic_entity_revision_view_container_view_metadata(client, fcclient, mocker, entities):
+    c = entities["container"]
+    fcclient.get_container_revision.return_value = c
+    res = client.get("/cat/container/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d/metadata")
+    assert res.status_code == 200
+    assert "urusei yatsura" in res.text
+
+# TODO file
+# TODO file metadata
+# TODO fileset
+# TODO fileset metadata
+# TODO webcapture
+# TODO webcapture metadata
+# TODO work
+# TODO work metadata
+# TODO release contribs 
+# TODO release references
+# TODO creator -- it's 500ing
+
+#def test_generic_entity_revision_view_creator(client, fcclient, entities):
+#    c = entities["creator"]
+#    fcclient.get_creator.return_value = c
+#
+#    res = client.get("/cat/creator/abcdefghijklmnopqrstuvwxyz")
+#
+#    assert res.status_code == 200
+#    assert "tetsuo" in res.text
+#    assert "the iron man" in res.text
+#
+#def test_generic_entity_revision_view_file(client, fcclient, entities):
+#    f = entities["file"]
+#    fcclient.get_file.return_value = f
+#
+#    res = client.get("/cat/file/abcdefghijklmnopqrstuvwxyz")
+#    assert res.status_code == 200
+#    assert f.md5 in res.text
+#    assert f.sha256 in res.text
+#
+#def test_generic_entity_revision_view_fileset(client, fcclient, entities):
+#    fs = entities["fileset"]
+#    fcclient.get_fileset.return_value = fs
+#    res = client.get("/cat/fileset/abcdefghijklmnopqrstuvwxyz")
+#    assert "File Manifest" in res.text
+#    assert res.status_code == 200
+#    assert fs.manifest[0].path in res.text
+#
+#def test_generic_entity_revision_view_webcapture(client, fcclient, entities):
+#    wc = entities["webcapture"]
+#    fcclient.get_webcapture.return_value = wc
+#    res = client.get("/cat/webcapture/abcdefghijklmnopqrstuvwxyz")
+#    assert res.status_code == 200
+#    assert wc.cdx[0].sha1 in res.text
+#
+#def test_generic_entity_revision_view_work(client, fcclient, entities):
+#    w = entities["work"]
+#
+#    fcclient.get_work.return_value = w
+#    fcclient.get_work_releases.return_value = [entities["release"]]
+#    res = client.get("/cat/work/abcdefghijklmnopqrstuvwxyz")
+#    assert res.status_code == 200
+#    assert entities["release"].title in res.text
