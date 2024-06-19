@@ -113,3 +113,10 @@ freeze: dep
 .PHONY: audit
 audit: dep
 	.venv/bin/pip-audit
+
+.PHONY: clean
+clean: ## Clean cached files
+	find src -type d -name "__pycache__" -exec rm -rf {} \;
+	find src -type d -name "*.egg-info" -exec rm -rf {} \;
+	rm -rf .pytest_cache/
+	rm -rf .mypy_cache/
