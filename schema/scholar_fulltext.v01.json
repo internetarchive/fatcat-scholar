@@ -52,7 +52,6 @@
     }
 },
 "mappings": {
-  "_doc": {
     "dynamic": false,
     "_source": {
       "excludes": [
@@ -260,6 +259,5 @@
         "pub_collection": { "type": "alias", "path": "ia_sim.pub_collection" },
         "sim_pubid":      { "type": "alias", "path": "ia_sim.sim_pubid" }
     }
-  }
 }
 }
