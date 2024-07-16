@@ -142,7 +142,7 @@ def entities():
             contribs=[
                 fcapi.ReleaseContrib(
                     creator=fcapi.CreatorEntity(
-                        display_name="testuo the iron man",
+                        display_name="tetsuo the iron man",
                         given_name="tetsuo",
                         ident="iimvc523xbhqlav6j3sbthuehu",
                         orcid="0000-0003-3118-6859",

@@ -12,8 +12,6 @@ from uuid import UUID
 # TODO /release/search
 # TODO /release/save
 # TODO /coverage/search
-# TODO /release/rev/{rev_id}/contribs
-# TODO /release/rev/{rev_id}/references
 # TODO /editgroup/{ident}
 # TODO /editgroup/{ident}/diff
 # TODO /editor routes
@@ -342,6 +340,13 @@ def test_generic_entity_view_release_metadata(client, fcclient, entities):
     assert r.pages in res.text
     assert r.volume in res.text
 
+def test_generic_entity_view_release_contribs(client, fcclient, entities):
+    r = entities["release"]
+    fcclient.get_release.return_value = r
+    res = client.get("/cat/release/abcdefghijklmnopqrstuvwxyz/contribs")
+    assert res.status_code == 200
+    assert "(the iron man, tetsuo)" in res.text
+
 def test_generic_entity_view_container_view(client, fcclient, es, entities, es_resps):
     c = entities["container"]
     fcclient.get_container.return_value = c
@@ -403,12 +408,47 @@ def test_generic_entity_view_webcapture(client, fcclient, entities):
 
 def test_generic_entity_view_work(client, fcclient, entities):
     w = entities["work"]
-
     fcclient.get_work.return_value = w
     fcclient.get_work_releases.return_value = [entities["release"]]
     res = client.get("/cat/work/abcdefghijklmnopqrstuvwxyz")
     assert res.status_code == 200
     assert entities["release"].title in res.text
+
+def test_generic_entity_view_work_metadata(client, fcclient, entities):
+    w = entities["work"]
+    fcclient.get_work.return_value = w
+    res = client.get("/cat/work/abcdefghijklmnopqrstuvwxyz/metadata")
+    assert res.status_code == 200
+    assert w.ident in res.text
+    assert "Entity Metadata" in res.text
+
+# TODO adapt for non-revisions
+#def test_generic_entity_revision_view_fileset_metadata(client, fcclient, entities):
+#    fs = entities["fileset"]
+#    fcclient.get_fileset_revision.return_value = fs
+#    res = client.get("/cat/fileset/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d/metadata")
+#    assert res.status_code == 200
+#    assert fs.manifest[0].path in res.text
+#def test_generic_entity_revision_view_file_metadata(client, fcclient, entities):
+#    f = entities["file"]
+#    fcclient.get_file_revision.return_value = f
+#
+#    res = client.get("/cat/file/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d/metadata")
+#    assert res.status_code == 200
+#    assert f.md5 in res.text
+#    assert f.sha256 in res.text
+#    assert "release_ids" in res.text
+#def test_generic_entity_revision_view_creator_metadata(client, fcclient, entities):
+#    c = entities["creator"]
+#    fcclient.get_creator_revision.return_value = c
+#
+#    res = client.get("/cat/creator/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d/metadata")
+#
+#    assert res.status_code == 200
+#    assert "tetsuo" in res.text
+#    assert "the iron man" in res.text
+#    assert "wikidata_qid" in res.text
+#    assert "Q6251482" in res.text
 
 def test_generic_entity_views(client, mocker):
     cases = [{"route": "/cat/container/abcdefghijklmnopqrstuvwxyz/coverage",
@@ -560,57 +600,98 @@ def test_generic_entity_revision_view_container_view_metadata(client, fcclient, 
     assert res.status_code == 200
     assert "urusei yatsura" in res.text
 
-# TODO file
-# TODO file metadata
-# TODO fileset
-# TODO fileset metadata
-# TODO webcapture
-# TODO webcapture metadata
-# TODO work
-# TODO work metadata
-# TODO release contribs 
-# TODO release references
-# TODO creator -- it's 500ing
+def test_generic_entity_revision_view_creator(client, fcclient, entities):
+    c = entities["creator"]
+    fcclient.get_creator_revision.return_value = c
 
-#def test_generic_entity_revision_view_creator(client, fcclient, entities):
-#    c = entities["creator"]
-#    fcclient.get_creator.return_value = c
-#
-#    res = client.get("/cat/creator/abcdefghijklmnopqrstuvwxyz")
-#
-#    assert res.status_code == 200
-#    assert "tetsuo" in res.text
-#    assert "the iron man" in res.text
-#
-#def test_generic_entity_revision_view_file(client, fcclient, entities):
-#    f = entities["file"]
-#    fcclient.get_file.return_value = f
-#
-#    res = client.get("/cat/file/abcdefghijklmnopqrstuvwxyz")
-#    assert res.status_code == 200
-#    assert f.md5 in res.text
-#    assert f.sha256 in res.text
-#
-#def test_generic_entity_revision_view_fileset(client, fcclient, entities):
-#    fs = entities["fileset"]
-#    fcclient.get_fileset.return_value = fs
-#    res = client.get("/cat/fileset/abcdefghijklmnopqrstuvwxyz")
-#    assert "File Manifest" in res.text
-#    assert res.status_code == 200
-#    assert fs.manifest[0].path in res.text
-#
-#def test_generic_entity_revision_view_webcapture(client, fcclient, entities):
-#    wc = entities["webcapture"]
-#    fcclient.get_webcapture.return_value = wc
-#    res = client.get("/cat/webcapture/abcdefghijklmnopqrstuvwxyz")
-#    assert res.status_code == 200
-#    assert wc.cdx[0].sha1 in res.text
-#
-#def test_generic_entity_revision_view_work(client, fcclient, entities):
-#    w = entities["work"]
-#
-#    fcclient.get_work.return_value = w
-#    fcclient.get_work_releases.return_value = [entities["release"]]
-#    res = client.get("/cat/work/abcdefghijklmnopqrstuvwxyz")
-#    assert res.status_code == 200
-#    assert entities["release"].title in res.text
+    res = client.get("/cat/creator/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d")
+
+    assert res.status_code == 200
+    assert "tetsuo" in res.text
+    assert "the iron man" in res.text
+
+def test_generic_entity_revision_view_creator_metadata(client, fcclient, entities):
+    c = entities["creator"]
+    fcclient.get_creator_revision.return_value = c
+
+    res = client.get("/cat/creator/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d/metadata")
+
+    assert res.status_code == 200
+    assert "tetsuo" in res.text
+    assert "the iron man" in res.text
+    assert "wikidata_qid" in res.text
+    assert "Q6251482" in res.text
+
+def test_generic_entity_revision_view_file(client, fcclient, entities):
+    f = entities["file"]
+    fcclient.get_file_revision.return_value = f
+
+    res = client.get("/cat/file/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d")
+    assert res.status_code == 200
+    assert f.md5 in res.text
+    assert f.sha256 in res.text
+
+def test_generic_entity_revision_view_file_metadata(client, fcclient, entities):
+    f = entities["file"]
+    fcclient.get_file_revision.return_value = f
+
+    res = client.get("/cat/file/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d/metadata")
+    assert res.status_code == 200
+    assert f.md5 in res.text
+    assert f.sha256 in res.text
+    assert "release_ids" in res.text
+
+def test_generic_entity_revision_view_fileset(client, fcclient, entities):
+    fs = entities["fileset"]
+    fcclient.get_fileset_revision.return_value = fs
+    res = client.get("/cat/fileset/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d")
+    assert "File Manifest" in res.text
+    assert res.status_code == 200
+    assert fs.manifest[0].path in res.text
+
+def test_generic_entity_revision_view_fileset_metadata(client, fcclient, entities):
+    fs = entities["fileset"]
+    fcclient.get_fileset_revision.return_value = fs
+    res = client.get("/cat/fileset/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d/metadata")
+    assert res.status_code == 200
+    assert fs.manifest[0].path in res.text
+
+def test_generic_entity_revision_view_webcapture(client, fcclient, entities):
+    wc = entities["webcapture"]
+    fcclient.get_webcapture_revision.return_value = wc
+    res = client.get("/cat/webcapture/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d")
+    assert res.status_code == 200
+    assert wc.cdx[0].sha1 in res.text
+
+def test_generic_entity_revision_view_webcapture(client, fcclient, entities):
+    wc = entities["webcapture"]
+    fcclient.get_webcapture_revision.return_value = wc
+    res = client.get("/cat/webcapture/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d/metadata")
+    assert res.status_code == 200
+    assert wc.cdx[0].sha1 in res.text
+
+def test_generic_entity_revision_view_work(client, fcclient, entities):
+    w = entities["work"]
+
+    fcclient.get_work_revision.return_value = w
+    #fcclient.get_work_releases.return_value = [entities["release"]]
+    res = client.get("/cat/work/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d")
+    assert res.status_code == 200
+    assert w.ident in res.text
+
+def test_generic_entity_revision_view_work_metadata(client, fcclient, entities):
+    w = entities["work"]
+
+    fcclient.get_work_revision.return_value = w
+    res = client.get("/cat/work/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d/metadata")
+    assert res.status_code == 200
+    assert w.ident in res.text
+    assert "Entity Metadata" in res.text
+
+def test_generic_entity_revision_view_release_contribs(client, fcclient, entities):
+    r = entities["release"]
+
+    fcclient.get_release_revision.return_value = r
+    res = client.get("/cat/release/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d/contribs")
+    assert res.status_code == 200
+    assert "(the iron man, tetsuo)" in res.text
