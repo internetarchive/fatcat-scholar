@@ -17,7 +17,6 @@ from uuid import UUID
 # TODO /editor routes
 # TODO /u/{username}
 # TODO common editgroup routes
-# TODO common /metadata routes
 
 def test_release_bibtex(client, fcclient, entities):
     r = entities["bigrelease"]
@@ -332,6 +331,14 @@ def test_generic_entity_view_redirect_release(client, fcclient, mocker, entities
     res = client.get("/cat/release/abcdefghijklmnopqrstuvwxyz", follow_redirects=False)
     assert res.status_code == 302
 
+def test_generic_entity_view_webcapture_metadata(client, fcclient, entities):
+    wc = entities["webcapture"]
+    fcclient.get_webcapture.return_value = wc
+    res = client.get("/cat/webcapture/abcdefghijklmnopqrstuvwxyz/metadata")
+    assert res.status_code == 200
+    assert wc.cdx[0].sha1 in res.text
+    assert "content_scope" in res.text
+
 def test_generic_entity_view_release_metadata(client, fcclient, entities):
     r = entities["release"]
     fcclient.get_release.return_value = r
@@ -422,33 +429,40 @@ def test_generic_entity_view_work_metadata(client, fcclient, entities):
     assert w.ident in res.text
     assert "Entity Metadata" in res.text
 
-# TODO adapt for non-revisions
-#def test_generic_entity_revision_view_fileset_metadata(client, fcclient, entities):
-#    fs = entities["fileset"]
-#    fcclient.get_fileset_revision.return_value = fs
-#    res = client.get("/cat/fileset/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d/metadata")
-#    assert res.status_code == 200
-#    assert fs.manifest[0].path in res.text
-#def test_generic_entity_revision_view_file_metadata(client, fcclient, entities):
-#    f = entities["file"]
-#    fcclient.get_file_revision.return_value = f
-#
-#    res = client.get("/cat/file/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d/metadata")
-#    assert res.status_code == 200
-#    assert f.md5 in res.text
-#    assert f.sha256 in res.text
-#    assert "release_ids" in res.text
-#def test_generic_entity_revision_view_creator_metadata(client, fcclient, entities):
-#    c = entities["creator"]
-#    fcclient.get_creator_revision.return_value = c
-#
-#    res = client.get("/cat/creator/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d/metadata")
-#
-#    assert res.status_code == 200
-#    assert "tetsuo" in res.text
-#    assert "the iron man" in res.text
-#    assert "wikidata_qid" in res.text
-#    assert "Q6251482" in res.text
+def test_generic_entity_view_fileset_metadata(client, fcclient, entities):
+    fs = entities["fileset"]
+    fcclient.get_fileset.return_value = fs
+    res = client.get("/cat/fileset/abcdefghijklmnopqrstuvwxyz/metadata")
+    assert res.status_code == 200
+    assert fs.manifest[0].path in res.text
+
+def test_generic_entity_view_file_metadata(client, fcclient, entities):
+    f = entities["file"]
+    fcclient.get_file.return_value = f
+    res = client.get("/cat/file/abcdefghijklmnopqrstuvwxyz/metadata")
+    assert res.status_code == 200
+    assert f.md5 in res.text
+    assert f.sha256 in res.text
+    assert "release_ids" in res.text
+
+def test_generic_entity_view_creator_metadata(client, fcclient, entities):
+    c = entities["creator"]
+    fcclient.get_creator.return_value = c
+
+    res = client.get("/cat/creator/abcdefghijklmnopqrstuvwxyz/metadata")
+
+    assert res.status_code == 200
+    assert "tetsuo" in res.text
+    assert "the iron man" in res.text
+    assert "wikidata_qid" in res.text
+    assert "Q6251482" in res.text
+
+def test_generic_entity_view_container_view_metadata(client, fcclient, mocker, entities):
+    c = entities["container"]
+    fcclient.get_container.return_value = c
+    res = client.get("/cat/container/abcdefghijklmnopqrstuvwxyz/metadata")
+    assert res.status_code == 200
+    assert "urusei yatsura" in res.text
 
 def test_generic_entity_views(client, mocker):
     cases = [{"route": "/cat/container/abcdefghijklmnopqrstuvwxyz/coverage",
@@ -663,7 +677,7 @@ def test_generic_entity_revision_view_webcapture(client, fcclient, entities):
     assert res.status_code == 200
     assert wc.cdx[0].sha1 in res.text
 
-def test_generic_entity_revision_view_webcapture(client, fcclient, entities):
+def test_generic_entity_revision_view_webcapture_metadata(client, fcclient, entities):
     wc = entities["webcapture"]
     fcclient.get_webcapture_revision.return_value = wc
     res = client.get("/cat/webcapture/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d/metadata")
