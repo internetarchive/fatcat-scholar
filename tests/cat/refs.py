@@ -3,6 +3,8 @@ from urllib.parse import urlencode
 from fuzzycat.simple import FuzzyReleaseMatchResult, Status, Reason
 import scholar.cat.web
 
+# TODO /release/{ident}/references
+
 def test_reference_match(client, fcclient, mocker, entities):
     # on GET we render an empty form
     rv = client.get("/cat/reference/match")

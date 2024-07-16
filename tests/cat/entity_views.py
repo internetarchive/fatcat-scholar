@@ -10,11 +10,8 @@ from uuid import UUID
 # TODO /release/search
 # TODO /release/save
 # TODO /coverage/search
-# TODO /editgroup/{ident}
-# TODO /editgroup/{ident}/diff
 # TODO /editor routes
 # TODO /u/{username}
-# TODO common editgroup routes
 
 def test_release_bibtex(client, fcclient, entities):
     r = entities["bigrelease"]
@@ -528,7 +525,7 @@ def test_generic_entity_views(client, mocker):
         assert calls[3] == case["args"][1]
         assert calls[4] == case["args"][2]
 
-def test_generic_entity_revision_views(client, mocker):
+def test_generic_entity_revision_routes(client, mocker):
     cases = [{"route": "/cat/container/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d",
                "args": ["container", UUID("a078e5fe-0815-4ec4-82d8-7841b8a6317d"), "container_view.html"]},
              {"route": "/cat/container/rev/a078e5fe-0815-4ec4-82d8-7841b8a6317d/metadata",

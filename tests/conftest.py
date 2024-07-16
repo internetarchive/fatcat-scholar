@@ -119,6 +119,7 @@ def entities():
         # the iron man...038/35036653.
         "bigrelease": EG_RELEASE,
         "release": fcapi.ReleaseEntity(
+            revision='198c87e7-9124-4371-b34a-cb5e75bbb77c',
             state="active",
             title="steel and lace",
             release_stage="published",
@@ -164,6 +165,7 @@ def entities():
             ],
             abstracts=[]),
         "container": fcapi.ContainerEntity(
+            revision='198c87e7-9124-4371-b34a-cb5e75bbb77c',
             state="active",
             ident="bi7rkf2w6jc5fd6z2szjd4k7j4",
             name="urusei yatsura studies",
@@ -176,12 +178,13 @@ def entities():
             given_name="tetsuo",
             ident="iimvc523xbhqlav6j3sbthuehu",
             orcid="0000-0003-3118-6859",
-            revision="52444283-850c-41d5-945b-bd7c6112cb89",
+            revision='198c87e7-9124-4371-b34a-cb5e75bbb77c',
             state="active",
             wikidata_qid="Q6251482",
             surname="the iron man"),
         "file": fcapi.FileEntity(
             ident="y6k6estkpbdrpmdjcw2cbjvpmu",
+            revision='198c87e7-9124-4371-b34a-cb5e75bbb77c',
             size=66,
             md5="f013d66c7f6817d08b7eb2a93e6d0440",
             sha1="3d0755107a3fc2b81d0a3886477b5000747512fd",
@@ -191,6 +194,7 @@ def entities():
             ),
         "fileset": fcapi.FilesetEntity(
             ident="ho376wmdanckpp66iwfs7g22ne",
+            revision='198c87e7-9124-4371-b34a-cb5e75bbb77c',
             manifest=[
                 fcapi.FilesetFile(
                     size=66,
@@ -204,6 +208,7 @@ def entities():
             release_ids=[],
             ),
         "webcapture": fcapi.WebcaptureEntity(
+            revision='198c87e7-9124-4371-b34a-cb5e75bbb77c',
             ident="z7uaeatyvfgwdpuxtrdu4okqii",
             state="active",
             archive_urls=[],
@@ -217,6 +222,7 @@ def entities():
             releases=[],
             ),
         "work": fcapi.WorkEntity(
+            revision='198c87e7-9124-4371-b34a-cb5e75bbb77c',
             ident="uggz4zervvgevn4gt7odo4ufnq",
             state="active",
             ),
@@ -703,3 +709,101 @@ EG_RELEASE = fcapi.ReleaseEntity(
   withdrawn_status=None,
   withdrawn_year=None,
   work_id='bkzhp3ghy5f6bcjydfz3qojkly')
+
+@pytest.fixture
+def editgroup():
+    return fcapi.Editgroup(
+            annotations=None,
+            changelog_index=4529728,
+            created=datetime.datetime(2020, 5, 30, 0, 13, 32, 463710, tzinfo=tzutc()),
+            description='Automated import of Crossref DOI metadata, '
+                        'harvested from REST API',
+            editgroup_id='g4uijctf2nahznuvc2xxm5i5he',
+            editor=fcapi.Editor(
+                editor_id='4onf5ix72zholapksnjgr2n47m',
+                is_active=True,
+                is_admin=True,
+                is_bot=True,
+                username='crossref-bot'),
+            editor_id='4onf5ix72zholapksnjgr2n47m',
+            edits=fcapi.EditgroupEdits(
+                containers=[
+                    fcapi.EntityEdit(
+                        edit_id='1a080f79-ffe3-4174-87bc-10ea615533e2',
+                        editgroup_id='g4uijctf2nahznuvc2xxm5i5he',
+                        extra=None,
+                        ident="bi7rkf2w6jc5fd6z2szjd4k7j4",
+                        prev_revision='f89ccd2e-a761-4b41-ba2d-313bfb42c7b7',
+                        redirect_ident=None,
+                        revision='198c87e7-9124-4371-b34a-cb5e75bbb77c',
+                    ),
+                ],
+                creators=[
+                    fcapi.EntityEdit(
+                        edit_id='1a080f79-ffe3-4174-87bc-10ea615533e2',
+                        editgroup_id='g4uijctf2nahznuvc2xxm5i5he',
+                        extra=None,
+                        ident="iimvc523xbhqlav6j3sbthuehu",
+                        prev_revision='f89ccd2e-a761-4b41-ba2d-313bfb42c7b7',
+                        redirect_ident=None,
+                        revision='198c87e7-9124-4371-b34a-cb5e75bbb77c',
+                        ),
+                    ],
+                files=[
+                    fcapi.EntityEdit(
+                        edit_id='1a080f79-ffe3-4174-87bc-10ea615533e2',
+                        editgroup_id='g4uijctf2nahznuvc2xxm5i5he',
+                        extra=None,
+                        ident="y6k6estkpbdrpmdjcw2cbjvpmu",
+                        prev_revision='f89ccd2e-a761-4b41-ba2d-313bfb42c7b7',
+                        redirect_ident=None,
+                        revision='198c87e7-9124-4371-b34a-cb5e75bbb77c',
+                        ),
+                    ],
+                filesets=[
+                    fcapi.EntityEdit(
+                        edit_id='1a080f79-ffe3-4174-87bc-10ea615533e2',
+                        editgroup_id='g4uijctf2nahznuvc2xxm5i5he',
+                        extra=None,
+                        ident="ho376wmdanckpp66iwfs7g22ne",
+                        prev_revision='f89ccd2e-a761-4b41-ba2d-313bfb42c7b7',
+                        redirect_ident=None,
+                        revision='198c87e7-9124-4371-b34a-cb5e75bbb77c',
+                        ),
+                    ],
+                webcaptures=[
+                    fcapi.EntityEdit(
+                        edit_id='1a080f79-ffe3-4174-87bc-10ea615533e2',
+                        editgroup_id='g4uijctf2nahznuvc2xxm5i5he',
+                        extra=None,
+                        ident="z7uaeatyvfgwdpuxtrdu4okqii",
+                        prev_revision='f89ccd2e-a761-4b41-ba2d-313bfb42c7b7',
+                        redirect_ident=None,
+                        revision='198c87e7-9124-4371-b34a-cb5e75bbb77c',
+                        ),
+                    ],
+                works=[
+                    fcapi.EntityEdit(
+                        edit_id='1a080f79-ffe3-4174-87bc-10ea615533e2',
+                        editgroup_id='g4uijctf2nahznuvc2xxm5i5he',
+                        extra=None,
+                        ident="uggz4zervvgevn4gt7odo4ufnq",
+                        prev_revision='f89ccd2e-a761-4b41-ba2d-313bfb42c7b7',
+                        redirect_ident=None,
+                        revision='198c87e7-9124-4371-b34a-cb5e75bbb77c',
+                        ),
+                    ],
+                releases=[
+                    fcapi.EntityEdit(
+                        edit_id='1a080f79-ffe3-4174-87bc-10ea615533e2',
+                        editgroup_id='g4uijctf2nahznuvc2xxm5i5he',
+                        extra=None,
+                        ident='aney5kqnxvbwnn3aasq7uvup6m',
+                        prev_revision='f89ccd2e-a761-4b41-ba2d-313bfb42c7b7',
+                        redirect_ident=None,
+                        revision='198c87e7-9124-4371-b34a-cb5e75bbb77c',
+                        ),
+                    ]),
+            extra={'agent': 'fatcat_tools.CrossrefImporter',
+                   'git_rev': 'v0.3.1-414-g6e7f02d'},
+            submitted=None)
