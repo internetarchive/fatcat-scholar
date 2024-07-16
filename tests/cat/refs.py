@@ -1,4 +1,3 @@
-import datetime
 import json
 from urllib.parse import urlencode
 from fuzzycat.simple import FuzzyReleaseMatchResult, Status, Reason
@@ -158,16 +157,16 @@ def test_openlibrary_refs(client, fcclient, entities, es, es_resps):
     ]
     fcclient.get_release.return_value=entities["release"]
 
-    rv = client.get(f"/cat/openlibrary/OL123W/refs-in")
+    rv = client.get("/cat/openlibrary/OL123W/refs-in")
     assert rv.status_code == 200
     assert "Showing 1 - 9 of 69 references" in rv.text
 
     # simulating empty
-    rv = client.get(f"/cat/openlibrary/OL123W/refs-in")
+    rv = client.get("/cat/openlibrary/OL123W/refs-in")
     assert rv.status_code == 200
     assert "Showing 0 references" in rv.text
 
-    rv = client.get(f"/cat/openlibrary/OL123W/refs-in.json")
+    rv = client.get("/cat/openlibrary/OL123W/refs-in.json")
 
     assert rv.status_code == 200
     payload = rv.json()
@@ -175,7 +174,7 @@ def test_openlibrary_refs(client, fcclient, entities, es, es_resps):
     assert len(payload["result_refs"]) == 9
 
     # simulating empty
-    rv = client.get(f"/cat/openlibrary/OL123W/refs-in.json")
+    rv = client.get("/cat/openlibrary/OL123W/refs-in.json")
 
     assert rv.status_code == 200
     payload = rv.json()
@@ -191,16 +190,16 @@ def test_wikipedia_refs(client, fcclient, entities, es, es_resps):
     ]
     fcclient.get_release.return_value=entities["release"]
 
-    rv = client.get(f"/cat/wikipedia/en:foobar/refs-out")
+    rv = client.get("/cat/wikipedia/en:foobar/refs-out")
     assert rv.status_code == 200
     assert "Showing 1 - 30 of 34 references" in rv.text
 
     # simulating empty
-    rv = client.get(f"/cat/wikipedia/en:foobar/refs-out")
+    rv = client.get("/cat/wikipedia/en:foobar/refs-out")
     assert rv.status_code == 200
     assert "Showing 0 references" in rv.text
 
-    rv = client.get(f"/cat/wikipedia/en:foobar/refs-out.json")
+    rv = client.get("/cat/wikipedia/en:foobar/refs-out.json")
 
     assert rv.status_code == 200
     payload = rv.json()
@@ -208,7 +207,7 @@ def test_wikipedia_refs(client, fcclient, entities, es, es_resps):
     assert len(payload["result_refs"]) == 30
 
     # simulating empty
-    rv = client.get(f"/cat/wikipedia/en:foobar/refs-out.json")
+    rv = client.get("/cat/wikipedia/en:foobar/refs-out.json")
 
     assert rv.status_code == 200
     payload = rv.json()

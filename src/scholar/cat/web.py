@@ -579,7 +579,7 @@ def browse_query(year: int|None, issue: str|None, volume: str|None) -> Tuple[str
     return (query_string, query_sort)
 
 
-def test_browse_query():
+def test_browse_query() -> None:
     # year, issue, volume
     cases = [{"name": "all none",
               "args": [None, None, None],

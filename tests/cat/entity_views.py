@@ -2,8 +2,6 @@ import json
 
 import scholar.cat.web
 
-import fatcat_openapi_client as fcapi
-
 from uuid import UUID
 
 # TODO /
@@ -34,7 +32,7 @@ def test_release_bibtex(client, fcclient, entities):
   publisher={Wiley (Blackwell Publishing)}, 
   author={Faas and Weckerly}, 
   year={2010}
-  }'''
+  }''' # noqa W291
 
 def test_release_citeproc(client, fcclient, entities):
     r = entities["bigrelease"]
@@ -58,7 +56,7 @@ def test_release_citeproc(client, fcclient, entities):
     rv = client.get(f"/cat/release/{r.ident}/citeproc?style=elsevier-harvard")
 
     assert rv.status_code == 200
-    assert rv.text == "Faas, Weckerly, 2010. Habitat Interference by Axis Deer on White-Tailed Deer. Journal of Wildlife Management 74.. https://doi.org/10.2193/2009-135" 
+    assert rv.text == "Faas, Weckerly, 2010. Habitat Interference by Axis Deer on White-Tailed Deer. Journal of Wildlife Management 74.. https://doi.org/10.2193/2009-135"
 
     rv = client.get(f"/cat/release/{r.ident}/citeproc?style=bad")
 

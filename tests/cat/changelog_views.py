@@ -7,7 +7,7 @@ from fatcat_openapi_client.models.editor import Editor
 
 def test_changelog_view(client, fcclient):
     fcclient.get_changelog.return_value = [
-            ChangelogEntry(index=6863689, 
+            ChangelogEntry(index=6863689,
                            editgroup_id='lq5k5gnz4naitc7wj4rtz7xtqq',
                            timestamp=datetime.datetime(
                                2024, 5, 22, 23, 56, 23, 9854, tzinfo=tzutc()),
@@ -31,9 +31,9 @@ def test_changelog_view(client, fcclient):
     assert "Files crawled from web using sandcrawler ingest tool" in rv.text
     assert "Dispatches from interzone" in rv.text
 
-def test_changelog_view(client, fcclient, entities):
+def test_changelog_entry_view(client, fcclient, entities):
     fcclient.get_changelog_entry.return_value = ChangelogEntry(
-            index=6863689, 
+            index=6863689,
             editgroup_id='lq5k5gnz4naitc7wj4rtz7xtqq',
             timestamp=datetime.datetime(
                 2024, 5, 22, 23, 56, 23, 9854, tzinfo=tzutc()),
