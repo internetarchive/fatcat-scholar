@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 import logging
 from typing import Annotated, Any, Callable, Dict, List, Tuple, TypeAlias
 from urllib.parse import quote_plus
@@ -543,9 +544,11 @@ async def fileset_revision_view_metadata(
     return generic_entity_revision_view(request, fcclient, 'fileset',
                                         rev_id, 'entity_view_metadata.html')
 
-def browse_query(year: int|None, issue: str|None, volume: str|None) -> Tuple[str, List[str]]|None:
+def browse_query(year: int|None, issue: str|None, volume: str|None) -> Tuple[str, List[str]]:
     # all of this logic is highly questionable to me but I'm just preserving
     # what was here and adding tests for it -nate
+    query_string = ""
+    query_sort = []
     vol = "!volume:*"
     iss = "!issue:*"
     def every(*xs: List[Any]) -> bool:
@@ -574,45 +577,48 @@ def browse_query(year: int|None, issue: str|None, volume: str|None) -> Tuple[str
         # volume specified, not anything else; browse-by-page
         query_string = vol
         query_sort = ["issue", "first_page", "pages", "release_date"]
-    else:
-        return None
     return (query_string, query_sort)
 
-
 def test_browse_query() -> None:
+    @dataclass
+    class case:
+        name: str
+        args: list[str|None]
+        expected: tuple[str, list[str]]
+
     # year, issue, volume
-    cases = [{"name": "all none",
-              "args": [None, None, None],
-              "expected": None},
-             {"args": [1969, None, None],
-              "name": "just year",
-              "expected": ["year:1969", ["release_date"]]},
-             {"args": [None, None, "6"],
-              "name": "just volume",
-              "expected": ['volume:"6"', ["issue", "first_page", "pages", "release_date"]]},
-             {"args": [None, None, ""],
-              "name": "just volume but it is blank",
-              "expected": ['!volume:*', ["issue", "first_page", "pages", "release_date"]]},
-             {"args": [1969, "", ""],
-              "name": "year and blanks",
-              "expected": ["year:1969 !volume:* !issue:*", ["first_page", "pages", "release_date"]]},
-             {"args": [1969, None, ""],
-              "name": "year, empty volume, no issue",
-              "expected": ["year:1969 !volume:*", ["issue", "first_page", "pages", "release_date"]]},
-             {"args": [1969, "", None],
-              "name": "year, empty issue, no volume",
-              "expected": ["year:1969", ["release_date"]]},
-             {"args": [1969, "13", "6"],
-              "name": "all there",
-              "expected": ['year:1969 volume:"6" issue:"13"', ["first_page", "pages", "release_date"]]},
+    cases = [case(name="all none",
+                  args=[None, None, None],
+                  expected=("", [])),
+             case(name="just year",
+                  args=[1969, None, None],
+                  expected=("year:1969", ["release_date"])),
+             case(name="just volume",
+                  args=[None, None, "6"],
+                  expected=('volume:"6"', ["issue", "first_page", "pages", "release_date"])),
+             case(name="just volume but it is blank",
+                  args=[None, None, ""],
+                  expected=('!volume:*', ["issue", "first_page", "pages", "release_date"])),
+             case(name="year and blanks",
+                  args=[1969, "", ""],
+                  expected=("year:1969 !volume:* !issue:*", ["first_page", "pages", "release_date"])),
+             case(args=[1969, None, ""],
+                  name="year, empty volume, no issue",
+                  expected=("year:1969 !volume:*", ["issue", "first_page", "pages", "release_date"])),
+             case(args=[1969, "", None],
+                  name="year, empty issue, no volume",
+                  expected=("year:1969", ["release_date"])),
+             case(args=[1969, "13", "6"],
+                  name="all there",
+                  expected=('year:1969 volume:"6" issue:"13"', ["first_page", "pages", "release_date"])),
             ]
-    for case in cases:
-        result = browse_query(*case["args"])
-        if result is None:
-            assert result == case["expected"], case["name"]
+    for c in cases:
+        result = browse_query(*c.args)
+        if result[0] == "":
+            assert result == c.expected, c.name
         else:
-            assert result[0] == case["expected"][0], case["name"]
-            assert result[1] == case["expected"][1], case["name"]
+            assert result[0] == c.expected[0], c.name
+            assert result[1] == c.expected[1], c.name
 
 
 @routes.get("/container/{ident}/browse", include_in_schema=False)
