@@ -28,7 +28,7 @@ dependencies = [
   "lxml==4.9.3",
   "minio==6.0.2",
   "pycountry==19.8.18",
-  "pydantic==1.10.6",
+  "pydantic==1.10.16",
   "pylatexenc==2.10",
   "pygal==3.0.4",
   "python-stdnum==1.18",
