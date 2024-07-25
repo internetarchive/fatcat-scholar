@@ -13,5 +13,6 @@ test_python:
     - python3.11 -mvenv .venv
     - .venv/bin/pip install uv
     - .venv/bin/uv pip install -rci.requirements.txt
+    - .venv/bin/uv pip install -e .
     - make lint
     - make test
