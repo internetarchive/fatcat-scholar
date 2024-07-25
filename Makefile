@@ -11,7 +11,8 @@ help: ## Print info about all commands
 
 .venv:
 	python3 -mvenv .venv
-	.venv/bin/pip install -e .[dev]
+	.venv/bin/pip install uv
+	.venv/bin/uv pip install -e .[dev]
 
 .PHONY: dep
 dep: .venv ## Install dependencies using pip install -e to .venv
@@ -106,9 +107,9 @@ issue-db: data/issue_db.sqlite  ## Build SIM issue database with today's metadat
 
 .PHONY: freeze
 freeze: dep
-	.venv/bin/pip-compile --generate-hashes -o requirements.txt
-	.venv/bin/pip-compile --generate-hashes --extra dev -o dev.requirements.txt
-	.venv/bin/pip-compile --generate-hashes --extra ci -o ci.requirements.txt
+	.venv/bin/uv pip compile --generate-hashes -o requirements.txt pyproject.toml
+	.venv/bin/uv pip compile --generate-hashes --extra dev -o dev.requirements.txt pyproject.toml
+	.venv/bin/uv pip compile --generate-hashes --extra ci -o ci.requirements.txt pyproject.toml
 
 .PHONY: audit
 audit: dep

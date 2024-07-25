@@ -1,11 +1,12 @@
 [build-system]
-requires = ["setuptools==69.0.3"]
+requires = ["setuptools==71.1.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "scholar"
 description = "Internet Archive Scholar"
 dependencies = [ 
+  "setuptools==71.1.0",
   "babel==2.12.1",
   "beautifulsoup4 == 4.11.2",
   "citeproc-py == 0.6.0",
