@@ -583,7 +583,7 @@ def test_browse_query() -> None:
     @dataclass
     class case:
         name: str
-        args: list[str|None]
+        args: list[str|int|None]
         expected: tuple[str, list[str]]
 
     # year, issue, volume
