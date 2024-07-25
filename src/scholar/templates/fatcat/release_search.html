@@ -1,0 +1,92 @@
+{% import "entity_macros.html" as entity_macros %}
+{% import "search_macros.html" as search_macros %}
+{% extends "base.html" %}
+
+{% block title %}
+{% if query.q %}
+  Search: {{ query.q }}
+{% else %}
+  Release Search
+{% endif %}
+{% endblock %}
+
+
+{% block fullmain %}
+
+<div class="ui vertical stripe segment" style="background-color: #EEE; padding-top: 4.5em;">
+  <div class="ui container text">
+    <h1>Search all Releases</h1>
+    <form class="" role="search" action="/fatcat/release/search" method="get">
+      <div class="ui form">
+        <div class="ui action input huge fluid">
+          <input type="text" placeholder="Query..." name="q" value="{% if query.q %}{{ query.q }}{% endif %}" aria-label="search release metadata">
+          <button class="ui primary button">Search</button>
+        </div>
+        <div class="ui checkbox" style="float: right; margin: 1em;">
+          <input type="checkbox" name="fulltext_only" id="fulltext_only" value="true" {% if query.fulltext_only %}checked{% endif %}>
+          <label for="fulltext_only">Only public full-text</label>
+        </div>
+        <br>Can also lookup by <b><a href="/fatcat/release/lookup">identifier</a></b> or search for <b><a href="/fatcat/container/search?q={{ query.q or "" }}">containers</a></b> (eg, journals).
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="ui container text">
+<br>
+
+{% if container_found and container_found.results %}
+  <div class="ui tiny info floating message" style="margin: 0em auto; max-width: 40em;">
+    <div class="header">Were you looking for this journal, instead of publications?</div>
+    <div style="padding-left: 0.5em;">
+      {{ entity_macros.container_search_result_row(container_found.results[0]) }}
+    </div>
+  </div>
+  <br clear="all">
+{% endif %}
+
+{% if found %}
+  {% if found.results %}
+
+    {{ search_macros.top_results(query, found) }}
+
+    {% for paper in found.results %}
+      {{ entity_macros.release_search_result_row(paper) }}
+    {% endfor %}
+
+    {% if found.results|length > 8 %}
+      <div class="ui divider"></div>
+      <div style="text-align: center">
+      {{ search_macros.bottom_results(request, query, found, endpoint='release_search') }}
+      </div>
+    {% endif %}
+
+  {% else %}
+
+    Raw query was: <i>{{ query.q }}</i>
+
+    <div class="ui centered stackable grid" style="padding-top: 15%;">
+      <div class="row">
+        <div class="four wide column">
+          <img src="/static/paper_man_confused.gif" alt="confused paper man">
+        </div>
+        <div class="six wide column">
+          <h2>No results found!</h2>
+          <p>You could try elsewhere:</p>
+          <ul>
+            <li>Search <a href="https://dissem.in/search?q={{ query.q | urlencode }}">dissem.in</a></li>
+            <li>Search <a href="https://www.base-search.net/Search/Results?lookfor={{ query.q | urlencode }}">BASE</a></li>
+            <li>Search <a href="https://scholar.google.com/scholar?q={{ query.q | urlencode }}">Google Scholar</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  {% endif %}
+
+{% elif es_error %}
+  {{ search_macros.es_error_msg(es_error) }}
+{% endif %}
+
+</div>
+{% endblock %}
