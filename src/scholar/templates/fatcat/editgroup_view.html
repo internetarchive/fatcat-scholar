@@ -167,9 +167,6 @@
         <span class="ui tiny olive label">Admin</span>
       {% endif %}
       at {{ annotation.created.strftime("%Y-%m-%d %H:%M:%S") }}
-      {# TODO: get individual editgroup annotation not supported yet
-      (<a href="{% if config.FATCAT_DOMAIN == 'dev.fatcat.wiki' %}http://localhost:9411{% else %}https://api.{{ config.FATCAT_DOMAIN }}{% endif %}/v0/editgroup/{{ annotation.editgroup_id }}/annotation/{{ annotation.annotation_id }}">as JSON</a>)
-      #}
       {% if annotation.extra and annotation.extra.disposition %}
         {% set disp = annotation.extra.disposition %}
         <span class="ui small {% if disp == "accept" %}green{% elif disp == "reject" %}red{% else %}orange{%endif %} label" style="float: right;">{{ annotation.extra.disposition|capitalize }}</span>

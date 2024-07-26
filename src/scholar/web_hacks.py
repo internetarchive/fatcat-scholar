@@ -176,14 +176,14 @@ def wayback_direct_url(url: str) -> str:
 
 
 def test_wayback_direct_url() -> None:
-    assert wayback_direct_url("http://fatcat.wiki/thing.pdf") == "http://fatcat.wiki/thing.pdf"
+    assert wayback_direct_url("http://scholar.archive.org/fatcat/thing.pdf") == "http://scholar.archive.org/fatcat/thing.pdf"
     assert (
-        wayback_direct_url("https://web.archive.org/web/*/http://fatcat.wiki/thing.pdf")
-        == "https://web.archive.org/web/*/http://fatcat.wiki/thing.pdf"
+        wayback_direct_url("https://web.archive.org/web/*/http://scholar.archive.org/fatcat/thing.pdf")
+        == "https://web.archive.org/web/*/http://scholar.archive.org/fatcat/thing.pdf"
     )
     assert (
-        wayback_direct_url("https://web.archive.org/web/1234/http://fatcat.wiki/thing.pdf")
-        == "https://web.archive.org/web/1234id_/http://fatcat.wiki/thing.pdf"
+        wayback_direct_url("https://web.archive.org/web/1234/http://scholar.archive.org/fatcat/thing.pdf")
+        == "https://web.archive.org/web/1234id_/http://scholar.archive.org/fatcat/thing.pdf"
     )
     assert (
         wayback_direct_url(
@@ -210,17 +210,17 @@ def test_make_access_redirect_url() -> None:
         make_access_redirect_url(
             "lmobci36t5aelogzjsazuwxpie",
             "wayback",
-            "https://web.archive.org/web/1234/http://fatcat.wiki/thing.pdf",
+            "https://web.archive.org/web/1234/http://scholar.archive.org/fatcat/thing.pdf",
         )
-        == "https://scholar.archive.org/work/lmobci36t5aelogzjsazuwxpie/access/wayback/http://fatcat.wiki/thing.pdf"
+        == "https://scholar.archive.org/work/lmobci36t5aelogzjsazuwxpie/access/wayback/http://scholar.archive.org/fatcat/thing.pdf"
     )
     assert (
         make_access_redirect_url(
             "lmobci36t5aelogzjsazuwxpie",
             "wayback",
-            "https://web.archive.org/web/1234/http://fatcat.wiki/thing.pdf?param=asdf",
+            "https://web.archive.org/web/1234/http://scholar.archive.org/fatcat/thing.pdf?param=asdf",
         )
-        == "https://scholar.archive.org/work/lmobci36t5aelogzjsazuwxpie/access/wayback/http://fatcat.wiki/thing.pdf?param=asdf"
+        == "https://scholar.archive.org/work/lmobci36t5aelogzjsazuwxpie/access/wayback/http://scholar.archive.org/fatcat/thing.pdf?param=asdf"
     )
     assert (
         make_access_redirect_url(

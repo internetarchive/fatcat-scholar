@@ -49,7 +49,7 @@
     <a target="_blank" rel="external noopener" href="https://doaj.org/article/{{ biblio.doaj_id }}">doaj:{{ biblio.doaj_id }}</a>
   {% endif %}
   {% if biblio.release_ident or biblio.ident %}
-    <a target="_blank" rel="external noopener" href="https://fatcat.wiki/release/{{ biblio.release_ident or biblio.ident }}">fatcat:{{ biblio.release_ident or biblio.ident }}</a>
+    <a target="_blank" rel="external noopener" href="https://scholar.archive.org/fatcat/release/{{ biblio.release_ident or biblio.ident }}">fatcat:{{ biblio.release_ident or biblio.ident }}</a>
   {% endif %}
 </span>
 {% endmacro %}
@@ -146,7 +146,7 @@
   {% if biblio.container_name %}
     <i {% if biblio.publisher %}title="{{ biblio.publisher }}"{% endif %}>
     {% if biblio.container_ident %}
-      <a target="_blank" rel="noopener" href="https://fatcat.wiki/container/{{ biblio.container_ident }}" style="color: black;">{{ biblio.container_name }}</a>
+      <a target="_blank" rel="noopener" href="https://scholar.archive.org/fatcat/container/{{ biblio.container_ident }}" style="color: black;">{{ biblio.container_name }}</a>
     {% elif paper.doc_type == "sim_page" %}
       <a target="_blank" rel="noopener" href="https://archive.org/details/{{ paper.ia_sim.pub_collection }}" style="color: black;">{{ biblio.container_name }}</a>
     {% else %}
@@ -323,8 +323,8 @@
     {# No fulltext case #}
     <p>{% trans %}We don't yet know of a public preservation copy of this work. You may be able to obtain a copy of this work to read from the publisher, platforms, or institutional libraries.{% endtrans %}
     {% if paper.doc_type == "work" %}
-      {% set save_paper_now_url = "https://fatcat.wiki/release/" + paper.biblio.release_ident + "/save" %}
-      <p>{% trans %}If you know of a legal, public version that we should archive, please let us know via <a rel="noopener" href="{{ save_paper_now_url }}">"Save Paper Now"</a>.{% endtrans %}
+      {% set save_paper_now_url = "https://scholar.archive.org/fatcat/release/" + paper.biblio.release_ident + "/save" %}
+      <p>{% trans %}If you know of a legal, public version that we should archive, <a rel="noopener" href="{{ save_paper_now_url }}">please let us know</a>.{% endtrans %}
     {% endif %}
   {% endif %}
 
@@ -458,16 +458,16 @@
         {% if paper.doc_type == "work" %}
           <div class="ui divider"></div>
           <ul class="ui horizontal list">
-            <li class="item"><a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}/citeproc?style=modern-language-association" target="_blank" rel="noopener"><i class="external icon"></i>MLA</a></li>
-            <li class="item"><a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}/citeproc?style=elsevier-harvard" target="_blank" rel="noopener"><i class="external icon"></i>Harvard</a></li>
-            <li class="item"><a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}/citeproc?style=csl-json" target="_blank" rel="noopener"><i class="external icon"></i>CSL-JSON</a></li>
-            <li class="item"><a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}.bib" target="_blank" rel="noopener"><i class="external icon"></i>BibTeX</a></li>
+            <li class="item"><a href="https://scholar.archive.org/fatcat/release/{{ paper.biblio.release_ident }}/citeproc?style=modern-language-association" target="_blank" rel="noopener"><i class="external icon"></i>MLA</a></li>
+            <li class="item"><a href="https://scholar.archive.org/fatcat/release/{{ paper.biblio.release_ident }}/citeproc?style=elsevier-harvard" target="_blank" rel="noopener"><i class="external icon"></i>Harvard</a></li>
+            <li class="item"><a href="https://scholar.archive.org/fatcat/release/{{ paper.biblio.release_ident }}/citeproc?style=csl-json" target="_blank" rel="noopener"><i class="external icon"></i>CSL-JSON</a></li>
+            <li class="item"><a href="https://scholar.archive.org/fatcat/release/{{ paper.biblio.release_ident }}.bib" target="_blank" rel="noopener"><i class="external icon"></i>BibTeX</a></li>
           </ul>
         {% endif %}
       </div>
     </details>
 
-    <a href="https://fatcat.wiki/release/{{ paper.biblio.release_ident }}" rel="noopener" title="{{ _('edit metadata on fatcat wiki') }}">
+    <a href="https://scholar.archive.org/fatcat/release/{{ paper.biblio.release_ident }}" rel="noopener" title="{{ _('see metadata on fatcat') }}">
       <div class="circular ui icon compact basic button">
         <i class="edit icon"></i>
       </div>

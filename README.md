@@ -11,13 +11,7 @@ Our focus is on [Open Access](https://en.wikipedia.org/wiki/Open_access) content
 
 This is source code for [scholar.archive.org](https://scholar.archive.org), a
 full-text web search interface over the 25+ million open research papers in the
-Internet Archive.
-
-All of the technical heavy lifting of harvesting, crawling, and metadata corrections are
-handled by the [fatcat](https://fatcat.wiki)  service; this service is just a bare-bones, read-only
-search interface. Unlike the basic fatcat.wiki search, this index allows
-querying the full content of papers when available.
-
+Internet Archive, and [https://scholar.archive.org/fatcat](https://scholar.archive.org/fatcat), a web front-end to the [fatcat](https://github.com/internetarchive/fatcat/) bibliographic database.
 
 ## Overview
 
@@ -25,6 +19,7 @@ This repository is fairly small and contains:
 
 - `src/scholar/`: Python code for web service and indexing pipeline
 - `src/scholar/templates/`: HTML template for web interface
+- `src/scholar/fatcat`: web frontend to [fatcat](https://github.com/internetarchive/fatcat)
 - `tests/`: Python test files
 - `proposals/`: design documentation and change proposals
 - `data/`: empty directory for indexing pipeline
@@ -76,14 +71,7 @@ please run `make fmt` and `make lint` for submitting a pull request.
 ## Contributing
 
 Software, copy-editing, translation, and other contributions to this repository
-are welcome! For content and metadata corrections, or identifying new content
-to include, the best place to start is the in [fatcat
-repository](https://github.com/internetarchive/fatcat). Learn more in the
-[fatcat guide](https://guide.fatcat.wiki). You can chat and ask questions on
-[gitter.im/internetarchive/fatcat](https://gitter.im/internetarchive/fatcat).
-
-Contributors in this project are asked to abide by our
-[Code of Conduct](https://guide.fatcat.wiki/code_of_conduct.html).
+are welcome!
 
 The web interface is translated using the Weblate platform, at
 [internetarchive/fatcat-scholar](https://hosted.weblate.org/projects/internetarchive/fatcat-scholar/)
