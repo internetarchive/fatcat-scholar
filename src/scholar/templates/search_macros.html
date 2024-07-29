@@ -323,7 +323,7 @@
     {# No fulltext case #}
     <p>{% trans %}We don't yet know of a public preservation copy of this work. You may be able to obtain a copy of this work to read from the publisher, platforms, or institutional libraries.{% endtrans %}
     {% if paper.doc_type == "work" %}
-      {% set save_paper_now_url = "https://scholar.archive.org/fatcat/release/" + paper.biblio.release_ident + "/save" %}
+      {% set save_paper_now_url = settings.FATCAT_URL+"/release/" + paper.biblio.release_ident + "/save" %}
       <p>{% trans %}If you know of a legal, public version that we should archive, <a rel="noopener" href="{{ save_paper_now_url }}">please let us know</a>.{% endtrans %}
     {% endif %}
   {% endif %}
