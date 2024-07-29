@@ -1,0 +1,100 @@
+{
+  "took" : 17,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 2,
+      "relation" : "eq"
+    },
+    "max_score" : 13.73289,
+    "hits" : [
+      {
+        "_index" : "fatcat_container_v05_20220110",
+        "_type" : "_doc",
+        "_id" : "bi7rkf2w6jc5fd6z2szjd4k7j4",
+        "_score" : 13.73289,
+        "_source" : {
+          "doc_index_ts" : "2022-01-13T00:59:13.702588Z",
+          "ident" : "bi7rkf2w6jc5fd6z2szjd4k7j4",
+          "state" : "active",
+          "revision" : "198c87e7-9124-4371-b34a-cb5e75bbb77c",
+          "name" : "Caribbean Herpetology",
+          "publisher" : "Caribbean Herpetology",
+          "container_type" : null,
+          "publication_status" : null,
+          "issnl" : "2333-2468",
+          "issne" : "2333-2468",
+          "issnp" : "2333-2468",
+          "wikidata_qid" : "Q21386362",
+          "abbrev" : "Caribb Herpetol",
+          "country_code" : "us",
+          "issns" : [
+            "2333-2468"
+          ],
+          "sherpa_romeo_color" : null,
+          "is_superceded" : false,
+          "keepers" : [ ],
+          "in_doaj" : false,
+          "in_road" : false,
+          "any_kbart" : false,
+          "is_oa" : false,
+          "is_longtail_oa" : false,
+          "any_jstor" : false,
+          "any_ia_sim" : false,
+          "preservation_none" : 2,
+          "releases_total" : 84,
+          "preservation_bright" : 82,
+          "preservation_dark" : 0,
+          "preservation_shadows_only" : 0
+        }
+      },
+      {
+        "_index" : "fatcat_container_v05_20220110",
+        "_type" : "_doc",
+        "_id" : "z47qqexlanfmdhfxtjlikdrgca",
+        "_score" : 12.457415,
+        "_source" : {
+          "doc_index_ts" : "2022-02-04T04:53:15.732976Z",
+          "ident" : "z47qqexlanfmdhfxtjlikdrgca",
+          "state" : "active",
+          "revision" : "f9ad86ca-2bfb-4159-b85b-f843d3f6df2c",
+          "name" : "Applied Herpetology",
+          "publisher" : "Brill",
+          "container_type" : null,
+          "publication_status" : null,
+          "issnl" : "1570-7539",
+          "issne" : "1570-7547",
+          "issnp" : "1570-7539",
+          "wikidata_qid" : "Q15760583",
+          "issns" : [
+            "1570-7539",
+            "1570-7547"
+          ],
+          "sherpa_romeo_color" : "yellow",
+          "is_superceded" : false,
+          "keepers" : [
+            "portico"
+          ],
+          "in_doaj" : false,
+          "in_road" : false,
+          "any_kbart" : true,
+          "is_oa" : false,
+          "is_longtail_oa" : false,
+          "any_jstor" : false,
+          "any_ia_sim" : false,
+          "preservation_none" : 0,
+          "releases_total" : 179,
+          "preservation_bright" : 47,
+          "preservation_dark" : 132,
+          "preservation_shadows_only" : 0
+        }
+      }
+    ]
+  }
+}
