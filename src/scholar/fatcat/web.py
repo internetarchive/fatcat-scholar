@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 import logging
-from typing import Annotated, Any, Callable, Dict, List, Tuple, TypeAlias
+from typing import Annotated, Any, Callable, Dict, List, Tuple
 from urllib.parse import quote_plus
 from uuid import UUID
 
@@ -10,7 +10,6 @@ from fastapi import APIRouter, Depends, Path, Request, Response
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
 import fatcat_openapi_client as fcapi
-from fatcat_openapi_client import DefaultApi
 from fuzzycat.grobid_unstructured import (
     grobid_api_process_citation,
     grobid_ref_to_release,
@@ -20,6 +19,7 @@ from fuzzycat.simple import (
     close_fuzzy_biblio_matches,
     close_fuzzy_release_matches
 )
+from scholar.depends import Ident, fcclient
 from scholar.fatcat.search import (
         ReleaseQuery,
         GenericQuery,
@@ -66,8 +66,6 @@ from scholar.identifiers import clean_doi, clean_pmcid, clean_isbn13, clean_arxi
 
 logger = logging.getLogger()
 
-Ident: TypeAlias = Annotated[str, Path(min_length=26, max_length=26)]
-
 routes = APIRouter()
 
 # TODO port to basic Starlette
@@ -83,17 +81,11 @@ routes = APIRouter()
 # a separate template loader.
 tmpls = Jinja2Templates(directory="src/scholar/templates/fatcat")
 tmpls.env.globals["settings"] = settings
-
-async def fcclient() -> DefaultApi:
-    fc_conf = fcapi.Configuration()
-    fc_conf.host = settings.FATCAT_API_HOST
-    return DefaultApi(fcapi.ApiClient(fc_conf))
+tmpls.env.globals["git_revision"] = GIT_REVISION
 
 @routes.get("/", include_in_schema=False)
 async def index(request: Request) -> Response:
-    return tmpls.TemplateResponse(request, "index.html", {
-        'git_revision': GIT_REVISION,
-    })
+    return tmpls.TemplateResponse(request, "index.html")
 
 @routes.post("/search", include_in_schema=False)
 @routes.get("/search", include_in_schema=False)
@@ -156,7 +148,7 @@ async def search(request: Request, q: str | None = None) -> Response:
                 generic=1),
             status_code=302)
 
-@routes.get("/creator/lookup")
+@routes.get("/creator/lookup", include_in_schema=False)
 async def creator_lookup(
         request:      Request,
         fcclient:     Annotated[fcapi.DefaultApi, Depends(fcclient)],
@@ -168,7 +160,7 @@ async def creator_lookup(
             extid_types, lambda p: fcclient.lookup_creator(**p))
 
 
-@routes.get("/file/lookup")
+@routes.get("/file/lookup", include_in_schema=False)
 async def file_lookup(
         request:  Request,
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
@@ -269,8 +261,7 @@ async def release_search(
     q: str | None = None,
     generic: int | None = None
 ) -> Response:
-    ctx = {"git_revision": GIT_REVISION,
-           "found": None,
+    ctx = {"found": None,
            "query": ReleaseQuery(),
           }
     if q is None or len(q) == 0:
@@ -1177,19 +1168,19 @@ async def container_view(
         ident:    Ident) -> Response:
     return generic_entity_view(request, fcclient, "container", ident, "container_view.html")
 
-@routes.get("/fileset_{ident}")
+@routes.get("/fileset_{ident}", include_in_schema=False)
 async def fileset_underscore_view(request: Request,
                                   ident: str = Path(..., min_length=1, max_length=30)) -> Response:
     return RedirectResponse(request.url_for("fileset_view", ident=ident), status_code=302)
 
-@routes.get("/fileset/{ident}/metadata")
+@routes.get("/fileset/{ident}/metadata", include_in_schema=False)
 async def fileset_view_metadata(
         request:  Request,
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
         ident:    Ident) -> Response:
     return generic_entity_view(request, fcclient, "fileset", ident, "entity_view_metadata.html")
 
-@routes.get("/fileset/{ident}")
+@routes.get("/fileset/{ident}", include_in_schema=False)
 async def fileset_view(
         request:  Request,
         fcclient: Annotated[fcapi.DefaultApi, Depends(fcclient)],
