@@ -3,7 +3,7 @@
 <img src="src/scholar/static/scholar-vaporwave-logo.png">
 </div>
 
-# Internet Archive Scholar
+# Internet Archive Scholar + Fatcat
 
 IA Scholar is an effort within the [Internet Archive](https://archive.org) to track, preserve, index, and serve scholarly articles.
 
