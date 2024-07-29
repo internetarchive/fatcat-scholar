@@ -78,7 +78,7 @@
 
     <div class="right menu">
       <span style="margin-top: 0.5em">
-        <a class="ui " href="https://scholar.archive.org/fatcat">Fatcat Bibliographic Database</a>
+        <a class="ui " href="{{settings.FATCAT_URL}}">Fatcat Bibliographic Database</a>
       </span>
       <div class="ui simple dropdown item translate-dropdown" aria-expanded="false" role="menu" aria-controls="language_menu" title="{{ _('language selection menu') }}">
         <div class="translate-icon"></div>
@@ -193,7 +193,7 @@
       <nav class="three wide column">
         <h4 class="ui inverted header">{% trans %}Open Infrastructure{% endtrans %}</h4>
         <div class="ui inverted link list">
-          <a target="_blank" rel="noopener" href="https://scholar.archive.org/fatcat" class="item">{{ _("Biblographic Database (Fatcat)") }}</a>
+          <a target="_blank" rel="noopener" href="{{settings.FATCAT_URL}}" class="item">{{ _("Biblographic Database (Fatcat)") }}</a>
           <a target="_blank" rel="external noopener noreferrer" href="https://github.com/internetarchive/fatcat-scholar" class="item">{{ _("Source Code") }}</a>
         </div>
       </nav>

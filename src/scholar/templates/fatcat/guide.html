@@ -1052,15 +1052,15 @@ own identifier namespace.</p>
 such strings decode to valid UUIDs), and in the backend can be serialized in
 UUID columns:</p>
 <pre><code>work_rzga5b9cd7efgh04iljk8f3jvz
-https://scholar.archive.org/fatcat/work/rzga5b9cd7efgh04iljk8f3jvz
+{{settings.FATCAT_URL}}/work/rzga5b9cd7efgh04iljk8f3jvz
 </code></pre>
 <p>In comparison, 96-bit identifiers would have 20 characters and look like:</p>
 <pre><code>work_rzga5b9cd7efgh04iljk
-https://scholar.archive.org/fatcat/work/rzga5b9cd7efgh04iljk
+{{settings.FATCAT_URL}}/work/rzga5b9cd7efgh04iljk
 </code></pre>
 <p>and 64-bit:</p>
 <pre><code>work_rzga5b9cd7efg
-https://scholar.archive.org/fatcat/work/rzga5b9cd7efg
+{{settings.FATCAT_URL}}/work/rzga5b9cd7efg
 </code></pre>
 <p>Fatcat identifiers can used to interlink between databases, but are explicitly
 <em>not</em> intended to supplant DOIs, ISBNs, handle, ARKs, and other &quot;registered&quot;
@@ -1180,8 +1180,8 @@ notes).</p>
 <p>References can be browsed on fatcat on an &quot;outbound&quot; (&quot;References&quot;) and
 &quot;inbound&quot; (&quot;Cited By&quot;) basis for individual release entities. There are also
 special pages for Wikipedia articles (&quot;outbound&quot;, such as
-<a href="https://scholar.archive.org/fatcat/wikipedia/en:Internet/refs-out">Internet</a>) and Open
-Library books (&quot;inbound&quot;, such as <a href="https://scholar.archive.org/fatcat/openlibrary/OL2670078W/refs-in">The
+<a href="{{settings.FATCAT_URL}}/wikipedia/en:Internet/refs-out">Internet</a>) and Open
+Library books (&quot;inbound&quot;, such as <a href="{{settings.FATCAT_URL}}/openlibrary/OL2670078W/refs-in">The
 Gift</a>). JSON versions of
 these pages are available, but do not yet represent a stable API.</p>
 <h3 id="how-it-works"><a class="header" href="#how-it-works">How It Works</a></h3>
