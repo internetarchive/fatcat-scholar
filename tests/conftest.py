@@ -103,7 +103,7 @@ def entity_types():
 @pytest.fixture
 def fcclient(mocker):
     mm = mocker.MagicMock()
-    mocker.patch("scholar.cat.web.DefaultApi", return_value=mm)
+    mocker.patch("scholar.fatcat.web.DefaultApi", return_value=mm)
     return mm
 
 @pytest.fixture
@@ -230,17 +230,17 @@ def entities():
 
 @pytest.fixture
 def es_resps():
-    with open("tests/cat/files/elastic_refs_in_release.json") as f:
+    with open("tests/fatcat/files/elastic_refs_in_release.json") as f:
         elastic_resp_in = json.loads(f.read())
-    with open("tests/cat/files/elastic_refs_out_release.json") as f:
+    with open("tests/fatcat/files/elastic_refs_out_release.json") as f:
         elastic_resp_out = json.loads(f.read())
-    with open("tests/cat/files/elastic_empty.json") as f:
+    with open("tests/fatcat/files/elastic_empty.json") as f:
         elastic_resp_empty = json.loads(f.read())
-    with open("tests/cat/files/elastic_container_search.json") as f:
+    with open("tests/fatcat/files/elastic_container_search.json") as f:
         elastic_resp_container_search = json.loads(f.read())
-    with open("tests/cat/files/elastic_release_search.json") as f:
+    with open("tests/fatcat/files/elastic_release_search.json") as f:
         elastic_resp_release_search = json.loads(f.read())
-    with open("tests/cat/files/elastic_container_browse_no_params.json") as f:
+    with open("tests/fatcat/files/elastic_container_browse_no_params.json") as f:
         elastic_resp_container_browse_no_params = json.loads(f.read())
 
     return {

@@ -1,0 +1,42 @@
+{% set entity_view = "history" %}
+{% extends "entity_base.html" %}
+
+{% block entity_main %}
+
+<h3 class="ui header">Entity Edit History</h3>
+
+This table only shows <i>accepted</i> edits included in the catalog, not any work-in-progress.
+
+<table class="ui table">
+  <thead><tr><th>Changelog
+             <th>Editgroup
+             <th>Description
+  <tbody>
+  {% for entry in history %}
+  <tr><td><a href="/fatcat/changelog/{{ entry.changelog_entry.index }}">#{{ entry.changelog_entry.index }}</a>
+          <br>{{ entry.changelog_entry.timestamp.strftime("%Y-%m-%d %H:%M") }}
+      <td>
+        {% if entry.editgroup.editor.is_bot %}
+          <i class="icon server"></i>
+        {% else %}
+          <i class="icon user"></i>
+        {% endif %}
+        <code><a href="/fatcat/editor/{{ entry.editgroup.editor_id }}">
+          {{ entry.editgroup.editor.username }}</a>
+        </a></code>
+        <br>
+        <small><code><a href="/fatcat/editgroup/{{ entry.editgroup.editgroup_id }}">
+          editgroup_{{ entry.editgroup.editgroup_id }}
+        </a></code></small>
+        <a href="/fatcat/editgroup/{{ entry.editgroup.editgroup_id }}/{{ entity_type }}/{{ entry.edit.ident }}">
+          [view]
+        </a>
+      <td>{% if entry.editgroup.description != None %}{{ entry.editgroup.description }}{% endif %}
+  {% endfor %}
+</table>
+<div style="float: right; font-size: smaller;">
+  <a href="{{ settings.FATCAT_PUBLIC_API_HOST }}/{{ entity_type }}/{{ entity.ident }}/history">As JSON via API</a>
+</div>
+
+
+{% endblock %}

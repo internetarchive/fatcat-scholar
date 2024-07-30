@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+
+{# TODO: more specific titles #}
+{% block title %}
+{% if entity_type == "container" and entity.name %}
+  {{ entity.name }}
+{% elif entity_type == "creator" and entity.display_name %}
+  {{ entity.display_name }}
+{% elif entity_type == "release" and entity.title %}
+  {{ entity.title }}
+{% else %}
+  {{ entity_type }}_{{ entity.ident or entity.revision }}
+{% endif %}
+{% endblock %}
+
+{% macro entity_tab(name, text, url_suffix, count=None) %}
+<a href ="/fatcat{% if editgroup %}/editgroup/{{ editgroup.editgroup_id }}{% endif %}/{{ entity_type }}/{% if entity.ident %}{{ entity.ident }}{% elif entity.revision %}rev/{{ entity.revision }}{% endif %}{{ url_suffix }}" class="{% if entity_view == name %}active{% endif %} item" style="padding: 0em 1.2em;">{{ text }}{% if count != None %} ({{ count }}){% endif %}</a>
+{% endmacro %}
+
+{% block fullmain %}
+<main {% block main_extra_attr %}{% endblock %}>
+<div class="ui vertical stripe segment" style="background-color: #EEE; padding-top: 5em; padding-bottom: 0px; border-bottom: 0px;">
+  <div class="ui container">
+    <div class="ui centered grid">
+      <div class="fifteen wide large screen sixteen wide column" style="padding-bottom: 0px;">
+        <h1 class="ui header">
+          {% if entity_type == "container" %}
+            {{ entity.name }}
+            {% if entity.extra.original_name %}
+              <br><span style="font-size: smaller; font-weight: normal;">{{ entity.extra.original_name }}</span>
+            {% endif %}
+          {% elif entity_type == "creator" %}
+            {{ entity.display_name }}
+          {% elif entity_type == "file" %}
+          {% elif entity_type == "fileset" %}
+          {% elif entity_type == "webcapture" %}
+            {% if entity.original_url %}
+              <a href="{{ entity.original_url }}" style="color: black;"><code>{{ entity.original_url }}</code></a>
+            {% endif %}
+          {% elif entity_type == "release" %}
+            <span itemprop="headline"><span itemprop="name">{{ entity.title }}</span></span>
+            {% if entity.subtitle %}
+              <br><span style="font-size: smaller; font-weight: normal;">{{ entity.subtitle }}</span>
+            {% endif %}
+            {% if entity.original_title %}
+              <br><span style="font-size: smaller; font-weight: normal;">{{ entity.original_title }}</span>
+            {% endif %}
+          {% endif %}
+          <span class="sub header">
+            <code>
+              {% if entity.ident %}
+                {{ entity_type }}_{{ entity.ident }}
+              {% elif entity.revision %}
+                {{ entity_type }}_rev_{{ entity.revision }}
+              {% endif %}
+              {% if editgroup %}
+                <a href="/editgroup/{{ editgroup.editgroup_id }}" style="color: purple;">
+                  [as of editgroup_{{ editgroup.editgroup_id }}]
+                </a>
+              {% endif %}
+            </code>
+          </span>
+        </h1>
+        {% if entity_type == "release" %}
+          <p style="font-size: larger;">
+          {% if entity._authors and entity._authors != [] %} by
+            {% for contrib in entity._authors[:12] %}
+              {% if contrib.creator_id and contrib.creator and contrib.creator.display_name %}
+                <b><a href="/fatcat/creator/{{contrib.creator_id}}">{{ contrib.creator.display_name }}</a></b>{% if not loop.last %}, {% endif %}
+              {% else %}
+                {% if contrib.raw_name != None %}{{ contrib.raw_name }}{% else %}<i>Unknown</i>{% endif %}{% if not loop.last %}, {% endif %}
+              {% endif %}
+            {% endfor %}
+            {% if entity._authors|count > 12 %} <b>(+{{ entity._authors|length - 12 }} others)</b>
+            {% endif %}
+            <br>
+          {% endif %}
+        {% elif entity_type == "container" %}
+          {% if entity.publisher %}
+            <p style="font-size: larger;">{{ entity.publisher }}
+          {% endif %}
+        {% endif %}
+        <!-- these nested div make tabs scrollable on mobile -->
+        <div class="ui container" style="min-width: 100%; overflow-x: auto;">
+        <div style="min-width: 40em;">
+          <div class="ui small tabular compact menu">
+            {{ entity_tab("overview", "Overview", "") }}
+            {% if entity_type == "container" and entity.state == 'active' and not editgroup %}
+              {{ entity_tab("browse", "Browse", "/browse") }}
+              {{ entity_tab("coverage", "Preservation", "/coverage") }}
+              {{ entity_tab("search", "Search", "/search") }}
+            {% elif entity_type == "release" and entity.state != 'deleted' %}
+              {{ entity_tab("contribs", "Authors", "/contribs", entity._authors|count ) }}
+              {% if  entity.state == 'active' %}
+                {{ entity_tab("refs-out", "References", "/refs-out") }}
+                {{ entity_tab("refs-in", "Cited By", "/refs-in") }}
+              {% endif %}
+            {% endif %}
+            {{ entity_tab("metadata", "Metadata", "/metadata") }}
+          </div>
+          {% if entity.ident %}
+            <div class="ui small tabular compact menu floated right">
+              {% if not editgroup %}
+                {{ entity_tab("history", "History", "/history") }}
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ui container" style="padding-top: 3em;">
+  <div class="ui centered grid">
+    <div class="fifteen wide large screen sixteen wide column" style="padding-bottom: 0px;">
+    {% block entity_main %}{% endblock %}
+    </div>
+  </div>
+</div>
+</main>
+{% endblock %}
+
+{% block postscript %}
+<script>
+  $('.ui.accordion').accordion();
+</script>
+{% endblock %}

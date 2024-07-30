@@ -36,8 +36,8 @@ from scholar.search import (
     process_query,
 )
 from scholar.web_hacks import i18n_templates, parse_accept_lang
-from scholar.cat.web import routes as cat_routes
-from scholar.cat.web import tmpls as cat_tmpls
+from scholar.fatcat.web import routes as fc_routes
+from scholar.fatcat.web import tmpls as fc_tmpls
 
 logger = logging.getLogger()
 
@@ -502,7 +502,7 @@ app.include_router(web)
 for lang_option in I18N_LANG_OPTIONS:
     app.include_router(web, prefix=f"/{lang_option}")
 
-app.include_router(cat_routes, prefix="/cat")
+app.include_router(fc_routes, prefix="/fatcat")
 
 # Because we are mounting 'api' after 'web', the web routes will take
 # precedence. Requests get passed through the API handlers based on content
@@ -545,7 +545,7 @@ async def unicorn_exception_handler(request: Request, ae: fcapi.ApiException) ->
     except TypeError:
         pass
 
-    return cat_tmpls.TemplateResponse("api_error.html", {
+    return fc_tmpls.TemplateResponse("api_error.html", {
         "request": request,
         "api_error": ae,
         }, status_code=ae.status)

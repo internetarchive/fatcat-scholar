@@ -1,0 +1,81 @@
+{% import "entity_macros.html" as entity_macros %}
+{% import "search_macros.html" as search_macros %}
+{% extends "base.html" %}
+
+{% block title %}
+{% if query.q %}
+  Search: {{ query.q }}
+{% else %}
+  Release Search
+{% endif %}
+{% endblock %}
+
+
+{% block fullmain %}
+
+<div class="ui vertical stripe segment" style="background-color: #EEE; padding-top: 4.5em;">
+  <div class="ui container text">
+    <h1>Journal/Conference Search</h1>
+    <form class="" role="search" action="/fatcat/container/search" method="get">
+      <div class="ui form">
+        <div class="ui action input huge fluid">
+          <input type="text" placeholder="Query..." name="q" value="{% if query.q %}{{ query.q }}{% endif %}" aria-label="search container metadata"> <button class="ui primary button">Search</button>
+        </div>
+        <br>Can also lookup by <b><a href="/fatcat/container/lookup">identifier</a></b> or search <b><a href="/fatcat/release/search?q={{ query.q or "" }}">releases</a></b>.
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="ui container text">
+<br>
+
+{% if found %}
+  {% if found.results %}
+
+    <div>
+      <div class="mobile-hide" style="float: right; margin-left: 0.5em; margin-top:0px; width: 150px; text-align: right;">
+        <i>Content Status</i>
+      </div>
+      {{ search_macros.top_results(query, found) }}
+    </div>
+    <br clear="all">
+
+    {% for entity in found.results %}
+      {{ entity_macros.container_search_result_row(entity, show_stats=True) }}
+    {% endfor %}
+
+    {% if found.results|length > 8 %}
+      <div class="ui divider"></div>
+      <div style="text-align: center">
+      {{ search_macros.bottom_results(request, query, found, endpoint='container_search') }}
+      </div>
+    {% endif %}
+
+  {% else %}
+
+    Raw query was: <i>{{ query.q }}</i>
+
+    <div class="ui centered stackable grid" style="padding-top: 15%;">
+      <div class="row">
+        <div class="four wide column">
+          <img src="/static/paper_man_confused.gif" alt="confused paper man">
+        </div>
+        <div class="six wide column">
+          <h2>No results found!</h2>
+          <p>You could try elsewhere:</p>
+          <ul>
+            <li>Search <a href="https://scholar.google.com/scholar?q={{ query.q | urlencode }}">Google Scholar</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  {% endif %}
+
+{% elif es_error %}
+  {{ search_macros.es_error_msg(es_error) }}
+{% endif %}
+
+</div>
+{% endblock %}
