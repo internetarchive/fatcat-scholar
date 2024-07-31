@@ -701,6 +701,10 @@ async def container_view_browse(
 async def page_about(request: Request) -> Response:
     return tmpls.TemplateResponse(request, "about.html")
 
+@routes.get("/guide", include_in_schema=False)
+async def page_guide(request: Request) -> Response:
+    return tmpls.TemplateResponse(request, "guide.html")
+
 # settings ported from cors.py in fatcat
 async def cors(request: Request, response: Response) -> None:
     response.headers['Access-Control-Allow-Origin'] = '*'

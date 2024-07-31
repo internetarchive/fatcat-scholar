@@ -1,0 +1,1422 @@
+{% extends "base.html" %}
+
+{% block title %}Fatcat Guide{% endblock %}
+
+{% block body %}
+
+<h1>Fatcat Guide</h1>
+
+<h2 id="data-model"><a class="header" href="#data-model">Data Model</a></h2>
+
+<h3 id="entity-types-and-ontology"><a class="header" href="#entity-types-and-ontology">Entity Types and Ontology</a></h3>
+
+<p>Loosely following &quot;Functional Requirements for Bibliographic Records&quot; (FRBR),
+but removing the &quot;manifestation&quot; abstraction, and favoring files (digital
+artifacts) over physical items, the primary bibliographic entity types are:</p>
+
+<ul>
+  <li>
+    <code>work</code>: representing an abstract unit of creative output. Does
+    not contain any metadata itself; used only to group <code>release</code>
+    entities. For example, a journal article could be posted as a pre-print,
+    published on a journal website, translated into multiple languages, and then
+    re-published (with minimal changes) as a book chapter; these would all be
+    variants of the same <code>work</code>.
+  </li>
+  <li>
+    <code>release</code>: a specific &quot;release&quot; or &quot;publicly published&quot; version of a work.
+    Contains traditional bibliographic metadata (title, date of publication,
+    media type, language, etc). Has relationships to other entities:
+    <ul>
+      <li>child of a single <code>work</code> (required)</li>
+      <li>multiple <code>creator</code> entities as &quot;contributors&quot; (authors, editors)</li>
+      <li>outbound references to multiple other <code>release</code> entities</li>
+      <li>member of a single <code>container</code>, for example a journal or book series</li>
+    </ul>
+  </li>
+  <li>
+    <code>file</code>: a single concrete, fixed digital artifact; a manifestation of one or
+    more <code>releases</code>. Machine-verifiable metadata includes file hashes, size, and
+    detected file format. Verified URLs link to locations on the open web where
+    this file can be found or has been archived. Has relationships:
+    <ul>
+      <li>multiple <code>release</code> entities that this file is a complete manifestation of (almost always a single release)</li>
+    </ul>
+  </li>
+  <li>
+    <code>fileset</code>: a list of muliple concrete files, together forming complete
+    <code>release</code> manifestation. Primarily intended for datasets and supplementary
+    materials; could also contain a paper &quot;package&quot; (source file and figures).
+  </li>
+  <li>
+    <code>webcapture</code>: a single snapshot (point in time) of a webpage or small website
+    (multiple pages) which are a complete manifestation of a <code>release</code>. Not a
+    landing page or page referencing the release.
+  </li>
+  <li>
+    <code>creator</code>: persona (pseudonym, group, or specific human name) that
+    has contributed to one or more <code>release</code>. Not necessarily one-to-one with a
+    human person.
+  </li>
+  <li>
+    <code>container</code> (aka &quot;venue&quot;, &quot;serial&quot;, &quot;title&quot;): a grouping of releases from a
+    single publisher.
+  </li>
+</ul>
+
+<p>Note that, compared to many similar bibliographic ontologies, the current one does not have entities to represent:</p>
+
+<ul>
+  <li>physical artifacts, either generically or specific copies</li>
+  <li>funding sources</li>
+  <li>publishing entities</li>
+  <li>&quot;events at a time and place&quot;</li>
+</ul>
+
+<p>Each entity type has its own relations and fields (captured in a schema), but
+there are are also generic operations and fields common across all entities.
+The API for creating, updating, querying, and inspecting entities is roughly
+the same regardless of type.</p>
+
+<h3 id="common-entity-fields"><a class="header" href="#common-entity-fields">Common Entity Fields</a></h3>
+
+<p>All entities have:</p>
+
+<ul>
+  <li><code>extra</code> (dict, optional): free-form JSON metadata</li>
+</ul>
+
+<p>The &quot;extra&quot; field is an &quot;escape hatch&quot; to include extra fields not in the
+regular schema. It is intended to enable gradual evolution of the schema, as
+well as accommodating niche or field-specific content. Reasonable care should
+be taken with this extra metadata: don't include large text or binary fields,
+hundreds of fields, duplicate metadata, etc.</p>
+
+<p>All full entities (distinct from revisions) also have the following fields:</p>
+
+<ul>
+  <li>
+    <code>state</code> (string, read-only): summarizes the status of the entity in the
+    catalog. One of a small number of fixed values, see vocabulary below.
+  </li>
+  <li><code>ident</code> (string, Fatcat identifier, read-only): the Fatcat entity identifier</li>
+  <li>
+    <code>revision</code> (string, UUID): the current revision record that this entity
+    <code>ident</code> points to
+  </li>
+  <li>
+    <code>redirect</code> (string, Fatcat identifier, optional): if set, this entity ident
+    has been redirected to the <code>redirect</code> one. This is a mechanism of merging or
+    &quot;deduplicating&quot; entities.
+  </li>
+  <li>
+    <code>edit_extra</code> (dict, optional): not part of the bibliographic schema, but can
+    be included when creating or updating entities using the API, and the
+    contents of field will be included in the entity's edit history.
+  </li>
+</ul>
+
+<h3 id="state-vocabulary"><a class="header" href="#state-vocabulary"><code>state</code> Vocabulary</a></h3>
+
+<ul>
+  <li><code>active</code>: entity exists in the catalog</li>
+  <li><code>redirect</code>: the entity <code>ident</code> exists in the catalog, but is a redirect to another entity ident.</li>
+  <li>
+    <code>deleted</code>: an entity with the <code>ident</code> did exist in the catalog previously,
+    but it was deleted. The <code>ident</code> is retained as a &quot;tombstone&quot; record (aka,
+    there is a record that an entity <em>did</em> exist previously).
+  </li>
+  <li>
+    <code>wip</code> (&quot;Work in Progress&quot;): an entity identifier has been created as part of
+    an editgroup, but that editgroup has not been accepted yet into the catalog,
+    and there is no previous/current version of the entity.
+  </li>
+</ul>
+
+<h3 id="identifiers-and-revisions"><a class="header" href="#identifiers-and-revisions">Identifiers and Revisions</a></h3>
+
+<p>A specific version of any entity in the catalog is called a &quot;revision&quot;.
+Revisions are generally immutable (do not change and are not editable), and are
+not normally referred to directly. Instead, persistent &quot;fatcat identifiers&quot;
+(<code>ident</code>) can be created, which &quot;point to&quot; a single revision at a time. This
+distinction means that entities referred to by an identifier can change over
+time (as metadata is corrected and expanded). Revision objects do not &quot;point&quot;
+back to specific identifiers, so they are not the same as a simple &quot;version
+number&quot; for an identifier.</p>
+
+<p>Identifiers also have the ability to be merged (by redirecting one identifier
+to another) and &quot;deleted&quot; (by pointing the identifier to no revision at all).
+All changes to identifiers are captured as an &quot;edit&quot; object. Edit history can
+be fetched and inspected on a per-identifier basis.</p>
+
+<h3 id="controlled-vocabularies"><a class="header" href="#controlled-vocabularies">Controlled Vocabularies</a></h3>
+
+<p>Some individual fields have additional constraints, either in the form of
+pattern validation (&quot;values must be upper case, contain only certain
+characters&quot;), or membership in a fixed set of values. These may include:</p>
+
+<ul>
+  <li>license and open access status</li>
+  <li>work &quot;types&quot; (article vs. book chapter vs. proceeding, etc)</li>
+  <li>contributor types (author, translator, illustrator, etc)</li>
+  <li>human languages</li>
+  <li>identifier namespaces (DOI, ISBN, ISSN, ORCID, etc; but not the identifiers themselves)</li>
+</ul>
+
+<p>Other fixed-set &quot;vocabularies&quot; become too large to easily maintain or express
+in code. These could be added to the backend databases, or be enforced by bots
+(instead of the system itself). These mostly include externally-registered
+identifiers or types, such as:</p>
+
+<ul>
+  <li>file mimetypes</li>
+  <li>identifiers themselves (DOI, ORCID, etc), by checking for registration against canonical APIs and databases</li>
+</ul>
+
+<h3 id="global-edit-changelog"><a class="header" href="#global-edit-changelog">Global Edit Changelog</a></h3>
+
+<p>As part of the process of &quot;accepting&quot; an edit group, a row is written to an
+immutable, append-only table (which internally is a SQL table) documenting each
+identifier change. This changelog establishes a monotonically increasing
+version number for the entire corpus, and should make interaction with other
+systems easier (eg, search engines, replicated databases, alternative storage
+backends, notification frameworks, etc.).</p>
+
+<h2 id="container-entity-reference"><a class="header" href="#container-entity-reference">Container Entity Reference</a></h2>
+
+<h3 id="fields"><a class="header" href="#fields">Fields</a></h3>
+
+<ul>
+<li><code>name</code> (string, required): The title of the publication, as used in
+international indexing services. Eg, &quot;Journal of Important Results&quot;. Not
+necessarily in the native language, but also not necessarily in English.
+Alternative titles (and translations) can be stored in &quot;extra&quot; metadata (see
+below)</li>
+<li><code>container_type</code> (string): eg, journal vs. conference vs. book series.
+Controlled vocabulary is described below.</li>
+<li><code>publication_status</code> (string): whether actively publishing, never published
+anything, or discontinued. Controlled vocabularity is described below.</li>
+<li><code>publisher</code> (string): The name of the publishing organization. Eg, &quot;Society
+of Curious Students&quot;.</li>
+<li><code>issnl</code> (string): an external identifier, with registration controlled by the
+<a href="http://www.issn.org/">ISSN organization</a>. Registration is relatively
+inexpensive and easy to obtain (depending on world region), so almost all
+serial publications have one. The ISSN-L (&quot;linking ISSN&quot;) is one of either
+the print (<code>issp</code>) or electronic (<code>issne</code>) identifiers for a serial
+publication; not all publications have both types of ISSN, but many do, which
+can cause confusion. The ISSN master list is not gratis/public, but the
+ISSN-L mapping is.</li>
+<li><code>issne</code> (string): Electronic ISSN (&quot;ISSN-E&quot;)</li>
+<li><code>issnp</code> (string): Print ISSN (&quot;ISSN-P&quot;)</li>
+<li><code>wikidata_qid</code> (string): external linking identifier to a Wikidata entity.</li>
+</ul>
+<h3 id="extra-fields"><a class="header" href="#extra-fields"><code>extra</code> Fields</a></h3>
+<ul>
+<li><code>abbrev</code> (string): a commonly used abbreviation for the publication, as used
+in citations, following the [ISO 4][] standard. Eg, &quot;Journal of Polymer
+Science Part A&quot; -&gt; &quot;J. Polym. Sci. A&quot;</li>
+<li><code>acronym</code> (string): acronym of publication name. Usually all upper-case, but
+sometimes a very terse, single-word truncated form of the name (eg, a pun).</li>
+<li><code>coden</code> (string): an external identifier, the [CODEN code][]. 6 characters,
+all upper-case.</li>
+<li><code>default_license</code> (string, slug): short name (eg, &quot;CC-BY-SA&quot;) for the
+default/recommended license for works published in this container</li>
+<li><code>original_name</code> (string): native name (if <code>name</code> is translated)</li>
+<li><code>platform</code> (string): hosting platform: OJS, wordpress, scielo, etc</li>
+<li><code>mimetypes</code> (array of string): formats that this container publishes all works
+under (eg, 'application/pdf', 'text/html')</li>
+<li><code>first_year</code> (integer): first year of publication</li>
+<li><code>last_year</code> (integer): final year of publication (implies that container is no longer active)</li>
+<li><code>languages</code> (array of strings): ISO codes; the first entry is considered the
+&quot;primary&quot; language (if that makes sense)</li>
+<li><code>country</code> (string): ISO abbreviation (two characters) for the country this
+container is published in</li>
+<li><code>aliases</code> (array of strings): significant alternative names or abbreviations
+for this container (not just capitalization/punctuation)</li>
+<li><code>region</code> (string, slug): continent/world-region (vocabulary is TODO)</li>
+<li><code>discipline</code> (string, slug): highest-level subject aread (vocabulary is TODO)</li>
+<li><code>urls</code> (array of strings): known homepage URLs for this container (first in array is default)</li>
+<li><code>issnp</code> (deprecated; string): Print ISSN; deprecated now that there is a top-level field</li>
+<li><code>issne</code> (deprecated; string): Electronic ISSN; deprecated now that there is a top-level field</li>
+</ul>
+<p>Additional fields used in analytics and &quot;curration&quot; tracking:</p>
+<ul>
+<li><code>doaj</code> (object)
+<ul>
+<li><code>as_of</code> (string, ISO datetime): datetime of most recent check; if not set,
+not actually in DOAJ</li>
+<li><code>seal</code> (bool): has DOAJ seal</li>
+<li><code>work_level</code> (bool): whether work-level publications are registered with DOAJ</li>
+<li><code>archive</code> (array of strings): preservation archives</li>
+</ul>
+</li>
+<li><code>road</code> (object)
+<ul>
+<li><code>as_of</code> (string, ISO datetime): datetime of most recent check; if not set,
+not actually in ROAD</li>
+</ul>
+</li>
+<li><code>kbart</code> (object)
+<ul>
+<li><code>lockss</code>, <code>clockss</code>, <code>portico</code>, <code>jstor</code> etc (object)
+<ul>
+<li><code>year_spans</code> (array of arrays of integers (pairs)): year spans (inclusive)
+for which the given archive has preserved this container</li>
+<li><code>volume_spans</code> (array of arrays of integers (pairs)): volume spans (inclusive)
+for which the given archive has preserved this container</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>sherpa_romeo</code> (object):
+<ul>
+<li><code>color</code> (string): the SHERPA/RoMEO &quot;color&quot; of the publisher of this container</li>
+</ul>
+</li>
+<li><code>doi</code>: TODO: include list of prefixes and which (if any) DOI registrar is used</li>
+<li><code>dblp</code> (object):
+<ul>
+<li><code>prefix</code> (string): prefix of dblp keys published as part of this container
+(eg, 'journals/blah' or 'conf/xyz')</li>
+</ul>
+</li>
+<li><code>ia</code> (object): Internet Archive specific fields
+<ul>
+<li><code>sim</code> (object): same format as <code>kbart</code> preservation above; coverage in microfilm collection</li>
+<li><code>longtail</code> (bool): is this considered a &quot;long-tail&quot; open access venue</li>
+</ul>
+</li>
+<li><code>publisher_type</code> (string): controlled vocabulary</li>
+</ul>
+<p>For KBART and other &quot;coverage&quot; fields, we &quot;over-count&quot; on the assumption that
+works with &quot;in-progress&quot; status will soon actually be preserved. Elements of
+these arrays are either an integer (means that single year is preserved), or an
+array of length two (meaning everything between the two numbers (inclusive) is
+preserved).</p>
+<h3 id="container_type-vocabulary"><a class="header" href="#container_type-vocabulary"><code>container_type</code> Vocabulary</a></h3>
+<ul>
+<li><code>journal</code></li>
+<li><code>proceedings</code></li>
+<li><code>conference-series</code></li>
+<li><code>book-series</code></li>
+<li><code>blog</code></li>
+<li><code>magazine</code></li>
+<li><code>trade</code></li>
+<li><code>test</code></li>
+</ul>
+<h3 id="publication_status-vocabulary"><a class="header" href="#publication_status-vocabulary"><code>publication_status</code> Vocabulary</a></h3>
+<ul>
+<li><code>active</code>: ongoing publication of new releases</li>
+<li><code>suspended</code>: publication has stopped, but may continue in the future</li>
+<li><code>discontinued</code>: publication has permanently ceased</li>
+<li><code>vanished</code>: publication has stopped, and public traces have vanished (eg,
+publisher website has disappeared with no notice)</li>
+<li><code>never</code>: no works were ever published under this container</li>
+<li><code>one-time</code>: releases were all published as a one-time even. for example, a
+single instance of a conference, or a fixed-size book series</li>
+</ul>
+
+<h2 id="file-entity-reference"><a class="header" href="#file-entity-reference">File Entity Reference</a></h2>
+<h3 id="fields"><a class="header" href="#fields">Fields</a></h3>
+<ul>
+<li><code>size</code> (integer, positive, non-zero): Size of file in bytes. Eg: 1048576.</li>
+<li><code>md5</code> (string): MD5 hash in lower-case hex. Eg: &quot;d41efcc592d1e40ac13905377399eb9b&quot;.</li>
+<li><code>sha1</code> (string): SHA-1 hash in lower-case hex. Not technically required, but
+the most-used of the hash fields and should always be included. Eg:
+&quot;f013d66c7f6817d08b7eb2a93e6d0440c1f3e7f8&quot;.</li>
+<li><code>sha256</code>: SHA-256 hash in lower-case hex. Eg:
+&quot;a77e4c11a57f1d757fca5754a8f83b5d4ece49a2d28596889127c1a2f3f28832&quot;.</li>
+<li><code>urls</code>: An array of &quot;typed&quot; URLs. Order is not meaningful, and may not be
+preserved.
+<ul>
+<li><code>url</code> (string, required): Eg: &quot;https://example.edu/~frau/prcding.pdf&quot;.</li>
+<li><code>rel</code> (string, required): Eg: &quot;webarchive&quot;, see vocabulary below.</li>
+</ul>
+</li>
+<li><code>mimetype</code> (string): Format of the file. If XML, specific schema can be
+included after a <code>+</code>. Example: &quot;application/pdf&quot;</li>
+<li><code>content_scope</code> (string): for situations where the file does not simply
+contain the full representation of a work (eg, fulltext of an article, for an
+<code>article-journal</code> release), describes what that scope of coverage is. Eg,
+entire <code>issue</code>, <code>corrupt</code> file. See vocabulary below.</li>
+<li><code>release_ids</code> (array of string identifiers): references to <code>release</code> entities
+that this file represents a manifestation of. Note that a single file can
+contain multiple release references (eg, a PDF containing a full issue with
+many articles), and that a release will often have multiple files (differing
+only by watermarks, or different digitizations of the same printed work, or
+variant MIME/media types of the same published work).</li>
+<li><code>extra</code> (object with string keys): additional metadata about this file
+<ul>
+<li><code>path</code>: filename, with optional path prefix. path must be &quot;relative&quot;, not
+&quot;absolute&quot;, and should use UNIX-style forward slashes, not Windows-style
+backward slashes</li>
+</ul>
+</li>
+</ul>
+<h3 id="url-rel-vocabulary"><a class="header" href="#url-rel-vocabulary">URL <code>rel</code> Vocabulary</a></h3>
+<ul>
+<li><code>web</code>: generic public web sites; for <code>http/https</code> URLs, this should be the default</li>
+<li><code>webarchive</code>: full URL to a resource in a long-term web archive</li>
+<li><code>repository</code>: direct URL to a resource stored in a repository (eg, an
+institutional or field-specific research data repository)</li>
+<li><code>academicsocial</code>: academic social networks (such as academia.edu or ResearchGate)</li>
+<li><code>publisher</code>: resources hosted on publisher's website</li>
+<li><code>aggregator</code>: fulltext aggregator or search engine, like CORE or Semantic
+Scholar</li>
+<li><code>dweb</code>: content hosted on distributed/decentralized web protocols, such as
+<code>dat://</code> or <code>ipfs://</code> URLs</li>
+</ul>
+<h3 id="content_scope-vocabulary"><a class="header" href="#content_scope-vocabulary"><code>content_scope</code> Vocabulary</a></h3>
+<p>This same vocabulary is shared between file, fileset, and webcapture entities;
+not all the fields make sense for each entity type.</p>
+<ul>
+<li>if not set, assume that the artifact entity is valid and represents a
+complete copy of the release</li>
+<li><code>issue</code>: artifact contains an entire issue of a serial publication (eg, issue
+of a journal), representing several releases in full</li>
+<li><code>abstract</code>: contains only an abstract (short description) of the release, not
+the release itself (unless the <code>release_type</code> itself is <code>abstract</code>, in which
+case it is the entire release)</li>
+<li><code>index</code>: index of a journal, or series of abstracts from a conference</li>
+<li><code>slides</code>: slide deck (usually in &quot;landscape&quot; orientation)</li>
+<li><code>front-matter</code>: non-article content from a journal, such as editorial policies</li>
+<li><code>supplement</code>: usually a file entity which is a supplement or appendix, not
+the entire work</li>
+<li><code>component</code>: a sub-component of a release, which may or may not be associated
+with a <code>component</code> release entity. For example, a single figure or table as
+part of an article</li>
+<li><code>poster</code>: digital copy of a poster, eg as displayed at conference poster sessions</li>
+<li><code>sample</code>: a partial sample of the entire work. eg, just the first page of an
+article. distinct from <code>truncated</code></li>
+<li><code>truncated</code>: the file has been truncated at a binary level, and may also be
+corrupt or invalid. distinct from <code>sample</code></li>
+<li><code>corrupt</code>: broken, mangled, or corrupt file (at the binary level)</li>
+<li><code>stub</code>: any other out-of-scope artifact situations, where the artifact
+represents something which would not link to any possible in-scope release in
+the catalog (except a <code>stub</code> release)</li>
+<li><code>landing-page</code>: for webcapture, the landing page of a work, as opposed to the
+work itself</li>
+<li><code>spam</code>: content is spam. articles, webpages, or issues which include
+incidental advertisements within them are not counted as <code>spam</code></li>
+</ul>
+<h2 id="creator-entity-reference"><a class="header" href="#creator-entity-reference">Creator Entity Reference</a></h2>
+<h3 id="fields"><a class="header" href="#fields">Fields</a></h3>
+<ul>
+<li><code>display_name</code> (string, required): Full name, as will be displayed in user
+interfaces. Eg, &quot;Grace Hopper&quot;</li>
+<li><code>given_name</code> (string): Also known as &quot;first name&quot;. Eg, &quot;Grace&quot;.</li>
+<li><code>surname</code> (string): Also known as &quot;last name&quot;. Eg, &quot;Hooper&quot;.</li>
+<li><code>orcid</code> (string): external identifier, as registered with ORCID.</li>
+<li><code>wikidata_qid</code> (string): external linking identifier to a Wikidata entity.</li>
+</ul>
+<h3 id="extra-fields"><a class="header" href="#extra-fields"><code>extra</code> Fields</a></h3>
+<p>All are optional.</p>
+<ul>
+<li><code>also-known-as</code> (list of objects): additional names that this creator may be
+known under. For example, previous names, aliases, or names in different
+scripts. Can include any or all of <code>display_name</code>, <code>given_name</code>, or <code>surname</code>
+as keys.</li>
+</ul>
+<h3 id="human-names"><a class="header" href="#human-names">Human Names</a></h3>
+<p>Representing names of human beings in databases is a fraught subject. For some
+background reading, see:</p>
+<ul>
+<li><a href="https://www.kalzumeus.com/2010/06/17/falsehoods-programmers-believe-about-names/">Falsehoods Programmers Believe About Names</a> (blog post)</li>
+<li><a href="https://www.w3.org/International/questions/qa-personal-names">Personal names around the world</a> (W3C informational)</li>
+<li><a href="https://en.wikipedia.org/wiki/Hubert_Blaine_Wolfeschlegelsteinhausenbergerdorff_Sr.">Hubert Blaine Wolfeschlegelsteinhausenbergerdorff Sr.</a> (Wikipedia article)</li>
+</ul>
+<p>Particular difficult issues in the context of a bibliographic database include:</p>
+<ul>
+<li>the non-universal concept of &quot;family&quot; vs.  &quot;given&quot; names and their
+relationship to first and last names</li>
+<li>the inclusion of honorary titles and other suffixes and prefixes to a name</li>
+<li>the distinction between &quot;preferred&quot;, &quot;legal&quot;, and &quot;bibliographic&quot; names, or
+other situations where a person may not wish to be known under the name they
+are commonly referred</li>
+<li>language and character set issues</li>
+<li>different conventions for sorting and indexing names</li>
+<li>the sprawling world of citation styles</li>
+<li>name changes</li>
+<li>pseudonyms, anonymous publications, and fake personas (perhaps representing a
+group, like Bourbaki)</li>
+</ul>
+<p>The general guidance for Fatcat is to:</p>
+<ul>
+<li>not be a &quot;source of truth&quot; for representing a persona or human being; ORCID
+and Wikidata are better suited to this task</li>
+<li>represent author personas, not necessarily 1-to-1 with human beings</li>
+<li>balance the concerns of readers with those of the author</li>
+<li>enable basic interoperability with external databases, file formats, schemas,
+and style guides</li>
+<li>when possible, respect the wishes of individual authors</li>
+</ul>
+<p>The data model for the <code>creator</code> entity has three name fields:</p>
+<ul>
+<li><code>surname</code> and <code>given_name</code>: needed for &quot;aligning&quot; with external databases,
+and to export metadata to many standard formats</li>
+<li><code>display_name</code>: the &quot;preferred&quot; representation for display of the entire name,
+in the context of international attribution of authorship of a written work</li>
+</ul>
+<p>Names to not necessarily need to expressed in a Latin character set, but also
+does not necessarily need to be in the native language of the creator or the
+language of their notable works</p>
+<p>Ideally all three fields are populated for all creators.</p>
+<p>It seems likely that this schema and guidance will need review.</p>
+
+
+<h2 id="fileset-entity-reference"><a class="header" href="#fileset-entity-reference">Fileset Entity Reference</a></h2>
+<h3 id="fields"><a class="header" href="#fields">Fields</a></h3>
+<ul>
+<li>
+<p><code>manifest</code> (array of objects): each entry represents a file</p>
+<ul>
+<li><code>path</code> (string, required): relative path to file (including filename)</li>
+<li><code>size</code> (integer, required): in bytes</li>
+<li><code>md5</code> (string): MD5 hash in lower-case hex</li>
+<li><code>sha1</code> (string): SHA-1 hash in lower-case hex</li>
+<li><code>sha256</code> (string): SHA-256 hash in lower-case hex</li>
+<li><code>mimetype</code> (string): Content type in MIME type schema</li>
+<li><code>extra</code> (object): any extra metadata about this specific file. all are
+optional
+<ul>
+<li><code>original_url</code>: live web canonical URL to download this file</li>
+<li><code>webarchive_url</code>: web archive capture of this file</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><code>urls</code>: An array of &quot;typed&quot; URLs. Order is not meaningful, and may not be
+preserved. These are URLs for the entire fileset, not individual files.</p>
+<ul>
+<li><code>url</code> (string, required):
+Eg: &quot;https://example.edu/~frau/prcding.pdf&quot;.</li>
+<li><code>rel</code> (string, required):
+Eg: &quot;archive-base&quot;, &quot;webarchive&quot;.</li>
+</ul>
+</li>
+<li>
+<p><code>release_ids</code> (array of string identifiers): references to <code>release</code> entities</p>
+</li>
+<li>
+<p><code>content_scope</code> (string): for situations where the fileset does not simply
+contain the full representation of a work (eg, all files in dataset, for a
+<code>dataset</code> release), describes what that scope of coverage is. Uses same
+vocabulary as File entity.</p>
+</li>
+<li>
+<p><code>extra</code> (object with string keys): additional metadata about this group of
+files, including upstream platform-specific metadata and identifiers</p>
+<ul>
+<li><code>platform_id</code>: platform-specific identifier for this fileset</li>
+</ul>
+</li>
+</ul>
+<h3 id="url-rel-types"><a class="header" href="#url-rel-types">URL <code>rel</code> types</a></h3>
+<p>Any ending in &quot;-base&quot; implies that a file path (from the manifest) can be
+appended to the &quot;base&quot; URL to get a file download URL. Any &quot;bundle&quot; implies a
+direct link to an archive or &quot;bundle&quot; (like <code>.zip</code> or <code>.tar</code>) which contains
+all the files in this fileset</p>
+<ul>
+<li><code>repository</code> or <code>platform</code> or <code>web</code>: URL of a live-web landing page or other
+location where content can be found. May or may not be machine-reachable.</li>
+<li><code>webarchive</code>: web archive version of <code>repository</code> landing page</li>
+<li><code>repository-bundle</code>: direct URL to a live-web &quot;archive&quot; file, such as <code>.zip</code>,
+which contains all of the individual files in this fileset</li>
+<li><code>webarchive-bundle</code>: web archive version of <code>repository-bundle</code></li>
+<li><code>archive-bundle</code>: file archive version of <code>repository-bundle</code></li>
+<li><code>repository-base</code>: live-web base URL/directory from which file <code>path</code> can be
+appended to fetch individual files</li>
+<li><code>archive-base</code>: base URL/directory from which file <code>path</code> can be appended to fetch
+individual files</li>
+</ul>
+
+
+<h2 id="web-capture-entity-reference"><a class="header" href="#web-capture-entity-reference">Web Capture Entity Reference</a></h2>
+<h3 id="fields"><a class="header" href="#fields">Fields</a></h3>
+<p>Warning: This schema is not yet stable.</p>
+<ul>
+<li><code>cdx</code> (array of objects): each entry represents a distinct web resource
+(URL). First is considered the primary/entry. Roughly aligns with CDXJ schema.
+<ul>
+<li><code>surt</code> (string, required): sortable URL format</li>
+<li><code>timestamp</code> (string, datetime, required): ISO format, UTC timezone, with
+<code>Z</code> prefix required, with second (or finer) precision. Eg,
+&quot;2016-09-19T17:20:24Z&quot;. Wayback timestamps (like &quot;20160919172024&quot;) should
+be converted naively.</li>
+<li><code>url</code> (string, required): full URL</li>
+<li><code>mimetype</code> (string): content type of the resource</li>
+<li><code>status_code</code> (integer, signed): HTTP status code</li>
+<li><code>sha1</code> (string, required): SHA-1 hash in lower-case hex</li>
+<li><code>sha256</code> (string): SHA-256 hash in lower-case hex</li>
+</ul>
+</li>
+<li><code>archive_urls</code>: An array of &quot;typed&quot; URLs where this snapshot can be found.
+Can be wayback/memento instances, or direct links to a WARC file containing
+all the capture resources.  Often will only be a single archive. Order is not
+meaningful, and may not be preserved.
+<ul>
+<li><code>url</code> (string, required):
+Eg: &quot;https://example.edu/~frau/prcding.pdf&quot;.</li>
+<li><code>rel</code> (string, required): Eg: &quot;wayback&quot; or &quot;warc&quot;</li>
+</ul>
+</li>
+<li><code>original_url</code> (string): base URL of the resource. May reference a specific
+CDX entry, or maybe in normalized form.</li>
+<li><code>timestamp</code> (string, datetime): same format as CDX line timestamp (UTC, etc).
+Corresponds to the overall capture timestamp. Can be the earliest of CDX
+timestamps if that makes sense</li>
+<li><code>content_scope</code> (string): for situations where the webcapture does not simply
+contain the full representation of a work (eg, HTML fulltext, for an
+<code>article-journal</code> release), describes what that scope of coverage is. Eg,
+<code>landing-page</code> it doesn't contain the full content. Landing pages are
+out-of-scope for fatcat, but if they were accidentally imported, should mark
+them as such so they aren't re-imported. Uses same vocabulary as File entity.</li>
+<li><code>release_ids</code> (array of string identifiers): references to <code>release</code> entities</li>
+</ul>
+
+<h2 id="release-entity-reference"><a class="header" href="#release-entity-reference">Release Entity Reference</a></h2>
+<h3 id="fields"><a class="header" href="#fields">Fields</a></h3>
+<ul>
+<li><code>title</code> (string, required): the display title of the release. May include subtitle.</li>
+<li><code>subtitle</code> (string): intended only to be used primarily with books, not
+journal articles. Subtitle may also be appended to the <code>title</code> instead of
+populating this field.</li>
+<li><code>original_title</code> (string): the full original language title, if <code>title</code> is translated</li>
+<li><code>work_id</code> (fatcat identifier; required): the (single) work that this release
+is grouped under. If not specified in a creation (<code>POST</code>) action, the API
+will auto-generate a work.</li>
+<li><code>container_id</code> (fatcat identifier): a (single) container that this release is
+part of. When expanded the <code>container</code> field contains the full <code>container</code>
+entity.</li>
+<li><code>release_type</code> (string, controlled set): represents the medium or form-factor
+of this release; eg, &quot;book&quot; versus &quot;journal article&quot;. Not necessarily
+the same across all releases of a work. See definitions below.</li>
+<li><code>release_stage</code> (string, controlled set): represents the publishing/review
+lifecycle status of this particular release of the work. See definitions
+below.</li>
+<li><code>release_date</code> (string, ISO date format): when this release was first made
+publicly available. Blank if only year is known.</li>
+<li><code>release_year</code> (integer): year when this release was first made
+publicly available; should match <code>release_date</code> if both are known.</li>
+<li><code>withdrawn_status</code> (optional, string, controlled set):</li>
+<li><code>withdrawn_date</code> (optional, string, ISO date format): when this release was withdrawn.
+Blank if only year is known.</li>
+<li><code>withdrawn_year</code> (optional, integer): year when this release was withdrawn; should
+match <code>withdrawn_date</code> if both are known.</li>
+<li><code>ext_ids</code> (key/value object of string-to-string mappings): external
+identifiers. At least an empty <code>ext_ids</code> object is always required for
+release entities, so individual identifiers can be accessed directly.</li>
+<li><code>volume</code> (string): optionally, stores the specific volume of a serial
+publication this release was published in.
+type: string</li>
+<li><code>issue</code> (string): optionally, stores the specific issue of a serial
+publication this release was published in.</li>
+<li><code>pages</code> (string): the pages (within a volume/issue of a publication) that
+this release can be looked up under. This is a free-form string, and could
+represent the first page, a range of pages, or even prefix pages (like
+&quot;xii-xxx&quot;).</li>
+<li><code>version</code> (string): optionally, describes distinguishes this release version
+from others. Generally a number, software-style version, or other short/slug
+string, not a freeform description. Book &quot;edition&quot; descriptions can also go
+in an <code>edition</code> extra field. Often used in conjunction with external
+identifiers. If you're not certain, don't use this field!</li>
+<li><code>number</code> (string): an inherent identifier for this release (or work), often
+part of the title. For example, standards numbers, technical memo numbers,
+book series number, etc. Not a book <code>chapter</code> number however (which can be
+stored in <code>extra</code>). Depending on field or series-specific norms, the number
+may be stored here, in the title, or in both fields.</li>
+<li><code>publisher</code> (string): name of the publishing entity. This does not need to be
+populated if the associated <code>container</code> entity has the publisher field set,
+though it is acceptable to duplicate, as the publishing entity of a container
+may differ over time. Should be set for singleton releases, like books.</li>
+<li><code>language</code> (string, slug): the primary language used in this particular release of
+the work. Only a single language can be specified; additional languages can
+be stored in &quot;extra&quot; metadata (TODO: which field?). This field should be a
+valid RFC1766/ISO639 language code (two letters). AKA, a controlled
+vocabulary, not a free-form name of the language.</li>
+<li><code>license_slug</code> (string, slug): the license of this release. Usually a
+creative commons short code (eg, <code>CC-BY</code>), though a small number of other
+short names for publisher-specific licenses are included (TODO: list these).</li>
+<li><code>contribs</code> (array of objects): an array of authorship and other <code>creator</code> contributions to this
+release. Contribution fields include:
+<ul>
+<li><code>index</code> (integer, optional): the (zero-indexed) order of this
+author. Authorship order has significance in many fields. Non-author
+contributions (illustration, translation, editorship) may or may not be
+ordered, depending on context, but index numbers should be unique per
+release (aka, there should not be &quot;first author&quot; and &quot;first translator&quot;)</li>
+<li><code>creator_id</code> (identifier): if known, a reference to a specific <code>creator</code></li>
+<li><code>raw_name</code> (string): the name of the contributor, as attributed in the
+text of this work. If the <code>creator_id</code> is linked, this may be different
+from the <code>display_name</code>; if a creator is not linked, this field is
+particularly important. Syntax and name order is not specified, but most
+often will be &quot;display order&quot;, not index/alphabetical (in Western
+tradition, surname followed by given name).</li>
+<li><code>role</code> (string, of a set): the type of contribution, from a controlled
+vocabulary. TODO: vocabulary needs review.</li>
+<li><code>extra</code> (string): additional context can go here. For example, author
+affiliation, &quot;this is the corresponding author&quot;, etc.</li>
+</ul>
+</li>
+<li><code>refs</code> (array of ident strings): references (aka, citations) to other releases. References
+can only be linked to a specific target release (not a work), though it may
+be ambiguous which release of a work is being referenced if the citation is
+not specific enough. IMPORTANT: release refs are distinct from the <a href="#reference-graph-refcat">reference graph</a> API. Reference fields include:
+<ul>
+<li><code>index</code> (integer, optional): reference lists and bibliographies almost
+always have an implicit order. Zero-indexed. Note that this is distinct
+from the <code>key</code> field.</li>
+<li><code>target_release_id</code> (fatcat identifier): if known, and the release
+exists, a cross-reference to the Fatcat entity</li>
+<li><code>extra</code> (JSON, optional): additional citation format metadata can be
+stored here, particularly if the citation schema does not align. Common
+fields might be &quot;volume&quot;, &quot;authors&quot;, &quot;issue&quot;, &quot;publisher&quot;, &quot;url&quot;, and
+external identifiers (&quot;doi&quot;, &quot;isbn13&quot;).</li>
+<li><code>key</code> (string): works often reference works with a short slug or index
+number, which can be captured here. For example, &quot;[BROWN2017]&quot;. Keys
+generally supersede the <code>index</code> field, though both can/should be
+supplied.</li>
+<li><code>year</code> (integer): year of publication of the cited release.</li>
+<li><code>container_title</code> (string): if applicable, the name of the container of
+the release being cited, as written in the citation (usually an
+abbreviation).</li>
+<li><code>title</code> (string): the title of the work/release being cited, as written.</li>
+<li><code>locator</code> (string): a more specific reference into the work/release being
+cited, for example the page number(s). For web reference, store the URL
+in &quot;extra&quot;, not here.</li>
+</ul>
+</li>
+<li><code>abstracts</code> (array of objects): see below
+<ul>
+<li><code>sha1</code> (string, hex, required): reference to the abstract content (string).
+Example: &quot;3f242a192acc258bdfdb151943419437f440c313&quot;</li>
+<li><code>content</code> (string): The abstract raw content itself. Example: <code>&lt;jats:p&gt;Some abstract thing goes here&lt;/jats:p&gt;</code></li>
+<li><code>mimetype</code> (string): not formally required, but should effectively always get
+set. <code>text/plain</code> if the abstract doesn't have a structured format</li>
+<li><code>lang</code> (string, controlled set): the human language this abstract is in. See
+the <code>lang</code> field of release for format and vocabulary.</li>
+</ul>
+</li>
+</ul>
+<h3 id="external-identifiers-ext_ids"><a class="header" href="#external-identifiers-ext_ids">External Identifiers (<code>ext_ids</code>)</a></h3>
+<p>The <code>ext_ids</code> object name-spaces external identifiers and makes it easier to
+add new identifiers to the schema in the future.</p>
+<p>Many identifier fields must match an internal regex (string syntax constraint)
+to ensure they are properly formatted, though these checks aren't always
+complete or correct in more obscure cases.</p>
+<ul>
+<li><code>doi</code> (string): full DOI number, lower-case. Example: &quot;10.1234/abcde.789&quot;.
+See section below for more about DOIs specifically</li>
+<li><code>wikidata_qid</code> (string): external identifier for Wikidata entities. These are
+integers prefixed with &quot;Q&quot;, like &quot;Q4321&quot;. Each <code>release</code> entity can be
+associated with at most one Wikidata entity (this field is not an array), and
+Wikidata entities should be associated with at most a single <code>release</code>. In
+the future it may be possible to associate Wikidata entities with <code>work</code>
+entities instead.</li>
+<li><code>isbn13</code> (string): external identifier for books. ISBN-9 and other formats
+should be converted to canonical ISBN-13.</li>
+<li><code>pmid</code> (string): external identifier for the PubMed database. These are bare
+integers, but stored in a string format.</li>
+<li><code>pmcid</code> (string): external identifier for PubMed Central database. These are
+integers prefixed with &quot;PMC&quot; (upper case), like &quot;PMC4321&quot;. Versioned PMCIDs
+can also be stored (eg, &quot;PMC4321.1&quot;; future clarification of whether versions
+should <em>always</em> be stored will be needed.</li>
+<li><code>core</code> (string): external identifier for the <a href="https://core.ac.uk/">CORE</a> open access
+aggregator. Not used much in practice. These identifiers are integers, but
+stored in string format.</li>
+<li><code>arxiv</code> (string): external identifier to a (version-specific) <a href="https://arxiv.org">arxiv.org</a>
+work. For releases, must always include the <code>vN</code> suffix (eg, <code>v3</code>).</li>
+<li><code>jstor</code> (string): external identifier for works in JSTOR which do not have a
+valid registered DOI.</li>
+<li><code>ark</code> (string): ARK identifier.</li>
+<li><code>mag</code> (DEPRECATED; string): Microsoft Academic Graph (MAG) identifier. As of
+December 2021, no entities in the catalog have a value for this field.</li>
+<li><code>doaj</code> (string): <a href="https://doaj.org">DOAJ</a> article-level identifier</li>
+<li><code>dblp</code> (string): <a href="https://dblp.org">dblp</a> article-level identifier</li>
+<li><code>oai</code> (string): OAI-PMH record id. Only use if no other identifier is available</li>
+<li><code>hdl</code> (string): <a href="https://handle.net">handle.net</a> identifier. While DOIs are
+technically handles, do not put DOIs in this field. Handles are normalized
+to lower-case in the catalog (server-side).</li>
+</ul>
+<h3 id="extra-fields"><a class="header" href="#extra-fields"><code>extra</code> Fields</a></h3>
+<ul>
+<li><code>crossref</code> (object), for extra crossref-specific metadata
+<ul>
+<li><code>subject</code> (array of strings) for subject/category of content</li>
+<li><code>type</code> (string) raw/original Crossref type</li>
+<li><code>alternative-id</code> (array of strings)</li>
+<li><code>archive</code> (array of strings), indicating preservation services deposited</li>
+<li><code>funder</code> (object/dictionary)</li>
+</ul>
+</li>
+<li><code>aliases</code> (array of strings) for additional titles this release might be
+known by</li>
+<li><code>container_name</code> (string) if not matched to a container entity</li>
+<li><code>group-title</code> (string) for releases within an collection/group</li>
+<li><code>translation_of</code> (release identifier) if this release is a translation of
+another (usually under the same work)</li>
+<li><code>superceded</code> (boolean) if there is another release under the same work that
+should be referenced/indicated instead. Intended as a temporary hint until
+proper work-based search is implemented. As an example use, all arxiv release
+versions except for the most recent get this set.</li>
+<li><code>is_work_alias</code> (boolean): if true, then this release is an alias or pointer to
+the entire work, or the most recent version of the work. For example, some
+data repositories have separate DOIs for each version of the dataset, then an
+additional DOI that points to the &quot;latest&quot; version/DOI.</li>
+</ul>
+<h3 id="release_type-vocabulary"><a class="header" href="#release_type-vocabulary"><code>release_type</code> Vocabulary</a></h3>
+<p>This vocabulary is based on the
+<a href="http://docs.citationstyles.org/en/stable/specification.html#appendix-iii-types">CSL types</a>,
+with a small number of (proposed) extensions:</p>
+<ul>
+<li><code>article-magazine</code></li>
+<li><code>article-journal</code>, including pre-prints and working papers</li>
+<li><code>book</code></li>
+<li><code>chapter</code> is allowed as they are frequently referenced and read independent
+of the entire book. The data model does not currently support linking a
+subset of a release to an entity representing the entire release. The
+release/work/file distinctions should not be used to group multiple chapters under
+a single work; a book chapter can be its own work. A paper which is
+republished as a chapter (eg, in a collection, or &quot;edited&quot; book) can have
+both releases under one work. The criteria of whether to &quot;split&quot; a book and
+have release entities for each chapter is whether the chapter has been
+cited/reference as such.</li>
+<li><code>dataset</code></li>
+<li><code>entry</code>, which can be used for generic web resources like question/answer
+site entries.</li>
+<li><code>entry-encyclopedia</code></li>
+<li><code>manuscript</code></li>
+<li><code>paper-conference</code></li>
+<li><code>patent</code></li>
+<li><code>post-weblog</code> for blog entries</li>
+<li><code>report</code></li>
+<li><code>review</code>, for things like book reviews, not the &quot;literature review&quot; form of
+<code>article-journal</code>, nor peer reviews (see <code>peer_review</code>). Note <code>review-book</code>
+for book reviews specifically.</li>
+<li><code>speech</code> can be used for eg, slides and recorded conference presentations
+themselves, as distinct from <code>paper-conference</code></li>
+<li><code>thesis</code></li>
+<li><code>webpage</code></li>
+<li><code>peer_review</code> (fatcat extension)</li>
+<li><code>software</code> (fatcat extension)</li>
+<li><code>standard</code> (fatcat extension), for technical standards like RFCs</li>
+<li><code>abstract</code> (fatcat extension), for releases that are only an abstract of a
+larger work. In particular, translations. Many are granted DOIs.</li>
+<li><code>editorial</code> (custom extension) for columns, &quot;in this issue&quot;, and other
+content published along peer-reviewed content in journals. Many are granted DOIs.</li>
+<li><code>letter</code> for &quot;letters to the editor&quot;, &quot;authors respond&quot;, and
+sub-article-length published content. Many are granted DOIs.</li>
+<li><code>stub</code> (fatcat extension) for releases which have notable external
+identifiers, and thus are included &quot;for completeness&quot;, but don't seem to
+represent a &quot;full work&quot;.</li>
+<li><code>component</code> (fatcat extension) for sub-components of a full paper or other
+work. Eg, tables, or individual files as part of a dataset.</li>
+</ul>
+<p>An example of a <code>stub</code> might be a paper that gets an extra DOI by accident; the
+primary DOI should be a full release, and the accidental DOI can be a <code>stub</code>
+release under the same work. <code>stub</code> releases shouldn't be considered full
+releases when counting or aggregating (though if technically difficult this may
+not always be implemented). Other things that can be categorized as stubs
+(which seem to often end up mis-categorized as full articles in bibliographic
+databases):</p>
+<ul>
+<li>commercial advertisements</li>
+<li>&quot;trap&quot; or &quot;honey pot&quot; works, which are fakes included in databases to
+detect re-publishing without attribution</li>
+<li>&quot;This page is intentionally blank&quot;</li>
+<li>&quot;About the author&quot;, &quot;About the editors&quot;, &quot;About the cover&quot;</li>
+<li>&quot;Acknowledgments&quot;</li>
+<li>&quot;Notices&quot;</li>
+</ul>
+<p>All other CSL types are also allowed, though they are mostly out of scope:</p>
+<ul>
+<li><code>article</code> (generic; should usually be some other type)</li>
+<li><code>article-newspaper</code></li>
+<li><code>bill</code></li>
+<li><code>broadcast</code></li>
+<li><code>entry-dictionary</code></li>
+<li><code>figure</code></li>
+<li><code>graphic</code></li>
+<li><code>interview</code></li>
+<li><code>legislation</code></li>
+<li><code>legal_case</code></li>
+<li><code>map</code></li>
+<li><code>motion_picture</code></li>
+<li><code>musical_score</code></li>
+<li><code>pamphlet</code></li>
+<li><code>personal_communication</code></li>
+<li><code>post</code></li>
+<li><code>review-book</code></li>
+<li><code>song</code></li>
+<li><code>treaty</code></li>
+</ul>
+<p>For the purpose of statistics, the following release types are considered
+&quot;papers&quot;:</p>
+<ul>
+<li><code>article</code></li>
+<li><code>article-journal</code></li>
+<li><code>chapter</code></li>
+<li><code>paper-conference</code></li>
+<li><code>thesis</code></li>
+</ul>
+<h3 id="release_stage-vocabulary"><a class="header" href="#release_stage-vocabulary"><code>release_stage</code> Vocabulary</a></h3>
+<p>These roughly follow the <a href="http://web.archive.org/web/20091109125137/http://www2.lse.ac.uk/library/versions/VERSIONS_Toolkit_v1_final.pdf">DRIVER</a> publication version guidelines, with the addition of a <code>retracted</code> status.</p>
+<ul>
+<li><code>draft</code> is an early version of a work which is not considered for peer
+review. Sometimes these are posted to websites or repositories for early
+comments and feedback.</li>
+<li><code>submitted</code> is the version that was submitted for publication. Also known as
+&quot;pre-print&quot;, &quot;pre-review&quot;, &quot;under review&quot;. Note that this doesn't imply that
+the work was every actually submitted, reviewed, or accepted for publication,
+just that this is the version that &quot;would be&quot;. Most versions in pre-print
+repositories are likely to have this status.</li>
+<li><code>accepted</code> is a version that has undergone peer review and accepted for
+published, but has not gone through any publisher copy editing or
+re-formatting. Also known as &quot;post-print&quot;, &quot;author's manuscript&quot;,
+&quot;publisher's proof&quot;.</li>
+<li><code>published</code> is the version that the publisher distributes. May include minor
+(gramatical, typographical, broken link, aesthetic) corrections. Also known
+as &quot;version of record&quot;, &quot;final publication version&quot;, &quot;archival copy&quot;.</li>
+<li><code>updated</code>: post-publication significant updates (considered a separate release
+in Fatcat). Also known as &quot;correction&quot; (in the context of either a published
+&quot;correction notice&quot;, or the full new version)</li>
+<li><code>retraction</code> for post-publication retraction notices (should be a release
+under the same work as the <code>published</code> release)</li>
+</ul>
+<p>Note that in the case of a retraction, the original publication does not get
+state <code>retracted</code>, only the retraction notice does. The original publication
+does get a <code>withdrawn_status</code> metadata field set.</p>
+<p>When blank, indicates status isn't known, and wasn't inferred at creation time.
+Can often be interpreted as <code>published</code>, but be careful!</p>
+<h3 id="withdrawn_status-vocabulary"><a class="header" href="#withdrawn_status-vocabulary"><code>withdrawn_status</code> Vocabulary</a></h3>
+<p>Don't know of an existing controlled vocabulary for things like retractions or
+other reasons for marking papers as removed from publication, so invented my
+own. These labels should be considered experimental and subject to change.</p>
+<p>Note that some of these will apply more to pre-print servers or publishing
+accidents, and don't necessarily make sense as a formal change of status for a
+print journal publication.</p>
+<p>Any value at all indicates that the release should be considered &quot;no longer
+published by the publisher or primary host&quot;, which could mean different things
+in different contexts. As some concrete examples, works are often accidentally
+generated a duplicate DOI; physics papers have been taken down in response to
+government order under national security justifications; papers have been
+withdrawn for public health reasons (above and beyond any academic-style
+retraction); entire journals may be found to be predatory and pulled from
+circulation; individual papers may be retracted by authors if a serious mistake
+or error is found; an author's entire publication history may be retracted in
+cases of serious academic misconduct or fraud.</p>
+<ul>
+<li><code>withdrawn</code> is generic: the work is no longer available from the original
+publisher. There may be no reason, or the reason may not be known yet.</li>
+<li><code>retracted</code> for when a work is formally retracted, usually accompanied by a
+retraction notice (a separate release under the same work). Note that the
+retraction itself should not have a <code>withdrawn_status</code>.</li>
+<li><code>concern</code> for when publishers release an &quot;expression of concern&quot;, often
+indicating that the work is not reliable in some way, but not yet formally
+retracted. In this case the original work is probably still available, but
+should be marked as suspect. This is not the same as presence of errata.</li>
+<li><code>safety</code> for works pulled for public health or human safety concerns.</li>
+<li><code>national-security</code> for works pulled over national security concerns.</li>
+<li><code>spam</code> for content that is considered spam (eg, bogus pre-print or repository
+submissions). Not to be confused with advertisements or product reviews in
+journals.</li>
+</ul>
+<h3 id="contribsrole-vocabulary"><a class="header" href="#contribsrole-vocabulary"><code>contribs.role</code> Vocabulary</a></h3>
+<ul>
+<li><code>author</code></li>
+<li><code>translator</code></li>
+<li><code>illustrator</code></li>
+<li><code>editor</code></li>
+</ul>
+<p>All other CSL role types are also allowed, though are mostly out of scope for
+Fatcat:</p>
+<ul>
+<li><code>collection-editor</code></li>
+<li><code>composer</code></li>
+<li><code>container-author</code></li>
+<li><code>director</code></li>
+<li><code>editorial-director</code></li>
+<li><code>editortranslator</code></li>
+<li><code>interviewer</code></li>
+<li><code>original-author</code></li>
+<li><code>recipient</code></li>
+<li><code>reviewed-author</code></li>
+</ul>
+<p>If blank, indicates that type of contribution is not known; this can often be
+interpreted as authorship.</p>
+
+<h3 id="more-about-dois"><a class="header" href="#more-about-dois">More About DOIs</a></h3>
+<p>All DOIs stored in an entity column should be registered (aka, should be
+resolvable from <code>doi.org</code>). Invalid identifiers may be cleaned up or removed by
+bots.</p>
+<p>DOIs should <em>always</em> be stored and transferred in lower-case form. Note that
+there are almost no other constraints on DOIs (and handles in general): they
+may have multiple forward slashes, whitespace, of arbitrary length, etc.
+Crossref has a <a href="https://www.crossref.org/blog/dois-unambiguously-and-persistently-identify-published-trustworthy-citable-online-scholarly-literature-right/">number of examples</a> of such &quot;valid&quot; but frustratingly
+formatted strings.</p>
+<p>In the Fatcat ontology, DOIs and release entities are one-to-one.</p>
+<p>It is the intention to automatically (via bot) create a Fatcat release for
+every Crossref-registered DOI from an allowlist of media types
+(&quot;journal-article&quot; etc, but not all), and it would be desirable to auto-create
+entities for in-scope publications from all registrars. It is not the intention
+to auto-create a release for every registered DOI. In particular,
+&quot;sub-component&quot; DOIs (eg, for an individual figure or table from a publication)
+aren't currently auto-created, but could be stored in &quot;extra&quot; metadata, or on a
+case-by-case basis.</p>
+
+<h2 id="work-entity-reference"><a class="header" href="#work-entity-reference">Work Entity Reference</a></h2>
+<p>Works have no fields! They just group releases.</p>
+
+<br>
+<h2 id="rest-api"><a class="header" href="#rest-api">REST API</a></h2>
+<p>The Fatcat HTTP API is a read-only API for querying and searching the catalog.</p>
+<p>A declarative specification of all API endpoints, JSON data models, and
+response types is available in OpenAPI 2.0 format. Code generation tools are
+used to generate both server-side type-safe endpoint routes and client-side
+libraries. Auto-generated reference documentation is, for now, available at
+<a href="https://api.fatcat.wiki">https://api.fatcat.wiki</a>.</p>
+<p>All API traffic is over HTTPS; there is no HTTP endpoint, even for read-only
+operations. All endpoints accept and return only JSON serialized content.</p>
+
+<br>
+<h2 id="bulk-exports"><a class="header" href="#bulk-exports">Bulk Exports</a></h2>
+<p>There are several types of bulk exports and database dumps folks might be
+interested in:</p>
+<ul>
+<li>complete database dumps</li>
+<li>changelog history with all entity revisions and edit metadata</li>
+<li>identifier snapshot tables</li>
+<li>entity exports</li>
+</ul>
+<p>All exports and dumps get uploaded to the Internet Archive under the
+<a href="https://archive.org/details/fatcat_snapshots_and_exports?&amp;sort=-publicdate">&quot;Fatcat Database Snapshots and Bulk Metadata Exports&quot;</a>
+collection.</p>
+<h3 id="complete-database-dumps"><a class="header" href="#complete-database-dumps">Complete Database Dumps</a></h3>
+<p>The most simple and complete bulk export. Useful for disaster recovery,
+mirroring, or forking the entire service. The internal database schema is not
+stable, so not as useful for longitudinal analysis. These dumps will include
+edits-in-progress, deleted entities, old revisions, etc, which are potentially
+difficult or impossible to fetch through the API.</p>
+<p>Public copies may have some tables redacted (eg, API credentials).</p>
+<p>Dumps are in PostgreSQL <code>pg_dump</code> &quot;tar&quot; binary format, and can be restored
+locally with the <code>pg_restore</code> command. See <code>./extra/sql_dumps/</code> for commands
+and details. Dumps are on the order of 100 GBytes (compressed) and will grow
+over time.</p>
+<h3 id="changelog-history"><a class="header" href="#changelog-history">Changelog History</a></h3>
+<p>These are currently unimplemented; would involve &quot;hydrating&quot; sub-entities into
+changelog exports. Useful for some mirrors, and analysis that needs to track
+provenance information. Format would be the public API schema (JSON).</p>
+<p>All information in these dumps should be possible to fetch via the public API,
+including on a feed/streaming basis using the sequential changelog index. All
+information is also contained in the database dumps.</p>
+<h3 id="identifier-snapshots"><a class="header" href="#identifier-snapshots">Identifier Snapshots</a></h3>
+<p>Many of the other dump formats are very large. To save time and bandwidth, a
+few simple snapshot tables can be exported directly in TSV format. Because
+these tables can be dumped in single SQL transactions, they are consistent
+point-in-time snapshots.</p>
+<p>One format is per-entity identifier/revision tables. These contain active,
+deleted, and redirected identifiers, with revision and redirect references, and
+are used to generate the entity dumps below.</p>
+<p>Other tables contain external identifier mappings or file hashes.</p>
+<p>Release abstracts can be dumped in their own table (JSON format), allowing them
+to be included only by reference from other dumps.  The copyright status and
+usage restrictions on abstracts are different from other catalog content; see
+the <a href="#metadata-licensing">metadata licensing</a> section for more context.  Abstracts are immutable and
+referenced by hash in the database, so the consistency of these dumps is not as
+much of a concern as with other exports.</p>
+<p>Unlike all other dumps and public formats, the Fatcat identifiers in these
+dumps are in raw UUID format (not base32-encoded), though this may be fixed in
+the future.</p>
+<p>See <code>./extra/sql_dumps/</code> for scripts and details. Dumps are on the order of a
+couple GBytes each (compressed).</p>
+<h3 id="entity-exports"><a class="header" href="#entity-exports">Entity Exports</a></h3>
+<p>Using the above identifier snapshots, the Rust <code>fatcat-export</code> program outputs
+single-entity-per-line JSON files with the same schema as the HTTP API. These
+might contain the default fields, or be in &quot;expanded&quot; format containing
+sub-entities for each record.</p>
+<p>Only &quot;active&quot; entities are included (not deleted, work-in-progress, or
+redirected entities).</p>
+<p>These dumps can be quite large when expanded (over 100 GBytes compressed), but
+do not include history so will not grow as fast as other exports over time. Not
+all entity types are dumped at the moment; if you would like specific dumps get
+in touch!</p>
+
+<br>
+
+<h2 id="fatcat-identifiers"><a class="header" href="#fatcat-identifiers">Fatcat Identifiers</a></h2>
+<p>Fatcat identifiers are semantically meaningless fixed-length random numbers,
+usually represented in case-insensitive base32 format. Each entity type has its
+own identifier namespace.</p>
+<p>128-bit (UUID size) identifiers encode as 26 characters (but note that not all
+such strings decode to valid UUIDs), and in the backend can be serialized in
+UUID columns:</p>
+<pre><code>work_rzga5b9cd7efgh04iljk8f3jvz
+https://fatcat.wiki/work/rzga5b9cd7efgh04iljk8f3jvz
+</code></pre>
+<p>In comparison, 96-bit identifiers would have 20 characters and look like:</p>
+<pre><code>work_rzga5b9cd7efgh04iljk
+https://fatcat.wiki/work/rzga5b9cd7efgh04iljk
+</code></pre>
+<p>and 64-bit:</p>
+<pre><code>work_rzga5b9cd7efg
+https://fatcat.wiki/work/rzga5b9cd7efg
+</code></pre>
+<p>Fatcat identifiers can used to interlink between databases, but are explicitly
+<em>not</em> intended to supplant DOIs, ISBNs, handle, ARKs, and other &quot;registered&quot;
+persistent identifiers for general use.</p>
+<h3 id="internal-schema"><a class="header" href="#internal-schema">Internal Schema</a></h3>
+<p>Internally, identifiers are lightweight pointers to &quot;revisions&quot; of an entity.
+Revisions are stored in their complete form, not as a patch or difference; if
+comparing to distributed version control systems (for managing changes to
+source code), this follows the git model, not the mercurial model.</p>
+<p>The entity revisions are immutable once accepted; the editing process involves
+the creation of new entity revisions and, if the edit is approved, pointing the
+identifier to the new revision. Entities cross-reference between themselves by
+<em>identifier</em> not <em>revision number</em>. Identifier pointers also support
+(versioned) deletion and redirects (for merging entities).</p>
+<p>Edit objects represent a change to a single entity; edits get batched together
+into edit groups (like &quot;commits&quot; and &quot;pull requests&quot; in git parlance).</p>
+<p>SQL tables look something like this (with separate tables for entity type a la
+<code>work_revision</code> and <code>work_edit</code>):</p>
+<pre><code>entity_ident
+    id (uuid)
+    current_revision (entity_revision foreign key)
+    redirect_id (optional; points to another entity_ident)
+    is_live (boolean; whether newly created entity has been accepted)
+
+entity_revision
+    revision_id
+    &lt;all entity-style-specific fields&gt;
+    extra: json blob for schema evolution
+
+entity_edit
+    timestamp
+    editgroup_id (editgroup foreign key)
+    ident (entity_ident foreign key)
+    new_revision (entity_revision foreign key)
+    new_redirect (optional; points to entity_ident table)
+    previous_revision (optional; points to entity_revision)
+    extra: json blob for provenance metadata
+
+editgroup
+    editor_id (editor table foreign key)
+    description
+    extra: json blob for provenance metadata
+</code></pre>
+<p>An individual entity can be in the following &quot;states&quot;, from which the given
+actions (transition) can be made:</p>
+<ul>
+<li><code>wip</code> (not live; not redirect; has rev)
+<ul>
+<li>activate (to <code>active</code>)</li>
+</ul>
+</li>
+<li><code>active</code> (live; not redirect; has rev)
+<ul>
+<li>redirect (to <code>redirect</code>)</li>
+<li>delete (to <code>deleted</code>)</li>
+</ul>
+</li>
+<li><code>redirect</code> (live; redirect; rev or not)
+<ul>
+<li>split (to <code>active</code>)</li>
+<li>delete (to <code>delete</code>)</li>
+</ul>
+</li>
+<li><code>deleted</code> (live; not redirect; no rev)
+<ul>
+<li>redirect (to <code>redirect</code>)</li>
+<li>activate (to <code>active</code>)</li>
+</ul>
+</li>
+</ul>
+<p>&quot;WIP, redirect&quot; or &quot;WIP, deleted&quot; are invalid states.</p>
+<p>Additional entity-specific columns hold actual metadata. Additional
+tables (which reference both <code>entity_revision</code> and <code>entity_id</code> foreign
+keys as appropriate) represent things like authorship relationships
+(creator/release), citations between works, etc. Every revision of an entity
+requires duplicating all of these associated rows, which could end up
+being a large source of inefficiency, but is necessary to represent the full
+history of an object.</p>
+<br>
+<h2 id="sources"><a class="header" href="#sources">Sources</a></h2>
+<p>The core metadata bootstrap sources, by entity type, are:</p>
+<ul>
+<li><code>releases</code>: Crossref metadata, with DOIs as the primary identifier, and
+PubMed (central), Wikidata, and <a href="https://core.ac.uk">CORE</a> identifiers cross-referenced</li>
+<li><code>containers</code>: munged metadata from the DOAJ, ROAD, and Norwegian journal
+list, with ISSN-Ls as the primary identifier. ISSN provides an &quot;ISSN to
+ISSN-L&quot; mapping to normalize electronic and print ISSN numbers.</li>
+<li><code>creators</code>: ORCID metadata and identifier.</li>
+</ul>
+<p>Initial <code>file</code> metadata and matches (file-to-release) come from earlier
+Internet Archive matching efforts, and in particular efforts to extra
+bibliographic metadata from PDFs (using GROBID) and fuzzy match (with
+conservative settings) to Crossref metadata.</p>
+<p>The intent is to continuously ingest and merge metadata from a small number of
+large (~2-3 million more more records) general-purpose aggregators and catalogs
+in a centralized fashion, using bots, and then support volunteers and
+organizations in writing bots to merge high-quality metadata from field or
+institution-specific catalogs.</p>
+<p>Progeny information (where the metadata comes from, or who &quot;makes specific
+claims&quot;) is stored in edit metadata in the data model. Value-level attribution
+can be achieved by looking at the full edit history for an entity as a series of
+patches.</p>
+<br>
+<h2 id="reference-graph-refcat"><a class="header" href="#reference-graph-refcat">Reference Graph (refcat)</a></h2>
+<p>In Summer 2021, the first version of a reference graph dataset, named &quot;refcat&quot;,
+was released and integrated into the fatcat.wiki web interface. The dataset
+contains billions of references between papers in the fatcat catalog, as well
+as partial coverage of references from papers to books, to websites, and from
+Wikipedia articles to papers. This is a first step towards identifying links
+and references between scholarly works of all types preserved in archive.org.</p>
+<p>The refcat dataset can be downloaded in JSON lines format from the archive.org
+&quot;<a href="https://archive.org/details/fatcat_snapshots_and_exports">Fatcat Database Snapshots and Bulk Metadata Exports</a>&quot;
+collection, and is released under a CC-0 license for broad reuse.
+Acknowledgement and attribution for both the aggregated dataset and the
+original metadata sources is strongly encouraged (see below for provenance
+notes).</p>
+<p>References can be browsed on fatcat.wiki on an &quot;outbound&quot; (&quot;References&quot;) and
+&quot;inbound&quot; (&quot;Cited By&quot;) basis for individual release entities. There are also
+special pages for Wikipedia articles (&quot;outbound&quot;, such as
+<a href="https://fatcat.wiki/wikipedia/en:Internet/refs-out">Internet</a>) and Open
+Library books (&quot;inbound&quot;, such as <a href="https://fatcat.wiki/openlibrary/OL2670078W/refs-in">The
+Gift</a>). JSON versions of
+these pages are available, but do not yet represent a stable API.</p>
+<h3 id="how-it-works"><a class="header" href="#how-it-works">How It Works</a></h3>
+<p>Raw reference data comes from multiple sources (see &quot;provenance&quot; below), but
+has the common structure of a &quot;source&quot; entity (which could be a paper,
+Wikipedia article, etc) and a list of raw references. There might be duplicate
+references for a single &quot;source&quot; work coming from different providers (eg, both
+Pubmed and Crossref reference lists). The goal is to match as many references
+as possible to the &quot;target&quot; work being referenced, creating a link from source
+to target. If a robust match is not found, the &quot;unmatched&quot; reference is
+retained and displayed in a human readable fashion if possible.</p>
+<p>Depending on the source, raw references may be a simple &quot;raw&quot; string in an
+arbitrary citation style; may have been parsed or structured in fields like
+&quot;title&quot;, &quot;year&quot;, &quot;volume&quot;, &quot;issue&quot;; might include a URL or identifier like an
+arxiv.org identifier; or may have already been matched to a specific target
+work by another party. It is also possible the reference is vague, malformed,
+mis-parsed, or not even a reference to a specific work (eg, &quot;personal
+communication&quot;). Based on the available structure, we might be able to do a
+simple identifier lookup, or may need to parse a string, or do &quot;fuzzy&quot; matching
+against various catalogs of known works. As a final step we take all original
+and potential matches, verify the matches, and attempt to de-duplicate
+references coming from different providers into a list of matched and unmatched
+references as output. The refcat corpus is the output of this process.</p>
+<p>Two dominant modes of reference matching are employed: identifier based
+matching and fuzzy matching. Identifier based matching currently works with
+DOI, Arxiv ids, PMID and PMCID and ISBN. Fuzzy matching employs a scalable way
+to cluster documents (with pluggable clustering algorithms). For each cluster
+of match candidates we run a more extensive verification process, which yields
+a match confidence category, ranging from weak over strong to exact. Strong and
+exact matches are included in the graph.</p>
+<p>All the code for this process is available open source:</p>
+<ul>
+<li><a href="https://gitlab.com/internetarchive/refcat">refcat</a>: batch processing and matching pipeline, in Python and Go</li>
+<li><a href="https://gitlab.com/internetarchive/fuzzycat">fuzzycat</a>: Python verification code and &quot;live&quot; fuzzy matching</li>
+</ul>
+<h3 id="metadata-provenance"><a class="header" href="#metadata-provenance">Metadata Provenance</a></h3>
+<p>The provenance for each reference in the index is tracked and exposed via the
+<code>match_provenance</code> field. A <code>fatcat-</code> prefix to the field means that the
+reference came through the <code>refs</code> metadata field stored in the fatcat catalog,
+but originally came from the indicated source. In the absence of <code>fatcat-</code>, the
+reference was found, updated, or extracted at indexing time and is not recorded
+in the <code>release</code> entity metadata.</p>
+<p>Specific sources:</p>
+<ul>
+<li><code>crossref</code> (and <code>fatcat-crossref</code>): citations deposited by publishers as part
+of DOI registration. Crossref is the largest single source of citation
+metadata in refcat. These references may be linked to a specific DOI; contain
+structured metadata fields; or be in the form of a raw citation string.
+Sometimes they are &quot;complete&quot; for the given work, and sometimes they only
+include references which could be matched/linked to a target work with a DOI.</li>
+<li><code>fatcat-datacite</code>: same as <code>crossref</code>, but for the Datacite DOI registrar.</li>
+<li><code>fatcat-pubmed</code>: references, linked or not linked, from Pubmed/MEDLINE
+metadata</li>
+<li><code>fatcat</code>: references in fatcat where the original provenance can't be inferred
+(but could be manually found by inspecting the release edit history)</li>
+<li><code>grobid</code>: references parsed out of full-text PDFs using
+<a href="https://github.com/kermitt2/grobid">GROBID</a></li>
+<li><code>wikipedia</code>: citations extracted from Wikipedia (see below for details)</li>
+</ul>
+<p>Note that sources of reference metadata which have formal licensing
+restrictions, even CC-BY or ODC-BY licenses as used by several similar
+datasets, are not included in refcat.</p>
+<h3 id="current-limitations-and-known-issues"><a class="header" href="#current-limitations-and-known-issues">Current Limitations and Known Issues</a></h3>
+<p>The initial Summer 2021 version of the index has a number of limitations.
+Feedback on features and coverage are welcome! We expect this dataset to be
+iterated over regularly as there are a few
+dimensions along which the dataset can be improved and extended.</p>
+<p>The reference matching process is designed to eventually operate in both
+&quot;batch&quot; and &quot;live&quot; modes, but currently only &quot;batch&quot; output is in the index.
+This means that references from newly published papers are not added to the
+index in an ongoing fashion.</p>
+<p>Fatcat &quot;release&quot; entities (eg, papers) are matched from a Spring 2021 snapshot.
+References to papers published after this time will not be linked.</p>
+<p>Wikipedia citations come from the dataset <a href="https://zenodo.org/record/3940692">Wikipedia Citations: A comprehensive
+dataset of citations with identifiers extracted from English
+Wikipedia</a>, by Singh, West, and Colavizza.
+This is a one-time corpus based on a May 2020 snapshot of English Wikipedia
+only, and is missing many current references and citations. Additionally, only
+direct identifier lookups (eg, DOI matches) are used, not fuzzy metadata
+matching.</p>
+<p>Open Library &quot;target&quot; matches are based on a
+<a href="https://openlibrary.org/developers/dumps">snapshot</a> of Open Library works, and
+are matched either ISBN (extracted from citation string) or fuzzy metadata
+matching.</p>
+<p>Crossref references are extracted from a January 2021
+<a href="https://archive.org/details/crossref_doi_dump_2021-01">snapshot</a> of Crossref
+metadata, and do not include many updates to existing works.</p>
+<p>Hundreds of millions of raw citation strings (&quot;unstructured&quot;) have not been
+parsed into a structured for fuzzy matching. We plan to use GROBID to parse
+these citation strings, in addition to the current use of GROBID parsing for
+references from fulltext documents.</p>
+<p>The current GROBID parsing used version v0.6.0. Newer versions of GROBID have
+improved citation parsing accuracy, and we intend to re-parse all PDFs over
+time. Additional manually-tagged training datasets could improve GROBID
+performance even further.</p>
+<p>In a future update, we intend to add Wayback (web archive) capture status and
+access links for references to websites (distinct from references to online
+journal articles or books). For example, references to an online news article
+or blog post would indicate the closest (in time, to the &quot;source&quot; publication
+date) Wayback captures to that web page, if available.</p>
+<p>References are only displayed on fatcat.wiki, not yet on scholar.archive.org.</p>
+<p>There is no current or planned mechanism for searching, sorting, or filtering
+article search results by (inbound) citation count. This would require
+resource-intensive transformations and continuous re-indexing of search
+indexes.</p>
+<p>It is unclear how the batch-generated refcat dataset and API-editable release
+refs metadata will interact in the future. The original refs may eventually be
+dropped from the fatcat API, or at some point the refcat corpus may stabilize
+and be imported in to fatcat refs instead of being maintained as a separate
+dataset and index. It would be good to retain a mechanism for human corrections
+and overrides to the machine-generated reference graph.</p>
+
+<br>
+<h2 id="metadata-licensing"><a class="header" href="#metadata-licensing">Metadata Licensing</a></h2>
+<p>The Fatcat catalog content license is the Creative Commons Zero (&quot;CC-0&quot;)
+license, which is effectively a public domain grant. This applies to the
+catalog metadata itself (titles, entity relationships, citation metadata, URLs,
+hashes, identifiers), as well as &quot;meta-meta-data&quot; provided by editors (edit
+descriptions, provenance metadata, etc).</p>
+<p>The core catalog is designed to contain only factual information: &quot;this work,
+known by this title and with these third-party identifiers, is believed to be
+represented by these files and published under such-and-such venue&quot;. As a norm,
+sourcing metadata (for attribution and provenance) is retained for each edit
+made to the catalog.</p>
+<p>A notable exception to this policy are abstracts, for which no copyright claims
+or license is made. Abstract content is kept separate from core catalog
+metadata; downstream users need to make their own decision regarding reuse and
+distribution of this material.</p>
+<p>As a social norm, it is expected (and appreciated!) that downstream users of
+the public API and/or bulk exports provide attribution, and even transitive
+attribution (acknowledging the original source of metadata contributed to
+Fatcat). As an academic norm, researchers are encouraged to cite the corpus as
+a dataset (when this option becomes available). However, neither of these norms
+are enforced via the copyright mechanism.</p>
+<br>
+<h2 id="for-publishers"><a class="header" href="#for-publishers">For Publishers</a></h2>
+<p>This page addresses common questions and concerns from publishers of research
+works indexed in Fatcat, as well as the Internet Archive Scholar service built
+on top of it.</p>
+<p>For help in exceptional cases, contact Internet Archive through our usual
+support channels.</p>
+<h3 id="metadata-indexing"><a class="header" href="#metadata-indexing">Metadata Indexing</a></h3>
+<p>Many publishers will find that metadata records are already included in fatcat
+if they register persistent identifiers for their research works. This pipeline
+is based on our automated harvesting of DOI, Pubmed, dblp, DOAJ, and other
+metadata catalogs. This process can take some time (eg, days from
+registration), does not (yet) cover all persistent identifiers, and will only
+cover those works which get identifiers.</p>
+<p>For publishers who find that they are not getting indexed in fatcat, our
+primary advice is to register ISSNs for venues (journals, repositories,
+conferences, etc), and to register DOIs for all current and back-catalog works.
+DOIs are the most common and integrated identifier in the scholarly ecosystem,
+and will result in automatic indexing in many other aggregators in addition to
+fatcat/scholar. There may be funding or resources available for smaller
+publishers to cover the cost of DOI registration, and ISSN registration is
+usually no-cost or affordable through national institutions.</p>
+<p>We <em>do not</em> recommend that journal or conference publishers use general-purpose
+repositories like Zenodo to obtain no-cost DOIs for journal articles. These
+platforms are a great place for pre-publication versions, datasets, software,
+and other artifacts, but not for primary publication-version works (in our
+opinion).</p>
+<p>If DOI registration is not possible, one good alternative is to get included in
+the Directory of Open Access Journals and deposit article metadata there. This
+process may take some time, but is a good basic indicator of publication
+quality. DOAJ article metadata is periodically harvested and indexed in fatcat,
+after a de-duplication process.</p>
+<h3 id="improving-automatic-preservation"><a class="header" href="#improving-automatic-preservation">Improving Automatic Preservation</a></h3>
+<p>In alignment with its mission, Internet Archive makes basic automated attempts
+to capture and preserve all open access research publications on the public
+web, at no cost. This effort comes with no guarantees around completeness,
+timeliness, or support communications.</p>
+<p>Preservation coverage can be monitored through the journal-specific dashboards
+or via the coverage search interface.</p>
+<p>There are a few technical things publishers can do to increase their
+preservation coverage, in addition to the metadata indexing tips above:</p>
+<ul>
+<li>use the <code>citation_pdf_url</code> HTML meta tag, when appropriate, to link directly
+from article landing pages to PDF URLs</li>
+<li>use simple HTML to represent landing pages and article content, and do not
+require Javascript to render page content or links</li>
+<li>ensure that hosting server <code>robots.txt</code> rules are not preventing or overly
+restricting automated crawling</li>
+<li>use simple, accessible PDF access links. Do not use time-limited or
+IP-limited URLs, require specific referrer headers, or use cookies to
+authenticate access to OA PDFs</li>
+<li>minimize the number of HTTP redirects and HTML hops between DOI and fulltext
+content</li>
+<li>paywalls, loginwalls, geofencing, and anti-bot measures are all obviously
+antithetical to open crawling and indexing</li>
+</ul>
+<h3 id="official-preservation"><a class="header" href="#official-preservation">Official Preservation</a></h3>
+<p>Internet Archive is developing preservation services for scholarly content on
+the web. Contact us at <a href="mailto:scholar@archive.org">scholar@archive.org</a> for details.</p>
+<p>Existing web archiving services offered to universities, national libraries,
+and other institutions may already be appropriate for some publications. Check
+if your affiliated institutions already have an
+<a href="https://archive-it.org">Archive-IT</a> account or other existing relationship
+with Internet Archive.</p>
+<p>Small publishers using Open Journal System (OJS) should be aware of the PKP
+preservation project.</p>
+
+<br>
+<h2 id="presentations"><a class="header" href="#presentations">Presentations</a></h2>
+<p>2020 Workshop On Open Citations And Open Scholarly Metadata 2020 - Fatcat (<a href="https://archive.org/details/fatcat_workshop_open_citations_open_scholarly_metadata_2020">video on archive.org</a>)</p>
+<p>2019-10-25 FORCE2019 - Perpetual Access Machines: Archiving Web-Published Scholarship at Scale (<a href="https://www.youtube.com/watch?v=PARqfbYIdXQ">video on youtube.com</a>)</p>
+<h3 id="blog-posts-and-press"><a class="header" href="#blog-posts-and-press">Blog Posts And Press</a></h3>
+<p>2021-03-09: blog.archive.org - <a href="http://blog.archive.org/2021/03/09/search-scholarly-materials-preserved-in-the-internet-archive/">Search Scholarly Materials Preserved in the Internet Archive</a></p>
+<p>2020-09-17 blog.dshr.org - <a href="https://blog.dshr.org/2020/09/dont-say-we-didnt-warn-you.html">Don't Say We Didn't Warn You</a></p>
+<p>2020-09-15: blog.archive.org - <a href="http://blog.archive.org/2020/09/15/how-the-internet-archive-is-ensuring-permanent-access-to-open-access-journal-articles/">How the Internet Archive is Ensuring Permanent Access to Open Access Journal Articles</a></p>
+<p>2020-02-18 blog.dshr.org - <a href="https://blog.dshr.org/2020/02/the-scholarly-record-at-internet-archive.html">The Scholarly Record At The Internet Archive</a></p>
+<p>2019-04-18 blog.dshr.org - <a href="https://blog.dshr.org/2019/04/personal-pods-and-fatcat.html">Personal Pods and Fatcat</a></p>
+<p>2018-10-03 blog.dshr.org - <a href="https://blog.dshr.org/2018/10/brief-talk-at-internet-archive-event.html">Brief Talk At Internet Archive Event</a></p>
+<p>2018-03-05 blog.archive.org - <a href="https://blog.archive.org/2018/03/05/andrew-w-mellon-foundation-awards-grant-to-the-internet-archive-for-long-tail-journal-preservation/">Andrew W. Mellon Foundation Awards Grant to the Internet Archive for Long Tail Journal Preservation</a></p>
+<h3 id="background--bibliography"><a class="header" href="#background--bibliography">Background / Bibliography</a></h3>
+<!-- On zbib.org: https://zbib.org/d795a00c6b0447b7af24fa6cfbcec3f2 -->
+<div class="csl-bib-body" style="line-height: 1.35; margin-left: 2em; text-indent:-2em;">
+  <div class="csl-entry" style="margin-bottom: 1em;">Brainard, Jeffrey. “Dozens of Scientific Journals Have Vanished from the Internet, and No One Preserved Them.” <i>Science | AAAS</i>. Last modified September 8, 2020. Accessed August 6, 2021. https://www.sciencemag.org/news/2020/09/dozens-scientific-journals-have-vanished-internet-and-no-one-preserved-them.</div>
+  <div class="csl-entry" style="margin-bottom: 1em;">Chen, Xiaotian. “Embargo, Tasini, and ‘Opted Out’: How Many Journal Articles Are Missing from Full-Text Databases.” <i>Internet Reference Services Quarterly</i> 7, no. 4 (September 2002): 23–34.</div>
+  <div class="csl-entry" style="margin-bottom: 1em;">Eve, Martin Paul, and Jonathan Gray, eds. <i>Reassembling Scholarly Communications: Histories, Infrastructures, and Global Politics of Open Access</i>. Cambridge, Massachusetts: The MIT Press, 2020.</div>
+  <div class="csl-entry" style="margin-bottom: 1em;">Ito, Joichi. “Citing Blogs.” <i>Joi Ito’s Web</i> (2018). Accessed March 11, 2019. https://joi.ito.com/weblog/2018/05/28/citing-blogs.html.</div>
+  <div class="csl-entry" style="margin-bottom: 1em;">Karaganis, Joe, ed. <i>Shadow Libraries: Access to Knowledge in Global Higher Education</i>. Cambridge, MA : Ottawa, ON: The MIT Press ; International Development Research Centre, 2018.</div>
+  <div class="csl-entry" style="margin-bottom: 1em;">Khabsa, Madian, and C. Lee Giles. “The Number of Scholarly Documents on the Public Web.” <i>PLOS ONE</i> 9, no. 5 (May 9, 2014): e93949.</div>
+  <div class="csl-entry" style="margin-bottom: 1em;">Knoth, Petr, and Zdenek Zdrahal. “CORE: Three Access Levels to Underpin Open Access.” <i>D-Lib Magazine</i> 18, no. 11/12 (November 2012). Accessed March 11, 2019. http://www.dlib.org/dlib/november12/knoth/11knoth.html.</div>
+  <div class="csl-entry" style="margin-bottom: 1em;">Kwon, Diana. “More than 100 Scientific Journals Have Disappeared from the Internet.” <i>Nature</i> (September 10, 2020). Accessed August 6, 2021. https://www.nature.com/articles/d41586-020-02610-z.</div>
+  <div class="csl-entry" style="margin-bottom: 1em;">Laakso, Mikael, Lisa Matthias, and Najko Jahn. “Open Is Not Forever: A Study of Vanished Open Access Journals.” <i>Journal of the Association for Information Science and Technology</i> 72, no. 9 (September 2021): 1099–1112.</div>
+  <div class="csl-entry" style="margin-bottom: 1em;">Ortega, Jose Luis. <i>Academic Search Enghines: New Information Trends and Services for Scientists on the Web</i>. Chandos information professional series. Philadelphia, PA: Elsevier, 2014.</div>
+  <div class="csl-entry" style="margin-bottom: 1em;">Page, Roderic. “Notes on Bibliographic Metadata in JSON.” Last modified July 12, 2017. Accessed March 11, 2019. https://github.com/rdmpage/bibliographic-metadata-json.</div>
+  <div class="csl-entry" style="margin-bottom: 1em;">Pettifer, S., P. McDERMOTT, J. Marsh, D. Thorne, A. Villeger, and T.K. Attwood. “Ceci n’est Pas Un Hamburger: Modelling and Representing the Scholarly Article.” <i>Learned Publishing</i> 24, no. 3 (July 2011): 207–220.</div>
+  <div class="csl-entry" style="margin-bottom: 1em;">Piwowar, Heather, Jason Priem, Vincent Larivière, Juan Pablo Alperin, Lisa Matthias, Bree Norlander, Ashley Farley, Jevin West, and Stefanie Haustein. “The State of OA: A Large-Scale Analysis of the Prevalence and Impact of Open Access Articles.” <i>PeerJ</i> 6 (February 13, 2018): e4375.</div>
+  <div class="csl-entry" style="margin-bottom: 1em;">Ramalho, Luciano G. “From ISIS to CouchDB: Databases and Data Models for Bibliographic Records.” <i>The Code4Lib Journal</i>, no. 13 (April 11, 2011). Accessed March 11, 2019. https://journal.code4lib.org/articles/4893.</div>
+  <div class="csl-entry" style="margin-bottom: 1em;">rclark1. “DOI-like Strings and Fake DOIs.” Website. <i>Crossref</i>. Accessed March 11, 2019. https://www.crossref.org/blog/doi-like-strings-and-fake-dois/.</div>
+  <div class="csl-entry" style="margin-bottom: 1em;">Svenonius, Elaine. <i>The Intellectual Foundation of Information Organization</i>. First MIT Press paperback ed. Digital libraries and electronic publishing. Cambridge, Mass.: MIT Press, 2009.</div>
+  <div class="csl-entry" style="margin-bottom: 1em;">Van de Sompel, Herbert, Robert Sanderson, Martin Klein, Michael L. Nelson, Bernhard Haslhofer, Simeon Warner, and Carl Lagoze. “A Perspective on Resource Synchronization.” <i>D-Lib Magazine</i> 18, no. 9/10 (September 2012). Accessed March 11, 2019. http://www.dlib.org/dlib/september12/vandesompel/09vandesompel.html.</div>
+  <div class="csl-entry" style="margin-bottom: 1em;">Wright, Alex. <i>Cataloging the World: Paul Otlet and the Birth of the Information Age</i>. Oxford ; New York: Oxford University Press, 2014.</div>
+  <div class="csl-entry" style="margin-bottom: 1em;">“Citation Style Language.” <i>Citation Style Language</i>. Accessed March 11, 2019. https://citationstyles.org/.</div>
+  <div class="csl-entry">“Open Archives Initiative Protocol for Metadata Harvesting.” Accessed March 11, 2019. https://www.openarchives.org/pmh/.</div>
+</div>
+{% endblock %}
