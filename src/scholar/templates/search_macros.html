@@ -467,11 +467,13 @@
       </div>
     </details>
 
-    <a href="{{settings.FATCAT_URL}}/release/{{ paper.biblio.release_ident }}" rel="noopener" title="{{ _('see metadata on fatcat') }}">
-      <div class="circular ui icon compact basic button">
-        <i class="code icon"></i>
-      </div>
-    </a>
+    {% if paper.biblio.release_ident %}
+      <a href="{{settings.FATCAT_URL}}/release/{{ paper.biblio.release_ident }}" rel="noopener" title="{{ _('see metadata on fatcat') }}">
+        <div class="circular ui icon compact basic button">
+          <i class="code icon"></i>
+        </div>
+      </a>
+    {% endif %}
 
     <a href="{{ lang_prefix }}{% if paper.doc_type == "work" %}/work/{{ paper.work_ident }}{% else %}/search?q=key:{{ paper.key }}{% endif %}" rel="noopener" title="{{ _('permalink to this record') }}">
       <div class="circular ui icon compact basic button">
