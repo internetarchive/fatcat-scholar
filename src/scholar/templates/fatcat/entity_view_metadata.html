@@ -15,7 +15,7 @@
   </table>
 {% endif %}
 <div style="float: right;">
-  <a href="{{ settings.FATCAT_PUBLIC_API_HOST }}/{{ entity_type }}/{{ entity.ident }}">As JSON via API</a>
+  <a href="https://scholar.archive.org/api/fatcat/v1/get_{{ entity_type }}/{{ entity.ident }}">As JSON via API</a>
 </div>
 
 {% if entity.extra %}

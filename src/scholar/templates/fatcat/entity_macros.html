@@ -36,12 +36,7 @@
     <br>Revision: <small><code><a href="/fatcat/{{ entity_type }}/rev/{{ entity.revision }}">{{ entity.revision }}</a></code></small>
   {% endif %}
 
-  <br>API URL: <a href="
-  {{ settings.FATCAT_PUBLIC_API_HOST -}}
-  /{{ entity_type }}/rev/{{ entity.revision }}
-  {%- if expand -%}?expand={{ expand}}{%- endif %}">
-  JSON
-  </a>
+  <br>API URL: <a href="https://scholar.archive.org/api/fatcat/v1/get_{{entity_type}}/{{entity.ident}}">JSON</a>
 </div>
 {%- endmacro %}
 

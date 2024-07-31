@@ -34,9 +34,4 @@ This table only shows <i>accepted</i> edits included in the catalog, not any wor
       <td>{% if entry.editgroup.description != None %}{{ entry.editgroup.description }}{% endif %}
   {% endfor %}
 </table>
-<div style="float: right; font-size: smaller;">
-  <a href="{{ settings.FATCAT_PUBLIC_API_HOST }}/{{ entity_type }}/{{ entity.ident }}/history">As JSON via API</a>
-</div>
-
-
 {% endblock %}
