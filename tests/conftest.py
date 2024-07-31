@@ -103,7 +103,7 @@ def entity_types():
 @pytest.fixture
 def fcclient(mocker):
     mm = mocker.MagicMock()
-    mocker.patch("scholar.fatcat.web.DefaultApi", return_value=mm)
+    mocker.patch("scholar.depends.DefaultApi", return_value=mm)
     return mm
 
 @pytest.fixture

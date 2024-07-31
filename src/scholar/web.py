@@ -21,10 +21,10 @@ from fastapi.responses import (
     RedirectResponse,
 )
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel
 from sentry_sdk.integrations.asgi import SentryAsgiMiddleware
 from starlette.exceptions import HTTPException as StarletteHTTPException
 from starlette_prometheus import PrometheusMiddleware, metrics
+from starlette import templating
 
 from scholar.config import GIT_REVISION, I18N_LANG_OPTIONS, settings
 from scholar.schema import ScholarDoc
@@ -36,8 +36,9 @@ from scholar.search import (
     process_query,
 )
 from scholar.web_hacks import i18n_templates, parse_accept_lang
-from scholar.fatcat.web import routes as fc_routes
+from scholar.fatcat.web import routes as fc_web_routes
 from scholar.fatcat.web import tmpls as fc_tmpls
+from scholar.fatcat.api import routes as fc_api_routes
 
 logger = logging.getLogger()
 
@@ -75,39 +76,9 @@ class LangPrefix:
                 break
         sentry_sdk.set_tag("locale", self.code)
 
+web = APIRouter()
 
-class ContentNegotiation:
-    """
-    Choses a mimetype to return based on Accept header.
-
-    Intended to be used for RESTful content negotiation from web endpoints to API.
-    """
-
-    def __init__(self, request: Request):
-        self.mimetype = "text/html"
-        if request.headers.get("accept", "").startswith("application/json"):
-            self.mimetype = "application/json"
-
-
-api = APIRouter()
-
-
-@api.get("/", operation_id="get_home")
-def home() -> Any:
-    return {"endpoints": {"/": "this", "/search": "fulltext search"}}
-
-
-@api.head("/", include_in_schema=False)
-async def root_head() -> Any:
-    """
-    HTTP HEAD only for the root path (and health check below). Requested by,
-    eg, uptime monitoring tools. This is distinct from the CORS middleware (for
-    OPTION).
-    """
-    return Response()
-
-
-@api.get("/_health", operation_id="get_health")
+@web.get("/_health", operation_id="get_health", include_in_schema=False)
 def health_get() -> Any:
     """
     Checks that connection back to elasticsearch index is working.
@@ -117,63 +88,15 @@ def health_get() -> Any:
     return Response()
 
 
-@api.head("/_health", include_in_schema=False)
+@web.head("/_health", include_in_schema=False)
 def health_head() -> Any:
     return health_get()
-
-
-class HitsModel(BaseModel):
-    count_returned: int
-    count_found: int
-    offset: int
-    limit: int
-    query_time_ms: int
-    query_wall_time_ms: int
-    results: List[ScholarDoc]
-
-
-#@api.get("/search", operation_id="get_search", response_model=HitsModel, include_in_schema=False)
-#def search(query: FulltextQuery = Depends(FulltextQuery)) -> FulltextHits:
-#    hits: Optional[FulltextHits] = None
-#    if query.q is None:
-#        raise HTTPException(status_code=400, detail="Expected a 'q' query parameter")
-#    try:
-#        hits = process_query(query)
-#    except ValueError as e:
-#        sentry_sdk.set_level("warning")
-#        sentry_sdk.capture_exception(e)
-#        raise HTTPException(status_code=400, detail=f"Query Error: {e}")
-#    except IOError as e:
-#        sentry_sdk.capture_exception(e)
-#        raise HTTPException(status_code=500, detail=f"Backend Error: {e}")
-#
-#    # remove internal context from hit objects
-#    for doc in hits.results:
-#        doc.pop("_obj", None)
-#
-#    return hits
-
-
-@api.get("/work/{work_ident}", operation_id="get_work")
-def get_work(work_ident: str = Path(..., min_length=20, max_length=30)) -> dict:
-    doc = get_es_scholar_doc(f"work_{work_ident}")
-    if not doc:
-        raise HTTPException(status_code=404, detail="work not found")
-    doc.pop("_obj", None)
-    return doc
-
-
-web = APIRouter()
-
 
 @web.get("/", include_in_schema=False)
 def web_home(
     request: Request,
     lang: LangPrefix = Depends(LangPrefix),
-    content: ContentNegotiation = Depends(ContentNegotiation),
 ) -> Any:
-    if content.mimetype == "application/json":
-        return home()
     return i18n_templates(lang.code).TemplateResponse(
         "home.html",
         {"request": request, "locale": lang.code, "lang_prefix": lang.prefix},
@@ -202,11 +125,7 @@ def web_search(
     response: Response,
     query: FulltextQuery = Depends(FulltextQuery),
     lang: LangPrefix = Depends(LangPrefix),
-    content: ContentNegotiation = Depends(ContentNegotiation),
 ) -> Any:
-    if content.mimetype == "application/json":
-        #return search(query)
-        raise HTTPException(status_code=400)
     hits: Optional[FulltextHits] = None
     search_error: Optional[dict] = None
     status_code: int = 200
@@ -311,11 +230,7 @@ def web_work(
     response: Response,
     work_ident: str = Path(..., min_length=20, max_length=30),
     lang: LangPrefix = Depends(LangPrefix),
-    content: ContentNegotiation = Depends(ContentNegotiation),
 ) -> Any:
-    if content.mimetype == "application/json":
-        return get_work(work_ident)
-
     doc = get_es_scholar_doc(f"work_{work_ident}")
     if not doc:
         raise HTTPException(status_code=404, detail="work not found")
@@ -490,9 +405,9 @@ def access_redirect_ia_file(
 
 
 app = FastAPI(
-    title="Fatcat Scholar",
-    description="Fulltext search interface for scholarly web content in the Fatcat catalog. An Internet Archive project.",
-    version="0.2.1-dev",
+    title="Internet Archive Scholar + Fatcat",
+    description="IA Scholar is a project for preserving, indexing, and serving open access scholarly content. Fatcat is a public, bibliographic database of scholarly material. The Fatcat database can be consumed programmatically by a basic, public, read-only API.",
+    version="0.2.6",
     #openapi_url="/api/openapi.json",
     #redoc_url="/api/redoc",
     #docs_url="/api/docs",
@@ -502,13 +417,8 @@ app.include_router(web)
 for lang_option in I18N_LANG_OPTIONS:
     app.include_router(web, prefix=f"/{lang_option}")
 
-app.include_router(fc_routes, prefix="/fatcat")
-
-# Because we are mounting 'api' after 'web', the web routes will take
-# precedence. Requests get passed through the API handlers based on content
-# negotiation. This is counter-intuitive here in the code, but does seem to
-# work, and results in the OpenAPI docs looking correct.
-app.include_router(api)
+app.include_router(fc_web_routes, prefix="/fatcat")
+app.include_router(fc_api_routes, prefix="/api/fatcat")
 
 app.mount("/static", StaticFiles(directory="src/scholar/static"), name="static")
 
@@ -535,9 +445,21 @@ async def robots_txt(response_class: Any = PlainTextResponse) -> Any:
         return PlainTextResponse(ROBOTS_DISALLOW)
 
 @app.exception_handler(fcapi.ApiException)
-async def unicorn_exception_handler(request: Request, ae: fcapi.ApiException) -> Response:
+async def unicorn_exception_handler(request: Request, ae: fcapi.ApiException) -> dict[str, Any]|Response:
+    mimetype = "text/html"
+    try:
+        accept_header = request.headers.get("accept", "")
+        if accept_header.startswith("application/json"):
+            mimetype = "application/json"
+    except Exception as e:
+        logger.warning(f"exception handler failed: {e}")
+        sentry_sdk.set_level("warning")
+        sentry_sdk.capture_exception(e)
+
     try:
         json_body = json.loads(ae.body)
+        if mimetype == "application/json":
+            return json_body
         ae.error_name = json_body.get("error")
         ae.message = json_body.get("message")
     except ValueError:
@@ -545,20 +467,29 @@ async def unicorn_exception_handler(request: Request, ae: fcapi.ApiException) ->
     except TypeError:
         pass
 
+    # TODO if the json does not serialize we'll return html even for "application/json"
+
     return fc_tmpls.TemplateResponse("api_error.html", {
         "request": request,
         "api_error": ae,
         }, status_code=ae.status)
 
 @app.exception_handler(StarletteHTTPException)
-def http_exception_handler(request: Request, exc: StarletteHTTPException) -> Any:
+def http_exception_handler(request: Request, exc: StarletteHTTPException) -> templating._TemplateResponse|JSONResponse:
     """
     This is the generic handler for things like 404 errors.
     """
-    # TODO: what if there is an error in any of the detection code?
-    content = ContentNegotiation(request)
+    mimetype = "text/html"
+    try:
+        accept_header = request.headers.get("accept", "")
+        if accept_header.startswith("application/json"):
+            mimetype = "application/json"
+    except Exception as e:
+        logger.warning(f"exception handler failed: {e}")
+        sentry_sdk.set_level("warning")
+        sentry_sdk.capture_exception(e)
 
-    if content.mimetype == "text/html":
+    if mimetype == "text/html":
         lang = LangPrefix(request)
         return i18n_templates(lang.code).TemplateResponse(
             "error.html",
