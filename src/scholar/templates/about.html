@@ -23,8 +23,7 @@
 <a name="sources"></a>
 <h3>{% trans %}Content Sources{% endtrans %}</h3>
 
-<p>{% trans %}Metadata comes from <a href="https://fatcat.wiki">fatcat.wiki</a>, an open
-user-editable catalog of scholarly work.{% endtrans %}
+<p>{% trans url=settings.FATCAT_URL %}Metadata comes from <a href="{{url}}">fatcat</a>, a public bibliographic database of scholarly work.{% endtrans %}
 
 <a name="tdm"></a>
 <h3>{% trans %}Text and Data Mining{% endtrans %}</h3>
@@ -36,23 +35,19 @@ or would like to see specific datasets made available, please contact us at scho
 
 <p>{% trans %}Currently snapshots of the full fatcat metadata corpus and upstream metadata sources are uploaded periodically to the <a href="https://archive.org/details/ia_biblio_metadata">Bulk Bibliographic Metadata</a> collection on archive.org.{% endtrans %}
 
-{% trans %}Read more in <a href="https://guide.fatcat.wiki/bulk_exports.html">the Fatcat Guide</a>.{% endtrans %}
+{% trans url=settings.FATCAT_URL %}Read more in <a href="{{url}}/guide#bulk-exports">the Fatcat Guide</a>.{% endtrans %}
 
 <a name="authors_publishers"></a>
 <h3>{% trans %}Authors and Publishers{% endtrans %}</h3>
 
 <p>
-{% trans url="https://guide.fatcat.wiki/authors.html" %}Information specifically for authors of research works can be found at <a href="{{ url }}">{{ url }}</a>. This includes instructions for correcting bibliographic metadata and updates to published works.{% endtrans %}
-
 <p>
-{% trans url="https://guide.fatcat.wiki/publishers.html" %}In alignment with its mission, Internet Archive makes automated attempts to capture and preserve all open access research publications on the public web. If your open access journal articles aren’t currently included in Internet Archive Scholar, you can fill out the <a href="https://form.jotform.com/232483341499059">Internet Archive Scholar inclusion form</a> to share journal URLs for crawling. Please note that it will take at least 3 months from the time you submit this form until your content starts to appear in Internet Archive Scholar. Emails about the status of your content sent less than 3 months after submitting this form will not be answered. Additional information specifically for publishers can be found at <a href="{{ url }}">{{ url }}</a>. This includes guidelines for having content indexed and preserved.{% endtrans %}
+{% trans url=settings.FATCAT_URL+"/guide#for-publishers" %}In alignment with its mission, Internet Archive makes automated attempts to capture and preserve all open access research publications on the public web. If your open access journal articles aren’t currently included in Internet Archive Scholar, you can fill out the <a href="https://form.jotform.com/232483341499059">Internet Archive Scholar inclusion form</a> to share journal URLs for crawling. Please note that it will take at least 3 months from the time you submit this form until your content starts to appear in Internet Archive Scholar. Emails about the status of your content sent less than 3 months after submitting this form will not be answered. Additional information specifically for publishers can be found in <a href="{{ url }}">the Fatcat guide</a>. This includes guidelines for having content indexed and preserved.{% endtrans %}
 
 <a name="contact"></a>
 <h3>{% trans %}Contact Information{% endtrans %}</h3>
 
 {% trans email="scholar@archive.org" %}Queries about this search service and the fatcat catalog can be directed to <a href="mailto:{{ email }}">{{ email }}</a>.{% endtrans %}
-
-{% trans url="https://gitter.im/internetarchive/fatcat" %}There is a public chat channel at <a href="{{ url }}">{{ url }}</a>.{% endtrans %}
 
 <a name="acknowledgements"></a>
 <h3>{% trans %}Support and Acknowledgements{% endtrans %}</h3>
@@ -60,8 +55,8 @@ or would like to see specific datasets made available, please contact us at scho
 <p>
 {% trans grant_url="https://mellon.org/grants/grants-database/advanced-search/?amount-low=&amount-high=&year-start=&year-end=&city=&state=&country=&q=%22Ensuring+the+Persistent+Access%22&per_page=25", blog_url="http://blog.archive.org/2018/03/05/andrew-w-mellon-foundation-awards-grant-to-the-internet-archive-for-long-tail-journal-preservation/" %}Work on Internet Archive Scholar has received support from the Andrew W. Mellon Foundation through multiple phases of the <a href="{{ grant_url }}">"Ensuring the Persistent Access of Open Access Journal Literature"</a> project (see <a href="{{ blog_url }}">original announcement</a>).{% endtrans %}
 
-<p>{% trans fatcat_url="https://fatcat.wiki/about" -%}
-See additional acknowledgements on <a href="{{ fatcat_url }}">fatcat.wiki</a>.
+<p>{% trans fatcat_url=settings.FATCAT_URL+"/about" -%}
+See additional acknowledgements on <a href="{{ fatcat_url }}">fatcat</a>.
 {%- endtrans %}
 
 {% endblock %}

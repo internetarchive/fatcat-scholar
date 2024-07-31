@@ -75,11 +75,11 @@
       <img class="logo" src="/static/ia-logo.svg" style="width: 20px;" alt="">
       <img class="mobile-hide" src="/static/ia-wordmark.svg" style="margin-left: 10px; width: 180px;" alt="Internet Archive">
     </a>
-    <span style="margin-top: 0.5em;">
-      <a class="ui grey label" href="{{ lang_prefix }}/help#bugs"><i>beta</i></a>
-    </span>
 
     <div class="right menu">
+      <span style="margin-top: 0.5em">
+        <a class="ui grey label" href="{{settings.FATCAT_URL}}">Fatcat Bibliographic Database</a>
+      </span>
       <div class="ui simple dropdown item translate-dropdown" aria-expanded="false" role="menu" aria-controls="language_menu" title="{{ _('language selection menu') }}">
         <div class="translate-icon"></div>
         <i class="dropdown icon" style="margin-left: 0.2em;"></i>
@@ -193,10 +193,7 @@
       <nav class="three wide column">
         <h4 class="ui inverted header">{% trans %}Open Infrastructure{% endtrans %}</h4>
         <div class="ui inverted link list">
-          <a target="_blank" rel="noopener" href="https://fatcat.wiki" class="item">{{ _("Editable Catalog (Fatcat)") }}</a>
-          <a target="_blank" rel="noopener" href="https://guide.fatcat.wiki" class="item">{{ _("Contribute") }}</a>
-          <!-- <a target="_blank" rel="noopener" href="/api/redoc" class="item">{{ _("Search API") }}</a> -->
-          <a target="_blank" rel="noopener noreferrer" href="https://status.fatcat.wiki" class="item">{{ _("Service Status") }}</a>
+          <a target="_blank" rel="noopener" href="{{settings.FATCAT_URL}}" class="item">{{ _("Biblographic Database (Fatcat)") }}</a>
           <a target="_blank" rel="external noopener noreferrer" href="https://github.com/internetarchive/fatcat-scholar" class="item">{{ _("Source Code") }}</a>
         </div>
       </nav>

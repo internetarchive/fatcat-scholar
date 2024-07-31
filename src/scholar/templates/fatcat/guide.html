@@ -1052,15 +1052,15 @@ own identifier namespace.</p>
 such strings decode to valid UUIDs), and in the backend can be serialized in
 UUID columns:</p>
 <pre><code>work_rzga5b9cd7efgh04iljk8f3jvz
-https://fatcat.wiki/work/rzga5b9cd7efgh04iljk8f3jvz
+{{settings.FATCAT_URL}}/work/rzga5b9cd7efgh04iljk8f3jvz
 </code></pre>
 <p>In comparison, 96-bit identifiers would have 20 characters and look like:</p>
 <pre><code>work_rzga5b9cd7efgh04iljk
-https://fatcat.wiki/work/rzga5b9cd7efgh04iljk
+{{settings.FATCAT_URL}}/work/rzga5b9cd7efgh04iljk
 </code></pre>
 <p>and 64-bit:</p>
 <pre><code>work_rzga5b9cd7efg
-https://fatcat.wiki/work/rzga5b9cd7efg
+{{settings.FATCAT_URL}}/work/rzga5b9cd7efg
 </code></pre>
 <p>Fatcat identifiers can used to interlink between databases, but are explicitly
 <em>not</em> intended to supplant DOIs, ISBNs, handle, ARKs, and other &quot;registered&quot;
@@ -1166,7 +1166,7 @@ patches.</p>
 <br>
 <h2 id="reference-graph-refcat"><a class="header" href="#reference-graph-refcat">Reference Graph (refcat)</a></h2>
 <p>In Summer 2021, the first version of a reference graph dataset, named &quot;refcat&quot;,
-was released and integrated into the fatcat.wiki web interface. The dataset
+was released and integrated into the fatcat web interface. The dataset
 contains billions of references between papers in the fatcat catalog, as well
 as partial coverage of references from papers to books, to websites, and from
 Wikipedia articles to papers. This is a first step towards identifying links
@@ -1177,11 +1177,11 @@ collection, and is released under a CC-0 license for broad reuse.
 Acknowledgement and attribution for both the aggregated dataset and the
 original metadata sources is strongly encouraged (see below for provenance
 notes).</p>
-<p>References can be browsed on fatcat.wiki on an &quot;outbound&quot; (&quot;References&quot;) and
+<p>References can be browsed on fatcat on an &quot;outbound&quot; (&quot;References&quot;) and
 &quot;inbound&quot; (&quot;Cited By&quot;) basis for individual release entities. There are also
 special pages for Wikipedia articles (&quot;outbound&quot;, such as
-<a href="https://fatcat.wiki/wikipedia/en:Internet/refs-out">Internet</a>) and Open
-Library books (&quot;inbound&quot;, such as <a href="https://fatcat.wiki/openlibrary/OL2670078W/refs-in">The
+<a href="{{settings.FATCAT_URL}}/wikipedia/en:Internet/refs-out">Internet</a>) and Open
+Library books (&quot;inbound&quot;, such as <a href="{{settings.FATCAT_URL}}/openlibrary/OL2670078W/refs-in">The
 Gift</a>). JSON versions of
 these pages are available, but do not yet represent a stable API.</p>
 <h3 id="how-it-works"><a class="header" href="#how-it-works">How It Works</a></h3>
@@ -1282,7 +1282,7 @@ access links for references to websites (distinct from references to online
 journal articles or books). For example, references to an online news article
 or blog post would indicate the closest (in time, to the &quot;source&quot; publication
 date) Wayback captures to that web page, if available.</p>
-<p>References are only displayed on fatcat.wiki, not yet on scholar.archive.org.</p>
+<p>References are only displayed on fatcat, not yet on scholar.archive.org.</p>
 <p>There is no current or planned mechanism for searching, sorting, or filtering
 article search results by (inbound) citation count. This would require
 resource-intensive transformations and continuous re-indexing of search
