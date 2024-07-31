@@ -74,9 +74,7 @@ artifacts) over physical items, the primary bibliographic entity types are:</p>
 </ul>
 
 <p>Each entity type has its own relations and fields (captured in a schema), but
-there are are also generic operations and fields common across all entities.
-The API for creating, updating, querying, and inspecting entities is roughly
-the same regardless of type.</p>
+there are are also generic operations and fields common across all entities.</p>
 
 <h3 id="common-entity-fields"><a class="header" href="#common-entity-fields">Common Entity Fields</a></h3>
 
@@ -111,8 +109,8 @@ hundreds of fields, duplicate metadata, etc.</p>
   </li>
   <li>
     <code>edit_extra</code> (dict, optional): not part of the bibliographic schema, but can
-    be included when creating or updating entities using the API, and the
-    contents of field will be included in the entity's edit history.
+    be included when creating or updating entities, and the contents of field
+    will be included in the entity's edit history.
   </li>
 </ul>
 
@@ -972,12 +970,9 @@ case-by-case basis.</p>
 <h2 id="rest-api"><a class="header" href="#rest-api">REST API</a></h2>
 <p>The Fatcat HTTP API is a read-only API for querying and searching the catalog.</p>
 <p>A declarative specification of all API endpoints, JSON data models, and
-response types is available in OpenAPI 2.0 format. Code generation tools are
-used to generate both server-side type-safe endpoint routes and client-side
-libraries. Auto-generated reference documentation is, for now, available at
-<a href="https://api.fatcat.wiki">https://api.fatcat.wiki</a>.</p>
-<p>All API traffic is over HTTPS; there is no HTTP endpoint, even for read-only
-operations. All endpoints accept and return only JSON serialized content.</p>
+response types is available in OpenAPI 3.1 format. Auto-generated reference
+documentation is, for now, available at <a href="https://scholar.archive.org/docs">https://scholar.archive.org/docs</a>.</p>
+<p>All API traffic is over HTTPS. All endpoints accept and return only JSON serialized content.</p>
 
 <br>
 <h2 id="bulk-exports"><a class="header" href="#bulk-exports">Bulk Exports</a></h2>
